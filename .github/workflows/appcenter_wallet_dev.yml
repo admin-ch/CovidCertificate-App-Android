@@ -2,9 +2,13 @@ name: Android Build Wallet
 
 on:
   push:
-    branches: [ main, develop ]
+    branches:
+      - main
+      - 'release/**'
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
+      - 'release/**'
 
 jobs:
   build:
