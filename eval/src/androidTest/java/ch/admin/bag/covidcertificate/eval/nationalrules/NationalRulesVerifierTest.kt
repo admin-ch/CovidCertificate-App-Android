@@ -4,18 +4,17 @@ import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import ch.admin.bag.covidcertificate.eval.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.eval.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.TestDataGenerator
 import ch.admin.bag.covidcertificate.eval.data.AcceptedVaccineProvider
 import ch.admin.bag.covidcertificate.eval.utils.AcceptanceCriterias
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import ch.admin.bag.covidcertificate.eval.utils.TestType
+import ch.admin.bag.covidcertificate.eval.utils.isTargetDiseaseCorrect
+import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.time.Clock
-import java.time.Instant
-import java.time.LocalDate
-import java.time.ZoneId
+import java.time.*
 
 
 @RunWith(AndroidJUnit4::class)
@@ -196,39 +195,254 @@ class NationalRulesVerifierTest {
 
 	@Test
 	fun testTestDiseaseTargetedHasToBeSarsCoV2() {
+		val duration = Duration.ofHours(-10)
+		val validCert = TestDataGenerator.generateTestCert(
+			TestType.PCR.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"Nucleic acid amplification with probe detection",
+			AcceptanceCriterias.TARGET_DISEASE,
+			duration
+		)
+		assertTrue(validCert.t.first().isTargetDiseaseCorrect())
+		val result = nationalRulesVerifier.verifyTest(validCert.t.first())
+		assertTrue(result is CheckNationalRulesState.SUCCESS)
+
+		val invalidCert = TestDataGenerator.generateTestCert(
+			TestType.PCR.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"Nucleic acid amplification with probe detection",
+			"01123",
+			duration
+		)
+
+		assertFalse(invalidCert.t.first().isTargetDiseaseCorrect())
+		val wrongResult = nationalRulesVerifier.verifyTest(invalidCert.t.first())
+		assertTrue(wrongResult is CheckNationalRulesState.INVALID)
+
+
 	}
+
 
 	@Test
 	fun testTypeHasToBePcrOrRat() {
+		var validRat = TestDataGenerator.generateTestCert(
+			TestType.RAT.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"1232",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-10)
+		)
+		var validPcr = TestDataGenerator.generateTestCert(
+			TestType.PCR.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"Nucleic acid amplification with probe detection",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-10)
+		)
+		var invalidTest = TestDataGenerator.generateTestCert(
+			"INVALID_TEST_TYPE",
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"Nucleic acid amplification with probe detection",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-10)
+		)
+
+
+		val validRatResult = nationalRulesVerifier.verifyTest(validRat.t.first())
+
+		assertTrue(validRatResult is CheckNationalRulesState.SUCCESS)
+
+		val validPcrResult = nationalRulesVerifier.verifyTest(validPcr.t.first())
+		assertTrue(validPcrResult is CheckNationalRulesState.SUCCESS)
+
+		val invalidTestResult = nationalRulesVerifier.verifyTest(invalidTest.t.first())
+		if (invalidTestResult is CheckNationalRulesState.INVALID){
+			assertTrue(invalidTestResult.nationalRulesError == NationalRulesError.WRONG_TEST_TYPE)
+		} else {
+			assertFalse(true)
+		}
 	}
 
 	@Test
 	fun testTestHasToBeInWhitelist() {
+		var invalidTest = TestDataGenerator.generateTestCert(
+			TestType.RAT.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"abcdef",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-10)
+		)
+		val invalidTestResult = nationalRulesVerifier.verifyTest(invalidTest.t.first())
+		if (invalidTestResult is CheckNationalRulesState.INVALID){
+			assertTrue(invalidTestResult.nationalRulesError == NationalRulesError.NO_VALID_PRODUCT)
+		} else {
+			assertFalse(true)
+		}
+	}
+
+	@Test
+	fun testPcrTestsAreAlwaysAccepted() {
+		var validTest = TestDataGenerator.generateTestCert(
+			TestType.RAT.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"abcdef",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-10)
+		)
+		var result = nationalRulesVerifier.verifyTest(validTest.t.first())
+		assertTrue(result is CheckNationalRulesState.SUCCESS)
 	}
 
 	@Test
 	fun testPcrIsValidFor72h() {
+		var validPcr = TestDataGenerator.generateTestCert(
+			TestType.PCR.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"Nucleic acid amplification with probe detection",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-71)
+		)
+		var result = nationalRulesVerifier.verifyTest(validPcr.t.first())
+		assertTrue(result is CheckNationalRulesState.SUCCESS)
+
+		var invalidPcr = TestDataGenerator.generateTestCert(
+			TestType.PCR.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"Nucleic acid amplification with probe detection",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-72)
+		)
+		var invalid = nationalRulesVerifier.verifyTest(invalidPcr.t.first())
+		if(invalid is CheckNationalRulesState.NOT_VALID_ANYMORE) {
+			assertTrue(true)
+		} else {
+			assertFalse(true)
+		}
 	}
 
 	@Test
 	fun testRatIsValidFor24h() {
+		var validRat = TestDataGenerator.generateTestCert(
+			TestType.RAT.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"1232",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-23)
+		)
+		var result = nationalRulesVerifier.verifyTest(validRat.t.first())
+		assertTrue(result is CheckNationalRulesState.SUCCESS)
+
+		var invalidPcr = TestDataGenerator.generateTestCert(
+			TestType.RAT.code,
+			AcceptanceCriterias.NEGATIVE_CODE,
+			"1232",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-24)
+		)
+		var invalid = nationalRulesVerifier.verifyTest(invalidPcr.t.first())
+		if(invalid is CheckNationalRulesState.NOT_VALID_ANYMORE) {
+			assertTrue(true)
+		} else {
+			assertFalse(true)
+		}
 	}
 
 	@Test
 	fun testTestResultHasToBeNegative() {
+		var validRat = TestDataGenerator.generateTestCert(
+			TestType.RAT.code,
+			"positive",
+			"1232",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-10)
+		)
+		var validPcr = TestDataGenerator.generateTestCert(
+			TestType.PCR.code,
+			"positive",
+			"Nucleic acid amplification with probe detection",
+			AcceptanceCriterias.TARGET_DISEASE,
+			Duration.ofHours(-10)
+		)
+
+		var invalidRat = nationalRulesVerifier.verifyTest(validRat.t.first())
+		var invalidPcr = nationalRulesVerifier.verifyTest(validPcr.t.first())
+
+		if (invalidRat is CheckNationalRulesState.INVALID &&
+				invalidPcr is CheckNationalRulesState.INVALID) {
+			assertTrue(invalidRat.nationalRulesError == NationalRulesError.POSITIVE_RESULT)
+			assertTrue(invalidPcr.nationalRulesError == NationalRulesError.POSITIVE_RESULT)
+		} else {
+			assertFalse(true)
+		}
 	}
 
 	/// RECOVERY TESTS
 
 	@Test
 	fun testRecoveryDiseaseTargetedHasToBeSarsCoV2() {
+		var validRecovery = TestDataGenerator.generateTestRecovery(
+			Duration.ofDays(-10),
+			Duration.ofDays(180),
+			Duration.ofDays(-20),
+			AcceptanceCriterias.TARGET_DISEASE
+		)
+		var invalidRecovery = TestDataGenerator.generateTestRecovery(
+			Duration.ofDays(-10),
+			Duration.ofDays(180),
+			Duration.ofDays(-20),
+			"INVALID DISEASE"
+		)
+
+		var validRecoveryResult = nationalRulesVerifier.verifyRecovery(validRecovery.r.first());
+		var invalidRecoveryResult = nationalRulesVerifier.verifyRecovery(invalidRecovery.r.first());
+		assertTrue(validRecoveryResult is CheckNationalRulesState.SUCCESS)
+
+		if (invalidRecoveryResult is CheckNationalRulesState.INVALID){
+			assertTrue(invalidRecoveryResult.nationalRulesError == NationalRulesError.WRONG_DISEASE_TARGET)
+		}
 	}
 
 	@Test
 	fun testCertificateIsValidFor180DaysAfter() {
+		val validCert =  TestDataGenerator.generateTestRecovery(
+			Duration.ofDays(-10),
+			Duration.ofDays(0),
+			Duration.ofDays(-180),
+			AcceptanceCriterias.TARGET_DISEASE
+		)
+		val invalidCert =  TestDataGenerator.generateTestRecovery(
+			Duration.ofDays(-10),
+			Duration.ofDays(0),
+			Duration.ofDays(-181),
+			AcceptanceCriterias.TARGET_DISEASE
+		)
+
+		val validResult = nationalRulesVerifier.verifyRecovery(validCert.r.first())
+		val invalidResult = nationalRulesVerifier.verifyRecovery(invalidCert.r.first())
+
+		assertTrue(validResult is CheckNationalRulesState.SUCCESS)
+		assertTrue(invalidResult is CheckNationalRulesState.NOT_VALID_ANYMORE)
 	}
 
 	@Test
 	fun testTestIsOnlyValid10DaysAfterTestResult() {
+		val validCert =  TestDataGenerator.generateTestRecovery(
+			Duration.ofDays(-10),
+			Duration.ofDays(0),
+			Duration.ofDays(-10),
+			AcceptanceCriterias.TARGET_DISEASE
+		)
+		val invalidCert =  TestDataGenerator.generateTestRecovery(
+			Duration.ofDays(-10),
+			Duration.ofDays(0),
+			Duration.ofDays(-9),
+			AcceptanceCriterias.TARGET_DISEASE
+		)
+
+		val validResult = nationalRulesVerifier.verifyRecovery(validCert.r.first())
+		val invalidResult = nationalRulesVerifier.verifyRecovery(invalidCert.r.first())
+
+		assertTrue(validResult is CheckNationalRulesState.SUCCESS)
+		assertTrue(invalidResult is CheckNationalRulesState.NOT_YET_VALID)
 	}
 }

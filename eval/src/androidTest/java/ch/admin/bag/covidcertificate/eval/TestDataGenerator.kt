@@ -4,6 +4,7 @@ import ch.admin.bag.covidcertificate.eval.data.Eudgc
 import com.google.gson.Gson
 import java.time.Duration
 import java.time.LocalDate
+import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
 object TestDataGenerator {
@@ -55,36 +56,36 @@ object TestDataGenerator {
 		disease: String,
 		sampleCollectionWasAgo: Duration
 	): Eudgc {
-		val now = LocalDate.now().atStartOfDay()
+		val now = OffsetDateTime.now()
 		val sampleCollectionTime = now + sampleCollectionWasAgo
 		val testResultTime = sampleCollectionTime + Duration.ofHours(10)
 		val testJson = """
-               {
-                 "t": [
-                   {
-                     "ci": "urn:uvci:01:AT:71EE2559DE38C6BF7304FB65A1A451ECE",
-                     "co": "AT",
-                     "dr": "${testResultTime.format(DateTimeFormatter.ISO_DATE_TIME)}",
-                     "is": "BMSGPK Austria",
-                     "ma": "$name",
-                     "nm": "$name",
-                     "sc": "${sampleCollectionTime.format(DateTimeFormatter.ISO_DATE_TIME)}",
-                     "tc": "Testing center Vienna 1",
-                     "tg": "$disease",
-                     "tr": "$testResult",
-                     "tt": "$testType"
-                   }
-                 ],
-                 "dob": "1998-02-26",
-                 "nam": {
-                   "fn": "Musterfrau-Gößinger",
-                   "gn": "Gabriele",
-                   "fnt": "MUSTERFRAU<GOESSINGER",
-                   "gnt": "GABRIELE"
-                 },
-                 "ver": "1.0.0"
-               }
-            """
+              {
+                "t": [
+                  {
+                    "ci": "urn:uvci:01:AT:71EE2559DE38C6BF7304FB65A1A451ECE",
+                    "co": "AT",
+                    "dr": "${testResultTime.format(DateTimeFormatter.ISO_DATE_TIME)}",
+                    "is": "BMSGPK Austria",
+                    "ma": "$name",
+                    "nm": "$name",
+                    "sc": "${sampleCollectionTime.format(DateTimeFormatter.ISO_DATE_TIME)}",
+                    "tc": "Testing center Vienna 1",
+                    "tg": "$disease",
+                    "tr": "$testResult",
+                    "tt": "$testType"
+                  }
+                ],
+                "dob": "1998-02-26",
+                "nam": {
+                  "fn": "Musterfrau-Gößinger",
+                  "gn": "Gabriele",
+                  "fnt": "MUSTERFRAU<GOESSINGER",
+                  "gnt": "GABRIELE"
+                },
+                "ver": "1.0.0"
+              }
+           """
 		return gson.fromJson(testJson, Eudgc::class.java)!!
 	}
 
