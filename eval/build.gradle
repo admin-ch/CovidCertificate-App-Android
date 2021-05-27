@@ -54,7 +54,6 @@ dependencies {
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 	implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.2'
 	implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:1.2.0"
-	implementation "org.jetbrains.kotlinx:kotlinx-serialization-cbor:1.1.0"
 
 	// Crypto
 	implementation "com.augustcellars.cose:cose-java:1.1.0"
