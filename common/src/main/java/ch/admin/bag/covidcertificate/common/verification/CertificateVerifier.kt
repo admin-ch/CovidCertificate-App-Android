@@ -1,7 +1,6 @@
 package ch.admin.bag.covidcertificate.common.verification
 
 import android.content.Context
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
