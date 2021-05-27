@@ -14,7 +14,8 @@ import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.verifier.data.SecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeBinding
-import ch.admin.bag.covidcertificate.verifier.faq.FaqFragment
+import ch.admin.bag.covidcertificate.common.faq.FaqFragment
+import ch.admin.bag.covidcertificate.verifier.faq.VerifierFaqFragment
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPageAdapter
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPagerFragment
 import ch.admin.bag.covidcertificate.verifier.qr.VerifierQrScanFragment
@@ -33,7 +34,7 @@ class HomeFragment : Fragment() {
 
 	private lateinit var binding: FragmentHomeBinding
 
-	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		binding = FragmentHomeBinding.inflate(inflater, container, false)
 		return binding.root
 	}
@@ -54,8 +55,8 @@ class HomeFragment : Fragment() {
 		binding.homescreenSupportButton.setOnClickListener {
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, FaqFragment.newInstance())
-				.addToBackStack(FaqFragment::class.java.canonicalName)
+				.replace(R.id.fragment_container, VerifierFaqFragment.newInstance())
+				.addToBackStack(VerifierFaqFragment::class.java.canonicalName)
 				.commit()
 		}
 
