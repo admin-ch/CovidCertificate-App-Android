@@ -57,7 +57,7 @@ class CertificatesListFragment : Fragment() {
 
 		binding.certificatesOverviewLoadingGroup.isVisible = true
 
-		certificatesViewModel.verifiedCertificateLiveData.observe(viewLifecycleOwner) { verifiedCertificates ->
+		certificatesViewModel.verifiedCertificatesLiveData.observe(viewLifecycleOwner) { verifiedCertificates ->
 			if (verifiedCertificates.isEmpty()) {
 				parentFragmentManager.popBackStack()
 			}

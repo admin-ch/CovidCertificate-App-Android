@@ -63,8 +63,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	}
 
 	private val certificateVerifierMapMutableLiveData = MutableLiveData<Map<String, CertificateVerifier>>(HashMap())
-	val certificateVerifierMapLiveData: LiveData<Map<String, CertificateVerifier>> =
-		certificateVerifierMapMutableLiveData
+	val certificateVerifierMapLiveData: LiveData<Map<String, CertificateVerifier>> = certificateVerifierMapMutableLiveData
 
 	private val verifiedCertificatesMediatorLiveData = MediatorLiveData<List<VerifiedCertificate>>().apply {
 		addSource(certificatesCollectionLiveData) { certificates ->
@@ -76,32 +75,40 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 				}
 		}
 	}
-	val verifiedCertificateLiveData: LiveData<List<VerifiedCertificate>> = verifiedCertificatesMediatorLiveData
+	val verifiedCertificatesLiveData: LiveData<List<VerifiedCertificate>> = verifiedCertificatesMediatorLiveData
 
 	init {
-		certificatesCollectionLiveData.observeForever { certificates ->
-			val certificateVerifierMap = certificateVerifierMapLiveData.value!!.toMutableMap()
-			val certificatesSet = certificates.toSet()
-			certificateVerifierMap.keys.filter { !certificatesSet.contains(it) }.forEach { removedCertificate ->
+		certificatesCollectionLiveData.observeForever { certificates -> updateCertificateVerifiers(certificates) }
+	}
+
+	private fun updateCertificateVerifiers(certificates: List<Bagdgc>) {
+		val certificateVerifierMap = certificateVerifierMapLiveData.value!!.toMutableMap()
+		val newCertificateSet = certificates.map { bagdgc -> bagdgc.qrCodeData }.toSet()
+
+		certificateVerifierMap.keys
+			.filter { !newCertificateSet.contains(it) }
+			.forEach { removedCertificate ->
 				certificateVerifierMap[removedCertificate]?.liveData?.let { verifiedCertificatesMediatorLiveData.removeSource(it) }
 				certificateVerifierMap.remove(removedCertificate)
 			}
-			certificates.filter { !certificateVerifierMap.containsKey(it) }.forEach { addedCertificate ->
+
+		certificates
+			.filter { !certificateVerifierMap.containsKey(it.qrCodeData) }
+			.forEach { addedCertificate ->
 				val newVerifier = CertificateVerifier(getApplication(), viewModelScope, addedCertificate)
 				certificateVerifierMap[addedCertificate.qrCodeData] = newVerifier
 				verifiedCertificatesMediatorLiveData.addSource(newVerifier.liveData) { state ->
 					val currentStates = verifiedCertificatesMediatorLiveData.value ?: return@addSource
-					verifiedCertificatesMediatorLiveData.value = currentStates.map {
-						return@map if (it.certificate.qrCodeData == addedCertificate.qrCodeData) {
+					verifiedCertificatesMediatorLiveData.value = currentStates.map { verifiedCertificate ->
+						return@map if (verifiedCertificate.certificate.qrCodeData == addedCertificate.qrCodeData) {
 							VerifiedCertificate(addedCertificate, state)
 						} else {
-							it
+							verifiedCertificate
 						}
 					}
 				}
 			}
-			certificateVerifierMapMutableLiveData.value = certificateVerifierMap
-		}
+		certificateVerifierMapMutableLiveData.value = certificateVerifierMap
 	}
 
 	data class VerifiedCertificate(val certificate: Bagdgc, val state: VerificationState)
