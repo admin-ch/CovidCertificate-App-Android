@@ -1,7 +1,6 @@
 package ch.admin.bag.covidcertificate.eval
 
 import android.content.Context
-import android.util.Log
 import ch.admin.bag.covidcertificate.eval.EvalErrorCodes.SIGNATURE_COSE_INVALID
 import ch.admin.bag.covidcertificate.eval.chain.*
 import ch.admin.bag.covidcertificate.eval.models.Bagdgc
@@ -9,9 +8,6 @@ import ch.admin.bag.covidcertificate.eval.nationalrules.NationalRulesVerifier
 import ch.admin.bag.covidcertificate.eval.utils.getHardcodedBagSigningKeys
 import com.squareup.moshi.Moshi
 
-private const val FILENAME_TRUST_LIST = "jwks.json"
-private const val FILENAME_REVOCATION_LIST = "revokedList.json"
-private const val FILENAME_RULESET = "ruleset.json"
 
 object Eval {
 	private val TAG = Eval::class.java.simpleName
@@ -29,7 +25,6 @@ object Eval {
 	 * @return DecodeState object which contains the decoded DGC. Signature validity is NOT yet checked.
 	 */
 	fun decode(qrCodeData: String): DecodeState {
-		Log.d(TAG, "Decoding barcode...")
 		val verificationResult = VerificationResult()
 		val encoded = contextIdentifierService.decode(qrCodeData, verificationResult)
 		val compressed = base45Service.decode(encoded, verificationResult)
@@ -38,18 +33,14 @@ object Eval {
 		val eudgc = cborService.decode(cbor, verificationResult)
 
 		return if (verificationResult.cborDecoded) {
-			Log.d(TAG, "Successfully decoded DGC: $eudgc")
 			DecodeState.SUCCESS(Bagdgc(eudgc, qrCodeData, cose, verificationResult))
 		}
 		// If not successful, try to find a reasonable error to bubble up
 		else if (!verificationResult.base45Decoded) {
-			Log.d(TAG, "Could decode base45!")
 			DecodeState.ERROR(Error(EvalErrorCodes.DECODE_BASE_45))
 		} else if (!verificationResult.zlibDecoded) {
-			Log.d(TAG, "Could decompress!")
 			DecodeState.ERROR(Error(EvalErrorCodes.DECODE_Z_LIB))
 		} else {
-			Log.d(TAG, "Could not decode for some other reason!")
 			DecodeState.ERROR(Error(EvalErrorCodes.DECODE_UNKNOWN))
 		}
 	}
@@ -59,14 +50,12 @@ object Eval {
 	 * @return State for the signature check
 	 */
 	suspend fun checkSignature(bagdgc: Bagdgc, context: Context): CheckSignatureState {
-		Log.d(TAG, "Checking signature...")
 		val keys = getHardcodedBagSigningKeys()
 
 		val vr = bagdgc.verificationResult
 
 		val timestampVerificationService = TimestampVerificationService()
 		timestampVerificationService.validate(vr)
-		Log.d(TAG, "Timestamp verification successfull: ${vr.timestampVerified}")
 		if (!vr.timestampVerified) {
 			return CheckSignatureState.INVALID(EvalErrorCodes.SIGNATURE_TIMESTAMP_INVALID)
 		}
@@ -74,8 +63,6 @@ object Eval {
 		val coseService = VerificationCoseService(keys)
 		val type = bagdgc.getType() ?: return CheckSignatureState.INVALID(EvalErrorCodes.SIGNATURE_BAGDGC_TYPE_INVALID)
 		coseService.decode(bagdgc.cose, vr, type)
-		Log.d(TAG, "$vr")
-		Log.d(TAG, "COSE verification successfull: ${vr.coseVerified}")
 
 		return if (vr.coseVerified) CheckSignatureState.SUCCESS else CheckSignatureState.INVALID(SIGNATURE_COSE_INVALID)
 	}
@@ -85,7 +72,6 @@ object Eval {
 	 * @return State for the revocation check
 	 */
 	suspend fun checkRevocationStatus(bagdgc: Bagdgc, context: Context): CheckRevocationState {
-		Log.d(TAG, "Checking revoked lists...")
 		return CheckRevocationState.SUCCESS
 	}
 
@@ -94,7 +80,6 @@ object Eval {
 	 * @return State for the Signaturecheck
 	 */
 	suspend fun checkNationalRules(bagdgc: Bagdgc, context: Context): CheckNationalRulesState {
-		Log.d(TAG, "Checking national rules...")
 		return if (!bagdgc.dgc.v.isNullOrEmpty()) {
 			NationalRulesVerifier(context).verifyVaccine(bagdgc.dgc.v[0])
 		} else if (!bagdgc.dgc.t.isNullOrEmpty()) {

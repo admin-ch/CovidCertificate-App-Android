@@ -8,7 +8,6 @@ import COSE.HeaderKeys
 import COSE.MessageTag
 import COSE.OneKey
 import COSE.Sign1Message
-import android.util.Log
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.models.Jwk
 import ch.admin.bag.covidcertificate.eval.utils.toBase64
@@ -24,7 +23,6 @@ class VerificationCoseService(private val keys: List<Jwk>) {
 				try {
 					val kid: ByteArray = signature.findAttribute(HeaderKeys.KID)?.GetByteString()
 						?: throw IllegalArgumentException("No kid in COSE object")
-					Log.d(TAG, "COSE signature is with kid=${kid.toBase64()}")
 
 					keys
 						// Potentially there are many signing keys. Filter on the kid to save the expensive public crypto key operations.

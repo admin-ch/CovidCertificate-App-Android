@@ -61,7 +61,7 @@ data class Jwk(
 			}
 		} catch (e: Exception) {
 			// Can throw e.g. if the (x, y) pair is not a point on the curve
-			Log.e(TAG, "Error initialising PublicKey for kid $kid: $e")
+			e.printStackTrace()
 		}
 		return null
 	}
