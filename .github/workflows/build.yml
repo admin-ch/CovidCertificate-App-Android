@@ -1,9 +1,11 @@
 name: Build
+
 on:
   push:
-    branches: [ master, develop ]
+    branches:
+      - main
+      - 'release/**'
   pull_request:
-    branches: [ master, develop ]
 jobs:
   build:
     name: Build
