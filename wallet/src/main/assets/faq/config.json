@@ -1,0 +1,425 @@
+{
+  "forceUpdate": false,
+  "infoBox": null,
+  "optionalUpdate": false,
+  "questions": {
+    "de": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus.",
+          "title": "Wann und wo kann ich ein Covid-Zertifikat erhalten?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. \n\nBeachten Sie, dass sie in jedem Fall auch noch ein Ausweisdokument (Pass oder ID) vorweisen müssen.",
+          "title": "Wie kann ich ein Covid-Zertifikat vorweisen?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+          "title": "Wo sind meine Daten gespeichert?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument (Pass oder ID) gültig.",
+          "title": "Wie werden Missbrauch und Fälschung verhindert?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen.",
+          "title": "Was passiert, wenn ich mein Covid-Zertifikat verliere?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Das Covid-Zertifikat bietet die Möglichkeit, eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis fälschungssicher zu dokumentieren.",
+      "faqTitle": "Was sind Covid-Zertifikate?"
+    },
+    "en": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus.",
+          "title": "Wann und wo kann ich ein Covid-Zertifikat erhalten?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. \n\nBeachten Sie, dass sie in jedem Fall auch noch ein Ausweisdokument (Pass oder ID) vorweisen müssen.",
+          "title": "Wie kann ich ein Covid-Zertifikat vorweisen?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+          "title": "Wo sind meine Daten gespeichert?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument (Pass oder ID) gültig.",
+          "title": "Wie werden Missbrauch und Fälschung verhindert?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen.",
+          "title": "Was passiert, wenn ich mein Covid-Zertifikat verliere?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Das Covid-Zertifikat bietet die Möglichkeit, eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis fälschungssicher zu dokumentieren.",
+      "faqTitle": "Was sind Covid-Zertifikate?"
+    },
+    "fr": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus.",
+          "title": "Wann und wo kann ich ein Covid-Zertifikat erhalten?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. \n\nBeachten Sie, dass sie in jedem Fall auch noch ein Ausweisdokument (Pass oder ID) vorweisen müssen.",
+          "title": "Wie kann ich ein Covid-Zertifikat vorweisen?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+          "title": "Wo sind meine Daten gespeichert?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument (Pass oder ID) gültig.",
+          "title": "Wie werden Missbrauch und Fälschung verhindert?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen.",
+          "title": "Was passiert, wenn ich mein Covid-Zertifikat verliere?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Das Covid-Zertifikat bietet die Möglichkeit, eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis fälschungssicher zu dokumentieren.",
+      "faqTitle": "Was sind Covid-Zertifikate?"
+    },
+    "it": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus.",
+          "title": "Wann und wo kann ich ein Covid-Zertifikat erhalten?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. \n\nBeachten Sie, dass sie in jedem Fall auch noch ein Ausweisdokument (Pass oder ID) vorweisen müssen.",
+          "title": "Wie kann ich ein Covid-Zertifikat vorweisen?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+          "title": "Wo sind meine Daten gespeichert?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument (Pass oder ID) gültig.",
+          "title": "Wie werden Missbrauch und Fälschung verhindert?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen.",
+          "title": "Was passiert, wenn ich mein Covid-Zertifikat verliere?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Das Covid-Zertifikat bietet die Möglichkeit, eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis fälschungssicher zu dokumentieren.",
+      "faqTitle": "Was sind Covid-Zertifikate?"
+    }
+  },
+  "works": {
+    "de": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App.",
+          "title": "Wie kann ich ein Covid-Zertifikat zur App hinzufügen?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument (Pass oder ID) des Zertifikatsinhabers gültig.",
+          "title": "Können auch mehrere Covid-Zertifikate hinzugefügt werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist.",
+          "title": "Wie sehe ich, ob mein Covid-Zertifikat gültig ist?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihre persönlichen Daten werden in keinem zentralen System gespeichert, sondern befinden sich ausschliesslich bei Ihnen lokal auf dem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+          "title": "Wie sind meine Daten geschützt?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Der QR-Code enthält alle Informationen, die Sie auf Ihrem Covid-Zertifikat in Papierform im Klartext finden. Weiter befindet sich im QR-Code eine elektronische Signatur, mit der sich die Echtheit des Covid-Zertifikats überprüfen lässt. Dadurch wird das Covid-Zertifikat fälschungssicher.",
+          "title": "Welche Daten sind im QR-Code enthalten?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Sie können Ihr Covid-Zertifikat einfach wieder auf Ihr Mobilgerät bringen. Scannen Sie dazu erneut den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF.",
+          "title": "Was, wenn ich das Covid-Zertifikat oder die App lösche?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Mit der COVID Certificate App können Sie Covid-Zertifikate einfach und sicher auf Ihrem Mobilgerät abspeichern und vorweisen.",
+      "faqTitle": "Wie funktioniert die\nApp?"
+    },
+    "en": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App.",
+          "title": "Wie kann ich ein Covid-Zertifikat zur App hinzufügen?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument (Pass oder ID) des Zertifikatsinhabers gültig.",
+          "title": "Können auch mehrere Covid-Zertifikate hinzugefügt werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist.",
+          "title": "Wie sehe ich, ob mein Covid-Zertifikat gültig ist?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihre persönlichen Daten werden in keinem zentralen System gespeichert, sondern befinden sich ausschliesslich bei Ihnen lokal auf dem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+          "title": "Wie sind meine Daten geschützt?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Der QR-Code enthält alle Informationen, die Sie auf Ihrem Covid-Zertifikat in Papierform im Klartext finden. Weiter befindet sich im QR-Code eine elektronische Signatur, mit der sich die Echtheit des Covid-Zertifikats überprüfen lässt. Dadurch wird das Covid-Zertifikat fälschungssicher.",
+          "title": "Welche Daten sind im QR-Code enthalten?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Sie können Ihr Covid-Zertifikat einfach wieder auf Ihr Mobilgerät bringen. Scannen Sie dazu erneut den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF.",
+          "title": "Was, wenn ich das Covid-Zertifikat oder die App lösche?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Mit der COVID Certificate App können Sie Covid-Zertifikate einfach und sicher auf Ihrem Mobilgerät abspeichern und vorweisen.",
+      "faqTitle": "Wie funktioniert die\nApp?"
+    },
+    "fr": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App.",
+          "title": "Wie kann ich ein Covid-Zertifikat zur App hinzufügen?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument (Pass oder ID) des Zertifikatsinhabers gültig.",
+          "title": "Können auch mehrere Covid-Zertifikate hinzugefügt werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist.",
+          "title": "Wie sehe ich, ob mein Covid-Zertifikat gültig ist?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihre persönlichen Daten werden in keinem zentralen System gespeichert, sondern befinden sich ausschliesslich bei Ihnen lokal auf dem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+          "title": "Wie sind meine Daten geschützt?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Der QR-Code enthält alle Informationen, die Sie auf Ihrem Covid-Zertifikat in Papierform im Klartext finden. Weiter befindet sich im QR-Code eine elektronische Signatur, mit der sich die Echtheit des Covid-Zertifikats überprüfen lässt. Dadurch wird das Covid-Zertifikat fälschungssicher.",
+          "title": "Welche Daten sind im QR-Code enthalten?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Sie können Ihr Covid-Zertifikat einfach wieder auf Ihr Mobilgerät bringen. Scannen Sie dazu erneut den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF.",
+          "title": "Was, wenn ich das Covid-Zertifikat oder die App lösche?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Mit der COVID Certificate App können Sie Covid-Zertifikate einfach und sicher auf Ihrem Mobilgerät abspeichern und vorweisen.",
+      "faqTitle": "Wie funktioniert die\nApp?"
+    },
+    "it": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App.",
+          "title": "Wie kann ich ein Covid-Zertifikat zur App hinzufügen?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument (Pass oder ID) des Zertifikatsinhabers gültig.",
+          "title": "Können auch mehrere Covid-Zertifikate hinzugefügt werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist.",
+          "title": "Wie sehe ich, ob mein Covid-Zertifikat gültig ist?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ihre persönlichen Daten werden in keinem zentralen System gespeichert, sondern befinden sich ausschliesslich bei Ihnen lokal auf dem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+          "title": "Wie sind meine Daten geschützt?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Der QR-Code enthält alle Informationen, die Sie auf Ihrem Covid-Zertifikat in Papierform im Klartext finden. Weiter befindet sich im QR-Code eine elektronische Signatur, mit der sich die Echtheit des Covid-Zertifikats überprüfen lässt. Dadurch wird das Covid-Zertifikat fälschungssicher.",
+          "title": "Welche Daten sind im QR-Code enthalten?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Sie können Ihr Covid-Zertifikat einfach wieder auf Ihr Mobilgerät bringen. Scannen Sie dazu erneut den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF.",
+          "title": "Was, wenn ich das Covid-Zertifikat oder die App lösche?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Mit der COVID Certificate App können Sie Covid-Zertifikate einfach und sicher auf Ihrem Mobilgerät abspeichern und vorweisen.",
+      "faqTitle": "Wie funktioniert die\nApp?"
+    }
+  }
+}

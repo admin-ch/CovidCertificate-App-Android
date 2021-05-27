@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	xmlns:tools="http://schemas.android.com/tools">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:orientation="vertical">
+
+		<View
+			android:layout_width="match_parent"
+			android:layout_height="256dp"
+			android:background="@color/white" />
+
+		<ImageView
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:scaleType="fitXY"
+			android:src="@drawable/ic_header_slim" />
+	</LinearLayout>
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_large"
+		android:layout_marginHorizontal="@dimen/spacing_medium_small">
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:src="@drawable/ic_bundwappen_big" />
+
+		<ImageView
+			android:id="@+id/header_impressum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/ripple_rounded"
+			android:layout_gravity="end|center_vertical"
+			android:padding="@dimen/spacing_medium_large"
+			android:src="@drawable/ic_info_outline" />
+
+		<ImageView
+			android:id="@+id/header_notification"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="start|center_vertical"
+			android:background="@drawable/ripple_rounded"
+			android:padding="@dimen/spacing_tiny_small"
+			android:src="@drawable/ic_notification"
+			android:visibility="gone"
+			tools:visibility="visible" />
+	</FrameLayout>
+
+</FrameLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<declare-styleable name="WindowInsetsLayout">
+		<!-- On which edges to apply the system window insets -->
+		<attr name="applyWindowInsets">
+			<flag name="none" value="0x0" />
+			<flag name="all" value="0xF" />
+			<flag name="left" value="0x1" />
+			<flag name="top" value="0x2" />
+			<flag name="right" value="0x4" />
+			<flag name="bottom" value="0x8" />
+		</attr>
+	</declare-styleable>
+</resources>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	style="@style/CovidCertificate.Card.Flat"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal"
+		android:orientation="vertical"
+		android:padding="@dimen/spacing_medium">
+
+		<ImageView
+			android:id="@+id/error_status_image"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:src="@drawable/ic_error_triangle" />
+
+		<TextView
+			android:id="@+id/error_status_title"
+			style="@style/CovidCertificate.Text.Bold.Error"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			android:paddingTop="@dimen/spacing_small"
+			android:paddingBottom="@dimen/spacing_small"
+			tools:text="Netzwerk Fehler" />
+
+		<TextView
+			android:id="@+id/error_status_text"
+			style="@style/CovidCertificate.Text"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/spacing_small"
+			android:gravity="center"
+			tools:text="Überprüfen Sie Ihre Internet Verbindung" />
+
+		<TextView
+			android:id="@+id/error_status_button"
+			style="@style/CovidCertificate.Button.Borderless.Black.NoCaps"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="?selectableItemBackground"
+			android:gravity="center"
+			android:padding="@dimen/spacing_small"
+			android:visibility="visible"
+			tools:text="Einstellungen ändern" />
+
+	</LinearLayout>
+
+</androidx.cardview.widget.CardView>

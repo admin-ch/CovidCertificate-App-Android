@@ -1,0 +1,47 @@
+{
+	"Id": "Covid 19 Vaccines",
+	"Date": "2021-05-05",
+	"Version": "1.0.0",
+	"entries": [
+		{
+			"name": "Comirnaty",
+			"code": "EU/1/20/1528",
+			"prophylaxis": "COVID-19 mRNA vaccine",
+			"prophylaxis_code": "1119349007",
+			"auth_holder": "BioNTech Manufacturing GmbH",
+			"auth_holder_code": "ORG-100030215",
+			"total_dosis_number": 2,
+			"active": true
+		},
+		{
+			"name": "COVID-19 Vaccine Moderna",
+			"code": "EU/1/20/1507",
+			"prophylaxis": "COVID-19 mRNA vaccine",
+			"prophylaxis_code": "1119349007",
+			"auth_holder": "Moderna Biotech Spain, S.L.",
+			"auth_holder_code": "ORG-100031184",
+			"total_dosis_number": 2,
+			"active": true
+		},
+		{
+			"name": "Vaxzevria",
+			"code": "EU/1/21/1529",
+			"prophylaxis": "COVID-19 Vaccine",
+			"prophylaxis_code": "J07BX03",
+			"auth_holder": "AstraZeneca AB",
+			"auth_holder_code": "ORG-100001699",
+			"total_dosis_number": 2,
+			"active": true
+		},
+		{
+			"name": "COVID-19 Vaccine Janssen",
+			"code": "EU/1/20/1525",
+			"prophylaxis": "COVID-19 Vaccine",
+			"prophylaxis_code": "J07BX03",
+			"auth_holder": "Janssen-Cilag International NV",
+			"auth_holder_code": "ORG-100001417",
+			"total_dosis_number": 1,
+			"active": true
+		}
+	]
+}

@@ -1,0 +1,5 @@
+include ':eval'
+include ':common'
+include ':verifier'
+include ':wallet'
+rootProject.name = "Verifier"

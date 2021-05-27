@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/verification_step_frame"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:background="@drawable/bg_rect_rounded_small"
+	android:backgroundTint="@color/greyish"
+	android:padding="@dimen/spacing_small">
+
+	<include
+		android:id="@+id/verification_step_progress_indicator"
+		layout="@layout/item_progress_indicator" />
+
+	<TextView
+		android:id="@+id/verification_step_title"
+		style="@style/CovidCertificate.Text"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="@dimen/spacing_small"
+		tools:text="Error" />
+
+</LinearLayout>

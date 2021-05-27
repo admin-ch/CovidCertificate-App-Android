@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	android:background="@color/greyish"
+	app:applyWindowInsets="all">
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:layout_marginTop="100dp"
+		android:background="@color/greyish"
+		android:fillViewport="true">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+
+			<TextView
+				style="@style/CovidCertificate.Text.Bold.Lead.Grey"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginTop="@dimen/spacing_larger"
+				android:text="@string/verifier_homescreen_header_title"
+				android:textAllCaps="true" />
+
+			<TextView
+				style="@style/CovidCertificate.Text.Bold.Title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginTop="@dimen/spacing_medium_large"
+				android:gravity="center"
+				android:textSize="@dimen/spacing_very_large"
+				android:text="@string/verifier_homescreen_title" />
+
+			<androidx.viewpager2.widget.ViewPager2
+				android:id="@+id/viewPager"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_huge" />
+
+			<com.google.android.material.tabs.TabLayout
+				android:id="@+id/tab_layout"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:background="@color/greyish"
+				app:tabBackground="@drawable/tab_selector"
+				app:tabGravity="center"
+				app:tabIndicatorHeight="0dp" />
+
+			<View
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1"
+				android:background="@color/greyish" />
+
+			<Button
+				android:id="@+id/homescreen_scan_button"
+				style="@style/CovidCertificate.Button"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginTop="@dimen/spacing_very_large"
+				android:text="@string/verifier_homescreen_scan_button" />
+
+			<Button
+				android:id="@+id/homescreen_support_button"
+				style="@style/CovidCertificate.Button.Borderless"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_marginVertical="@dimen/spacing_very_large"
+				android:text="@string/verifier_homescreen_support_button" />
+
+		</LinearLayout>
+
+	</ScrollView>
+
+	<include android:id="@+id/homescreen_header" layout="@layout/item_header" />
+
+</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>
