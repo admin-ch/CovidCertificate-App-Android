@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ScrollView
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -48,7 +47,8 @@ class CertificateDetailFragment : Fragment() {
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 
-	private lateinit var binding: FragmentCertificateDetailBinding
+	private var _binding: FragmentCertificateDetailBinding? = null
+	private val binding get() = _binding!!
 
 	private lateinit var certificate: Bagdgc
 	private var verifier: CertificateVerifier? = null
@@ -64,7 +64,7 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		binding = FragmentCertificateDetailBinding.inflate(inflater, container, false)
+		_binding = FragmentCertificateDetailBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -95,11 +95,16 @@ class CertificateDetailFragment : Fragment() {
 
 		binding.certificateDetailButtonReverify.setOnClickListener {
 			binding.certificateDetailButtonReverify.hideAnimated()
-			binding.scrollview.smoothScrollTo(0,0)
+			binding.scrollview.smoothScrollTo(0, 0)
 			isForceValidate = true
 			hideDelayedJob?.cancel()
 			verifier?.startVerification()
 		}
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	private fun displayQrCode() {

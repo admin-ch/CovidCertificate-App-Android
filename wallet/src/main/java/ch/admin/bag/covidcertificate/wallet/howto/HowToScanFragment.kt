@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.databinding.ItemFaqQuestionBinding
+import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHowToScanBinding
 
 class HowToScanFragment : Fragment() {
@@ -18,10 +19,11 @@ class HowToScanFragment : Fragment() {
 		fun newInstance(): HowToScanFragment = HowToScanFragment()
 	}
 
-	private lateinit var binding: FragmentHowToScanBinding
+	private var _binding: FragmentHowToScanBinding? = null
+	private val binding get() = _binding!!
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		binding = FragmentHowToScanBinding.inflate(inflater, container, false)
+		_binding = FragmentHowToScanBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -34,6 +36,11 @@ class HowToScanFragment : Fragment() {
 			R.string.wallet_scanner_howitworks_question1,
 			R.string.wallet_scanner_howitworks_answer1
 		)
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	private fun setupExpandableItem(

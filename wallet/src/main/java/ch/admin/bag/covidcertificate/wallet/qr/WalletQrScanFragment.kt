@@ -22,7 +22,8 @@ class WalletQrScanFragment : QrScanFragment() {
 		}
 	}
 
-	private lateinit var binding: FragmentQrScanBinding
+	private var _binding: FragmentQrScanBinding? = null
+	private val binding get() = _binding!!
 
 	override val viewFinderErrorColor: Int = R.color.red_error_qr_wallet
 	override val viewFinderColor: Int = R.color.blue
@@ -32,7 +33,7 @@ class WalletQrScanFragment : QrScanFragment() {
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		super.onCreateView(inflater, container, savedInstanceState)
 
-		binding = FragmentQrScanBinding.inflate(inflater, container, false)
+		_binding = FragmentQrScanBinding.inflate(inflater, container, false)
 
 		toolbar = binding.fragmentQrScannerToolbar
 		barcodeScanner = binding.barcodeScanner
@@ -55,6 +56,11 @@ class WalletQrScanFragment : QrScanFragment() {
 	}
 
 	override fun onDecodeSuccess(dgc: Bagdgc) = showCertificationAddFragment(dgc)
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
+	}
 
 	private fun showCertificationAddFragment(certificate: Bagdgc) {
 		parentFragmentManager.beginTransaction()

@@ -22,7 +22,8 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 	}
 
-	private lateinit var binding: FragmentQrScanBinding
+	private var _binding: FragmentQrScanBinding? = null
+	private val binding get() = _binding!!
 
 	override val viewFinderErrorColor: Int = R.color.red_error_qr_verifier
 	override val viewFinderColor: Int = R.color.white
@@ -32,7 +33,7 @@ class VerifierQrScanFragment : QrScanFragment() {
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		super.onCreateView(inflater, container, savedInstanceState)
 
-		binding = FragmentQrScanBinding.inflate(inflater, container, false)
+		_binding = FragmentQrScanBinding.inflate(inflater, container, false)
 
 		toolbar = binding.fragmentQrScannerToolbar
 		barcodeScanner = binding.barcodeScanner
@@ -46,6 +47,11 @@ class VerifierQrScanFragment : QrScanFragment() {
 		viewFinderBottomRightIndicator = binding.qrCodeScannerBottomRightIndicator
 
 		return binding.root
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	override fun onDecodeSuccess(dgc: Bagdgc) = showVerificationFragment(dgc)

@@ -30,7 +30,8 @@ class CertificateAddFragment : Fragment() {
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 
-	private lateinit var binding: FragmentCertificateAddBinding
+	private var _binding: FragmentCertificateAddBinding? = null
+	private val binding get() = _binding!!
 
 	private lateinit var certificate: Bagdgc
 	private var isAlreadyAdded = false
@@ -43,7 +44,7 @@ class CertificateAddFragment : Fragment() {
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		binding = FragmentCertificateAddBinding.inflate(inflater, container, false)
+		_binding = FragmentCertificateAddBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -74,6 +75,11 @@ class CertificateAddFragment : Fragment() {
 			parentFragmentManager.popBackStack()
 		}
 
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	private fun setupCertificateDetails() {

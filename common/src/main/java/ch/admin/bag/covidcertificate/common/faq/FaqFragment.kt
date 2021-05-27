@@ -15,10 +15,11 @@ import ch.admin.bag.covidcertificate.common.views.hideAnimated
 
 abstract class FaqFragment : Fragment() {
 
-	private lateinit var binding: FragmentFaqBinding
+	private var _binding: FragmentFaqBinding? = null
+	private val binding get() = _binding!!
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-		binding = FragmentFaqBinding.inflate(inflater, container, false)
+		_binding = FragmentFaqBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -30,6 +31,11 @@ abstract class FaqFragment : Fragment() {
 		}
 
 		setupFaqProvider()
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	protected abstract fun setupFaqProvider()

@@ -33,7 +33,8 @@ class CertificatePagerFragment : Fragment() {
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 
-	private lateinit var binding: FragmentCertificatePagerBinding
+	private var _binding: FragmentCertificatePagerBinding? = null
+	private val binding get() = _binding!!
 
 	private lateinit var certificate: Bagdgc
 	private lateinit var verifier: CertificateVerifier
@@ -45,7 +46,7 @@ class CertificatePagerFragment : Fragment() {
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		binding = FragmentCertificatePagerBinding.inflate(inflater, container, false)
+		_binding = FragmentCertificatePagerBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -62,6 +63,11 @@ class CertificatePagerFragment : Fragment() {
 		setupStatusInfo()
 
 		binding.certificatePageMainGroup.setOnClickListener { certificatesViewModel.onQrCodeClicked(certificate) }
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	private fun setupStatusInfo() {
