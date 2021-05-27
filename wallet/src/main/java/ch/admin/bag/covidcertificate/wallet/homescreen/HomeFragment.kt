@@ -22,7 +22,7 @@ import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.data.SecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
-import ch.admin.bag.covidcertificate.wallet.faq.FaqFragment
+import ch.admin.bag.covidcertificate.wallet.faq.WalletFaqFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.CertificatesPagerAdapter
 import ch.admin.bag.covidcertificate.wallet.list.CertificatesListFragment
 import ch.admin.bag.covidcertificate.wallet.qr.WalletQrScanFragment
@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
 	private lateinit var binding: FragmentHomeBinding
 	private lateinit var certificatesAdapter: CertificatesPagerAdapter
 
-	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		binding = FragmentHomeBinding.inflate(inflater, container, false)
 		return binding.root
 	}
@@ -76,8 +76,8 @@ class HomeFragment : Fragment() {
 		binding.homescreenSupportButton.setOnClickListener {
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, FaqFragment.newInstance())
-				.addToBackStack(FaqFragment::class.java.canonicalName)
+				.replace(R.id.fragment_container, WalletFaqFragment.newInstance())
+				.addToBackStack(WalletFaqFragment::class.java.canonicalName)
 				.commit()
 		}
 		binding.homescreenListButton.setOnClickListener {
