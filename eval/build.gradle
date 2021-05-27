@@ -72,6 +72,11 @@ dependencies {
 	implementation 'com.squareup.moshi:moshi:1.11.0'
 	kapt "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
 
+	//JWS Library
+	implementation 'io.jsonwebtoken:jjwt-api:0.11.2'
+	api 'io.jsonwebtoken:jjwt-impl:0.11.2',
+			'io.jsonwebtoken:jjwt-jackson:0.11.2'
+
 	testImplementation 'junit:junit:4.+'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.2'
 	androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
