@@ -2,6 +2,7 @@ package ch.admin.bag.covidcertificate.verifier
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -11,7 +12,6 @@ import ch.admin.bag.covidcertificate.verifier.databinding.ActivityMainBinding
 import ch.admin.bag.covidcertificate.verifier.networking.ConfigRepository
 
 class MainActivity : AppCompatActivity() {
-
 
 	private lateinit var binding: ActivityMainBinding
 
@@ -25,6 +25,11 @@ class MainActivity : AppCompatActivity() {
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		val view = binding.root
 		setContentView(view)
+
+		val allowlistedFlavours = listOf("abn", "dev")
+		if (!allowlistedFlavours.contains(BuildConfig.FLAVOR)) {
+			window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+		}
 
 		if (savedInstanceState == null) {
 			supportFragmentManager.beginTransaction()
