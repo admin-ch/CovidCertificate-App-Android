@@ -43,12 +43,12 @@ fun RecoveryEntry.getCertificateIdentifier(): String {
 
 fun RecoveryEntry.validFromDate(): LocalDateTime? {
 	val firstPositiveResultDate = this.firstPostiveResult() ?: return null
-	return firstPositiveResultDate.plusDays(AcceptanceCriterias.RECOVERY_OFFSET_VALID_FROM)
+	return firstPositiveResultDate.plusDays(AcceptanceCriterias.RECOVERY_OFFSET_VALID_FROM_DAYS)
 }
 
 fun RecoveryEntry.validUntilDate(): LocalDateTime? {
 	val firstPositiveResultDate = this.firstPostiveResult() ?: return null
-	return firstPositiveResultDate.plusMonths(AcceptanceCriterias.RECOVERY_OFFSET_VALID_UNTIL)
+	return firstPositiveResultDate.plusDays(AcceptanceCriterias.RECOVERY_OFFSET_VALID_UNTIL_DAYS)
 }
 
 fun RecoveryEntry.firstPostiveResult(): LocalDateTime? {
