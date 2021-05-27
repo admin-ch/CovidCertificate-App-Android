@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical"
+	app:applyWindowInsets="all">
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/blue">
+
+		<include
+			android:id="@+id/homescreen_header_empty"
+			layout="@layout/item_header" />
+
+		<include
+			android:id="@+id/homescreen_header_not_empty"
+			layout="@layout/item_header_not_empty"
+			android:visibility="visible" />
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:orientation="vertical">
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="0dp"
+				android:layout_weight="1">
+
+				<androidx.viewpager2.widget.ViewPager2
+					android:id="@+id/homescreen_certificates_view_pager"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginTop="90dp"
+					android:clipChildren="false"
+					android:clipToPadding="false"
+					android:overScrollMode="never"
+					android:scrollbars="none"
+					android:visibility="gone"
+					tools:visibility="visible" />
+
+				<ScrollView
+					android:id="@+id/homescreen_content_empty_scroll_view"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginTop="100dp"
+					android:overScrollMode="never"
+					android:visibility="gone"
+					tools:visibility="visible">
+
+					<LinearLayout
+						android:id="@+id/homescreen_empty_content_group"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center_horizontal"
+						android:orientation="vertical"
+						android:paddingHorizontal="@dimen/spacing_very_large">
+
+						<TextView
+							style="@style/CovidCertificate.Text.Bold.Lead.White"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/spacing_huger"
+							android:text="@string/verifier_homescreen_header_title"
+							android:textAllCaps="true" />
+
+						<ImageView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/spacing_larger"
+							android:src="@drawable/illu_home_empty_state" />
+
+						<TextView
+							style="@style/CovidCertificate.Text.White"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/spacing_huge"
+							android:gravity="center_horizontal"
+							android:text="@string/wallet_homescreen_explanation" />
+
+					</LinearLayout>
+
+				</ScrollView>
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:id="@+id/homescreen_loading_group"
+					android:layout_width="match_parent"
+					android:layout_height="match_parent"
+					android:layout_marginTop="100dp"
+					tools:visibility="gone">
+
+					<androidx.constraintlayout.widget.Guideline
+						android:id="@+id/homescreen_loading_view_guide"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:orientation="horizontal"
+						app:layout_constraintGuide_percent="0.6" />
+
+					<ProgressBar
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:indeterminateTint="@color/white"
+						app:layout_constraintBottom_toBottomOf="@id/homescreen_loading_view_guide"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="@id/homescreen_loading_view_guide" />
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+			</FrameLayout>
+
+			<com.google.android.material.tabs.TabLayout
+				android:id="@+id/homescreen_certificates_tab_layout"
+				android:layout_width="wrap_content"
+				android:layout_height="15dp"
+				android:layout_gravity="center"
+				android:layout_marginTop="@dimen/spacing_larger"
+				android:background="@null"
+				android:clipChildren="false"
+				android:clipToPadding="false"
+				android:visibility="gone"
+				app:tabBackground="@drawable/tab_selector_white"
+				app:tabGravity="center"
+				app:tabIndicator="@null"
+				app:tabPaddingEnd="@dimen/spacing_small"
+				app:tabPaddingStart="@dimen/spacing_small"
+				tools:visibility="visible" />
+
+			<Button
+				android:id="@+id/homescreen_scan_button_big"
+				style="@style/CovidCertificate.Button.White"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="@dimen/spacing_large"
+				android:layout_marginBottom="@dimen/spacing_large"
+				android:text="@string/wallet_add_certificate" />
+
+			<FrameLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_medium">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:adjustViewBounds="true"
+					android:src="@drawable/bg_bubble_bottom_left" />
+
+				<ImageView
+					android:id="@+id/homescreen_support_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="bottom"
+					android:layout_marginStart="@dimen/spacing_medium"
+					android:layout_marginBottom="@dimen/spacing_larger"
+					android:foreground="@drawable/ripple_rounded"
+					android:padding="@dimen/spacing_medium"
+					android:src="@drawable/ic_faq" />
+
+				<ImageView
+					android:id="@+id/homescreen_list_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="bottom|center_horizontal"
+					android:layout_marginBottom="@dimen/spacing_larger"
+					android:foreground="@drawable/ripple_rounded"
+					android:padding="@dimen/spacing_medium"
+					android:src="@drawable/ic_list" />
+
+				<ImageView
+					android:id="@+id/homescreen_scan_button_small"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="bottom|end"
+					android:layout_marginEnd="@dimen/spacing_medium"
+					android:layout_marginBottom="@dimen/spacing_larger"
+					android:foreground="@drawable/ripple_rounded"
+					android:padding="@dimen/spacing_medium"
+					android:src="@drawable/ic_add_certificate" />
+			</FrameLayout>
+
+		</LinearLayout>
+
+	</FrameLayout>
+
+</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>

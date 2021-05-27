@@ -1,0 +1,234 @@
+<resources>
+	<!-- Base application theme. -->
+	<style name="Theme.CovidCertificate" parent="Theme.MaterialComponents.Light.NoActionBar">
+		<item name="colorPrimary">@color/blue</item>
+		<item name="colorPrimaryDark">@color/black</item>
+		<item name="colorAccent">@color/blue</item>
+		<item name="android:fontFamily">@font/inter_light</item>
+		<item name="android:windowTranslucentStatus">true</item>
+		<item name="android:windowTranslucentNavigation">false</item>
+	</style>
+
+	<style name="Theme.CovidCertificateWallet" parent="Theme.MaterialComponents.Light.NoActionBar">
+		<item name="colorPrimary">@color/blue</item>
+		<item name="colorPrimaryDark">@color/black</item>
+		<item name="colorAccent">@color/blue</item>
+		<item name="android:fontFamily">@font/inter_light</item>
+		<item name="android:statusBarColor">@color/white</item>
+		<item name="android:windowLightStatusBar">true</item>
+	</style>
+
+	<style name="CovidCertificate.Text" parent="TextAppearance.AppCompat">
+		<item name="android:textSize">@dimen/text_size_normal</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:fontFamily">@font/inter</item>
+		<item name="fontFamily">@font/inter</item>
+		<item name="lineHeight">@dimen/text_line_height_normal</item>
+	</style>
+
+	<style name="CovidCertificate.Text.White">
+		<item name="android:textColor">@color/white</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Blue">
+		<item name="android:textColor">@color/blue</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold">
+		<item name="android:textStyle">bold</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Emphasized">
+		<item name="android:textSize">@dimen/text_size_emphasize</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Emphasized.Blue">
+		<item name="android:textColor">@color/blue</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Title">
+		<item name="android:textSize">@dimen/text_size_large</item>
+		<item name="lineHeight">@dimen/text_line_height_large</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Grey">
+		<item name="android:textColor">@color/grey</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.White">
+		<item name="android:textColor">@color/white</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Blue">
+		<item name="android:textColor">@color/blue</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Error">
+		<item name="android:textColor">@color/red_error</item>
+		<item name="android:textAllCaps">true</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Orange">
+		<item name="android:textColor">@color/orange</item>
+		<item name="android:textAllCaps">true</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Error.Bundesrot">
+		<item name="android:textColor">@color/bundesrot</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Lead">
+		<item name="android:gravity">center_horizontal</item>
+		<item name="android:textAllCaps">true</item>
+		<item name="android:letterSpacing">0.125</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Lead.Grey">
+		<item name="android:textColor">@color/grey</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Lead.White">
+		<item name="android:textColor">@color/white</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Bold.Blue.LinkExternal">
+		<item name="android:drawableStart">@drawable/ic_link_external</item>
+		<item name="android:drawablePadding">@dimen/spacing_very_small</item>
+		<item name="android:paddingStart">@dimen/spacing_very_small</item>
+		<item name="android:paddingTop">@dimen/spacing_very_small</item>
+		<item name="android:paddingEnd">@dimen/spacing_medium_small</item>
+		<item name="android:paddingBottom">@dimen/spacing_very_small</item>
+		<item name="android:foreground">@drawable/ripple_rounded_rect</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Code">
+		<item name="android:fontFamily">@font/mono_regular</item>
+		<item name="fontFamily">@font/mono_regular</item>
+		<item name="android:textColor">@color/grey</item>
+		<item name="android:letterSpacing">0.0937</item>
+	</style>
+
+	<style name="CovidCertificate.ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+		<item name="android:textAllCaps">true</item>
+		<item name="android:fontFamily">@font/inter</item>
+		<item name="fontFamily">@font/inter</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textSize">@dimen/text_size_normal</item>
+		<item name="android:letterSpacing">0.125</item>
+	</style>
+
+	<style name="CovidCertificate.Button" parent="Widget.MaterialComponents.Button">
+		<item name="backgroundTint">@null</item>
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textAllCaps">true</item>
+		<item name="android:textSize">@dimen/text_size_normal</item>
+		<item name="android:fontFamily">@font/inter</item>
+		<item name="fontFamily">@font/inter</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:background">@drawable/bg_button_default</item>
+		<item name="android:stateListAnimator">@null</item>
+		<item name="android:height">@dimen/button_height</item>
+		<item name="android:paddingStart">@dimen/spacing_very_large</item>
+		<item name="android:paddingEnd">@dimen/spacing_very_large</item>
+	</style>
+
+	<style name="CovidCertificate.Button.White">
+		<item name="android:background">@drawable/bg_button_white</item>
+		<item name="android:textColor">@color/blue</item>
+	</style>
+
+	<style name="CovidCertificate.Button.Red">
+		<item name="android:background">@drawable/bg_button_red</item>
+	</style>
+
+	<style name="CovidCertificate.Button.Borderless" parent="Widget.MaterialComponents.Button.TextButton">
+		<item name="android:textAllCaps">true</item>
+		<item name="android:textColor">@color/blue</item>
+		<item name="android:letterSpacing">0.09</item>
+		<item name="android:textSize">@dimen/text_size_normal</item>
+		<item name="android:fontFamily">@font/inter</item>
+		<item name="fontFamily">@font/inter</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:foreground">@drawable/ripple_rounded_button</item>
+		<item name="rippleColor">@android:color/transparent</item>
+		<item name="android:paddingBottom">@dimen/spacing_medium_small</item>
+		<item name="android:paddingTop">@dimen/spacing_medium_small</item>
+		<item name="android:paddingStart">@dimen/spacing_medium_large</item>
+		<item name="android:paddingEnd">@dimen/spacing_medium_large</item>
+	</style>
+
+	<style name="CovidCertificate.Button.Borderless.Orange">
+		<item name="android:textColor">@color/orange</item>
+	</style>
+
+	<style name="CovidCertificate.Button.Borderless.Black">
+		<item name="android:textColor">@color/black</item>
+	</style>
+
+	<style name="CovidCertificate.Button.Borderless.Black.NoCaps">
+		<item name="android:textAllCaps">false</item>
+	</style>
+
+	<style name="CovidCertificate.FloatingImageButton" parent="Widget.AppCompat.ImageButton">
+		<item name="android:background">@drawable/bg_floating_button_blue</item>
+		<item name="android:stateListAnimator">@null</item>
+		<item name="android:height">@dimen/floating_button_height</item>
+		<item name="android:width">@dimen/floating_button_height</item>
+		<item name="android:elevation">@dimen/floating_button_elevation</item>
+		<item name="android:paddingBottom">@dimen/spacing_small</item>
+		<item name="android:paddingTop">@dimen/spacing_small</item>
+		<item name="android:paddingStart">@dimen/spacing_huge</item>
+		<item name="android:paddingEnd">@dimen/spacing_huge</item>
+	</style>
+
+	<style name="CovidCertificate.FloatingImageButton.WhiteBlue">
+		<item name="android:background">@drawable/bg_floating_button_white_blue</item>
+	</style>
+
+	<style name="CovidCertificate.FloatingImageButton.BlackWhite">
+		<item name="android:background">@drawable/bg_floating_button_black_white</item>
+	</style>
+
+	<style name="CovidCertificate.Card" parent="Widget.MaterialComponents.CardView">
+		<item name="android:focusable">true</item>
+		<item name="android:clickable">true</item>
+		<item name="android:foreground">?android:attr/selectableItemBackground</item>
+		<item name="android:minHeight">@dimen/button_height</item>
+		<item name="cardElevation">@dimen/default_elevation</item>
+		<item name="cardCornerRadius">@dimen/button_radius</item>
+		<item name="cardBackgroundColor">@color/white</item>
+	</style>
+
+	<style name="CovidCertificate.Card.Flat">
+		<item name="android:minHeight">0dp</item>
+		<item name="android:focusable">false</item>
+		<item name="android:clickable">false</item>
+		<item name="cardElevation">0dp</item>
+	</style>
+
+	<style name="CovidCertificate.AlertDialogStyle" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+		<item name="android:colorAccent">@color/blue</item>
+		<item name="android:textColor">@color/black</item>
+		<item name="android:textColorPrimary">@color/black</item>
+		<item name="buttonBarPositiveButtonStyle">@style/CovidCertificate.Button.AlertDialog</item>
+		<item name="buttonBarNegativeButtonStyle">@style/CovidCertificate.Button.AlertDialog</item>
+		<item name="android:fontFamily">@font/inter_light</item>
+		<item name="fontFamily">@font/inter_light</item>
+	</style>
+
+	<style name="CovidCertificate.Button.AlertDialog" parent="Widget.MaterialComponents.Button.TextButton.Dialog">
+		<item name="android:textSize">@dimen/text_size_normal</item>
+		<item name="android:textColor">@color/blue</item>
+		<item name="android:fontFamily">@font/inter</item>
+		<item name="fontFamily">@font/inter</item>
+		<item name="android:textStyle">bold</item>
+		<item name="android:textAllCaps">false</item>
+	</style>
+
+	<style name="CovidCertificate.InfoDialog" parent="Theme.MaterialComponents.Light.Dialog">
+		<item name="android:windowFrame">@null</item>
+		<item name="android:windowBackground">@drawable/bg_rect_rounded_sheet</item>
+		<item name="android:windowIsFloating">true</item>
+		<item name="android:gravity">center</item>
+	</style>
+</resources>

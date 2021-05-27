@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<androidx.fragment.app.FragmentContainerView
+		android:id="@+id/fragment_container"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent" />
+
+	<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout
+		android:id="@+id/main_error_view"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/black_60"
+		android:clickable="true"
+		app:applyWindowInsets="all"
+		android:visibility="gone"
+		tools:visibility="visible">
+
+		<include
+			layout="@layout/item_error_status"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"/>
+	</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>
+</FrameLayout>

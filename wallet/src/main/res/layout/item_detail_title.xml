@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/item_title"
+	style="@style/CovidCertificate.Text.Bold.Lead"
+	android:gravity="start"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginTop="@dimen/spacing_medium_small"
+	android:layout_marginBottom="@dimen/spacing_large"
+	tools:text="Covid-19 Testzertifikat" />

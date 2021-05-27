@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	app:applyWindowInsets="all">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/html_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			app:layout_constraintTop_toTopOf="parent"
+			app:navigationIcon="@drawable/ic_close_red"
+			android:elevation="@dimen/toolbar_elevation"
+			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
+			app:titleTextColor="@color/grey"
+			tools:title="@string/impressum_title" />
+
+		<WebView
+			android:id="@+id/html_webview"
+			android:layout_width="match_parent"
+			android:layout_height="0dp"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/html_toolbar" />
+
+		<ProgressBar
+			android:id="@+id/loading_spinner"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintLeft_toLeftOf="parent"
+			app:layout_constraintRight_toRightOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/html_toolbar" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>

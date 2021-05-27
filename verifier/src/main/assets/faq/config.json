@@ -1,0 +1,232 @@
+{
+  "forceUpdate": false,
+  "infoBox": null,
+  "optionalUpdate": false,
+  "questions": null,
+  "works": {
+    "de": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App.",
+          "title": "Wie können Covid-Zertifikate geprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Beim Scannen werden drei Aspekte geprüft:\n– Enthält das Zertifikat eine gültige elektronische Signatur?\n– Ist das Zertifikat nicht widerrufen worden?\n– Entspricht das Zertifikat den Gültigkeitskriterien der Schweiz?\n\nWenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als gültig ausgewiesen.",
+          "title": "Was wird genau geprüft?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Als gültige Ausweisdokumente werden Pass oder ID akzeptiert. Das Covid-Zertifikat ist zwar fälschungssicher, mit der Überprüfung der Personalien wird aber erst sichergestellt, dass das vorgezeigte Zertifikat auch auf den Vorweisenden ausgestellt wurde.",
+          "title": "Welche Ausweisdokumente sind gültig? Weshalb müssen die Personalien überprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ja, Covid-Zertifikate, die mit dem «EU Digital COVID certificate» kompatibel sind, können mit der COVID Certificate Check App gegen die Gültigkeitskriterien der Schweiz geprüft werden.",
+          "title": "Können auch ausländische Zertifikate geprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Beim Prüfvorgang sehen Sie nur den Namen und das Geburtsdatum des Zertifikatsinhabers und ob das Covid-Zertifikat gültig ist.",
+          "title": "Welche Daten sehe ich beim Prüfvorgang?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Nein, beim Prüfvorgang werden keine Daten gespeichert - weder in der COVID Certificate Check App noch in einem zentralen System. Es ist somit nicht möglich nachzuvollziehen, welches Covid-Zertifikat von wem, wann und wo überprüft wurde.",
+          "title": "Werden beim Prüfvorgang in der COVID Certificate Check App oder in einem zentralen System Daten gespeichert?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Mit der COVID Certificate Check App können QR-Codes auf Covid-Zertifikaten gescannt und die Zertifikate auf Echtheit und Gültigkeit überprüft werden.",
+      "faqTitle": "So werden Covid-Zertifikate geprüft"
+    },
+    "en": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App.",
+          "title": "Wie können Covid-Zertifikate geprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Beim Scannen werden drei Aspekte geprüft:\n– Enthält das Zertifikat eine gültige elektronische Signatur?\n– Ist das Zertifikat nicht widerrufen worden?\n– Entspricht das Zertifikat den Gültigkeitskriterien der Schweiz?\n\nWenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als gültig ausgewiesen.",
+          "title": "Was wird genau geprüft?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Als gültige Ausweisdokumente werden Pass oder ID akzeptiert. Das Covid-Zertifikat ist zwar fälschungssicher, mit der Überprüfung der Personalien wird aber erst sichergestellt, dass das vorgezeigte Zertifikat auch auf den Vorweisenden ausgestellt wurde.",
+          "title": "Welche Ausweisdokumente sind gültig? Weshalb müssen die Personalien überprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ja, Covid-Zertifikate, die mit dem «EU Digital COVID certificate» kompatibel sind, können mit der COVID Certificate Check App gegen die Gültigkeitskriterien der Schweiz geprüft werden.",
+          "title": "Können auch ausländische Zertifikate geprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Beim Prüfvorgang sehen Sie nur den Namen und das Geburtsdatum des Zertifikatsinhabers und ob das Covid-Zertifikat gültig ist.",
+          "title": "Welche Daten sehe ich beim Prüfvorgang?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Nein, beim Prüfvorgang werden keine Daten gespeichert - weder in der COVID Certificate Check App noch in einem zentralen System. Es ist somit nicht möglich nachzuvollziehen, welches Covid-Zertifikat von wem, wann und wo überprüft wurde.",
+          "title": "Werden beim Prüfvorgang in der COVID Certificate Check App oder in einem zentralen System Daten gespeichert?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Mit der COVID Certificate Check App können QR-Codes auf Covid-Zertifikaten gescannt und die Zertifikate auf Echtheit und Gültigkeit überprüft werden.",
+      "faqTitle": "So werden Covid-Zertifikate geprüft"
+    },
+    "fr": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App.",
+          "title": "Wie können Covid-Zertifikate geprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Beim Scannen werden drei Aspekte geprüft:\n– Enthält das Zertifikat eine gültige elektronische Signatur?\n– Ist das Zertifikat nicht widerrufen worden?\n– Entspricht das Zertifikat den Gültigkeitskriterien der Schweiz?\n\nWenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als gültig ausgewiesen.",
+          "title": "Was wird genau geprüft?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Als gültige Ausweisdokumente werden Pass oder ID akzeptiert. Das Covid-Zertifikat ist zwar fälschungssicher, mit der Überprüfung der Personalien wird aber erst sichergestellt, dass das vorgezeigte Zertifikat auch auf den Vorweisenden ausgestellt wurde.",
+          "title": "Welche Ausweisdokumente sind gültig? Weshalb müssen die Personalien überprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ja, Covid-Zertifikate, die mit dem «EU Digital COVID certificate» kompatibel sind, können mit der COVID Certificate Check App gegen die Gültigkeitskriterien der Schweiz geprüft werden.",
+          "title": "Können auch ausländische Zertifikate geprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Beim Prüfvorgang sehen Sie nur den Namen und das Geburtsdatum des Zertifikatsinhabers und ob das Covid-Zertifikat gültig ist.",
+          "title": "Welche Daten sehe ich beim Prüfvorgang?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Nein, beim Prüfvorgang werden keine Daten gespeichert - weder in der COVID Certificate Check App noch in einem zentralen System. Es ist somit nicht möglich nachzuvollziehen, welches Covid-Zertifikat von wem, wann und wo überprüft wurde.",
+          "title": "Werden beim Prüfvorgang in der COVID Certificate Check App oder in einem zentralen System Daten gespeichert?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Mit der COVID Certificate Check App können QR-Codes auf Covid-Zertifikaten gescannt und die Zertifikate auf Echtheit und Gültigkeit überprüft werden.",
+      "faqTitle": "So werden Covid-Zertifikate geprüft"
+    },
+    "it": {
+      "faqEntries": [
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App.",
+          "title": "Wie können Covid-Zertifikate geprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Beim Scannen werden drei Aspekte geprüft:\n– Enthält das Zertifikat eine gültige elektronische Signatur?\n– Ist das Zertifikat nicht widerrufen worden?\n– Entspricht das Zertifikat den Gültigkeitskriterien der Schweiz?\n\nWenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als gültig ausgewiesen.",
+          "title": "Was wird genau geprüft?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Als gültige Ausweisdokumente werden Pass oder ID akzeptiert. Das Covid-Zertifikat ist zwar fälschungssicher, mit der Überprüfung der Personalien wird aber erst sichergestellt, dass das vorgezeigte Zertifikat auch auf den Vorweisenden ausgestellt wurde.",
+          "title": "Welche Ausweisdokumente sind gültig? Weshalb müssen die Personalien überprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Ja, Covid-Zertifikate, die mit dem «EU Digital COVID certificate» kompatibel sind, können mit der COVID Certificate Check App gegen die Gültigkeitskriterien der Schweiz geprüft werden.",
+          "title": "Können auch ausländische Zertifikate geprüft werden?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Beim Prüfvorgang sehen Sie nur den Namen und das Geburtsdatum des Zertifikatsinhabers und ob das Covid-Zertifikat gültig ist.",
+          "title": "Welche Daten sehe ich beim Prüfvorgang?"
+        },
+        {
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null,
+          "text": "Nein, beim Prüfvorgang werden keine Daten gespeichert - weder in der COVID Certificate Check App noch in einem zentralen System. Es ist somit nicht möglich nachzuvollziehen, welches Covid-Zertifikat von wem, wann und wo überprüft wurde.",
+          "title": "Werden beim Prüfvorgang in der COVID Certificate Check App oder in einem zentralen System Daten gespeichert?"
+        }
+      ],
+      "faqIconAndroid": "ic_faq_image",
+      "faqIconIos": "ic-faq-image",
+      "faqSubTitle": "Mit der COVID Certificate Check App können QR-Codes auf Covid-Zertifikaten gescannt und die Zertifikate auf Echtheit und Gültigkeit überprüft werden.",
+      "faqTitle": "So werden Covid-Zertifikate geprüft"
+    }
+  }
+}

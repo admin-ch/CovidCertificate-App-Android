@@ -1,0 +1,21 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:layout_gravity="top|center_horizontal">
+
+	<ImageView
+		android:id="@+id/progress_indicator_icon"
+		android:layout_width="@dimen/icon_size_small"
+		android:layout_height="@dimen/icon_size_small"
+		android:src="@drawable/ic_check_green"
+		android:visibility="visible" />
+
+	<ProgressBar
+		android:id="@+id/progress_indicator_progress_bar"
+		android:layout_width="@dimen/icon_size_small"
+		android:layout_height="@dimen/icon_size_small"
+		android:indeterminateTint="@color/grey"
+		android:progress="40"
+		android:visibility="visible" />
+
+</FrameLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical" >
+
+	<FrameLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_gravity="bottom"
+		android:paddingTop="@dimen/spacing_large"
+		android:paddingBottom="@dimen/spacing_very_small"
+		android:paddingHorizontal="@dimen/spacing_medium_small"
+		android:background="@color/white">
+
+		<ImageView
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center"
+			android:src="@drawable/ic_bundwappen_big" />
+
+		<ImageView
+			android:id="@+id/header_impressum"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="end|center_vertical"
+			android:background="@drawable/ripple_rounded"
+			android:padding="@dimen/spacing_medium_large"
+			android:src="@drawable/ic_info_outline" />
+
+		<ImageView
+			android:id="@+id/header_notification"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="start|center_vertical"
+			android:background="@drawable/ripple_rounded"
+			android:padding="@dimen/spacing_tiny_small"
+			android:src="@drawable/ic_notification"
+			android:visibility="gone"
+			tools:visibility="visible" />
+	</FrameLayout>
+
+	<ImageView
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:scaleType="fitXY"
+		android:src="@drawable/ic_header_slim" />
+
+</LinearLayout>

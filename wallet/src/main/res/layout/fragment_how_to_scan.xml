@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white"
+	app:applyWindowInsets="all">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/how_to_scan_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			app:navigationIcon="@drawable/ic_close_red"
+			app:title="@string/wallet_scanner_howitworks_header"
+			android:elevation="@dimen/toolbar_elevation"
+			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
+			app:titleTextColor="@color/grey" />
+
+	<ScrollView
+		android:id="@+id/how_to_scan_scroll_view"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:paddingTop="@dimen/spacing_medium_small"
+			android:paddingBottom="@dimen/spacing_large">
+
+			<ImageView
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/spacing_very_large"
+				android:adjustViewBounds="true"
+				android:scaleType="fitCenter"
+				android:src="@drawable/ic_illu_how_it_works" />
+
+			<TextView
+				style="@style/CovidCertificate.Text.Bold.Title"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/spacing_very_large"
+				android:layout_marginTop="@dimen/spacing_large"
+				android:text="@string/wallet_scanner_howitworks_title" />
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/spacing_very_large"
+				android:layout_marginTop="@dimen/spacing_huge"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/ic_bund_small" />
+
+				<TextView
+					style="@style/CovidCertificate.Text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/spacing_large"
+					android:text="@string/wallet_scanner_howitworks_text1" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/spacing_very_large"
+				android:layout_marginTop="@dimen/spacing_very_large"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/ic_one" />
+
+				<TextView
+					style="@style/CovidCertificate.Text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/spacing_large"
+					android:text="@string/wallet_scanner_howitworks_text2" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/spacing_very_large"
+				android:layout_marginTop="@dimen/spacing_very_large"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/ic_two" />
+
+				<TextView
+					style="@style/CovidCertificate.Text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/spacing_large"
+					android:text="@string/wallet_scanner_howitworks_text3" />
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginHorizontal="@dimen/spacing_very_large"
+				android:layout_marginTop="@dimen/spacing_very_large"
+				android:orientation="horizontal">
+
+				<ImageView
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:src="@drawable/ic_three" />
+
+				<TextView
+					style="@style/CovidCertificate.Text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="@dimen/spacing_large"
+					android:text="@string/wallet_scanner_howitworks_text4" />
+
+			</LinearLayout>
+
+			<include
+				android:id="@+id/how_to_scan_question_bubble"
+				layout="@layout/item_faq_question"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_huge"
+				android:layout_marginHorizontal="@dimen/spacing_medium_large"/>
+
+		</LinearLayout>
+
+	</ScrollView>
+
+	</LinearLayout>
+
+</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>

@@ -1,0 +1,293 @@
+{
+	"valueSetId": "covid-19-lab-test-manufacturer-and-name",
+	"valueSetDate": "2021-04-27",
+	"valueSetValues": {
+		"344": {
+			"display": "SD BIOSENSOR Inc, STANDARD F COVID-19 Ag FIA",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"345": {
+			"display": "SD BIOSENSOR Inc, STANDARD Q COVID-19 Ag Test",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1065": {
+			"display": "Becton Dickinson, Veritor System Rapid Detection of SARS-CoV-2",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1097": {
+			"display": "Quidel Corporation, Sofia SARS Antigen FIA",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1162": {
+			"display": "Nal von minden GmbH, NADAL COVID-19 Ag Test",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1173": {
+			"display": "CerTest Biotec, S.L., CerTest SARS-CoV-2 Card test",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1180": {
+			"display": "MEDsan GmbH, MEDsan SARS-CoV-2 Antigen Rapid Test",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1218": {
+			"display": "Siemens Healthineers, CLINITEST Rapid Covid-19 Antigen Test",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1223": {
+			"display": "BIOSYNEX SWISS SA, BIOSYNEX COVID-19 Ag BSS",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1232": {
+			"display": "Abbott Rapid Diagnostics, Panbio COVID-19 Ag Test",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1242": {
+			"display": "Bionote, Inc, NowCheck COVID-19 Ag Test",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1244": {
+			"display": "GenBody, Inc, Genbody COVID-19 Ag Test",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1268": {
+			"display": "LumiraDX UK Ltd, LumiraDx SARS-CoV-2 Ag Test",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1271": {
+			"display": "Precision Biosensor, Inc, Exdia COVID-19 Ag",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1278": {
+			"display": "Xiamen Boson Biotech Co. Ltd, Rapid SARS-CoV-2 Antigen Test Card",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1304": {
+			"display": "AMEDA Labordiagnostik GmbH, AMP Rapid Test SARS-CoV-2 Ag",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1331": {
+			"display": "Beijing Lepu Medical Technology Co., Ltd, SARS-CoV-2 Antigen Rapid Test Kit",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1333": {
+			"display": "Joinstar Biomedical Technology Co., Ltd, COVID-19 Rapid Antigen Test (Colloidal Gold)",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1341": {
+			"display": "Qingdao Hightop Biotech Co., Ltd, SARS-CoV-2 Antigen Rapid Test (Immunochromatography)",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1343": {
+			"display": "Zhejiang Orient Gene Biotech, Coronavirus Ag Rapid Test Cassette (Swab)",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1360": {
+			"display": "Guangdong Wesail Biotech Co., Ltd, COVID-19 Ag Test Kit",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1363": {
+			"display": "Hangzhou Clongene Biotech Co., Ltd, Covid-19 Antigen Rapid Test Kit",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1481": {
+			"display": "MP Biomedicals Germany GmbH, Rapid SARS-CoV-2 Antigen Test Card",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1484": {
+			"display": "Beijing Wantai Biological Pharmacy Enterprise Co., Ltd, Wantai SARS-CoV-2 Ag Rapid Test (FIA)",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1489": {
+			"display": "Safecare Biotech (Hangzhou) Co. Ltd, COVID-19 Antigen Rapid Test Kit (Swab)",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"1767": {
+			"display": "Healgen Scientific Limited Liability Company, Coronavirus Ag Rapid Test Cassette",
+			"lang": "en",
+			"active": true,
+			"system": "https://covid-19-diagnostics.jrc.ec.europa.eu/devices",
+			"version": "2021-04-22 02:23:55 CET"
+		},
+		"9001": {
+			"display": "BioNote Inc., NowCheck Covid-19 Ag Test",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9002": {
+			"display": "BIOSYNEX SWISS SA, BIOSYNEX COVID-19 Ag + BSS",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9003": {
+			"display": "Eurobio Scientific, EBS SARS-CoV-2 Ag Rapid Test",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9004": {
+			"display": "Hangzhou Lysun Biotechnology Co., Ltd., LYSUN Covid 19 Antigen Rapid Test Device",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9005": {
+			"display": "Inzek International Trading B.V., BIOZEK COVID-19 Antigen Rapid Test Cassette",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9006": {
+			"display": "Lansion Biotechnology Co., Ltd., COVID-19 Antigen-Test Kit",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9007": {
+			"display": "New Gene (Hangzhou) Bioengineering Co., Ltd., COVID-19 Antigen Detection Kit",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9008": {
+			"display": "Shenzhen Microprofit Biotech Co., Ltd., Fluorecare SARS-CoV-2 Spike Protein Test Kit",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9009": {
+			"display": "Willi Fox GmbH, Willi Fox COVID 19 Antigen Test",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9010": {
+			"display": "Xiamen Boson Biotech Co., Ltd., Medicovid AG SARS-CoV-2 Antigen Schnelltest",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9011": {
+			"display": "Becton, Dickinson and Company, BD Kit for Rapid Detection of SARS-CoV-2",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9012": {
+			"display": "Becton, Dickinson and Company, BD Veritor™ System for Rapid Detection of SARS-CoV-2",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9013": {
+			"display": "BIOHIT HealthCare (Hefei) Co., Ltd., SARS-CoV-2 Antigen Rapid Test Kit",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9014": {
+			"display": "Biocan Diagnostics Inc., Tell Me Fast™ COVID-19 Antigen Test",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		},
+		"9015": {
+			"display": "Dräger Safety AG & Co. KGaA, Antigen Test SARS-CoV-2",
+			"lang": "en",
+			"active": true,
+			"system": "",
+			"version": ""
+		}
+	}
+}

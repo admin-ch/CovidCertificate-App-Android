@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<dimen name="spacing_tiny_small">2dp</dimen>
+	<dimen name="spacing_very_small">5dp</dimen>
+	<dimen name="spacing_small">8dp</dimen>
+	<dimen name="spacing_medium_small">10dp</dimen>
+	<dimen name="spacing_medium">12dp</dimen>
+	<dimen name="spacing_medium_large">15dp</dimen>
+	<dimen name="spacing_large">20dp</dimen>
+	<dimen name="spacing_larger">25dp</dimen>
+	<dimen name="spacing_very_large">30dp</dimen>
+	<dimen name="spacing_huge">40dp</dimen>
+	<dimen name="spacing_huger">50dp</dimen>
+	<dimen name="spacing_enormous">100dp</dimen>
+
+	<dimen name="text_size_small">12sp</dimen>
+	<dimen name="text_size_type_bubble">13sp</dimen>
+	<dimen name="text_size_normal">16sp</dimen>
+	<dimen name="text_size_emphasize">19sp</dimen>
+	<dimen name="text_size_large">26sp</dimen>
+	<dimen name="text_size_very_large">32sp</dimen>
+
+	<dimen name="text_line_height_normal">22sp</dimen>
+	<dimen name="text_line_height_large">28sp</dimen>
+
+	<dimen name="toolbar_elevation">3dp</dimen>
+	<dimen name="default_elevation">10dp</dimen>
+	<dimen name="floating_button_height">50dp</dimen>
+	<dimen name="floating_button_elevation">10dp</dimen>
+	<dimen name="button_height">56dp</dimen>
+	<dimen name="button_radius">28dp</dimen>
+
+	<dimen name="corner_radius_very_small">4dp</dimen>
+	<dimen name="corner_radius_small">9dp</dimen>
+	<dimen name="corner_radius_sheet">20dp</dimen>
+	<dimen name="corner_radius_sheet_inner">11dp</dimen>
+
+	<dimen name="pager_bullet_size">10dp</dimen>
+
+	<dimen name="icon_size_small">24dp</dimen>
+	<dimen name="icon_size_large">72dp</dimen>
+
+	<dimen name="qr_scanner_indicator_size">50dp</dimen>
+	<dimen name="qr_scanner_indicator_stroke_width">5dp</dimen>
+	<dimen name="qr_scanner_indicator_stroke_width_inverse">-6dp</dimen>
+
+	<dimen name="header_height_default">54dp</dimen>
+	<dimen name="header_height_max">130dp</dimen>
+	<dimen name="header_shadow_height">5dp</dimen>
+
+	<dimen name="certificates_elevation">8dp</dimen>
+	<dimen name="certificates_padding">30dp</dimen>
+
+	<dimen name="onboarding_illustration_height">250dp</dimen>
+
+	<dimen name="info_buble_icon_padding">3dp</dimen>
+</resources>

@@ -1,0 +1,121 @@
+plugins {
+	id 'com.android.application'
+	id 'kotlin-android'
+	id 'kotlin-kapt'
+	id 'org.sonarqube' version '3.0'
+}
+
+ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
+ext.readPropertyWithDefault = { paramName, defaultValue ->
+	if (project.hasProperty(paramName)) {
+		return project.getProperties().get(paramName)
+	} else {
+		Properties properties = new Properties()
+		if (project.rootProject.file('local.properties').exists()) {
+			properties.load(project.rootProject.file('local.properties').newDataInputStream())
+		}
+		if (properties.getProperty(paramName) != null) {
+			return properties.getProperty(paramName)
+		} else {
+			return defaultValue
+		}
+	}
+}
+
+android {
+	compileSdkVersion 30
+	buildToolsVersion "30.0.1"
+
+	defaultConfig {
+		applicationId "ch.admin.bag.covidcertificate.wallet"
+		minSdkVersion 24
+		targetSdkVersion 30
+		versionCode 1
+		versionName "1.0"
+
+		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
+
+		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+	}
+
+	productFlavors {
+		dev {
+			buildConfigField "String", "BASE_URL", '"https://www.cc-d.bit.admin.ch/app/wallet/v1/"'
+			applicationIdSuffix '.dev'
+		}
+		abn {
+			buildConfigField "String", "BASE_URL", '"https://www.cc-a.bit.admin.ch/app/wallet/v1/"'
+			applicationIdSuffix '.abn'
+		}
+		prod {
+			buildConfigField "String", "BASE_URL", '"https://www.cc.bit.admin.ch/app/wallet/v1/"'
+		}
+	}
+
+	flavorDimensions "version"
+
+	signingConfigs {
+		release {
+			storeFile file(readPropertyWithDefault('keystoreFile', 'testKeystore'))
+			storePassword readProperty('keystorePassword')
+			keyAlias 'keyAlias'
+			keyPassword readProperty('keyAliasPassword')
+		}
+	}
+
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+			signingConfig signingConfigs.release
+		}
+	}
+	compileOptions {
+		coreLibraryDesugaringEnabled true
+
+		sourceCompatibility JavaVersion.VERSION_1_8
+		targetCompatibility JavaVersion.VERSION_1_8
+	}
+	kotlinOptions {
+		jvmTarget = '1.8'
+	}
+	buildFeatures {
+		viewBinding true
+	}
+}
+
+sonarqube {
+	properties {
+		property "sonar.projectName", "COVID Certificate App Android"
+		property "sonar.projectKey", "covidcertificate-android"
+		property "sonar.organization", "admin-ch"
+		property "sonar.host.url", "https://sonarcloud.io"
+	}
+}
+
+dependencies {
+	coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
+
+	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+	implementation 'com.google.android.material:material:1.3.0'
+	implementation project(':common')
+
+	implementation 'androidx.core:core-ktx:1.3.2'
+	implementation 'androidx.appcompat:appcompat:1.2.0'
+	implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+	implementation 'androidx.fragment:fragment-ktx:1.3.3'
+	implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+	implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1'
+	implementation "androidx.viewpager2:viewpager2:1.0.0"
+	implementation 'androidx.security:security-crypto:1.0.0'
+
+	implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+	implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+	implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
+	implementation 'com.squareup.moshi:moshi:1.11.0'
+	kapt "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
+
+	testImplementation 'junit:junit:4.+'
+	androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+	androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+}

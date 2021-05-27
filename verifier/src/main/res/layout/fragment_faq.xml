@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	xmlns:tools="http://schemas.android.com/tools"
+	app:applyWindowInsets="all">
+
+	<ProgressBar
+		android:id="@+id/faq_loading_view"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"/>
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:background="@color/white"
+		android:orientation="vertical">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/certificates_overview_toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			app:layout_constraintTop_toTopOf="parent"
+			app:navigationIcon="@drawable/ic_close_red"
+			android:elevation="@dimen/toolbar_elevation"
+			app:title="@string/verifier_support_header"
+			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
+			app:titleTextColor="@color/grey" />
+
+		<androidx.recyclerview.widget.RecyclerView
+			android:id="@+id/faq_recycler_view"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			tools:listitem="@layout/item_faq_question"/>
+
+	</LinearLayout>
+
+</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>

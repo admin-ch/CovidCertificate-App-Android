@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<color name="bundesrot">#ff0000</color>
+
+	<color name="black">#000000</color>
+	<color name="black_60">#99000000</color>
+	<color name="black_50">#80000000</color>
+	<color name="black_10">#1A000000</color>
+	<color name="grey">#757575</color>
+	<color name="grey_light">#DBDBDB</color>
+	<color name="white">#FFFFFFFF</color>
+	<color name="white_50">#80FFFFFF</color>
+
+	<color name="red_error">#e20008</color>
+	<color name="red_error_qr_verifier">#ff448d</color>
+	<color name="red_error_qr_wallet">#ff0000</color>
+
+	<color name="blue">#243784</color>
+	<color name="green">#009e89</color>
+	<color name="orange">#ed6100</color>
+	<color name="red">#d81f5b</color>
+
+	<color name="greyish">#ececec</color>
+	<color name="blueish">#eff5f9</color>
+	<color name="greenish">#def3f0</color>
+	<color name="orangeish">#fdebde</color>
+	<color name="redish">#fae2ea</color>
+
+	<color name="background_light">#f4f5f9</color>
+</resources>
