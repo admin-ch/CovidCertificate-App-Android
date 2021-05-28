@@ -22,7 +22,10 @@ fun RecoveryEntry.isTargetDiseaseCorrect(): Boolean {
 	return this.tg == AcceptanceCriterias.TARGET_DISEASE
 }
 
-fun RecoveryEntry.dateFormattedOfFirstPostiveResult(dateFormatter: DateTimeFormatter): String {
+fun RecoveryEntry.dateFormattedOfFirstPostiveResult(dateFormatter: DateTimeFormatter): String? {
+	if (this.fr.isNullOrEmpty()) {
+		return null
+	}
 	return try {
 		LocalDate.parse(this.fr, ISO_DATE).format(dateFormatter)
 	} catch (e: java.lang.Exception) {
@@ -31,15 +34,11 @@ fun RecoveryEntry.dateFormattedOfFirstPostiveResult(dateFormatter: DateTimeForma
 }
 
 fun RecoveryEntry.getRecoveryCountry(): String {
-	val loc = Locale("", this.co)
-	return loc.displayCountry
-}
-
-fun RecoveryEntry.dateFormattedValidFrom(dateFormatter: DateTimeFormatter): String {
 	return try {
-		LocalDate.parse(this.df, ISO_DATE).format(dateFormatter)
-	} catch (e: java.lang.Exception) {
-		this.df
+		val loc = Locale("", this.co)
+		loc.displayCountry
+	} catch (e: Exception) {
+		this.co
 	}
 }
 
@@ -62,6 +61,9 @@ fun RecoveryEntry.validUntilDate(): LocalDateTime? {
 }
 
 fun RecoveryEntry.firstPostiveResult(): LocalDateTime? {
+	if (this.fr.isNullOrEmpty()) {
+		return null
+	}
 	val date: LocalDate?
 	try {
 		date = LocalDate.parse(this.fr, ISO_DATE)

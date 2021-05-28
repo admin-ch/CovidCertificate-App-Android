@@ -14,6 +14,7 @@ import ch.admin.bag.covidcertificate.eval.chain.VerificationResult
 import ch.admin.bag.covidcertificate.eval.data.VaccinationEntry
 import ch.admin.bag.covidcertificate.eval.products.Vaccine
 import ch.admin.bag.covidcertificate.eval.utils.AcceptanceCriterias.SINGLE_VACCINE_VALIDITY_OFFSET_IN_DAYS
+import java.time.Instant
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -38,7 +39,10 @@ fun VaccinationEntry.isTargetDiseaseCorrect(): Boolean {
 	return this.tg == AcceptanceCriterias.TARGET_DISEASE
 }
 
-fun VaccinationEntry.getFormattedVaccinationDate(dateFormatter: DateTimeFormatter): String {
+fun VaccinationEntry.getFormattedVaccinationDate(dateFormatter: DateTimeFormatter): String? {
+	if (this.dt.isNullOrEmpty()) {
+		return null
+	}
 	return try {
 		LocalDate.parse(this.dt, DateTimeFormatter.ISO_DATE).format(dateFormatter)
 	} catch (e: java.lang.Exception) {
@@ -65,6 +69,9 @@ fun VaccinationEntry.validUntilDate(): LocalDateTime? {
 }
 
 fun VaccinationEntry.vaccineDate(): LocalDateTime? {
+	if (this.dt.isNullOrEmpty()) {
+		return null
+	}
 	val date: LocalDate?
 	try {
 		date = LocalDate.parse(this.dt, DateTimeFormatter.ISO_DATE)
@@ -75,8 +82,12 @@ fun VaccinationEntry.vaccineDate(): LocalDateTime? {
 }
 
 fun VaccinationEntry.getVaccinationCountry(): String {
-	val loc = Locale("", this.co)
-	return loc.displayCountry
+	return try {
+		val loc = Locale("", this.co)
+		loc.displayCountry
+	} catch (e: Exception) {
+		this.co
+	}
 }
 
 fun VaccinationEntry.getIssuer(): String {
@@ -88,8 +99,12 @@ fun VaccinationEntry.getCertificateIdentifier(): String {
 }
 
 fun VerificationResult.getIssueAtDate(dateFormatter: DateTimeFormatter): String? {
-	this.issuedAt?.let { instant ->
-		return instant.atZone(ZoneId.systemDefault()).format(dateFormatter)
+	this.issuedAt?.let { instant: Instant ->
+		return try {
+			instant.atZone(ZoneId.systemDefault()).format(dateFormatter)
+		} catch (e: java.lang.Exception) {
+			instant.toString()
+		}
 	}
 	return null
 }
