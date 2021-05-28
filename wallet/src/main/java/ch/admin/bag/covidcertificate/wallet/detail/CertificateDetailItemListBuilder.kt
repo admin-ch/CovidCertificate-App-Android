@@ -60,12 +60,15 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 
 			// Vaccination date + country
 			detailItems.add(DividerItem)
-			detailItems.add(
-				ValueItem(
-					R.string.wallet_certificate_vaccination_date_title,
-					vaccinationEntry.getFormattedVaccinationDate(DEFAULT_DISPLAY_DATE_FORMATTER)
+			vaccinationEntry.getFormattedVaccinationDate(DEFAULT_DISPLAY_DATE_FORMATTER)?.let { vaccineDate ->
+				detailItems.add(
+					ValueItem(
+						R.string.wallet_certificate_vaccination_date_title,
+						vaccineDate
+					)
 				)
-			)
+			}
+
 			detailItems.add(
 				ValueItem(R.string.wallet_certificate_vaccination_country_title, vaccinationEntry.getVaccinationCountry())
 			)
@@ -102,12 +105,15 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 			}
 
 			// Recovery dates + country
-			detailItems.add(
-				ValueItem(
-					R.string.wallet_certificate_recovery_first_positiv_result,
-					recoveryEntry.dateFormattedOfFirstPostiveResult(DEFAULT_DISPLAY_DATE_FORMAT_FULL_MONTH)
+			recoveryEntry.dateFormattedOfFirstPostiveResult(DEFAULT_DISPLAY_DATE_FORMAT_FULL_MONTH)?.let { firstPostiveResult ->
+				detailItems.add(
+					ValueItem(
+						R.string.wallet_certificate_recovery_first_positiv_result,
+						firstPostiveResult
+					)
 				)
-			)
+			}
+
 			detailItems.add(DividerItem)
 			detailItems.add(ValueItem(R.string.wallet_certificate_test_land, recoveryEntry.getRecoveryCountry()))
 
@@ -161,18 +167,23 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 
 			// Test dates + country
 			detailItems.add(DividerItem)
-			detailItems.add(
-				ValueItem(
-					R.string.wallet_certificate_test_sample_date_title,
-					testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
+			testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampeDate ->
+				detailItems.add(
+					ValueItem(
+						R.string.wallet_certificate_test_sample_date_title,
+						sampeDate
+					)
 				)
-			)
-			detailItems.add(
-				ValueItem(
-					R.string.wallet_certificate_test_result_date_title,
-					testEntry.getFormattedResultDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
+			}
+			testEntry.getFormattedResultDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { resultDate ->
+				detailItems.add(
+					ValueItem(
+						R.string.wallet_certificate_test_result_date_title,
+						resultDate
+					)
 				)
-			)
+			}
+
 			testEntry.getTestCenter()?.let { testCenter ->
 				detailItems.add(ValueItem(R.string.wallet_certificate_test_done_by, testCenter))
 			}

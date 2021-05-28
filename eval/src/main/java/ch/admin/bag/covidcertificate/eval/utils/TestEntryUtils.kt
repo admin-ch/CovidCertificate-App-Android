@@ -10,7 +10,6 @@
 
 package ch.admin.bag.covidcertificate.eval.utils
 
-import android.text.TextUtils
 import ch.admin.bag.covidcertificate.eval.data.TestEntry
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -26,24 +25,42 @@ fun TestEntry.isTargetDiseaseCorrect(): Boolean {
 	return this.tg == AcceptanceCriterias.TARGET_DISEASE
 }
 
-fun TestEntry.getFormattedSampleDate(dateTimeFormatter: DateTimeFormatter): String {
-	return this.sc.toInstant().atZone(ZoneId.systemDefault()).format(dateTimeFormatter)
+fun TestEntry.getFormattedSampleDate(dateTimeFormatter: DateTimeFormatter): String? {
+	if (this.sc == null) {
+		return null
+	}
+	return try {
+		return this.sc.toInstant().atZone(ZoneId.systemDefault()).format(dateTimeFormatter)
+	} catch (e: Exception) {
+		null
+	}
 }
 
-fun TestEntry.getFormattedResultDate(dateTimeFormatter: DateTimeFormatter): String {
-	return this.dr.toInstant().atZone(ZoneId.systemDefault()).format(dateTimeFormatter)
+fun TestEntry.getFormattedResultDate(dateTimeFormatter: DateTimeFormatter): String? {
+	if (this.dr == null) {
+		return null
+	}
+	return try {
+		this.dr.toInstant().atZone(ZoneId.systemDefault()).format(dateTimeFormatter)
+	} catch (e: Exception) {
+		null
+	}
 }
 
 fun TestEntry.getTestCenter(): String? {
-	if (!TextUtils.isEmpty(this.tc)) {
+	if (!this.tc.isNullOrEmpty()) {
 		return this.tc
 	}
 	return null
 }
 
 fun TestEntry.getTestCountry(): String {
-	val loc = Locale("", this.co)
-	return loc.displayCountry
+	return try {
+		val loc = Locale("", this.co)
+		loc.displayCountry
+	} catch (e: Exception) {
+		this.co
+	}
 }
 
 fun TestEntry.getIssuer(): String {
@@ -55,14 +72,22 @@ fun TestEntry.getCertificateIdentifier(): String {
 }
 
 fun TestEntry.validFromDate(): LocalDateTime? {
-	return this.sc.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()
+	if (this.sc == null) {
+		return null
+	}
+	return try {
+		this.sc.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime()
+	} catch (e: Exception) {
+		return null
+	}
 }
 
 fun TestEntry.validUntilDate(testEntry: TestEntry): LocalDateTime? {
 	val startDate = this.validFromDate() ?: return null
-	if (testEntry.tt.equals(TestType.PCR.code)) {
+	val testEntryCode = testEntry.tt ?: return null
+	if (testEntryCode == TestType.PCR.code) {
 		return startDate.plusHours(AcceptanceCriterias.PCR_TEST_VALIDITY_IN_HOURS)
-	} else if (testEntry.tt.equals(TestType.RAT.code)) {
+	} else if (testEntryCode == TestType.RAT.code) {
 		return startDate.plusHours(AcceptanceCriterias.RAT_TEST_VALIDITY_IN_HOURS)
 	}
 	return null
