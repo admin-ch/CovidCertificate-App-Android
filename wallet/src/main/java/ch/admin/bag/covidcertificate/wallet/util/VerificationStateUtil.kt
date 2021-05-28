@@ -87,11 +87,10 @@ fun VerificationState.getStatusIcon(): Int {
 	return when(this) {
 		is VerificationState.ERROR -> R.drawable.ic_process_error
 		is VerificationState.INVALID -> {
-			if (this.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE ||
-				this.nationalRulesState is CheckNationalRulesState.NOT_YET_VALID) {
-				R.drawable.ic_invalid_grey
-			} else {
-				R.drawable.ic_error_grey
+			when (this.nationalRulesState) {
+				is CheckNationalRulesState.NOT_VALID_ANYMORE -> R.drawable.ic_invalid_grey
+				is CheckNationalRulesState.NOT_YET_VALID -> R.drawable.ic_timelapse
+				else -> R.drawable.ic_error_grey
 			}
 		}
 		VerificationState.LOADING -> 0
@@ -104,11 +103,10 @@ fun VerificationState.getValidationStatusIcon(): Int {
 	return when(this) {
 		is VerificationState.ERROR -> R.drawable.ic_process_error
 		is VerificationState.INVALID -> {
-			if (this.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE ||
-				this.nationalRulesState is CheckNationalRulesState.NOT_YET_VALID) {
-				R.drawable.ic_invalid_red
-			} else {
-				R.drawable.ic_error
+			when (this.nationalRulesState) {
+				is CheckNationalRulesState.NOT_VALID_ANYMORE -> R.drawable.ic_invalid_red
+				is CheckNationalRulesState.NOT_YET_VALID -> R.drawable.ic_timelapse_red
+				else -> R.drawable.ic_error
 			}
 		}
 		VerificationState.LOADING -> 0
