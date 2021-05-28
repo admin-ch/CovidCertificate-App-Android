@@ -26,10 +26,11 @@ class HomescreenPagerFragment : Fragment() {
 		}
 	}
 
-	private lateinit var binding: FragmentHomeScreenPagerBinding
+	private var _binding: FragmentHomeScreenPagerBinding? = null
+	private val binding get() = _binding!!
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		binding = FragmentHomeScreenPagerBinding.inflate(inflater, container, false)
+		_binding = FragmentHomeScreenPagerBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -41,6 +42,11 @@ class HomescreenPagerFragment : Fragment() {
 			homescreenImage.setImageResource(homescreenImages[position])
 			homescreenDescription.setText(homescreenPagerDescriptions[position])
 		}
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	private fun getImageAssets(): List<Int> {

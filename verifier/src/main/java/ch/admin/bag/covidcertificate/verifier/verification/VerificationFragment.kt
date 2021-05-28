@@ -38,11 +38,12 @@ class VerificationFragment : Fragment() {
 		}
 	}
 
-	private lateinit var binding: FragmentVerificationBinding
+	private var _binding: FragmentVerificationBinding? = null
+	private val binding get() = _binding!!
 	private val verificationViewModel: VerificationViewModel by viewModels()
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		binding = FragmentVerificationBinding.inflate(inflater, container, false)
+		_binding = FragmentVerificationBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -69,6 +70,11 @@ class VerificationFragment : Fragment() {
 		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner, {
 			updateHeaderAndVerificationView(it)
 		})
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	private fun updateHeaderAndVerificationView(verificationState: VerificationState) {

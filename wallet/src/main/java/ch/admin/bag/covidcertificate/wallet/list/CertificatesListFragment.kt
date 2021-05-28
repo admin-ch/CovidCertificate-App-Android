@@ -22,10 +22,11 @@ class CertificatesListFragment : Fragment() {
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 
-	private lateinit var binding: FragmentCertificatesListBinding
+	private  var _binding: FragmentCertificatesListBinding? = null
+	private val binding get() = _binding!!
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		binding = FragmentCertificatesListBinding.inflate(inflater, container, false)
+		_binding = FragmentCertificatesListBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -33,8 +34,12 @@ class CertificatesListFragment : Fragment() {
 		binding.certificatesOverviewToolbar.setNavigationOnClickListener { v: View? ->
 			parentFragmentManager.popBackStack()
 		}
-
 		setupRecyclerView()
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	private fun setupRecyclerView() {

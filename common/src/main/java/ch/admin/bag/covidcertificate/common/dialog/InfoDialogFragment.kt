@@ -24,7 +24,8 @@ class InfoDialogFragment : DialogFragment() {
 
 	private lateinit var infoBoxModel: InfoBoxModel
 
-	private lateinit var binding: DialogFragmentInfoBoxBinding
+	private var _binding: DialogFragmentInfoBoxBinding? = null
+	private val binding get() = _binding!!
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -34,12 +35,17 @@ class InfoDialogFragment : DialogFragment() {
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-		binding = DialogFragmentInfoBoxBinding.inflate(inflater, container, false)
+		_binding = DialogFragmentInfoBoxBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		setupInfo()
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 	private fun setupInfo() {

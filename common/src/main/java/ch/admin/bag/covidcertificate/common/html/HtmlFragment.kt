@@ -39,7 +39,8 @@ class HtmlFragment : Fragment() {
 		}
 	}
 
-	private lateinit var binding: FragmentHtmlBinding
+	private var _binding: FragmentHtmlBinding? = null
+	private val binding get() = _binding!!
 
 	private lateinit var baseUrl: String
 	private var data: String? = null
@@ -64,7 +65,7 @@ class HtmlFragment : Fragment() {
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-		binding = FragmentHtmlBinding.inflate(inflater, container, false)
+		_binding = FragmentHtmlBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
@@ -117,6 +118,11 @@ class HtmlFragment : Fragment() {
 		} else {
 			web.loadUrl(baseUrl)
 		}
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		_binding = null
 	}
 
 }
