@@ -22,7 +22,8 @@ class QrCode private constructor(val data: String, val size: Int) {
 
 	companion object {
 		const val DEFAULT_BITMAP_SIZE = 1024
-		private val DEFAULT_ECC = ErrorCorrectionLevel.H
+		private val DEFAULT_ECC = ErrorCorrectionLevel.Q
+		private val DEFAULT_CHARSET = "ISO-8859-1"
 
 		fun create(value: String): QrCode {
 			return QrCode(value, encode(value, 0).width)
@@ -33,7 +34,7 @@ class QrCode private constructor(val data: String, val size: Int) {
 			BarcodeFormat.QR_CODE,
 			size,
 			size,
-			mapOf(EncodeHintType.MARGIN to 0, EncodeHintType.ERROR_CORRECTION to DEFAULT_ECC)
+			mapOf(EncodeHintType.ERROR_CORRECTION to DEFAULT_ECC, EncodeHintType.CHARACTER_SET to DEFAULT_CHARSET)
 		)
 
 		fun renderToBitmap(data: String, outSize: Int = 0): Bitmap {
