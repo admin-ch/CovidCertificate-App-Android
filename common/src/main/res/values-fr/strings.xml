@@ -11,8 +11,8 @@
 
 <resources>
 
-<!-- Android App Name -->
-    <string name="verifier_app_name">"COVID Check"</string>
+    <!-- Android App Name -->
+    <string name="verifier_app_name">"Covid Check"</string>
 
     <!-- Title for the qr scanning screen -->
     <string name="verifier_title_qr_scan">"Vérifier"</string>
@@ -116,7 +116,7 @@ une pièce d’identité"</string>
     <string name="delete_button">"Effacer"</string>
 
     <!-- Android App Name für die Wallet -->
-    <string name="wallet_app_name">"COVID Cert"</string>
+    <string name="wallet_app_name">"Covid Cert"</string>
 
     <!-- Header im Onboarding-Screen "Die App" -->
     <string name="wallet_onboarding_app_header">"L'application"</string>
@@ -289,7 +289,7 @@ Certificate valid from:
 Certificat valide dès :
 {DATE} -->
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
-    <string name="wallet_certificate_valid_from">"In der Schweiz gültig ab:
+    <string name="wallet_certificate_valid_from">"Valable en Suisse à partir du : 
 {DATE}"</string>
 
     <!-- Wallet: Zertifikat Detail Geimpft -->
@@ -316,9 +316,8 @@ Certificat valide dès :
     <!-- Header im Onboarding-Screen "Vorteile, Vorweisen" -->
     <string name="wallet_onboarding_show_header">"Avantages"</string>
 
-    <!-- Ist das Information oder Impressum? -->
     <!-- Accessibility: Information -->
-    <string name="accessibility_info_button">"Information"</string>
+    <string name="accessibility_info_button">"Impressum"</string>
 
     <!-- Accessibility: FAQ Button Titel -->
     <string name="accessibility_faq_button">"Questions fréquentes"</string>
@@ -342,108 +341,107 @@ Certificat valide dès :
     <string name="impressum_title">"Impressum"</string>
 
     <!-- Unbekannter Fehler -->
-    <string name="unknown_error">"Ein unbekannter Fehler ist aufgetreten."</string>
+    <string name="unknown_error">"Une erreur inconnue est survenue."</string>
 
     <!-- Verifier: Die Gültigkeit des Zertifikat ist abgelaufen -->
-    <string name="verifier_verifiy_error_expired">"Entspricht nicht den Gültigkeitskriterien der Schweiz: Die Gültigkeit des Zertifikat ist abgelaufen."</string>
+    <string name="verifier_verifiy_error_expired">"Ne remplit pas les critères de validité de la Suisse: La durée de validité du certificat a expiré."</string>
 
     <!-- cf: Text angepasst. War vorher:
 Zertifikat ist erst gültig ab {DATE}. -->
     <!-- Verifier: Zertifikat ist erst gültig ab {DATE} -->
-    <string name="verifier_verifiy_error_notyetvalid">"Entspricht nicht den Gültigkeitskriterien der Schweiz: Das Zertifikat ist noch nicht gültig."</string>
+    <string name="verifier_verifiy_error_notyetvalid">"Ne remplit pas les critères de validité de la Suisse: Le certificat n'est pas encore valable."</string>
 
     <!-- Verifier: Ein Netzwerkfehler ist aufgetreten. -->
-    <string name="verifier_retry_network_error">"Ein Netzwerkfehler ist aufgetreten."</string>
+    <string name="verifier_retry_network_error">"Une erreur de réseau est survenue."</string>
 
     <!-- Verifier: Das Gerät befindet sich im Flugmodus. -->
-    <string name="verifier_retry_flightmode_error">"Das Gerät befindet sich im Flugmodus."</string>
+    <string name="verifier_retry_flightmode_error">"L'appareil est en mode avion."</string>
 
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
-    <string name="wallet_error_valid_from">"In der Schweiz gültig ab:
+    <string name="wallet_error_valid_from">"Valable en Suisse à partir du : 
 {DATE}"</string>
 
     <!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
-    <string name="wallet_error_national_rules">"Entspricht nicht den Gültigkeitskriterien der Schweiz"</string>
+    <string name="wallet_error_national_rules">"Non conforme aux critères de validité suisses"</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
-    <string name="wallet_error_expired">"Gültigkeit des Zertifikats
-abgelaufen"</string>
+    <string name="wallet_error_expired">"Durée de validité du 
+certificat expirée"</string>
 
     <!-- Wallet: Zertifikat wurde widerrufen -->
-    <string name="wallet_error_revocation">"Zertifikat wurde
-widerrufen"</string>
+    <string name="wallet_error_revocation">"Certificat révoqué"</string>
 
     <!-- Wallet: Zertifikat mit ungültiger Signatur -->
-    <string name="wallet_error_invalid_signature">"Zertifikat mit
-ungültiger Signatur"</string>
+    <string name="wallet_error_invalid_signature">"Signature non valable"</string>
 
     <!-- Wallet: ungültiger Signatur (gleiche Worte wie wallet_error_invalid_signature) -->
-    <string name="wallet_error_invalid_signature_bold">"ungültiger Signatur"</string>
+    <string name="wallet_error_invalid_signature_bold">"Signature non valable"</string>
 
     <!-- Wallet: widerrufen (gleiches Wort wie bei wallet_error_revocation) -->
-    <string name="wallet_error_revocation_bold">"widerrufen"</string>
+    <string name="wallet_error_revocation_bold">"Certificat révoqué"</string>
 
     <!-- Wallet: abgelaufen (gleiches Wort wie bei wallet_error_expired verwenden) -->
-    <string name="wallet_error_expired_bold">"abgelaufen"</string>
+    <string name="wallet_error_expired_bold">"expirée"</string>
 
     <!-- Meldung wenn erneute ein Zertifikat gescannt wurde, welches bereits in der App ist -->
-    <string name="wallet_certificate_already_exists">"Dieses Zertifikat ist bereits in der App gespeichert"</string>
+    <string name="wallet_certificate_already_exists">"Le certificat est déjà enregistré dans l'application."</string>
 
+    <!-- Umbruch prüfen -->
     <!-- Titel Gültigkeit im Zertifikatsdetail -->
-    <string name="wallet_certificate_validity">"Gültigkeit in der
-Schweiz"</string>
+    <string name="wallet_certificate_validity">"Validité en 
+Suisse"</string>
 
     <!-- "Bis" Label im Zertifikats-Detail -->
-    <string name="wallet_certificate_valid_until">"bis"</string>
+    <string name="wallet_certificate_valid_until">"jusqu'au"</string>
 
     <!-- Message im Zertifikatsdetail während Überprüfung -->
-    <string name="wallet_certificate_verifying">"Das Zertifikat wird geprüft"</string>
+    <string name="wallet_certificate_verifying">"Certificat en cours de vérification"</string>
 
     <!-- Message nach erfolgreicher Prüfung im Zertifikatdetail -->
-    <string name="wallet_certificate_verify_success">"Prüfung erfolgreich"</string>
+    <string name="wallet_certificate_verify_success">"Vérification réussie"</string>
 
     <!-- Accessibility: Info Box Butto -->
     <string name="accessibility_info_box">"Information"</string>
 
     <!-- Button Schliessen -->
-    <string name="close_button">"Schliessen"</string>
-    <string name="wallet_certificate_impfdosis_title">"Impfdosis"</string>
-    <string name="target_disease_name">"COVID-19"</string>
-    <string name="wallet_certificate_target_disease_title">"Krankheit oder Erreger"</string>
-    <string name="wallet_certificate_impfstoff_title">"Impfstoff"</string>
-    <string name="wallet_certificate_impfstoff_product_name_title">"Produkt"</string>
-    <string name="wallet_certificate_impfstoff_holder">"Hersteller"</string>
-    <string name="wallet_certificate_vaccination_date_title">"Impfdatum"</string>
-    <string name="wallet_certificate_vaccination_country_title">"Land der Impfung"</string>
+    <string name="close_button">"Fermer"</string>
+    <string name="wallet_certificate_impfdosis_title">"Dose"</string>
+    <string name="target_disease_name">"Covid-19"</string>
+    <string name="wallet_certificate_target_disease_title">"Maladie ou agent pathogène"</string>
+    <string name="wallet_certificate_impfstoff_title">"Type de vaccin"</string>
+    <string name="wallet_certificate_impfstoff_product_name_title">"Produit"</string>
+    <string name="wallet_certificate_impfstoff_holder">"Fabricant"</string>
+    <string name="wallet_certificate_vaccination_date_title">"Date de vaccination"</string>
+    <string name="wallet_certificate_vaccination_country_title">"Pays de vaccination"</string>
 
     <!-- Prüfen mit PDF Translation -->
-    <string name="wallet_certificate_vaccination_issuer_title">"Herausgeber"</string>
-    <string name="covid_certificate_recovery_title">"Genesen"</string>
-    <string name="wallet_certificate_recovery_first_positiv_result">"Datum des ersten positiven Resultats"</string>
-    <string name="wallet_certificate_recovery_from">"Gültig ab"</string>
-    <string name="wallet_certificate_recovery_until">"Gültig bis"</string>
-    <string name="wallet_certificate_test_land">"Land des Tests"</string>
+    <string name="wallet_certificate_vaccination_issuer_title">"Délivré par"</string>
+    <string name="covid_certificate_recovery_title">"Guérison"</string>
+    <string name="wallet_certificate_recovery_first_positiv_result">"Date du premier résultat positif"</string>
+    <string name="wallet_certificate_recovery_from">"Valable à partir du"</string>
+    <string name="wallet_certificate_recovery_until">"Valable jusqu'au"</string>
+    <string name="wallet_certificate_test_land">"Pays de test"</string>
     <string name="covid_certificate_test_title">"Test"</string>
-    <string name="wallet_certificate_test_result_title">"Ergebnis"</string>
-    <string name="wallet_certificate_test_result_negativ">"NEGATIV"</string>
-    <string name="wallet_certificate_test_result_positiv">"POSITIV"</string>
-    <string name="wallet_certificate_test_type">"Typ"</string>
-    <string name="wallet_certificate_test_name">"Name"</string>
-    <string name="wallet_certificate_test_holder">"Hersteller"</string>
-    <string name="wallet_certificate_test_sample_date_title">"Datum der Probenentnahme"</string>
-    <string name="wallet_certificate_test_result_date_title">"Datum Resultat"</string>
+    <string name="wallet_certificate_test_result_title">"Résultat"</string>
+    <string name="wallet_certificate_test_result_negativ">"NÉGATIF"</string>
+    <string name="wallet_certificate_test_result_positiv">"POSITIF"</string>
+    <string name="wallet_certificate_test_type">"Type"</string>
+    <string name="wallet_certificate_test_name">"Nom"</string>
+    <string name="wallet_certificate_test_holder">"Fabricant"</string>
+    <string name="wallet_certificate_test_sample_date_title">"Date du prélèvement de l'échantillon"</string>
+    <string name="wallet_certificate_test_result_date_title">"Date du résultat"</string>
 
     <!-- Header im "So funktionierts" Screen der Verifier-App -->
-    <string name="verifier_support_header">"So funktioniert's"</string>
+    <string name="verifier_support_header">"Comment ça fonctionne"</string>
 
     <!-- Text im Bestätigungs-Dialog beim Zertifikat löschen -->
-    <string name="wallet_certificate_delete_confirm_text">"Wollen Sie das Zertifikat wirklich löschen?"</string>
+    <string name="wallet_certificate_delete_confirm_text">"Voulez-vous vraiment supprimer le certificat ?"</string>
 
     <!-- Titel eines Abbrechen-Buttons -->
-    <string name="cancel_button">"Abbrechen"</string>
+    <string name="cancel_button">"Interrompre"</string>
 
     <!-- Wallet: Titel bei Impfungen -->
-    <string name="covid_certificate_vaccination_title">"Impfung"</string>
+    <string name="covid_certificate_vaccination_title">"Vaccination"</string>
 
     <!-- Wallet: Apple App Store URL -->
     <string name="wallet_apple_app_store_url">"http://itunes.apple.com/app/id1565917320"</string>
@@ -455,17 +453,17 @@ Schweiz"</string>
     <string name="wallet_certificate_identifier">"UVCI"</string>
 
     <!-- Wallet: Zertifikat erstellt am {DATE} -->
-    <string name="wallet_certificate_date">"Zertifikat erstellt am
+    <string name="wallet_certificate_date">"Certificat établi le 
 {DATE}"</string>
 
     <!-- Wallet: Detail Art des Impfstoffs -->
-    <string name="wallet_certificate_vaccine_prophylaxis">"Art des Impfstoffs"</string>
+    <string name="wallet_certificate_vaccine_prophylaxis">"Type de vaccin"</string>
 
     <!-- Wallet: Test Detail Test durchgeführt durch -->
-    <string name="wallet_certificate_test_done_by">"Testcenter"</string>
+    <string name="wallet_certificate_test_done_by">"Centre de test"</string>
 
     <!-- iOS: Erklärung bei Kamera  -->
-    <string name="NSCameraUsageDescription">"Die App benötigt Zugriff auf die Kamera, um den QR-Code scannen zu können."</string>
+    <string name="NSCameraUsageDescription">"L'application doit accéder à l'appareil photo pour pouvoir scanner le code QR."</string>
 
     <!-- Titel 1 im FAQ der Verifier App -->
     <string name="verifier_faq_works_title">"Contrôle de certificats COVID"</string>
@@ -515,11 +513,10 @@ Si vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la 
     <string name="verifier_faq_works_answer_6">"Aucune des données auxquelles vous avez accès lors du contrôle n'est stockée dans l'app ou dans un système central. Il est par conséquent impossible de savoir quel certificat COVID a été vérifié par qui, quand et où."</string>
 
     <!-- iOS Button zum Einstellungen öffnen -->
-    <string name="ios_settings_open">"Einstellungen"</string>
+    <string name="ios_settings_open">"Réglages"</string>
 
     <!-- Wallet: Onboarding externer Link zu Datenschutz -->
-    <string name="wallet_onboarding_external_privacy_button">"Datenschutzerklärung &amp;
-Nutzungsbedingungen"</string>
+    <string name="wallet_onboarding_external_privacy_button">"Déclaration de confidentialité &amp; condition d'utilisation"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
     <string name="wallet_certificate_detail_note">"La présente attestation ne constitue pas un document de voyage.
@@ -527,8 +524,6 @@ Nutzungsbedingungen"</string>
 Les connaissances scientifiques sur la vaccination contre le COVID-19, les tests et le rétablissement après une infection évoluent en permanence, y compris en ce qui concerne les nouveaux variants préoccupants du virus.
 
 Avant de partir en voyage, veuillez vérifier les mesures sanitaires applicables à votre destination et les restrictions associées."</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-check-app.html"</string>
 
