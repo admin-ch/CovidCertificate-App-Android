@@ -37,6 +37,7 @@ import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
 
+
 abstract class QrScanFragment : Fragment() {
 
 	companion object {
@@ -73,7 +74,7 @@ abstract class QrScanFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		isTorchOn = savedInstanceState?.getBoolean(IS_TORCH_ON, false) ?: false
+		isTorchOn = savedInstanceState?.getBoolean(IS_TORCH_ON, isTorchOn) ?: isTorchOn
 		toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 		barcodeScanner.setStatusText("")
 	}
