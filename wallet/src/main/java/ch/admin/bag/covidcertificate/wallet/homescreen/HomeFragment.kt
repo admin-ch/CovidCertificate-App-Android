@@ -179,7 +179,10 @@ class HomeFragment : Fragment() {
 		binding.homescreenHeaderNotEmpty.root.isVisible = hasCertificates
 		binding.homescreenListButton.isVisible = certificates.size > 1
 		certificatesAdapter.setData(certificates)
-		if (hasCertificates) binding.homescreenCertificatesViewPager.setCurrentItem(0, true)
+		if (hasCertificates) {
+			binding.homescreenCertificatesViewPager.postDelayed({ binding.homescreenCertificatesViewPager.setCurrentItem(0, true) },
+				10)
+		}
 	}
 
 	private fun setupInfoBox() {
