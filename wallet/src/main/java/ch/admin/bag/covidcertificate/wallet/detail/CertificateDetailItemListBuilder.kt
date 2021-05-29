@@ -52,11 +52,13 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 					ValueItem(R.string.wallet_certificate_target_disease_title, context.getString(R.string.target_disease_name))
 				)
 			}
-			AcceptedVaccineProvider.getInstance(context).getVaccineDataFromList(vaccinationEntry)?.let { vaccine ->
-				detailItems.add(ValueItem(R.string.wallet_certificate_vaccine_prophylaxis, vaccine.prophylaxis))
-				detailItems.add(ValueItem(R.string.wallet_certificate_impfstoff_product_name_title, vaccine.name))
-				detailItems.add(ValueItem(R.string.wallet_certificate_impfstoff_holder, vaccine.auth_holder))
-			}
+			val acceptedTestProvider = AcceptedVaccineProvider.getInstance(context)
+			detailItems.add(ValueItem(R.string.wallet_certificate_vaccine_prophylaxis,
+				acceptedTestProvider.getProphylaxis(vaccinationEntry)))
+			detailItems.add(ValueItem(R.string.wallet_certificate_impfstoff_product_name_title,
+				acceptedTestProvider.getVaccineName(vaccinationEntry)))
+			detailItems.add(ValueItem(R.string.wallet_certificate_impfstoff_holder,
+				acceptedTestProvider.getAuthHolder(vaccinationEntry)))
 
 			// Vaccination date + country
 			detailItems.add(DividerItem)
