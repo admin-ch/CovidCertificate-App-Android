@@ -162,7 +162,6 @@ abstract class QrScanFragment : Fragment() {
 		barcodeScanner.apply {
 			val formats: Collection<BarcodeFormat> = listOf(BarcodeFormat.AZTEC, BarcodeFormat.QR_CODE)
 			barcodeView.decoderFactory = DefaultDecoderFactory(formats)
-			initializeFromIntent(requireActivity().intent)
 			decodeContinuous(callback)
 			setStatusText("")
 			viewFinder.visibility = View.GONE
@@ -252,8 +251,7 @@ abstract class QrScanFragment : Fragment() {
 			val qrCodeData = result.text
 
 			qrCodeData?.let {
-				val decodeState = Eval.decode(qrCodeData)
-				when (decodeState) {
+				when (val decodeState = Eval.decode(qrCodeData)) {
 					is DecodeState.SUCCESS -> {
 						onDecodeSuccess(decodeState.dgc)
 						view?.post { indicateInvalidQrCode(QrScannerState.VALID) }
@@ -262,9 +260,8 @@ abstract class QrScanFragment : Fragment() {
 						view?.post { handleInvalidQRCodeExceptions(qrCodeData, decodeState.error) }
 					}
 				}
-			} ?: handleInvalidQRCodeExceptions(qrCodeData, null)
-
-			barcodeScanner.pause()
+				barcodeScanner.pause()
+			}
 		}
 
 		override fun possibleResultPoints(resultPoints: List<ResultPoint>) {}
