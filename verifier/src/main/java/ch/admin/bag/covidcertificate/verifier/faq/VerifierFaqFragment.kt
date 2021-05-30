@@ -24,6 +24,7 @@ class VerifierFaqFragment : FaqFragment() {
 	private val verifierViewModel by activityViewModels<VerifierViewModel>()
 
 	override fun setupFaqProvider() {
+		toolbar.setTitle(R.string.verifier_support_header)
 		verifierViewModel.configLiveData.observe(viewLifecycleOwner, { config ->
 			val languageKey = getString(R.string.language_key)
 			setupFaqList(config.generateFaqItems(languageKey))
