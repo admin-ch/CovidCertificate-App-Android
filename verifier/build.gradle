@@ -40,8 +40,8 @@ android {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
 		minSdkVersion 24
 		targetSdkVersion 30
-		versionCode 1
-		versionName "1.0"
+		versionCode 1000
+		versionName "1.0.0"
 
 		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
 
@@ -68,7 +68,7 @@ android {
 		release {
 			storeFile file(readPropertyWithDefault('keystoreFile', 'testKeystore'))
 			storePassword readProperty('keystorePassword')
-			keyAlias 'keyAlias'
+			keyAlias readPropertyWithDefault('keyAlias', 'keyAlias')
 			keyPassword readProperty('keyAliasPassword')
 		}
 	}
