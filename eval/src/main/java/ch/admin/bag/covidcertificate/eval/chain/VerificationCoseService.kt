@@ -21,12 +21,7 @@ class VerificationCoseService(private val keys: List<Jwk>) {
 		return try {
 			(Sign1Message.DecodeFromBytes(input, MessageTag.Sign1) as Sign1Message).also { signature ->
 				try {
-					val kid: ByteArray = signature.findAttribute(HeaderKeys.KID)?.GetByteString()
-						?: throw IllegalArgumentException("No kid in COSE object")
-
 					keys
-						// Potentially there are many signing keys. Filter on the kid to save the expensive public crypto key operations.
-						.filter { k -> k.getKid().contentEquals(kid) }
 						// "use": keys could be valid for signing a vaccination, but not a test certificate.
 						.filter { k -> k.isAllowedToSign(type) }
 						.filter { k -> k.getPublicKey() != null }
