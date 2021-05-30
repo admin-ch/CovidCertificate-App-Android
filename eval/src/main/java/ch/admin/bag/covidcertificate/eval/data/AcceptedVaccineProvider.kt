@@ -24,9 +24,10 @@ import java.io.IOException
 class AcceptedVaccineProvider private constructor(context: Context) {
 
 	companion object : SingletonHolder<AcceptedVaccineProvider, Context>(::AcceptedVaccineProvider) {
-		//for Nationalrules validation
+		// for national rules validation
 		private const val ACCEPTED_VACCINE_FILE_NAME = "acceptedCHVaccine.json"
-		//for Displaying products
+
+		// for displaying products
 		private const val ACCEPTED_VACCINE_MANUFACTURES_EU_FILE_NAME = "vaccine_mah_manf_eu.json"
 		private const val ACCEPTED_VACCINE_PRODUCTS_EU_FILE_NAME = "vaccine_medicinal_product_eu.json"
 		private const val ACCEPTED_VACCINE_PROPHYLAXIS_EU_FILE_NAME = "vaccine_prophylaxis.json"
@@ -41,6 +42,7 @@ class AcceptedVaccineProvider private constructor(context: Context) {
 		val acceptedVaccineAdapter: JsonAdapter<AcceptedVaccine> = Moshi.Builder().build().adapter(AcceptedVaccine::class.java)
 		acceptedVaccine = acceptedVaccineAdapter.fromJson(context.assets.open(ACCEPTED_VACCINE_FILE_NAME).source().buffer())
 			?: throw IOException()
+
 		val valueSetAdapter: JsonAdapter<ValueSet> = Moshi.Builder().build().adapter(ValueSet::class.java)
 		vaccineManufacturersEu =
 			valueSetAdapter.fromJson(context.assets.open(ACCEPTED_VACCINE_MANUFACTURES_EU_FILE_NAME).source().buffer())
@@ -50,7 +52,6 @@ class AcceptedVaccineProvider private constructor(context: Context) {
 		vaccineProphylaxisEu =
 			valueSetAdapter.fromJson(context.assets.open(ACCEPTED_VACCINE_PROPHYLAXIS_EU_FILE_NAME).source().buffer())
 				?: throw IOException()
-
 	}
 
 	fun getVaccineName(vaccinationEntry: VaccinationEntry): String {
