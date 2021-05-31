@@ -102,13 +102,8 @@
 	</style>
 
 	<style name="CovidCertificate.Text.Bold.Blue.LinkExternal">
-		<item name="android:drawableStart">@drawable/ic_link_external</item>
-		<item name="android:drawablePadding">@dimen/spacing_very_small</item>
-		<item name="android:paddingStart">@dimen/spacing_very_small</item>
-		<item name="android:paddingTop">@dimen/spacing_very_small</item>
-		<item name="android:paddingEnd">@dimen/spacing_medium_small</item>
-		<item name="android:paddingBottom">@dimen/spacing_very_small</item>
-		<item name="android:foreground">@drawable/ripple_rounded_rect</item>
+		<item name="android:breakStrategy">high_quality</item>
+		<item name="android:hyphenationFrequency">normal</item>
 	</style>
 
 	<style name="CovidCertificate.Text.Code">

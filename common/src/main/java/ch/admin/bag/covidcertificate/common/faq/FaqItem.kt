@@ -63,14 +63,20 @@ data class QuestionItem(
 			text = question.answer
 			isVisible = question.isSelected
 		}
-		view.findViewById<TextView>(R.id.item_faq_question_link).apply {
-			val hasLink = !question.linkTitle.isNullOrEmpty() && !question.linkUrl.isNullOrEmpty()
-			isVisible = hasLink && question.isSelected
-			if (hasLink) {
-				text = question.linkTitle
-				setOnClickListener { onLinkClickListener?.onLinkClicked(question.linkUrl!!) }
-			}
+		val linkGroup = view.findViewById<View>(R.id.item_faq_question_link)
+		val linkLabel = view.findViewById<TextView>(R.id.item_faq_question_link_label)
+		val hasLink = !question.linkTitle.isNullOrEmpty() && !question.linkUrl.isNullOrEmpty()
+		(hasLink && question.isSelected)?.let { visible ->
+			linkLabel.isVisible = visible
+			linkGroup.isVisible = visible
 		}
+		if (hasLink) {
+			linkLabel.text = question.linkTitle
+			linkGroup.setOnClickListener { onLinkClickListener?.onLinkClicked(question.linkUrl!!) }
+		} else {
+			linkGroup.setOnClickListener(null)
+		}
+
 		view.findViewById<ImageView>(R.id.item_faq_question_chevron)
 			.setImageResource(if (question.isSelected) R.drawable.ic_arrow_contract else R.drawable.ic_arrow_expand)
 	}
