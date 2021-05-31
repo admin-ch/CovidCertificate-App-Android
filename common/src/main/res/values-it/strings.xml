@@ -15,10 +15,10 @@
     <string name="verifier_app_name">"Covid Check"</string>
 
     <!-- Title for the qr scanning screen -->
-    <string name="verifier_title_qr_scan">"Controllare"</string>
+    <string name="verifier_title_qr_scan">"Verificare"</string>
 
     <!-- Titel über dem Haupttitel -->
-    <string name="verifier_homescreen_header_title">"Certificato Covid"</string>
+    <string name="verifier_homescreen_header_title">"Certificato COVID"</string>
 
     <!-- Homescreen App Name -->
     <string name="verifier_homescreen_title">"Check"</string>
@@ -27,10 +27,10 @@
     <string name="verifier_homescreen_pager_description_1">"Scansionare il certificato esibito"</string>
 
     <!-- Beschreibung für Pager Bild 2 -->
-    <string name="verifier_homescreen_pager_description_2">"I certificati sono controllati automaticamente"</string>
+    <string name="verifier_homescreen_pager_description_2">"I certificati sono verificatii automaticamente"</string>
 
     <!-- Homescreen Button für Scanning -->
-    <string name="verifier_homescreen_scan_button">"Controlla"</string>
+    <string name="verifier_homescreen_scan_button">"Verifica"</string>
 
     <!-- Homescreen Button für Support -->
     <string name="verifier_homescreen_support_button">"Funziona così"</string>
@@ -45,7 +45,8 @@
     <string name="ok_button">"OK"</string>
     <string name="camera_permission_dialog_text">"L'app necessita dell'accesso alla fotocamera per scansionare il codice QR."</string>
     <string name="camera_permission_dialog_action">"Consentire l'accesso alla fotocamera"</string>
-    <string name="verifier_qr_scanner_scan_qr_text">"Scansionare il codice QR per controllo"</string>
+    <string name="verifier_qr_scanner_scan_qr_text">"Scansionare il codice QR 
+per verificare"</string>
 
     <!-- Titel auf dem Verifikations-Screen -->
     <string name="covid_certificate_title">"Certificat COVID"</string>
@@ -60,23 +61,23 @@
     <string name="wallet_add_certificate">"Aggiungere"</string>
 
     <!-- Wallet: Homescreen Covid-Zertifikat -->
-    <string name="wallet_certificate">"Certificato Covid"</string>
+    <string name="wallet_certificate">"Certificato COVID"</string>
 
     <!-- Wallet: Homescreen Erklärung -->
-    <string name="wallet_homescreen_explanation">"Scansionare il codice QR apposto sul certificato Covid per aggiungerlo all'app."</string>
+    <string name="wallet_homescreen_explanation">"Scansionare il codice QR apposto sul certificato COVID per aggiungerlo all'app."</string>
 
     <!-- Wallet: Scanner Titel -->
     <string name="wallet_scanner_title">"Aggiungere"</string>
 
     <!-- Titel bei erfolgreicher Prüfung -->
-    <string name="verifier_verify_success_title">"Controllo eseguito"</string>
+    <string name="verifier_verify_success_title">"Verifica riuscita"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
     <string name="verifier_verify_success_info">"Valido solo con un documento 
 di legittimazione"</string>
 
     <!-- Prüfung loading text -->
-    <string name="verifier_verify_loading_text">"Controllo del certificato in corso"</string>
+    <string name="verifier_verify_loading_text">"Verifica del certificato in corso"</string>
 
     <!-- Fehler Title bei Prüfung -->
     <string name="verifier_verify_error_title">"Certificato non valido"</string>
@@ -91,13 +92,13 @@ di legittimazione"</string>
     <string name="verifier_verify_error_info_for_blacklist">"Il certificato è stato revocato"</string>
 
     <!-- Fehler bei der geladen Liste -->
-    <string name="verifier_verify_error_list_title">"Controllo fallito"</string>
+    <string name="verifier_verify_error_list_title">"Verifica non riuscita"</string>
 
     <!-- Fehler Info bei laden der Liste -->
     <string name="verifier_verify_error_list_info_text">"Si è verificato un errore imprevisto."</string>
 
     <!-- Wallet: Scanner Text unten -->
-    <string name="wallet_scanner_explanation">"Scansionare il codice QR apposto sul certificato Covid."</string>
+    <string name="wallet_scanner_explanation">"Scansionare il codice QR apposto sul certificato COVID."</string>
 
     <!-- Wallet: Scanner Info Button unten -->
     <string name="wallet_scanner_info_button">"Funziona così"</string>
@@ -120,12 +121,11 @@ di legittimazione"</string>
     <!-- Header im Onboarding-Screen "Die App" -->
     <string name="wallet_onboarding_app_header">"L'app"</string>
 
-    <!-- Ist das bewusst mit Zeilentrennung? -->
     <!-- Titel im Onboardingscreen "Die App" -->
     <string name="wallet_onboarding_app_title">"COVID Certificate"</string>
 
     <!-- Text im Onboardingscreen "Die App" -->
-    <string name="wallet_onboarding_app_text">"Con l'app può conservare in sicurezza i certificati COVID sullo smartphone ed esibirli facilmente."</string>
+    <string name="wallet_onboarding_app_text">"Con la app può conservare in sicurezza i certificati COVID sullo smartphone ed esibirli facilmente."</string>
 
     <!-- Weiter-Button Titel -->
     <string name="continue_button">"Avanti"</string>
@@ -144,10 +144,10 @@ nell'app"</string>
     <string name="wallet_onboarding_show_title">"Esibire facilmente i certificati"</string>
 
     <!-- Text 1 im Onboardingscreen "Vorteile, Vorweisen" -->
-    <string name="wallet_onboarding_show_text1">"I dati visualizzati sul certificato Covid sono contenuti anche nel codice QR."</string>
+    <string name="wallet_onboarding_show_text1">"I dati visualizzati sul certificato COVID sono contenuti anche nel codice QR."</string>
 
     <!-- Text 2 im Onboardingscreen "Vorteile, Vorweisen" -->
-    <string name="wallet_onboarding_show_text2">"All'esibizione, il codice QR è scansionato con un'app di controllo. L'autenticità e la validità dei dati ivi contenuti sono controllate automaticamente."</string>
+    <string name="wallet_onboarding_show_text2">"Alla presentazione, il codice QR è scansionato con un'app di verifica. L'autenticità e la validità dei dati ivi contenuti sono verificate automaticamente."</string>
 
     <!-- Titel des Datenschutzerklärungs-Elements im Onboardingscreen "Datenschutz" -->
     <string name="wallet_onboarding_privacy_privacypolicy_title">"Dichiarazione sulla protezione dei dati"</string>
@@ -164,10 +164,10 @@ nell'app"</string>
 
     <!-- Titel im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_title">"Aggiungere 
-certificati COVID"</string>
+certificati Covid"</string>
 
     <!-- Textblock 1 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_text1">"Per aggiungere un certificato Covid a un'app è necessario il certificato originale cartaceo o in formato PDF."</string>
+    <string name="wallet_scanner_howitworks_text1">"Per aggiungere un certificato COVID a un'app è necessario il certificato originale cartaceo o in formato PDF."</string>
 
     <!-- Textblock 2 im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_text2">"Nell'app prema su «aggiungi» per aggiungere un nuovo certificato allʼapp."</string>
@@ -176,25 +176,25 @@ certificati COVID"</string>
     <string name="wallet_scanner_howitworks_text3">"Tenga la fotocamera dello smartphone sopra il codice QR apposto sul certificato originale per scansionarlo."</string>
 
     <!-- Textblock 4 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_text4">"Apparirà un'anteprima del certificato Covid. Prema su «aggiungi» per salvare il certificato nellʼapp."</string>
+    <string name="wallet_scanner_howitworks_text4">"Apparirà un'anteprima del certificato COVID. Prema su «aggiungi» per salvare il certificato nellʼapp."</string>
 
     <!-- Frage 1 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_question1">"Quando e dove posso ricevere un certificato Covid?"</string>
+    <string name="wallet_scanner_howitworks_question1">"Quando e dove posso ricevere un certificato COVID?"</string>
 
     <!-- Header im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_header">"Domande frequenti"</string>
 
     <!-- Titel 1 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_title">"Cos’è il certificato Covid?"</string>
+    <string name="wallet_faq_questions_title">"Cos’è il certificato COVID?"</string>
 
     <!-- Text 1im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_subtitle">"Il certificato Covid offre la possibilità di provare in modo non falsificabile l’avvenuta vaccinazione, la guarigione o un risultato negativo al test."</string>
+    <string name="wallet_faq_questions_subtitle">"Il certificato COVID offre la possibilità di provare in modo non falsificabile l’avvenuta vaccinazione, la guarigione o un risultato negativo al test."</string>
 
     <!-- Frage 1 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_question_1">"Quando e dove posso ottenere un certificato Covid?"</string>
+    <string name="wallet_faq_questions_question_1">"Quando e dove posso ottenere un certificato COVID?"</string>
 
     <!-- Frage 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_question_2">"Come posso mostrare il certificato Covid?"</string>
+    <string name="wallet_faq_questions_question_2">"Come posso mostrare il certificato COVID?"</string>
 
     <!-- Frage 3 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_question_3">"Dove vengono salvati i miei dati?"</string>
@@ -203,16 +203,16 @@ certificati COVID"</string>
     <string name="wallet_faq_questions_question_4">"Come vengono impediti usi abusivi e falsificazioni?"</string>
 
     <!-- Frage 5 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_question_5">"Cosa succede se perdo il mio certificato Covid su carta?"</string>
+    <string name="wallet_faq_questions_question_5">"Cosa succede se perdo il mio certificato COVID su carta?"</string>
 
     <!-- Frage 6 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_question_1">"Come posso inserire un certificato Covid sull’app?"</string>
+    <string name="wallet_faq_works_question_1">"Come posso inserire un certificato COVID sulla app?"</string>
 
     <!-- Frage 7 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_question_2">"È possibile aggiungere più certificati COVID?"</string>
 
     <!-- Frage 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_question_3">"Come posso controllare se il mio certificato Covid è valido?"</string>
+    <string name="wallet_faq_works_question_3">"Come posso verificare se il mio certificato COVID è valido?"</string>
 
     <!-- Frage 9 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_question_4">"Come sono protetti i miei dati?"</string>
@@ -221,53 +221,53 @@ certificati COVID"</string>
     <string name="wallet_faq_works_question_5">"Quali dati contiene il codice QR?"</string>
 
     <!-- Frage 11 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_question_6">"Cosa succede se elimino il file contenente il certificato Covid o l’app?"</string>
+    <string name="wallet_faq_works_question_6">"Cosa succede se elimino il file contenente il certificato COVID o la app?"</string>
 
     <!-- Antwort 1 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_1">"Può ricevere un certificato Covid in seguito alla completa vaccinazione anti-COVID-19, all’avvenuta guarigione o a un risultato negativo al test. Normalmente, il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie."</string>
+    <string name="wallet_faq_questions_answer_1">"Può ricevere un certificato COVID in seguito alla completa vaccinazione anti-COVID-19, all’avvenuta guarigione o a un risultato negativo al test. Normalmente, il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie."</string>
 
     <!-- Antwort 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_2">"Può mostrare il Suo certificato Covid in formato cartaceo oppure salvarlo e presentarlo utilizzando l’app COVID Certificate. Può decidere liberamente se mostrare il certificato in formato cartaceo o elettronico.
+    <string name="wallet_faq_questions_answer_2">"Può mostrare il Suo certificato COVID in formato cartaceo oppure salvarlo e presentarlo utilizzando la app COVID Certificate. Può decidere liberamente se mostrare il certificato in formato cartaceo o elettronico.
 
 In entrambi i casi, dovrà esibire anche un documento d’identità (passaporto o carta d’identità)."</string>
 
     <!-- Antwort 3 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_3">"I Suoi dati non vengono salvati in un sistema centrale ma solo localmente sul Suo dispositivo mobile oppure nel codice QR indicato nel certificato Covid in formato cartaceo."</string>
+    <string name="wallet_faq_questions_answer_3">"I Suoi dati non vengono salvati in un sistema centrale ma solo localmente sul Suo dispositivo mobile oppure nel codice QR indicato nel certificato COVID in formato cartaceo."</string>
 
     <!-- Antwort 4 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_4">"Il codice QR sul certificato Covid contiene una firma elettronica. Questa firma è un elemento di sicurezza importante e garantisce che il certificato non possa essere falsificato. Inoltre, il certificato Covid è valido solo con un documento d’identità (passaporto o carta d’identità)."</string>
+    <string name="wallet_faq_questions_answer_4">"Il codice QR sul certificato COVID contiene una firma elettronica. Questa firma è un elemento di sicurezza importante e garantisce che il certificato non possa essere falsificato. Inoltre, il certificato COVID è valido solo con un documento d’identità (passaporto o carta d’identità)."</string>
 
     <!-- Antwort 5 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_5">"Il Suo certificato Covid non è salvato su un sistema centrale, Lei ne ha il possesso esclusivo. Conservi quindi con cura il certificato Covid su carta. In caso di smarrimento, dovrà richiedere un nuovo certificato presso l’ufficio emittente."</string>
+    <string name="wallet_faq_questions_answer_5">"Il Suo certificato COVID non è salvato su un sistema centrale, Lei ne ha il possesso esclusivo. Conservi quindi con cura il certificato COVID su carta. In caso di smarrimento, dovrà richiedere un nuovo certificato presso l’ufficio emittente."</string>
 
     <!-- Antwort 6 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_1">"Per inserire sull’app un certificato Covid serve il certificato originale rilasciatole su carta o in formato PDF. Utilizzando l'app COVID Certificate può scansionare e aggiugere il codice QR raffigurato sul certificato. In questo modo, il certificato Covid appare direttamente sull’app."</string>
+    <string name="wallet_faq_works_answer_1">"Per inserire sulla app un certificato COVID serve il certificato originale rilasciatole su carta o in formato PDF. Utilizzando la app COVID Certificate può scansionare e aggiungere il codice QR raffigurato sul certificato. In questo modo, il certificato COVID appare direttamente sulla app."</string>
 
     <!-- Antwort 7 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_2">"Sì, è possibile. Ad esempio, può salvare nella Sua app i certificati Covid dei suoi familiari. Anche in questo caso, il certificato Covid è valido solo con un documento d’identità (passaporto o carta d’identità) della persona a cui è stato rilasciato."</string>
+    <string name="wallet_faq_works_answer_2">"Sì, è possibile. Ad esempio, può salvare nella Sua app i certificati COVID dei suoi familiari. Anche in questo caso, il certificato COVID è valido solo con un documento d’identità (passaporto o carta d’identità) della persona a cui è stato rilasciato."</string>
 
     <!-- Antwort 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_3">"L’app COVID Certificate riporta la data di scadenza del Suo certificato in Svizzera. Può verificare se il Suo certificato Covid è attualmente valido cliccando sull’opzione che permette di visualizzare i dettagli."</string>
+    <string name="wallet_faq_works_answer_3">"La app COVID Certificate riporta la data di scadenza del Suo certificato in Svizzera. Può verificare se il Suo certificato COVID è attualmente valido cliccando sul simbolo che permette di visualizzare i dettagli."</string>
 
     <!-- Antwort 9 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_4">"I Suoi dati personali non sono salvati in un sistema centrale ma unicamente sul Suo dispositivo mobile oppure nel codice QR indicato sul certificato Covid in formato cartaceo."</string>
+    <string name="wallet_faq_works_answer_4">"I Suoi dati personali non sono salvati in un sistema centrale ma unicamente sul Suo dispositivo mobile oppure nel codice QR indicato sul certificato COVID in formato cartaceo."</string>
 
     <!-- Antwort 10 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_5">"Il codice QR contiene tutte le informazioni che trova nel testo del Suo certificato Covid in formato cartaceo. Nel codice QR si trova anche una firma elettronica che consente di verificare la validità del certificato Covid. La firma elettronica impedisce la falsificazione del certificato Covid."</string>
+    <string name="wallet_faq_works_answer_5">"Il codice QR contiene tutte le informazioni che trova nel testo del Suo certificato COVID in formato cartaceo. Nel codice QR si trova anche una firma elettronica che consente di verificare la validità del certificato COVID. La firma elettronica impedisce la falsificazione del certificato COVID."</string>
 
     <!-- Antwort 11 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_6">"In questo caso può semplicemente importare nuovamente il certificato Covid sul Suo dispositivo mobile. Per farlo, scansioni nuovamente il codice QR che trova sul Suo certificato Covid cartaceo o in formato PDF."</string>
+    <string name="wallet_faq_works_answer_6">"In questo caso può semplicemente importare nuovamente il certificato COVID sul Suo dispositivo mobile. Per farlo, scansioni nuovamente il codice QR che trova sul Suo certificato COVID cartaceo o in formato PDF."</string>
 
     <!-- Titel 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_title">"Come funziona 
-l’app?"</string>
+l’applicazione?"</string>
 
     <!-- Text 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_subtitle">"Con l’app COVID Certificate può salvare e mostrare i certificati COVID in modo semplice e sicuro sul Suo dispositivo mobile."</string>
 
     <!-- Vergleichen mit FAQ -->
     <!-- Antwort 1 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_answer1">"È possibile ottenere un certificato Covid dopo una vaccinazione completa anti-Covid, dopo essere guariti dalla una malattia Covid o dopo essere risultati negativi a un test Covid. Il certificato è rilasciato, su richiesta, dal personale medico sul posto."</string>
+    <string name="wallet_scanner_howitworks_answer1">"Può ricevere un certificato COVID in seguito alla completa vaccinazione anti-COVID-19, all’avvenuta guarigione o a un risultato negativo al test. Normalmente, il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie."</string>
 
     <!-- Verifier: Detail Check Vorname -->
     <string name="verifier_covid_certificate_prename">"Nome"</string>
@@ -281,14 +281,6 @@ l’app?"</string>
     <!-- Config: Update Button Aktualisieren -->
     <string name="force_update_button">"Aggiorna"</string>
 
-    <!-- cf: Angepasst gem. Feedback BAG. War vorher:
-
-Zertifikat gültig ab:
-{DATE}
-Certificate valid from:
-{DATE}
-Certificat valide dès :
-{DATE} -->
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
     <string name="wallet_certificate_valid_from">"Valido in Svizzera dal:
 {DATE}"</string>
@@ -312,12 +304,11 @@ Certificat valide dès :
     <string name="wallet_onboarding_store_text1">"I certificati COVID possono essere aggiunti facilmente all'app e conservati in formato digitalizzato."</string>
 
     <!-- Text2 im Onboardingscreen "Vorteile, Aufbewahren" -->
-    <string name="wallet_onboarding_store_text2">"Lʼapp controlla la validità dei certificati in Svizzera. In tal modo ha la certezza che i Suoi certificati sono validi."</string>
+    <string name="wallet_onboarding_store_text2">"Lʼapp verifica la validità dei certificati in Svizzera. In tal modo hai la certezza che i tuoi certificati sono validi."</string>
 
     <!-- Header im Onboarding-Screen "Vorteile, Vorweisen" -->
     <string name="wallet_onboarding_show_header">"Vantaggi"</string>
 
-    <!-- Impressum -->
     <!-- Accessibility: Information -->
     <string name="accessibility_info_button">"Impressum"</string>
 
@@ -345,12 +336,9 @@ Certificat valide dès :
     <!-- Unbekannter Fehler -->
     <string name="unknown_error">"Si è verificato un errore sconosciuto."</string>
 
-    <!-- Prefix Schweiz -->
     <!-- Verifier: Die Gültigkeit des Zertifikat ist abgelaufen -->
     <string name="verifier_verifiy_error_expired">"Non conforme ai criteri di validità svizzeri: La validità del certificato è scaduta."</string>
 
-    <!-- cf: Text angepasst. War vorher:
-Zertifikat ist erst gültig ab {DATE}. -->
     <!-- Verifier: Zertifikat ist erst gültig ab {DATE} -->
     <string name="verifier_verifiy_error_notyetvalid">"Non conforme ai criteri di validità svizzeri: Il certificato non è ancora valido."</string>
 
@@ -372,11 +360,10 @@ Zertifikat ist erst gültig ab {DATE}. -->
 è scaduta"</string>
 
     <!-- Wallet: Zertifikat wurde widerrufen -->
-    <string name="wallet_error_revocation">"Il certificato è stato revocato"</string>
+    <string name="wallet_error_revocation">"Il certificato è stato 
+revocato"</string>
 
-    <!-- deepl -->
     <!-- Wallet: Zertifikat mit ungültiger Signatur -->
-    <!-- Fuzzy -->
     <string name="wallet_error_invalid_signature">"Certificato con 
 firma non valida"</string>
 
@@ -393,13 +380,13 @@ firma non valida"</string>
     <string name="wallet_certificate_already_exists">"Questo certificato è già salvato nell'app"</string>
 
     <!-- Titel Gültigkeit im Zertifikatsdetail -->
-    <string name="wallet_certificate_validity">"Validità in Svizzera"</string>
+    <string name="wallet_certificate_validity">"Validità in 
+Svizzera"</string>
 
     <!-- Kontext:
 Validità in Svizzera
 fino al -->
     <!-- "Bis" Label im Zertifikats-Detail -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_valid_until">"fino al"</string>
 
     <!-- Message im Zertifikatsdetail während Überprüfung -->
@@ -414,18 +401,17 @@ fino al -->
     <!-- Button Schliessen -->
     <string name="close_button">"Chiudi"</string>
     <string name="wallet_certificate_impfdosis_title">"Dose"</string>
-    <string name="target_disease_name">"Covid-19"</string>
+    <string name="target_disease_name">"COVID-19"</string>
     <string name="wallet_certificate_target_disease_title">"Malattia o agente patogeno"</string>
     <string name="wallet_certificate_impfstoff_title">"Tipo di vaccino"</string>
     <string name="wallet_certificate_impfstoff_product_name_title">"Prodotto"</string>
-    <string name="wallet_certificate_impfstoff_holder">"Produttore"</string>
-    <string name="wallet_certificate_vaccination_date_title">"Data della vaccinazione"</string>
-    <string name="wallet_certificate_vaccination_country_title">"Paese di vaccinazione"</string>
+    <string name="wallet_certificate_impfstoff_holder">"Fabbricante"</string>
+    <string name="wallet_certificate_vaccination_date_title">"Data di vaccinazione"</string>
+    <string name="wallet_certificate_vaccination_country_title">"Paese della vaccinazione"</string>
 
     <!-- Prüfen mit PDF Translation -->
-    <!-- Fuzzy -->
-    <string name="wallet_certificate_vaccination_issuer_title">"tbd"</string>
-    <string name="covid_certificate_recovery_title">"Recupero"</string>
+    <string name="wallet_certificate_vaccination_issuer_title">"Emittente"</string>
+    <string name="covid_certificate_recovery_title">"Guarigione"</string>
     <string name="wallet_certificate_recovery_first_positiv_result">"Data del primo risultato positivo"</string>
     <string name="wallet_certificate_recovery_from">"Valido da"</string>
     <string name="wallet_certificate_recovery_until">"Valido fino a"</string>
@@ -436,10 +422,8 @@ fino al -->
     <string name="wallet_certificate_test_result_positiv">"POSITIVO"</string>
     <string name="wallet_certificate_test_type">"Tipo"</string>
     <string name="wallet_certificate_test_name">"Nome"</string>
-    <string name="wallet_certificate_test_holder">"Produttore"</string>
-    <string name="wallet_certificate_test_sample_date_title">"Data del campionamento"</string>
-
-    <!-- obsolete? -->
+    <string name="wallet_certificate_test_holder">"Fabbricante"</string>
+    <string name="wallet_certificate_test_sample_date_title">"Data del prelievo del campione"</string>
     <string name="wallet_certificate_test_result_date_title">"Data del risultato"</string>
 
     <!-- Header im "So funktionierts" Screen der Verifier-App -->
@@ -464,7 +448,8 @@ fino al -->
     <string name="wallet_certificate_identifier">"UVCI"</string>
 
     <!-- Wallet: Zertifikat erstellt am {DATE} -->
-    <string name="wallet_certificate_date">"Certificato creato il {DATE}"</string>
+    <string name="wallet_certificate_date">"Certificato emesso il
+{DATE}"</string>
 
     <!-- Wallet: Detail Art des Impfstoffs -->
     <string name="wallet_certificate_vaccine_prophylaxis">"Tipo di vaccino"</string>
@@ -476,52 +461,52 @@ fino al -->
     <string name="NSCameraUsageDescription">"Per poter scannerizzare il codice QR l'app deve accedere alla fotocamera"</string>
 
     <!-- Titel 1 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_title">"Come avviene il controllo dei certificati COVID?"</string>
+    <string name="verifier_faq_works_title">"Come avviene la verifica dei certificati COVID?"</string>
 
     <!-- Text 1 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_subtitle">"Con l’app COVID Certificate Check è possibile scansionare i relativi codici QR e verificare l'autenticità e la validità dei certificati COVID."</string>
+    <string name="verifier_faq_works_subtitle">"Con la app COVID Certificate Check è possibile scansionare i relativi codici QR e verificare l'autenticità e la validità dei certificati COVID."</string>
 
     <!-- Frage 1 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_question_1">"Come posso controllare i certificati COVID?"</string>
+    <string name="verifier_faq_works_question_1">"Come posso verificare i certificati COVID?"</string>
 
     <!-- Antwort 1 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_1">"Per controllare un certificato Covid, può scansionare il codice QR che trova sulla copia cartacea del certificato oppure sull’app che le viene mostrata."</string>
+    <string name="verifier_faq_works_answer_1">"Per verificare un certificato COVID, può scansionare il codice QR che trova sulla copia cartacea del certificato oppure sulla app che le viene mostrata."</string>
 
     <!-- Frage 2 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_question_2">"Cosa viene controllato esattamente?"</string>
+    <string name="verifier_faq_works_question_2">"Cosa viene verificato esattamente?"</string>
 
     <!-- Antwort 2 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_2">"Scansionando il codice QR vengono controllati i seguenti tre aspetti.
+    <string name="verifier_faq_works_answer_2">"Scansionando il codice QR vengono verificati i seguenti tre aspetti.
 – Il certificato contiene una firma elettronica valida?
 – Il certificato è ancora valido?
 – Il certificato rispetta i criteri di validità previsti dalla normativa svizzera?
 
-Se tutti i tre aspetti sono valutati positivamente, il certificato Covid è considerato valido.
+Se tutti i tre aspetti sono valutati positivamente, il certificato COVID è considerato valido.
 "</string>
 
     <!-- Frage 3 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_3">"Quali documenti d’identità sono accettati? Perché devono essere verificati i dati personali?"</string>
 
     <!-- Antwort 3 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_3">"Sono accettati come documenti d’identità validi il passaporto o la carta d’identità. Il certificato Covid non è falsificabile, tuttavia solo verificando i dati personali si garantisce che il certificato sia stato effettivamente rilasciato alla persona che lo sta mostrando."</string>
+    <string name="verifier_faq_works_answer_3">"Sono accettati come documenti d’identità validi il passaporto o la carta d’identità. Il certificato COVID non è falsificabile, tuttavia solo verificando i dati personali si garantisce che il certificato sia stato effettivamente rilasciato alla persona che lo sta mostrando."</string>
 
     <!-- Frage 4 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_question_4">"Possono essere controllati anche certificati esteri?"</string>
+    <string name="verifier_faq_works_question_4">"Possono essere verificati anche certificati esteri?"</string>
 
     <!-- Antwort 4 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_4">"Sì, con l’app COVID Certificate Check è possibile controllare il rispetto dei criteri di validità previsti dalla normativa svizzera dei certificati COVID compatibili con il «certificato verde digitale» dell’UE."</string>
+    <string name="verifier_faq_works_answer_4">"Sì, con la app COVID Certificate Check è possibile verificare il rispetto dei criteri di validità previsti dalla normativa svizzera dei certificati COVID compatibili con il certificato COVID digitale UE."</string>
 
     <!-- Frage 5 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_question_5">"Quali dati posso visualizzare durante il processo di controllo?"</string>
+    <string name="verifier_faq_works_question_5">"Quali dati posso visualizzare durante il processo di verifica?"</string>
 
     <!-- Antwort 5 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_5">"Durante il processo di controllo visualizzerà solo nome e cognome nonché la data di nascita del proprietario del certificato e l'indicazione della validità del certificato."</string>
+    <string name="verifier_faq_works_answer_5">"Durante il processo di verifica visualizzerà solo nome e cognome nonché la data di nascita del proprietario del certificato e l'indicazione della validità del certificato."</string>
 
     <!-- Frage 6 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_question_6">"Durante il processo di controllo vengono salvati dati nell’app COVID Certificate Check o in un sistema centrale?"</string>
+    <string name="verifier_faq_works_question_6">"Durante il processo di verifica vengono salvati dati nella app COVID Certificate Check o in un sistema centrale?"</string>
 
     <!-- Antwort 6 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_6">"No, durante il processo di controllo non vengono salvati dati nell’app COVID Certificate Check né in un sistema centrale. In questo modo, non è possibile risalire a quali certificati sono stati controllati, da chi, quando e dove."</string>
+    <string name="verifier_faq_works_answer_6">"No, durante il processo di verifica non vengono salvati dati nella app COVID Certificate Check né in un sistema centrale. In questo modo, non è possibile risalire a quali certificati sono stati verificati, da chi, quando e dove."</string>
 
     <!-- iOS Button zum Einstellungen öffnen -->
     <string name="ios_settings_open">"Impostazioni"</string>

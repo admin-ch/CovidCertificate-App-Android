@@ -21,7 +21,7 @@
     <string name="verifier_homescreen_header_title">"COVID certificate"</string>
 
     <!-- Homescreen App Name -->
-    <string name="verifier_homescreen_title">"Verify"</string>
+    <string name="verifier_homescreen_title">"Check"</string>
 
     <!-- Beschreibung für Pager Bild 1 -->
     <string name="verifier_homescreen_pager_description_1">"Scan presented certificate"</string>
@@ -121,7 +121,6 @@ an identity document"</string>
     <!-- Header im Onboarding-Screen "Die App" -->
     <string name="wallet_onboarding_app_header">"The app"</string>
 
-    <!-- Ist das bewusst mit Zeilentrennung? -->
     <!-- Titel im Onboardingscreen "Die App" -->
     <string name="wallet_onboarding_app_title">"COVID Certificate"</string>
 
@@ -135,7 +134,8 @@ an identity document"</string>
     <string name="wallet_onboarding_privacy_header">"Data privacy"</string>
 
     <!-- Titel im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_title">"Your data remain in the app"</string>
+    <string name="wallet_onboarding_privacy_title">"Your data remain 
+in the app"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
     <string name="wallet_onboarding_privacy_text">"The certificates are only saved locally on your smartphone. The data are not stored centrally."</string>
@@ -265,7 +265,7 @@ Please note that you will also need to show an identification document (passport
     <string name="wallet_faq_works_subtitle">"With the COVID Certificate app, you can easily and securely store and present COVID certificates on your mobile device."</string>
 
     <!-- Antwort 1 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_answer1">"You can get a COVID certificate after being fully vaccinated, after recovering from COVID or after a negative test. The medical staff on site will provide you with a certificate on request."</string>
+    <string name="wallet_scanner_howitworks_answer1">"You can get a COVID-19 certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site."</string>
 
     <!-- Verifier: Detail Check Vorname -->
     <string name="verifier_covid_certificate_prename">"First name"</string>
@@ -279,14 +279,6 @@ Please note that you will also need to show an identification document (passport
     <!-- Config: Update Button Aktualisieren -->
     <string name="force_update_button">"Update"</string>
 
-    <!-- cf: Angepasst gem. Feedback BAG. War vorher:
-
-Zertifikat gültig ab:
-{DATE}
-Certificate valid from:
-{DATE}
-Certificat valide dès :
-{DATE} -->
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
     <string name="wallet_certificate_valid_from">"Valid in Switzerland from:
 {DATE}"</string>
@@ -345,8 +337,6 @@ Certificat valide dès :
     <!-- Verifier: Die Gültigkeit des Zertifikat ist abgelaufen -->
     <string name="verifier_verifiy_error_expired">"Does not meet Switzerland's validity criteria: The certificate is no longer valid."</string>
 
-    <!-- cf: Text angepasst. War vorher:
-Zertifikat ist erst gültig ab {DATE}. -->
     <!-- Verifier: Zertifikat ist erst gültig ab {DATE} -->
     <string name="verifier_verifiy_error_notyetvalid">"Does not meet Switzerland's validity criteria: The certificate is not yet valid"</string>
 
@@ -405,7 +395,7 @@ Switzerland"</string>
 
     <!-- Button Schliessen -->
     <string name="close_button">"Close"</string>
-    <string name="wallet_certificate_impfdosis_title">"Nb of dose"</string>
+    <string name="wallet_certificate_impfdosis_title">"Dose"</string>
     <string name="target_disease_name">"Covid-19"</string>
     <string name="wallet_certificate_target_disease_title">"Disease or agent targeted"</string>
     <string name="wallet_certificate_impfstoff_title">"Vaccine type"</string>
@@ -435,7 +425,7 @@ Switzerland"</string>
     <string name="verifier_support_header">"How it works"</string>
 
     <!-- Text im Bestätigungs-Dialog beim Zertifikat löschen -->
-    <string name="wallet_certificate_delete_confirm_text">"Do you really want to delete the certificate?"</string>
+    <string name="wallet_certificate_delete_confirm_text">"Are you sure you want to delete the certificate?"</string>
 
     <!-- Titel eines Abbrechen-Buttons -->
     <string name="cancel_button">"Cancel"</string>
@@ -453,7 +443,8 @@ Switzerland"</string>
     <string name="wallet_certificate_identifier">"UVCI"</string>
 
     <!-- Wallet: Zertifikat erstellt am {DATE} -->
-    <string name="wallet_certificate_date">"Certificate created on {DATE}"</string>
+    <string name="wallet_certificate_date">"Certificate generated on 
+{DATE}"</string>
 
     <!-- Wallet: Detail Art des Impfstoffs -->
     <string name="wallet_certificate_vaccine_prophylaxis">"Vaccine type"</string>
@@ -497,7 +488,7 @@ If the answer to all three questions is affirmative, the COVID certificate is sh
     <string name="verifier_faq_works_question_4">"Can foreign certificates also be checked?"</string>
 
     <!-- Antwort 4 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_4">"Yes, COVID certificates that are compatible with the EU's Digital Green Certificate can be checked according to Switzerland's validity criteria using the COVID Certificate check app."</string>
+    <string name="verifier_faq_works_answer_4">"Yes, COVID certificates that are compatible with the EU digital COVID certificate can be checked according to Switzerland's validity criteria using the COVID Certificate check app."</string>
 
     <!-- Frage 5 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_5">"What data do I see during the verification process?"</string>

@@ -70,7 +70,7 @@ pour vérifier"</string>
     <string name="wallet_scanner_title">"Ajouter"</string>
 
     <!-- Titel bei erfolgreicher Prüfung -->
-    <string name="verifier_verify_success_title">"La vérification a réussi"</string>
+    <string name="verifier_verify_success_title">"Vérification réussie"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
     <string name="verifier_verify_success_info">"Valable uniquement avec 
@@ -121,7 +121,6 @@ une pièce d’identité"</string>
     <!-- Header im Onboarding-Screen "Die App" -->
     <string name="wallet_onboarding_app_header">"L'application"</string>
 
-    <!-- Ist das bewusst mit Zeilentrennung? -->
     <!-- Titel im Onboardingscreen "Die App" -->
     <string name="wallet_onboarding_app_title">"COVID Certificate"</string>
 
@@ -135,7 +134,8 @@ une pièce d’identité"</string>
     <string name="wallet_onboarding_privacy_header">"Protection des données"</string>
 
     <!-- Titel im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_title">"Vos données restent dans l'application"</string>
+    <string name="wallet_onboarding_privacy_title">"Vos données restent 
+dans l'application"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
     <string name="wallet_onboarding_privacy_text">"Les certifications sont uniquement stockés localement sur votre téléphone. Les données ne sont pas enregistrées dans un système central."</string>
@@ -266,7 +266,7 @@ fonctionne-t-elle?"</string>
     <string name="wallet_faq_works_subtitle">"L'app vous permet de stocker des certificats COVID de manière simple et sûre sur votre appareil mobile et de les présenter au moyen de ce dernier."</string>
 
     <!-- Antwort 1 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_answer1">"Vous pouvez obtenir un certificat COVID après une vaccination complète, une guérison ou un test négatif au COVID-19. Le personnel médical l'établira sur place si vous en faites la demande."</string>
+    <string name="wallet_scanner_howitworks_answer1">"Vous pouvez obtenir le certificat COVID si vous êtes entièrement vacciné contre le COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site."</string>
 
     <!-- Verifier: Detail Check Vorname -->
     <string name="verifier_covid_certificate_prename">"Prénom"</string>
@@ -280,14 +280,6 @@ fonctionne-t-elle?"</string>
     <!-- Config: Update Button Aktualisieren -->
     <string name="force_update_button">"Mettre à jour"</string>
 
-    <!-- cf: Angepasst gem. Feedback BAG. War vorher:
-
-Zertifikat gültig ab:
-{DATE}
-Certificate valid from:
-{DATE}
-Certificat valide dès :
-{DATE} -->
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
     <string name="wallet_certificate_valid_from">"Valable en Suisse à partir du : 
 {DATE}"</string>
@@ -346,8 +338,6 @@ Certificat valide dès :
     <!-- Verifier: Die Gültigkeit des Zertifikat ist abgelaufen -->
     <string name="verifier_verifiy_error_expired">"Ne remplit pas les critères de validité de la Suisse: La durée de validité du certificat a expiré."</string>
 
-    <!-- cf: Text angepasst. War vorher:
-Zertifikat ist erst gültig ab {DATE}. -->
     <!-- Verifier: Zertifikat ist erst gültig ab {DATE} -->
     <string name="verifier_verifiy_error_notyetvalid">"Ne remplit pas les critères de validité de la Suisse: Le certificat n'est pas encore valable."</string>
 
@@ -386,7 +376,6 @@ certificat expirée"</string>
     <!-- Meldung wenn erneute ein Zertifikat gescannt wurde, welches bereits in der App ist -->
     <string name="wallet_certificate_already_exists">"Le certificat est déjà enregistré dans l'application."</string>
 
-    <!-- Umbruch prüfen -->
     <!-- Titel Gültigkeit im Zertifikatsdetail -->
     <string name="wallet_certificate_validity">"Validité en 
 Suisse"</string>
@@ -498,7 +487,7 @@ Si vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la 
     <string name="verifier_faq_works_question_4">"Peut-on aussi contrôler des certificats étrangers?"</string>
 
     <!-- Antwort 4 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_4">"Oui. L'app de contrôle permet de vérifier si les certificats COVID compatibles avec le certificat vert numérique de l'Union européenne remplissent les critères de validité fixés par la Suisse."</string>
+    <string name="verifier_faq_works_answer_4">"Oui. L'app de contrôle permet de vérifier si les certificats COVID compatibles avec le certificat COVID numérique de l'UE remplissent les critères de validité fixés par la Suisse."</string>
 
     <!-- Frage 5 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_5">"À quelles données ai-je accès lors du contrôle?"</string>
