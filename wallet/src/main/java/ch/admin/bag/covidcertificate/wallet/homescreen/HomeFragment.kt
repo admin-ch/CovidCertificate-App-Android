@@ -181,7 +181,7 @@ class HomeFragment : Fragment() {
 		certificatesAdapter.setData(certificates)
 		if (hasCertificates) {
 			binding.homescreenCertificatesViewPager.postDelayed({ binding.homescreenCertificatesViewPager.setCurrentItem(0, true) },
-				10)
+				250)
 		}
 	}
 
