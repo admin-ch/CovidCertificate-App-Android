@@ -16,17 +16,17 @@ The app design, UX and implementation was done by [Ubique](https://www.ubique.ch
 
 ## COVID Certificate App
 <p align="center">
-<img src="documentation/wallet/screenshots/en/screenshot1.png" width="20%">
-<img src="documentation/wallet/screenshots/en/screenshot2.png" width="20%">
-<img src="documentation/wallet/screenshots/en/screenshot3.png" width="20%">
-<img src="documentation/wallet/screenshots/en/screenshot4.png" width="20%">
+<img src="documentation/screenshots/wallet/en/screenshot1.png" width="20%">
+<img src="documentation/screenshots/wallet/en/screenshot2.png" width="20%">
+<img src="documentation/screenshots/wallet/en/screenshot3.png" width="20%">
+<img src="documentation/screenshots/wallet/en/screenshot4.png" width="20%">
 </p>
 
 ## COVID Certificate Check App
 <p align="center">
-<img src="documentation/verifier/screenshots/en/screenshot1.png" width="20%">
-<img src="documentation/verifier/screenshots/en/screenshot2.png" width="20%">
-<img src="documentation/verifier/screenshots/en/screenshot3.png" width="20%">
+<img src="documentation/screenshots/verifier/en/screenshot1.png" width="20%">
+<img src="documentation/screenshots/verifier/en/screenshot2.png" width="20%">
+<img src="documentation/screenshots/verifier/en/screenshot3.png" width="20%">
 </p>
 
 ## Contribution Guide
