@@ -55,6 +55,15 @@ data class Jwk(
 			n = n,
 			e = e,
 		)
+
+		fun fromXY(kid: String, x: String, y: String, use: String) = Jwk(
+			kid = kid,
+			kty = "EC",
+			alg = "ES256",
+			use = use,
+			x = x,
+			y = y,
+		)
 	}
 
 	fun getKid(): ByteArray = kid.fromBase64()
@@ -73,6 +82,7 @@ data class Jwk(
 			// Can throw e.g. if the (x, y) pair is not a point on the curve
 			e.printStackTrace()
 		}
+		Log.w(TAG, "Failed to create PublicKey for kid $kid")
 		return null
 	}
 

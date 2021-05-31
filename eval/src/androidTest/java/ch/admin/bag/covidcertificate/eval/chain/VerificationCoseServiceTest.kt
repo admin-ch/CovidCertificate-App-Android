@@ -14,7 +14,7 @@ import androidx.test.ext.junit.runners.AndroidJUnit4
 import ch.admin.bag.covidcertificate.eval.HC1_A
 import ch.admin.bag.covidcertificate.eval.getInvalidSigningKeys
 import ch.admin.bag.covidcertificate.eval.models.CertType
-import ch.admin.bag.covidcertificate.eval.utils.getHardcodedBagSigningKeys
+import ch.admin.bag.covidcertificate.eval.utils.getHardcodedSigningKeys
 import org.junit.Assert.assertFalse
 import org.junit.Assert.assertTrue
 import org.junit.Test
@@ -29,7 +29,7 @@ class VerificationCoseServiceTest {
 
 	@Test
 	fun decode_success() {
-		val bagKeys = getHardcodedBagSigningKeys()
+		val bagKeys = getHardcodedSigningKeys("dev")
 		val coseService = VerificationCoseService(bagKeys)
 
 		val vr = VerificationResult()
@@ -39,6 +39,20 @@ class VerificationCoseServiceTest {
 		coseService.decode(cose, vr, CertType.VACCINATION)
 
 		assertTrue(vr.coseVerified)
+	}
+
+	@Test
+	fun decode_wrongFlavor() {
+		val invalidKeys = getHardcodedSigningKeys("abn")
+		val coseService = VerificationCoseService(invalidKeys)
+
+		val vr = VerificationResult()
+		val encoded = contextIdentifierService.decode(HC1_A, vr)
+		val compressed = base45Service.decode(encoded, vr)
+		val cose = compressorService.decode(compressed, vr)
+		coseService.decode(cose, vr, CertType.VACCINATION)
+
+		assertFalse(vr.coseVerified)
 	}
 
 	@Test

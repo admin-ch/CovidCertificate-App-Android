@@ -15,7 +15,7 @@ import ch.admin.bag.covidcertificate.eval.EvalErrorCodes.SIGNATURE_COSE_INVALID
 import ch.admin.bag.covidcertificate.eval.chain.*
 import ch.admin.bag.covidcertificate.eval.models.Bagdgc
 import ch.admin.bag.covidcertificate.eval.nationalrules.NationalRulesVerifier
-import ch.admin.bag.covidcertificate.eval.utils.getHardcodedBagSigningKeys
+import ch.admin.bag.covidcertificate.eval.utils.getHardcodedSigningKeys
 import com.squareup.moshi.Moshi
 
 
@@ -29,6 +29,8 @@ object Eval {
 	private val compressorService = DecompressionService()
 	private val noopCoseService = NoopVerificationCoseService()
 	private val cborService = DefaultCborService()
+
+	private val signingKeys = getHardcodedSigningKeys()
 
 	/**
 	 * @param qrCodeData content of the scanned qr code, of the format "HC1:base45(...)"
@@ -60,8 +62,6 @@ object Eval {
 	 * @return State for the signature check
 	 */
 	suspend fun checkSignature(bagdgc: Bagdgc, context: Context): CheckSignatureState {
-		val keys = getHardcodedBagSigningKeys()
-
 		val vr = bagdgc.verificationResult
 
 		val timestampVerificationService = TimestampVerificationService()
@@ -70,7 +70,7 @@ object Eval {
 			return CheckSignatureState.INVALID(EvalErrorCodes.SIGNATURE_TIMESTAMP_INVALID)
 		}
 
-		val coseService = VerificationCoseService(keys)
+		val coseService = VerificationCoseService(signingKeys)
 		val type = bagdgc.getType() ?: return CheckSignatureState.INVALID(EvalErrorCodes.SIGNATURE_BAGDGC_TYPE_INVALID)
 		coseService.decode(bagdgc.cose, vr, type)
 
