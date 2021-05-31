@@ -1,6 +1,6 @@
 # COVID Certificate App and COVID Certificate Check App for Switzerland
 
-[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://github.com/DP-3T/dp3t-app-android-ch/blob/master/LICENSE)
+[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://github.com/admin-ch/CovidCertificate-App-Android/blob/main/LICENSE)
 ![Android Build Wallet](https://github.com/admin-ch/CovidCertificate-App-Android/actions/workflows/appcenter_wallet_dev.yml/badge.svg)
 ![Android Build Verifier](https://github.com/admin-ch/CovidCertificate-App-Android/actions/workflows/appcenter_verifier_dev.yml/badge.svg)
 
