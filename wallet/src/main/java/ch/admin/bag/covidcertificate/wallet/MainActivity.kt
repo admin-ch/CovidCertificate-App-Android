@@ -13,6 +13,7 @@ package ch.admin.bag.covidcertificate.wallet
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.view.WindowManager
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.activity.viewModels
@@ -51,6 +52,11 @@ class MainActivity : AppCompatActivity() {
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		val view = binding.root
 		setContentView(view)
+
+		val allowlistedFlavours = listOf("abn", "dev")
+		if (!allowlistedFlavours.contains(BuildConfig.FLAVOR)) {
+			window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
+		}
 
 		if (savedInstanceState == null) {
 			val onboardingCompleted: Boolean = secureStorage.getOnboardingCompleted()
