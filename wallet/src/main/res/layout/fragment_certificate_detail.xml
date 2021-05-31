@@ -133,6 +133,7 @@
 							android:backgroundTint="@color/blueish"
 							android:gravity="center"
 							android:padding="@dimen/spacing_medium_large"
+							android:minLines="2"
 							app:layout_constraintTop_toTopOf="parent"
 							tools:text="@string/verifier_verify_success_info" />
 
@@ -145,6 +146,7 @@
 							android:backgroundTint="@color/blueish"
 							android:gravity="center"
 							android:padding="@dimen/spacing_medium_large"
+							android:minLines="2"
 							app:layout_constraintTop_toTopOf="@id/certificate_detail_info"
 							app:layout_constraintBottom_toBottomOf="@id/certificate_detail_info"
 							tools:text="@string/verifier_verify_success_title"
