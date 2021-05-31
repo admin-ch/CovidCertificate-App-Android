@@ -236,7 +236,9 @@ class CertificateDetailFragment : Fragment() {
 			val context = binding.root.context
 
 			binding.certificateDetailQrCodeStatusGroup.hideAnimated()
-			binding.certificateDetailQrCodeColor.animateBackgroundTintColor(ContextCompat.getColor(context, R.color.transparent))
+			binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
+				ContextCompat.getColor(context, android.R.color.transparent)
+			)
 			binding.certificateDetailInfoVerificationStatus.hideAnimated()
 			binding.certificateDetailInfoValidityGroup.animateBackgroundTintColor(
 				ContextCompat.getColor(

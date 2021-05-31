@@ -78,7 +78,7 @@
 								android:layout_height="match_parent"
 								android:alpha="0.9"
 								android:background="@color/grey"
-								android:backgroundTint="@color/transparent"
+								android:backgroundTint="@android:color/transparent"
 								tools:backgroundTint="@color/grey"/>
 
 							<ImageView
