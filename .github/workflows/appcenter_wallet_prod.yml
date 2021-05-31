@@ -16,15 +16,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build with Gradle
-      uses: ./.github/actions/gradle_docker
-      with:
-        gradle-cmd: wallet:assembleProdRelease -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
-    - name: upload artefact to App Center
-      uses: wzieba/AppCenter-Github-Action@v1.0.0
-      with:
-        appName: ${{secrets.APPCENTER_ORGANIZATION}}/${{secrets.APPCENTER_WALLET_APP}}
-        token: ${{secrets.APPCENTER_API_TOKEN}}
-        group: public
-        file: wallet/build/outputs/apk/prod/release/wallet-prod-release.apk
+      - uses: actions/checkout@v2
+      - name: Build with Gradle
+        uses: ./.github/actions/gradle_docker
+        with:
+          gradle-cmd: wallet:assembleProdRelease -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
+      - name: upload artefact to App Center
+        uses: wzieba/AppCenter-Github-Action@v1.0.0
+        with:
+          appName: ${{secrets.APPCENTER_ORGANIZATION}}/${{secrets.APPCENTER_WALLET_APP}}
+          token: ${{secrets.APPCENTER_API_TOKEN}}
+          group: public
+          file: wallet/build/outputs/apk/prod/release/wallet-prod-release.apk
+      - name: Upload APK
+        uses: actions/upload-artifact@v1.0.0
+        with:
+          name: wallet.apk
+          path: wallet/build/outputs/apk/prod/release/wallet-prod-release.apk
