@@ -1,4 +1,4 @@
-# COVID Certificate App and COVID Certificate Check App for Switzerland
+# COVID Certificate Apps - Android
 
 [![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://github.com/admin-ch/CovidCertificate-App-Android/blob/main/LICENSE)
 ![Android Build Wallet](https://github.com/admin-ch/CovidCertificate-App-Android/actions/workflows/appcenter_wallet_dev.yml/badge.svg)
@@ -10,7 +10,7 @@ The app design, UX and implementation was done by [Ubique](https://www.ubique.ch
 
 ## COVID Certificate App
 
-COVID Certificate is the official app for storing and presenting Swiss COVID certificates.
+COVID Certificate is the official app for storing and presenting COVID certificates issued in Switzerland.
 The certificates are kept and checked locally on the user's phone.
 
 <p align="center">
