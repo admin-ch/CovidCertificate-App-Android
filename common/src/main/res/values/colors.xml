@@ -20,6 +20,7 @@
 	<color name="grey_light">#DBDBDB</color>
 	<color name="white">#FFFFFFFF</color>
 	<color name="white_50">#80FFFFFF</color>
+	<color name="transparent">#0000</color>
 
 	<color name="red_error">#e20008</color>
 	<color name="red_error_qr_verifier">#ff448d</color>

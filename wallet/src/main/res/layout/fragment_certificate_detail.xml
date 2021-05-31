@@ -77,7 +77,9 @@
 								android:layout_width="match_parent"
 								android:layout_height="match_parent"
 								android:alpha="0.9"
-								android:background="@color/grey" />
+								android:background="@color/grey"
+								android:backgroundTint="@color/transparent"
+								tools:backgroundTint="@color/grey"/>
 
 							<ImageView
 								android:id="@+id/certificate_detail_qr_code_status_icon"

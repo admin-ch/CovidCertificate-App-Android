@@ -18,6 +18,7 @@ import ch.admin.bag.covidcertificate.eval.*
 import ch.admin.bag.covidcertificate.eval.models.Bagdgc
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class CertificateVerifier(
@@ -131,11 +132,15 @@ class CertificateVerifier(
 		}
 	}
 
-	fun startVerification(bagdgc: Bagdgc? = this.bagdgc) {
+	fun startVerification(bagdgc: Bagdgc? = this.bagdgc, delay: Long = 0) {
 		val bagdgc = bagdgc ?: return
 		stateMediator.value = VerificationState.LOADING
-		checkSignature(bagdgc)
-		checkRevocationStatus(bagdgc)
-		checkNationalRules(bagdgc)
+		coroutineScope.launch(Dispatchers.IO) {
+			if (delay > 0) delay(delay)
+			checkSignature(bagdgc)
+			checkRevocationStatus(bagdgc)
+			checkNationalRules(bagdgc)
+		}
+
 	}
 }

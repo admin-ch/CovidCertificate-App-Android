@@ -47,6 +47,7 @@ class CertificateDetailFragment : Fragment() {
 
 	companion object {
 		private const val STATUS_HIDE_DELAY = 2000L
+		private const val STATUS_LOAD_DELAY = 1000L
 
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 
@@ -108,7 +109,7 @@ class CertificateDetailFragment : Fragment() {
 			binding.scrollview.smoothScrollTo(0, 0)
 			isForceValidate = true
 			hideDelayedJob?.cancel()
-			verifier?.startVerification()
+			verifier?.startVerification(delay = STATUS_LOAD_DELAY)
 		}
 	}
 
@@ -160,21 +161,24 @@ class CertificateDetailFragment : Fragment() {
 		val state = verificationState ?: return
 		val context = binding.root.context
 
-		ColorStateList.valueOf(ContextCompat.getColor(context, state.getInfoBubbleColor()))
-			.let { colorStateList ->
-				binding.certificateDetailInfo.backgroundTintList = colorStateList
-				if (!isForceValidate) binding.certificateDetailInfoValidityGroup.backgroundTintList = colorStateList
-			}
-
-		ColorStateList.valueOf(ContextCompat.getColor(context, state.getInfoBubbleValidationColor()))
-			.let { colorStateList ->
-				binding.certificateDetailInfoVerificationStatus.backgroundTintList = colorStateList
-				if (isForceValidate) binding.certificateDetailInfoValidityGroup.backgroundTintList = colorStateList
-			}
+		val infoBubbleColor = ContextCompat.getColor(context, state.getInfoBubbleColor())
+		val infoBubbleValidationColor = ContextCompat.getColor(context, state.getInfoBubbleValidationColor())
 
 		if (isForceValidate) {
-			binding.certificateDetailQrCodeColor.backgroundTintList =
-				ColorStateList.valueOf(ContextCompat.getColor(context, state.getSolidValidationColor()))
+			binding.certificateDetailInfo.animateBackgroundTintColor(infoBubbleColor)
+			binding.certificateDetailInfoValidityGroup.animateBackgroundTintColor(infoBubbleValidationColor)
+			binding.certificateDetailInfoVerificationStatus.animateBackgroundTintColor(infoBubbleValidationColor)
+		} else {
+			val infoBubbleColorTintList = ColorStateList.valueOf(infoBubbleColor)
+			binding.certificateDetailInfoValidityGroup.backgroundTintList = infoBubbleColorTintList
+			binding.certificateDetailInfo.backgroundTintList = infoBubbleColorTintList
+			binding.certificateDetailInfoVerificationStatus.backgroundTintList = ColorStateList.valueOf(infoBubbleValidationColor)
+		}
+
+		if (isForceValidate) {
+			binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
+				ContextCompat.getColor(context, state.getSolidValidationColor())
+			)
 			binding.certificateDetailQrCodeStatusIcon.setImageResource(state.getValidationStatusIconLarge())
 			binding.certificateDetailStatusIcon.setImageResource(state.getValidationStatusIcon())
 
@@ -232,6 +236,7 @@ class CertificateDetailFragment : Fragment() {
 			val context = binding.root.context
 
 			binding.certificateDetailQrCodeStatusGroup.hideAnimated()
+			binding.certificateDetailQrCodeColor.animateBackgroundTintColor(ContextCompat.getColor(context, R.color.transparent))
 			binding.certificateDetailInfoVerificationStatus.hideAnimated()
 			binding.certificateDetailInfoValidityGroup.animateBackgroundTintColor(
 				ContextCompat.getColor(
