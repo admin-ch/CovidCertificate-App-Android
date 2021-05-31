@@ -48,11 +48,15 @@ Please note that the app will be available with approved translations in English
 
 ## Installation and Building
 
-The project can be opened with Android Studio 4.1.2 or later or you can build the project with Gradle using
+The project can be opened with Android Studio 4.1.2 or later.
+Alternatively, you can build the respective apps using Gradle:
 ```sh
-$ ./gradlew assembleProdRelease
+$ ./gradlew verifier:assembleProdRelease
+$ ./gradlew wallet:assembleProdRelease
 ```
-The APK is generated under app/build/outputs/apk/prod/release/package-prod-release.apk
+Note that in order for that to work, you must have set up your own keystore.
+
+The APK is generated under `app/build/outputs/apk/prod/release/app-prod-release.apk` where `app` is one of: `verifier`, `wallet`.
 
 ## Reproducible builds
 
