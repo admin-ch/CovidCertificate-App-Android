@@ -100,7 +100,7 @@ object TestDataGenerator {
 		return gson.fromJson(testJson, Eudgc::class.java)!!
 	}
 
-	fun generateTestRecoveryFromDate(
+	fun generateRecoveryCertFromDate(
 		validDateFrom: LocalDateTime,
 		validDateUntil: LocalDateTime,
 		firstTestResult: LocalDateTime,
@@ -132,7 +132,7 @@ object TestDataGenerator {
 		return gson.fromJson(recoveryJson, Eudgc::class.java)!!
 	}
 
-	fun generateTestRecovery(
+	fun generateRecoveryCert(
 		validSinceNow: Duration,
 		validFromNow: Duration,
 		firstResultWasAgo: Duration,

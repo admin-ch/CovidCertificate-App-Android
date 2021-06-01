@@ -181,21 +181,29 @@ class NationalRulesVerifierTest {
 		)
 		val vaccinationEntry = validCert.v.first()
 		assertTrue(vaccinationEntry.validUntilDate() == validDateUntil)
-		val validResultTodayBeforeUntilDate = nationalRulesVerifier.verifyVaccine(vaccinationEntry,
-			Clock.fixed(Instant.parse("2021-06-30T12:00:00Z"), ZoneId.systemDefault()))
+		val validResultTodayBeforeUntilDate = nationalRulesVerifier.verifyVaccine(
+			vaccinationEntry,
+			Clock.fixed(Instant.parse("2021-06-30T12:00:00Z"), ZoneId.systemDefault())
+		)
 		assertTrue(validResultTodayBeforeUntilDate is CheckNationalRulesState.SUCCESS)
 
-		val validResultTodayEqualUntilDate = nationalRulesVerifier.verifyVaccine(vaccinationEntry,
-			Clock.fixed(Instant.parse("2021-07-01T12:00:00Z"), ZoneId.systemDefault()))
+		val validResultTodayEqualUntilDate = nationalRulesVerifier.verifyVaccine(
+			vaccinationEntry,
+			Clock.fixed(Instant.parse("2021-07-01T12:00:00Z"), ZoneId.systemDefault())
+		)
 		assertTrue(validResultTodayEqualUntilDate is CheckNationalRulesState.SUCCESS)
 
-		val invalidvalidResultTodayAfterUnitlDate = nationalRulesVerifier.verifyVaccine(vaccinationEntry,
-			Clock.fixed(Instant.parse("2021-07-02T12:00:00Z"), ZoneId.systemDefault()))
-		assertTrue(invalidvalidResultTodayAfterUnitlDate is CheckNationalRulesState.NOT_VALID_ANYMORE)
+		val invalidResultTodayAfterUntilDate = nationalRulesVerifier.verifyVaccine(
+			vaccinationEntry,
+			Clock.fixed(Instant.parse("2021-07-02T12:00:00Z"), ZoneId.systemDefault())
+		)
+		assertTrue(invalidResultTodayAfterUntilDate is CheckNationalRulesState.NOT_VALID_ANYMORE)
 
-		val invalidvalidResultTodayBeforFromDate = nationalRulesVerifier.verifyVaccine(vaccinationEntry,
-			Clock.fixed(Instant.parse("2021-01-02T12:00:00Z"), ZoneId.systemDefault()))
-		assertTrue(invalidvalidResultTodayBeforFromDate is CheckNationalRulesState.NOT_YET_VALID)
+		val invalidResultTodayBeforeFromDate = nationalRulesVerifier.verifyVaccine(
+			vaccinationEntry,
+			Clock.fixed(Instant.parse("2021-01-02T12:00:00Z"), ZoneId.systemDefault())
+		)
+		assertTrue(invalidResultTodayBeforeFromDate is CheckNationalRulesState.NOT_YET_VALID)
 	}
 
 	@Test
@@ -265,28 +273,27 @@ class NationalRulesVerifierTest {
 
 	@Test
 	fun testTypeHasToBePcrOrRat() {
-		var validRat = TestDataGenerator.generateTestCert(
+		val validRat = TestDataGenerator.generateTestCert(
 			TestType.RAT.code,
 			AcceptanceCriterias.NEGATIVE_CODE,
 			"1232",
 			AcceptanceCriterias.TARGET_DISEASE,
 			Duration.ofHours(-10)
 		)
-		var validPcr = TestDataGenerator.generateTestCert(
+		val validPcr = TestDataGenerator.generateTestCert(
 			TestType.PCR.code,
 			AcceptanceCriterias.NEGATIVE_CODE,
 			"Nucleic acid amplification with probe detection",
 			AcceptanceCriterias.TARGET_DISEASE,
 			Duration.ofHours(-10)
 		)
-		var invalidTest = TestDataGenerator.generateTestCert(
+		val invalidTest = TestDataGenerator.generateTestCert(
 			"INVALID_TEST_TYPE",
 			AcceptanceCriterias.NEGATIVE_CODE,
 			"Nucleic acid amplification with probe detection",
 			AcceptanceCriterias.TARGET_DISEASE,
 			Duration.ofHours(-10)
 		)
-
 
 		val validRatResult = nationalRulesVerifier.verifyTest(validRat.t.first())
 
@@ -305,7 +312,7 @@ class NationalRulesVerifierTest {
 
 	@Test
 	fun testTestHasToBeInWhitelist() {
-		var invalidTest = TestDataGenerator.generateTestCert(
+		val invalidTest = TestDataGenerator.generateTestCert(
 			TestType.RAT.code,
 			AcceptanceCriterias.NEGATIVE_CODE,
 			"abcdef",
@@ -421,21 +428,21 @@ class NationalRulesVerifierTest {
 
 	@Test
 	fun testRecoveryDiseaseTargetedHasToBeSarsCoV2() {
-		var validRecovery = TestDataGenerator.generateTestRecovery(
+		var validRecovery = TestDataGenerator.generateRecoveryCert(
 			Duration.ofDays(-10),
 			Duration.ofDays(180),
 			Duration.ofDays(-20),
 			AcceptanceCriterias.TARGET_DISEASE
 		)
-		var invalidRecovery = TestDataGenerator.generateTestRecovery(
+		var invalidRecovery = TestDataGenerator.generateRecoveryCert(
 			Duration.ofDays(-10),
 			Duration.ofDays(180),
 			Duration.ofDays(-20),
 			"INVALID DISEASE"
 		)
 
-		var validRecoveryResult = nationalRulesVerifier.verifyRecovery(validRecovery.r.first());
-		var invalidRecoveryResult = nationalRulesVerifier.verifyRecovery(invalidRecovery.r.first());
+		var validRecoveryResult = nationalRulesVerifier.verifyRecovery(validRecovery.r.first())
+		var invalidRecoveryResult = nationalRulesVerifier.verifyRecovery(invalidRecovery.r.first())
 		assertTrue(validRecoveryResult is CheckNationalRulesState.SUCCESS)
 
 		if (invalidRecoveryResult is CheckNationalRulesState.INVALID) {
@@ -448,43 +455,52 @@ class NationalRulesVerifierTest {
 		val firstTestResult = LocalDate.of(2021, 5, 8).atStartOfDay()
 		val validDateFrom = LocalDate.of(2021, 5, 18).atStartOfDay()
 		val validDateUntil = LocalDate.of(2021, 11, 3).atStartOfDay()
-		val validCert = TestDataGenerator.generateTestRecoveryFromDate(
+		val validCert = TestDataGenerator.generateRecoveryCertFromDate(
 			validDateFrom = validDateFrom,
 			validDateUntil = validDateUntil,
 			firstTestResult = firstTestResult,
-			AcceptanceCriterias.TARGET_DISEASE)
+			AcceptanceCriterias.TARGET_DISEASE
+		)
 
 		assertTrue(validCert.r[0].validFromDate() == validDateFrom)
 		val todayBeforeUtil = Clock.fixed(Instant.parse("2021-11-02T12:00:00Z"), ZoneId.systemDefault())
 		val validResultBefore = nationalRulesVerifier.verifyRecovery(validCert.r.first(), todayBeforeUtil)
 		assertTrue(validResultBefore is CheckNationalRulesState.SUCCESS)
 
-		val validResultTodayEqualToUntilDate = nationalRulesVerifier.verifyRecovery(validCert.r.first(),
-			Clock.fixed(Instant.parse("2021-11-03T12:00:00Z"), ZoneId.systemDefault()))
+		val validResultTodayEqualToUntilDate = nationalRulesVerifier.verifyRecovery(
+			validCert.r.first(),
+			Clock.fixed(Instant.parse("2021-11-03T12:00:00Z"), ZoneId.systemDefault())
+		)
 		assertTrue(validResultTodayEqualToUntilDate is CheckNationalRulesState.SUCCESS)
 
-		val validResultTodayEqualToFromDate = nationalRulesVerifier.verifyRecovery(validCert.r.first(),
-			Clock.fixed(Instant.parse("2021-05-18T12:00:00Z"), ZoneId.systemDefault()))
+		val validResultTodayEqualToFromDate = nationalRulesVerifier.verifyRecovery(
+			validCert.r.first(),
+			Clock.fixed(Instant.parse("2021-05-18T12:00:00Z"), ZoneId.systemDefault())
+		)
 		assertTrue(validResultTodayEqualToFromDate is CheckNationalRulesState.SUCCESS)
 
-		val invalidvalidResultTodayIsAfterUntilDate = nationalRulesVerifier.verifyRecovery(validCert.r.first(),
-			Clock.fixed(Instant.parse("2021-11-04T12:00:00Z"), ZoneId.systemDefault()))
-		assertTrue(invalidvalidResultTodayIsAfterUntilDate is CheckNationalRulesState.NOT_VALID_ANYMORE)
+		val invalidResultTodayIsAfterUntilDate = nationalRulesVerifier.verifyRecovery(
+			validCert.r.first(),
+			Clock.fixed(Instant.parse("2021-11-04T12:00:00Z"), ZoneId.systemDefault())
+		)
+		assertTrue(invalidResultTodayIsAfterUntilDate is CheckNationalRulesState.NOT_VALID_ANYMORE)
 
-		val invalidvalidResultTodayIsBeforeFromDate = nationalRulesVerifier.verifyRecovery(validCert.r.first(),
-			Clock.fixed(Instant.parse("2021-05-17T12:00:00Z"), ZoneId.systemDefault()))
-		assertTrue(invalidvalidResultTodayIsBeforeFromDate is CheckNationalRulesState.NOT_YET_VALID)
+		val invalidResultTodayIsBeforeFromDate = nationalRulesVerifier.verifyRecovery(
+			validCert.r.first(),
+			Clock.fixed(Instant.parse("2021-05-17T12:00:00Z"), ZoneId.systemDefault())
+		)
+		assertTrue(invalidResultTodayIsBeforeFromDate is CheckNationalRulesState.NOT_YET_VALID)
 	}
 
 	@Test
 	fun testCertificateIsValidFor180DaysAfter() {
-		val validCert = TestDataGenerator.generateTestRecovery(
+		val validCert = TestDataGenerator.generateRecoveryCert(
 			Duration.ofDays(-10),
 			Duration.ofDays(0),
 			Duration.ofDays(-179),
 			AcceptanceCriterias.TARGET_DISEASE
 		)
-		val invalidCert = TestDataGenerator.generateTestRecovery(
+		val invalidCert = TestDataGenerator.generateRecoveryCert(
 			Duration.ofDays(-10),
 			Duration.ofDays(0),
 			Duration.ofDays(-180),
@@ -500,13 +516,13 @@ class NationalRulesVerifierTest {
 
 	@Test
 	fun testTestIsOnlyValid10DaysAfterTestResult() {
-		val validCert = TestDataGenerator.generateTestRecovery(
+		val validCert = TestDataGenerator.generateRecoveryCert(
 			Duration.ofDays(-10),
 			Duration.ofDays(0),
 			Duration.ofDays(-10),
 			AcceptanceCriterias.TARGET_DISEASE
 		)
-		val invalidCert = TestDataGenerator.generateTestRecovery(
+		val invalidCert = TestDataGenerator.generateRecoveryCert(
 			Duration.ofDays(-10),
 			Duration.ofDays(0),
 			Duration.ofDays(-9),
