@@ -8,7 +8,6 @@
   ~
   ~ SPDX-License-Identifier: MPL-2.0
   -->
-
 <resources>
 
     <!-- Android App Name -->
@@ -74,7 +73,7 @@ pour vérifier"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
     <string name="verifier_verify_success_info">"Valable uniquement avec 
-une pièce d’identité"</string>
+une pièce d'identité"</string>
 
     <!-- Prüfung loading text -->
     <string name="verifier_verify_loading_text">"Vérification en cours"</string>
