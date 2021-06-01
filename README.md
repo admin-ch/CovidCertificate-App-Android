@@ -49,6 +49,8 @@ Please note that the app will be available with approved translations in English
 
 ## Installation and Building
 
+Make sure to properly check out the submodule: `git submodule update --init`.
+
 The project can be opened with Android Studio 4.1.2 or later.
 Alternatively, you can build the respective apps using Gradle:
 ```sh
