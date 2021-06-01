@@ -6,7 +6,6 @@
 
 This project is released by the the Federal Office of Information Technology, Systems and Telecommunication FOITT
 on behalf of the Federal Office of Public Health FOPH.
-The app design, UX and implementation was done by [Ubique](https://www.ubique.ch?app=github).
 
 ## COVID Certificate App
 
