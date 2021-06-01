@@ -295,7 +295,7 @@ class NationalRulesVerifierTest {
 		var validTest = TestDataGenerator.generateTestCert(
 			TestType.RAT.code,
 			AcceptanceCriterias.NEGATIVE_CODE,
-			"abcdef",
+			"1097",
 			AcceptanceCriterias.TARGET_DISEASE,
 			Duration.ofHours(-10)
 		)
@@ -417,13 +417,13 @@ class NationalRulesVerifierTest {
 		val validCert =  TestDataGenerator.generateTestRecovery(
 			Duration.ofDays(-10),
 			Duration.ofDays(0),
-			Duration.ofDays(-180),
+			Duration.ofDays(-179),
 			AcceptanceCriterias.TARGET_DISEASE
 		)
 		val invalidCert =  TestDataGenerator.generateTestRecovery(
 			Duration.ofDays(-10),
 			Duration.ofDays(0),
-			Duration.ofDays(-181),
+			Duration.ofDays(-180),
 			AcceptanceCriterias.TARGET_DISEASE
 		)
 
