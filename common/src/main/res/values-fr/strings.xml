@@ -138,7 +138,7 @@ une pièce d’identité"</string>
 dans l'application"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_text">"Les certifications sont uniquement stockés localement sur votre téléphone. Les données ne sont pas enregistrées dans un système central."</string>
+    <string name="wallet_onboarding_privacy_text">"Les certificats sont uniquement stockés localement sur votre téléphone. Les données ne sont pas enregistrées dans un système central."</string>
 
     <!-- Titel im Onboardingscreen "Vorteile, Vorweisen" -->
     <string name="wallet_onboarding_show_title">"Présenter facilement vos certificats"</string>
@@ -170,7 +170,7 @@ certificats COVID"</string>
     <string name="wallet_scanner_howitworks_text1">"Pour ajouter un certificat COVID dans l'application, vous avez besoin de l'original en papier ou en PDF."</string>
 
     <!-- Textblock 2 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_text2">"Cliquez sur \"Ajouter\" dans l'application pour ajouter un nouveau certification dans l'application."</string>
+    <string name="wallet_scanner_howitworks_text2">"Cliquez sur \"Ajouter\" dans l'application pour ajouter un nouveau certificat dans l'application."</string>
 
     <!-- Textblock 3 im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_text3">"Maintenez l'appareil photo du téléphone sur le code QR du certificat original pour le scanner."</string>
