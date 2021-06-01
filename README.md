@@ -4,8 +4,8 @@
 ![Android Build Wallet](https://github.com/admin-ch/CovidCertificate-App-Android/actions/workflows/appcenter_wallet_dev.yml/badge.svg)
 ![Android Build Verifier](https://github.com/admin-ch/CovidCertificate-App-Android/actions/workflows/appcenter_verifier_dev.yml/badge.svg)
 
-This project is released by the the Federal Office of Information Technology, Systems and Telecommunication FOITT
-on behalf of the Federal Office of Public Health FOPH.
+This project is released by the the [Federal Office of Information Technology, Systems and Telecommunication FOITT](https://www.bit.admin.ch/)
+on behalf of the [Federal Office of Public Health FOPH](https://www.bag.admin.ch/).
 The app design, UX and implementation was done by [Ubique](https://www.ubique.ch?app=github).
 
 ## COVID Certificate App
@@ -41,9 +41,10 @@ Please note that the app will be available with approved translations in English
 
 ## Repositories
 
-* iOS SDK: [CovidCertificate-SDK-iOS](https://github.com/admin-ch/CovidCertificate-SDK-iOS)
 * Android App: [CovidCertificate-App-Android](https://github.com/admin-ch/CovidCertificate-App-Android)
+* Android SDK: [CovidCertificate-SDK-Android](https://github.com/admin-ch/CovidCertificate-SDK-Android)
 * iOS App: [CovidCertificate-App-iOS](https://github.com/admin-ch/CovidCertificate-App-iOS)
+* iOS SDK: [CovidCertificate-SDK-iOS](https://github.com/admin-ch/CovidCertificate-SDK-iOS)
 * Config Service: [CovidCertificate-App-Config-Service](https://github.com/admin-ch/CovidCertificate-App-Config-Service)
 
 ## Installation and Building
