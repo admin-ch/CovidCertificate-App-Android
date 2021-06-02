@@ -40,7 +40,7 @@ android {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
 		minSdkVersion 24
 		targetSdkVersion 30
-		versionCode 1000
+		versionCode 1001
 		versionName "1.0.0"
 
 		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
