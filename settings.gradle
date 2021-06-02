@@ -8,7 +8,9 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-include ':eval'
+include ':sdk'
+project(':sdk').projectDir = new File('./sdk/sdk')
+
 include ':common'
 include ':verifier'
 include ':wallet'
