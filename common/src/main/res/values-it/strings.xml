@@ -163,7 +163,7 @@
     <string name="wallet_scanner_howitworks_title">"Aggiungere certificati Covid"</string>
 
     <!-- Textblock 1 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_text1">"Per aggiungere un certificato COVID a un'app è necessario il certificato originale cartaceo o in formato PDF."</string>
+    <string name="wallet_scanner_howitworks_text1">"Per aggiungere un certificato COVID all'app è necessario il certificato originale cartaceo o in formato PDF."</string>
 
     <!-- Textblock 2 im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_text2">"Prema su «aggiungi» per aggiungere un nuovo certificato allʼapp."</string>
