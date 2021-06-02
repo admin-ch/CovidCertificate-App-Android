@@ -14,6 +14,7 @@ import ch.admin.bag.covidcertificate.eval.data.Eudgc
 import com.google.gson.Gson
 import java.time.Duration
 import java.time.LocalDate
+import java.time.LocalDateTime
 import java.time.OffsetDateTime
 import java.time.format.DateTimeFormatter
 
@@ -28,7 +29,7 @@ object TestDataGenerator {
 		mp: String, // medical product code
 		tg: String, // target disease code
 		vp: String, // vaccine prophylaxis code
-		vaccinationDate: LocalDate,
+		vaccinationDate: LocalDateTime,
 	): Eudgc {
 		val vaccineJson = """
                {
@@ -64,7 +65,7 @@ object TestDataGenerator {
 		testResult: String,
 		name: String,
 		disease: String,
-		sampleCollectionWasAgo: Duration
+		sampleCollectionWasAgo: Duration,
 	): Eudgc {
 		val now = OffsetDateTime.now()
 		val sampleCollectionTime = now + sampleCollectionWasAgo
@@ -99,11 +100,43 @@ object TestDataGenerator {
 		return gson.fromJson(testJson, Eudgc::class.java)!!
 	}
 
-	fun generateTestRecovery(
+	fun generateRecoveryCertFromDate(
+		validDateFrom: LocalDateTime,
+		validDateUntil: LocalDateTime,
+		firstTestResult: LocalDateTime,
+		disease: String,
+	): Eudgc {
+		val recoveryJson = """
+               {
+                 "r": [
+                   {
+                     "ci": "urn:uvci:01:AT:858CC18CFCF5965EF82F60E493349AA5Y",
+                     "co": "AT",
+                     "df": "${validDateFrom.format(DateTimeFormatter.ISO_DATE)}",
+                     "du": "${validDateUntil.format(DateTimeFormatter.ISO_DATE)}",
+                     "fr": "${firstTestResult.format(DateTimeFormatter.ISO_DATE)}",
+                     "is": "BMSGPK Austria",
+                     "tg": "$disease"
+                   }
+                 ],
+                 "dob": "1998-02-26",
+                 "nam": {
+                   "fn": "Musterfrau-Gößinger",
+                   "gn": "Gabriele",
+                   "fnt": "MUSTERFRAU<GOESSINGER",
+                   "gnt": "GABRIELE"
+                 },
+                 "ver": "1.0.0"
+               }
+            """
+		return gson.fromJson(recoveryJson, Eudgc::class.java)!!
+	}
+
+	fun generateRecoveryCert(
 		validSinceNow: Duration,
 		validFromNow: Duration,
 		firstResultWasAgo: Duration,
-		disease: String
+		disease: String,
 	): Eudgc {
 		val now = LocalDate.now().atStartOfDay()
 		val recoveryJson = """
