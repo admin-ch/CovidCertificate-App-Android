@@ -39,6 +39,7 @@ object Eval {
 		val encoded = contextIdentifierService.decode(qrCodeData, verificationResult)
 		val compressed = base45Service.decode(encoded, verificationResult)
 		val cose = compressorService.decode(compressed, verificationResult)
+			?: return DecodeState.ERROR(Error(EvalErrorCodes.DECODE_Z_LIB))
 		val cbor = noopCoseService.decode(cose, verificationResult)
 		val eudgc = cborService.decode(cbor, verificationResult)
 

@@ -15,8 +15,7 @@ import ch.admin.bag.covidcertificate.eval.HC1_A
 import ch.admin.bag.covidcertificate.eval.getInvalidSigningKeys
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.utils.getHardcodedBagSigningKeys
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertTrue
+import org.junit.Assert.*
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -36,7 +35,8 @@ class VerificationCoseServiceTest {
 		val encoded = contextIdentifierService.decode(HC1_A, vr)
 		val compressed = base45Service.decode(encoded, vr)
 		val cose = compressorService.decode(compressed, vr)
-		coseService.decode(cose, vr, CertType.VACCINATION)
+		assertNotNull(cose)
+		coseService.decode(cose!!, vr, CertType.VACCINATION)
 
 		assertTrue(vr.coseVerified)
 	}
@@ -50,7 +50,8 @@ class VerificationCoseServiceTest {
 		val encoded = contextIdentifierService.decode(HC1_A, vr)
 		val compressed = base45Service.decode(encoded, vr)
 		val cose = compressorService.decode(compressed, vr)
-		coseService.decode(cose, vr, CertType.VACCINATION)
+		assertNotNull(cose)
+		coseService.decode(cose!!, vr, CertType.VACCINATION)
 
 		assertFalse(vr.coseVerified)
 	}
