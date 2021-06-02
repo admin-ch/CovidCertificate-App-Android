@@ -13,14 +13,14 @@ package ch.admin.bag.covidcertificate.wallet
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.view.WindowManager
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.util.UrlUtil
+import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.wallet.data.SecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityMainBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.HomeFragment
@@ -53,10 +53,7 @@ class MainActivity : AppCompatActivity() {
 		val view = binding.root
 		setContentView(view)
 
-		val allowlistedFlavours = listOf("abn", "dev")
-		if (!allowlistedFlavours.contains(BuildConfig.FLAVOR)) {
-			window.setFlags(WindowManager.LayoutParams.FLAG_SECURE, WindowManager.LayoutParams.FLAG_SECURE)
-		}
+		window.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR)
 
 		if (savedInstanceState == null) {
 			val onboardingCompleted: Boolean = secureStorage.getOnboardingCompleted()
@@ -90,6 +87,7 @@ class MainActivity : AppCompatActivity() {
 				.setPositiveButton(R.string.force_update_button, null)
 				.setCancelable(false)
 				.create()
+				.apply { window?.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR) }
 			forceUpdateDialog.setOnShowListener {
 				forceUpdateDialog.getButton(DialogInterface.BUTTON_POSITIVE)
 					.setOnClickListener {

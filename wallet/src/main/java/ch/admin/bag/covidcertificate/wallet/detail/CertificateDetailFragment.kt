@@ -27,6 +27,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.common.util.parseIsoTimeAndFormat
+import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.verification.CertificateVerifier
 import ch.admin.bag.covidcertificate.common.verification.VerificationState
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
@@ -34,6 +35,7 @@ import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.eval.models.Bagdgc
 import ch.admin.bag.covidcertificate.eval.utils.*
+import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
@@ -101,6 +103,7 @@ class CertificateDetailFragment : Fragment() {
 				}
 				.setCancelable(true)
 				.create()
+				.apply { window?.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR) }
 				.show()
 		}
 
