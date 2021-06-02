@@ -62,15 +62,16 @@ class ConfigRepository private constructor(context: Context) {
 	}
 
 	suspend fun loadConfig(context: Context): ConfigModel? {
-		var config = if (storage.getConfigLastSuccessTimestamp() + MIN_LOAD_WAIT_TIME <= System.currentTimeMillis()) {
+		val requestTimeStamp = System.currentTimeMillis()
+		val appVersion = APP_VERSION_PREFIX_ANDROID + BuildConfig.VERSION_NAME
+		val osVersion = OS_VERSION_PREFIX_ANDROID + Build.VERSION.SDK_INT
+		val buildNumber = BuildConfig.BUILD_TIME.toString()
+		val versionString = "appversion=$appVersion&osversion=$osVersion&buildnr=$buildNumber"
+		var config = if (storage.getConfigLastSuccessTimestamp() + MIN_LOAD_WAIT_TIME <= System.currentTimeMillis() || versionString != storage.getConfigLastSuccessAppAndOSVersion()) {
 			try {
-				val requestTimeStamp = System.currentTimeMillis()
-				val appVersion = APP_VERSION_PREFIX_ANDROID + BuildConfig.VERSION_NAME
-				val osVersion = OS_VERSION_PREFIX_ANDROID + Build.VERSION.SDK_INT
-				val buildNumber = BuildConfig.BUILD_TIME.toString()
 				val response = withContext(Dispatchers.IO) { configService.getConfig(appVersion, osVersion, buildNumber) }
 				if (!response.isSuccessful) throw HttpException(response)
-				response.body()?.let { storage.updateConfigData(it, requestTimeStamp, BuildConfig.VERSION_NAME) }
+				response.body()?.let { storage.updateConfigData(it, requestTimeStamp, versionString) }
 				response.body()
 			} catch (e: Exception) {
 				e.printStackTrace()
@@ -83,7 +84,5 @@ class ConfigRepository private constructor(context: Context) {
 
 		return config
 	}
-
-	fun forceUpdateValid(): Boolean = BuildConfig.VERSION_NAME == storage.getConfigLastSuccessAppVersion()
 
 }
