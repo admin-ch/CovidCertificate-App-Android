@@ -82,8 +82,7 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	private fun handleConfig(config: ConfigModel) {
-		val configRepository = ConfigRepository.getInstance(this)
-		if (config.forceUpdate && configRepository.forceUpdateValid() && forceUpdateDialog == null) {
+		if (config.forceUpdate && forceUpdateDialog == null) {
 			val forceUpdateDialog = AlertDialog.Builder(this, R.style.CovidCertificate_AlertDialogStyle)
 				.setTitle(R.string.force_update_title)
 				.setMessage(R.string.force_update_text)
