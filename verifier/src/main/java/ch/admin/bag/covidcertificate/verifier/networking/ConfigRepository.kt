@@ -14,6 +14,8 @@ import android.content.Context
 import android.os.Build
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.net.CertificatePinning
+import ch.admin.bag.covidcertificate.common.net.Config
+import ch.admin.bag.covidcertificate.common.net.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.verifier.BuildConfig
@@ -43,6 +45,7 @@ class ConfigRepository private constructor(context: Context) {
 	init {
 		val okHttpBuilder = OkHttpClient.Builder()
 			.certificatePinner(CertificatePinning.pinner)
+			.addInterceptor(UserAgentInterceptor(Config.userAgent))
 
 		val cacheSize = 5 * 1024 * 1024 // 5 MB
 		val cache = Cache(context.cacheDir, cacheSize.toLong())
