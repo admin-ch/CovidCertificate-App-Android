@@ -219,7 +219,7 @@ in the app"</string>
     <string name="wallet_faq_works_question_5">"What data is contained in the QR code?"</string>
 
     <!-- Frage 11 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_question_6">"What if I delete the COVID certificate or the app?"</string>
+    <string name="wallet_faq_works_question_6">"What do I need to do if I delete the COVID certificate or the app?"</string>
 
     <!-- Antwort 1 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_1">"You can get a COVID-19 certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site."</string>
@@ -255,7 +255,7 @@ Please note that you will also need to show an identification document (passport
     <string name="wallet_faq_works_answer_5">"The QR code contains all the information that is found in plain text on your paper COVID certificate. The QR code also contains an electronic signature that can be used to check the authenticity of the COVID certificate. This makes the COVID certificate forgery-proof."</string>
 
     <!-- Antwort 11 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_6">"You can easily restore your COVID certificate to your mobile device. To do so, scan the QR code on your paper or PDF COVID certificate again."</string>
+    <string name="wallet_faq_works_answer_6">"You can easily restore your COVID certificate on your mobile device. To do so, download the app again and then scan the QR code on your paper or PDF COVID certificate."</string>
 
     <!-- Titel 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_title">"How the app works"</string>
@@ -397,7 +397,6 @@ Switzerland"</string>
     <string name="wallet_certificate_impfdosis_title">"Dose"</string>
     <string name="target_disease_name">"Covid-19"</string>
     <string name="wallet_certificate_target_disease_title">"Disease or agent targeted"</string>
-    <string name="wallet_certificate_impfstoff_title">"Vaccine type"</string>
     <string name="wallet_certificate_impfstoff_product_name_title">"Product"</string>
     <string name="wallet_certificate_impfstoff_holder">"Manufacturer"</string>
     <string name="wallet_certificate_vaccination_date_title">"Date of vaccination"</string>
@@ -412,8 +411,8 @@ Switzerland"</string>
     <string name="wallet_certificate_test_land">"Country of Test"</string>
     <string name="covid_certificate_test_title">"Test"</string>
     <string name="wallet_certificate_test_result_title">"Result"</string>
-    <string name="wallet_certificate_test_result_negativ">"NEGATIVE"</string>
-    <string name="wallet_certificate_test_result_positiv">"POSITIVE"</string>
+    <string name="wallet_certificate_test_result_negativ">"Not detected (Negative)"</string>
+    <string name="wallet_certificate_test_result_positiv">"Positive"</string>
     <string name="wallet_certificate_test_type">"Type"</string>
     <string name="wallet_certificate_test_name">"Name"</string>
     <string name="wallet_certificate_test_holder">"Manufacturer"</string>
@@ -464,7 +463,7 @@ Switzerland"</string>
     <string name="verifier_faq_works_question_1">"How can COVID certificates be checked?"</string>
 
     <!-- Antwort 1 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_1">"To check a COVID certificate, scan the QR code on the paper certificate or in the COVID Certificate app presented."</string>
+    <string name="verifier_faq_works_answer_1">"To check a COVID certificate, use the dedicated COVID Certificate Check app to scan the QR code on the paper certificate or in the COVID Certificate app presented."</string>
 
     <!-- Frage 2 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_2">"What exactly is checked?"</string>
@@ -481,7 +480,7 @@ If the answer to all three questions is affirmative, the COVID certificate is sh
     <string name="verifier_faq_works_question_3">"Which identification documents are valid? Why do personal details have to be checked?"</string>
 
     <!-- Antwort 3 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_3">"Passports and ID cards are accepted as valid identification documents. Although the COVID certificate is forgery-proof, the only way to ensure that the certificate shown was issued to the person presenting it is to check the personal details."</string>
+    <string name="verifier_faq_works_answer_3">"Aside from passports or ID cards, other photo identification documents that prove the identity of the person in question (e.g. driving licence) are also accepted. Although the COVID-19 certificate is forgery-proof, the only way to ensure that the certificate shown was issued to the person presenting it is to check the personal details."</string>
 
     <!-- Frage 4 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_4">"Can foreign certificates also be checked?"</string>
@@ -518,4 +517,6 @@ Before travelling, please check the applicable public health measures and relate
 
     <!-- Verifier: Titel in der App (z.B. Impressum) -->
     <string name="verifier_app_title">"COVID Certificate Check"</string>
+    <string name="wallet_faq_questions_question_1_1">"How do I get a COVID-19 certificate after I have recovered from COVID-19?"</string>
+    <string name="wallet_faq_questions_answer_1_1">"People who have recovered from COVID-19 can apply for the COVID-19 certificate via an online form on the canton's website. The COVID-19 certificate will then be sent by post."</string>
 </resources>

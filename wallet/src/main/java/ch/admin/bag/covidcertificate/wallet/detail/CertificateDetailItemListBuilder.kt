@@ -147,15 +147,15 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 			detailItems.add(DividerItem)
 
 			// Test result
-			val resultStringId =
-				if (testEntry.isNegative()) R.string.wallet_certificate_test_result_negativ else R.string.wallet_certificate_test_result_positiv
-			detailItems.add(TitleStatusItem(R.string.wallet_certificate_test_result_title, context.getString(resultStringId)))
-
 			if (testEntry.isTargetDiseaseCorrect()) {
 				detailItems.add(
 					ValueItem(R.string.wallet_certificate_target_disease_title, context.getString(R.string.target_disease_name))
 				)
 			}
+
+			val resultStringId =
+				if (testEntry.isNegative()) R.string.wallet_certificate_test_result_negativ else R.string.wallet_certificate_test_result_positiv
+			detailItems.add(ValueItem(R.string.wallet_certificate_test_result_title, context.getString(resultStringId)))
 
 			// Test details
 			val acceptedTestProvider = AcceptedTestProvider.getInstance(context)

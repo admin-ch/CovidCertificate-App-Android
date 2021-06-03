@@ -220,7 +220,7 @@ hinzufügen"</string>
     <string name="wallet_faq_works_question_5">"Welche Daten sind im QR-Code enthalten?"</string>
 
     <!-- Frage 11 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_question_6">"Was, wenn ich das Covid-Zertifikat oder die App lösche?"</string>
+    <string name="wallet_faq_works_question_6">"Was muss ich tun, wenn ich das Covid-Zertifikat oder die App lösche?"</string>
 
     <!-- Antwort 1 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_1">"Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus."</string>
@@ -228,13 +228,13 @@ hinzufügen"</string>
     <!-- Antwort 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_2">"Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. 
 
-Beachten Sie, dass sie in jedem Fall auch noch ein Ausweisdokument (Pass oder ID) vorweisen müssen."</string>
+Beachten Sie, dass sie in jedem Fall auf Verlangen auch noch ein Ausweisdokument vorweisen müssen."</string>
 
     <!-- Antwort 3 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_3">"Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform."</string>
 
     <!-- Antwort 4 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_4">"Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument (Pass oder ID) gültig."</string>
+    <string name="wallet_faq_questions_answer_4">"Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument gültig."</string>
 
     <!-- Antwort 5 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_5">"Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen."</string>
@@ -243,7 +243,7 @@ Beachten Sie, dass sie in jedem Fall auch noch ein Ausweisdokument (Pass oder ID
     <string name="wallet_faq_works_answer_1">"Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App."</string>
 
     <!-- Antwort 7 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_2">"Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument (Pass oder ID) des Zertifikatsinhabers gültig."</string>
+    <string name="wallet_faq_works_answer_2">"Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument des Zertifikatsinhabers / der Zertifikatsinhaberin gültig."</string>
 
     <!-- Antwort 8 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_3">"In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist."</string>
@@ -255,7 +255,7 @@ Beachten Sie, dass sie in jedem Fall auch noch ein Ausweisdokument (Pass oder ID
     <string name="wallet_faq_works_answer_5">"Der QR-Code enthält alle Informationen, die Sie auf Ihrem Covid-Zertifikat in Papierform im Klartext finden. Weiter befindet sich im QR-Code eine elektronische Signatur, mit der sich die Echtheit des Covid-Zertifikats überprüfen lässt. Dadurch wird das Covid-Zertifikat fälschungssicher."</string>
 
     <!-- Antwort 11 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_6">"Sie können Ihr Covid-Zertifikat einfach wieder auf Ihr Mobilgerät bringen. Scannen Sie dazu erneut den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF."</string>
+    <string name="wallet_faq_works_answer_6">"Sie können Ihr Covid-Zertifikat einfach wieder auf Ihrem Mobilgerät speichern. Laden Sie dazu die App erneut herunter und scannen Sie anschliessend den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF."</string>
 
     <!-- Titel 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_title">"Wie funktioniert 
@@ -398,7 +398,6 @@ Schweiz"</string>
     <string name="wallet_certificate_impfdosis_title">"Impfdosis"</string>
     <string name="target_disease_name">"Covid-19"</string>
     <string name="wallet_certificate_target_disease_title">"Krankheit oder Erreger"</string>
-    <string name="wallet_certificate_impfstoff_title">"Impfstoff"</string>
     <string name="wallet_certificate_impfstoff_product_name_title">"Produkt"</string>
     <string name="wallet_certificate_impfstoff_holder">"Hersteller"</string>
     <string name="wallet_certificate_vaccination_date_title">"Impfdatum"</string>
@@ -413,8 +412,8 @@ Schweiz"</string>
     <string name="wallet_certificate_test_land">"Land des Tests"</string>
     <string name="covid_certificate_test_title">"Test"</string>
     <string name="wallet_certificate_test_result_title">"Ergebnis"</string>
-    <string name="wallet_certificate_test_result_negativ">"NEGATIV"</string>
-    <string name="wallet_certificate_test_result_positiv">"POSITIV"</string>
+    <string name="wallet_certificate_test_result_negativ">"Nicht erkannt (Negativ)"</string>
+    <string name="wallet_certificate_test_result_positiv">"Positiv"</string>
     <string name="wallet_certificate_test_type">"Typ"</string>
     <string name="wallet_certificate_test_name">"Name"</string>
     <string name="wallet_certificate_test_holder">"Hersteller"</string>
@@ -465,7 +464,7 @@ Schweiz"</string>
     <string name="verifier_faq_works_question_1">"Wie können Covid-Zertifikate geprüft werden?"</string>
 
     <!-- Antwort 1 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_1">"Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App."</string>
+    <string name="verifier_faq_works_answer_1">"Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App mit der dafür vorgesehenen COVID Certificate Check App."</string>
 
     <!-- Frage 2 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_2">"Was wird genau geprüft?"</string>
@@ -482,7 +481,7 @@ Wenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als g�
     <string name="verifier_faq_works_question_3">"Welche Ausweisdokumente sind gültig? Weshalb müssen die Personalien überprüft werden?"</string>
 
     <!-- Antwort 3 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_3">"Als gültige Ausweisdokumente werden Pass oder ID akzeptiert. Das Covid-Zertifikat ist zwar fälschungssicher, mit der Überprüfung der Personalien wird aber erst sichergestellt, dass das vorgezeigte Zertifikat auch auf den Vorweisenden ausgestellt wurde."</string>
+    <string name="verifier_faq_works_answer_3">"Neben Pass oder ID werden auch andere Ausweisdokumente akzeptiert, die die Identität der betreffenden Person mit einem Foto belegen (z.B. Führerausweis). Das Covid-Zertifikat ist zwar fälschungssicher, mit der Überprüfung der Personalien wird aber erst sichergestellt, dass das vorgezeigte Zertifikat auch auf den Vorweisenden ausgestellt wurde."</string>
 
     <!-- Frage 4 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_4">"Können auch ausländische Zertifikate geprüft werden?"</string>
@@ -494,7 +493,7 @@ Wenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als g�
     <string name="verifier_faq_works_question_5">"Welche Daten sehe ich beim Prüfvorgang?"</string>
 
     <!-- Antwort 5 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_5">"Beim Prüfvorgang sehen Sie nur den Namen und das Geburtsdatum des Zertifikatsinhabers und ob das Covid-Zertifikat gültig ist."</string>
+    <string name="verifier_faq_works_answer_5">"Beim Prüfvorgang sehen Sie nur den Namen und das Geburtsdatum der Zertifikatsinhaberin oder des Zertifikatsinhabers und ob das Covid-Zertifikat gültig ist."</string>
 
     <!-- Frage 6 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_6">"Werden beim Prüfvorgang in der COVID Certificate Check App oder in einem zentralen System Daten gespeichert?"</string>
@@ -520,4 +519,6 @@ Bitte informieren Sie sich vor der Reise über die geltenden Gesundheitsmassnahm
 
     <!-- Verifier: Titel in der App (z.B. Impressum) -->
     <string name="verifier_app_title">"COVID Certificate Check"</string>
+    <string name="wallet_faq_questions_question_1_1">"Wie erhalte ich nach einer durchgemachten Covid-19-Erkrankung ein Covid-Zertifikat?"</string>
+    <string name="wallet_faq_questions_answer_1_1">"Von Covid-19 genesene Personen können das Covid-Zertifikat über ein Online-Formular auf der Webseite des Kantons beantragen. Das Covid-Zertifikat wird anschliessend per Post zugeschickt."</string>
 </resources>
