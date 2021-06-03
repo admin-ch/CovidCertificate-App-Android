@@ -10,6 +10,6 @@ class MainApplication : Application() {
 	override fun onCreate() {
 		super.onCreate()
 		Config.userAgent =
-			UserAgentInterceptor.UserAgentGenerator { "Android;${Build.VERSION.SDK_INT};${BuildConfig.VERSION_NAME};${BuildConfig.BUILD_TIME}" }
+			UserAgentInterceptor.UserAgentGenerator { "${BuildConfig.VERSION_NAME};${BuildConfig.BUILD_TIME};Android;${Build.VERSION.SDK_INT}" }
 	}
 }
