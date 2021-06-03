@@ -222,7 +222,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailName.setTextColor(textColor)
 		binding.certificateDetailBirthdate.setTextColor(textColor)
 
-		val dateUntilString = certificate.getType()?.let { state.getValidUntilDateString(it) } ?: "–"
+		val dateUntilString = certificate.certType?.let { state.getValidUntilDateString(it) } ?: "–"
 		binding.certificateDetailInfoValidityDate.text = dateUntilString
 		binding.certificateDetailInfoValidityDateDisclaimer.alpha = qrAlpha
 		binding.certificateDetailInfoValidityDateGroup.alpha = qrAlpha

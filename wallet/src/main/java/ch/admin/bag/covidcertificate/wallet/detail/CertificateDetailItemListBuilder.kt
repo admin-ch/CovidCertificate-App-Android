@@ -79,7 +79,7 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 			detailItems.add(DividerItem)
 			detailItems.add(ValueItem(R.string.wallet_certificate_vaccination_issuer_title, vaccinationEntry.getIssuer()))
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, vaccinationEntry.getCertificateIdentifier()))
-			certificate.verificationResult.getIssueAtDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			certificate.issuedAt?.formatAsString(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 			}
@@ -124,7 +124,7 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 			detailItems.add(ValueItem(R.string.wallet_certificate_vaccination_issuer_title, recoveryEntry.getIssuer()))
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, recoveryEntry.getCertificateIdentifier()))
 
-			certificate.verificationResult.getIssueAtDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			certificate.issuedAt?.formatAsString(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 			}
@@ -196,7 +196,7 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 			detailItems.add(ValueItem(R.string.wallet_certificate_vaccination_issuer_title, testEntry.getIssuer()))
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, testEntry.getCertificateIdentifier()))
 
-			certificate.verificationResult.getIssueAtDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			certificate.issuedAt?.formatAsString(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 			}

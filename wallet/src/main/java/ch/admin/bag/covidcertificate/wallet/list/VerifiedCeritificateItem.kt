@@ -30,11 +30,10 @@ data class VerifiedCeritificateItem(val verifiedCertificate: CertificatesViewMod
 		val certificate = verifiedCertificate.certificate
 		val state = verifiedCertificate.state
 
-		val type = certificate.getType()
 		var typeBackgroundColor = R.color.blue
 		var typeTextColor = R.color.white
 		var typeLabelRes = R.string.certificate_reason_vaccinated
-		when (certificate.getType()) {
+		when (certificate.certType) {
 			CertType.RECOVERY -> {
 				typeLabelRes = R.string.certificate_reason_recovered
 			}
@@ -72,7 +71,7 @@ data class VerifiedCeritificateItem(val verifiedCertificate: CertificatesViewMod
 			backgroundTintList = context.resources.getColorStateList(typeBackgroundColor, context.theme)
 			setTextColor(ContextCompat.getColor(context, typeTextColor))
 			setText(typeLabelRes)
-			isVisible = type != null
+			isVisible = certificate.certType != null
 		}
 
 		itemView.setOnClickListener {
