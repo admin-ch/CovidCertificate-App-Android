@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.verifier.data
+package ch.admin.bag.covidcertificate.common.data
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -20,11 +20,11 @@ import com.squareup.moshi.Moshi
 import java.io.IOException
 import java.security.GeneralSecurityException
 
-class SecureStorage private constructor(context: Context) {
+class ConfigSecureStorage private constructor(context: Context) {
 
-	companion object : SingletonHolder<SecureStorage, Context>(::SecureStorage) {
+	companion object : SingletonHolder<ConfigSecureStorage, Context>(::ConfigSecureStorage) {
 
-		private const val PREFERENCES = "SecureStorage"
+		private const val PREFERENCES = "ConfigSecureStorage"
 
 		private const val KEY_CONFIG = "ConfigKey"
 		private const val KEY_CONFIG_LAST_SUCCESS = "LastSuccessTimestampKey"

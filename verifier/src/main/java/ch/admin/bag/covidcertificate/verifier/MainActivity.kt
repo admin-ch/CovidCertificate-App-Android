@@ -19,7 +19,6 @@ import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.verifier.databinding.ActivityMainBinding
-import ch.admin.bag.covidcertificate.verifier.networking.ConfigRepository
 
 class MainActivity : AppCompatActivity() {
 

@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.verifier.networking
+package ch.admin.bag.covidcertificate.common.net
 
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import retrofit2.Response
