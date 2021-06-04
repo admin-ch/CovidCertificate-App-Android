@@ -65,9 +65,9 @@ class CertificatePagerFragment : Fragment() {
 		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
 		binding.certificatePageQrCode.setImageDrawable(qrCodeDrawable)
 
-		val name = "${dccHolder.euDGC.nam.fn} ${dccHolder.euDGC.nam.gn}"
+		val name = "${dccHolder.euDGC.person.familyName} ${dccHolder.euDGC.person.givenName}"
 		binding.certificatePageName.text = name
-		val dateOfBirth = dccHolder.euDGC.dob.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = dccHolder.euDGC.dateOfBirth.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificatePageBirthdate.text = dateOfBirth
 
 		setupStatusInfo()

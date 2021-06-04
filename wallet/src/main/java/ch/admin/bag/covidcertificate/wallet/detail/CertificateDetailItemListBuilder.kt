@@ -32,7 +32,7 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 
 	private fun buildVaccinationEntries(): List<CertificateDetailItem> {
 		val detailItems = ArrayList<CertificateDetailItem>()
-		val vaccinations = dccHolder.euDGC.v
+		val vaccinations = dccHolder.euDGC.vaccinations
 
 		if (vaccinations.isNullOrEmpty()) {
 			return detailItems
@@ -89,7 +89,7 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 
 	private fun buildRecoveryEntries(): List<CertificateDetailItem> {
 		val detailItems = ArrayList<CertificateDetailItem>()
-		val recoveries = dccHolder.euDGC.r
+		val recoveries = dccHolder.euDGC.pastInfections
 
 		if (recoveries.isNullOrEmpty()) {
 			return detailItems
@@ -134,7 +134,7 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 
 	private fun buildTestEntries(): List<CertificateDetailItem> {
 		val detailItems = ArrayList<CertificateDetailItem>()
-		val tests = dccHolder.euDGC.t
+		val tests = dccHolder.euDGC.tests
 
 		if (tests.isNullOrEmpty()) {
 			return detailItems
