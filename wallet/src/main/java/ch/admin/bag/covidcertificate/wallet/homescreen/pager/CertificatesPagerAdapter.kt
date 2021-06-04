@@ -13,11 +13,11 @@ package ch.admin.bag.covidcertificate.wallet.homescreen.pager
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 
 class CertificatesPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
-	private var items: MutableList<BagdgcItem> = mutableListOf()
+	private var items: MutableList<DccHolderItem> = mutableListOf()
 
 	override fun getItemCount(): Int = items.size
 
@@ -31,11 +31,11 @@ class CertificatesPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
 		return items.any { it.id.toLong() == itemId }
 	}
 
-	fun setData(data: List<Bagdgc>) {
-		val newItems: ArrayList<BagdgcItem> = arrayListOf()
+	fun setData(data: List<DccHolder>) {
+		val newItems: ArrayList<DccHolderItem> = arrayListOf()
 
 		for (i in data.indices) {
-			newItems.add(BagdgcItem(data[i].dgc.hashCode(), data[i]))
+			newItems.add(DccHolderItem(data[i].euDGC.hashCode(), data[i]))
 		}
 
 		val callback = PagerDiffUtil(items, newItems)
@@ -47,4 +47,4 @@ class CertificatesPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
 
 }
 
-data class BagdgcItem(val id: Int, val bagdgc: Bagdgc)
+data class DccHolderItem(val id: Int, val bagdgc: DccHolder)

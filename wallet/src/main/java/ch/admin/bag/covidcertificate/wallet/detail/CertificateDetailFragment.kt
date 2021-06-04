@@ -33,7 +33,7 @@ import ch.admin.bag.covidcertificate.common.verification.VerificationState
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
@@ -53,7 +53,7 @@ class CertificateDetailFragment : Fragment() {
 
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 
-		fun newInstance(certificate: Bagdgc): CertificateDetailFragment = CertificateDetailFragment().apply {
+		fun newInstance(certificate: DccHolder): CertificateDetailFragment = CertificateDetailFragment().apply {
 			arguments = bundleOf(ARG_CERTIFICATE to certificate)
 		}
 	}
@@ -63,7 +63,7 @@ class CertificateDetailFragment : Fragment() {
 	private var _binding: FragmentCertificateDetailBinding? = null
 	private val binding get() = _binding!!
 
-	private lateinit var certificate: Bagdgc
+	private lateinit var dccHolder: DccHolder
 	private var verifier: CertificateVerifier? = null
 
 	private var hideDelayedJob: Job? = null
@@ -72,7 +72,7 @@ class CertificateDetailFragment : Fragment() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		certificate = (arguments?.getSerializable(ARG_CERTIFICATE) as? Bagdgc)
+		dccHolder = (arguments?.getSerializable(ARG_CERTIFICATE) as? DccHolder)
 			?: throw IllegalStateException("Certificate detail fragment created without Certificate!")
 	}
 
@@ -95,7 +95,7 @@ class CertificateDetailFragment : Fragment() {
 				.setTitle(R.string.delete_button)
 				.setMessage(R.string.wallet_certificate_delete_confirm_text)
 				.setPositiveButton(R.string.delete_button) { dialog, which ->
-					certificatesViewModel.removeCertificate(certificate.qrCodeData)
+					certificatesViewModel.removeCertificate(dccHolder.qrCodeData)
 					parentFragmentManager.popBackStack()
 				}
 				.setNegativeButton(R.string.cancel_button) { dialog, which ->
@@ -122,7 +122,7 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun displayQrCode() {
-		val qrCodeBitmap = QrCode.renderToBitmap(certificate.qrCodeData)
+		val qrCodeBitmap = QrCode.renderToBitmap(dccHolder.qrCodeData)
 		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
 		binding.certificateDetailQrCode.setImageDrawable(qrCodeDrawable)
 	}
@@ -134,14 +134,14 @@ class CertificateDetailFragment : Fragment() {
 		val adapter = CertificateDetailAdapter()
 		recyclerView.adapter = adapter
 
-		val name = "${certificate.dgc.nam.fn} ${certificate.dgc.nam.gn}"
+		val name = "${dccHolder.euDGC.nam.fn} ${dccHolder.euDGC.nam.gn}"
 		binding.certificateDetailName.text = name
-		val dateOfBirth = certificate.dgc.dob.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = dccHolder.euDGC.dob.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateDetailBirthdate.text = dateOfBirth
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)
 
-		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, certificate).buildAll()
+		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, dccHolder).buildAll()
 		adapter.setItems(detailItems)
 	}
 
@@ -150,7 +150,7 @@ class CertificateDetailFragment : Fragment() {
 			viewLifecycleOwner,
 			object : Observer<Map<String, CertificateVerifier>> {
 				override fun onChanged(verifierMap: Map<String, CertificateVerifier>) {
-					val verifier = verifierMap[certificate.qrCodeData] ?: return
+					val verifier = verifierMap[dccHolder.qrCodeData] ?: return
 					certificatesViewModel.certificateVerifierMapLiveData.removeObserver(this)
 					this@CertificateDetailFragment.verifier = verifier
 					binding.certificateDetailButtonReverify.showAnimated()
@@ -222,7 +222,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailName.setTextColor(textColor)
 		binding.certificateDetailBirthdate.setTextColor(textColor)
 
-		val dateUntilString = certificate.certType?.let { state.getValidUntilDateString(it) } ?: "–"
+		val dateUntilString = dccHolder.certType?.let { state.getValidUntilDateString(it) } ?: "–"
 		binding.certificateDetailInfoValidityDate.text = dateUntilString
 		binding.certificateDetailInfoValidityDateDisclaimer.alpha = qrAlpha
 		binding.certificateDetailInfoValidityDateGroup.alpha = qrAlpha

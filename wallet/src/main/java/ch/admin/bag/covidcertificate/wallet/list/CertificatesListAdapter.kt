@@ -13,10 +13,10 @@ package ch.admin.bag.covidcertificate.wallet.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 
 class CertificatesListAdapter(
-	private val onCertificateClickListener: ((Bagdgc) -> Unit)? = null,
+	private val onCertificateClickListener: ((DccHolder) -> Unit)? = null,
 	private val onCertificateMovedListener: ((from: Int, to: Int) -> Unit)? = null,
 	private val onDragStartListener: ((RecyclerView.ViewHolder) -> Unit)? = null
 ) :

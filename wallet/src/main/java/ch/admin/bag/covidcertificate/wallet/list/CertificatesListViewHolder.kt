@@ -15,12 +15,8 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.core.content.ContextCompat
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
-import ch.admin.bag.covidcertificate.eval.models.CertType
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.R
 
 class CertificatesListViewHolder(
@@ -48,6 +44,6 @@ class CertificatesListViewHolder(
 		}
 	}
 
-	fun bindItem(verifiedCertificate: VerifiedCeritificateItem, onCertificateClickListener: ((Bagdgc) -> Unit)? = null) =
+	fun bindItem(verifiedCertificate: VerifiedCeritificateItem, onCertificateClickListener: ((DccHolder) -> Unit)? = null) =
 		verifiedCertificate.bindView(itemView, onCertificateClickListener)
 }
