@@ -30,7 +30,7 @@ import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.eval.DecodeState
 import ch.admin.bag.covidcertificate.eval.Error
 import ch.admin.bag.covidcertificate.eval.Eval
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
 import com.journeyapps.barcodescanner.BarcodeCallback
@@ -101,7 +101,7 @@ abstract class QrScanFragment : Fragment() {
 		outState.putBoolean(IS_TORCH_ON, isTorchOn)
 	}
 
-	abstract fun onDecodeSuccess(dgc: Bagdgc)
+	abstract fun onDecodeSuccess(dccHolder: DccHolder)
 
 	override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grantResults: IntArray) {
 		if (requestCode == PERMISSION_REQUEST_CAMERA) {
@@ -254,7 +254,7 @@ abstract class QrScanFragment : Fragment() {
 			qrCodeData?.let {
 				when (val decodeState = Eval.decode(qrCodeData)) {
 					is DecodeState.SUCCESS -> {
-						onDecodeSuccess(decodeState.dgc)
+						onDecodeSuccess(decodeState.dccHolder)
 						view?.post { indicateInvalidQrCode(QrScannerState.VALID) }
 					}
 					is DecodeState.ERROR -> {

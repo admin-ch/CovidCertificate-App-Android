@@ -12,7 +12,7 @@ package ch.admin.bag.covidcertificate.wallet.homescreen.pager
 
 import androidx.recyclerview.widget.DiffUtil
 
-class PagerDiffUtil(private val oldList: List<BagdgcItem>, private val newList: List<BagdgcItem>) : DiffUtil.Callback() {
+class PagerDiffUtil(private val oldList: List<DccHolderItem>, private val newList: List<DccHolderItem>) : DiffUtil.Callback() {
 
 	enum class PayloadKey {
 		VALUE

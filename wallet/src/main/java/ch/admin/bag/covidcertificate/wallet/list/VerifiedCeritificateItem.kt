@@ -16,7 +16,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.common.verification.VerificationState
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -25,16 +25,15 @@ import ch.admin.bag.covidcertificate.wallet.util.getStatusIcon
 
 data class VerifiedCeritificateItem(val verifiedCertificate: CertificatesViewModel.VerifiedCertificate) {
 
-	fun bindView(itemView: View, onCertificateClickListener: ((Bagdgc) -> Unit)? = null) {
+	fun bindView(itemView: View, onCertificateClickListener: ((DccHolder) -> Unit)? = null) {
 		val context = itemView.context
-		val certificate = verifiedCertificate.certificate
+		val certificate = verifiedCertificate.dccHolder
 		val state = verifiedCertificate.state
 
-		val type = certificate.getType()
 		var typeBackgroundColor = R.color.blue
 		var typeTextColor = R.color.white
 		var typeLabelRes = R.string.certificate_reason_vaccinated
-		when (certificate.getType()) {
+		when (certificate.certType) {
 			CertType.RECOVERY -> {
 				typeLabelRes = R.string.certificate_reason_recovered
 			}
@@ -51,7 +50,7 @@ data class VerifiedCeritificateItem(val verifiedCertificate: CertificatesViewMod
 			typeTextColor = R.color.grey
 		}
 
-		val name = "${certificate.dgc.nam.fn} ${certificate.dgc.nam.gn}"
+		val name = "${certificate.euDGC.nam.fn} ${certificate.euDGC.nam.gn}"
 		val qrAlpha = state.getQrAlpha()
 		itemView.findViewById<TextView>(R.id.item_certificate_list_name).apply {
 			text = name
@@ -72,7 +71,7 @@ data class VerifiedCeritificateItem(val verifiedCertificate: CertificatesViewMod
 			backgroundTintList = context.resources.getColorStateList(typeBackgroundColor, context.theme)
 			setTextColor(ContextCompat.getColor(context, typeTextColor))
 			setText(typeLabelRes)
-			isVisible = type != null
+			isVisible = certificate.certType != null
 		}
 
 		itemView.setOnClickListener {

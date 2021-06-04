@@ -16,11 +16,11 @@ import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMAT_FUL
 import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.eval.data.AcceptedTestProvider
 import ch.admin.bag.covidcertificate.eval.data.AcceptedVaccineProvider
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*
 import ch.admin.bag.covidcertificate.wallet.R
 
-class CertificateDetailItemListBuilder(val context: Context, val certificate: Bagdgc) {
+class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccHolder) {
 
 	fun buildAll(): List<CertificateDetailItem> {
 		val detailItems = ArrayList<CertificateDetailItem>()
@@ -32,7 +32,7 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 
 	private fun buildVaccinationEntries(): List<CertificateDetailItem> {
 		val detailItems = ArrayList<CertificateDetailItem>()
-		val vaccinations = certificate.dgc.v
+		val vaccinations = dccHolder.euDGC.v
 
 		if (vaccinations.isNullOrEmpty()) {
 			return detailItems
@@ -79,7 +79,7 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 			detailItems.add(DividerItem)
 			detailItems.add(ValueItem(R.string.wallet_certificate_vaccination_issuer_title, vaccinationEntry.getIssuer()))
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, vaccinationEntry.getCertificateIdentifier()))
-			certificate.verificationResult.getIssueAtDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			dccHolder.issuedAt?.formatAsString(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 			}
@@ -89,7 +89,7 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 
 	private fun buildRecoveryEntries(): List<CertificateDetailItem> {
 		val detailItems = ArrayList<CertificateDetailItem>()
-		val recoveries = certificate.dgc.r
+		val recoveries = dccHolder.euDGC.r
 
 		if (recoveries.isNullOrEmpty()) {
 			return detailItems
@@ -124,7 +124,7 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 			detailItems.add(ValueItem(R.string.wallet_certificate_vaccination_issuer_title, recoveryEntry.getIssuer()))
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, recoveryEntry.getCertificateIdentifier()))
 
-			certificate.verificationResult.getIssueAtDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			dccHolder.issuedAt?.formatAsString(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 			}
@@ -134,7 +134,7 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 
 	private fun buildTestEntries(): List<CertificateDetailItem> {
 		val detailItems = ArrayList<CertificateDetailItem>()
-		val tests = certificate.dgc.t
+		val tests = dccHolder.euDGC.t
 
 		if (tests.isNullOrEmpty()) {
 			return detailItems
@@ -196,7 +196,7 @@ class CertificateDetailItemListBuilder(val context: Context, val certificate: Ba
 			detailItems.add(ValueItem(R.string.wallet_certificate_vaccination_issuer_title, testEntry.getIssuer()))
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, testEntry.getCertificateIdentifier()))
 
-			certificate.verificationResult.getIssueAtDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			dccHolder.issuedAt?.formatAsString(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 			}

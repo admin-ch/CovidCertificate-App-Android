@@ -20,30 +20,30 @@ import ch.admin.bag.covidcertificate.common.verification.CertificateVerifier
 import ch.admin.bag.covidcertificate.common.verification.VerificationState
 import ch.admin.bag.covidcertificate.eval.DecodeState
 import ch.admin.bag.covidcertificate.eval.Eval
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.data.CertificateStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class CertificatesViewModel(application: Application) : AndroidViewModel(application) {
 
-	private val certificatesCollectionMutableLiveData = MutableLiveData<List<Bagdgc>>()
-	val certificatesCollectionLiveData: LiveData<List<Bagdgc>> = certificatesCollectionMutableLiveData
+	private val dccHolderCollectionMutableLiveData = MutableLiveData<List<DccHolder>>()
+	val dccHolderCollectionLiveData: LiveData<List<DccHolder>> = dccHolderCollectionMutableLiveData
 
 	private val certificateStorage: CertificateStorage by lazy { CertificateStorage.getInstance(getApplication()) }
 
-	val onQrCodeClickedSingleLiveEvent = SingleLiveEvent<Bagdgc>()
+	val onQrCodeClickedSingleLiveEvent = SingleLiveEvent<DccHolder>()
 
 	fun loadCertificates() {
 		viewModelScope.launch(Dispatchers.Default) {
-			certificatesCollectionMutableLiveData.postValue(
-				certificateStorage.getCertificateList().mapNotNull { (Eval.decode(it) as? DecodeState.SUCCESS)?.dgc }
+			dccHolderCollectionMutableLiveData.postValue(
+				certificateStorage.getCertificateList().mapNotNull { (Eval.decode(it) as? DecodeState.SUCCESS)?.dccHolder }
 			)
 		}
 	}
 
-	fun onQrCodeClicked(certificate: Bagdgc) {
-		onQrCodeClickedSingleLiveEvent.postValue(certificate)
+	fun onQrCodeClicked(dccHolder: DccHolder) {
+		onQrCodeClickedSingleLiveEvent.postValue(dccHolder)
 	}
 
 	fun containsCertificate(certificate: String): Boolean {
@@ -80,7 +80,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	val certificateVerifierMapLiveData: LiveData<Map<String, CertificateVerifier>> = certificateVerifierMapMutableLiveData
 
 	private val verifiedCertificatesMediatorLiveData = MediatorLiveData<List<VerifiedCertificate>>().apply {
-		addSource(certificatesCollectionLiveData) { certificates ->
+		addSource(dccHolderCollectionLiveData) { certificates ->
 			value =
 				certificates.map { certificate ->
 					val verifier = certificateVerifierMapLiveData.value?.get(certificate.qrCodeData)
@@ -92,12 +92,12 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	val verifiedCertificatesLiveData: LiveData<List<VerifiedCertificate>> = verifiedCertificatesMediatorLiveData
 
 	init {
-		certificatesCollectionLiveData.observeForever { certificates -> updateCertificateVerifiers(certificates) }
+		dccHolderCollectionLiveData.observeForever { certificates -> updateCertificateVerifiers(certificates) }
 	}
 
-	private fun updateCertificateVerifiers(certificates: List<Bagdgc>) {
+	private fun updateCertificateVerifiers(dccHolders: List<DccHolder>) {
 		val certificateVerifierMap = certificateVerifierMapLiveData.value!!.toMutableMap()
-		val newCertificateSet = certificates.map { bagdgc -> bagdgc.qrCodeData }.toSet()
+		val newCertificateSet = dccHolders.map { bagdgc -> bagdgc.qrCodeData }.toSet()
 
 		certificateVerifierMap.keys
 			.filter { !newCertificateSet.contains(it) }
@@ -106,7 +106,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 				certificateVerifierMap.remove(removedCertificate)
 			}
 
-		certificates
+		dccHolders
 			.filter { !certificateVerifierMap.containsKey(it.qrCodeData) }
 			.forEach { addedCertificate ->
 				val newVerifier = CertificateVerifier(getApplication(), viewModelScope, addedCertificate)
@@ -114,7 +114,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 				verifiedCertificatesMediatorLiveData.addSource(newVerifier.liveData) { state ->
 					val currentStates = verifiedCertificatesMediatorLiveData.value ?: return@addSource
 					verifiedCertificatesMediatorLiveData.value = currentStates.map { verifiedCertificate ->
-						return@map if (verifiedCertificate.certificate.qrCodeData == addedCertificate.qrCodeData) {
+						return@map if (verifiedCertificate.dccHolder.qrCodeData == addedCertificate.qrCodeData) {
 							VerifiedCertificate(addedCertificate, state)
 						} else {
 							verifiedCertificate
@@ -125,5 +125,5 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 		certificateVerifierMapMutableLiveData.value = certificateVerifierMap
 	}
 
-	data class VerifiedCertificate(val certificate: Bagdgc, val state: VerificationState)
+	data class VerifiedCertificate(val dccHolder: DccHolder, val state: VerificationState)
 }

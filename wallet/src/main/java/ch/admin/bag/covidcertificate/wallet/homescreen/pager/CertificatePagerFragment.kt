@@ -26,7 +26,7 @@ import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.common.util.parseIsoTimeAndFormat
 import ch.admin.bag.covidcertificate.common.verification.CertificateVerifier
 import ch.admin.bag.covidcertificate.common.verification.VerificationState
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding
 import ch.admin.bag.covidcertificate.wallet.util.*
@@ -36,7 +36,7 @@ class CertificatePagerFragment : Fragment() {
 	companion object {
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 
-		fun newInstance(certificate: Bagdgc) = CertificatePagerFragment().apply {
+		fun newInstance(certificate: DccHolder) = CertificatePagerFragment().apply {
 			arguments = bundleOf(ARG_CERTIFICATE to certificate)
 		}
 	}
@@ -46,12 +46,12 @@ class CertificatePagerFragment : Fragment() {
 	private var _binding: FragmentCertificatePagerBinding? = null
 	private val binding get() = _binding!!
 
-	private lateinit var certificate: Bagdgc
+	private lateinit var dccHolder: DccHolder
 	private lateinit var verifier: CertificateVerifier
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		certificate = arguments?.getSerializable(ARG_CERTIFICATE) as? Bagdgc
+		dccHolder = arguments?.getSerializable(ARG_CERTIFICATE) as? DccHolder
 			?: throw IllegalStateException("Certificate pager fragment created without QrCode!")
 	}
 
@@ -61,18 +61,18 @@ class CertificatePagerFragment : Fragment() {
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		val qrCodeBitmap = QrCode.renderToBitmap(certificate.qrCodeData)
+		val qrCodeBitmap = QrCode.renderToBitmap(dccHolder.qrCodeData)
 		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
 		binding.certificatePageQrCode.setImageDrawable(qrCodeDrawable)
 
-		val name = "${certificate.dgc.nam.fn} ${certificate.dgc.nam.gn}"
+		val name = "${dccHolder.euDGC.nam.fn} ${dccHolder.euDGC.nam.gn}"
 		binding.certificatePageName.text = name
-		val dateOfBirth = certificate.dgc.dob.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = dccHolder.euDGC.dob.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificatePageBirthdate.text = dateOfBirth
 
 		setupStatusInfo()
 
-		binding.certificatePageMainGroup.setOnClickListener { certificatesViewModel.onQrCodeClicked(certificate) }
+		binding.certificatePageMainGroup.setOnClickListener { certificatesViewModel.onQrCodeClicked(dccHolder) }
 	}
 
 	override fun onDestroyView() {
@@ -85,7 +85,7 @@ class CertificatePagerFragment : Fragment() {
 			viewLifecycleOwner,
 			object : Observer<Map<String, CertificateVerifier>> {
 				override fun onChanged(verifierMap: Map<String, CertificateVerifier>) {
-					val verifier = verifierMap[certificate.qrCodeData] ?: return
+					val verifier = verifierMap[dccHolder.qrCodeData] ?: return
 					certificatesViewModel.certificateVerifierMapLiveData.removeObserver(this)
 					this@CertificatePagerFragment.verifier = verifier
 					verifier.liveData.observe(viewLifecycleOwner) { updateStatusInfo(it) }

@@ -15,7 +15,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import ch.admin.bag.covidcertificate.eval.*
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -24,7 +24,7 @@ import kotlinx.coroutines.launch
 class CertificateVerifier(
 	private val context: Context,
 	private val coroutineScope: CoroutineScope,
-	private val bagdgc: Bagdgc? = null,
+	private val dccHolder: DccHolder? = null,
 ) {
 
 	private val checkSignatureStateMutableLiveData = MutableLiveData<CheckSignatureState>()
@@ -58,19 +58,19 @@ class CertificateVerifier(
 		return if (checkSignatureState is CheckSignatureState.ERROR) {
 			VerificationState.ERROR(
 				checkSignatureState.error,
-				{ checkSignatureState.error.bagdgc?.let { checkSignature(it) } },
+				{ checkSignatureState.error.dccHolder?.let { checkSignature(it) } },
 				checkNationalRulesState?.validityRange()
 			)
 		} else if (checkRevocationState is CheckRevocationState.ERROR) {
 			VerificationState.ERROR(
 				checkRevocationState.error,
-				{ checkRevocationState.error.bagdgc?.let { checkRevocationStatus(it) } },
+				{ checkRevocationState.error.dccHolder?.let { checkRevocationStatus(it) } },
 				checkNationalRulesState?.validityRange()
 			)
 		} else if (checkNationalRulesState is CheckNationalRulesState.ERROR) {
 			VerificationState.ERROR(
 				checkNationalRulesState.error,
-				{ checkNationalRulesState.error.bagdgc?.let { checkNationalRules(it) } },
+				{ checkNationalRulesState.error.dccHolder?.let { checkNationalRules(it) } },
 				null
 			)
 		} else if (checkSignatureState == CheckSignatureState.SUCCESS &&
@@ -93,53 +93,53 @@ class CertificateVerifier(
 		}
 	}
 
-	private fun checkSignature(bagdgc: Bagdgc) {
+	private fun checkSignature(dccHolder: DccHolder) {
 		coroutineScope.launch(Dispatchers.IO) {
 			try {
-				val checkSignatureState = Eval.checkSignature(bagdgc, context)
+				val checkSignatureState = Eval.checkSignature(dccHolder, context)
 				checkSignatureStateMutableLiveData.postValue(checkSignatureState)
 			} catch (e: Exception) {
 				checkSignatureStateMutableLiveData.postValue(
-					CheckSignatureState.ERROR(Error(EvalErrorCodes.SIGNATURE_UNKNOWN, e.message.toString(), bagdgc))
+					CheckSignatureState.ERROR(Error(EvalErrorCodes.SIGNATURE_UNKNOWN, e.message.toString(), dccHolder))
 				)
 			}
 		}
 	}
 
-	private fun checkRevocationStatus(bagdgc: Bagdgc) {
+	private fun checkRevocationStatus(dccHolder: DccHolder) {
 		coroutineScope.launch(Dispatchers.IO) {
 			try {
-				val checkRevocationState = Eval.checkRevocationStatus(bagdgc, context)
+				val checkRevocationState = Eval.checkRevocationStatus(dccHolder, context)
 				checkRevocationStateMutableLiveData.postValue(checkRevocationState)
 			} catch (e: Exception) {
 				checkRevocationStateMutableLiveData.postValue(
-					CheckRevocationState.ERROR(Error(EvalErrorCodes.REVOCATION_UNKNOWN, e.message.toString(), bagdgc))
+					CheckRevocationState.ERROR(Error(EvalErrorCodes.REVOCATION_UNKNOWN, e.message.toString(), dccHolder))
 				)
 			}
 		}
 	}
 
-	private fun checkNationalRules(bagdgc: Bagdgc) {
+	private fun checkNationalRules(dccHolder: DccHolder) {
 		coroutineScope.launch(Dispatchers.IO) {
 			try {
-				val checkNationalRulesState = Eval.checkNationalRules(bagdgc, context)
+				val checkNationalRulesState = Eval.checkNationalRules(dccHolder, context)
 				checkNationalRulesStateMutableLiveData.postValue(checkNationalRulesState)
 			} catch (e: Exception) {
 				checkNationalRulesStateMutableLiveData.postValue(
-					CheckNationalRulesState.ERROR(Error(EvalErrorCodes.RULESET_UNKNOWN, e.message.toString(), bagdgc))
+					CheckNationalRulesState.ERROR(Error(EvalErrorCodes.RULESET_UNKNOWN, e.message.toString(), dccHolder))
 				)
 			}
 		}
 	}
 
-	fun startVerification(bagdgc: Bagdgc? = this.bagdgc, delay: Long = 0) {
-		val bagdgc = bagdgc ?: return
+	fun startVerification(dccHolder: DccHolder? = this.dccHolder, delay: Long = 0) {
+		val dccHolder = dccHolder ?: return
 		stateMediator.value = VerificationState.LOADING
 		coroutineScope.launch(Dispatchers.IO) {
 			if (delay > 0) delay(delay)
-			checkSignature(bagdgc)
-			checkRevocationStatus(bagdgc)
-			checkNationalRules(bagdgc)
+			checkSignature(dccHolder)
+			checkRevocationStatus(dccHolder)
+			checkNationalRules(dccHolder)
 		}
 
 	}

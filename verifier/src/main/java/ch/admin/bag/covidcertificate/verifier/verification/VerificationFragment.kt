@@ -26,7 +26,7 @@ import androidx.fragment.app.viewModels
 import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.common.util.parseIsoTimeAndFormat
 import ch.admin.bag.covidcertificate.common.verification.VerificationState
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
 import ch.admin.bag.covidcertificate.verifier.util.*
@@ -39,10 +39,10 @@ class VerificationFragment : Fragment() {
 		private val TAG = VerificationFragment::class.java.canonicalName
 		private val ARG_DECODE_DGC = "ARG_DECODE_DGC"
 
-		fun newInstance(bagdgc: Bagdgc): VerificationFragment {
+		fun newInstance(dccHolder: DccHolder): VerificationFragment {
 			return VerificationFragment().apply {
 				arguments = Bundle().apply {
-					putSerializable(ARG_DECODE_DGC, bagdgc)
+					putSerializable(ARG_DECODE_DGC, dccHolder)
 				}
 			}
 		}
@@ -63,9 +63,9 @@ class VerificationFragment : Fragment() {
 		if (arguments?.containsKey(ARG_DECODE_DGC) == false) {
 			return
 		}
-		val bagdgc = requireArguments().get(ARG_DECODE_DGC) as Bagdgc
+		val dccHolder = requireArguments().get(ARG_DECODE_DGC) as DccHolder
 
-		val eudgc = bagdgc.dgc
+		val eudgc = dccHolder.euDGC
 		binding.verificationFamilyName.text = eudgc.nam.fn
 		binding.verificationGivenName.text = eudgc.nam.gn
 		binding.verificationBirthdate.text = eudgc.dob.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
@@ -75,7 +75,7 @@ class VerificationFragment : Fragment() {
 
 		view.doOnLayout { setupScrollBehavior() }
 
-		verificationViewModel.startVerification(bagdgc)
+		verificationViewModel.startVerification(dccHolder)
 
 		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner, {
 			updateHeaderAndVerificationView(it)

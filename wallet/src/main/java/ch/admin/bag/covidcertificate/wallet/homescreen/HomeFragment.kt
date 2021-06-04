@@ -26,7 +26,7 @@ import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
-import ch.admin.bag.covidcertificate.eval.models.Bagdgc
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -146,7 +146,7 @@ class HomeFragment : Fragment() {
 		viewPager.adapter = certificatesAdapter
 		TabLayoutMediator(binding.homescreenCertificatesTabLayout, viewPager) { tab, position -> }.attach()
 
-		certificatesViewModel.certificatesCollectionLiveData.observe(viewLifecycleOwner) {
+		certificatesViewModel.dccHolderCollectionLiveData.observe(viewLifecycleOwner) {
 			it ?: return@observe
 			binding.homescreenLoadingGroup.isVisible = false
 			updateHomescreen(it)
@@ -166,19 +166,19 @@ class HomeFragment : Fragment() {
 		certificatesViewModel.loadCertificates()
 	}
 
-	private fun updateHomescreen(certificates: List<Bagdgc>) {
-		val hasCertificates = certificates.isNotEmpty()
+	private fun updateHomescreen(dccHolders: List<DccHolder>) {
+		val hasCertificates = dccHolders.isNotEmpty()
 
 		binding.homescreenContentEmptyScrollView.isVisible = !hasCertificates
 		binding.homescreenScanButtonBig.isVisible = !hasCertificates
 		binding.homescreenScanButtonSmall.isVisible = hasCertificates
 		binding.homescreenListButton.isVisible = hasCertificates
 		binding.homescreenCertificatesViewPager.isVisible = hasCertificates
-		binding.homescreenCertificatesTabLayout.isVisible = certificates.size > 1
+		binding.homescreenCertificatesTabLayout.isVisible = dccHolders.size > 1
 		binding.homescreenHeaderEmpty.root.isVisible = !hasCertificates
 		binding.homescreenHeaderNotEmpty.root.isVisible = hasCertificates
-		binding.homescreenListButton.isVisible = certificates.size > 1
-		certificatesAdapter.setData(certificates)
+		binding.homescreenListButton.isVisible = dccHolders.size > 1
+		certificatesAdapter.setData(dccHolders)
 		if (hasCertificates) {
 			binding.homescreenCertificatesViewPager.postDelayed({ binding.homescreenCertificatesViewPager.setCurrentItem(0, true) },
 				250)
