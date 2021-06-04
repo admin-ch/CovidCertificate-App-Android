@@ -21,10 +21,9 @@ import androidx.appcompat.app.AppCompatActivity
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
-import ch.admin.bag.covidcertificate.wallet.data.SecureStorage
+import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityMainBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.HomeFragment
-import ch.admin.bag.covidcertificate.wallet.networking.ConfigRepository
 import ch.admin.bag.covidcertificate.wallet.onboarding.OnboardingActivity
 
 class MainActivity : AppCompatActivity() {
@@ -32,7 +31,7 @@ class MainActivity : AppCompatActivity() {
 	private val certificateViewModel by viewModels<CertificatesViewModel>()
 
 	private lateinit var binding: ActivityMainBinding
-	val secureStorage by lazy { SecureStorage.getInstance(this) }
+	val secureStorage by lazy { WalletSecureStorage.getInstance(this) }
 
 	private var forceUpdateDialog: AlertDialog? = null
 

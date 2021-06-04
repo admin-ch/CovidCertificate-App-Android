@@ -13,6 +13,8 @@ package ch.admin.bag.covidcertificate.wallet
 import android.app.Application
 import androidx.lifecycle.*
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
+import ch.admin.bag.covidcertificate.common.net.ConfigSpec
 import ch.admin.bag.covidcertificate.common.util.SingleLiveEvent
 import ch.admin.bag.covidcertificate.common.verification.CertificateVerifier
 import ch.admin.bag.covidcertificate.common.verification.VerificationState
@@ -20,7 +22,6 @@ import ch.admin.bag.covidcertificate.eval.DecodeState
 import ch.admin.bag.covidcertificate.eval.Eval
 import ch.admin.bag.covidcertificate.eval.models.Bagdgc
 import ch.admin.bag.covidcertificate.wallet.data.CertificateStorage
-import ch.admin.bag.covidcertificate.wallet.networking.ConfigRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -66,7 +67,10 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	val configLiveData: LiveData<ConfigModel> = configMutableLiveData
 
 	fun loadConfig() {
-		val configRepository = ConfigRepository.getInstance(getApplication())
+		val configRepository = ConfigRepository.getInstance(ConfigSpec(getApplication(),
+			BuildConfig.BASE_URL,
+			BuildConfig.VERSION_NAME,
+			BuildConfig.BUILD_TIME.toString()))
 		viewModelScope.launch {
 			configRepository.loadConfig(getApplication())?.let { config -> configMutableLiveData.postValue(config) }
 		}

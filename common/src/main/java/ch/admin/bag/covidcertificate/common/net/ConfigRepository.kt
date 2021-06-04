@@ -8,16 +8,15 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.verifier.networking
+package ch.admin.bag.covidcertificate.common.net
 
 import android.content.Context
 import android.os.Build
+import ch.admin.bag.covidcertificate.common.BuildConfig
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.common.net.CertificatePinning
+import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
-import ch.admin.bag.covidcertificate.verifier.BuildConfig
-import ch.admin.bag.covidcertificate.verifier.data.SecureStorage
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.Cache
@@ -27,9 +26,9 @@ import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class ConfigRepository private constructor(context: Context) {
+class ConfigRepository private constructor(val configSpec: ConfigSpec) {
 
-	companion object : SingletonHolder<ConfigRepository, Context>(::ConfigRepository) {
+	companion object : SingletonHolder<ConfigRepository, ConfigSpec>(::ConfigRepository) {
 		private const val APP_VERSION_PREFIX_ANDROID = "android-"
 		private const val OS_VERSION_PREFIX_ANDROID = "android"
 
@@ -38,14 +37,15 @@ class ConfigRepository private constructor(context: Context) {
 	}
 
 	private val configService: ConfigService
-	private val storage = SecureStorage.getInstance(context)
+	private val storage = ConfigSecureStorage.getInstance(configSpec.context)
 
 	init {
 		val okHttpBuilder = OkHttpClient.Builder()
 			.certificatePinner(CertificatePinning.pinner)
+			.addInterceptor(UserAgentInterceptor(Config.userAgent))
 
 		val cacheSize = 5 * 1024 * 1024 // 5 MB
-		val cache = Cache(context.cacheDir, cacheSize.toLong())
+		val cache = Cache(configSpec.context.cacheDir, cacheSize.toLong())
 		okHttpBuilder.cache(cache)
 
 		if (BuildConfig.DEBUG) {
@@ -54,7 +54,7 @@ class ConfigRepository private constructor(context: Context) {
 		}
 
 		configService = Retrofit.Builder()
-			.baseUrl(BuildConfig.BASE_URL)
+			.baseUrl(configSpec.baseUrl)
 			.client(okHttpBuilder.build())
 			.addConverterFactory(MoshiConverterFactory.create())
 			.build()
@@ -63,21 +63,22 @@ class ConfigRepository private constructor(context: Context) {
 
 	suspend fun loadConfig(context: Context): ConfigModel? {
 		val requestTimeStamp = System.currentTimeMillis()
-		val appVersion = APP_VERSION_PREFIX_ANDROID + BuildConfig.VERSION_NAME
+		val appVersion = APP_VERSION_PREFIX_ANDROID + configSpec.versionName
 		val osVersion = OS_VERSION_PREFIX_ANDROID + Build.VERSION.SDK_INT
-		val buildNumber = BuildConfig.BUILD_TIME.toString()
+		val buildNumber = configSpec.buildTime
 		val versionString = "appversion=$appVersion&osversion=$osVersion&buildnr=$buildNumber"
-		var config = if (storage.getConfigLastSuccessTimestamp() + MIN_LOAD_WAIT_TIME <= System.currentTimeMillis() || versionString != storage.getConfigLastSuccessAppAndOSVersion()) {
-			try {
-				val response = withContext(Dispatchers.IO) { configService.getConfig(appVersion, osVersion, buildNumber) }
-				if (!response.isSuccessful) throw HttpException(response)
-				response.body()?.let { storage.updateConfigData(it, requestTimeStamp, versionString) }
-				response.body()
-			} catch (e: Exception) {
-				e.printStackTrace()
-				null
-			}
-		} else null
+		var config =
+			if (storage.getConfigLastSuccessTimestamp() + MIN_LOAD_WAIT_TIME <= System.currentTimeMillis() || versionString != storage.getConfigLastSuccessAppAndOSVersion()) {
+				try {
+					val response = withContext(Dispatchers.IO) { configService.getConfig(appVersion, osVersion, buildNumber) }
+					if (!response.isSuccessful) throw HttpException(response)
+					response.body()?.let { storage.updateConfigData(it, requestTimeStamp, versionString) }
+					response.body()
+				} catch (e: Exception) {
+					e.printStackTrace()
+					null
+				}
+			} else null
 
 		if (config == null) config = storage.getConfig()
 		if (config == null) config = AssetUtil.loadDefaultConfig(context)
@@ -86,3 +87,5 @@ class ConfigRepository private constructor(context: Context) {
 	}
 
 }
+
+class ConfigSpec(val context: Context, val baseUrl: String, val versionName: String, val buildTime: String)

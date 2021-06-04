@@ -16,7 +16,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.verifier.networking.ConfigRepository
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
+import ch.admin.bag.covidcertificate.common.net.ConfigSpec
 import kotlinx.coroutines.launch
 
 class VerifierViewModel(application: Application) : AndroidViewModel(application) {
@@ -25,7 +26,10 @@ class VerifierViewModel(application: Application) : AndroidViewModel(application
 	val configLiveData: LiveData<ConfigModel> = configMutableLiveData
 
 	fun loadConfig() {
-		val configRepository = ConfigRepository.getInstance(getApplication())
+		val configRepository = ConfigRepository.getInstance(ConfigSpec(getApplication(),
+			BuildConfig.BASE_URL,
+			BuildConfig.VERSION_NAME,
+			BuildConfig.BUILD_TIME.toString()))
 		viewModelScope.launch {
 			configRepository.loadConfig(getApplication())?.let { config -> configMutableLiveData.postValue(config) }
 		}

@@ -20,6 +20,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
+import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.HtmlFragment
@@ -29,7 +30,6 @@ import ch.admin.bag.covidcertificate.eval.models.Bagdgc
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
-import ch.admin.bag.covidcertificate.wallet.data.SecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.faq.WalletFaqFragment
@@ -193,7 +193,7 @@ class HomeFragment : Fragment() {
 			val hasInfoBox = localizedInfo != null
 
 			val onClickListener = localizedInfo?.let { infoBox ->
-				val secureStorage = SecureStorage.getInstance(buttonHeaderEmpty.context)
+				val secureStorage = ConfigSecureStorage.getInstance(buttonHeaderEmpty.context)
 				if (secureStorage.getLastShownInfoBoxId() != infoBox.infoId) {
 					closeCurrentInfoDialog()
 					showInfoDialog(infoBox)
