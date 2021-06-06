@@ -232,7 +232,7 @@
 						android:id="@+id/certificate_detail_data_recycler_view"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/spacing_large"
+						android:layout_marginTop="@dimen/spacing_very_large"
 						android:overScrollMode="never"
 						android:scrollbars="none"
 						tools:listitem="@layout/item_detail_divider" />

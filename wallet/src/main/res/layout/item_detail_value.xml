@@ -31,4 +31,12 @@
 		android:layout_height="wrap_content"
 		tools:text="Testtyp" />
 
+	<TextView
+		android:id="@+id/item_value_label_english"
+		style="@style/CovidCertificate.Text.Grey"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="start"
+		tools:text="Testtyp" />
+
 </LinearLayout>

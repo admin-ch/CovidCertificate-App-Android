@@ -10,10 +10,14 @@
 
 package ch.admin.bag.covidcertificate.wallet.detail
 
+import android.content.Context
+import android.content.res.Configuration
 import android.view.View
 import android.widget.TextView
 import androidx.annotation.StringRes
+import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.wallet.R
+import java.util.*
 
 sealed class CertificateDetailItem {
 	abstract fun bindView(view: View)
@@ -26,21 +30,12 @@ data class TitleItem(@StringRes val titleResource: Int) : CertificateDetailItem(
 
 	override fun bindView(view: View) {
 		view.findViewById<TextView>(R.id.item_title).setText(titleResource)
+		view.findViewById<TextView>(R.id.item_title_english).text = getEnglishTranslation(view.context, titleResource)
 	}
 }
 
-data class TitleStatusItem(@StringRes val labelResource: Int, val status: String) : CertificateDetailItem() {
-	companion object {
-		const val layoutResource = R.layout.item_detail_title_status
-	}
-
-	override fun bindView(view: View) {
-		view.findViewById<TextView>(R.id.item_title_status_label).setText(labelResource)
-		view.findViewById<TextView>(R.id.item_title_status_value).text = status
-	}
-}
-
-data class ValueItem(@StringRes val labelResource: Int, val value: String) : CertificateDetailItem() {
+data class ValueItem(@StringRes val labelResource: Int, val value: String, val isTranslatedToEnglish: Boolean = true) :
+	CertificateDetailItem() {
 	companion object {
 		const val layoutResource = R.layout.item_detail_value
 	}
@@ -48,20 +43,33 @@ data class ValueItem(@StringRes val labelResource: Int, val value: String) : Cer
 	override fun bindView(view: View) {
 		view.findViewById<TextView>(R.id.item_value_label).setText(labelResource)
 		view.findViewById<TextView>(R.id.item_value_value).text = value
+		val englishLabel = view.findViewById<TextView>(R.id.item_value_label_english)
+		englishLabel.isVisible = isTranslatedToEnglish && view.context.getString(R.string.language_key) != "en"
+		englishLabel.text = getEnglishTranslation(view.context, labelResource)
 	}
 }
 
-data class ValueItemWithoutLabel(val value: String) : CertificateDetailItem() {
+data class ValueItemWithoutLabel(val value: String, val isGrey: Boolean = false) : CertificateDetailItem() {
 	companion object {
 		const val layoutResource = R.layout.item_detail_value_without_label
 	}
 
 	override fun bindView(view: View) {
-		view.findViewById<TextView>(R.id.item_value_text).text = value
+		val valueText = view.findViewById<TextView>(R.id.item_value_text)
+		if (isGrey) {
+			valueText.setTextColor(view.context.getColor(R.color.grey))
+		}
+		valueText.text = value
 	}
 }
 
 object DividerItem : CertificateDetailItem() {
 	const val layoutResource = R.layout.item_detail_divider
 	override fun bindView(view: View) {}
+}
+
+fun getEnglishTranslation(context: Context, res: Int): String {
+	val config = Configuration(context.resources.configuration)
+	config.setLocale(Locale.ENGLISH)
+	return context.createConfigurationContext(config).getText(res).toString()
 }
