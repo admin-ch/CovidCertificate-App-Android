@@ -30,7 +30,9 @@ data class TitleItem(@StringRes val titleResource: Int) : CertificateDetailItem(
 
 	override fun bindView(view: View) {
 		view.findViewById<TextView>(R.id.item_title).setText(titleResource)
-		view.findViewById<TextView>(R.id.item_title_english).text = getEnglishTranslation(view.context, titleResource)
+		val englishLabel = view.findViewById<TextView>(R.id.item_title_english)
+		englishLabel.isVisible = view.context.getString(R.string.language_key) != "en"
+		englishLabel.text = getEnglishTranslation(view.context, titleResource)
 	}
 }
 
