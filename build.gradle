@@ -20,7 +20,6 @@ buildscript {
 		classpath "com.android.tools.build:gradle:4.1.2"
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 		classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
-		classpath 'org.jsonschema2pojo:jsonschema2pojo-gradle-plugin:1.1.1'
 	}
 }
 

@@ -50,7 +50,7 @@ data class VerifiedCeritificateItem(val verifiedCertificate: CertificatesViewMod
 			typeTextColor = R.color.grey
 		}
 
-		val name = "${certificate.euDGC.nam.fn} ${certificate.euDGC.nam.gn}"
+		val name = "${certificate.euDGC.person.familyName} ${certificate.euDGC.person.givenName}"
 		val qrAlpha = state.getQrAlpha()
 		itemView.findViewById<TextView>(R.id.item_certificate_list_name).apply {
 			text = name

@@ -134,9 +134,9 @@ class CertificateDetailFragment : Fragment() {
 		val adapter = CertificateDetailAdapter()
 		recyclerView.adapter = adapter
 
-		val name = "${dccHolder.euDGC.nam.fn} ${dccHolder.euDGC.nam.gn}"
+		val name = "${dccHolder.euDGC.person.familyName} ${dccHolder.euDGC.person.givenName}"
 		binding.certificateDetailName.text = name
-		val dateOfBirth = dccHolder.euDGC.dob.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = dccHolder.euDGC.dateOfBirth.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateDetailBirthdate.text = dateOfBirth
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)
