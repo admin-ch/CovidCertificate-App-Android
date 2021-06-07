@@ -66,10 +66,10 @@ class VerificationFragment : Fragment() {
 		val dccHolder = requireArguments().get(ARG_DECODE_DGC) as DccHolder
 
 		val eudgc = dccHolder.euDGC
-		binding.verificationFamilyName.text = eudgc.nam.fn
-		binding.verificationGivenName.text = eudgc.nam.gn
-		binding.verificationBirthdate.text = eudgc.dob.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
-		binding.verificationStandardizedNameLabel.text = "${eudgc.nam.fnt}<<${eudgc.nam.gnt}"
+		binding.verificationFamilyName.text = eudgc.person.familyName
+		binding.verificationGivenName.text = eudgc.person.givenName
+		binding.verificationBirthdate.text = eudgc.dateOfBirth.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
+		binding.verificationStandardizedNameLabel.text = "${eudgc.person.standardizedFamilyName}<<${eudgc.person.standardizedGivenName}"
 
 		binding.verificationFooterButton.setOnClickListener { parentFragmentManager.popBackStack() }
 
