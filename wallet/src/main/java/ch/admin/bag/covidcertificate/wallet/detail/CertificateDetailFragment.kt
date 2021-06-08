@@ -22,17 +22,15 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.common.util.parseIsoTimeAndFormat
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
-import ch.admin.bag.covidcertificate.common.verification.CertificateVerifier
-import ch.admin.bag.covidcertificate.common.verification.VerificationState
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
+import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
@@ -64,7 +62,6 @@ class CertificateDetailFragment : Fragment() {
 	private val binding get() = _binding!!
 
 	private lateinit var dccHolder: DccHolder
-	private var verifier: CertificateVerifier? = null
 
 	private var hideDelayedJob: Job? = null
 
@@ -112,7 +109,7 @@ class CertificateDetailFragment : Fragment() {
 			binding.scrollview.smoothScrollTo(0, 0)
 			isForceValidate = true
 			hideDelayedJob?.cancel()
-			verifier?.startVerification(delay = STATUS_LOAD_DELAY)
+			certificatesViewModel.startVerification(dccHolder, delayInMillis = STATUS_LOAD_DELAY)
 		}
 	}
 
@@ -146,18 +143,14 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun setupStatusInfo() {
-		certificatesViewModel.certificateVerifierMapLiveData.observe(
-			viewLifecycleOwner,
-			object : Observer<Map<String, CertificateVerifier>> {
-				override fun onChanged(verifierMap: Map<String, CertificateVerifier>) {
-					val verifier = verifierMap[dccHolder.qrCodeData] ?: return
-					certificatesViewModel.certificateVerifierMapLiveData.removeObserver(this)
-					this@CertificateDetailFragment.verifier = verifier
-					binding.certificateDetailButtonReverify.showAnimated()
-					verifier.liveData.observe(viewLifecycleOwner) { updateStatusInfo(it) }
-					verifier.startVerification()
-				}
-			})
+		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { certificates ->
+			certificates.find { it.dccHolder == dccHolder }?.let {
+				binding.certificateDetailButtonReverify.showAnimated()
+				updateStatusInfo(it.state)
+			}
+		}
+
+		certificatesViewModel.startVerification(dccHolder)
 	}
 
 	private fun updateStatusInfo(verificationState: VerificationState?) {

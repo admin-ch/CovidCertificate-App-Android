@@ -21,15 +21,18 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.Observer
 import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.common.util.parseIsoTimeAndFormat
-import ch.admin.bag.covidcertificate.common.verification.CertificateVerifier
-import ch.admin.bag.covidcertificate.common.verification.VerificationState
+import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding
-import ch.admin.bag.covidcertificate.wallet.util.*
+import ch.admin.bag.covidcertificate.wallet.util.QrCode
+import ch.admin.bag.covidcertificate.wallet.util.getInfoBubbleColor
+import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
+import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
+import ch.admin.bag.covidcertificate.wallet.util.getStatusIcon
+import ch.admin.bag.covidcertificate.wallet.util.getStatusString
 
 class CertificatePagerFragment : Fragment() {
 
@@ -47,7 +50,6 @@ class CertificatePagerFragment : Fragment() {
 	private val binding get() = _binding!!
 
 	private lateinit var dccHolder: DccHolder
-	private lateinit var verifier: CertificateVerifier
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -81,17 +83,13 @@ class CertificatePagerFragment : Fragment() {
 	}
 
 	private fun setupStatusInfo() {
-		certificatesViewModel.certificateVerifierMapLiveData.observe(
-			viewLifecycleOwner,
-			object : Observer<Map<String, CertificateVerifier>> {
-				override fun onChanged(verifierMap: Map<String, CertificateVerifier>) {
-					val verifier = verifierMap[dccHolder.qrCodeData] ?: return
-					certificatesViewModel.certificateVerifierMapLiveData.removeObserver(this)
-					this@CertificatePagerFragment.verifier = verifier
-					verifier.liveData.observe(viewLifecycleOwner) { updateStatusInfo(it) }
-					verifier.startVerification()
-				}
-			})
+		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { certificates ->
+			certificates.find { it.dccHolder == dccHolder }?.let {
+				updateStatusInfo(it.state)
+			}
+		}
+
+		certificatesViewModel.startVerification(dccHolder)
 	}
 
 	private fun updateStatusInfo(verificationState: VerificationState?) {

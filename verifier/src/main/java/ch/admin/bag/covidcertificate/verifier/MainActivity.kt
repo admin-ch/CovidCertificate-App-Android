@@ -15,9 +15,11 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
+import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.verifier.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -44,11 +46,14 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		verifierViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
+
+		CovidCertificateSdk.registerWithLifecycle(lifecycle)
 	}
 
 	override fun onStart() {
 		super.onStart()
 		verifierViewModel.loadConfig()
+		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
 	}
 
 	private fun handleConfig(config: ConfigModel) {
