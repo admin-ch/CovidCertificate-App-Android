@@ -142,6 +142,8 @@ class VerificationFragment : Fragment() {
 					verificationViewModel.retryVerification(dccHolder)
 					infoRetry.setOnClickListener(null)
 				}
+			} else {
+				infoRetry.isVisible = false
 			}
 
 			infoFrame.isVisible = !isLoading
