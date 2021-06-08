@@ -104,7 +104,7 @@ class CertificateAddFragment : Fragment() {
 		val dateOfBirth = dccHolder.euDGC.dateOfBirth.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateAddBirthdate.text = dateOfBirth
 
-		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, dccHolder).buildAll()
+		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, dccHolder, showEnglishVersion = false).buildAll()
 		adapter.setItems(detailItems)
 	}
 

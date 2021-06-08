@@ -23,9 +23,8 @@ class CertificateDetailAdapter : RecyclerView.Adapter<CertificateDetailViewHolde
 		return when (viewType) {
 			0 -> CertificateDetailViewHolder(inflater.inflate(DividerItem.layoutResource, parent, false))
 			1 -> CertificateDetailViewHolder(inflater.inflate(TitleItem.layoutResource, parent, false))
-			2 -> CertificateDetailViewHolder(inflater.inflate(TitleStatusItem.layoutResource, parent, false))
-			3 -> CertificateDetailViewHolder(inflater.inflate(ValueItem.layoutResource, parent, false))
-			4 -> CertificateDetailViewHolder(inflater.inflate(ValueItemWithoutLabel.layoutResource, parent, false))
+			2 -> CertificateDetailViewHolder(inflater.inflate(ValueItem.layoutResource, parent, false))
+			3 -> CertificateDetailViewHolder(inflater.inflate(ValueItemWithoutLabel.layoutResource, parent, false))
 			else -> throw IllegalStateException("Unknown viewType $viewType in CertificateDetailAdapter")
 		}
 	}
@@ -40,9 +39,8 @@ class CertificateDetailAdapter : RecyclerView.Adapter<CertificateDetailViewHolde
 		return when (items[position]) {
 			DividerItem -> 0
 			is TitleItem -> 1
-			is TitleStatusItem -> 2
-			is ValueItem -> 3
-			is ValueItemWithoutLabel -> 4
+			is ValueItem -> 2
+			is ValueItemWithoutLabel -> 3
 		}
 	}
 

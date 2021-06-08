@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -9,13 +8,27 @@
   ~ SPDX-License-Identifier: MPL-2.0
   -->
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/item_title"
-	style="@style/CovidCertificate.Text.Bold.Lead"
-	android:gravity="start"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:layout_marginTop="@dimen/spacing_medium_small"
 	android:layout_marginBottom="@dimen/spacing_large"
-	tools:text="Covid-19 Testzertifikat" />
+	android:orientation="vertical">
+
+	<TextView
+		android:id="@+id/item_title"
+		style="@style/CovidCertificate.Text.Bold.Lead"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="start"
+		tools:text="@string/covid_certificate_vaccination_title" />
+
+	<TextView
+		android:id="@+id/item_title_english"
+		style="@style/CovidCertificate.Text.Grey"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="start"
+		tools:text="@string/covid_certificate_vaccination_title" />
+</LinearLayout>
