@@ -56,6 +56,11 @@ class MainActivity : AppCompatActivity() {
 		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
 	}
 
+	override fun onDestroy() {
+		super.onDestroy()
+		CovidCertificateSdk.unregisterWithLifecycle(lifecycle)
+	}
+
 	private fun handleConfig(config: ConfigModel) {
 		if (config.forceUpdate && forceUpdateDialog == null) {
 			val forceUpdateDialog = AlertDialog.Builder(this, R.style.CovidCertificate_AlertDialogStyle)

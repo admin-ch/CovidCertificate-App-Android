@@ -76,6 +76,11 @@ class MainActivity : AppCompatActivity() {
 		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
 	}
 
+	override fun onDestroy() {
+		super.onDestroy()
+		CovidCertificateSdk.unregisterWithLifecycle(lifecycle)
+	}
+
 	private fun showHomeFragment() {
 		supportFragmentManager.beginTransaction()
 			.add(R.id.fragment_container, HomeFragment.newInstance())
