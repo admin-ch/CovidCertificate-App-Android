@@ -22,11 +22,11 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
-import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.common.util.parseIsoTimeAndFormat
 import ch.admin.bag.covidcertificate.common.verification.CertificateVerifier
 import ch.admin.bag.covidcertificate.common.verification.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
+import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.utils.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding
 import ch.admin.bag.covidcertificate.wallet.util.*
@@ -67,7 +67,7 @@ class CertificatePagerFragment : Fragment() {
 
 		val name = "${dccHolder.euDGC.person.familyName} ${dccHolder.euDGC.person.givenName}"
 		binding.certificatePageName.text = name
-		val dateOfBirth = dccHolder.euDGC.dateOfBirth.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = dccHolder.euDGC.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificatePageBirthdate.text = dateOfBirth
 
 		setupStatusInfo()

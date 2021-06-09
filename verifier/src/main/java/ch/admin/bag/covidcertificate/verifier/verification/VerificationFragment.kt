@@ -23,10 +23,10 @@ import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.common.util.parseIsoTimeAndFormat
 import ch.admin.bag.covidcertificate.common.verification.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
+import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.utils.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
 import ch.admin.bag.covidcertificate.verifier.util.*
@@ -68,8 +68,9 @@ class VerificationFragment : Fragment() {
 		val eudgc = dccHolder.euDGC
 		binding.verificationFamilyName.text = eudgc.person.familyName
 		binding.verificationGivenName.text = eudgc.person.givenName
-		binding.verificationBirthdate.text = eudgc.dateOfBirth.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
-		binding.verificationStandardizedNameLabel.text = "${eudgc.person.standardizedFamilyName}<<${eudgc.person.standardizedGivenName}"
+		binding.verificationBirthdate.text = eudgc.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
+		binding.verificationStandardizedNameLabel.text =
+			"${eudgc.person.standardizedFamilyName}<<${eudgc.person.standardizedGivenName}"
 
 		binding.verificationFooterButton.setOnClickListener { parentFragmentManager.popBackStack() }
 

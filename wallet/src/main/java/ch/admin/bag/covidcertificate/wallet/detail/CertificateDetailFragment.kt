@@ -25,8 +25,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
-import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.common.util.parseIsoTimeAndFormat
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.verification.CertificateVerifier
 import ch.admin.bag.covidcertificate.common.verification.VerificationState
@@ -136,7 +134,7 @@ class CertificateDetailFragment : Fragment() {
 
 		val name = "${dccHolder.euDGC.person.familyName} ${dccHolder.euDGC.person.givenName}"
 		binding.certificateDetailName.text = name
-		val dateOfBirth = dccHolder.euDGC.dateOfBirth.parseIsoTimeAndFormat(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = dccHolder.euDGC.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateDetailBirthdate.text = dateOfBirth
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)
