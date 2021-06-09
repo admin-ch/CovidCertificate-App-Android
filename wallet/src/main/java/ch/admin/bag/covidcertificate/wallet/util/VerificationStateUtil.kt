@@ -20,6 +20,8 @@ import ch.admin.bag.covidcertificate.eval.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.CheckSignatureState
 import ch.admin.bag.covidcertificate.eval.models.CertType
+import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.wallet.R
 
 const val DATE_REPLACEMENT_STRING = "{DATE}"

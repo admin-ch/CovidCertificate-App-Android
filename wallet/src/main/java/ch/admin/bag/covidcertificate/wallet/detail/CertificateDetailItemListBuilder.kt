@@ -11,9 +11,6 @@
 package ch.admin.bag.covidcertificate.wallet.detail
 
 import android.content.Context
-import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_FORMAT_FULL_MONTH
-import ch.admin.bag.covidcertificate.common.util.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.common.util.LocaleUtil
 import ch.admin.bag.covidcertificate.eval.data.AcceptedTestProvider
 import ch.admin.bag.covidcertificate.eval.data.AcceptedVaccineProvider
@@ -67,15 +64,13 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 
 			// Vaccination date + country
 			detailItems.add(DividerItem)
-			vaccinationEntry.getFormattedVaccinationDate(DEFAULT_DISPLAY_DATE_FORMATTER)?.let { vaccineDate ->
-				detailItems.add(
-					ValueItem(
-						R.string.wallet_certificate_vaccination_date_title,
-						vaccineDate,
-						showEnglishVersionForLabels
-					)
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_vaccination_date_title,
+					vaccinationEntry.vaccinationDate.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER),
+					showEnglishVersionForLabels
 				)
-			}
+			)
 
 			detailItems.add(
 				ValueItem(R.string.wallet_certificate_vaccination_country_title,
@@ -90,7 +85,7 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier,
 				vaccinationEntry.getCertificateIdentifier(),
 				false))
-			dccHolder.issuedAt?.formatAsString(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			dccHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 				if (showEnglishVersionForLabels) {
@@ -126,15 +121,13 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 			}
 
 			// Recovery dates + country
-			recoveryEntry.dateFormattedOfFirstPostiveResult(DEFAULT_DISPLAY_DATE_FORMAT_FULL_MONTH)?.let { firstPostiveResult ->
-				detailItems.add(
-					ValueItem(
-						R.string.wallet_certificate_recovery_first_positiv_result,
-						firstPostiveResult,
-						showEnglishVersionForLabels
-					)
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_recovery_first_positiv_result,
+					recoveryEntry.dateFirstPositiveTest.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER),
+					showEnglishVersionForLabels
 				)
-			}
+			)
 
 			detailItems.add(ValueItem(R.string.wallet_certificate_test_land,
 				recoveryEntry.getRecoveryCountry(showEnglishVersionForLabels), showEnglishVersionForLabels))
@@ -146,7 +139,7 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 				showEnglishVersionForLabels))
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, recoveryEntry.getCertificateIdentifier(), false))
 
-			dccHolder.issuedAt?.formatAsString(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			dccHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 				if (showEnglishVersionForLabels) {
@@ -204,11 +197,11 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 
 			// Test dates + country
 			detailItems.add(DividerItem)
-			testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampeDate ->
+			testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampleDate ->
 				detailItems.add(
 					ValueItem(
 						R.string.wallet_certificate_test_sample_date_title,
-						sampeDate,
+						sampleDate,
 						showEnglishVersionForLabels
 					)
 				)
@@ -236,7 +229,7 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 				showEnglishVersionForLabels))
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, testEntry.getCertificateIdentifier(), false))
 
-			dccHolder.issuedAt?.formatAsString(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			dccHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 				if (showEnglishVersionForLabels) {
