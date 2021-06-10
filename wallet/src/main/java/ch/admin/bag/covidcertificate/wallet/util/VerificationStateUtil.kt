@@ -14,11 +14,13 @@ import android.content.Context
 import android.text.SpannableString
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import ch.admin.bag.covidcertificate.common.util.*
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
+import ch.admin.bag.covidcertificate.common.util.addBoldDate
+import ch.admin.bag.covidcertificate.common.util.makeBold
+import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
+import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
@@ -35,8 +37,14 @@ fun VerificationState.getStatusString(context: Context): SpannableString {
 
 fun VerificationState.getValidationStatusString(context: Context): SpannableString {
 	return when (this) {
-		is VerificationState.ERROR -> SpannableString("${context.getString(R.string.verifier_verify_error_list_title)}\n(${this.error.code})"
-		)
+		is VerificationState.ERROR -> {
+			SpannableString(context.getString(R.string.wallet_detail_network_error_title)
+				.makeSubStringBold(context.getString(R.string.wallet_detail_network_error_title)))
+			/*		when {
+						this.error.code is //Network Error --> SpannableString(context.getString(R.string.wallet_detail_network_error_title)
+						this.error.code is //Offline --> SpannableString(context.getString(R.string.wallet_detail_offline_retry_title)
+					}*/
+		}
 		is VerificationState.INVALID -> {
 			when {
 				this.signatureState is CheckSignatureState.INVALID -> {
@@ -86,7 +94,7 @@ fun VerificationState.getValidUntilDateString(certificateType: CertType): String
 
 @DrawableRes
 fun VerificationState.getStatusIcon(): Int {
-	return when(this) {
+	return when (this) {
 		is VerificationState.ERROR -> R.drawable.ic_process_error
 		is VerificationState.INVALID -> {
 			when (this.nationalRulesState) {
@@ -102,7 +110,7 @@ fun VerificationState.getStatusIcon(): Int {
 
 @DrawableRes
 fun VerificationState.getValidationStatusIcon(): Int {
-	return when(this) {
+	return when (this) {
 		is VerificationState.ERROR -> R.drawable.ic_process_error
 		is VerificationState.INVALID -> {
 			when (this.nationalRulesState) {
@@ -118,7 +126,7 @@ fun VerificationState.getValidationStatusIcon(): Int {
 
 @DrawableRes
 fun VerificationState.getValidationStatusIconLarge(): Int {
-	return when(this) {
+	return when (this) {
 		is VerificationState.ERROR -> R.drawable.ic_process_error_large
 		is VerificationState.INVALID -> R.drawable.ic_error_large
 		VerificationState.LOADING -> 0
@@ -128,11 +136,12 @@ fun VerificationState.getValidationStatusIconLarge(): Int {
 
 @ColorRes
 fun VerificationState.getInfoBubbleColor(): Int {
-	return when(this) {
+	return when (this) {
 		is VerificationState.ERROR -> R.color.orangeish
 		is VerificationState.INVALID -> {
 			if (this.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE ||
-			this.nationalRulesState is CheckNationalRulesState.NOT_YET_VALID) {
+				this.nationalRulesState is CheckNationalRulesState.NOT_YET_VALID
+			) {
 				R.color.blueish
 			} else {
 				R.color.greyish
@@ -145,7 +154,7 @@ fun VerificationState.getInfoBubbleColor(): Int {
 
 @ColorRes
 fun VerificationState.getInfoBubbleValidationColor(): Int {
-	return when(this) {
+	return when (this) {
 		is VerificationState.ERROR -> R.color.orangeish
 		is VerificationState.INVALID -> R.color.redish
 		VerificationState.LOADING -> R.color.greyish
@@ -155,7 +164,7 @@ fun VerificationState.getInfoBubbleValidationColor(): Int {
 
 @ColorRes
 fun VerificationState.getSolidValidationColor(): Int {
-	return when(this) {
+	return when (this) {
 		is VerificationState.ERROR -> R.color.orange
 		is VerificationState.INVALID -> R.color.red
 		VerificationState.LOADING -> R.color.grey
@@ -172,7 +181,7 @@ fun VerificationState.getNameDobColor(): Int {
 }
 
 fun VerificationState.getQrAlpha(): Float {
-	return when(this) {
+	return when (this) {
 		is VerificationState.INVALID -> 0.55f
 		else -> 1f
 	}

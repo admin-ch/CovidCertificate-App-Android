@@ -31,6 +31,7 @@ import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*
+import ch.admin.bag.covidcertificate.verifier.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -219,6 +220,22 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoValidityDateGroup.alpha = qrAlpha
 
 		binding.certificateDetailDataRecyclerView.alpha = qrAlpha
+
+		binding.certificateDetailErrorCode.apply {
+			visibility = View.GONE
+			if (state is VerificationState.ERROR) {
+				visibility = View.VISIBLE
+				text = state.error.code
+			} else if (state is VerificationState.INVALID) {
+				val errorCode = state.getInvalidErrorCode()
+				if (errorCode.isNotEmpty()) {
+					visibility = View.VISIBLE
+					text = errorCode
+				}
+			}
+
+
+		}
 	}
 
 	private fun readjustStatusDelayed(verificationState: VerificationState) {
