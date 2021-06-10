@@ -13,6 +13,8 @@ package ch.admin.bag.covidcertificate.common.util
 import android.graphics.Typeface
 import android.text.SpannableString
 import android.text.style.StyleSpan
+import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import java.time.LocalDateTime
 
 fun String.makeBold(): SpannableString = SpannableString(this).apply {
