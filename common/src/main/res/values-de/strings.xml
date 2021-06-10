@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+<resources>
+
+    <!-- Android App Name -->
+    <string name="verifier_app_name">"Covid Check"</string>
+
+    <!-- Title for the qr scanning screen -->
+    <string name="verifier_title_qr_scan">"Prüfen"</string>
+
+    <!-- Titel über dem Haupttitel -->
+    <string name="verifier_homescreen_header_title">"Covid Certificate"</string>
+
+    <!-- Homescreen App Name -->
+    <string name="verifier_homescreen_title">"Check"</string>
+
+    <!-- Beschreibung für Pager Bild 1 -->
+    <string name="verifier_homescreen_pager_description_1">"Vorgewiesenes Zertifikat scannen"</string>
+
+    <!-- Beschreibung für Pager Bild 2 -->
+    <string name="verifier_homescreen_pager_description_2">"Zertifikate werden automatisch geprüft"</string>
+
+    <!-- Homescreen Button für Scanning -->
+    <string name="verifier_homescreen_scan_button">"Prüfen"</string>
+
+    <!-- Homescreen Button für Support -->
+    <string name="verifier_homescreen_support_button">"So funktioniert's"</string>
+    <string name="error_network_title">"Netzwerkfehler"</string>
+    <string name="error_network_text">"Überprüfen Sie Ihre Internet Verbindung."</string>
+    <string name="error_action_retry">"Erneut versuchen"</string>
+    <string name="error_camera_permission_title">"Kein Zugriff auf Kamera"</string>
+    <string name="error_camera_permission_text">"Die App benötigt Zugriff auf die Kamera, um den QR-Code scannen zu können."</string>
+    <string name="error_action_change_settings">"Einstellungen ändern"</string>
+    <string name="error_title">"Fehler"</string>
+    <string name="qr_scanner_error">"Kein gültiger Code"</string>
+    <string name="ok_button">"OK"</string>
+    <string name="camera_permission_dialog_text">"Die App benötigt Zugriff auf die Kamera, um den QR-Code scannen zu können."</string>
+    <string name="camera_permission_dialog_action">"Zugriff auf Kamera erlauben"</string>
+    <string name="verifier_qr_scanner_scan_qr_text">"QR-Code scannen
+zum Prüfen"</string>
+
+    <!-- Titel auf dem Verifikations-Screen -->
+    <string name="covid_certificate_title">"Covid-Zertifikat"</string>
+
+    <!-- Name des/der Zertifikatsinhabers/Zertifikatsinhaberin -->
+    <string name="verifier_covid_certificate_name">"Nachname"</string>
+
+    <!-- Geburtsdatum des/der Zertifikatsinhabers/Zertifikatsinhaberin -->
+    <string name="verifier_covid_certificate_birthdate">"Geburtsdatum"</string>
+
+    <!-- Wallet: Zertifikat hinzufügen -->
+    <string name="wallet_add_certificate">"Hinzufügen"</string>
+
+    <!-- Wallet: Homescreen Covid-Zertifikat -->
+    <string name="wallet_certificate">"Covid-Zertifikat"</string>
+
+    <!-- Wallet: Homescreen Erklärung -->
+    <string name="wallet_homescreen_explanation">"Scannen Sie den QR-Code auf dem Covid-Zertifikat, um es zur App hinzuzufügen."</string>
+
+    <!-- Wallet: Scanner Titel -->
+    <string name="wallet_scanner_title">"Hinzufügen"</string>
+
+    <!-- Titel bei erfolgreicher Prüfung -->
+    <string name="verifier_verify_success_title">"Prüfung erfolgreich"</string>
+
+    <!-- Info Text bei erfolgreicher Prüfung -->
+    <string name="verifier_verify_success_info">"Nur mit einem 
+Ausweisdokument gültig"</string>
+
+    <!-- Prüfung loading text -->
+    <string name="verifier_verify_loading_text">"Zertifikat wird geprüft"</string>
+
+    <!-- Fehler Title bei Prüfung -->
+    <string name="verifier_verify_error_title">"Covid-Zertifikat ungültig"</string>
+
+    <!-- Fehler Infotext bei Prüfung (Nationale Regeln) -->
+    <string name="verifier_verify_error_info_for_national_rules">"Entspricht nicht den Gültigkeitskriterien der Schweiz"</string>
+
+    <!-- Fehler Infotext bei Prüfung (Zertifikat Fehler) -->
+    <string name="verifier_verify_error_info_for_certificate_invalid">"Das Covid-Zertifikat hat keine gültige Signatur"</string>
+
+    <!-- Fehler Infotext bei Prüfung (Blacklist) -->
+    <string name="verifier_verify_error_info_for_blacklist">"Das Covid-Zertifikat wurde widerrufen"</string>
+
+    <!-- Fehler bei der geladen Liste -->
+    <string name="verifier_verify_error_list_title">"Prüfung fehlgeschlagen"</string>
+
+    <!-- Fehler Info bei laden der Liste -->
+    <string name="verifier_verify_error_list_info_text">"Ein unerwarteter Fehler ist aufgetreten."</string>
+
+    <!-- Wallet: Scanner Text unten -->
+    <string name="wallet_scanner_explanation">"Scannen Sie den QR-Code auf dem Covid-Zertifikat."</string>
+
+    <!-- Wallet: Scanner Info Button unten -->
+    <string name="wallet_scanner_info_button">"So funktioniert's"</string>
+
+    <!-- Wallet: Erneut scannen Button -->
+    <string name="wallet_scan_again">"Erneut scannen"</string>
+
+    <!-- Wallet: Hinzufügen von Zertifikat Button -->
+    <string name="wallet_add_certificate_button">"Hinzufügen"</string>
+
+    <!-- Wallet: Titel der Liste Zertifikate -->
+    <string name="wallet_certificate_list_title">"Zertifikate"</string>
+
+    <!-- Wallet: Löschen Button Titel -->
+    <string name="delete_button">"Löschen"</string>
+
+    <!-- Android App Name für die Wallet -->
+    <string name="wallet_app_name">"Covid Cert"</string>
+
+    <!-- Header im Onboarding-Screen "Die App" -->
+    <string name="wallet_onboarding_app_header">"Die App"</string>
+
+    <!-- Titel im Onboardingscreen "Die App" -->
+    <string name="wallet_onboarding_app_title">"COVID Certificate"</string>
+
+    <!-- Text im Onboardingscreen "Die App" -->
+    <string name="wallet_onboarding_app_text">"Mit der App können Sie Covid-Zertifikate sicher auf dem Smartphone aufbewahren und einfach vorweisen."</string>
+
+    <!-- Weiter-Button Titel -->
+    <string name="continue_button">"Weiter"</string>
+
+    <!-- Header im Onboarding-Screen "Datenschutz" -->
+    <string name="wallet_onboarding_privacy_header">"Datenschutz"</string>
+
+    <!-- Titel im Onboardingscreen "Datenschutz" -->
+    <string name="wallet_onboarding_privacy_title">"Ihre Daten bleiben 
+in der App"</string>
+
+    <!-- Text im Onboardingscreen "Datenschutz" -->
+    <string name="wallet_onboarding_privacy_text">"Die Zertifikate sind nur lokal auf Ihrem Smartphone hinterlegt. Die Daten werden nicht in einem zentralen System gespeichert."</string>
+
+    <!-- Titel im Onboardingscreen "Vorteile, Vorweisen" -->
+    <string name="wallet_onboarding_show_title">"Zertifikate einfach vorweisen"</string>
+
+    <!-- Text 1 im Onboardingscreen "Vorteile, Vorweisen" -->
+    <string name="wallet_onboarding_show_text1">"Die auf dem Covid-Zertifikat dargestellten Daten sind auch im QR-Code enthalten."</string>
+
+    <!-- Text 2 im Onboardingscreen "Vorteile, Vorweisen" -->
+    <string name="wallet_onboarding_show_text2">"Beim Vorweisen wird der QR-Code mit einer Prüf-App gescannt. Die enthaltenen Daten werden dabei automatisch auf Echtheit und Gültigkeit überprüft."</string>
+
+    <!-- Titel des Datenschutzerklärungs-Elements im Onboardingscreen "Datenschutz" -->
+    <string name="wallet_onboarding_privacy_privacypolicy_title">"Datenschutzerklärung"</string>
+
+    <!-- Titel des Nutzungsbedingungen-Elements im Onboardingscreen "Datenschutz" -->
+    <string name="wallet_onboarding_privacy_conditionsofuse_title">"Nutzungsbedingungen"</string>
+
+    <!-- Button zum Abschliessen des Onboardings -->
+    <string name="wallet_onboarding_accept_button">"Akzeptieren"</string>
+    <string name="language_key">"de"</string>
+
+    <!-- Header im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_header">"So funktioniert's"</string>
+
+    <!-- Titel im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_title">"Covid-Zertifikate
+hinzufügen"</string>
+
+    <!-- Textblock 1 im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_text1">"Um ein Covid-Zertifikat zur App hinzufügen zu können, benötigen Sie das Originalzertifikat auf Papier oder als PDF."</string>
+
+    <!-- Textblock 2 im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_text2">"Tippen Sie in der App auf «Hinzufügen», um ein neues Zertifikat zur App hinzuzufügen."</string>
+
+    <!-- Textblock 3 im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_text3">"Halten Sie nun die Kamera des Smartphones über den QR-Code auf dem Originalzertifikat, um den Code einzuscannen."</string>
+
+    <!-- Textblock 4 im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_text4">"Es erscheint eine Vorschau des Covid-Zertifikats. Tippen Sie auf «Hinzufügen» um das Zertifikat sicher in der App zu speichern."</string>
+
+    <!-- Frage 1 im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_question1">"Wann und wo kann ich ein Covid-Zertifikat erhalten?"</string>
+
+    <!-- Header im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_header">"Häufige Fragen"</string>
+
+    <!-- Titel 1 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_title">"Was sind Covid-Zertifikate?"</string>
+
+    <!-- Text 1im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_subtitle">"Das Covid-Zertifikat bietet die Möglichkeit, eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis fälschungssicher zu dokumentieren."</string>
+
+    <!-- Frage 1 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_question_1">"Wann und wo kann ich ein Covid-Zertifikat erhalten?"</string>
+
+    <!-- Frage 2 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_question_2">"Wie kann ich ein Covid-Zertifikat vorweisen?"</string>
+
+    <!-- Frage 3 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_question_3">"Wo sind meine Daten gespeichert?"</string>
+
+    <!-- Frage 4 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_question_4">"Wie werden Missbrauch und Fälschung verhindert?"</string>
+
+    <!-- Frage 5 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_question_5">"Was passiert, wenn ich mein Covid-Zertifikat verliere?"</string>
+
+    <!-- Frage 6 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_question_1">"Wie kann ich ein Covid-Zertifikat zur App hinzufügen?"</string>
+
+    <!-- Frage 7 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_question_2">"Können auch mehrere Covid-Zertifikate hinzugefügt werden?"</string>
+
+    <!-- Frage 8 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_question_3">"Wie sehe ich, ob mein Covid-Zertifikat gültig ist?"</string>
+
+    <!-- Frage 9 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_question_4">"Wie sind meine Daten geschützt?"</string>
+
+    <!-- Frage 10 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_question_5">"Welche Daten sind im QR-Code enthalten?"</string>
+
+    <!-- Frage 11 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_question_6">"Was muss ich tun, wenn ich das Covid-Zertifikat oder die App lösche?"</string>
+
+    <!-- Antwort 1 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_answer_1">"Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus."</string>
+
+    <!-- Antwort 2 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_answer_2">"Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. 
+
+Beachten Sie, dass sie in jedem Fall auf Verlangen auch noch ein Ausweisdokument vorweisen müssen."</string>
+
+    <!-- Antwort 3 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_answer_3">"Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform."</string>
+
+    <!-- Antwort 4 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_answer_4">"Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument gültig."</string>
+
+    <!-- Antwort 5 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_questions_answer_5">"Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen."</string>
+
+    <!-- Antwort 6 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_answer_1">"Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App."</string>
+
+    <!-- Antwort 7 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_answer_2">"Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument des Zertifikatsinhabers / der Zertifikatsinhaberin gültig."</string>
+
+    <!-- Antwort 8 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_answer_3">"In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist."</string>
+
+    <!-- Antwort 9 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_answer_4">"Ihre persönlichen Daten werden in keinem zentralen System gespeichert, sondern befinden sich ausschliesslich bei Ihnen lokal auf dem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform."</string>
+
+    <!-- Antwort 10 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_answer_5">"Der QR-Code enthält alle Informationen, die Sie auf Ihrem Covid-Zertifikat in Papierform im Klartext finden. Weiter befindet sich im QR-Code eine elektronische Signatur, mit der sich die Echtheit des Covid-Zertifikats überprüfen lässt. Dadurch wird das Covid-Zertifikat fälschungssicher."</string>
+
+    <!-- Antwort 11 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_answer_6">"Sie können Ihr Covid-Zertifikat einfach wieder auf Ihrem Mobilgerät speichern. Laden Sie dazu die App erneut herunter und scannen Sie anschliessend den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF."</string>
+
+    <!-- Titel 2 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_title">"Wie funktioniert 
+die App?"</string>
+
+    <!-- Text 2 im FAQ-Screen der Wallet App -->
+    <string name="wallet_faq_works_subtitle">"Mit der COVID Certificate App können Sie Covid-Zertifikate einfach und sicher auf Ihrem Mobilgerät abspeichern und vorweisen."</string>
+
+    <!-- Antwort 1 im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_answer1">"Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus."</string>
+
+    <!-- Verifier: Detail Check Vorname -->
+    <string name="verifier_covid_certificate_prename">"Vorname"</string>
+
+    <!-- Config: Titel wenn App muss geupdatet werden -->
+    <string name="force_update_title">"Update benötigt"</string>
+
+    <!-- Config: Text der angezeigt wird falls App muss geupdatet werden -->
+    <string name="force_update_text">"Laden Sie die neue Version der App."</string>
+
+    <!-- Config: Update Button Aktualisieren -->
+    <string name="force_update_button">"Aktualisieren"</string>
+
+    <!-- Wallet: Zertifikat gültig ab: {DATE} -->
+    <string name="wallet_certificate_valid_from">"In der Schweiz gültig ab:
+{DATE}"</string>
+
+    <!-- Wallet: Zertifikat Detail Geimpft -->
+    <string name="certificate_reason_vaccinated">"Impfung"</string>
+
+    <!-- Wallet: Zertifikat Detail Genesen -->
+    <string name="certificate_reason_recovered">"Genesen"</string>
+
+    <!-- Wallet: Zertifikat Detail Getestet -->
+    <string name="certificate_reason_tested">"Test"</string>
+
+    <!-- Header im Onboardingscreen "Vorteile, Aufbewahren" -->
+    <string name="wallet_onboarding_store_header">"Vorteile"</string>
+
+    <!-- Titel im Onboardingscreen "Vorteile, Aufbewahren" -->
+    <string name="wallet_onboarding_store_title">"Covid-Zertifikate digital aufbewahren"</string>
+
+    <!-- Text1 im Onboardingscreen "Vorteile, Aufbewahren" -->
+    <string name="wallet_onboarding_store_text1">"Covid-Zertifikate können einfach zur App hinzugefügt und digital aufbewahrt werden."</string>
+
+    <!-- Text2 im Onboardingscreen "Vorteile, Aufbewahren" -->
+    <string name="wallet_onboarding_store_text2">"Die App prüft die Zertifikate auf ihre Gültigkeit in der Schweiz. So können Sie sich versichern, dass Ihre Zertifikate gültig sind."</string>
+
+    <!-- Header im Onboarding-Screen "Vorteile, Vorweisen" -->
+    <string name="wallet_onboarding_show_header">"Vorteile"</string>
+
+    <!-- Accessibility: Information -->
+    <string name="accessibility_info_button">"Impressum"</string>
+
+    <!-- Accessibility: FAQ Button Titel -->
+    <string name="accessibility_faq_button">"Häufige Fragen"</string>
+
+    <!-- Accessibility: Button zur Liste der Zertifikate -->
+    <string name="accessibility_list_button">"Zertifikate Liste"</string>
+
+    <!-- Accessibility: Zertifikate hinzufügen -->
+    <string name="accessibility_add_button">"Zertifikat hinzufügen"</string>
+
+    <!-- Accessibility: Schliessen Button -->
+    <string name="accessibility_close_button">"Schliessen"</string>
+
+    <!-- Accessibility: Taschenlampe anschalten Button -->
+    <string name="accessibility_lamp_on_button">"Taschenlampe einschalten"</string>
+
+    <!-- Accessibility: Lampe abschalten -->
+    <string name="accessibility_lamp_off_button">"Taschenlampe ausschalten"</string>
+
+    <!-- Titel des Impressum-Screens -->
+    <string name="impressum_title">"Impressum"</string>
+
+    <!-- Unbekannter Fehler -->
+    <string name="unknown_error">"Ein unbekannter Fehler ist aufgetreten."</string>
+
+    <!-- Verifier: Die Gültigkeit des Zertifikat ist abgelaufen -->
+    <string name="verifier_verifiy_error_expired">"Entspricht nicht den Gültigkeitskriterien der Schweiz: Die Gültigkeit des Zertifikat ist abgelaufen."</string>
+
+    <!-- Verifier: Zertifikat ist erst gültig ab {DATE} -->
+    <string name="verifier_verifiy_error_notyetvalid">"Entspricht nicht den Gültigkeitskriterien der Schweiz: Das Zertifikat ist noch nicht gültig."</string>
+
+    <!-- Verifier: Ein Netzwerkfehler ist aufgetreten. -->
+    <string name="verifier_retry_network_error">"Ein Netzwerkfehler ist aufgetreten."</string>
+
+    <!-- Verifier: Das Gerät befindet sich im Flugmodus. -->
+    <string name="verifier_retry_flightmode_error">"Das Gerät befindet sich im Flugmodus."</string>
+
+    <!-- Wallet: Zertifikat gültig ab: {DATE} -->
+    <string name="wallet_error_valid_from">"In der Schweiz gültig ab:
+{DATE}"</string>
+
+    <!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
+    <string name="wallet_error_national_rules">"Entspricht nicht den Gültigkeitskriterien der Schweiz"</string>
+
+    <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
+    <string name="wallet_error_expired">"Gültigkeit des Zertifikats
+abgelaufen"</string>
+
+    <!-- Wallet: Zertifikat wurde widerrufen -->
+    <string name="wallet_error_revocation">"Zertifikat wurde
+widerrufen"</string>
+
+    <!-- Wallet: Zertifikat mit ungültiger Signatur -->
+    <string name="wallet_error_invalid_signature">"Zertifikat mit
+ungültiger Signatur"</string>
+
+    <!-- Wallet: ungültiger Signatur (gleiche Worte wie wallet_error_invalid_signature) -->
+    <string name="wallet_error_invalid_signature_bold">"ungültiger Signatur"</string>
+
+    <!-- Wallet: widerrufen (gleiches Wort wie bei wallet_error_revocation) -->
+    <string name="wallet_error_revocation_bold">"widerrufen"</string>
+
+    <!-- Wallet: abgelaufen (gleiches Wort wie bei wallet_error_expired verwenden) -->
+    <string name="wallet_error_expired_bold">"abgelaufen"</string>
+
+    <!-- Meldung wenn erneute ein Zertifikat gescannt wurde, welches bereits in der App ist -->
+    <string name="wallet_certificate_already_exists">"Dieses Zertifikat ist bereits in der App gespeichert"</string>
+
+    <!-- Titel Gültigkeit im Zertifikatsdetail -->
+    <string name="wallet_certificate_validity">"Gültigkeit in der
+Schweiz"</string>
+
+    <!-- "Bis" Label im Zertifikats-Detail -->
+    <string name="wallet_certificate_valid_until">"bis"</string>
+
+    <!-- Message im Zertifikatsdetail während Überprüfung -->
+    <string name="wallet_certificate_verifying">"Das Zertifikat wird geprüft"</string>
+
+    <!-- Message nach erfolgreicher Prüfung im Zertifikatdetail -->
+    <string name="wallet_certificate_verify_success">"Prüfung erfolgreich"</string>
+
+    <!-- Accessibility: Info Box Butto -->
+    <string name="accessibility_info_box">"Information"</string>
+
+    <!-- Button Schliessen -->
+    <string name="close_button">"Schliessen"</string>
+    <string name="wallet_certificate_impfdosis_title">"Impfdosis"</string>
+    <string name="target_disease_name">"Covid-19"</string>
+    <string name="wallet_certificate_target_disease_title">"Krankheit oder Erreger"</string>
+    <string name="wallet_certificate_impfstoff_product_name_title">"Produkt"</string>
+    <string name="wallet_certificate_impfstoff_holder">"Hersteller"</string>
+    <string name="wallet_certificate_vaccination_date_title">"Impfdatum"</string>
+    <string name="wallet_certificate_vaccination_country_title">"Land der Impfung"</string>
+
+    <!-- Prüfen mit PDF Translation -->
+    <string name="wallet_certificate_vaccination_issuer_title">"Herausgeber"</string>
+    <string name="covid_certificate_recovery_title">"Genesung"</string>
+    <string name="wallet_certificate_recovery_first_positiv_result">"Datum des ersten positiven Resultats"</string>
+    <string name="wallet_certificate_recovery_from">"Gültig ab"</string>
+    <string name="wallet_certificate_recovery_until">"Gültig bis"</string>
+    <string name="wallet_certificate_test_land">"Land des Tests"</string>
+    <string name="covid_certificate_test_title">"Test"</string>
+    <string name="wallet_certificate_test_result_title">"Ergebnis"</string>
+    <string name="wallet_certificate_test_result_negativ">"Nicht erkannt (Negativ)"</string>
+    <string name="wallet_certificate_test_result_positiv">"Positiv"</string>
+    <string name="wallet_certificate_test_type">"Typ"</string>
+    <string name="wallet_certificate_test_name">"Name"</string>
+    <string name="wallet_certificate_test_holder">"Hersteller"</string>
+    <string name="wallet_certificate_test_sample_date_title">"Datum der Probenentnahme"</string>
+    <string name="wallet_certificate_test_result_date_title">"Datum Resultat"</string>
+
+    <!-- Header im "So funktionierts" Screen der Verifier-App -->
+    <string name="verifier_support_header">"So funktioniert's"</string>
+
+    <!-- Text im Bestätigungs-Dialog beim Zertifikat löschen -->
+    <string name="wallet_certificate_delete_confirm_text">"Wollen Sie das Zertifikat wirklich löschen?"</string>
+
+    <!-- Titel eines Abbrechen-Buttons -->
+    <string name="cancel_button">"Abbrechen"</string>
+
+    <!-- Wallet: Titel bei Impfungen -->
+    <string name="covid_certificate_vaccination_title">"Impfung"</string>
+
+    <!-- Wallet: Apple App Store URL -->
+    <string name="wallet_apple_app_store_url">"http://itunes.apple.com/app/id1565917320"</string>
+
+    <!-- Verifier: Apple App Store URL -->
+    <string name="verifier_apple_app_store_url">"http://itunes.apple.com/app/id1565917510"</string>
+
+    <!-- Wallet: Abkürzung "UVCI" (Unique Vaccination Certificate Identifier) -->
+    <string name="wallet_certificate_identifier">"UVCI"</string>
+
+    <!-- Wallet: Zertifikat erstellt am {DATE} -->
+    <string name="wallet_certificate_date">"Zertifikat erstellt am
+{DATE}"</string>
+
+    <!-- Wallet: Detail Art des Impfstoffs -->
+    <string name="wallet_certificate_vaccine_prophylaxis">"Art des Impfstoffs"</string>
+
+    <!-- Wallet: Test Detail Test durchgeführt durch -->
+    <string name="wallet_certificate_test_done_by">"Testcenter"</string>
+
+    <!-- iOS: Erklärung bei Kamera  -->
+    <string name="NSCameraUsageDescription">"Die App benötigt Zugriff auf die Kamera, um den QR-Code scannen zu können."</string>
+
+    <!-- Titel 1 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_title">"So werden Covid-Zertifikate geprüft"</string>
+
+    <!-- Text 1 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_subtitle">"Mit der COVID Certificate Check App können QR-Codes auf Covid-Zertifikaten gescannt und die Zertifikate auf Echtheit und Gültigkeit überprüft werden."</string>
+
+    <!-- Frage 1 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_question_1">"Wie können Covid-Zertifikate geprüft werden?"</string>
+
+    <!-- Antwort 1 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_answer_1">"Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App mit der dafür vorgesehenen COVID Certificate Check App."</string>
+
+    <!-- Frage 2 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_question_2">"Was wird genau geprüft?"</string>
+
+    <!-- Antwort 2 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_answer_2">"Beim Scannen werden drei Aspekte geprüft:
+– Enthält das Zertifikat eine gültige elektronische Signatur?
+– Ist das Zertifikat nicht widerrufen worden?
+– Entspricht das Zertifikat den Gültigkeitskriterien der Schweiz?
+
+Wenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als gültig ausgewiesen."</string>
+
+    <!-- Frage 3 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_question_3">"Welche Ausweisdokumente sind gültig? Weshalb müssen die Personalien überprüft werden?"</string>
+
+    <!-- Antwort 3 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_answer_3">"Neben Pass oder ID werden auch andere Ausweisdokumente akzeptiert, die die Identität der betreffenden Person mit einem Foto belegen (z.B. Führerausweis). Das Covid-Zertifikat ist zwar fälschungssicher, mit der Überprüfung der Personalien wird aber erst sichergestellt, dass das vorgezeigte Zertifikat auch auf den Vorweisenden ausgestellt wurde."</string>
+
+    <!-- Frage 4 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_question_4">"Können auch ausländische Zertifikate geprüft werden?"</string>
+
+    <!-- Antwort 4 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_answer_4">"Ja, Covid-Zertifikate, die mit dem digitalen COVID-Zertifikat der EU kompatibel sind, können mit der COVID Certificate Check App gegen die Gültigkeitskriterien der Schweiz geprüft werden."</string>
+
+    <!-- Frage 5 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_question_5">"Welche Daten sehe ich beim Prüfvorgang?"</string>
+
+    <!-- Antwort 5 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_answer_5">"Beim Prüfvorgang sehen Sie nur den Namen und das Geburtsdatum der Zertifikatsinhaberin oder des Zertifikatsinhabers und ob das Covid-Zertifikat gültig ist."</string>
+
+    <!-- Frage 6 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_question_6">"Werden beim Prüfvorgang in der COVID Certificate Check App oder in einem zentralen System Daten gespeichert?"</string>
+
+    <!-- Antwort 6 im FAQ der Verifier App -->
+    <string name="verifier_faq_works_answer_6">"Nein, beim Prüfvorgang werden keine Daten gespeichert - weder in der COVID Certificate Check App noch in einem zentralen System. Es ist somit nicht möglich nachzuvollziehen, welches Covid-Zertifikat von wem, wann und wo überprüft wurde."</string>
+
+    <!-- iOS Button zum Einstellungen öffnen -->
+    <string name="ios_settings_open">"Einstellungen"</string>
+
+    <!-- Wallet: Onboarding externer Link zu Datenschutz -->
+    <string name="wallet_onboarding_external_privacy_button">"Datenschutzerklärung &amp;
+Nutzungsbedingungen"</string>
+
+    <!-- Wallet: Hinweis im Zertifikat Detail -->
+    <string name="wallet_certificate_detail_note">"Dieses Zertifikat ist kein Reisedokument. 
+
+Die wissenschaftlichen Erkenntnisse über COVID-19-Impfungen und ‑Tests sowie über die Genesung von einer COVID-19-Infektion entwickeln sich ständig weiter, auch im Hinblick auf neue besorgniserregende Virusvarianten. 
+
+Bitte informieren Sie sich vor der Reise über die am Zielort geltenden Gesundheitsmaßnahmen und damit verbundenen Beschränkungen."</string>
+    <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-app.html"</string>
+    <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-check-app.html"</string>
+
+    <!-- Verifier: Titel in der App (z.B. Impressum) -->
+    <string name="verifier_app_title">"COVID Certificate Check"</string>
+    <string name="wallet_faq_questions_question_1_1">"Wie erhalte ich nach einer durchgemachten Covid-19-Erkrankung ein Covid-Zertifikat?"</string>
+    <string name="wallet_faq_questions_answer_1_1">"Von Covid-19 genesene Personen können das Covid-Zertifikat über ein Online-Formular auf der Webseite des Kantons beantragen. Das Covid-Zertifikat wird anschliessend per Post zugeschickt."</string>
+
+    <!-- Wallet: Homescreen Was wollen sie machen? -->
+    <string name="wallet_homescreen_what_to_do">"Was möchten Sie machen?"</string>
+
+    <!-- Wallet: Homescreen Titel Zertifikat hinzufügen -->
+    <string name="wallet_homescreen_add_title">"Zertifikat hinzufügen"</string>
+
+    <!-- Wallet: Homescreen Zertifikat Description Text -->
+    <string name="wallet_homescreen_add_certificate_description">"Sie haben ein Covid-Zertifikat auf Papier oder als PDF und möchten es zur App hinzufügen."</string>
+
+    <!-- Wallet: Homescreen Transfer-Code erstellen -->
+    <string name="wallet_homescreen_add_transfer_code">"Transfer-Code erstellen"</string>
+
+    <!-- Wallet: Transfer Codes Titel -->
+    <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
+
+    <!-- Wallet: Transfer Code Text -->
+    <string name="wallet_transfer_code_onboarding_text">"Mit Transfer-Codes können Sie Covid-Zertifikate von negativen Testresultaten direkt in der App empfangen."</string>
+
+    <!-- Wallet: Transfer Code Onboarding Button -->
+    <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
+
+    <!-- Wallet: Transfer Code Onboarding So funktioniert's -->
+    <string name="wallet_transfer_code_onboarding_howto">"So funktioniert's"</string>
+
+    <!-- Wallet: Transfer Code: FAQ Titel -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_title">"Test-Zertifikate direkt in die App geliefert"</string>
+
+    <!-- Wallet: Transfer Code FAQ Text -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_subtitle">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Zertifikat nach einem negativen Testresultat direkt in die App geliefert."</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 1 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_question_1">"Wer bietet die Übermittlung per Transfer-Code an?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 2 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_question_2">"Geht das nur für Testzertifikate?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 3 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_question_3">"Wie kann ich einen Transfer-Code erstellen?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 4 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_question_4">"Wo muss ich den Transfer-Code notieren?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 5 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_question_5">"Kann ich den Transfer-Code mehrmals benutzen?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 1 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_answer_1">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 2 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_answer_2">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 3 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_answer_3">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 4 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_answer_4">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 5 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_answer_5">"Text"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_title">"So funktioniert der Transfer"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_subtitle">"Die App prüft regelmässig, ob ein Covid-Zertifikat für Ihren Transfer-Code verfügbar ist. Sobald das Covid-Zertifikat verfügbar ist, erscheint es in der App."</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 1 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_question_1">"Wie oft prüft die App, ob das Zertifikat da ist?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 2 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_question_2">"Werde ich von der App benachrichtigt?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 3 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_question_3">"Wie sind meine Daten beim Transfer geschützt?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 4 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_question_4">"Wie lange ist ein Transfer-Code gültig?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 5 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_question_5">"Was kann ich tun, wenn das Zertifikat nicht ankommt?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 6 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_question_6">"Was passiert bei einem positiven Testresultat?"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 1 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_answer_1">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 2 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_answer_2">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 3 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_answer_3">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 4 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_answer_4">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 5 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_answer_5">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 6 -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_works_answer_6">"Text"</string>
+
+    <!-- Wallet: Transfer Code erstellt Titel -->
+    <string name="wallet_transfer_code_code_created_title">"Ihr Transfer-Code wurde erstellt"</string>
+
+    <!-- Wallet: Transfer-Code -->
+    <string name="wallet_transfer_code_title">"Transfer-Code"</string>
+
+    <!-- Wallet: Transfer Code Erstelltm am {DATE} -->
+    <string name="wallet_transfer_code_createdat">"Erstellt am {DATE}"</string>
+
+    <!-- Wallet: Transfer Code Nächste Schritte -->
+    <string name="wallet_transfer_code_next_steps">"Nächste Schritte"</string>
+
+    <!-- Wallet: Transfer Code Nächste Schritte 1 -->
+    <string name="wallet_transfer_code_next_steps1">"Notieren Sie den Code in das entsprechende Feld auf dem Anmeldeformular zum Covid-Test."</string>
+
+    <!-- Wallet: Transfer Code Fertig Button -->
+    <string name="wallet_transfer_code_done_button">"Fertig"</string>
+
+    <!-- Wallet: Transfer Code Card Titel -->
+    <string name="wallet_transfer_code_card_title">"Transfer"</string>
+
+    <!-- Wallet: Transfer Code Staus Warten auf Transfer -->
+    <string name="wallet_transfer_code_state_waiting">"Warten auf Transfer"</string>
+
+    <!-- Wallet: Transfer Code Ablauf in 1 Tag -->
+    <string name="wallet_transfer_code_expire_singular">"Läuft ab in 1 Tag"</string>
+
+    <!-- Wallet: Transfer Code: Läuft ab in {DAYS} Tagen -->
+    <string name="wallet_transfer_code_expire_plural">"Läuft ab in {DAYS} Tagen"</string>
+
+    <!-- Wallet: Transfer Code Status Abgelaufen -->
+    <string name="wallet_transfer_code_state_expired">"Transfer abgelaufen"</string>
+
+    <!-- Wallet: Transfer Code Alter Code Titel -->
+    <string name="wallet_transfer_code_old_code">"Code älter als 7 Tage"</string>
+
+    <!-- Wallet: Transfer Code State Zuletzt aktualisiert {DATE} -->
+    <string name="wallet_transfer_code_state_updated">"Zuletzt aktualisiert
+{DATE}"</string>
+
+    <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
+    <string name="wallet_transfer_code_state_no_certificate">"Für diesen Code kann kein Zertifikat 
+mehr empfangen werden"</string>
+
+    <!-- Wallet: Fehler Format des Zertifikat ungültig -->
+    <string name="wallet_error_invalid_format">"Format des Zertifikat
+ungültig"</string>
+
+    <!-- Wallet: Fehler Format des Zertifikat ungültig Fett -->
+    <string name="wallet_error_invalid_format_bold">"ungültig"</string>
+
+    <!-- Verifier: Error Ungültiges Format -->
+    <string name="verifier_error_invalid_format">"Das Format des Zertifikats ist ungültig."</string>
+
+    <!-- Homescreen Zertifikat: Offline Modus Text -->
+    <string name="wallet_homescreen_offline">"Offline Modus"</string>
+
+    <!-- Wallet: Detail Offline Text -->
+    <!-- Fuzzy -->
+    <string name="wallet_offline_description">"Um die aktuelle Gültigkeit anzeigen zu können, muss die App regelmässig online sein."</string>
+
+    <!-- Wallet: Retry Titel Offline -->
+    <string name="wallet_detail_offline_retry_title">"Prüfung offline nicht möglich"</string>
+
+    <!-- Wallet: Detail Netzwerkfehler Titel -->
+    <string name="wallet_detail_network_error_title">"Prüfung zur Zeit nicht möglich"</string>
+
+    <!-- Wallet: Detail Netzwerkfehler Text -->
+    <string name="wallet_detail_network_error_text">"Versuchen Sie es später erneut."</string>
+
+    <!-- Verifier: Titel Fehler wenn kein Internet -->
+    <string name="verifier_offline_error_title">"Offline-Prüfung nicht möglich"</string>
+
+    <!-- Verifier: Fehlertext wenn Offline bei Verifikation -->
+    <string name="verifier_offline_error_text">"Eine Internetverbindung wird benötigt, um die Prüflisten zu aktualisieren"</string>
+
+    <!-- Verifier: Fehler Titel bei Netzwerkfehler -->
+    <string name="verifier_network_error_title">"Prüfung fehlgeschlagen"</string>
+
+    <!-- Verifier: Fehler Text bei Netzwerkfehler -->
+    <!-- Fuzzy -->
+    <string name="verifier_network_error_text">"Ein unerwarteter Fehler ist aufgetreten"</string>
+</resources>

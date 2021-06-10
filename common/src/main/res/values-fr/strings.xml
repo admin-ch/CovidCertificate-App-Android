@@ -85,10 +85,10 @@ une pièce d'identité"</string>
     <string name="verifier_verify_error_info_for_national_rules">"Ne remplit pas les critères de validité de la Suisse"</string>
 
     <!-- Fehler Infotext bei Prüfung (Zertifikat Fehler) -->
-    <string name="verifier_verify_error_info_for_certificate_invalid">"Le certificat n'a pas de signature valide"</string>
+    <string name="verifier_verify_error_info_for_certificate_invalid">"Le certificat COVID n'a pas de signature valide"</string>
 
     <!-- Fehler Infotext bei Prüfung (Blacklist) -->
-    <string name="verifier_verify_error_info_for_blacklist">"Le certificat a été révoqué"</string>
+    <string name="verifier_verify_error_info_for_blacklist">"Le certificat COVID a été révoqué"</string>
 
     <!-- Fehler bei der geladen Liste -->
     <string name="verifier_verify_error_list_title">"La vérification a échoué"</string>
@@ -506,11 +506,11 @@ Si vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la 
     <string name="wallet_onboarding_external_privacy_button">"Déclaration de confidentialité &amp; condition d'utilisation"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_note">"La présente attestation ne constitue pas un document de voyage.
+    <string name="wallet_certificate_detail_note">"Le présent certificat n’est pas un document de voyage. 
 
-Les connaissances scientifiques sur la vaccination contre le COVID-19, les tests et le rétablissement après une infection évoluent en permanence, y compris en ce qui concerne les nouveaux variants préoccupants du virus.
+Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d’évoluer, notamment en ce qui concerne de nouveaux variants préoccupants du virus. 
 
-Avant de partir en voyage, veuillez vérifier les mesures sanitaires applicables à votre destination et les restrictions associées."</string>
+Avant de voyager, veuillez vérifier les mesures de santé publique applicables et les restrictions connexes applicables sur le lieu de destination."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-check-app.html"</string>
 
@@ -518,4 +518,183 @@ Avant de partir en voyage, veuillez vérifier les mesures sanitaires applicables
     <string name="verifier_app_title">"COVID Certificate Check"</string>
     <string name="wallet_faq_questions_question_1_1">"Comment puis-je obtenir un certificat COVID après avoir guéri?"</string>
     <string name="wallet_faq_questions_answer_1_1">"Les personnes qui ont guéri du COVID-19 peuvent demander un certificat COVID en remplissant le formulaire en ligne disponible sur le site Internet de leur canton de domicile. Elles recevront ensuite le certificat COVID par la poste. "</string>
+
+    <!-- Wallet: Homescreen Was wollen sie machen? -->
+    <string name="wallet_homescreen_what_to_do">"Was möchten Sie machen?"</string>
+
+    <!-- Wallet: Homescreen Titel Zertifikat hinzufügen -->
+    <string name="wallet_homescreen_add_title">"Zertifikat hinzufügen"</string>
+
+    <!-- Wallet: Homescreen Zertifikat Description Text -->
+    <string name="wallet_homescreen_add_certificate_description">"Sie haben ein Covid-Zertifikat auf Papier oder als PDF und möchten es zur App hinzufügen."</string>
+
+    <!-- Wallet: Homescreen Transfer-Code erstellen -->
+    <string name="wallet_homescreen_add_transfer_code">"Transfer-Code erstellen"</string>
+
+    <!-- Wallet: Transfer Codes Titel -->
+    <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
+
+    <!-- Wallet: Transfer Code Text -->
+    <string name="wallet_transfer_code_onboarding_text">"Mit Transfer-Codes können Sie Covid-Zertifikate von negativen Testresultaten direkt in der App empfangen."</string>
+
+    <!-- Wallet: Transfer Code Onboarding Button -->
+    <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
+
+    <!-- Wallet: Transfer Code Onboarding So funktioniert's -->
+    <string name="wallet_transfer_code_onboarding_howto">"So funktioniert's"</string>
+
+    <!-- Wallet: Transfer Code: FAQ Titel -->
+    <string name="wallet_transfer_code_faq_questions_title">"Test-Zertifikate direkt in die App geliefert"</string>
+
+    <!-- Wallet: Transfer Code FAQ Text -->
+    <string name="wallet_transfer_code_faq_questions_subtitle">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Zertifikat nach einem negativen Testresultat direkt in die App geliefert."</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 1 -->
+    <string name="wallet_transfer_code_faq_questions_question_1">"Wer bietet die Übermittlung per Transfer-Code an?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 2 -->
+    <string name="wallet_transfer_code_faq_questions_question_2">"Geht das nur für Testzertifikate?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 3 -->
+    <string name="wallet_transfer_code_faq_questions_question_3">"Wie kann ich einen Transfer-Code erstellen?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 4 -->
+    <string name="wallet_transfer_code_faq_questions_question_4">"Wo muss ich den Transfer-Code notieren?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Frage 5 -->
+    <string name="wallet_transfer_code_faq_questions_question_5">"Kann ich den Transfer-Code mehrmals benutzen?"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 1 -->
+    <string name="wallet_transfer_code_faq_questions_answer_1">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 2 -->
+    <string name="wallet_transfer_code_faq_questions_answer_2">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 3 -->
+    <string name="wallet_transfer_code_faq_questions_answer_3">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 4 -->
+    <string name="wallet_transfer_code_faq_questions_answer_4">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ Antwort 5 -->
+    <string name="wallet_transfer_code_faq_questions_answer_5">"Text"</string>
+    <string name="wallet_transfer_code_faq_works_title">"So funktioniert der Transfer"</string>
+    <string name="wallet_transfer_code_faq_works_subtitle">"Die App prüft regelmässig, ob ein Covid-Zertifikat für Ihren Transfer-Code verfügbar ist. Sobald das Covid-Zertifikat verfügbar ist, erscheint es in der App."</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 1 -->
+    <string name="wallet_transfer_code_faq_works_question_1">"Wie oft prüft die App, ob das Zertifikat da ist?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 2 -->
+    <string name="wallet_transfer_code_faq_works_question_2">"Werde ich von der App benachrichtigt?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 3 -->
+    <string name="wallet_transfer_code_faq_works_question_3">"Wie sind meine Daten beim Transfer geschützt?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 4 -->
+    <string name="wallet_transfer_code_faq_works_question_4">"Wie lange ist ein Transfer-Code gültig?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 5 -->
+    <string name="wallet_transfer_code_faq_works_question_5">"Was kann ich tun, wenn das Zertifikat nicht ankommt?"</string>
+
+    <!-- Wallet: Tranfser Code FAQ 2 Frage 6 -->
+    <string name="wallet_transfer_code_faq_works_question_6">"Was passiert bei einem positiven Testresultat?"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 1 -->
+    <string name="wallet_transfer_code_faq_works_answer_1">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 2 -->
+    <string name="wallet_transfer_code_faq_works_answer_2">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 3 -->
+    <string name="wallet_transfer_code_faq_works_answer_3">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 4 -->
+    <string name="wallet_transfer_code_faq_works_answer_4">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 5 -->
+    <string name="wallet_transfer_code_faq_works_answer_5">"Text"</string>
+
+    <!-- Wallet: Transfer Code FAQ 2 Antwort 6 -->
+    <string name="wallet_transfer_code_faq_works_answer_6">"Text"</string>
+
+    <!-- Wallet: Transfer Code erstellt Titel -->
+    <string name="wallet_transfer_code_code_created_title">"Ihr Transfer-Code wurde erstellt"</string>
+
+    <!-- Wallet: Transfer-Code -->
+    <string name="wallet_transfer_code_title">"Transfer-Code"</string>
+
+    <!-- Wallet: Transfer Code Erstelltm am {DATE} -->
+    <string name="wallet_transfer_code_createdat">"Erstellt am {DATE}"</string>
+
+    <!-- Wallet: Transfer Code Nächste Schritte -->
+    <string name="wallet_transfer_code_next_steps">"Nächste Schritte"</string>
+
+    <!-- Wallet: Transfer Code Nächste Schritte 1 -->
+    <string name="wallet_transfer_code_next_steps1">"Notieren Sie den Code in das entsprechende Feld auf dem Anmeldeformular zum Covid-Test."</string>
+
+    <!-- Wallet: Transfer Code Fertig Button -->
+    <string name="wallet_transfer_code_done_button">"Fertig"</string>
+
+    <!-- Wallet: Transfer Code Card Titel -->
+    <string name="wallet_transfer_code_card_title">"Transfer"</string>
+
+    <!-- Wallet: Transfer Code Staus Warten auf Transfer -->
+    <string name="wallet_transfer_code_state_waiting">"Warten auf Transfer"</string>
+
+    <!-- Wallet: Transfer Code Ablauf in 1 Tag -->
+    <string name="wallet_transfer_code_expire_singular">"Läuft ab in 1 Tag"</string>
+
+    <!-- Wallet: Transfer Code: Läuft ab in {DAYS} Tagen -->
+    <string name="wallet_transfer_code_expire_plural">"Läuft ab in {DAYS} Tagen"</string>
+
+    <!-- Wallet: Transfer Code Status Abgelaufen -->
+    <string name="wallet_transfer_code_state_expired">"Transfer abgelaufen"</string>
+
+    <!-- Wallet: Transfer Code Alter Code Titel -->
+    <string name="wallet_transfer_code_old_code">"Code älter als 7 Tage"</string>
+
+    <!-- Wallet: Transfer Code State Zuletzt aktualisiert {DATE} -->
+    <string name="wallet_transfer_code_state_updated">"Zuletzt aktualisiert
+{DATE}"</string>
+
+    <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
+    <string name="wallet_transfer_code_state_no_certificate">"Für diesen Code kann kein Zertifikat 
+mehr empfangen werden"</string>
+
+    <!-- Wallet: Fehler Format des Zertifikat ungültig -->
+    <string name="wallet_error_invalid_format">"Format des Zertifikat
+ungültig"</string>
+
+    <!-- Wallet: Fehler Format des Zertifikat ungültig Fett -->
+    <string name="wallet_error_invalid_format_bold">"ungültig"</string>
+
+    <!-- Verifier: Error Ungültiges Format -->
+    <string name="verifier_error_invalid_format">"Das Format des Zertifikats ist ungültig."</string>
+
+    <!-- Homescreen Zertifikat: Offline Modus Text -->
+    <string name="wallet_homescreen_offline">"Offline Modus"</string>
+
+    <!-- Wallet: Detail Offline Text -->
+    <string name="wallet_offline_description">"Um die aktuelle Gültigkeit anzeigen zu können, muss die App regelmässig online sein."</string>
+
+    <!-- Wallet: Retry Titel Offline -->
+    <string name="wallet_detail_offline_retry_title">"Prüfung offline nicht möglich"</string>
+
+    <!-- Wallet: Detail Netzwerkfehler Titel -->
+    <string name="wallet_detail_network_error_title">"Prüfung zur Zeit nicht möglich"</string>
+
+    <!-- Wallet: Detail Netzwerkfehler Text -->
+    <string name="wallet_detail_network_error_text">"Versuchen Sie es später erneut."</string>
+
+    <!-- Verifier: Titel Fehler wenn kein Internet -->
+    <string name="verifier_offline_error_title">"Offline-Prüfung nicht möglich"</string>
+
+    <!-- Verifier: Fehlertext wenn Offline bei Verifikation -->
+    <string name="verifier_offline_error_text">"Eine Internetverbindung wird benötigt, um die Prüflisten zu aktualisieren"</string>
+
+    <!-- Verifier: Fehler Titel bei Netzwerkfehler -->
+    <string name="verifier_network_error_title">"Prüfung fehlgeschlagen"</string>
+
+    <!-- Verifier: Fehler Text bei Netzwerkfehler -->
+    <string name="verifier_network_error_text">"Ein unerwarteter Fehler ist aufgetreten"</string>
 </resources>
