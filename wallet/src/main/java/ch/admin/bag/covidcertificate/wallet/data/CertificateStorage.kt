@@ -84,7 +84,7 @@ class CertificateStorage private constructor(context: Context) {
 	private fun updateCertificateList(certificates: MutableList<String>) {
 		val bfsIdsJson = certificatesAdapter.toJson(certificates)
 		val editor = prefs.edit()
-		editor.putString(SHARED_PREFERENCES_CERTIFICATES_KEY, bfsIdsJson);
+		editor.putString(SHARED_PREFERENCES_CERTIFICATES_KEY, bfsIdsJson)
 		editor.apply()
 	}
 

@@ -18,9 +18,11 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
+import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityMainBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.HomeFragment
@@ -64,17 +66,25 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		certificateViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
-	}
 
-	fun showHomeFragment() {
-		supportFragmentManager.beginTransaction()
-			.add(R.id.fragment_container, HomeFragment.newInstance())
-			.commit()
+		CovidCertificateSdk.registerWithLifecycle(lifecycle)
 	}
 
 	override fun onStart() {
 		super.onStart()
 		certificateViewModel.loadConfig()
+		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
+	}
+
+	override fun onDestroy() {
+		super.onDestroy()
+		CovidCertificateSdk.unregisterWithLifecycle(lifecycle)
+	}
+
+	private fun showHomeFragment() {
+		supportFragmentManager.beginTransaction()
+			.add(R.id.fragment_container, HomeFragment.newInstance())
+			.commit()
 	}
 
 	private fun handleConfig(config: ConfigModel) {

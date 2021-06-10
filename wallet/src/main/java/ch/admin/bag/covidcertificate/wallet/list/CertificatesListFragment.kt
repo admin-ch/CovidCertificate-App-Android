@@ -72,15 +72,12 @@ class CertificatesListFragment : Fragment() {
 
 		binding.certificatesOverviewLoadingGroup.isVisible = true
 
-		certificatesViewModel.verifiedCertificatesLiveData.observe(viewLifecycleOwner) { verifiedCertificates ->
+		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { verifiedCertificates ->
 			if (verifiedCertificates.isEmpty()) {
 				parentFragmentManager.popBackStack()
 			}
 			binding.certificatesOverviewLoadingGroup.hideAnimated()
 			adapter.setItems(verifiedCertificates.map { VerifiedCeritificateItem(it) })
-		}
-		certificatesViewModel.certificateVerifierMapLiveData.observe(viewLifecycleOwner) {
-			it.forEach { (certificate, verifier) -> verifier.startVerification() }
 		}
 
 		certificatesViewModel.loadCertificates()

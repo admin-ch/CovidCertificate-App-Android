@@ -27,9 +27,9 @@ import androidx.fragment.app.Fragment
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
-import ch.admin.bag.covidcertificate.eval.DecodeState
-import ch.admin.bag.covidcertificate.eval.Error
-import ch.admin.bag.covidcertificate.eval.Eval
+import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
+import ch.admin.bag.covidcertificate.eval.data.state.Error
+import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.ResultPoint
@@ -252,7 +252,7 @@ abstract class QrScanFragment : Fragment() {
 			val qrCodeData = result.text
 
 			qrCodeData?.let {
-				when (val decodeState = Eval.decode(qrCodeData)) {
+				when (val decodeState = CertificateDecoder.decode(qrCodeData)) {
 					is DecodeState.SUCCESS -> {
 						onDecodeSuccess(decodeState.dccHolder)
 						view?.post { indicateInvalidQrCode(QrScannerState.VALID) }

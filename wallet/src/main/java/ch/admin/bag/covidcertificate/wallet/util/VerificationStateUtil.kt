@@ -15,10 +15,10 @@ import android.text.SpannableString
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import ch.admin.bag.covidcertificate.common.util.*
-import ch.admin.bag.covidcertificate.common.verification.VerificationState
-import ch.admin.bag.covidcertificate.eval.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.eval.CheckRevocationState
-import ch.admin.bag.covidcertificate.eval.CheckSignatureState
+import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
+import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
+import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMATTER

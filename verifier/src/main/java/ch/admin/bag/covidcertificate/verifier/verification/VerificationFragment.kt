@@ -23,13 +23,20 @@ import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import ch.admin.bag.covidcertificate.common.verification.VerificationState
+import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
-import ch.admin.bag.covidcertificate.verifier.util.*
+import ch.admin.bag.covidcertificate.verifier.util.getHeaderColor
+import ch.admin.bag.covidcertificate.verifier.util.getInfoIconColor
+import ch.admin.bag.covidcertificate.verifier.util.getInvalidErrorCode
+import ch.admin.bag.covidcertificate.verifier.util.getStatusBubbleColor
+import ch.admin.bag.covidcertificate.verifier.util.getStatusInformationString
+import ch.admin.bag.covidcertificate.verifier.util.getStatusString
+import ch.admin.bag.covidcertificate.verifier.util.getValidationStatusIcon
+import ch.admin.bag.covidcertificate.verifier.util.getValidationStatusIconLarge
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -51,6 +58,16 @@ class VerificationFragment : Fragment() {
 	private var _binding: FragmentVerificationBinding? = null
 	private val binding get() = _binding!!
 	private val verificationViewModel: VerificationViewModel by viewModels()
+	private var dccHolder: DccHolder? = null
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		if (arguments?.containsKey(ARG_DECODE_DGC) == false) {
+			return
+		}
+
+		dccHolder = requireArguments().getSerializable(ARG_DECODE_DGC) as DccHolder
+	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentVerificationBinding.inflate(inflater, container, false)
@@ -60,10 +77,8 @@ class VerificationFragment : Fragment() {
 	@SuppressLint("SetTextI18n")
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		if (arguments?.containsKey(ARG_DECODE_DGC) == false) {
-			return
-		}
-		val dccHolder = requireArguments().get(ARG_DECODE_DGC) as DccHolder
+
+		val dccHolder = dccHolder ?: return
 
 		val eudgc = dccHolder.euDGC
 		binding.verificationFamilyName.text = eudgc.person.familyName
@@ -132,9 +147,11 @@ class VerificationFragment : Fragment() {
 			if (state is VerificationState.ERROR) {
 				infoRetry.isVisible = true
 				infoRetry.setOnClickListener {
-					state.retry.run()
+					verificationViewModel.retryVerification(dccHolder)
 					infoRetry.setOnClickListener(null)
 				}
+			} else {
+				infoRetry.isVisible = false
 			}
 
 			infoFrame.isVisible = !isLoading
