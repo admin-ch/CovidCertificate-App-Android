@@ -18,10 +18,10 @@ The certificates are kept and checked locally on the user's phone.
 </a>
 
 <p align="center">
-<img src="documentation/screenshots/wallet/en/screenshot1.png" width="20%">
-<img src="documentation/screenshots/wallet/en/screenshot2.png" width="20%">
-<img src="documentation/screenshots/wallet/en/screenshot3.png" width="20%">
-<img src="documentation/screenshots/wallet/en/screenshot4.png" width="20%">
+<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_01.png" width="20%">
+<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_02.png" width="20%">
+<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_03.png" width="20%">
+<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_04.png" width="20%">
 </p>
 
 ## COVID Certificate Check App
@@ -34,9 +34,9 @@ The validation is executed locally on the phone and no information of the scanne
 </a>
 
 <p align="center">
-<img src="documentation/screenshots/verifier/en/screenshot1.png" width="20%">
-<img src="documentation/screenshots/verifier/en/screenshot2.png" width="20%">
-<img src="documentation/screenshots/verifier/en/screenshot3.png" width="20%">
+<img src="verifier/src/main/play/listings/en-US/graphics/phone-screenshots/EN_01.png" width="20%">
+<img src="verifier/src/main/play/listings/en-US/graphics/phone-screenshots/EN_02.png" width="20%">
+<img src="verifier/src/main/play/listings/en-US/graphics/phone-screenshots/EN_03.png" width="20%">
 </p>
 
 ## Contribution Guide

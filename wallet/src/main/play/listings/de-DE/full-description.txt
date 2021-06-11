@@ -1,0 +1,33 @@
+<b>Schweizer Covid-Zertifikate einfach und sicher auf dem Mobiltelefon aufbewahren</b>
+
+COVID Certificate ist die offizielle App für die Aufbewahrung und das Vorweisen von Covid-Zertifikaten der Schweiz. Sie wird durch das Bundesamt für Informatik und Telekommunikation BIT im Auftrag des Bundesamtes für Gesundheit betrieben.
+
+In der Schweiz können geimpfte, negativ getestete und von einer Covid-Erkrankung genesene Personen ein Covid-Zertifikat beantragen.
+
+Covid-Zertifikate werden in Papierform oder in elektronischer Form ausgestellt und dienen als Nachweis:
+
+1. einer gegen Covid-19 durchgeführten Impfung
+2. einer Genesung nach einer Ansteckung mit Sars-CoV-2
+3. eines negativen Ergebnisses einer Analyse eines Tests auf Sars-CoV-2
+
+<b>So funktioniert die App</b>
+
+Beim ersten Start nach der Installation auf dem Mobilgerät gibt eine kurze Einführung Auskunft, wie die App verwendet und wie ein Covid-Zertifikat von der Papierversion eingescannt werden kann.
+
+In der App kann das gewünschte Covid-Zertifikat ausgewählt und auf Wunsch vorgezeigt werden. Die App zeigt an, ob, ab wann und wie lange das Covid-Zertifikat gültig ist. Auch können alle Daten die im QR-Code eines Zertifikates enthalten sind angezeigt werden.
+
+Es ist möglich, mehrere Covid-Zertifikate in der App zu hinterlegen, z. B. für Familienmitglieder oder mehrere Covid-Testzertifikate.
+
+Die Nutzung der COVID Certificate App ist freiwillig und kostenlos.
+
+<b>Covid-Zertifikat selbst überprüfen</b>
+
+Es ist in der App möglich, ein gespeichertes Covid-Zertifikat selber zu prüfen. Bei diesem Prüfvorgang wird die elektronische Signatur des Zertifikates geprüft und die Gültigkeitsdauer des Zertifikates mit dem aktuellen Datum verglichen. Es sind die gleichen Prüfungen, die auch in der COVID Certificate Check App für die Verifikation von Zertifikaten eingesetzt werden.
+
+<b>Datenschutz ist zentral</b>
+
+Die Daten des Covid-Zertifikats werden ausschliesslich auf dem Mobilgerät gespeichert.Das Covid-Zertifikat ist durch ein digitales Siegel (Signatur) geschützt und dadurch fälschungssicher.
+
+Covid-Zertifikate werden durch das BIT generiert, jedoch nicht auf einem zentralen System abgelegt. Darum ist es auch nicht möglich, eine Kopie eines ausgestellten Zertifikates zu bekommen.
+
+Die Anwendung der App ist auf die Schweiz beschränkt und unterliegt Schweizer Recht.

@@ -1,0 +1,33 @@
+<b>Salvare i certificati COVID svizzeri in modo semplice e sicuro sul dispositivo mobile</b>
+
+L’applicazione COVID Certificate è l’app ufficiale che permette di salvare e mostrare i certificati COVID emessi in Svizzera. È stato sviluppato dall’Ufficio federale dell’informatica e della telecomunicazione (UFIT) su mandato dell’Ufficio federale della sanità pubblica (UFSP).
+
+In Svizzera possono richiedere un certificato COVID le persone vaccinate, guarite dalla COVID-19 o risultate negative a un test.
+
+I certificati COVID sono emessi in forma cartacea o elettronica e servono come prova: 
+
+1. dell’avvenuta vaccinazione anti-COVID-19
+2. della guarigione da un’infezione da SARS-CoV-2
+3. di un risultato negativo dell’analisi di un test per il rilevamento del SARS-CoV-2.
+
+<b>Come funziona l’app?</b>
+
+Al primo avvio dopo l’installazione sul dispositivo mobile, una breve guida introduttiva fornisce informazioni su come utilizzare l’app e su come scansionare il certificato COVID a partire dalla copia cartacea.
+
+Nell’app è possibile selezionare e, su richiesta, mostrare il certificato COVID. L’app indica se il certificato COVID è valido, a partire da quando e per quanto tempo. Inoltre, permette di visualizzare tutti i dati presenti nel codice QR del certificato.
+
+Nell’app si possono salvare più certificati COVID, ad esempio quelli dei familiari, o più certificati che attestino il risultato negativo a un test. 
+
+L’uso dell’app COVID Certificate è facoltativo e gratuito.
+
+<b>Verificare autonomamente il certificato COVID</b>
+
+L’app permette di verificare autonomamente un certificato COVID salvato sul dispositivo mobile. In questo caso l’app controlla la firma elettronica del certificato e confronta la durata di validità dello stesso con la data corrente. Si tratta delle stesse verifiche che vengono effettuate nell’applicazione COVID Certificate Check per la verifica dei certificati.
+
+<b>La protezione dei dati è fondamentale</b>
+
+I dati del certificato COVID vengono salvati esclusivamente sul dispositivo mobile. I certificati COVID recano una firma elettronica e quindi non sono falsificabili.
+
+Sono generati dall’UFIT ma non vengono salvati in un sistema centrale. Per questo motivo non è possibile ottenere la copia di un certificato già emesso.
+
+L'applicazione dell'app è limitata alla Svizzera ed è soggetta al diritto svizzero.
