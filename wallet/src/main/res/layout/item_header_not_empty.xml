@@ -38,6 +38,7 @@
 		android:layout_marginHorizontal="@dimen/spacing_medium_small">
 
 		<ImageView
+			android:id="@+id/schwiizerchruez"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
