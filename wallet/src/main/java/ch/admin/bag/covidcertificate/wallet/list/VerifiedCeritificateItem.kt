@@ -11,72 +11,112 @@
 package ch.admin.bag.covidcertificate.wallet.list
 
 import android.view.View
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.models.CertType
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
+import ch.admin.bag.covidcertificate.wallet.databinding.ItemCertificateListBinding
 import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
-import ch.admin.bag.covidcertificate.wallet.util.getStatusIcon
+import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 
 data class VerifiedCeritificateItem(val verifiedCertificate: CertificatesViewModel.VerifiedCertificate) {
 
 	fun bindView(itemView: View, onCertificateClickListener: ((DccHolder) -> Unit)? = null) {
-		val context = itemView.context
-		val certificate = verifiedCertificate.dccHolder
+		val binding = ItemCertificateListBinding.bind(itemView)
 		val state = verifiedCertificate.state
-
-		var typeBackgroundColor = R.color.blue
-		var typeTextColor = R.color.white
-		var typeLabelRes = R.string.certificate_reason_vaccinated
-		when (certificate.certType) {
-			CertType.RECOVERY -> {
-				typeLabelRes = R.string.certificate_reason_recovered
-			}
-			CertType.TEST -> {
-				typeLabelRes = R.string.certificate_reason_tested
-				typeBackgroundColor = R.color.blueish
-				typeTextColor = R.color.blue
-			}
-		}
-
-		val isInvalid = state is VerificationState.INVALID
-		if (isInvalid) {
-			typeBackgroundColor = R.color.greyish
-			typeTextColor = R.color.grey
-		}
+		val certificate = verifiedCertificate.dccHolder
+		val certType = certificate.certType
 
 		val name = "${certificate.euDGC.person.familyName} ${certificate.euDGC.person.givenName}"
 		val qrAlpha = state.getQrAlpha()
-		itemView.findViewById<TextView>(R.id.item_certificate_list_name).apply {
-			text = name
-			alpha = qrAlpha
-		}
-		itemView.findViewById<View>(R.id.item_certificate_list_icon_qr).alpha = qrAlpha
+		binding.itemCertificateListName.text = name
+		binding.itemCertificateListName.alpha = qrAlpha
+		binding.itemCertificateListIconQr.alpha = qrAlpha
 
-		val isFinished = state != VerificationState.LOADING
-		itemView.findViewById<View>(R.id.item_certificate_list_icon_loading_view).isVisible = !isFinished
-		itemView.findViewById<ImageView>(R.id.item_certificate_list_icon_status).apply {
-			isVisible = isFinished
-			setImageResource(state.getStatusIcon())
-		}
-		itemView.findViewById<View>(R.id.item_certificate_list_icon_status_group).isVisible =
-			state !is VerificationState.SUCCESS
+		setCertificateType(binding.itemCertificateListType, state, certificate.certType)
+		binding.itemCertificateListType.isVisible = certType != null
 
-		itemView.findViewById<TextView>(R.id.item_certificate_list_type).apply {
-			backgroundTintList = context.resources.getColorStateList(typeBackgroundColor, context.theme)
-			setTextColor(ContextCompat.getColor(context, typeTextColor))
-			setText(typeLabelRes)
-			isVisible = certificate.certType != null
+		when (state) {
+			is VerificationState.LOADING -> {
+				binding.itemCertificateListIconLoadingView.isVisible = true
+				binding.itemCertificateListIconStatusGroup.isVisible = true
+				binding.itemCertificateListIconStatus.isVisible = false
+				binding.itemCertificateListIconStatus.setImageResource(0)
+			}
+			is VerificationState.SUCCESS -> {
+				binding.itemCertificateListIconLoadingView.isVisible = false
+				binding.itemCertificateListIconStatusGroup.isVisible = false
+				binding.itemCertificateListIconStatus.isVisible = true
+				binding.itemCertificateListIconStatus.setImageResource(R.drawable.ic_info_blue)
+
+			}
+			is VerificationState.INVALID -> {
+				binding.itemCertificateListIconLoadingView.isVisible = false
+				binding.itemCertificateListIconStatusGroup.isVisible = true
+				binding.itemCertificateListIconStatus.isVisible = true
+
+				val statusIconId = when (state.nationalRulesState) {
+					is CheckNationalRulesState.NOT_VALID_ANYMORE -> R.drawable.ic_invalid_grey
+					is CheckNationalRulesState.NOT_YET_VALID -> R.drawable.ic_timelapse
+					else -> R.drawable.ic_error_grey
+				}
+				binding.itemCertificateListIconStatus.setImageResource(statusIconId)
+			}
+			is VerificationState.ERROR -> {
+				binding.itemCertificateListIconLoadingView.isVisible = false
+				binding.itemCertificateListIconStatusGroup.isVisible = true
+				binding.itemCertificateListIconStatus.isVisible = true
+
+				val statusIconId = if (state.isOfflineMode()) R.drawable.ic_offline else R.drawable.ic_process_error_grey
+				binding.itemCertificateListIconStatus.setImageResource(statusIconId)
+			}
 		}
 
-		itemView.setOnClickListener {
+		binding.root.setOnClickListener {
 			onCertificateClickListener?.invoke(certificate)
 		}
+	}
 
+	/**
+	 * Set the text, text color and background of the certificate type, depending on the verification state and the certificate type
+	 */
+	private fun setCertificateType(
+		view: TextView,
+		state: VerificationState,
+		certType: CertType?
+	) {
+		val backgroundColorId: Int
+		val textColorId: Int
+		when {
+			state is VerificationState.INVALID -> {
+				backgroundColorId = R.color.greyish
+				textColorId = R.color.grey
+			}
+			certType == CertType.TEST -> {
+				backgroundColorId = R.color.blueish
+				textColorId = R.color.blue
+			}
+			else -> {
+				backgroundColorId = R.color.blue
+				textColorId = R.color.white
+			}
+		}
+
+		val context = view.context
+		val colorStateList = context.resources.getColorStateList(backgroundColorId, context.theme)
+		view.backgroundTintList = colorStateList
+		view.setTextColor(ContextCompat.getColor(context, textColorId))
+
+		val typeLabelRes: Int = when (certType) {
+			CertType.RECOVERY -> R.string.certificate_reason_recovered
+			CertType.TEST -> R.string.certificate_reason_tested
+			else -> R.string.certificate_reason_vaccinated
+		}
+		view.setText(typeLabelRes)
 	}
 }

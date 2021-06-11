@@ -182,6 +182,28 @@
 					</androidx.constraintlayout.widget.ConstraintLayout>
 
 					<LinearLayout
+						android:id="@+id/certificate_detail_info_description_group"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="@dimen/spacing_very_small"
+						android:background="@drawable/bg_certificate_bubble"
+						android:backgroundTint="@color/blueish"
+						android:orientation="horizontal"
+						android:paddingHorizontal="@dimen/spacing_medium_large"
+						android:paddingVertical="@dimen/spacing_medium_small">
+
+						<TextView
+							android:id="@+id/certificate_detail_info_description"
+							style="@style/CovidCertificate.Text"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:gravity="center"
+							android:layout_weight="1"
+							tools:text="@string/wallet_offline_description" />
+
+					</LinearLayout>
+
+					<LinearLayout
 						android:id="@+id/certificate_detail_info_validity_group"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
