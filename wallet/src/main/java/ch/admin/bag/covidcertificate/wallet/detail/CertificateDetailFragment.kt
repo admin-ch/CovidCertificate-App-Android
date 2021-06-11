@@ -116,7 +116,7 @@ class CertificateDetailFragment : Fragment() {
 			binding.scrollview.smoothScrollTo(0, 0)
 			isForceValidate = true
 			hideDelayedJob?.cancel()
-			certificatesViewModel.startVerification(dccHolder, delayInMillis = STATUS_LOAD_DELAY)
+			certificatesViewModel.startVerification(dccHolder, delayInMillis = STATUS_LOAD_DELAY, isForceVerification = true)
 		}
 	}
 
@@ -197,12 +197,12 @@ class CertificateDetailFragment : Fragment() {
 		showValidityDate(state.validityRange.validUntil, dccHolder.certType)
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
 
+		val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
+		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
 		if (isForceValidate) {
-			val info = context.getString(R.string.wallet_certificate_verify_success).makeBold()
-			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, info)
-			readjustStatusDelayed(R.color.blueish, R.drawable.ic_info_blue, null)
+			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, forceValidationInfo)
+			readjustStatusDelayed(R.color.blueish, R.drawable.ic_info_blue, info)
 		} else {
-			val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
 			showStatusInfoAndDescription(null, info, R.drawable.ic_info_blue)
 		}
 	}
