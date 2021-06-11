@@ -13,26 +13,30 @@ package ch.admin.bag.covidcertificate.wallet.homescreen.pager
 import android.content.res.ColorStateList
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.util.makeBold
+import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding
 import ch.admin.bag.covidcertificate.wallet.util.QrCode
-import ch.admin.bag.covidcertificate.wallet.util.getInfoBubbleColor
 import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
 import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
-import ch.admin.bag.covidcertificate.wallet.util.getStatusIcon
-import ch.admin.bag.covidcertificate.wallet.util.getStatusString
+import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
+import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 
 class CertificatePagerFragment : Fragment() {
 
@@ -94,26 +98,90 @@ class CertificatePagerFragment : Fragment() {
 
 	private fun updateStatusInfo(verificationState: VerificationState?) {
 		val state = verificationState ?: return
-		val context = binding.root.context
-
-		binding.certificatePageName.setTextColor(ContextCompat.getColor(context, state.getNameDobColor()))
-		binding.certificatePageBirthdate.setTextColor(ContextCompat.getColor(context, state.getNameDobColor()))
-		binding.certificatePageQrCode.alpha = state.getQrAlpha()
-		binding.certificatePageInfo.backgroundTintList =
-			ColorStateList.valueOf(ContextCompat.getColor(context, state.getInfoBubbleColor()))
-		binding.certificatePageStatusIcon.setImageResource(state.getStatusIcon())
-
-		binding.certificatePageInfo.text = state.getStatusString(context)
 
 		when (state) {
-			is VerificationState.INVALID, is VerificationState.SUCCESS, is VerificationState.ERROR -> {
-				binding.certificatePageStatusLoading.isVisible = false
-				binding.certificatePageStatusIcon.isVisible = true
+			is VerificationState.LOADING -> displayLoadingState()
+			is VerificationState.SUCCESS -> displaySuccessState()
+			is VerificationState.INVALID -> displayInvalidState(state)
+			is VerificationState.ERROR -> displayErrorState(state)
+		}
+
+		setCertificateDetailTextColor(state.getNameDobColor())
+		binding.certificatePageQrCode.alpha = state.getQrAlpha()
+	}
+
+	private fun displayLoadingState() {
+		val context = context ?: return
+		showLoadingIndicator(true)
+		setInfoBubbleBackground(R.color.greyish)
+		binding.certificatePageStatusIcon.setImageResource(0)
+		binding.certificatePageInfo.text = SpannableString(context.getString(R.string.wallet_certificate_verifying))
+	}
+
+	private fun displaySuccessState() {
+		val context = context ?: return
+		showLoadingIndicator(false)
+		setInfoBubbleBackground(R.color.blueish)
+		binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_info_blue)
+		binding.certificatePageInfo.text = SpannableString(context.getString(R.string.verifier_verify_success_info))
+
+	}
+
+	private fun displayInvalidState(state: VerificationState.INVALID) {
+		val context = context ?: return
+		showLoadingIndicator(false)
+
+		val infoBubbleColorId: Int
+		val statusIconId: Int
+		when (state.nationalRulesState) {
+			is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
+				infoBubbleColorId = R.color.blueish
+				statusIconId = R.drawable.ic_invalid_grey
 			}
-			VerificationState.LOADING -> {
-				binding.certificatePageStatusLoading.isVisible = true
-				binding.certificatePageStatusIcon.isVisible = false
+			is CheckNationalRulesState.NOT_YET_VALID -> {
+				infoBubbleColorId = R.color.blueish
+				statusIconId = R.drawable.ic_timelapse
+			}
+			else -> {
+				infoBubbleColorId = R.color.greyish
+				statusIconId = R.drawable.ic_error_grey
 			}
 		}
+
+		setInfoBubbleBackground(infoBubbleColorId)
+		binding.certificatePageStatusIcon.setImageResource(statusIconId)
+		binding.certificatePageInfo.text = state.getValidationStatusString(context)
 	}
+
+	private fun displayErrorState(state: VerificationState.ERROR) {
+		val context = context ?: return
+		showLoadingIndicator(false)
+		setInfoBubbleBackground(R.color.greyish)
+
+		val statusIconId = if (state.isOfflineMode()) R.drawable.ic_offline else R.drawable.ic_process_error_grey
+		binding.certificatePageStatusIcon.setImageResource(statusIconId)
+
+		binding.certificatePageInfo.text = if (state.isOfflineMode()) {
+			context.getString(R.string.wallet_homescreen_offline).makeBold()
+		} else {
+			SpannableString(context.getString(R.string.wallet_homescreen_network_error))
+		}
+	}
+
+	private fun showLoadingIndicator(isLoading: Boolean) {
+		binding.certificatePageStatusLoading.isVisible = isLoading
+		binding.certificatePageStatusIcon.isVisible = !isLoading
+	}
+
+	private fun setInfoBubbleBackground(@ColorRes infoBubbleColorId: Int) {
+		val infoBubbleColor = ContextCompat.getColor(requireContext(), infoBubbleColorId)
+		binding.certificatePageInfo.backgroundTintList = ColorStateList.valueOf(infoBubbleColor)
+	}
+
+	private fun setCertificateDetailTextColor(@ColorRes colorId: Int) {
+		val textColor = ContextCompat.getColor(requireContext(), colorId)
+		binding.certificatePageName.setTextColor(textColor)
+		binding.certificatePageBirthdate.setTextColor(textColor)
+	}
+
 }

@@ -13,9 +13,12 @@ package ch.admin.bag.covidcertificate.wallet.detail
 import android.content.res.ColorStateList
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -24,11 +27,16 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
+import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
+import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
+import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
@@ -40,6 +48,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
 
 class CertificateDetailFragment : Fragment() {
 
@@ -153,75 +162,240 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun updateStatusInfo(verificationState: VerificationState?) {
 		val state = verificationState ?: return
-		val context = binding.root.context
 
-		val infoBubbleColor = ContextCompat.getColor(context, state.getInfoBubbleColor())
-		val infoBubbleValidationColor = ContextCompat.getColor(context, state.getInfoBubbleValidationColor())
+		changeAlpha(state.getQrAlpha())
+		setCertificateDetailTextColor(state.getNameDobColor())
+
+		when (state) {
+			is VerificationState.LOADING -> displayLoadingState()
+			is VerificationState.SUCCESS -> displaySuccessState(state)
+			is VerificationState.INVALID -> displayInvalidState(state)
+			is VerificationState.ERROR -> displayErrorState(state)
+		}
+	}
+
+	private fun displayLoadingState() {
+		val context = context ?: return
+		showLoadingIndicator(true)
+		binding.certificateDetailInfoDescriptionGroup.isVisible = false
+		binding.certificateDetailInfoValidityGroup.isVisible = false
+		setInfoBubbleBackgrounds(R.color.greyish, R.color.greyish)
+
+		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
+		if (isForceValidate) {
+			showForceValidation(R.color.grey, 0, 0, info)
+		} else {
+			showStatusInfoAndDescription(null, info, 0)
+		}
+	}
+
+	private fun displaySuccessState(state: VerificationState.SUCCESS) {
+		val context = context ?: return
+		showLoadingIndicator(false)
+		binding.certificateDetailInfoDescriptionGroup.isVisible = false
+		binding.certificateDetailInfoValidityGroup.isVisible = true
+		showValidityDate(state.validityRange.validUntil, dccHolder.certType)
+		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
+
+		if (isForceValidate) {
+			val info = context.getString(R.string.wallet_certificate_verify_success).makeBold()
+			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, info)
+			readjustStatusDelayed(R.color.blueish, R.drawable.ic_info_blue, null)
+		} else {
+			val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
+			showStatusInfoAndDescription(null, info, R.drawable.ic_info_blue)
+		}
+	}
+
+	private fun displayInvalidState(state: VerificationState.INVALID) {
+		val context = context ?: return
+		showLoadingIndicator(false)
+		binding.certificateDetailInfoDescriptionGroup.isVisible = false
+		binding.certificateDetailInfoValidityGroup.isVisible = true
+		showValidityDate(state.validityRange?.validUntil, dccHolder.certType)
+
+		val info = state.getValidationStatusString(context)
+		val infoBubbleColorId = when {
+			state.signatureState is CheckSignatureState.INVALID -> R.color.greyish
+			state.revocationState is CheckRevocationState.INVALID -> R.color.greyish
+			state.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> R.color.blueish
+			state.nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> R.color.blueish
+			state.nationalRulesState is CheckNationalRulesState.INVALID -> R.color.greyish
+			else -> R.color.greyish
+		}
+
+		setInfoBubbleBackgrounds(infoBubbleColorId, R.color.redish)
+
+		val icon: Int
+		val forceValidationIcon: Int
+		when (state.nationalRulesState) {
+			is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
+				icon = R.drawable.ic_invalid_grey
+				forceValidationIcon = R.drawable.ic_invalid_red
+			}
+			is CheckNationalRulesState.NOT_YET_VALID -> {
+				icon = R.drawable.ic_timelapse
+				forceValidationIcon = R.drawable.ic_timelapse_red
+			}
+			else -> {
+				icon = R.drawable.ic_error_grey
+				forceValidationIcon = R.drawable.ic_error
+			}
+		}
+
+		if (isForceValidate) {
+			showForceValidation(R.color.red, forceValidationIcon, R.drawable.ic_error_large, info)
+			readjustStatusDelayed(infoBubbleColorId, icon, info)
+		} else {
+			showStatusInfoAndDescription(null, info, icon)
+		}
+	}
+
+	private fun displayErrorState(state: VerificationState.ERROR) {
+		val context = context ?: return
+		showLoadingIndicator(false)
+		binding.certificateDetailInfoDescriptionGroup.isVisible = true
+		binding.certificateDetailInfoValidityGroup.isVisible = false
+		setInfoBubbleBackgrounds(R.color.greyish, R.color.orangeish)
+
+		val info: SpannableString
+		val forceValidationInfo: SpannableString
+		val description: SpannableString
+		val icon: Int
+		val forceValidationIcon: Int
+		val forceValidationIconLarge: Int
+		if (state.isOfflineMode()) {
+			info = context.getString(R.string.wallet_homescreen_offline).makeBold()
+			forceValidationInfo = context.getString(R.string.wallet_detail_offline_retry_title).makeBold()
+			description = SpannableString(context.getString(R.string.wallet_offline_description))
+			icon = R.drawable.ic_offline
+			forceValidationIcon = R.drawable.ic_offline_orange
+			forceValidationIconLarge = R.drawable.ic_offline_large
+		} else {
+			info = SpannableString(context.getString(R.string.wallet_homescreen_network_error))
+			forceValidationInfo = context.getString(R.string.wallet_detail_network_error_title).makeBold()
+			description = SpannableString(context.getString(R.string.wallet_detail_network_error_text))
+			icon = R.drawable.ic_process_error_grey
+			forceValidationIcon = R.drawable.ic_process_error
+			forceValidationIconLarge = R.drawable.ic_process_error_large
+		}
+
+		if (isForceValidate) {
+			showForceValidation(R.color.orange, forceValidationIcon, forceValidationIconLarge, forceValidationInfo)
+			readjustStatusDelayed(R.color.greyish, icon, info)
+		} else {
+			showStatusInfoAndDescription(description, info, icon)
+		}
+	}
+
+	/**
+	 * Show or hide the loading indicators and status icons in the QR code and the info bubble
+	 */
+	private fun showLoadingIndicator(isLoading: Boolean) {
+		binding.certificateDetailStatusLoading.isVisible = isLoading
+		binding.certificateDetailStatusIcon.isVisible = !isLoading
+
+		binding.certificateDetailQrCodeLoading.isVisible = isLoading
+		binding.certificateDetailQrCodeStatusIcon.isVisible = !isLoading
+	}
+
+	/**
+	 * Change the alpha value of the QR code, validity date and certificate content
+	 */
+	private fun changeAlpha(alpha: Float) {
+		binding.certificateDetailQrCode.alpha = alpha
+		binding.certificateDetailInfoValidityDateDisclaimer.alpha = alpha
+		binding.certificateDetailInfoValidityDateGroup.alpha = alpha
+		binding.certificateDetailDataRecyclerView.alpha = alpha
+	}
+
+	/**
+	 * Display the formatted validity date of the vaccine or test
+	 */
+	private fun showValidityDate(validUntil: LocalDateTime?, certificateType: CertType?) {
+		val formatter = when (certificateType) {
+			null -> null
+			CertType.TEST -> DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+			else -> DEFAULT_DISPLAY_DATE_FORMATTER
+		}
+
+		val formattedDate = validUntil?.let { formatter?.format(it) } ?: "-"
+		binding.certificateDetailInfoValidityDate.text = formattedDate
+	}
+
+	/**
+	 * Set the text color of the certificate details (person name and date of birth)
+	 */
+	private fun setCertificateDetailTextColor(@ColorRes colorId: Int) {
+		val textColor = ContextCompat.getColor(requireContext(), colorId)
+		binding.certificateDetailName.setTextColor(textColor)
+		binding.certificateDetailBirthdate.setTextColor(textColor)
+	}
+
+	/**
+	 * Set the info bubble backgrounds, depending if a force validation is running or not
+	 */
+	private fun setInfoBubbleBackgrounds(@ColorRes infoBubbleColorId: Int, @ColorRes infoBubbleValidationColorId: Int) {
+		val infoBubbleColor = ContextCompat.getColor(requireContext(), infoBubbleColorId)
+		val infoBubbleValidationColor = ContextCompat.getColor(requireContext(), infoBubbleValidationColorId)
 
 		if (isForceValidate) {
 			binding.certificateDetailInfo.animateBackgroundTintColor(infoBubbleColor)
-			binding.certificateDetailInfoValidityGroup.animateBackgroundTintColor(infoBubbleValidationColor)
 			binding.certificateDetailInfoVerificationStatus.animateBackgroundTintColor(infoBubbleValidationColor)
+			binding.certificateDetailInfoDescriptionGroup.animateBackgroundTintColor(infoBubbleValidationColor)
+			binding.certificateDetailInfoValidityGroup.animateBackgroundTintColor(infoBubbleValidationColor)
 		} else {
 			val infoBubbleColorTintList = ColorStateList.valueOf(infoBubbleColor)
-			binding.certificateDetailInfoValidityGroup.backgroundTintList = infoBubbleColorTintList
 			binding.certificateDetailInfo.backgroundTintList = infoBubbleColorTintList
 			binding.certificateDetailInfoVerificationStatus.backgroundTintList = ColorStateList.valueOf(infoBubbleValidationColor)
+			binding.certificateDetailInfoDescriptionGroup.backgroundTintList = infoBubbleColorTintList
+			binding.certificateDetailInfoValidityGroup.backgroundTintList = infoBubbleColorTintList
 		}
-
-		if (isForceValidate) {
-			binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
-				ContextCompat.getColor(context, state.getSolidValidationColor())
-			)
-			binding.certificateDetailQrCodeStatusIcon.setImageResource(state.getValidationStatusIconLarge())
-			binding.certificateDetailStatusIcon.setImageResource(state.getValidationStatusIcon())
-
-			if (!binding.certificateDetailQrCodeStatusGroup.isVisible) binding.certificateDetailQrCodeStatusGroup.showAnimated()
-
-			binding.certificateDetailInfoVerificationStatus.apply {
-				text = state.getValidationStatusString(context)
-				if (!isVisible) showAnimated()
-			}
-
-			if (state != VerificationState.LOADING) readjustStatusDelayed(state)
-		} else {
-			binding.certificateDetailInfo.text = state.getStatusString(context)
-			binding.certificateDetailStatusIcon.setImageResource(state.getStatusIcon())
-		}
-
-		when (state) {
-			is VerificationState.INVALID, is VerificationState.SUCCESS, is VerificationState.ERROR -> {
-				binding.certificateDetailStatusLoading.isVisible = false
-				binding.certificateDetailStatusIcon.isVisible = true
-
-				binding.certificateDetailQrCodeLoading.isVisible = false
-				binding.certificateDetailQrCodeStatusIcon.isVisible = true
-			}
-			VerificationState.LOADING -> {
-				binding.certificateDetailStatusLoading.isVisible = true
-				binding.certificateDetailStatusIcon.isVisible = false
-
-				binding.certificateDetailQrCodeLoading.isVisible = true
-				binding.certificateDetailQrCodeStatusIcon.isVisible = false
-			}
-		}
-
-		val qrAlpha = state.getQrAlpha()
-		binding.certificateDetailQrCode.alpha = qrAlpha
-
-		val textColor = ContextCompat.getColor(context, state.getNameDobColor())
-		binding.certificateDetailName.setTextColor(textColor)
-		binding.certificateDetailBirthdate.setTextColor(textColor)
-
-		val dateUntilString = dccHolder.certType?.let { state.getValidUntilDateString(it) } ?: "–"
-		binding.certificateDetailInfoValidityDate.text = dateUntilString
-		binding.certificateDetailInfoValidityDateDisclaimer.alpha = qrAlpha
-		binding.certificateDetailInfoValidityDateGroup.alpha = qrAlpha
-
-		binding.certificateDetailDataRecyclerView.alpha = qrAlpha
 	}
 
-	private fun readjustStatusDelayed(verificationState: VerificationState) {
+	/**
+	 * Display the correct QR code background, icons and text when a force validation is running
+	 */
+	private fun showForceValidation(
+		@ColorRes solidValidationColorId: Int,
+		@DrawableRes validationIconId: Int,
+		@DrawableRes validationIconLargeId: Int,
+		info: SpannableString?
+	) {
+		binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
+			ContextCompat.getColor(
+				requireContext(),
+				solidValidationColorId
+			)
+		)
+		binding.certificateDetailQrCodeStatusIcon.setImageResource(validationIconLargeId)
+		binding.certificateDetailStatusIcon.setImageResource(validationIconId)
+
+		if (!binding.certificateDetailQrCodeStatusGroup.isVisible) binding.certificateDetailQrCodeStatusGroup.showAnimated()
+
+		binding.certificateDetailInfoVerificationStatus.apply {
+			text = info
+			if (!isVisible) showAnimated()
+		}
+	}
+
+	/**
+	 * Display the verification status info and description
+	 */
+	private fun showStatusInfoAndDescription(description: SpannableString?, info: SpannableString?, @DrawableRes iconId: Int) {
+		binding.certificateDetailInfoDescription.text = description
+		binding.certificateDetailInfo.text = info
+		binding.certificateDetailStatusIcon.setImageResource(iconId)
+	}
+
+	/**
+	 * Reset the view after a delay from the force validation verification state to the regular verification state
+	 */
+	private fun readjustStatusDelayed(
+		@ColorRes infoBubbleColorId: Int,
+		@DrawableRes statusIconId: Int,
+		info: SpannableString?
+	) {
 		hideDelayedJob?.cancel()
 		hideDelayedJob = viewLifecycleOwner.lifecycleScope.launch {
 			delay(STATUS_HIDE_DELAY)
@@ -233,14 +407,18 @@ class CertificateDetailFragment : Fragment() {
 			binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
 				ContextCompat.getColor(context, android.R.color.transparent)
 			)
+
+			binding.certificateDetailInfo.text = info
+			binding.certificateDetailInfoDescriptionGroup.animateBackgroundTintColor(
+				ContextCompat.getColor(context, infoBubbleColorId)
+			)
+
 			binding.certificateDetailInfoVerificationStatus.hideAnimated()
 			binding.certificateDetailInfoValidityGroup.animateBackgroundTintColor(
-				ContextCompat.getColor(
-					context,
-					if (verificationState is VerificationState.ERROR) R.color.orangeish else R.color.blueish
-				)
+				ContextCompat.getColor(context, infoBubbleColorId)
 			)
-			binding.certificateDetailStatusIcon.setImageResource(verificationState.getStatusIcon())
+
+			binding.certificateDetailStatusIcon.setImageResource(statusIconId)
 
 			binding.certificateDetailButtonReverify.showAnimated()
 			isForceValidate = false
