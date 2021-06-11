@@ -31,12 +31,14 @@ import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
+import ch.admin.bag.covidcertificate.wallet.debug.DebugFragment
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.faq.WalletFaqFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.CertificatesPagerAdapter
 import ch.admin.bag.covidcertificate.wallet.list.CertificatesListFragment
 import ch.admin.bag.covidcertificate.wallet.qr.WalletQrScanFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import java.util.concurrent.atomic.AtomicLong
 
 class HomeFragment : Fragment() {
 
@@ -106,7 +108,8 @@ class HomeFragment : Fragment() {
 		}
 		val impressumClickListener = View.OnClickListener {
 			val buildInfo =
-				BuildInfo(getString(R.string.wallet_onboarding_app_title),
+				BuildInfo(
+					getString(R.string.wallet_onboarding_app_title),
 					BuildConfig.VERSION_NAME,
 					BuildConfig.BUILD_TIME,
 					BuildConfig.FLAVOR,
@@ -128,6 +131,27 @@ class HomeFragment : Fragment() {
 		}
 		binding.homescreenHeaderEmpty.headerImpressum.setOnClickListener(impressumClickListener)
 		binding.homescreenHeaderNotEmpty.headerImpressum.setOnClickListener(impressumClickListener)
+
+		if (DebugFragment.EXISTS) {
+			val lastClick = AtomicLong(0)
+			val debugButtonClickListener = View.OnClickListener {
+				val now = System.currentTimeMillis()
+				if (lastClick.get() > now - 1000L) {
+					lastClick.set(0)
+					parentFragmentManager.beginTransaction()
+						.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+						.replace(
+							R.id.fragment_container, DebugFragment.newInstance()
+						)
+						.addToBackStack(DebugFragment::class.java.canonicalName)
+						.commit()
+				} else {
+					lastClick.set(now)
+				}
+			}
+			binding.homescreenHeaderEmpty.schwiizerchruez.setOnClickListener(debugButtonClickListener)
+			binding.homescreenHeaderNotEmpty.schwiizerchruez.setOnClickListener(debugButtonClickListener)
+		}
 	}
 
 	private fun setupPager() {
@@ -180,8 +204,10 @@ class HomeFragment : Fragment() {
 		binding.homescreenListButton.isVisible = dccHolders.size > 1
 		certificatesAdapter.setData(dccHolders)
 		if (hasCertificates) {
-			binding.homescreenCertificatesViewPager.postDelayed({ binding.homescreenCertificatesViewPager.setCurrentItem(0, true) },
-				250)
+			binding.homescreenCertificatesViewPager.postDelayed(
+				{ binding.homescreenCertificatesViewPager.setCurrentItem(0, true) },
+				250
+			)
 		}
 	}
 
