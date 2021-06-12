@@ -26,9 +26,11 @@ import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
+import ch.admin.bag.covidcertificate.common.util.LanguageDialog
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.MainActivity
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.wallet.debug.DebugFragment
@@ -65,6 +67,16 @@ class HomeFragment : Fragment() {
 		setupButtons()
 		setupPager()
 		setupInfoBox()
+		setupLanguage()
+	}
+
+	private fun setupLanguage() {
+		binding.homescreenHeaderEmpty.languageButton.setOnClickListener {
+			LanguageDialog().show(childFragmentManager, LanguageDialog.TAG)
+		}
+		binding.homescreenHeaderNotEmpty.languageButton.setOnClickListener {
+			LanguageDialog().show(childFragmentManager, LanguageDialog.TAG)
+		}
 	}
 
 	override fun onResume() {

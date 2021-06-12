@@ -38,6 +38,17 @@
 		android:layout_marginHorizontal="@dimen/spacing_medium_small">
 
 		<ImageView
+			android:id="@+id/language_button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:background="@drawable/ripple_rounded"
+			android:layout_gravity="start|center_vertical"
+			android:padding="@dimen/spacing_medium_large"
+			android:clickable="true"
+			android:focusable="true"
+			android:src="@drawable/ic_baseline_translate_24" />
+
+		<ImageView
 			android:id="@+id/schwiizerchruez"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"

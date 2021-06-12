@@ -23,6 +23,7 @@ import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
+import ch.admin.bag.covidcertificate.common.util.LanguageDialog
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.verifier.faq.VerifierFaqFragment
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPageAdapter
@@ -98,11 +99,18 @@ class HomeFragment : Fragment() {
 		}
 
 		setupInfoBox()
+		setupLanguage()
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	private fun setupLanguage() {
+		binding.homescreenHeader.languageButton.setOnClickListener {
+			LanguageDialog().show(childFragmentManager, LanguageDialog.TAG)
+		}
 	}
 
 	private fun setupInfoBox() {

@@ -1,0 +1,19 @@
+<resources>
+    <string-array name="languages_entries">
+        <item>@string/default_system</item>
+        <item>Deutsch</item>
+        <item>English</item>
+        <item>Français</item>
+        <item>Italiano</item>
+        <item>Rumantsch</item>
+    </string-array>
+
+    <string-array name="languages_values">
+        <item>default</item>
+        <item>de</item>
+        <item>en</item>
+        <item>fr</item>
+        <item>it</item>
+        <item>rm</item>
+    </string-array>
+</resources>

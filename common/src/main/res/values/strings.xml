@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -696,4 +695,8 @@ invalid"</string>
 
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_button">"Weiter"</string>
+
+    <!-- Language setting -->
+    <string name="setting_language">Language</string>
+    <string name="default_system">Default (Follows system)</string>
 </resources>
