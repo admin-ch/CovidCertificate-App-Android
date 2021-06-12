@@ -13,6 +13,7 @@ package ch.admin.bag.covidcertificate.wallet
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.activity.viewModels
@@ -68,6 +69,22 @@ class MainActivity : AppCompatActivity() {
 		certificateViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
 
 		CovidCertificateSdk.registerWithLifecycle(lifecycle)
+
+	}
+
+	override fun onNewIntent(intent: Intent?) {
+		super.onNewIntent(intent)
+		when (intent?.action) {
+			Intent.ACTION_SEND -> {
+				if ("application/pdf" == intent.type) {
+					//	handleSendText(intent) // Handle text being sent
+					Log.d("pdf", "mau")
+				} else if (intent.type?.startsWith("image/") == true) {
+					//handleSendImage(intent) // Handle single image being sent
+					Log.d("image", "mau")
+				}
+			}
+		}
 	}
 
 	override fun onStart() {
