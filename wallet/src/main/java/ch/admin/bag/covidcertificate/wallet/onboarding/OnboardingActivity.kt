@@ -11,11 +11,11 @@
 package ch.admin.bag.covidcertificate.wallet.onboarding
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import ch.admin.bag.covidcertificate.common.util.BaseActivity
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityOnboardingBinding
 
-class OnboardingActivity : AppCompatActivity() {
+class OnboardingActivity : BaseActivity() {
 
 	private lateinit var binding: ActivityOnboardingBinding
 	private lateinit var pagerAdapter: OnboardingSlidePageAdapter

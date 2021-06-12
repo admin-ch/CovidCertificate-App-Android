@@ -17,9 +17,9 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.util.BaseActivity
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
@@ -28,7 +28,7 @@ import ch.admin.bag.covidcertificate.wallet.databinding.ActivityMainBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.HomeFragment
 import ch.admin.bag.covidcertificate.wallet.onboarding.OnboardingActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
 	private val certificateViewModel by viewModels<CertificatesViewModel>()
 
