@@ -1,0 +1,25 @@
+<b>Check COVID certificates with a mobile phone</b>
+
+COVID Certificate Check is the official app for checking COVID certificates in Switzerland. It is developed by the Federal Office of Information Technology, Systems and Telecommunication FOITT on behalf of the Federal Office of Public Health.
+
+The app can be used to check the validity of COVID certificates issued in Switzerland.
+
+<b>How the app works</b>
+
+A button on the home screen activates the smartphone camera and the app is ready to capture the QR code.
+
+Simply position the QR code on the paper or on the mobile phone shown with a holder app in the square displayed and the QR will be captured automatically.
+
+Immediately afterwards, the system performs an automatic check concerning Swiss validity rules.
+
+- A tick and a green background indicate that the presented certificate is valid.
+- An exclamation mark and a red background indicate that the presented certificate is not valid.
+- A question mark and an orange background indicate that the check failed.
+
+In addition, the full name and date of birth of the certificate holder are displayed. These details are to be compared with the identification document presented.
+
+<b>Data protection is a top priority</b>
+
+The data concerning COVID certificates and checking processes is not stored. COVID certificates are protected by a digital signature and are thus forgery-proof.
+
+The use of the app is limited to Switzerland and is subject to Swiss law.

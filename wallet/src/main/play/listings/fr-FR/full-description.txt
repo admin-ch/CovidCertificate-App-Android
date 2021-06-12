@@ -1,0 +1,31 @@
+<b>Stocker le certificat COVID suisse sur le smartphone: c’est simple et sûr</b>
+
+COVID Certificate est l'application officielle pour le stockage et la présentation des certificats COVID en Suisse. Elle a été développée par l’Office fédéral de l’informatique et de la télécommunication sur mandant de l’Office fédéral de la santé publique (OFSP).
+
+En Suisse, les personnes vaccinées, testées négatives ou guéries du COVID ont le droit de demander un certificat COVID.
+
+Les certificats sont délivrés sur format papier ou numérique. Ils permettent d’attester:
+
+1. une vaccination contre la COVID-19
+2. une guérison après avoir contracté le SARS-CoV-2
+3. un test négatif au SARS-CoV-2
+
+<b>Fonctionnement de l’application</b>
+
+Lors du premier lancement de l’application, une brève introduction fournit des informations sur la manière d'utiliser l'application et de scanner un certificat COVID à partir de la version papier.
+
+L’application permet de sélectionner le certificat COVID souhaité et de l’afficher sur demande. Elle indique la validité du certificat ainsi que la naissance et l’expiration de celle-ci. L’application permet en outre d’afficher toutes les données contenues dans le code QR d'un certificat.
+
+Il est possible de stocker plusieurs certificats COVID dans l'application, par exemple pour les membres d'une même famille ou pour plusieurs certificats de test COVID-19.
+
+L’utilisation de COVID Certificate se fait sur une base volontaire et est gratuite.
+
+<b>Vérifier soi-même le certificat COVID</b>
+
+L'application permet de vérifier soi-même un certificat COVID. La procédure de vérification consiste à contrôler la signature électronique du certificat et à comparer la période de validité du certificat avec la date du jour. Il s’agit des mêmes contrôles que ceux effectués par l'application COVID Certificate Check pour la vérification des certificats.
+
+<b>Respect absolu de la protection des données</b>
+
+Les données du certificat COVID sont stockées sur l’appareil mobile exclusivement.Le certificat COVID est protégé par une signature numérique et ne peut donc pas être falsifié.Les certificats COVID sont générés par l’OFIT, mais ne sont pas stockés sur un système central. Il n'est donc pas possible d'obtenir une copie d'un certificat lorsqu’il a été délivré.
+
+L'utilisation de l'application est limitée à la Suisse et est soumise au droit suisse.

@@ -1,0 +1,25 @@
+<b>Verificare i certificati COVID con un dispositivo mobile</b>
+
+L’applicazione COVID Certificate Check è l’app ufficiale per verificare i certificati COVID in Svizzera. È stato sviluppato dall’Ufficio federale dell’informatica e della telecomunicazione (UFIT) su mandato dell’Ufficio federale della sanità pubblica (UFSP).
+
+L’applicazione permette di verificare la validità dei certificati COVID emessi in Svizzera.  
+
+<b>Come funziona l’app?</b>
+
+Un pulsante sulla homescreen attiva la fotocamera dello smartphone si attiva e l’applicazione è pronta per scansionare il codice QR.
+
+Basta quindi posizionare nell’apposito riquadro il codice QR che si trova sulla copia cartacea del certificato o quello visualizzato sul cellulare con l’applicazione messa a disposizione del titolare e il codice viene rilevato automaticamente.
+
+Subito dopo, il sistema esegue un controllo automatico in base ai criteri di validità applicabili in Svizzera.
+
+- Un segno di spunta su sfondo verde indica che il certificato presentato è valido.
+- Un punto esclamativo su sfondo rosso indica che il certificato presentato non è valido.
+- Un punto di domanda su sfondo arancione indica che la verifica non è andata a buon fine.
+
+Vengono inoltre visualizzati il nome, il cognome e la data di nascita del titolare del certificato. Questi dati devono essere confrontati con quelli presenti nel documento d’identità esibito.
+
+<b>La protezione dei dati è fondamentale</b>
+
+I dati dei certificati COVID e quelli delle verifiche non vengono memorizzati. I certificati COVID recano una firma elettronica e quindi non sono falsificabili.
+
+L'applicazione dell'app è limitata alla Svizzera ed è soggetta al diritto svizzero.
