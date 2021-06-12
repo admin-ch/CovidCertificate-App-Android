@@ -17,8 +17,8 @@ import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.eval.net.CertificatePinning
 import ch.admin.bag.covidcertificate.eval.data.Config
+import ch.admin.bag.covidcertificate.eval.net.CertificatePinning
 import ch.admin.bag.covidcertificate.eval.net.JwsInterceptor
 import ch.admin.bag.covidcertificate.eval.net.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
@@ -30,10 +30,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.security.cert.CertificateFactory
-import java.security.cert.X509Certificate
 
-class ConfigRepository private constructor(val configSpec: ConfigSpec) {
+class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 
 	companion object : SingletonHolder<ConfigRepository, ConfigSpec>(::ConfigRepository) {
 		private const val APP_VERSION_PREFIX_ANDROID = "android-"
@@ -48,9 +46,10 @@ class ConfigRepository private constructor(val configSpec: ConfigSpec) {
 
 	init {
 		val rootCa = CovidCertificateSdk.getRootCa(configSpec.context)
+		val expectedCommonName = CovidCertificateSdk.getExpectedCommonName()
 		val okHttpBuilder = OkHttpClient.Builder()
 			.certificatePinner(CertificatePinning.pinner)
-			.addInterceptor(JwsInterceptor(rootCa))
+			.addInterceptor(JwsInterceptor(rootCa, expectedCommonName))
 			.addInterceptor(UserAgentInterceptor(Config.userAgent))
 
 		val cacheSize = 5 * 1024 * 1024 // 5 MB
