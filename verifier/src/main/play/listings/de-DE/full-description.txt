@@ -1,0 +1,23 @@
+<b>Covid-Zertifikate mit  dem Mobiltelefon prüfen</b>
+
+COVID Certificate Check ist die offizielle App für das Prüfen von Covid-Zertifikaten in der Schweiz. Sie wird durch das Bundesamt für Informatik und Telekommunikation BIT im Auftrag des Bundesamtes für Gesundheit betrieben.
+
+Mit der App lassen sich in der Schweiz ausgestellte Covid-Zertifikate auf Gültigkeit prüfen.   
+
+<b>So funktioniert die App</b>
+
+Ein Button auf dem Startbildschirm aktiviert die Kamera des Smartphones und die Anwendung ist bereit zur Erfassung des QR-Codes.
+
+Einfach den QR-Code auf dem Papier oder auf dem gezeigten Mobiltelefon mit einer Halter-Anwendung in das anzeigte Quadrat positionieren und der QR-Code wird automatisch erfasst. Unmittelbar danach führt das System eine automatische Prüfung gegen die Schweizer Gültigkeitskriterien durch.
+
+- Ein Haken und ein grüner Hintergrund zeigen an, dass das vorgewiesene Zertifikat gültig ist.
+- Ein Ausrufezeichen und ein roter Hintergrund zeigen an, dass das vorgewiesene Zertifikat nicht gültig ist.
+- Ein Fragezeichen und ein oranger Hintergrund zeigen an, dass die Prüfung fehlgeschlagen ist.
+
+Zudem wird noch der Name, Vorname und das Geburtsdatum der Inhaberin des Zertifikates angezeigt. Diese Daten sind mit dem vorgezeigten Ausweisdokument zu vergleichen.
+
+<b>Datenschutz ist zentral</b>
+
+Die Daten von Covid-Zertifikaten sowie von Prüfvorgängen werden nicht gespeichert.Ein Covid-Zertifikat ist durch eine digitale Signatur geschützt und dadurch fälschungssicher.
+
+Die Anwendung der App ist auf die Schweiz beschränkt und unterliegt Schweizer Recht.
