@@ -13,7 +13,6 @@ package ch.admin.bag.covidcertificate.wallet
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.activity.viewModels
@@ -28,10 +27,12 @@ import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityMainBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.HomeFragment
 import ch.admin.bag.covidcertificate.wallet.onboarding.OnboardingActivity
+import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 
 class MainActivity : AppCompatActivity() {
 
 	private val certificateViewModel by viewModels<CertificatesViewModel>()
+	private val pdfViewModel by viewModels<PdfViewModel>()
 
 	private lateinit var binding: ActivityMainBinding
 	val secureStorage by lazy { WalletSecureStorage.getInstance(this) }
@@ -69,23 +70,35 @@ class MainActivity : AppCompatActivity() {
 		certificateViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
 
 		CovidCertificateSdk.registerWithLifecycle(lifecycle)
-
+		intent?.let {
+			handleIntent(intent)
+		}
 	}
 
 	override fun onNewIntent(intent: Intent?) {
 		super.onNewIntent(intent)
-		when (intent?.action) {
+		intent?.let {
+			handleIntent(intent)
+		}
+	}
+
+	private fun handleIntent(intent: Intent) {
+		when (intent.action) {
 			Intent.ACTION_SEND -> {
 				if ("application/pdf" == intent.type) {
-					//	handleSendText(intent) // Handle text being sent
-					Log.d("pdf", "mau")
-				} else if (intent.type?.startsWith("image/") == true) {
-					//handleSendImage(intent) // Handle single image being sent
-					Log.d("image", "mau")
+					handleCertificatePDF(intent)
 				}
 			}
 		}
 	}
+
+	private fun handleCertificatePDF(intent: Intent) {
+		if (secureStorage.getOnboardingCompleted()) {
+			intent.clipData?.let { pdfViewModel.importPDFData(clipData = it) }
+			//TODO Fix this the Intent is called again with don't keep activity
+		}
+	}
+
 
 	override fun onStart() {
 		super.onStart()
