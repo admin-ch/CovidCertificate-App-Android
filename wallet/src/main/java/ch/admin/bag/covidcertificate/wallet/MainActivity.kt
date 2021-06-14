@@ -113,7 +113,7 @@ class MainActivity : AppCompatActivity() {
 
 	private fun handleCertificatePDF(intent: Intent) {
 		if (secureStorage.getOnboardingCompleted()) {
-			intent.clipData?.let { pdfViewModel.importPDFData(clipData = it) }
+			intent.clipData?.let { pdfViewModel.importPdf(clipData = it) }
 		}
 	}
 

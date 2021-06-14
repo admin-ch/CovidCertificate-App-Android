@@ -38,6 +38,7 @@ object QRCodeReaderHelper {
 		val source: LuminanceSource = RGBLuminanceSource(bitmap.width, bitmap.height, intArray)
 		val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
 		val reader = MultiFormatReader()
+
 		try {
 			val result: Result = reader.decodeWithState(binaryBitmap)
 			decoded = result.text
@@ -57,8 +58,9 @@ object QRCodeReaderHelper {
 			val renderer = PdfRenderer(ParcelFileDescriptor.open(pdfFile, ParcelFileDescriptor.MODE_READ_ONLY))
 			var bitmap: Bitmap?
 			val pageCount = renderer.pageCount
+
 			for (i in 0 until pageCount) {
-				val page: PdfRenderer.Page = renderer.openPage(i);
+				val page: PdfRenderer.Page = renderer.openPage(i)
 				val width = context.resources.displayMetrics.densityDpi / 72 * page.width
 				val height = context.resources.displayMetrics.densityDpi / 72 * page.height
 				bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
@@ -70,10 +72,9 @@ object QRCodeReaderHelper {
 				val r = Rect(0, 0, width, height)
 				page.render(bitmap, r, null, PdfRenderer.Page.RENDER_MODE_FOR_PRINT)
 				bitmaps.add(bitmap)
-				// close the page
+
 				page.close()
 			}
-			// close the renderer
 			renderer.close()
 
 		} catch (ex: Exception) {
