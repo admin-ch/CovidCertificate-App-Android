@@ -185,6 +185,7 @@ class CertificateDetailFragment : Fragment() {
 
 		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
 		if (isForceValidate) {
+			showStatusInfoAndDescription(null, info, 0)
 			showForceValidation(R.color.grey, 0, 0, info)
 		} else {
 			showStatusInfoAndDescription(null, info, 0)
@@ -203,6 +204,7 @@ class CertificateDetailFragment : Fragment() {
 		val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
 		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
 		if (isForceValidate) {
+			showStatusInfoAndDescription(null, forceValidationInfo, R.drawable.ic_check_green)
 			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, forceValidationInfo)
 			readjustStatusDelayed(R.color.blueish, R.drawable.ic_info_blue, info)
 		} else {
@@ -247,6 +249,7 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		if (isForceValidate) {
+			showStatusInfoAndDescription(null, info, forceValidationIcon)
 			showForceValidation(R.color.red, forceValidationIcon, R.drawable.ic_error_large, info)
 			readjustStatusDelayed(infoBubbleColorId, icon, info)
 		} else {
@@ -294,6 +297,7 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		if (isForceValidate) {
+			showStatusInfoAndDescription(description, forceValidationInfo, icon)
 			showForceValidation(R.color.orange, forceValidationIcon, forceValidationIconLarge, forceValidationInfo)
 			readjustStatusDelayed(R.color.greyish, icon, info)
 		} else {

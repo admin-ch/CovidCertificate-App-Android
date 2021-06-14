@@ -22,9 +22,9 @@ import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 
 /**
- * The verification state indicates an offline mode if it is an ERROR and the error code is set to TRUST_LIST_MISSING (T|MIS)
+ * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
  */
-fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.TRUST_LIST_MISSING
+fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.GENERAL_OFFLINE
 
 fun VerificationState.getStatusString(context: Context): SpannableString {
 	return when (this) {
