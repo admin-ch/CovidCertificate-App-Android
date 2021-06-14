@@ -53,7 +53,12 @@ fun VerificationState.getStatusInformationString(context: Context, errorDelimite
 		is VerificationState.INVALID -> {
 			val errorStrings = mutableListOf<String>()
 			if (this.signatureState is CheckSignatureState.INVALID) {
-				errorStrings.add(context.getString(R.string.verifier_verify_error_info_for_certificate_invalid))
+				val invalidSignatureState = this.signatureState as CheckSignatureState.INVALID
+				if (invalidSignatureState.signatureErrorCode == EvalErrorCodes.SIGNATURE_TYPE_INVALID) {
+					errorStrings.add(context.getString(R.string.verifier_error_invalid_format))
+				} else {
+					errorStrings.add(context.getString(R.string.verifier_verify_error_info_for_certificate_invalid))
+				}
 			}
 			if (this.revocationState == CheckRevocationState.INVALID) {
 				errorStrings.add(context.getString(R.string.verifier_verify_error_info_for_blacklist))
