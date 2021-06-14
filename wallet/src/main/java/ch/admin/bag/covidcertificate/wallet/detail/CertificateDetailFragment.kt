@@ -39,6 +39,7 @@ import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*
+import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -179,6 +180,7 @@ class CertificateDetailFragment : Fragment() {
 		showLoadingIndicator(true)
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = false
+		binding.certificateDetailErrorCode.isVisible = false
 		setInfoBubbleBackgrounds(R.color.greyish, R.color.greyish)
 
 		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
@@ -194,6 +196,7 @@ class CertificateDetailFragment : Fragment() {
 		showLoadingIndicator(false)
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = true
+		binding.certificateDetailErrorCode.isVisible = false
 		showValidityDate(state.validityRange.validUntil, dccHolder.certType)
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
 
@@ -249,6 +252,16 @@ class CertificateDetailFragment : Fragment() {
 		} else {
 			showStatusInfoAndDescription(null, info, icon)
 		}
+
+		binding.certificateDetailErrorCode.apply {
+			val errorCode = state.getInvalidErrorCode(showNationalErrors = true)
+			if (errorCode.isNotEmpty()) {
+				isVisible = true
+				text = errorCode
+			} else {
+				isVisible = false
+			}
+		}
 	}
 
 	private fun displayErrorState(state: VerificationState.ERROR) {
@@ -285,6 +298,11 @@ class CertificateDetailFragment : Fragment() {
 			readjustStatusDelayed(R.color.greyish, icon, info)
 		} else {
 			showStatusInfoAndDescription(description, info, icon)
+		}
+
+		binding.certificateDetailErrorCode.apply {
+			isVisible = true
+			text = state.error.code
 		}
 	}
 
@@ -360,7 +378,7 @@ class CertificateDetailFragment : Fragment() {
 		@ColorRes solidValidationColorId: Int,
 		@DrawableRes validationIconId: Int,
 		@DrawableRes validationIconLargeId: Int,
-		info: SpannableString?
+		info: SpannableString?,
 	) {
 		binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
 			ContextCompat.getColor(
@@ -394,7 +412,7 @@ class CertificateDetailFragment : Fragment() {
 	private fun readjustStatusDelayed(
 		@ColorRes infoBubbleColorId: Int,
 		@DrawableRes statusIconId: Int,
-		info: SpannableString?
+		info: SpannableString?,
 	) {
 		hideDelayedJob?.cancel()
 		hideDelayedJob = viewLifecycleOwner.lifecycleScope.launch {
