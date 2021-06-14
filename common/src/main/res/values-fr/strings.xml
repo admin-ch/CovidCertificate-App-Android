@@ -520,7 +520,7 @@ Avant de voyager, veuillez vérifier les mesures de santé publique applicables 
     <string name="wallet_faq_questions_answer_1_1">"Les personnes qui ont guéri du COVID-19 peuvent demander un certificat COVID en remplissant le formulaire en ligne disponible sur le site Internet de leur canton de domicile. Elles recevront ensuite le certificat COVID par la poste. "</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
-    <string name="wallet_homescreen_what_to_do">"Was möchten Sie machen?"</string>
+    <string name="wallet_homescreen_what_to_do">"Nächsten Schritt wählen"</string>
 
     <!-- Wallet: Homescreen Titel Zertifikat hinzufügen -->
     <string name="wallet_homescreen_add_title">"Zertifikat hinzufügen"</string>
@@ -535,7 +535,7 @@ Avant de voyager, veuillez vérifier les mesures de santé publique applicables 
     <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <string name="wallet_transfer_code_onboarding_text">"Mit Transfer-Codes können Sie Covid-Zertifikate von negativen Testresultaten direkt in der App empfangen."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes z. B. bei Covid-Tests angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
     <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
@@ -695,4 +695,10 @@ non valide"</string>
 
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_button">"Weiter"</string>
+
+    <!-- Externe URL im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_external_link">"https://ofsp-coronavirus.ch/certificat/comment-obtenir-le-certificat-covid-et-comment-men-servir/"</string>
+
+    <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_external_link_title">"Informations supplémentaires"</string>
 </resources>

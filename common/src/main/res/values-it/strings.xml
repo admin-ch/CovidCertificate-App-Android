@@ -527,7 +527,7 @@ Prima di mettersi in viaggio, verificare le misure sanitarie pubbliche applicabi
     <string name="wallet_faq_questions_answer_1_1">"Le persone guarite dalla COVID-19 possono richiedere il certificato COVID tramite un modulo online disponibile sul sito Internet del Cantone. Il certificato viene poi inviato per posta."</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
-    <string name="wallet_homescreen_what_to_do">"Was möchten Sie machen?"</string>
+    <string name="wallet_homescreen_what_to_do">"Nächsten Schritt wählen"</string>
 
     <!-- Wallet: Homescreen Titel Zertifikat hinzufügen -->
     <string name="wallet_homescreen_add_title">"Zertifikat hinzufügen"</string>
@@ -542,7 +542,7 @@ Prima di mettersi in viaggio, verificare le misure sanitarie pubbliche applicabi
     <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <string name="wallet_transfer_code_onboarding_text">"Mit Transfer-Codes können Sie Covid-Zertifikate von negativen Testresultaten direkt in der App empfangen."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes z. B. bei Covid-Tests angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
     <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
@@ -702,4 +702,10 @@ non valido"</string>
 
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_button">"Weiter"</string>
+
+    <!-- Externe URL im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_external_link">"https://ufsp-coronavirus.ch/certificato/come-si-ottiene-il-certificato-covid-e-come-si-impiega/"</string>
+
+    <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_external_link_title">"Ulteriori informazioni"</string>
 </resources>
