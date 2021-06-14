@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:paddingHorizontal="@dimen/spacing_small">
+
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/option_scan_certificate"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:background="@drawable/bg_certificate_bubble"
+		android:backgroundTint="@color/white"
+		android:foreground="@drawable/ripple_rounded_rect_small"
+		android:paddingBottom="@dimen/spacing_very_large">
+
+		<TextView
+			android:id="@+id/option_add_certificate"
+			style="@style/CovidCertificate.Text.Bold.Emphasized"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="@dimen/spacing_large"
+			android:layout_marginTop="@dimen/spacing_medium_large"
+			android:text="@string/wallet_homescreen_add_title"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<View
+			android:id="@+id/option_add_certificate_divider"
+			android:layout_width="match_parent"
+			android:layout_height="1dp"
+			android:layout_marginTop="@dimen/spacing_medium_large"
+			android:background="@color/blueish"
+			app:layout_constraintTop_toBottomOf="@+id/option_add_certificate" />
+
+		<ImageView
+			android:id="@+id/option_add_certificate_illu"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginStart="@dimen/spacing_large"
+			android:layout_marginTop="@dimen/spacing_medium_small"
+			android:src="@drawable/illu_add_certificate"
+			app:layout_constraintBottom_toBottomOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@+id/option_add_certificate_divider" />
+
+		<TextView
+			android:id="@+id/option_add_certificate_description"
+			style="@style/CovidCertificate.Text"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="@dimen/spacing_large"
+			android:text="@string/wallet_homescreen_add_certificate_description"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toEndOf="@+id/option_add_certificate_illu"
+			app:layout_constraintTop_toTopOf="@+id/option_add_certificate_illu" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+
+	<TextView
+		android:id="@+id/option_transfer_code"
+		style="@style/CovidCertificate.Text.Bold.Emphasized"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_medium_small"
+		android:background="@drawable/bg_certificate_bubble"
+		android:backgroundTint="@color/white"
+		android:foreground="@drawable/ripple_rounded_rect_small"
+		android:paddingHorizontal="@dimen/spacing_large"
+		android:paddingVertical="@dimen/spacing_medium_large"
+		android:text="@string/wallet_homescreen_add_transfer_code" />
+
+</LinearLayout>

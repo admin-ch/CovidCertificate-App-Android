@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
 import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
@@ -29,6 +30,9 @@ import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
+import ch.admin.bag.covidcertificate.common.views.hideAnimated
+import ch.admin.bag.covidcertificate.common.views.rotate
+import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
@@ -63,6 +67,8 @@ class HomeFragment : Fragment() {
 
 	private lateinit var certificatesAdapter: CertificatesPagerAdapter
 
+	private var isAddOptionsShowing = false
+
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
 		return binding.root
@@ -85,20 +91,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun setupButtons() {
-		binding.homescreenScanButtonBig.setOnClickListener {
-			parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, WalletQrScanFragment.newInstance())
-				.addToBackStack(WalletQrScanFragment::class.java.canonicalName)
-				.commit()
-		}
-		binding.homescreenScanButtonSmall.setOnClickListener {
-			parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, WalletQrScanFragment.newInstance())
-				.addToBackStack(WalletQrScanFragment::class.java.canonicalName)
-				.commit()
-		}
+		setupAddCertificateOptions()
 		binding.homescreenSupportButton.setOnClickListener {
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
@@ -179,7 +172,7 @@ class HomeFragment : Fragment() {
 
 		certificatesViewModel.dccHolderCollectionLiveData.observe(viewLifecycleOwner) {
 			it ?: return@observe
-			binding.homescreenLoadingGroup.isVisible = false
+			binding.homescreenLoadingIndicator.isVisible = false
 			updateHomescreen(it)
 		}
 
@@ -214,6 +207,43 @@ class HomeFragment : Fragment() {
 
 	}
 
+	private fun setupAddCertificateOptions() {
+		binding.homescreenScanButtonSmall.setOnClickListener {
+			if (isAddOptionsShowing) {
+				showAddCertificateOptions(false)
+			} else {
+				showAddCertificateOptions(true)
+			}
+		}
+
+		binding.homescreenAddCertificateOptions.optionScanCertificate.setOnClickListener {
+			isAddOptionsShowing = false
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, WalletQrScanFragment.newInstance())
+				.addToBackStack(WalletQrScanFragment::class.java.canonicalName)
+				.commit()
+		}
+
+		binding.homescreenAddCertificateOptions.optionTransferCode.setOnClickListener {
+			// TODO: Open transfer code fragment
+		}
+	}
+
+	private fun showAddCertificateOptions(show: Boolean) {
+		if (show) {
+			binding.homescreenScanButtonSmall.rotate(45f)
+			binding.backgroundDimmed.showAnimated()
+			binding.homescreenAddCertificateOptions.root.showAnimated()
+		} else {
+			binding.homescreenScanButtonSmall.rotate(0f)
+			binding.backgroundDimmed.hideAnimated()
+			binding.homescreenAddCertificateOptions.root.hideAnimated()
+		}
+
+		isAddOptionsShowing = show
+	}
+
 	private fun showCertificationAddFragment(dccHolder: DccHolder) {
 		parentFragmentManager.beginTransaction()
 			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
@@ -223,15 +253,15 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun reloadCertificates() {
-		binding.homescreenLoadingGroup.isVisible = true
+		binding.homescreenLoadingIndicator.isVisible = true
 		certificatesViewModel.loadCertificates()
 	}
 
 	private fun updateHomescreen(dccHolders: List<DccHolder>) {
 		val hasCertificates = dccHolders.isNotEmpty()
 
-		binding.homescreenContentEmptyScrollView.isVisible = !hasCertificates
-		binding.homescreenScanButtonBig.isVisible = !hasCertificates
+		updateAddCertificateOptionsConstraints(!hasCertificates)
+		binding.homescreenEmptyContentGroup.isVisible = !hasCertificates
 		binding.homescreenScanButtonSmall.isVisible = hasCertificates
 		binding.homescreenListButton.isVisible = hasCertificates
 		binding.homescreenCertificatesViewPager.isVisible = hasCertificates
@@ -247,6 +277,21 @@ class HomeFragment : Fragment() {
 				}
 			}
 		}
+	}
+
+	private fun updateAddCertificateOptionsConstraints(isEmpty: Boolean) {
+		val set = ConstraintSet()
+		set.clone(binding.homescreenConstraintLayout)
+		if (isEmpty) {
+			val margin = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_large)
+			set.clear(R.id.homescreen_add_certificate_options, ConstraintSet.BOTTOM)
+			set.connect(R.id.homescreen_add_certificate_options, ConstraintSet.TOP, R.id.homescreen_add_certificate_options_title, ConstraintSet.BOTTOM, margin)
+		} else {
+			val margin = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_medium_large)
+			set.clear(R.id.homescreen_add_certificate_options, ConstraintSet.TOP)
+			set.connect(R.id.homescreen_add_certificate_options, ConstraintSet.BOTTOM, R.id.button_bar_bubble, ConstraintSet.TOP, margin)
+		}
+		set.applyTo(binding.homescreenConstraintLayout)
 	}
 
 	private fun setupInfoBox() {
