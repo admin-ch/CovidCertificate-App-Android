@@ -195,7 +195,7 @@ class HomeFragment : Fragment() {
 			when (decodeState) {
 				is DecodeState.SUCCESS -> {
 					showCertificationAddFragment(decodeState.dccHolder)
-					pdfViewModel.cleanPDF()
+					pdfViewModel.clearPdf()
 				}
 				is DecodeState.ERROR -> {
 					AlertDialog.Builder(requireContext(), R.style.CovidCertificate_AlertDialogStyle)
