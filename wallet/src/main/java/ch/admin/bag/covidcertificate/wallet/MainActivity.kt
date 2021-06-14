@@ -27,15 +27,22 @@ import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityMainBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.HomeFragment
 import ch.admin.bag.covidcertificate.wallet.onboarding.OnboardingActivity
+import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 
 class MainActivity : AppCompatActivity() {
 
+	companion object {
+		private const val KEY_IS_INTENT_CONSUMED = "KEY_IS_INTENT_CONSUMED"
+	}
+
 	private val certificateViewModel by viewModels<CertificatesViewModel>()
+	private val pdfViewModel by viewModels<PdfViewModel>()
 
 	private lateinit var binding: ActivityMainBinding
 	val secureStorage by lazy { WalletSecureStorage.getInstance(this) }
 
 	private var forceUpdateDialog: AlertDialog? = null
+	private var isIntentConsumed = false
 
 	private val onAndUpdateBoardingLauncher =
 		registerForActivityResult(StartActivityForResult()) { activityResult: ActivityResult ->
@@ -68,7 +75,48 @@ class MainActivity : AppCompatActivity() {
 		certificateViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
 
 		CovidCertificateSdk.registerWithLifecycle(lifecycle)
+
+		if (savedInstanceState != null) {
+			isIntentConsumed = savedInstanceState.getBoolean(KEY_IS_INTENT_CONSUMED)
+		}
 	}
+
+	override fun onNewIntent(intent: Intent?) {
+		super.onNewIntent(intent)
+		setIntent(intent)
+		isIntentConsumed = false
+	}
+
+	override fun onResume() {
+		super.onResume()
+		checkIntentForActions()
+	}
+
+	override fun onSaveInstanceState(outState: Bundle) {
+		super.onSaveInstanceState(outState)
+		outState.putBoolean(KEY_IS_INTENT_CONSUMED, isIntentConsumed)
+	}
+
+	private fun checkIntentForActions() {
+		val launchedFromHistory = intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
+		if (!launchedFromHistory && !isIntentConsumed) {
+			isIntentConsumed = true
+			when (intent.action) {
+				Intent.ACTION_SEND -> {
+					if ("application/pdf" == intent.type) {
+						handleCertificatePDF(intent)
+					}
+				}
+			}
+		}
+	}
+
+	private fun handleCertificatePDF(intent: Intent) {
+		if (secureStorage.getOnboardingCompleted()) {
+			intent.clipData?.let { pdfViewModel.importPDFData(clipData = it) }
+		}
+	}
+
 
 	override fun onStart() {
 		super.onStart()

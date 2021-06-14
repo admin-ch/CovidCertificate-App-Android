@@ -14,7 +14,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
+import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
@@ -26,16 +28,20 @@ import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
+import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
+import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
+import ch.admin.bag.covidcertificate.wallet.add.CertificateAddFragment
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.wallet.debug.DebugFragment
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.faq.WalletFaqFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.CertificatesPagerAdapter
 import ch.admin.bag.covidcertificate.wallet.list.CertificatesListFragment
+import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 import ch.admin.bag.covidcertificate.wallet.qr.WalletQrScanFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.concurrent.atomic.AtomicLong
@@ -50,6 +56,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val pdfViewModel by activityViewModels<PdfViewModel>()
 
 	private var _binding: FragmentHomeBinding? = null
 	private val binding get() = _binding!!
@@ -183,6 +190,36 @@ class HomeFragment : Fragment() {
 				.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
 				.commit()
 		}
+
+		pdfViewModel.pdfImportLiveData.observe(viewLifecycleOwner) { decodeState ->
+			when (decodeState) {
+				is DecodeState.SUCCESS -> {
+					showCertificationAddFragment(decodeState.dccHolder)
+					pdfViewModel.cleanPDF()
+				}
+				is DecodeState.ERROR -> {
+					AlertDialog.Builder(requireContext(), R.style.CovidCertificate_AlertDialogStyle)
+						.setTitle(R.string.error_title)
+						.setMessage(R.string.verifier_error_invalid_format)
+						.setPositiveButton(R.string.ok_button) { dialog, _ ->
+							dialog.dismiss()
+						}
+						.setCancelable(true)
+						.create()
+						.apply { window?.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR) }
+						.show()
+				}
+			}
+		}
+
+	}
+
+	private fun showCertificationAddFragment(dccHolder: DccHolder) {
+		parentFragmentManager.beginTransaction()
+			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+			.replace(R.id.fragment_container, CertificateAddFragment.newInstance(dccHolder))
+			.addToBackStack(CertificateAddFragment::class.java.canonicalName)
+			.commit()
 	}
 
 	private fun reloadCertificates() {
@@ -204,10 +241,11 @@ class HomeFragment : Fragment() {
 		binding.homescreenListButton.isVisible = dccHolders.size > 1
 		certificatesAdapter.setData(dccHolders)
 		if (hasCertificates) {
-			binding.homescreenCertificatesViewPager.postDelayed(
-				{ binding.homescreenCertificatesViewPager.setCurrentItem(0, true) },
-				250
-			)
+			binding.homescreenCertificatesViewPager.postDelayed(250) {
+				if (isAdded) {
+					binding.homescreenCertificatesViewPager.setCurrentItem(0, true)
+				}
+			}
 		}
 	}
 
