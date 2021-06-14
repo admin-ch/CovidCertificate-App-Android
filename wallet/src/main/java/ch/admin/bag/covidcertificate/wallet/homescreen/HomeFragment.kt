@@ -199,7 +199,7 @@ class HomeFragment : Fragment() {
 				is DecodeState.ERROR -> {
 					AlertDialog.Builder(requireContext(), R.style.CovidCertificate_AlertDialogStyle)
 						.setTitle(R.string.error_title)
-						.setMessage(R.string.qr_scanner_error)
+						.setMessage(R.string.verifier_error_invalid_format)
 						.setPositiveButton(R.string.ok_button) { dialog, _ ->
 							dialog.dismiss()
 						}
