@@ -1,4 +1,4 @@
-name: Android Build AppCenter Verifier Prod
+name: Build Verifier PROD
 
 on:
   push:

@@ -1,4 +1,4 @@
-name: Android Build AppCenter Verifier Abn
+name: Build Verifier ABN
 
 on:
   push:
