@@ -31,8 +31,14 @@ fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.
 
 fun VerificationState.INVALID.getValidationStatusString(context: Context) = when {
 	signatureState is CheckSignatureState.INVALID -> {
-		context.getString(R.string.wallet_error_invalid_signature)
-			.makeSubStringBold(context.getString(R.string.wallet_error_invalid_signature_bold))
+		val invalidSignatureState = signatureState as CheckSignatureState.INVALID
+		if (invalidSignatureState.signatureErrorCode == EvalErrorCodes.SIGNATURE_TYPE_INVALID) {
+			context.getString(R.string.wallet_error_invalid_format)
+				.makeSubStringBold(context.getString(R.string.wallet_error_invalid_format_bold))
+		} else {
+			context.getString(R.string.wallet_error_invalid_signature)
+				.makeSubStringBold(context.getString(R.string.wallet_error_invalid_signature_bold))
+		}
 	}
 	revocationState == CheckRevocationState.INVALID -> {
 		context.getString(R.string.wallet_error_revocation)
