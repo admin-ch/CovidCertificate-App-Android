@@ -20,7 +20,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.databinding.ItemFaqQuestionBinding
-import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
+import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHowToScanBinding
 
 class HowToScanFragment : Fragment() {
@@ -70,6 +70,13 @@ class HowToScanFragment : Fragment() {
 			setText(answer)
 			isVisible = isSelected
 		}
+
+		view.itemFaqQuestionLink.isVisible = isSelected
+		view.itemFaqQuestionLink.setOnClickListener {
+			val url = requireContext().getString(R.string.wallet_scanner_howitworks_external_link)
+			UrlUtil.openUrl(requireContext(), url)
+		}
+
 		view.itemFaqQuestionChevron.setImageResource(if (isSelected) R.drawable.ic_arrow_contract else R.drawable.ic_arrow_expand)
 	}
 }
