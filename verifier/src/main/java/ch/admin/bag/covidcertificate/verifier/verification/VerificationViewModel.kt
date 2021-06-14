@@ -11,6 +11,8 @@
 package ch.admin.bag.covidcertificate.verifier.verification
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -30,12 +32,13 @@ class VerificationViewModel(application: Application) : AndroidViewModel(applica
 		private const val STATUS_LOAD_DELAY = 1000L
 	}
 
+	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val verificationController = CovidCertificateSdk.getCertificateVerificationController()
 	private val verificationStateMutableLiveData = MutableLiveData<VerificationState>()
 	val verificationLiveData = verificationStateMutableLiveData as LiveData<VerificationState>
 
 	fun startVerification(dccHolder: DccHolder) {
-		val task = CertificateVerificationTask(dccHolder)
+		val task = CertificateVerificationTask(dccHolder, connectivityManager)
 
 		viewModelScope.launch {
 			task.verificationStateFlow.collect {

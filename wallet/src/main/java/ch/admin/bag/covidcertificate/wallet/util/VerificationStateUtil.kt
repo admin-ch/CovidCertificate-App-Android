@@ -25,9 +25,9 @@ import ch.admin.bag.covidcertificate.wallet.R
 const val DATE_REPLACEMENT_STRING = "{DATE}"
 
 /**
- * The verification state indicates an offline mode if it is an ERROR and the error code is set to TRUST_LIST_MISSING (T|MIS)
+ * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
  */
-fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.TRUST_LIST_MISSING
+fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.GENERAL_OFFLINE
 
 fun VerificationState.INVALID.getValidationStatusString(context: Context) = when {
 	signatureState is CheckSignatureState.INVALID -> {

@@ -11,6 +11,8 @@
 package ch.admin.bag.covidcertificate.wallet
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -36,6 +38,7 @@ import kotlin.collections.set
 
 class CertificatesViewModel(application: Application) : AndroidViewModel(application) {
 
+	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val verificationController = CovidCertificateSdk.getCertificateVerificationController()
 
 	private val dccHolderCollectionMutableLiveData = MutableLiveData<List<DccHolder>>()
@@ -77,7 +80,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 		verificationJobs[dccHolder]?.cancel()
 
-		val task = CertificateVerificationTask(dccHolder)
+		val task = CertificateVerificationTask(dccHolder, connectivityManager)
 		val job = viewModelScope.launch {
 			task.verificationStateFlow.collect { state ->
 				// Replace the verified certificate in the live data
