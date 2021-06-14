@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 package ch.admin.bag.covidcertificate.wallet.pdf
 
 import android.app.Application
@@ -10,6 +20,7 @@ import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import java.io.File
 import java.io.InputStream
+import ch.admin.bag.covidcertificate.eval.data.state.Error
 
 class PdfViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -29,20 +40,16 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 					if (decode != null) {
 						pdfImportMutableLiveData.postValue(CertificateDecoder.decode(decode))
 					} else {
-						pdfImportMutableLiveData.postValue(DecodeState.ERROR(ch.admin.bag.covidcertificate.eval.data.state.Error("PIC1",
-							"The PDF was not be imported")))
+						pdfImportMutableLiveData.postValue(DecodeState.ERROR(Error("PIC1", "The PDF was not be imported")))
 					}
 				} else {
-					pdfImportMutableLiveData.postValue(DecodeState.ERROR(ch.admin.bag.covidcertificate.eval.data.state.Error("PIC1",
-						"The PDF was not be imported")))
+					pdfImportMutableLiveData.postValue(DecodeState.ERROR(Error("PIC1", "The PDF was not be imported")))
 				}
 			} catch (e: Exception) {
-				pdfImportMutableLiveData.postValue(DecodeState.ERROR(ch.admin.bag.covidcertificate.eval.data.state.Error("PIC1",
-					"The PDF was not be imported")))
+				pdfImportMutableLiveData.postValue(DecodeState.ERROR(Error("PIC1", "The PDF was not be imported")))
 			}
 		} else {
-			pdfImportMutableLiveData.postValue(DecodeState.ERROR(ch.admin.bag.covidcertificate.eval.data.state.Error("PIC1",
-				"The PDF was not be imported")))
+			pdfImportMutableLiveData.postValue(DecodeState.ERROR(Error("PIC1", "The PDF was not be imported")))
 		}
 	}
 

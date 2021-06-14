@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
 import androidx.core.view.isVisible
+import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
@@ -240,10 +241,11 @@ class HomeFragment : Fragment() {
 		binding.homescreenListButton.isVisible = dccHolders.size > 1
 		certificatesAdapter.setData(dccHolders)
 		if (hasCertificates) {
-			binding.homescreenCertificatesViewPager.postDelayed(
-				{ binding.homescreenCertificatesViewPager.setCurrentItem(0, true) },
-				250
-			)
+			binding.homescreenCertificatesViewPager.postDelayed(250) {
+				if (isAdded) {
+					binding.homescreenCertificatesViewPager.setCurrentItem(0, true)
+				}
+			}
 		}
 	}
 
