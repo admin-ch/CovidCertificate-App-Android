@@ -17,10 +17,10 @@ import androidx.annotation.DrawableRes
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.eval.data.EvalErrorCodes
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
+import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 
 /**
  * The verification state indicates an offline mode if it is an ERROR and the error code is set to TRUST_LIST_MISSING (T|MIS)
@@ -76,7 +76,7 @@ fun VerificationState.getStatusInformationString(context: Context, errorDelimite
 	}
 }
 
-fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ") : String {
+fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ", showNationalErrors: Boolean = false): String {
 	val errorCodes = mutableListOf<String>()
 	if (this !is VerificationState.INVALID) return ""
 
@@ -86,7 +86,7 @@ fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ") : Strin
 	}
 
 	val nationalRulesState = nationalRulesState
-	if (nationalRulesState is CheckNationalRulesState.INVALID) {
+	if (showNationalErrors && nationalRulesState is CheckNationalRulesState.INVALID) {
 		errorCodes.add(nationalRulesState.nationalRulesError.errorCode)
 	}
 	return errorCodes.joinToString(errorDelimiter)

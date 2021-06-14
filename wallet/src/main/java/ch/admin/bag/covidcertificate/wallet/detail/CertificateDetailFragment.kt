@@ -250,6 +250,14 @@ class CertificateDetailFragment : Fragment() {
 		} else {
 			showStatusInfoAndDescription(null, info, icon)
 		}
+		binding.certificateDetailErrorCode.apply {
+			visibility = View.VISIBLE
+			val errorCode = state.getInvalidErrorCode(showNationalErrors = true)
+			if (errorCode.isNotEmpty()) {
+				visibility = View.VISIBLE
+				text = errorCode
+			}
+		}
 	}
 
 	private fun displayErrorState(state: VerificationState.ERROR) {
@@ -286,6 +294,10 @@ class CertificateDetailFragment : Fragment() {
 			readjustStatusDelayed(R.color.greyish, icon, info)
 		} else {
 			showStatusInfoAndDescription(description, info, icon)
+		}
+		binding.certificateDetailErrorCode.apply {
+			visibility = View.VISIBLE
+			text = state.error.code
 		}
 	}
 
@@ -361,7 +373,7 @@ class CertificateDetailFragment : Fragment() {
 		@ColorRes solidValidationColorId: Int,
 		@DrawableRes validationIconId: Int,
 		@DrawableRes validationIconLargeId: Int,
-		info: SpannableString?
+		info: SpannableString?,
 	) {
 		binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
 			ContextCompat.getColor(
@@ -395,7 +407,7 @@ class CertificateDetailFragment : Fragment() {
 	private fun readjustStatusDelayed(
 		@ColorRes infoBubbleColorId: Int,
 		@DrawableRes statusIconId: Int,
-		info: SpannableString?
+		info: SpannableString?,
 	) {
 		hideDelayedJob?.cancel()
 		hideDelayedJob = viewLifecycleOwner.lifecycleScope.launch {

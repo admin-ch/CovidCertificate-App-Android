@@ -29,14 +29,7 @@ import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
-import ch.admin.bag.covidcertificate.verifier.util.getHeaderColor
-import ch.admin.bag.covidcertificate.verifier.util.getInfoIconColor
-import ch.admin.bag.covidcertificate.verifier.util.getInvalidErrorCode
-import ch.admin.bag.covidcertificate.verifier.util.getStatusBubbleColor
-import ch.admin.bag.covidcertificate.verifier.util.getStatusInformationString
-import ch.admin.bag.covidcertificate.verifier.util.getStatusString
-import ch.admin.bag.covidcertificate.verifier.util.getValidationStatusIcon
-import ch.admin.bag.covidcertificate.verifier.util.getValidationStatusIconLarge
+import ch.admin.bag.covidcertificate.verifier.util.*
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -169,8 +162,6 @@ class VerificationFragment : Fragment() {
 					text = errorCode
 				}
 			}
-
-
 		}
 	}
 
