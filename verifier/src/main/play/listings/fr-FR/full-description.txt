@@ -1,0 +1,23 @@
+<b>Vérification du certificat COVID au moyen du téléphone portable</b>
+
+COVID Certificate Check est le nom de l’application officielle permettant de vérifier la validité des certificats COVID en Suisse. Elle a été développée par l’Office fédéral de l’informatique et de la télécommunication sur mandant de l’Office fédéral de la santé publique (OFSP).
+
+L’application permet de vérifier la validité des certificats COVID délivrés en Suisse.
+
+<b>Fonctionnement de l’application</b>
+
+Un bouton sur l'écran d'accueil active automatiquement l’appareil photo du smartphone, qui est alors prêt à scanner le code QR.
+
+Pour capturer un code QR, il suffit de tenir votre smartphone de telle sorte que le code apparaisse dans le viseur de l’application. Il est possible de scanner les codes affichés sur un écran tout comme les codes imprimés. Dès que le code a été saisi, le système vérifie automatiquement la validité du certificat en tenant compte des règles en Suisse.
+
+- Une coche sur fond vert indique que le certificat présenté est valide.
+- Un point d'exclamation sur fond rouge indique que le certificat présenté n’est pas valide.
+- Un point d’interrogation sur fond orange indique l’échec de la vérification.
+
+En outre, le nom, le prénom et la date de naissance du titulaire du certificat sont affichés. Ces données doivent être comparées avec le document d'identité présenté.
+
+<b>Respect absolu de la protection des données</b>
+
+Les données relatives aux certificats COVID et aux procédures de vérification ne sont pas enregistrées. Le certificat COVID est protégé par une signature électronique et n’est donc pas falsifiable.
+
+L'utilisation de l'application est limitée à la Suisse et est soumise au droit suisse.

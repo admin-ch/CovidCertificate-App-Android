@@ -16,17 +16,27 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.makeBold
+import ch.admin.bag.covidcertificate.eval.data.EvalErrorCodes
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
 
-const val DATE_REPLACEMENT_STRING = "{DATE}"
+/**
+ * The verification state indicates an offline mode if it is an ERROR and the error code is set to TRUST_LIST_MISSING (T|MIS)
+ */
+fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.TRUST_LIST_MISSING
 
 fun VerificationState.getStatusString(context: Context): SpannableString {
 	return when (this) {
 		is VerificationState.SUCCESS -> context.getString(R.string.verifier_verify_success_title).makeBold()
-		is VerificationState.ERROR -> context.getString(R.string.verifier_verify_error_list_title).makeBold()
+		is VerificationState.ERROR -> {
+			if (isOfflineMode()) {
+				context.getString(R.string.verifier_offline_error_title).makeBold()
+			} else {
+				context.getString(R.string.verifier_verify_error_list_title).makeBold()
+			}
+		}
 		is VerificationState.INVALID -> context.getString(R.string.verifier_verify_error_title).makeBold()
 		VerificationState.LOADING -> SpannableString(context.getString(R.string.wallet_certificate_verifying))
 	}
@@ -34,7 +44,13 @@ fun VerificationState.getStatusString(context: Context): SpannableString {
 
 fun VerificationState.getStatusInformationString(context: Context, errorDelimiter: String = "\n"): String {
 	return when (this) {
-		is VerificationState.ERROR -> context.getString(R.string.verifier_verify_error_list_info_text)
+		is VerificationState.ERROR -> {
+			if (isOfflineMode()) {
+				context.getString(R.string.verifier_offline_error_text)
+			} else {
+				context.getString(R.string.verifier_verify_error_list_info_text)
+			}
+		}
 		is VerificationState.INVALID -> {
 			val errorStrings = mutableListOf<String>()
 			if (this.signatureState is CheckSignatureState.INVALID) {
@@ -53,7 +69,7 @@ fun VerificationState.getStatusInformationString(context: Context, errorDelimite
 				errorStrings.add(context.getString(R.string.verifier_verify_error_info_for_national_rules))
 			}
 
-			if (errorStrings.size <= 1) errorStrings[0] else errorStrings.map { "• $it" }.joinToString(errorDelimiter)
+			if (errorStrings.size <= 1) errorStrings[0] else errorStrings.joinToString(errorDelimiter) { "• $it" }
 		}
 		VerificationState.LOADING -> context.getString(R.string.wallet_certificate_verifying)
 		is VerificationState.SUCCESS -> context.getString(R.string.verifier_verify_success_info)
@@ -61,13 +77,14 @@ fun VerificationState.getStatusInformationString(context: Context, errorDelimite
 }
 
 fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ") : String {
-	var errorCodes = mutableListOf<String>()
+	val errorCodes = mutableListOf<String>()
 	if (this !is VerificationState.INVALID) return ""
 
 	val signatureState = signatureState
 	if (signatureState is CheckSignatureState.INVALID) {
 		errorCodes.add(signatureState.signatureErrorCode)
 	}
+
 	val nationalRulesState = nationalRulesState
 	if (nationalRulesState is CheckNationalRulesState.INVALID) {
 		errorCodes.add(nationalRulesState.nationalRulesError.errorCode)
@@ -78,7 +95,13 @@ fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ") : Strin
 @DrawableRes
 fun VerificationState.getValidationStatusIcon(): Int {
 	return when (this) {
-		is VerificationState.ERROR -> R.drawable.ic_process_error
+		is VerificationState.ERROR -> {
+			if (isOfflineMode()) {
+				R.drawable.ic_no_connection
+			} else {
+				R.drawable.ic_process_error
+			}
+		}
 		is VerificationState.INVALID -> R.drawable.ic_error
 		is VerificationState.SUCCESS -> R.drawable.ic_check_green
 		VerificationState.LOADING -> 0
@@ -88,7 +111,13 @@ fun VerificationState.getValidationStatusIcon(): Int {
 @DrawableRes
 fun VerificationState.getValidationStatusIconLarge(): Int {
 	return when (this) {
-		is VerificationState.ERROR -> R.drawable.ic_process_error_large
+		is VerificationState.ERROR -> {
+			if (isOfflineMode()) {
+				R.drawable.ic_no_connection_large
+			} else {
+				R.drawable.ic_process_error_large
+			}
+		}
 		is VerificationState.INVALID -> R.drawable.ic_error_large
 		VerificationState.LOADING -> 0
 		is VerificationState.SUCCESS -> R.drawable.ic_check_large

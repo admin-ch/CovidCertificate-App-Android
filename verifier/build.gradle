@@ -40,8 +40,8 @@ android {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
 		minSdkVersion 24
 		targetSdkVersion 30
-		versionCode 1000
-		versionName "1.0.0"
+		versionCode 1200
+		versionName "1.2.0"
 
 		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
 
@@ -51,14 +51,17 @@ android {
 	productFlavors {
 		dev {
 			buildConfigField "String", "BASE_URL", '"https://www.cc-d.bit.admin.ch/app/verifier/v1/"'
+			buildConfigField "String", "SDK_API_KEY", '"7f64903d-4420-4cc3-ac90-c14306b5e556"'
 			applicationIdSuffix '.dev'
 		}
 		abn {
 			buildConfigField "String", "BASE_URL", '"https://www.cc-a.bit.admin.ch/app/verifier/v1/"'
+			buildConfigField "String", "SDK_API_KEY", '"f731fd3b-cb55-4cfd-9c46-fb3a927ffcd8"'
 			applicationIdSuffix '.abn'
 		}
 		prod {
 			buildConfigField "String", "BASE_URL", '"https://www.cc.bit.admin.ch/app/verifier/v1/"'
+			buildConfigField "String", "SDK_API_KEY", '"25958ed0-7790-4846-9341-7c7ef87ec389"'
 		}
 	}
 

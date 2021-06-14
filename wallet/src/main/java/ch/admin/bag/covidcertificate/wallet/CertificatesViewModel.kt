@@ -70,7 +70,11 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 		}
 	}
 
-	fun startVerification(dccHolder: DccHolder, delayInMillis: Long = 0L) {
+	fun startVerification(dccHolder: DccHolder, delayInMillis: Long = 0L, isForceVerification: Boolean = false) {
+		if (isForceVerification) {
+			verificationController.refreshTrustList(viewModelScope)
+		}
+
 		verificationJobs[dccHolder]?.cancel()
 
 		val task = CertificateVerificationTask(dccHolder)
