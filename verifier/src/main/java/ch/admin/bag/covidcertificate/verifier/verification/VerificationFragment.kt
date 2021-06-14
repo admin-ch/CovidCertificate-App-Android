@@ -23,13 +23,20 @@ import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import ch.admin.bag.covidcertificate.common.util.getHeaderColor
+import ch.admin.bag.covidcertificate.common.util.getInfoIconColor
+import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
+import ch.admin.bag.covidcertificate.common.util.getStatusBubbleColor
+import ch.admin.bag.covidcertificate.common.util.getStatusInformationString
+import ch.admin.bag.covidcertificate.common.util.getStatusString
+import ch.admin.bag.covidcertificate.common.util.getValidationStatusIcon
+import ch.admin.bag.covidcertificate.common.util.getValidationStatusIconLarge
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
-import ch.admin.bag.covidcertificate.verifier.util.*
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -37,7 +44,7 @@ class VerificationFragment : Fragment() {
 
 	companion object {
 		private val TAG = VerificationFragment::class.java.canonicalName
-		private val ARG_DECODE_DGC = "ARG_DECODE_DGC"
+		private const val ARG_DECODE_DGC = "ARG_DECODE_DGC"
 
 		fun newInstance(dccHolder: DccHolder): VerificationFragment {
 			return VerificationFragment().apply {

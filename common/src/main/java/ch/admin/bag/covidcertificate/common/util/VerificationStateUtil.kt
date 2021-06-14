@@ -8,14 +8,13 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.verifier.util
+package ch.admin.bag.covidcertificate.common.util
 
 import android.content.Context
 import android.text.SpannableString
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import ch.admin.bag.covidcertificate.common.R
-import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.eval.data.EvalErrorCodes
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
