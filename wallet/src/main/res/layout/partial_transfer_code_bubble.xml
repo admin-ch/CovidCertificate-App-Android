@@ -56,7 +56,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:visibility="gone"
-		app:constraint_referenced_ids="transfer_code_title,transfer_code_section_1,transfer_code_section_2,transfer_code_section_3"
+		app:constraint_referenced_ids="transfer_code_title,transfer_code_value"
 		tools:visibility="visible" />
 
 	<TextView
@@ -70,57 +70,14 @@
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/transfer_code_icon_container" />
 
-	<TextView
-		android:id="@+id/transfer_code_section_1"
-		style="@style/CovidCertificate.Text.Bold.Title"
+	<ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeView
+		android:id="@+id/transfer_code_value"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginHorizontal="@dimen/spacing_tiny_small"
 		android:layout_marginTop="@dimen/spacing_medium_large"
-		android:background="@color/white"
-		android:fontFeatureSettings="tnum"
-		android:paddingHorizontal="@dimen/spacing_very_small"
-		android:textAllCaps="true"
-		android:textColor="@color/blue"
-		app:layout_constraintEnd_toStartOf="@+id/transfer_code_section_2"
-		app:layout_constraintHorizontal_chainStyle="packed"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/transfer_code_title"
-		tools:text="A2X" />
-
-	<TextView
-		android:id="@+id/transfer_code_section_2"
-		style="@style/CovidCertificate.Text.Bold.Title"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginHorizontal="@dimen/spacing_tiny_small"
-		android:background="@color/white"
-		android:fontFeatureSettings="tnum"
-		android:paddingHorizontal="@dimen/spacing_very_small"
-		android:textAllCaps="true"
-		android:textColor="@color/blue"
-		app:layout_constraintBottom_toBottomOf="@+id/transfer_code_section_1"
-		app:layout_constraintEnd_toStartOf="@+id/transfer_code_section_3"
-		app:layout_constraintStart_toEndOf="@+id/transfer_code_section_1"
-		app:layout_constraintTop_toTopOf="@+id/transfer_code_section_1"
-		tools:text="56K" />
-
-	<TextView
-		android:id="@+id/transfer_code_section_3"
-		style="@style/CovidCertificate.Text.Bold.Title"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginHorizontal="@dimen/spacing_tiny_small"
-		android:background="@color/white"
-		android:fontFeatureSettings="tnum"
-		android:paddingHorizontal="@dimen/spacing_very_small"
-		android:textAllCaps="true"
-		android:textColor="@color/blue"
-		app:layout_constraintBottom_toBottomOf="@+id/transfer_code_section_1"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toEndOf="@+id/transfer_code_section_2"
-		app:layout_constraintTop_toTopOf="@+id/transfer_code_section_1"
-		tools:text="7WP" />
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/transfer_code_title" />
 
 	<TextView
 		android:id="@+id/transfer_code_expired"
@@ -140,7 +97,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		app:barrierDirection="bottom"
-		app:constraint_referenced_ids="transfer_code_section_1,transfer_code_expired" />
+		app:constraint_referenced_ids="transfer_code_value,transfer_code_expired" />
 
 	<TextView
 		android:id="@+id/transfer_code_creation_datetime"
