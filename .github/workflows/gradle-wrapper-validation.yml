@@ -10,4 +10,4 @@ jobs:
       - uses: actions/checkout@v2
         with:
           submodules: true
-      - uses: gradle/wrapper-validation-action@v1
+      - uses: gradle/wrapper-validation-action@1ed3d1cbba6f8f077128463ced1769606d17b77b
