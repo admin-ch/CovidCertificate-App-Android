@@ -60,7 +60,7 @@ fun VerificationState.getStatusInformationString(context: Context, errorDelimite
 					errorStrings.add(context.getString(R.string.verifier_verify_error_info_for_certificate_invalid))
 				}
 			}
-			if (this.revocationState == CheckRevocationState.INVALID) {
+			if (this.revocationState is CheckRevocationState.INVALID) {
 				errorStrings.add(context.getString(R.string.verifier_verify_error_info_for_blacklist))
 			}
 			if (this.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE) {
@@ -87,6 +87,11 @@ fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ", showNat
 	val signatureState = signatureState
 	if (signatureState is CheckSignatureState.INVALID) {
 		errorCodes.add(signatureState.signatureErrorCode)
+	}
+
+	val revocationState = revocationState
+	if (revocationState is CheckRevocationState.INVALID) {
+		errorCodes.add(revocationState.revocationErrorCode)
 	}
 
 	val nationalRulesState = nationalRulesState
