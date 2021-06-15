@@ -47,6 +47,7 @@ import ch.admin.bag.covidcertificate.wallet.homescreen.pager.CertificatesPagerAd
 import ch.admin.bag.covidcertificate.wallet.list.CertificatesListFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 import ch.admin.bag.covidcertificate.wallet.qr.WalletQrScanFragment
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeIntroFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.concurrent.atomic.AtomicLong
 
@@ -168,7 +169,7 @@ class HomeFragment : Fragment() {
 		certificatesAdapter = CertificatesPagerAdapter(this)
 		viewPager.offscreenPageLimit = 1
 		viewPager.adapter = certificatesAdapter
-		TabLayoutMediator(binding.homescreenCertificatesTabLayout, viewPager) { tab, position -> }.attach()
+		TabLayoutMediator(binding.homescreenCertificatesTabLayout, viewPager) { _, _ -> }.attach()
 
 		certificatesViewModel.dccHolderCollectionLiveData.observe(viewLifecycleOwner) {
 			it ?: return@observe
@@ -226,7 +227,12 @@ class HomeFragment : Fragment() {
 		}
 
 		binding.homescreenAddCertificateOptions.optionTransferCode.setOnClickListener {
-			// TODO: Open transfer code fragment
+			isAddOptionsShowing = false
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, TransferCodeIntroFragment.newInstance())
+				.addToBackStack(TransferCodeIntroFragment::class.java.canonicalName)
+				.commit()
 		}
 	}
 
@@ -309,7 +315,7 @@ class HomeFragment : Fragment() {
 					secureStorage.setLastShownInfoBoxId(infoBox.infoId)
 				}
 
-				return@let View.OnClickListener { view ->
+				return@let View.OnClickListener {
 					closeCurrentInfoDialog()
 					showInfoDialog(infoBox)
 					secureStorage.setLastShownInfoBoxId(infoBox.infoId)
