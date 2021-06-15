@@ -37,7 +37,11 @@ class TransferCodeIntroFragment : Fragment(R.layout.fragment_transfer_code_intro
 		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 
 		binding.transferCodeIntroCreate.setOnClickListener {
-			// TODO: Open tranfer code creation screen
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, TransferCodeCreationFragment.newInstance())
+				.addToBackStack(TransferCodeCreationFragment::class.java.canonicalName)
+				.commit()
 		}
 
 		binding.transferCodeIntroHowto.setOnClickListener {

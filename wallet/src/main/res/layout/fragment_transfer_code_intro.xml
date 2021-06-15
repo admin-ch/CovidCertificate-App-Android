@@ -55,9 +55,7 @@
 					android:layout_marginHorizontal="@dimen/spacing_very_large"
 					android:layout_marginTop="@dimen/spacing_large"
 					android:gravity="center_horizontal"
-					android:text="@string/wallet_transfer_code_onboarding_title"
-					app:layout_constraintEnd_toEndOf="parent"
-					app:layout_constraintStart_toStartOf="parent" />
+					android:text="@string/wallet_transfer_code_onboarding_title" />
 
 				<TextView
 					style="@style/CovidCertificate.Text"
