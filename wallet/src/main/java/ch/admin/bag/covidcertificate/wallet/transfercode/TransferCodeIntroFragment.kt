@@ -41,7 +41,11 @@ class TransferCodeIntroFragment : Fragment(R.layout.fragment_transfer_code_intro
 		}
 
 		binding.transferCodeIntroHowto.setOnClickListener {
-			// TODO: Open FAQ screen for transfer codes
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, TransferCodeHowToFragment.newInstance())
+				.addToBackStack(TransferCodeHowToFragment::class.java.canonicalName)
+				.commit()
 		}
 	}
 
