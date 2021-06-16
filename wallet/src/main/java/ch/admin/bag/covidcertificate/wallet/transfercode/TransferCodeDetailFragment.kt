@@ -17,6 +17,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.config.FaqModel
+import ch.admin.bag.covidcertificate.common.faq.FaqAdapter
+import ch.admin.bag.covidcertificate.common.faq.model.Faq
+import ch.admin.bag.covidcertificate.common.faq.model.Header
+import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
+import ch.admin.bag.covidcertificate.common.faq.model.Question
+import ch.admin.bag.covidcertificate.wallet.ConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeDetailBinding
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
@@ -26,7 +33,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	companion object {
 		private const val ARG_TRANSFER_CODE = "ARG_TRANSFER_CODE"
 
-		fun newInstance(transferCode: TransferCodeModel) = TransferCodeCreationFragment().apply {
+		fun newInstance(transferCode: TransferCodeModel) = TransferCodeDetailFragment().apply {
 			arguments = bundleOf(ARG_TRANSFER_CODE to transferCode)
 		}
 	}
@@ -34,6 +41,8 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	private var _binding: FragmentTransferCodeDetailBinding? = null
 	private val binding get() = _binding!!
 
+	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private val faqAdapter = FaqAdapter()
 	private lateinit var transferCode: TransferCodeModel
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,11 +59,27 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+		binding.transferCodeDetailFaqList.adapter = faqAdapter
+
+		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
+			val languageKey = getString(R.string.language_key)
+			config.getTransferWorksFaqs(languageKey)?.let {
+				showTransferCodeFaqItems(it)
+			}
+		}
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	private fun showTransferCodeFaqItems(faqModel: FaqModel) {
+		val header = listOf(Header(faqModel.faqIconAndroid, faqModel.faqTitle, faqModel.faqSubTitle))
+		val introSections = faqModel.faqIntroSections?.map { IntroSection(it.iconAndroid, it.text) } ?: emptyList()
+		val questions = faqModel.faqEntries?.map { Question(it.title, it.text, false, it.linkTitle, it.linkUrl) } ?: emptyList()
+		val adapterItems: List<Faq> = listOf(header, introSections, questions).flatten()
+		faqAdapter.setItems(adapterItems)
 	}
 
 }

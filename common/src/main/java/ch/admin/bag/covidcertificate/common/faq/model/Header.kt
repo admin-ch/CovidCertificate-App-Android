@@ -23,3 +23,5 @@ data class Question(
 	val linkTitle: String? = null,
 	val linkUrl: String? = null,
 ) : Faq, Serializable
+
+data class IntroSection(val iconName: String, val text: String) : Faq, Serializable
