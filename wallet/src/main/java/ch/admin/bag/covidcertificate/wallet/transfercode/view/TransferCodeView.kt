@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.wallet.transfercode
+package ch.admin.bag.covidcertificate.wallet.transfercode.view
 
 import android.content.Context
 import android.util.AttributeSet

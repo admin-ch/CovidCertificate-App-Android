@@ -37,6 +37,7 @@ class TransferCodeIntroFragment : Fragment(R.layout.fragment_transfer_code_intro
 		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 
 		binding.transferCodeIntroCreate.setOnClickListener {
+			parentFragmentManager.popBackStack()
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 				.replace(R.id.fragment_container, TransferCodeCreationFragment.newInstance())

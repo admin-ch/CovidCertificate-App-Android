@@ -8,13 +8,14 @@
   ~ SPDX-License-Identifier: MPL-2.0
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:clipToPadding="false"
-	android:paddingTop="@dimen/spacing_medium_large">
+	tools:clipToPadding="false"
+	tools:paddingTop="@dimen/spacing_medium_large"
+	tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
 	<View
 		android:id="@+id/background"
@@ -37,7 +38,7 @@
 		app:layout_constraintTop_toTopOf="parent">
 
 		<ImageView
-			android:id="@+id/certificate_page_status_icon"
+			android:id="@+id/transfer_code_status_icon"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_gravity="center"
@@ -45,19 +46,24 @@
 			app:tint="@color/blue" />
 
 		<ProgressBar
-			android:id="@+id/certificate_page_status_loading"
+			android:id="@+id/transfer_code_loading_indicator"
 			android:layout_width="26dp"
 			android:layout_height="26dp"
 			android:visibility="gone" />
 	</FrameLayout>
 
-	<androidx.constraintlayout.widget.Group
-		android:id="@+id/transfer_code_fields"
+	<TextView
+		android:id="@+id/transfer_code_validity"
+		style="@style/CovidCertificate.Text.Blue"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_very_small"
 		android:visibility="gone"
-		app:constraint_referenced_ids="transfer_code_title,transfer_code_value"
-		tools:visibility="visible" />
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/transfer_code_icon_container"
+		tools:text="@string/wallet_transfer_code_expire_singular"
+		tools:visibility="gone" />
 
 	<TextView
 		android:id="@+id/transfer_code_title"
@@ -66,18 +72,29 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="@dimen/spacing_very_small"
 		android:text="@string/wallet_transfer_code_title"
+		android:visibility="gone"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/transfer_code_icon_container" />
+		app:layout_constraintTop_toBottomOf="@+id/transfer_code_icon_container"
+		tools:visibility="gone" />
 
-	<ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeView
+	<androidx.constraintlayout.widget.Barrier
+		android:id="@+id/transfer_code_title_barrier"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		app:barrierDirection="bottom"
+		app:constraint_referenced_ids="transfer_code_validity,transfer_code_title" />
+
+	<ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeView
 		android:id="@+id/transfer_code_value"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="@dimen/spacing_medium_large"
+		android:visibility="gone"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/transfer_code_title" />
+		app:layout_constraintTop_toBottomOf="@+id/transfer_code_title_barrier"
+		tools:visibility="gone" />
 
 	<TextView
 		android:id="@+id/transfer_code_expired"
@@ -86,11 +103,12 @@
 		android:layout_height="wrap_content"
 		android:layout_marginTop="@dimen/spacing_very_small"
 		android:text="@string/wallet_transfer_code_old_code"
+		android:textColor="@color/blue"
 		android:visibility="gone"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/transfer_code_icon_container"
-		tools:visibility="gone" />
+		tools:visibility="visible" />
 
 	<androidx.constraintlayout.widget.Barrier
 		android:id="@+id/transfer_code_state_barrier"
@@ -114,4 +132,4 @@
 		app:layout_constraintTop_toBottomOf="@+id/transfer_code_state_barrier"
 		tools:text="@string/wallet_transfer_code_createdat" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</merge>
