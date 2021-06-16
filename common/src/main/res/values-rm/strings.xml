@@ -392,7 +392,7 @@ signatura nunvalaivla"</string>
     <!-- Button Schliessen -->
     <string name="close_button">"Serrar"</string>
     <string name="wallet_certificate_impfdosis_title">"Dosa"</string>
-    <string name="target_disease_name">"Covid-19"</string>
+    <string name="target_disease_name">"COVID-19"</string>
     <string name="wallet_certificate_target_disease_title">"Malsogna u agent patogen"</string>
     <string name="wallet_certificate_impfstoff_product_name_title">"Product"</string>
     <string name="wallet_certificate_impfstoff_holder">"Producent"</string>
@@ -604,7 +604,7 @@ As infurmai per plaschair – avant d'As metter en viadi – davart las mesiras 
     <string name="wallet_transfer_code_next_steps">"Nächste Schritte"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 1 -->
-    <string name="wallet_transfer_code_next_steps1">"Übergeben Sie den Code bei der Testentnahme der Apotheke, dem Testcenter oder der Ärztin / dem Arzt."</string>
+    <string name="wallet_transfer_code_next_steps1">"Notieren Sie den Code in das entsprechende Feld auf dem Anmeldeformular zum Covid-Test."</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 2 -->
     <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate zB. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
@@ -700,4 +700,7 @@ n’è betg valaivel"</string>
 
     <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link_title">"Ulteriuras infurmaziuns"</string>
+
+    <!-- Buttontitel im Screen, wo ein Code erstellt werden kann -->
+    <string name="wallet_transfer_code_create_code_button">"Code erstellen"</string>
 </resources>

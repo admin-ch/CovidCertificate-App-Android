@@ -394,7 +394,7 @@ Suisse"</string>
     <!-- Button Schliessen -->
     <string name="close_button">"Fermer"</string>
     <string name="wallet_certificate_impfdosis_title">"Dose"</string>
-    <string name="target_disease_name">"Covid-19"</string>
+    <string name="target_disease_name">"COVID-19"</string>
     <string name="wallet_certificate_target_disease_title">"Maladie ou agent pathogène"</string>
     <string name="wallet_certificate_impfstoff_product_name_title">"Produit"</string>
     <string name="wallet_certificate_impfstoff_holder">"Fabricant"</string>
@@ -506,9 +506,9 @@ Si vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la 
     <string name="wallet_onboarding_external_privacy_button">"Déclaration de confidentialité &amp; condition d'utilisation"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_note">"Le présent certificat n’est pas un document de voyage. 
+    <string name="wallet_certificate_detail_note">"Le présent certificat n'est pas un document de voyage. 
 
-Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d’évoluer, notamment en ce qui concerne de nouveaux variants préoccupants du virus. 
+Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d'évoluer, notamment en ce qui concerne de nouveaux variants préoccupants du virus. 
 
 Avant de voyager, veuillez vérifier les mesures de santé publique applicables et les restrictions connexes applicables sur le lieu de destination."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-app.html"</string>
@@ -517,7 +517,7 @@ Avant de voyager, veuillez vérifier les mesures de santé publique applicables 
     <!-- Verifier: Titel in der App (z.B. Impressum) -->
     <string name="verifier_app_title">"COVID Certificate Check"</string>
     <string name="wallet_faq_questions_question_1_1">"Comment puis-je obtenir un certificat COVID après avoir guéri?"</string>
-    <string name="wallet_faq_questions_answer_1_1">"Les personnes qui ont guéri du COVID-19 peuvent demander un certificat COVID en remplissant le formulaire en ligne disponible sur le site Internet de leur canton de domicile. Elles recevront ensuite le certificat COVID par la poste. "</string>
+    <string name="wallet_faq_questions_answer_1_1">"Les personnes qui ont guéri du COVID-19 peuvent demander un certificat COVID en remplissant le formulaire en ligne disponible sur le site Internet de leur canton de domicile. Elles recevront ensuite le certificat COVID par la poste."</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
     <string name="wallet_homescreen_what_to_do">"Nächsten Schritt wählen"</string>
@@ -605,7 +605,7 @@ Avant de voyager, veuillez vérifier les mesures de santé publique applicables 
     <string name="wallet_transfer_code_next_steps">"Nächste Schritte"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 1 -->
-    <string name="wallet_transfer_code_next_steps1">"Übergeben Sie den Code bei der Testentnahme der Apotheke, dem Testcenter oder der Ärztin / dem Arzt."</string>
+    <string name="wallet_transfer_code_next_steps1">"Notieren Sie den Code in das entsprechende Feld auf dem Anmeldeformular zum Covid-Test."</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 2 -->
     <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate zB. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
@@ -701,4 +701,7 @@ non valide"</string>
 
     <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link_title">"Informations supplémentaires"</string>
+
+    <!-- Buttontitel im Screen, wo ein Code erstellt werden kann -->
+    <string name="wallet_transfer_code_create_code_button">"Code erstellen"</string>
 </resources>
