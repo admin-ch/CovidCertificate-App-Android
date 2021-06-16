@@ -132,17 +132,17 @@ an identity document"</string>
     <string name="wallet_onboarding_privacy_header">"Data privacy"</string>
 
     <!-- Titel im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_title">"Your data remain 
+    <string name="wallet_onboarding_privacy_title">"Your data remains 
 in the app"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_text">"The certificates are only saved locally on your smartphone. The data are not stored centrally."</string>
+    <string name="wallet_onboarding_privacy_text">"The certificates are only saved locally on your smartphone. The data is not stored centrally."</string>
 
     <!-- Titel im Onboardingscreen "Vorteile, Vorweisen" -->
     <string name="wallet_onboarding_show_title">"Present certificates simply"</string>
 
     <!-- Text 1 im Onboardingscreen "Vorteile, Vorweisen" -->
-    <string name="wallet_onboarding_show_text1">"The data in the COVID certificate are also contained in the QR code."</string>
+    <string name="wallet_onboarding_show_text1">"The data in the COVID certificate is also contained in the QR code."</string>
 
     <!-- Text 2 im Onboardingscreen "Vorteile, Vorweisen" -->
     <string name="wallet_onboarding_show_text2">"On presentation, the QR code is scanned using a verifier app. The authenticity and validity of the data are automatically checked."</string>
@@ -520,7 +520,7 @@ Before travelling, please check the applicable public health measures and relate
     <string name="wallet_faq_questions_answer_1_1">"People who have recovered from COVID-19 can apply for the COVID-19 certificate via an online form on the canton's website. The COVID-19 certificate will then be sent by post."</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
-    <string name="wallet_homescreen_what_to_do">"Was möchten Sie machen?"</string>
+    <string name="wallet_homescreen_what_to_do">"Nächsten Schritt wählen"</string>
 
     <!-- Wallet: Homescreen Titel Zertifikat hinzufügen -->
     <string name="wallet_homescreen_add_title">"Zertifikat hinzufügen"</string>
@@ -535,7 +535,7 @@ Before travelling, please check the applicable public health measures and relate
     <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <string name="wallet_transfer_code_onboarding_text">"Mit Transfer-Codes können Sie Covid-Zertifikate von negativen Testresultaten direkt in der App empfangen."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes z. B. bei Covid-Tests angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
     <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
@@ -676,7 +676,7 @@ invalid"</string>
     <string name="verifier_network_error_text">"An unexpected error has occurred"</string>
 
     <!-- Wallet: Text auf Zertifikat auf Homescreen bei Netzwerkfehler -->
-    <string name="wallet_homescreen_network_error">"Gülltigkeit konnte nicht ermittelt werden"</string>
+    <string name="wallet_homescreen_network_error">"Validity could not be determined"</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
     <string name="wallet_transfer_code_faq_works_intro_1">"Die App prüft regelmässig, ob ein Covid-Zertifikat für Ihren Transfer-Code verfügbar ist."</string>
@@ -696,7 +696,16 @@ invalid"</string>
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_button">"Weiter"</string>
 
+    <!-- Externe URL im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_external_link">"https://foph-coronavirus.ch/certificate/how-do-i-get-a-covid-certificate-and-how-do-i-use-it/"</string>
+
+    <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_external_link_title">"Further information"</string>
+    
     <!-- Language setting -->
     <string name="setting_language">Language</string>
+  
+    <!-- Use system language option -->
     <string name="default_system">Default (Follows system)</string>
+
 </resources>

@@ -8,24 +8,23 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.verifier.util
+package ch.admin.bag.covidcertificate.common.util
 
 import android.content.Context
 import android.text.SpannableString
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import ch.admin.bag.covidcertificate.common.util.makeBold
+import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.eval.data.EvalErrorCodes
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.verifier.R
+import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 
 /**
- * The verification state indicates an offline mode if it is an ERROR and the error code is set to TRUST_LIST_MISSING (T|MIS)
+ * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
  */
-fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.TRUST_LIST_MISSING
+fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.GENERAL_OFFLINE
 
 fun VerificationState.getStatusString(context: Context): SpannableString {
 	return when (this) {
@@ -54,7 +53,12 @@ fun VerificationState.getStatusInformationString(context: Context, errorDelimite
 		is VerificationState.INVALID -> {
 			val errorStrings = mutableListOf<String>()
 			if (this.signatureState is CheckSignatureState.INVALID) {
-				errorStrings.add(context.getString(R.string.verifier_verify_error_info_for_certificate_invalid))
+				val invalidSignatureState = this.signatureState as CheckSignatureState.INVALID
+				if (invalidSignatureState.signatureErrorCode == EvalErrorCodes.SIGNATURE_TYPE_INVALID) {
+					errorStrings.add(context.getString(R.string.verifier_error_invalid_format))
+				} else {
+					errorStrings.add(context.getString(R.string.verifier_verify_error_info_for_certificate_invalid))
+				}
 			}
 			if (this.revocationState == CheckRevocationState.INVALID) {
 				errorStrings.add(context.getString(R.string.verifier_verify_error_info_for_blacklist))
@@ -76,7 +80,7 @@ fun VerificationState.getStatusInformationString(context: Context, errorDelimite
 	}
 }
 
-fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ") : String {
+fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ", showNationalErrors: Boolean = false): String {
 	val errorCodes = mutableListOf<String>()
 	if (this !is VerificationState.INVALID) return ""
 
@@ -86,7 +90,7 @@ fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ") : Strin
 	}
 
 	val nationalRulesState = nationalRulesState
-	if (nationalRulesState is CheckNationalRulesState.INVALID) {
+	if (showNationalErrors && nationalRulesState is CheckNationalRulesState.INVALID) {
 		errorCodes.add(nationalRulesState.nationalRulesError.errorCode)
 	}
 	return errorCodes.joinToString(errorDelimiter)

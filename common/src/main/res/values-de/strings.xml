@@ -523,8 +523,7 @@ Bitte informieren Sie sich vor der Reise über die am Zielort geltenden Gesundhe
     <string name="wallet_faq_questions_answer_1_1">"Von Covid-19 genesene Personen können das Covid-Zertifikat über ein Online-Formular auf der Webseite des Kantons beantragen. Das Covid-Zertifikat wird anschliessend per Post zugeschickt."</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
-    <!-- Fuzzy -->
-    <string name="wallet_homescreen_what_to_do">"Was möchten Sie machen?"</string>
+    <string name="wallet_homescreen_what_to_do">"Nächsten Schritt wählen"</string>
 
     <!-- Wallet: Homescreen Titel Zertifikat hinzufügen -->
     <string name="wallet_homescreen_add_title">"Zertifikat hinzufügen"</string>
@@ -539,8 +538,7 @@ Bitte informieren Sie sich vor der Reise über die am Zielort geltenden Gesundhe
     <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <!-- Fuzzy -->
-    <string name="wallet_transfer_code_onboarding_text">"Mit Transfer-Codes können Sie Covid-Zertifikate von negativen Testresultaten direkt in der App empfangen."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes z. B. bei Covid-Tests angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
     <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
@@ -699,7 +697,7 @@ ungültig"</string>
     <string name="verifier_network_error_text">"Ein unerwarteter Fehler ist aufgetreten"</string>
 
     <!-- Wallet: Text auf Zertifikat auf Homescreen bei Netzwerkfehler -->
-    <string name="wallet_homescreen_network_error">"Gülltigkeit konnte nicht ermittelt werden"</string>
+    <string name="wallet_homescreen_network_error">"Gültigkeit konnte nicht ermittelt werden"</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
     <!-- Fuzzy -->
@@ -721,4 +719,10 @@ ungültig"</string>
 
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_button">"Weiter"</string>
+
+    <!-- Externe URL im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_external_link">"https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/"</string>
+
+    <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
+    <string name="wallet_scanner_howitworks_external_link_title">"Weitere Informationen"</string>
 </resources>

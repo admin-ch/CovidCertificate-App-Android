@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -27,10 +26,10 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:background="@color/white"
+			android:elevation="@dimen/toolbar_elevation"
 			app:layout_constraintTop_toTopOf="parent"
 			app:navigationIcon="@drawable/ic_close_red"
 			app:title="@string/wallet_certificate"
-			android:elevation="@dimen/toolbar_elevation"
 			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
 			app:titleTextColor="@color/grey" />
 
@@ -46,9 +45,9 @@
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
+					android:clipToPadding="false"
 					android:orientation="vertical"
-					android:padding="@dimen/spacing_very_large"
-					android:clipToPadding="false">
+					android:padding="@dimen/spacing_very_large">
 
 					<FrameLayout
 						android:layout_width="match_parent"
@@ -79,7 +78,7 @@
 								android:alpha="0.9"
 								android:background="@color/grey"
 								android:backgroundTint="@android:color/transparent"
-								tools:backgroundTint="@color/grey"/>
+								tools:backgroundTint="@color/grey" />
 
 							<ImageView
 								android:id="@+id/certificate_detail_qr_code_status_icon"
@@ -134,8 +133,8 @@
 							android:background="@drawable/bg_certificate_bubble"
 							android:backgroundTint="@color/blueish"
 							android:gravity="center"
-							android:padding="@dimen/spacing_medium_large"
 							android:minLines="2"
+							android:padding="@dimen/spacing_medium_large"
 							app:layout_constraintTop_toTopOf="parent"
 							tools:text="@string/verifier_verify_success_info" />
 
@@ -147,12 +146,12 @@
 							android:background="@drawable/bg_certificate_bubble"
 							android:backgroundTint="@color/blueish"
 							android:gravity="center"
-							android:padding="@dimen/spacing_medium_large"
 							android:minLines="2"
-							app:layout_constraintTop_toTopOf="@id/certificate_detail_info"
-							app:layout_constraintBottom_toBottomOf="@id/certificate_detail_info"
-							tools:text="@string/verifier_verify_success_title"
+							android:padding="@dimen/spacing_medium_large"
 							android:visibility="gone"
+							app:layout_constraintBottom_toBottomOf="@id/certificate_detail_info"
+							app:layout_constraintTop_toTopOf="@id/certificate_detail_info"
+							tools:text="@string/verifier_verify_success_title"
 							tools:visibility="visible" />
 
 						<FrameLayout
@@ -250,6 +249,19 @@
 
 					</LinearLayout>
 
+					<TextView
+						android:id="@+id/certificate_detail_error_code"
+						style="@style/CovidCertificate.Text.Grey"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:layout_marginVertical="@dimen/spacing_medium_small"
+						android:textAllCaps="true"
+						android:textSize="@dimen/text_size_small"
+						android:visibility="gone"
+						tools:text="Error-Code"
+						tools:visibility="visible" />
+
 					<androidx.recyclerview.widget.RecyclerView
 						android:id="@+id/certificate_detail_data_recycler_view"
 						android:layout_width="match_parent"
@@ -263,9 +275,9 @@
 						style="@style/CovidCertificate.Text"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:background="@drawable/bg_certificate_detail_note"
-						android:layout_marginTop="@dimen/spacing_large"
 						android:layout_marginHorizontal="-20dp"
+						android:layout_marginTop="@dimen/spacing_large"
+						android:background="@drawable/bg_certificate_detail_note"
 						android:padding="@dimen/spacing_large"
 						android:text="@string/wallet_certificate_detail_note" />
 
@@ -288,9 +300,9 @@
 				android:layout_width="@dimen/floating_button_height"
 				android:layout_height="@dimen/floating_button_height"
 				android:layout_gravity="bottom|end"
-				android:elevation="@dimen/floating_button_elevation"
-				android:layout_marginBottom="@dimen/spacing_very_large"
 				android:layout_marginEnd="@dimen/spacing_very_large"
+				android:layout_marginBottom="@dimen/spacing_very_large"
+				android:elevation="@dimen/floating_button_elevation"
 				android:src="@drawable/ic_load" />
 
 		</FrameLayout>

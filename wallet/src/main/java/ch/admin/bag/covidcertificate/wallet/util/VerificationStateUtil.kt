@@ -25,14 +25,20 @@ import ch.admin.bag.covidcertificate.wallet.R
 const val DATE_REPLACEMENT_STRING = "{DATE}"
 
 /**
- * The verification state indicates an offline mode if it is an ERROR and the error code is set to TRUST_LIST_MISSING (T|MIS)
+ * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
  */
-fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.TRUST_LIST_MISSING
+fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.GENERAL_OFFLINE
 
 fun VerificationState.INVALID.getValidationStatusString(context: Context) = when {
 	signatureState is CheckSignatureState.INVALID -> {
-		context.getString(R.string.wallet_error_invalid_signature)
-			.makeSubStringBold(context.getString(R.string.wallet_error_invalid_signature_bold))
+		val invalidSignatureState = signatureState as CheckSignatureState.INVALID
+		if (invalidSignatureState.signatureErrorCode == EvalErrorCodes.SIGNATURE_TYPE_INVALID) {
+			context.getString(R.string.wallet_error_invalid_format)
+				.makeSubStringBold(context.getString(R.string.wallet_error_invalid_format_bold))
+		} else {
+			context.getString(R.string.wallet_error_invalid_signature)
+				.makeSubStringBold(context.getString(R.string.wallet_error_invalid_signature_bold))
+		}
 	}
 	revocationState == CheckRevocationState.INVALID -> {
 		context.getString(R.string.wallet_error_revocation)

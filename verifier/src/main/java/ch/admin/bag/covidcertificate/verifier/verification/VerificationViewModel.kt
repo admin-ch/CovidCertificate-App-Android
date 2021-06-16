@@ -11,6 +11,8 @@
 package ch.admin.bag.covidcertificate.verifier.verification
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -19,17 +21,24 @@ import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.verification.CertificateVerificationTask
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
 class VerificationViewModel(application: Application) : AndroidViewModel(application) {
 
+	companion object {
+		private const val STATUS_LOAD_DELAY = 1000L
+	}
+
+	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val verificationController = CovidCertificateSdk.getCertificateVerificationController()
 	private val verificationStateMutableLiveData = MutableLiveData<VerificationState>()
 	val verificationLiveData = verificationStateMutableLiveData as LiveData<VerificationState>
 
 	fun startVerification(dccHolder: DccHolder) {
-		val task = CertificateVerificationTask(dccHolder)
+		val task = CertificateVerificationTask(dccHolder, connectivityManager)
 
 		viewModelScope.launch {
 			task.verificationStateFlow.collect {
@@ -41,7 +50,13 @@ class VerificationViewModel(application: Application) : AndroidViewModel(applica
 	}
 
 	fun retryVerification(dccHolder: DccHolder?) {
-		dccHolder?.let { startVerification(it) }
+		verificationStateMutableLiveData.value = VerificationState.LOADING
+		viewModelScope.launch {
+			delay(STATUS_LOAD_DELAY)
+			if (!isActive) return@launch
+
+			dccHolder?.let { startVerification(it) }
+		}
 	}
 
 }

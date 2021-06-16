@@ -39,6 +39,7 @@ import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*
+import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -179,10 +180,12 @@ class CertificateDetailFragment : Fragment() {
 		showLoadingIndicator(true)
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = false
+		binding.certificateDetailErrorCode.isVisible = false
 		setInfoBubbleBackgrounds(R.color.greyish, R.color.greyish)
 
 		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
 		if (isForceValidate) {
+			showStatusInfoAndDescription(null, info, 0)
 			showForceValidation(R.color.grey, 0, 0, info)
 		} else {
 			showStatusInfoAndDescription(null, info, 0)
@@ -194,12 +197,14 @@ class CertificateDetailFragment : Fragment() {
 		showLoadingIndicator(false)
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = true
+		binding.certificateDetailErrorCode.isVisible = false
 		showValidityDate(state.validityRange.validUntil, dccHolder.certType)
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
 
 		val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
 		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
 		if (isForceValidate) {
+			showStatusInfoAndDescription(null, forceValidationInfo, R.drawable.ic_check_green)
 			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, forceValidationInfo)
 			readjustStatusDelayed(R.color.blueish, R.drawable.ic_info_blue, info)
 		} else {
@@ -244,10 +249,21 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		if (isForceValidate) {
+			showStatusInfoAndDescription(null, info, forceValidationIcon)
 			showForceValidation(R.color.red, forceValidationIcon, R.drawable.ic_error_large, info)
 			readjustStatusDelayed(infoBubbleColorId, icon, info)
 		} else {
 			showStatusInfoAndDescription(null, info, icon)
+		}
+
+		binding.certificateDetailErrorCode.apply {
+			val errorCode = state.getInvalidErrorCode(showNationalErrors = true)
+			if (errorCode.isNotEmpty()) {
+				isVisible = true
+				text = errorCode
+			} else {
+				isVisible = false
+			}
 		}
 	}
 
@@ -281,10 +297,16 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		if (isForceValidate) {
+			showStatusInfoAndDescription(description, forceValidationInfo, icon)
 			showForceValidation(R.color.orange, forceValidationIcon, forceValidationIconLarge, forceValidationInfo)
 			readjustStatusDelayed(R.color.greyish, icon, info)
 		} else {
 			showStatusInfoAndDescription(description, info, icon)
+		}
+
+		binding.certificateDetailErrorCode.apply {
+			isVisible = true
+			text = state.error.code
 		}
 	}
 
@@ -360,7 +382,7 @@ class CertificateDetailFragment : Fragment() {
 		@ColorRes solidValidationColorId: Int,
 		@DrawableRes validationIconId: Int,
 		@DrawableRes validationIconLargeId: Int,
-		info: SpannableString?
+		info: SpannableString?,
 	) {
 		binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
 			ContextCompat.getColor(
@@ -394,7 +416,7 @@ class CertificateDetailFragment : Fragment() {
 	private fun readjustStatusDelayed(
 		@ColorRes infoBubbleColorId: Int,
 		@DrawableRes statusIconId: Int,
-		info: SpannableString?
+		info: SpannableString?,
 	) {
 		hideDelayedJob?.cancel()
 		hideDelayedJob = viewLifecycleOwner.lifecycleScope.launch {

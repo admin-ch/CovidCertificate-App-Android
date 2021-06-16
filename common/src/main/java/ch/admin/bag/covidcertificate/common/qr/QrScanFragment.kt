@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.common.qr
 
 import android.Manifest
+import android.R.attr.bitmap
 import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
@@ -31,8 +32,8 @@ import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.data.state.Error
 import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.ResultPoint
+import com.google.zxing.*
+import com.google.zxing.qrcode.QRCodeReader
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.DecoratedBarcodeView
