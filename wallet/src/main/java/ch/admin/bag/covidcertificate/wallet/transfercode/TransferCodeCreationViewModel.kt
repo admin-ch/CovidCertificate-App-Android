@@ -15,15 +15,14 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.PublicKeyAlgorithm
-import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationState
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.Instant
 import java.time.temporal.ChronoUnit
-import java.util.concurrent.TimeUnit
 
 class TransferCodeCreationViewModel : ViewModel() {
 
