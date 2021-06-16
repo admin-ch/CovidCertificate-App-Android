@@ -222,7 +222,7 @@ in the app"</string>
     <string name="wallet_faq_works_question_6">"What do I need to do if I delete the COVID certificate or the app?"</string>
 
     <!-- Antwort 1 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_1">"You can get a COVID-19 certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site."</string>
+    <string name="wallet_faq_questions_answer_1">"You can get a COVID certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site."</string>
 
     <!-- Antwort 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_2">"You can present your COVID certificate in hard copy or you can use the COVID Certificate app to save certificates in the app and present them directly from the app. You are free to choose whether you present your certificate in hard copy or in the app.
@@ -240,7 +240,7 @@ Please note that you will also need to show an identification document (passport
     <string name="wallet_faq_questions_answer_5">"Your COVID certificate is not stored in any central system. It is solely in your possession. Therefore, keep your paper COVID certificate in a safe place. If you lose the COVID certificate, you will have to request it again from the issuing office"</string>
 
     <!-- Antwort 6 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_1">"To add a COVID-19 certificate to the app, you need the original certificate issued to you on paper or as a PDF document. You can use the COVID-19 certificate app to scan the QR code on the original and add it to the app. The COVID-19 certificate will then appear directly in the app."</string>
+    <string name="wallet_faq_works_answer_1">"To add a COVID certificate to the app, you need the original certificate issued to you on paper or as a PDF document. You can use the COVID certificate app to scan the QR code on the original and add it to the app. The COVID certificate will then appear directly in the app."</string>
 
     <!-- Antwort 7 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_2">"Yes, that is possible. For example, you can save the COVID certificates of all family members in your app. Also in this case, each COVID certificate is valid only in combination with an identification document (passport or ID card) of the certificate holder."</string>
@@ -264,7 +264,7 @@ Please note that you will also need to show an identification document (passport
     <string name="wallet_faq_works_subtitle">"With the COVID Certificate app, you can easily and securely store and present COVID certificates on your mobile device."</string>
 
     <!-- Antwort 1 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_answer1">"You can get a COVID-19 certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site."</string>
+    <string name="wallet_scanner_howitworks_answer1">"You can get a COVID certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site."</string>
 
     <!-- Verifier: Detail Check Vorname -->
     <string name="verifier_covid_certificate_prename">"First name"</string>
@@ -387,7 +387,7 @@ Switzerland"</string>
     <string name="wallet_certificate_verifying">"The certificate is being verified"</string>
 
     <!-- Message nach erfolgreicher Prüfung im Zertifikatdetail -->
-    <string name="wallet_certificate_verify_success">"Validity in Switzerland"</string>
+    <string name="wallet_certificate_verify_success">"Verification successful"</string>
 
     <!-- Accessibility: Info Box Butto -->
     <string name="accessibility_info_box">"Information"</string>
@@ -395,7 +395,7 @@ Switzerland"</string>
     <!-- Button Schliessen -->
     <string name="close_button">"Close"</string>
     <string name="wallet_certificate_impfdosis_title">"Dose"</string>
-    <string name="target_disease_name">"Covid-19"</string>
+    <string name="target_disease_name">"COVID-19"</string>
     <string name="wallet_certificate_target_disease_title">"Disease or agent targeted"</string>
     <string name="wallet_certificate_impfstoff_product_name_title">"Product"</string>
     <string name="wallet_certificate_impfstoff_holder">"Manufacturer"</string>
@@ -480,7 +480,7 @@ If the answer to all three questions is affirmative, the COVID certificate is sh
     <string name="verifier_faq_works_question_3">"Which identification documents are valid? Why do personal details have to be checked?"</string>
 
     <!-- Antwort 3 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_3">"Aside from passports or ID cards, other photo identification documents that prove the identity of the person in question (e.g. driving licence) are also accepted. Although the COVID-19 certificate is forgery-proof, the only way to ensure that the certificate shown was issued to the person presenting it is to check the personal details."</string>
+    <string name="verifier_faq_works_answer_3">"Aside from passports or ID cards, other photo identification documents that prove the identity of the person in question (e.g. driving licence) are also accepted. Although the COVID certificate is forgery-proof, the only way to ensure that the certificate shown was issued to the person presenting it is to check the personal details."</string>
 
     <!-- Frage 4 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_4">"Can foreign certificates also be checked?"</string>
@@ -517,8 +517,8 @@ Before travelling, please check the applicable public health measures and relate
 
     <!-- Verifier: Titel in der App (z.B. Impressum) -->
     <string name="verifier_app_title">"COVID Certificate Check"</string>
-    <string name="wallet_faq_questions_question_1_1">"How do I get a COVID-19 certificate after I have recovered from COVID-19?"</string>
-    <string name="wallet_faq_questions_answer_1_1">"People who have recovered from COVID-19 can apply for the COVID-19 certificate via an online form on the canton's website. The COVID-19 certificate will then be sent by post."</string>
+    <string name="wallet_faq_questions_question_1_1">"How do I get a COVID certificate after I have recovered from COVID-19?"</string>
+    <string name="wallet_faq_questions_answer_1_1">"People who have recovered from COVID-19 can apply for the COVID certificate via an online form on the canton's website. The COVID certificate will then be sent by post."</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
     <string name="wallet_homescreen_what_to_do">"Nächsten Schritt wählen"</string>
@@ -606,7 +606,7 @@ Before travelling, please check the applicable public health measures and relate
     <string name="wallet_transfer_code_next_steps">"Nächste Schritte"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 1 -->
-    <string name="wallet_transfer_code_next_steps1">"Übergeben Sie den Code bei der Testentnahme der Apotheke, dem Testcenter oder der Ärztin / dem Arzt."</string>
+    <string name="wallet_transfer_code_next_steps1">"Notieren Sie den Code in das entsprechende Feld auf dem Anmeldeformular zum Covid-Test."</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 2 -->
     <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate zB. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
@@ -702,4 +702,7 @@ invalid"</string>
 
     <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link_title">"Further information"</string>
+
+    <!-- Buttontitel im Screen, wo ein Code erstellt werden kann -->
+    <string name="wallet_transfer_code_create_code_button">"Code erstellen"</string>
 </resources>
