@@ -12,9 +12,8 @@ package ch.admin.bag.covidcertificate.wallet.faq
 
 import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.faq.FaqFragment
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.ConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
-
 
 class WalletFaqFragment : FaqFragment() {
 
@@ -22,15 +21,15 @@ class WalletFaqFragment : FaqFragment() {
 		fun newInstance(): WalletFaqFragment = WalletFaqFragment()
 	}
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val configViewModel by activityViewModels<ConfigViewModel>()
 
 	override fun setupFaqProvider() {
 		toolbar.setTitle(R.string.wallet_faq_header)
-		certificatesViewModel.configLiveData.observe(viewLifecycleOwner, { config ->
+		configViewModel.configLiveData.observe(viewLifecycleOwner, { config ->
 			val languageKey = getString(R.string.language_key)
 			setupFaqList(config.generateFaqItems(languageKey))
 		})
-		certificatesViewModel.loadConfig()
+		configViewModel.loadConfig()
 	}
 
 }

@@ -17,9 +17,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.common.net.ConfigRepository
-import ch.admin.bag.covidcertificate.common.net.ConfigSpec
 import ch.admin.bag.covidcertificate.common.util.SingleLiveEvent
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
@@ -131,19 +128,6 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	fun removeCertificate(certificate: String) {
 		certificateStorage.deleteCertificate(certificate)
 		loadCertificates()
-	}
-
-	private val configMutableLiveData = MutableLiveData<ConfigModel>()
-	val configLiveData: LiveData<ConfigModel> = configMutableLiveData
-
-	fun loadConfig() {
-		val configRepository = ConfigRepository.getInstance(ConfigSpec(getApplication(),
-			BuildConfig.BASE_URL,
-			BuildConfig.VERSION_NAME,
-			BuildConfig.BUILD_TIME.toString()))
-		viewModelScope.launch {
-			configRepository.loadConfig(getApplication())?.let { config -> configMutableLiveData.postValue(config) }
-		}
 	}
 
 	data class VerifiedCertificate(val dccHolder: DccHolder, val state: VerificationState)

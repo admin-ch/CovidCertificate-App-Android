@@ -35,7 +35,7 @@ class MainActivity : AppCompatActivity() {
 		private const val KEY_IS_INTENT_CONSUMED = "KEY_IS_INTENT_CONSUMED"
 	}
 
-	private val certificateViewModel by viewModels<CertificatesViewModel>()
+	private val configViewModel by viewModels<ConfigViewModel>()
 	private val pdfViewModel by viewModels<PdfViewModel>()
 
 	private lateinit var binding: ActivityMainBinding
@@ -72,7 +72,7 @@ class MainActivity : AppCompatActivity() {
 			}
 		}
 
-		certificateViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
+		configViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
 
 		CovidCertificateSdk.registerWithLifecycle(lifecycle)
 
@@ -120,7 +120,7 @@ class MainActivity : AppCompatActivity() {
 
 	override fun onStart() {
 		super.onStart()
-		certificateViewModel.loadConfig()
+		configViewModel.loadConfig()
 		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
 	}
 

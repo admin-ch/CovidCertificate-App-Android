@@ -37,6 +37,7 @@ import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.ConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.add.CertificateAddFragment
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
@@ -61,6 +62,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val configViewModel by activityViewModels<ConfigViewModel>()
 	private val pdfViewModel by activityViewModels<PdfViewModel>()
 
 	private var _binding: FragmentHomeBinding? = null
@@ -301,7 +303,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun setupInfoBox() {
-		certificatesViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
+		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
 			val buttonHeaderEmpty = binding.homescreenHeaderEmpty.headerNotification
 			val buttonHeaderNotEmpty = binding.homescreenHeaderNotEmpty.headerNotification
 			val localizedInfo = config.getInfoBox(getString(R.string.language_key))
