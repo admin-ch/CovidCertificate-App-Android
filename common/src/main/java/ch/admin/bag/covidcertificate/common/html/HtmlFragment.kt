@@ -121,8 +121,6 @@ class HtmlFragment : Fragment() {
 				return true
 			}
 		}
-		val webSettings = web.settings
-		webSettings.javaScriptEnabled = true
 		if (data != null) {
 			data?.let { web.loadDataWithBaseURL(baseUrl, it, "text/html", "UTF-8", null) }
 		} else {
