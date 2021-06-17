@@ -7,7 +7,7 @@
  *
  * SPDX-License-Identifier: MPL-2.0
  */
-package ch.admin.bag.covidcertificate.wallet.inappdelivery
+package ch.admin.bag.covidcertificate.wallet.transfercode.logic
 
 import android.app.Application
 import android.content.pm.PackageManager
@@ -25,7 +25,7 @@ import javax.crypto.spec.GCMParameterSpec
 import javax.crypto.spec.SecretKeySpec
 
 
-object InAppDeliveryCrypto {
+object TransferCodeCrypto {
 
 	fun createKeyPair(keyAlias: String, application: Application): KeyPair? {
 		val keyPurpose =
@@ -112,7 +112,7 @@ object InAppDeliveryCrypto {
 	fun sign(keyPair: KeyPair, message: String): String? {
 		val msg = message.encodeToByteArray()
 		try {
-			val signature = Signature.getInstance("SHA512withRSA/PSS").run {
+			val signature = Signature.getInstance("SHA256withRSA/PSS").run {
 				initSign(keyPair.private)
 				update(msg)
 				sign()
