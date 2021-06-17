@@ -23,10 +23,8 @@ import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMAT
 import ch.admin.bag.covidcertificate.eval.utils.prettyPrint
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ViewTransferCodeBubbleBinding
-import ch.admin.bag.covidcertificate.wallet.transfercode.model.PublicKeyAlgorithm
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import java.time.Instant
-import java.time.temporal.ChronoUnit
 
 class TransferCodeBubbleView @JvmOverloads constructor(
 	context: Context,
@@ -59,19 +57,7 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 		setPaddingRelative(0, context.resources.getDimensionPixelSize(R.dimen.spacing_medium_large), 0, 0)
 
 		if (isInEditMode) {
-			val creation = Instant.now()
-			val expiration = creation.plus(7, ChronoUnit.DAYS)
-			setTransferCode(
-				TransferCodeModel(
-					"A2X56K7WP",
-					"",
-					PublicKeyAlgorithm.RSA2048,
-					"",
-					"",
-					creation.toEpochMilli(),
-					expiration.toEpochMilli()
-				)
-			)
+			setTransferCode(TransferCodeModel("A2X56K7WP", Instant.now()))
 			setState(TransferCodeBubbleState.Valid(false))
 		}
 	}
@@ -217,9 +203,8 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 
 	private fun showCreationTimestamp() {
 		transferCode?.let {
-			val creationTimestamp = Instant.ofEpochMilli(it.creationTimestamp)
 			binding.transferCodeCreationDatetime.text = context.getString(R.string.wallet_transfer_code_createdat)
-				.replace(DATE_REPLACEMENT_STRING, creationTimestamp.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER))
+				.replace(DATE_REPLACEMENT_STRING, it.creationTimestamp.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER))
 		}
 	}
 

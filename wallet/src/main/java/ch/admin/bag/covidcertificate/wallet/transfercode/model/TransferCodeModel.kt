@@ -10,28 +10,27 @@
 
 package ch.admin.bag.covidcertificate.wallet.transfercode.model
 
+import com.squareup.moshi.JsonClass
 import java.io.Serializable
 import java.time.Instant
+import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
+@JsonClass(generateAdapter = true)
 data class TransferCodeModel(
 	val code: String,
-	val publicKey: String,
-	val algorithm: PublicKeyAlgorithm,
-	val signaturePayload: String,
-	val signature: String,
-	val creationTimestamp: Long,
-	val expirationTimestamp: Long
+	val creationTimestamp: Instant
 ): Serializable {
+
+	val expirationTimestamp: Instant
+		get() = creationTimestamp.plus(7, ChronoUnit.DAYS)
+
+	fun isValid() = expirationTimestamp.isAfter(Instant.now())
 
 	fun getDaysUntilExpiration(): Int {
 		val now = Instant.now().toEpochMilli()
-		val diff = expirationTimestamp - now
+		val diff = expirationTimestamp.toEpochMilli() - now
 		return (diff.toDouble() / TimeUnit.DAYS.toMillis(1)).roundToInt()
 	}
-}
-
-enum class PublicKeyAlgorithm {
-	EC256, RSA2048
 }

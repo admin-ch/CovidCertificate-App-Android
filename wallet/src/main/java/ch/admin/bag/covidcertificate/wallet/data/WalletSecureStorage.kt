@@ -24,13 +24,10 @@ class WalletSecureStorage private constructor(context: Context) {
 
 		private const val PREFERENCES = "SecureStorage"
 		private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
+		private const val KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA = "KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA"
 	}
 
-	private val prefs: SharedPreferences
-
-	init {
-		prefs = initializeSharedPreferences(context)
-	}
+	private val prefs = initializeSharedPreferences(context)
 
 	@Synchronized
 	private fun initializeSharedPreferences(context: Context): SharedPreferences {
@@ -64,5 +61,9 @@ class WalletSecureStorage private constructor(context: Context) {
 	fun getOnboardingCompleted(): Boolean = prefs.getBoolean(KEY_ONBOARDING_COMPLETED, false)
 
 	fun setOnboardingCompleted(completed: Boolean) = prefs.edit().putBoolean(KEY_ONBOARDING_COMPLETED, completed).apply()
+
+	fun getMigratedCertificatesToWalletData() = prefs.getBoolean(KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA, false)
+
+	fun setMigratedCertificatesToWalletData(migrated: Boolean) = prefs.edit().putBoolean(KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA, migrated).apply()
 
 }

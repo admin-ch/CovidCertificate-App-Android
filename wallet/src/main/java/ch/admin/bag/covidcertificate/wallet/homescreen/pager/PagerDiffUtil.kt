@@ -12,7 +12,7 @@ package ch.admin.bag.covidcertificate.wallet.homescreen.pager
 
 import androidx.recyclerview.widget.DiffUtil
 
-class PagerDiffUtil(private val oldList: List<DccHolderItem>, private val newList: List<DccHolderItem>) : DiffUtil.Callback() {
+class PagerDiffUtil(private val oldList: List<WalletItem>, private val newList: List<WalletItem>) : DiffUtil.Callback() {
 
 	enum class PayloadKey {
 		VALUE
@@ -27,7 +27,18 @@ class PagerDiffUtil(private val oldList: List<DccHolderItem>, private val newLis
 	}
 
 	override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-		return oldList[oldItemPosition].bagdgc.qrCodeData == newList[newItemPosition].bagdgc.qrCodeData
+		val oldItem = oldList[oldItemPosition]
+		val newItem = newList[newItemPosition]
+
+		val isSameDccContent = oldItem is WalletItem.DccHolderItem
+				&& newItem is WalletItem.DccHolderItem
+				&& oldItem.dccHolder.qrCodeData == newItem.dccHolder.qrCodeData
+
+		val isSameTransferCodeContent = oldItem is WalletItem.TransferCodeHolderItem
+				&& newItem is WalletItem.TransferCodeHolderItem
+				&& oldItem.transferCode == newItem.transferCode
+
+		return isSameDccContent || isSameTransferCodeContent
 	}
 
 	override fun getChangePayload(oldItemPosition: Int, newItemPosition: Int): Any? {

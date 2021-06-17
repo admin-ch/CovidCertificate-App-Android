@@ -17,12 +17,16 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
+import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
+import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatesListBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeDetailFragment
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 
 class CertificatesListFragment : Fragment() {
 
@@ -32,7 +36,7 @@ class CertificatesListFragment : Fragment() {
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 
-	private  var _binding: FragmentCertificatesListBinding? = null
+	private var _binding: FragmentCertificatesListBinding? = null
 	private val binding get() = _binding!!
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -54,33 +58,75 @@ class CertificatesListFragment : Fragment() {
 
 	private fun setupRecyclerView() {
 		val recyclerView = binding.certificatesOverviewRecyclerView
-		recyclerView.layoutManager = LinearLayoutManager(recyclerView.context, LinearLayoutManager.VERTICAL, false)
+
 		val itemTouchHelper = CertificatesListTouchHelper()
 		itemTouchHelper.attachToRecyclerView(recyclerView)
-		val adapter = CertificatesListAdapter({ certificate ->
-			parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(certificate))
-				.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
-				.commit()
-		}, { from, to ->
-			certificatesViewModel.moveCertificate(from, to)
-		}, { viewHolder ->
-			itemTouchHelper.startDrag(viewHolder)
-		})
+
+		val adapter = WalletDataListAdapter(
+			onCertificateClicked = { openCertificateDetails(it) },
+			onTransferCodeClicked = { openTransferCodeDetails(it) },
+			onWalletItemMovedListener = { from, to -> certificatesViewModel.moveWalletDataItem(from, to) },
+			onDragStartListener = { itemTouchHelper.startDrag(it) }
+		)
+
 		recyclerView.adapter = adapter
 
 		binding.certificatesOverviewLoadingGroup.isVisible = true
 
-		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { verifiedCertificates ->
-			if (verifiedCertificates.isEmpty()) {
+		certificatesViewModel.walletItems.observe(viewLifecycleOwner) { walletItems ->
+			if (walletItems.isEmpty()) {
 				parentFragmentManager.popBackStack()
 			}
 			binding.certificatesOverviewLoadingGroup.hideAnimated()
-			adapter.setItems(verifiedCertificates.map { VerifiedCeritificateItem(it) })
+
+			val adapterItems = walletItems.map {
+				when (it) {
+					is WalletItem.DccHolderItem -> WalletDataListItem.VerifiedCeritificateItem(
+						CertificatesViewModel.VerifiedCertificate(
+							it.dccHolder,
+							VerificationState.LOADING
+						)
+					)
+					is WalletItem.TransferCodeHolderItem -> WalletDataListItem.TransferCodeItem(it.transferCode)
+				}
+			}
+			adapter.setItems(adapterItems)
 		}
 
-		certificatesViewModel.loadCertificates()
+		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { verifiedCertificates ->
+			val adapterItems = adapter.getItems()
+			val updatedAdapterItems = adapterItems.map { item ->
+				// Update the certificate verification state if it is a certificate item, otherwise just return the same item
+				if (item is WalletDataListItem.VerifiedCeritificateItem) {
+					verifiedCertificates.find {
+						it.dccHolder == item.verifiedCertificate.dccHolder
+					}?.let {
+						item.copy(verifiedCertificate = it)
+					} ?: item
+				} else {
+					item
+				}
+			}
+			adapter.setItems(updatedAdapterItems)
+		}
+
+		certificatesViewModel.loadWalletData()
+	}
+
+	private fun openCertificateDetails(certificate: DccHolder) {
+		parentFragmentManager.beginTransaction()
+			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+			.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(certificate))
+			.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
+			.commit()
+	}
+
+	private fun openTransferCodeDetails(transferCode: TransferCodeModel) {
+		parentFragmentManager.beginTransaction()
+			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+			.replace(R.id.fragment_container, TransferCodeDetailFragment.newInstance(transferCode))
+			.addToBackStack(TransferCodeDetailFragment::class.java.canonicalName)
+			.commit()
 	}
 
 }

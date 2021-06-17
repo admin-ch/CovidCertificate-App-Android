@@ -10,11 +10,13 @@
 
 package ch.admin.bag.covidcertificate.wallet.transfercode
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import ch.admin.bag.covidcertificate.wallet.transfercode.model.PublicKeyAlgorithm
+import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
+import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import kotlinx.coroutines.Dispatchers
@@ -22,9 +24,10 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.time.Instant
-import java.time.temporal.ChronoUnit
 
-class TransferCodeCreationViewModel : ViewModel() {
+class TransferCodeCreationViewModel(application: Application) : AndroidViewModel(application) {
+
+	private val walletDataStorage = WalletDataSecureStorage.getInstance(application.applicationContext)
 
 	private val creationStateMutableLiveData = MutableLiveData<TransferCodeCreationState>()
 	val creationState = creationStateMutableLiveData as LiveData<TransferCodeCreationState>
@@ -39,17 +42,8 @@ class TransferCodeCreationViewModel : ViewModel() {
 			delay(1000L)
 
 			// TODO Generate public key, signature payload and signature and call backend endpoint
-			val creation = Instant.now()
-			val expiration = creation.plus(7, ChronoUnit.DAYS)
-			val transferCode = TransferCodeModel(
-				"A2X56K7WP",
-				"",
-				PublicKeyAlgorithm.RSA2048,
-				"",
-				"",
-				creation.toEpochMilli(),
-				expiration.toEpochMilli()
-			)
+			val transferCode = TransferCodeModel("A2X56K7WP", Instant.now())
+			walletDataStorage.saveWalletDataItem(WalletDataItem.TransferCodeWalletData(transferCode))
 			creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCode))
 
 			transferCodeCreationJob = null
