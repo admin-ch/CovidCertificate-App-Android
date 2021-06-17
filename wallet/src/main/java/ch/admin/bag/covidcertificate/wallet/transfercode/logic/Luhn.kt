@@ -7,7 +7,7 @@
  *
  * SPDX-License-Identifier: MPL-2.0
  */
-package ch.admin.bag.covidcertificate.wallet.inappdelivery
+package ch.admin.bag.covidcertificate.wallet.transfercode.logic
 
 
 object Luhn {
@@ -20,16 +20,13 @@ object Luhn {
 	internal fun computeCheckCharacter(code: CharArray): Char {
 		val reversed = code.reversedArray()
 		var sum = 0
-		var factor = 1
+		var factor = 2
 
 		for (char in reversed) {
 			// Assumption: code contains only characters from the alphabet
-			var toAdd = factor * ALPHABET.indexOf(char)
-			if (toAdd > N) {
-				toAdd -= N
-			}
+			val toAdd = factor * ALPHABET.indexOf(char)
 
-			sum += toAdd
+			sum += (toAdd / N) + (toAdd % N)
 			factor = if (factor == 1) 2 else 1
 		}
 

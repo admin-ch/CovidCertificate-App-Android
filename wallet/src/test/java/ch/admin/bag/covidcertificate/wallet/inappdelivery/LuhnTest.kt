@@ -1,6 +1,7 @@
 package ch.admin.bag.covidcertificate.wallet.inappdelivery
 
-import ch.admin.bag.covidcertificate.wallet.inappdelivery.Luhn.TRANSFER_CODE_LEN
+import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn
+import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn.TRANSFER_CODE_LEN
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -20,11 +21,11 @@ class LuhnTest(
 		@JvmStatic
 		fun buildTestCases(): Collection<Array<Any>> {
 			val cases = listOf<Pair<String, Char>>(
-				Pair("CHAR", '7'),
-				Pair("SW1SS", '8'),
-				Pair("APPS", 'E'),
-				Pair("0123456789", 'K'),
-				Pair("TRANSFERC0DE", '4'),
+				Pair("CHAR", 'M'),
+				Pair("SW1SS", '9'),
+				Pair("APPS", '1'),
+				Pair("0123456789", 'S'),
+				Pair("TRANSFERC0DE", 'T'),
 			)
 
 			return cases.map { arrayOf(it.first.toCharArray(), it.second) }
@@ -34,7 +35,7 @@ class LuhnTest(
 	@Test
 	fun computeCheckCharacter() {
 		val checkChar = Luhn.computeCheckCharacter(code)
-		assertEquals(checkChar, expectedCheckChar)
+		assertEquals(expectedCheckChar, checkChar)
 	}
 
 	@Test
