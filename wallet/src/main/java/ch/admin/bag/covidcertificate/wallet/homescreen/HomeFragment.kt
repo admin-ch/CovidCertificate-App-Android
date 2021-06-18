@@ -213,11 +213,11 @@ class HomeFragment : Fragment() {
 
 	private fun setupAddCertificateOptions() {
 		binding.homescreenScanButtonSmall.setOnClickListener {
-			if (isAddOptionsShowing) {
-				showAddCertificateOptions(false)
-			} else {
-				showAddCertificateOptions(true)
-			}
+			showAddCertificateOptions(!isAddOptionsShowing)
+		}
+
+		binding.backgroundDimmed.setOnClickListener {
+			showAddCertificateOptions(!isAddOptionsShowing)
 		}
 
 		binding.homescreenAddCertificateOptions.optionScanCertificate.setOnClickListener {
@@ -278,6 +278,7 @@ class HomeFragment : Fragment() {
 		binding.homescreenHeaderEmpty.root.isVisible = !hasData
 		binding.homescreenHeaderNotEmpty.root.isVisible = hasData
 		binding.homescreenListButton.isVisible = pagerItems.size > 1
+		binding.homescreenAddCertificateOptions.root.isVisible = !hasData || isAddOptionsShowing
 
 		certificatesAdapter.setData(pagerItems)
 

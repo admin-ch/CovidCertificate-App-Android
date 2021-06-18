@@ -53,7 +53,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:visibility="gone"
-			app:constraint_referenced_ids="homescreen_app_title,homescreen_add_certificate_options_title,homescreen_add_certificate_options"
+			app:constraint_referenced_ids="homescreen_app_title,homescreen_add_certificate_options_title"
 			tools:visibility="visible" />
 
 		<TextView
@@ -168,6 +168,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginHorizontal="@dimen/spacing_larger"
+			android:elevation="@dimen/default_elevation"
 			android:layout_marginTop="@dimen/spacing_large"
 			android:layout_marginBottom="@dimen/spacing_medium_large"
 			android:visibility="gone"
