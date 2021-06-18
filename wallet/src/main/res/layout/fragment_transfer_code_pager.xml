@@ -38,16 +38,37 @@
 			android:text="@string/wallet_transfer_code_card_title"
 			app:layout_constraintTop_toTopOf="parent" />
 
+		<ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeWaitingView
+			android:id="@+id/transfer_code_page_waiting_image"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="@dimen/spacing_huger"
+			android:layout_marginTop="@dimen/spacing_large"
+			android:visibility="gone"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/transfer_code_page_title"
+			tools:visibility="visible" />
+
 		<ImageView
 			android:id="@+id/transfer_code_page_image"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
 			android:layout_marginHorizontal="@dimen/spacing_huger"
 			android:layout_marginTop="@dimen/spacing_very_large"
+			android:visibility="gone"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/transfer_code_page_title"
-			tools:src="@drawable/illu_transfer_code_failed" />
+			tools:src="@drawable/illu_transfer_code_failed"
+			tools:visibility="gone" />
+
+		<androidx.constraintlayout.widget.Barrier
+			android:id="@+id/transfer_code_page_image_barrier"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:barrierDirection="bottom"
+			app:constraint_referenced_ids="transfer_code_page_waiting_image,transfer_code_page_image" />
 
 		<TextView
 			android:id="@+id/transfer_code_page_status_label"
@@ -62,7 +83,7 @@
 			app:autoSizeMinTextSize="@dimen/text_size_small"
 			app:autoSizeTextType="uniform"
 			app:layout_constraintBottom_toTopOf="@+id/transfer_code_page_bubble"
-			app:layout_constraintTop_toBottomOf="@+id/transfer_code_page_image"
+			app:layout_constraintTop_toBottomOf="@+id/transfer_code_page_image_barrier"
 			tools:text="@string/wallet_transfer_code_state_waiting" />
 
 		<ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeBubbleView

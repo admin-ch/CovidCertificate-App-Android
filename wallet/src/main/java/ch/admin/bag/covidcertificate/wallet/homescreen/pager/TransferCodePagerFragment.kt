@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.wallet.R
@@ -73,15 +74,21 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 	private fun setTransferCodeBubbleViewState() {
 		when {
 			transferCode.isFailed() -> {
+				binding.transferCodePageWaitingImage.isVisible = false
+				binding.transferCodePageImage.isVisible = true
 				binding.transferCodePageImage.setImageResource(R.drawable.illu_transfer_code_failed)
 				binding.transferCodePageStatusLabel.text = requireContext().getString(R.string.wallet_transfer_code_state_expired)
 				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(true))
 			}
 			transferCode.isExpired() -> {
+				binding.transferCodePageWaitingImage.isVisible = true
+				binding.transferCodePageImage.isVisible = false
 				binding.transferCodePageStatusLabel.text = requireContext().getString(R.string.wallet_transfer_code_state_waiting)
 				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(false))
 			}
 			else -> {
+				binding.transferCodePageWaitingImage.isVisible = true
+				binding.transferCodePageImage.isVisible = false
 				binding.transferCodePageStatusLabel.text = requireContext().getString(R.string.wallet_transfer_code_state_waiting)
 				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(false))
 			}
