@@ -17,13 +17,13 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.FaqModel
 import ch.admin.bag.covidcertificate.common.faq.FaqAdapter
 import ch.admin.bag.covidcertificate.common.faq.model.Faq
 import ch.admin.bag.covidcertificate.common.faq.model.Header
 import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
 import ch.admin.bag.covidcertificate.common.faq.model.Question
-import ch.admin.bag.covidcertificate.wallet.ConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeDetailBinding
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel

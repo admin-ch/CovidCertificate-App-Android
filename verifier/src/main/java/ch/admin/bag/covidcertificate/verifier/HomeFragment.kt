@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
@@ -39,7 +40,7 @@ class HomeFragment : Fragment() {
 
 	}
 
-	private val verifierViewModel by activityViewModels<VerifierViewModel>()
+	private val configViewModel by activityViewModels<ConfigViewModel>()
 
 	private var _binding: FragmentHomeBinding? = null
 	private val binding get() = _binding!!
@@ -106,7 +107,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun setupInfoBox() {
-		verifierViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
+		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
 			val notificationButton = binding.homescreenHeader.headerNotification
 			val localizedInfo = config.getInfoBox(getString(R.string.language_key))
 			val hasInfoBox = localizedInfo != null
