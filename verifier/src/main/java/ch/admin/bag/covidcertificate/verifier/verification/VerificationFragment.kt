@@ -18,10 +18,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.common.util.*
@@ -54,6 +56,7 @@ class VerificationFragment : Fragment() {
 	private val binding get() = _binding!!
 	private val verificationViewModel: VerificationViewModel by viewModels()
 	private var dccHolder: DccHolder? = null
+	private var isClosedByUser = false
 
 	private lateinit var verificationAdapter: VerificationAdapter
 
@@ -64,6 +67,13 @@ class VerificationFragment : Fragment() {
 		}
 
 		dccHolder = requireArguments().getSerializable(ARG_DECODE_DGC) as DccHolder
+
+		requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
+			override fun handleOnBackPressed() {
+				isClosedByUser = true
+				parentFragmentManager.popBackStack()
+			}
+		})
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -84,7 +94,10 @@ class VerificationFragment : Fragment() {
 		binding.verificationStandardizedNameLabel.text =
 			"${eudgc.person.standardizedFamilyName}<<${eudgc.person.standardizedGivenName}"
 
-		binding.verificationFooterButton.setOnClickListener { parentFragmentManager.popBackStack() }
+		binding.verificationFooterButton.setOnClickListener {
+			isClosedByUser = true
+			parentFragmentManager.popBackStack()
+		}
 
 		view.doOnLayout { setupScrollBehavior() }
 
@@ -101,6 +114,15 @@ class VerificationFragment : Fragment() {
 			layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 			adapter = verificationAdapter
 			addItemDecoration(VerticalMarginItemDecoration(context, R.dimen.spacing_very_small))
+		}
+	}
+
+	override fun onPause() {
+		super.onPause()
+		// Pop the entire backstack back to the home screen when the verification fragment is put into the background, unless
+		// it was closed by the user (e.g. with the back or OK button)
+		if (!isClosedByUser) {
+			parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 		}
 	}
 

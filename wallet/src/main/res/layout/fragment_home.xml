@@ -75,7 +75,7 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_marginTop="@dimen/spacing_huger"
-							android:text="@string/verifier_homescreen_header_title"
+							android:text="@string/wallet_certificate"
 							android:textAllCaps="true" />
 
 						<ImageView

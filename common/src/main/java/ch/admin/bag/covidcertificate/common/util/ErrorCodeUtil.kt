@@ -1,6 +1,7 @@
 package ch.admin.bag.covidcertificate.common.util
 
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 
@@ -11,6 +12,11 @@ fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ", showNat
 	val signatureState = signatureState
 	if (signatureState is CheckSignatureState.INVALID) {
 		errorCodes.add(signatureState.signatureErrorCode)
+	}
+
+	val revocationState = revocationState
+	if (revocationState is CheckRevocationState.INVALID) {
+		errorCodes.add(revocationState.revocationErrorCode)
 	}
 
 	val nationalRulesState = nationalRulesState

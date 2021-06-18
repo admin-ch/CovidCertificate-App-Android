@@ -198,7 +198,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = true
 		binding.certificateDetailErrorCode.isVisible = false
-		showValidityDate(state.validityRange.validUntil, dccHolder.certType)
+		showValidityDate(state.validityRange.validUntil, dccHolder.certType, state)
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
 
 		val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
@@ -217,7 +217,7 @@ class CertificateDetailFragment : Fragment() {
 		showLoadingIndicator(false)
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = true
-		showValidityDate(state.validityRange?.validUntil, dccHolder.certType)
+		showValidityDate(state.validityRange?.validUntil, dccHolder.certType, state)
 
 		val info = state.getValidationStatusString(context)
 		val infoBubbleColorId = when {
@@ -334,14 +334,19 @@ class CertificateDetailFragment : Fragment() {
 	/**
 	 * Display the formatted validity date of the vaccine or test
 	 */
-	private fun showValidityDate(validUntil: LocalDateTime?, certificateType: CertType?) {
+	private fun showValidityDate(validUntil: LocalDateTime?, certificateType: CertType?, verificationState: VerificationState) {
 		val formatter = when (certificateType) {
 			null -> null
 			CertType.TEST -> DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 			else -> DEFAULT_DISPLAY_DATE_FORMATTER
 		}
-
-		val formattedDate = validUntil?.let { formatter?.format(it) } ?: "-"
+		val isCertificateRevoked = verificationState is VerificationState.INVALID &&
+				verificationState.revocationState is CheckRevocationState.INVALID
+		val formattedDate = if (isCertificateRevoked || validUntil == null) {
+			"-"
+		} else {
+			formatter?.format(validUntil)
+		}
 		binding.certificateDetailInfoValidityDate.text = formattedDate
 	}
 
