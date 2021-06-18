@@ -753,5 +753,5 @@ invalid"</string>
     <!-- Fuzzy -->
     <string name="wallet_transfer_delete_confirm_text">"Are you sure you want to delete the transfer?"</string>
     <string name="wallet_notification_transfer_title">"Transfer successful"</string>
-    <string name="wallet_notification_transfer_text">"The COVID certificate has arrived"</string>
+    <string name="wallet_notification_transfer_text">"The COVID certificate has been delivered"</string>
 </resources>

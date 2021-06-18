@@ -40,7 +40,7 @@ fun VerificationState.INVALID.getValidationStatusString(context: Context) = when
 				.makeSubStringBold(context.getString(R.string.wallet_error_invalid_signature_bold))
 		}
 	}
-	revocationState == CheckRevocationState.INVALID -> {
+	revocationState is CheckRevocationState.INVALID -> {
 		context.getString(R.string.wallet_error_revocation)
 			.makeSubStringBold(context.getString(R.string.wallet_error_revocation_bold))
 	}

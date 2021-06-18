@@ -750,6 +750,6 @@ n’è betg valaivel"</string>
 
     <!-- Fuzzy -->
     <string name="wallet_transfer_delete_confirm_text">"Vulais Vus propi stizzar il transfer?"</string>
-    <string name="wallet_notification_transfer_title">"Transfer reussida"</string>
+    <string name="wallet_notification_transfer_title">"Transfer reussì"</string>
     <string name="wallet_notification_transfer_text">"Il certificat COVID è arrivà"</string>
 </resources>
