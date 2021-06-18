@@ -49,6 +49,7 @@ import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
 import ch.admin.bag.covidcertificate.wallet.list.CertificatesListFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 import ch.admin.bag.covidcertificate.wallet.qr.WalletQrScanFragment
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeIntroFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.concurrent.atomic.AtomicLong
@@ -180,11 +181,19 @@ class HomeFragment : Fragment() {
 			updateHomescreen(it)
 		}
 
-		certificatesViewModel.onQrCodeClickedSingleLiveEvent.observe(this) { certificate ->
+		certificatesViewModel.onQrCodeClickedSingleLiveEvent.observe(viewLifecycleOwner) { certificate ->
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 				.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(certificate))
 				.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
+				.commit()
+		}
+
+		certificatesViewModel.onTransferCodeClickedSingleLiveEvent.observe(viewLifecycleOwner) { transferCode ->
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, TransferCodeDetailFragment.newInstance(transferCode))
+				.addToBackStack(TransferCodeDetailFragment::class.java.canonicalName)
 				.commit()
 		}
 

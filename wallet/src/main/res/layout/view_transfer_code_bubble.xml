@@ -130,6 +130,7 @@
 		style="@style/CovidCertificate.Text"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/spacing_medium_large"
 		android:layout_marginVertical="@dimen/spacing_medium_large"
 		android:breakStrategy="high_quality"
 		android:hyphenationFrequency="full"

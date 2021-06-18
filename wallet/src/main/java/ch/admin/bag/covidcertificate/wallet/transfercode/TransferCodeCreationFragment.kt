@@ -79,7 +79,7 @@ class TransferCodeCreationFragment : Fragment(R.layout.fragment_transfer_code_cr
 				binding.transferCodeErrorLayout.isVisible = true
 				binding.transferCodeCreationDoneLayout.isVisible = false
 
-				// TODO Transfer code creation error title
+				binding.transferCodeCreationTitle.setText(R.string.wallet_transfer_code_error_title)
 				val isOfflineError = state.error.code == EvalErrorCodes.GENERAL_OFFLINE
 				binding.transferCodeBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Error(isOfflineError))
 				binding.transferCodeErrorCode.text = state.error.code

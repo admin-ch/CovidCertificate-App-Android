@@ -19,6 +19,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.eval.data.EvalErrorCodes
+import ch.admin.bag.covidcertificate.eval.data.state.Error
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.prettyPrint
 import ch.admin.bag.covidcertificate.wallet.R
@@ -179,7 +180,8 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 
 		if (state.isOffline) {
 			binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_no_connection)
-			// TODO Set offline mode texts
+			binding.transferCodeErrorTitle.setText(R.string.wallet_transfer_code_no_internet_title)
+			binding.transferCodeErrorDescription.setText(R.string.wallet_transfer_code_generate_no_internet_error_text)
 		} else {
 			binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_process_error)
 			binding.transferCodeErrorTitle.setText(R.string.verifier_network_error_text)

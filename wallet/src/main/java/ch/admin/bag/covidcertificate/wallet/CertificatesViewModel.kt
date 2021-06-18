@@ -27,6 +27,7 @@ import ch.admin.bag.covidcertificate.eval.verification.CertificateVerificationTa
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -50,6 +51,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	private val verificationJobs = mutableMapOf<DccHolder, Job>()
 
 	val onQrCodeClickedSingleLiveEvent = SingleLiveEvent<DccHolder>()
+	val onTransferCodeClickedSingleLiveEvent = SingleLiveEvent<TransferCodeModel>()
 
 	init {
 		walletItems.observeForever { items ->
@@ -131,6 +133,10 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 	fun onQrCodeClicked(dccHolder: DccHolder) {
 		onQrCodeClickedSingleLiveEvent.postValue(dccHolder)
+	}
+
+	fun onTransferCodeClicked(transferCode: TransferCodeModel) {
+		onTransferCodeClickedSingleLiveEvent.postValue(transferCode)
 	}
 
 	fun containsCertificate(certificate: String): Boolean {

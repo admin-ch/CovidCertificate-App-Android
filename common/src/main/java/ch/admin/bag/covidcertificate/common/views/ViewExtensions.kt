@@ -15,10 +15,15 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.ValueAnimator
 import android.content.res.ColorStateList
 import android.view.View
+import android.view.animation.AccelerateDecelerateInterpolator
 import android.view.animation.AccelerateInterpolator
-import android.view.animation.Animation
 import android.view.animation.DecelerateInterpolator
 import androidx.annotation.ColorInt
+import androidx.core.content.ContextCompat
+import ch.admin.bag.covidcertificate.common.R
+import ch.admin.bag.covidcertificate.common.util.CutOutEdgeTreatment
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
 
 fun View.showAnimated(
 	duration: Long = resources.getInteger(android.R.integer.config_shortAnimTime).toLong(),
@@ -65,15 +70,20 @@ fun View.hideAnimated(
 
 fun View.rotate(
 	toDegrees: Float,
-	duration: Long = resources.getInteger(android.R.integer.config_shortAnimTime).toLong()
+	duration: Long = resources.getInteger(android.R.integer.config_shortAnimTime).toLong(),
+	resetToDegrees: Float? = null
 ) {
 	animation?.cancel()
 
 	animate()
 		.setDuration(duration)
 		.rotation(toDegrees)
-		.setInterpolator(DecelerateInterpolator())
-		.setListener(null)
+		.setInterpolator(AccelerateDecelerateInterpolator())
+		.setListener(object : AnimatorListenerAdapter() {
+			override fun onAnimationEnd(animation: Animator?) {
+				resetToDegrees?.let { rotation = it }
+			}
+		})
 }
 
 fun List<View>.animateBackgroundTintColor(
@@ -103,4 +113,23 @@ fun View.animateBackgroundTintColor(
 		}
 	}
 	colorAnim.start()
+}
+
+fun View.setCutOutCardBackground() {
+	val cutOutPositionPercentage = 0.6f
+
+	val cutOutRadius = context.resources.getDimension(R.dimen.card_cutout_radius)
+
+	// The left edge measures from the top to the bottom while the right edge measures from the bottom to the top
+	val backgroundShape = ShapeAppearanceModel.builder()
+		.setAllCornerSizes(context.resources.getDimension(R.dimen.corner_radius_sheet))
+		.setLeftEdge(CutOutEdgeTreatment(cutOutRadius, 1 - cutOutPositionPercentage))
+		.setRightEdge(CutOutEdgeTreatment(cutOutRadius, cutOutPositionPercentage))
+		.build()
+
+	val backgroundDrawable = MaterialShapeDrawable(backgroundShape).apply {
+		fillColor = ContextCompat.getColorStateList(context, R.color.white)
+	}
+
+	background = backgroundDrawable
 }
