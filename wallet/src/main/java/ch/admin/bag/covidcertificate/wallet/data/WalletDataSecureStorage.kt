@@ -16,6 +16,7 @@ import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.wallet.data.adapter.InstantJsonAdapter
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
@@ -60,6 +61,12 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		updateWalletData(walletData)
 	}
 
+	fun deleteTransferCode(transferCode: TransferCodeModel) {
+		val walletData = getWalletData().toMutableList()
+		walletData.removeIf { it is WalletDataItem.TransferCodeWalletData && it.transferCode == transferCode }
+		updateWalletData(walletData)
+	}
+
 	fun changeWalletDataItemPosition(oldPosition: Int, newPosition: Int) {
 		val walletData = getWalletData().toMutableList()
 		if (newPosition < 0 || oldPosition < 0) {
@@ -68,12 +75,6 @@ class WalletDataSecureStorage private constructor(context: Context) {
 
 		val movedDataItem = walletData.removeAt(oldPosition)
 		walletData.add(newPosition, movedDataItem)
-		updateWalletData(walletData)
-	}
-
-	fun deleteWalletDataItem(dataItem: WalletDataItem) {
-		val walletData = getWalletData().toMutableList()
-		walletData.remove(dataItem)
 		updateWalletData(walletData)
 	}
 

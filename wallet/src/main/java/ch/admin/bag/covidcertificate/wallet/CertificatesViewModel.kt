@@ -157,5 +157,10 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 		loadWalletData()
 	}
 
+	fun removeTransferCode(transferCode: TransferCodeModel) {
+		walletDataStorage.deleteTransferCode(transferCode)
+		loadWalletData()
+	}
+
 	data class VerifiedCertificate(val dccHolder: DccHolder, val state: VerificationState)
 }
