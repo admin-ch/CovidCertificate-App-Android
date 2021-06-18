@@ -20,13 +20,32 @@ class LuhnTest(
 		@Parameters
 		@JvmStatic
 		fun buildTestCases(): Collection<Array<Any>> {
-			val cases = listOf<Pair<String, Char>>(
+			val nineLetterCodes = listOf(
+				"Y8P8ECFN8",
+				"HDTYRB66W",
+				"YS6R7H88T",
+				"K42K6F7R2",
+				"3BY8DAZYS",
+				"ADWYF11SY",
+				"453S6HUA6",
+				"WR7UPHB4A",
+				"37WDPRSKM",
+				"01AWUUB2M",
+				"MA4S9CNUK",
+				"SY7M684WA",
+				"X216WN3YF",
+				"3C2YFKCNP",
+				"TNKBZ0TSK",
+			).map { Pair(it.slice(0..7), it[8]) }
+
+			val cases = mutableListOf<Pair<String, Char>>(
 				Pair("CHAR", 'M'),
 				Pair("SW1SS", '9'),
 				Pair("APPS", '1'),
 				Pair("0123456789", 'S'),
 				Pair("TRANSFERC0DE", 'T'),
 			)
+			cases.addAll(nineLetterCodes)
 
 			return cases.map { arrayOf(it.first.toCharArray(), it.second) }
 		}
