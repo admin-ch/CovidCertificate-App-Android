@@ -35,7 +35,7 @@ class CertificatesPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
 		val newItems: ArrayList<DccHolderItem> = arrayListOf()
 
 		for (i in data.indices) {
-			newItems.add(DccHolderItem(data[i].euDGC.hashCode(), data[i]))
+			newItems.add(DccHolderItem(data[i].qrCodeData.hashCode(), data[i]))
 		}
 
 		val callback = PagerDiffUtil(items, newItems)

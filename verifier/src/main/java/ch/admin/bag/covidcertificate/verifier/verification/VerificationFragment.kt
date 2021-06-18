@@ -25,14 +25,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
-import ch.admin.bag.covidcertificate.common.util.getHeaderColor
-import ch.admin.bag.covidcertificate.common.util.getInfoIconColor
-import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
-import ch.admin.bag.covidcertificate.common.util.getStatusBubbleColor
-import ch.admin.bag.covidcertificate.common.util.getStatusInformationString
-import ch.admin.bag.covidcertificate.common.util.getStatusString
-import ch.admin.bag.covidcertificate.common.util.getValidationStatusIcon
-import ch.admin.bag.covidcertificate.common.util.getValidationStatusIconLarge
+import androidx.recyclerview.widget.LinearLayoutManager
+import ch.admin.bag.covidcertificate.common.util.*
+import ch.admin.bag.covidcertificate.common.views.VerticalMarginItemDecoration
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
@@ -62,6 +57,8 @@ class VerificationFragment : Fragment() {
 	private val verificationViewModel: VerificationViewModel by viewModels()
 	private var dccHolder: DccHolder? = null
 	private var isClosedByUser = false
+
+	private lateinit var verificationAdapter: VerificationAdapter
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -109,6 +106,15 @@ class VerificationFragment : Fragment() {
 		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner, {
 			updateHeaderAndVerificationView(it)
 		})
+
+		verificationAdapter = VerificationAdapter {
+			verificationViewModel.retryVerification(dccHolder)
+		}
+		binding.verificationStatusRecyclerView.apply {
+			layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+			adapter = verificationAdapter
+			addItemDecoration(VerticalMarginItemDecoration(context, R.dimen.spacing_very_small))
+		}
 	}
 
 	override fun onPause() {
@@ -148,36 +154,7 @@ class VerificationFragment : Fragment() {
 	private fun updateStatusBubbles(state: VerificationState) {
 		val context = binding.root.context
 
-		val isLoading = state == VerificationState.LOADING
-
-		binding.verificationStepStatus.apply {
-			verificationStepTitle.text = state.getStatusString(context)
-			verificationStepProgressIndicator.progressIndicatorIcon.setImageResource(state.getValidationStatusIcon())
-			verificationStepProgressIndicator.progressIndicatorIcon.isVisible = !isLoading
-			verificationStepProgressIndicator.progressIndicatorProgressBar.isVisible = isLoading
-			verificationStepFrame.backgroundTintList =
-				ColorStateList.valueOf(ContextCompat.getColor(context, state.getStatusBubbleColor()))
-		}
-
-		binding.verificationStatusInfo.apply {
-			binding.verificationStatusInfo.infoText.text = state.getStatusInformationString(context)
-			binding.verificationStatusInfo.infoIcon.imageTintList =
-				ColorStateList.valueOf(ContextCompat.getColor(context, state.getInfoIconColor()))
-			binding.verificationStatusInfo.infoFrame.backgroundTintList =
-				ColorStateList.valueOf(ContextCompat.getColor(context, state.getStatusBubbleColor(true)))
-
-			if (state is VerificationState.ERROR) {
-				infoRetry.isVisible = true
-				infoRetry.setOnClickListener {
-					verificationViewModel.retryVerification(dccHolder)
-					infoRetry.setOnClickListener(null)
-				}
-			} else {
-				infoRetry.isVisible = false
-			}
-
-			infoFrame.isVisible = !isLoading
-		}
+		verificationAdapter.setItems(state.getVerificationStateItems(context))
 
 		binding.verificationErrorCode.apply {
 			visibility = View.INVISIBLE
