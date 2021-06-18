@@ -63,7 +63,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginHorizontal="@dimen/spacing_larger"
 			android:layout_marginTop="150dp"
-			android:text="@string/verifier_homescreen_header_title"
+			android:text="@string/wallet_certificate"
 			android:textAllCaps="true"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"

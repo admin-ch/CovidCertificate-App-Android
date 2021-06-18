@@ -69,19 +69,11 @@
 						android:layout_height="wrap_content"
 						android:text="@string/covid_certificate_title" />
 
-					<include
-						android:id="@+id/verification_step_status"
-						layout="@layout/item_verification_status"
-						android:layout_width="match_parent"
+					<androidx.recyclerview.widget.RecyclerView
+						android:id="@+id/verification_status_recycler_view"
 						android:layout_height="wrap_content"
+						android:layout_width="match_parent"
 						android:layout_marginTop="@dimen/spacing_medium" />
-
-					<include
-						android:id="@+id/verification_status_info"
-						layout="@layout/item_verification_status_info"
-						android:layout_width="match_parent"
-						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/spacing_very_small" />
 
 					<TextView
 						android:id="@+id/verification_error_code"
