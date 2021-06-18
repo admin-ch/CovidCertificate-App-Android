@@ -66,7 +66,7 @@ class DebugFragment : Fragment() {
 			adapter.setItems(verifiedCertificates.map { DebugCertificateItem(it) })
 		}
 
-		certificatesViewModel.loadCertificates()
+		certificatesViewModel.loadWalletData()
 	}
 
 	private fun onShareClickListener(holder: DccHolder) {

@@ -17,9 +17,6 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.common.net.ConfigRepository
-import ch.admin.bag.covidcertificate.common.net.ConfigSpec
 import ch.admin.bag.covidcertificate.common.util.SingleLiveEvent
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
@@ -27,7 +24,9 @@ import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.verification.CertificateVerificationTask
-import ch.admin.bag.covidcertificate.wallet.data.CertificateStorage
+import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
+import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -41,35 +40,53 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val verificationController = CovidCertificateSdk.getCertificateVerificationController()
 
-	private val dccHolderCollectionMutableLiveData = MutableLiveData<List<DccHolder>>()
-	val dccHolderCollectionLiveData: LiveData<List<DccHolder>> = dccHolderCollectionMutableLiveData
+	private val walletDataStorage: WalletDataSecureStorage by lazy { WalletDataSecureStorage.getInstance(application.applicationContext) }
+
+	private val walletItemsMutableLiveData = MutableLiveData<List<WalletItem>>()
+	val walletItems = walletItemsMutableLiveData as LiveData<List<WalletItem>>
 
 	private val verifiedCertificatesMutableLiveData = MutableLiveData<List<VerifiedCertificate>>()
 	val verifiedCertificates: LiveData<List<VerifiedCertificate>> = verifiedCertificatesMutableLiveData
 	private val verificationJobs = mutableMapOf<DccHolder, Job>()
 
-	private val certificateStorage: CertificateStorage by lazy { CertificateStorage.getInstance(getApplication()) }
-
 	val onQrCodeClickedSingleLiveEvent = SingleLiveEvent<DccHolder>()
 
 	init {
-		dccHolderCollectionLiveData.observeForever { certificates ->
+		walletItems.observeForever { items ->
+			// Filter only dcc holders
+			val certificates = items.filterIsInstance<WalletItem.DccHolderItem>()
+
 			// When the stored DccHolders change, map the verified certificates with the existing verification state or LOADING
 			val currentVerifiedCertificates = verifiedCertificates.value ?: emptyList()
 			verifiedCertificatesMutableLiveData.value = certificates.map { certificate ->
-				currentVerifiedCertificates.find { it.dccHolder == certificate } ?: VerifiedCertificate(certificate, VerificationState.LOADING)
+				currentVerifiedCertificates.find {
+					it.dccHolder == certificate.dccHolder
+				} ?: VerifiedCertificate(certificate.dccHolder, VerificationState.LOADING)
 			}
 
 			// (Re-)Verify all certificates
-			certificates.forEach { startVerification(it) }
+			certificates.forEach { startVerification(it.dccHolder) }
 		}
 	}
 
-	fun loadCertificates() {
+	fun loadWalletData() {
 		viewModelScope.launch(Dispatchers.Default) {
-			dccHolderCollectionMutableLiveData.postValue(
-				certificateStorage.getCertificateList().mapNotNull { (CertificateDecoder.decode(it) as? DecodeState.SUCCESS)?.dccHolder }
-			)
+			val pagerHolders = walletDataStorage.getWalletData().mapNotNull { dataItem ->
+				when (dataItem) {
+					is WalletDataItem.CertificateWalletData -> (CertificateDecoder.decode(dataItem.qrCodeData) as? DecodeState.SUCCESS)?.let {
+						WalletItem.DccHolderItem(
+							it.dccHolder.qrCodeData.hashCode(),
+							it.dccHolder
+						)
+					}
+					is WalletDataItem.TransferCodeWalletData -> WalletItem.TransferCodeHolderItem(
+						dataItem.transferCode.hashCode(),
+						dataItem.transferCode
+					)
+				}
+			}
+
+			walletItemsMutableLiveData.postValue(pagerHolders)
 		}
 	}
 
@@ -101,33 +118,21 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	}
 
 	fun containsCertificate(certificate: String): Boolean {
-		return certificateStorage.containsCertificate(certificate)
+		return walletDataStorage.containsCertificate(certificate)
 	}
 
 	fun addCertificate(certificate: String) {
-		certificateStorage.saveCertificate(certificate)
+		val item = WalletDataItem.CertificateWalletData(certificate)
+		walletDataStorage.saveWalletDataItem(item)
 	}
 
-	fun moveCertificate(from: Int, to: Int) {
-		certificateStorage.changeCertificatePosition(from, to)
+	fun moveWalletDataItem(from: Int, to: Int) {
+		walletDataStorage.changeWalletDataItemPosition(from, to)
 	}
 
 	fun removeCertificate(certificate: String) {
-		certificateStorage.deleteCertificate(certificate)
-		loadCertificates()
-	}
-
-	private val configMutableLiveData = MutableLiveData<ConfigModel>()
-	val configLiveData: LiveData<ConfigModel> = configMutableLiveData
-
-	fun loadConfig() {
-		val configRepository = ConfigRepository.getInstance(ConfigSpec(getApplication(),
-			BuildConfig.BASE_URL,
-			BuildConfig.VERSION_NAME,
-			BuildConfig.BUILD_TIME.toString()))
-		viewModelScope.launch {
-			configRepository.loadConfig(getApplication())?.let { config -> configMutableLiveData.postValue(config) }
-		}
+		walletDataStorage.deleteCertificate(certificate)
+		loadWalletData()
 	}
 
 	private fun enqueueVerificationTask(task: CertificateVerificationTask, delayInMillis: Long) {

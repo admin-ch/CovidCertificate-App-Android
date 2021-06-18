@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginTop="@dimen/spacing_tiny_small"
+	android:background="@drawable/ripple_rect"
+	android:paddingVertical="@dimen/spacing_medium_small">
+
+	<FrameLayout
+		android:id="@+id/item_transfer_code_list_icon_group"
+		android:layout_width="68dp"
+		android:layout_height="68dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent">
+
+		<ImageView
+			android:id="@+id/item_transfer_code_list_icon_background"
+			android:layout_width="48dp"
+			android:layout_height="48dp"
+			android:layout_gravity="center"
+			android:src="@drawable/circle_white"
+			app:tint="@color/blueish" />
+
+		<ProgressBar
+			android:id="@+id/item_transfer_code_list_icon_loading_view"
+			android:layout_width="@dimen/icon_size_small"
+			android:layout_height="@dimen/icon_size_small"
+			android:layout_gravity="center" />
+
+	</FrameLayout>
+
+	<TextView
+		android:id="@+id/item_transfer_code_list_title"
+		style="@style/CovidCertificate.Text.Bold.Emphasized"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/spacing_very_small"
+		android:layout_marginBottom="@dimen/spacing_very_small"
+		android:text="@string/wallet_transfer_code_state_waiting"
+		app:layout_constraintBottom_toTopOf="@id/item_transfer_code_list_code"
+		app:layout_constraintEnd_toStartOf="@id/item_transfer_code_list_drag_handle"
+		app:layout_constraintStart_toEndOf="@id/item_transfer_code_list_icon_group"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.25"
+		app:layout_constraintVertical_chainStyle="packed" />
+
+	<TextView
+		android:id="@+id/item_transfer_code_list_code"
+		style="@style/CovidCertificate.Text.Bold.Lead"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/spacing_very_small"
+		android:background="@drawable/bg_type_bubble_small"
+		android:backgroundTint="@color/blueish"
+		android:fontFeatureSettings="tnum"
+		android:paddingHorizontal="@dimen/spacing_very_small"
+		android:paddingVertical="1dp"
+		android:textColor="@color/blue"
+		android:textSize="@dimen/text_size_type_bubble"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintStart_toEndOf="@id/item_transfer_code_list_icon_group"
+		app:layout_constraintTop_toBottomOf="@id/item_transfer_code_list_title"
+		tools:text="A2X56K7WP" />
+
+	<ImageView
+		android:id="@+id/item_transfer_code_list_drag_handle"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:padding="@dimen/spacing_medium_large"
+		android:src="@drawable/ic_drag"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -11,12 +11,14 @@
 package ch.admin.bag.covidcertificate.common.faq
 
 import android.view.View
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.core.view.doOnPreDraw
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.common.R
+import ch.admin.bag.covidcertificate.common.databinding.ItemFaqHeaderBinding
+import ch.admin.bag.covidcertificate.common.databinding.ItemFaqIntroSectionBinding
+import ch.admin.bag.covidcertificate.common.databinding.ItemFaqQuestionBinding
 import ch.admin.bag.covidcertificate.common.faq.model.Header
+import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
 import ch.admin.bag.covidcertificate.common.faq.model.Question
 
 sealed class FaqItem {
@@ -29,16 +31,18 @@ data class HeaderItem(val header: Header) : FaqItem() {
 	}
 
 	override fun bindView(view: View, onItemClickListener: (() -> Unit)?) {
-		view.findViewById<TextView>(R.id.item_faq_header_title).text = header.title
-		view.findViewById<TextView>(R.id.item_faq_header_text).apply {
+		val binding = ItemFaqHeaderBinding.bind(view)
+		binding.itemFaqHeaderTitle.text = header.title
+		binding.itemFaqHeaderText.apply {
 			text = header.subtitle
 			isVisible = header.subtitle != null
 		}
+
 		val drawableId = header.iconName?.let { iconName ->
 			view.context.resources.getIdentifier(iconName, "drawable", view.context.packageName)
 		} ?: 0
 
-		view.findViewById<ImageView>(R.id.item_faq_header_illu).apply {
+		binding.itemFaqHeaderIllu.apply {
 			setImageResource(drawableId)
 			isVisible = drawableId != 0
 		}
@@ -54,30 +58,43 @@ data class QuestionItem(
 	}
 
 	override fun bindView(view: View, onItemClickListener: (() -> Unit)?) {
-		view.setOnClickListener {
+		val binding = ItemFaqQuestionBinding.bind(view)
+
+		binding.root.setOnClickListener {
 			question.isSelected = !question.isSelected
 			view.doOnPreDraw { onItemClickListener?.invoke() }
 		}
-		view.findViewById<TextView>(R.id.item_faq_question_title).text = question.question
-		view.findViewById<TextView>(R.id.item_faq_question_answer).apply {
+		binding.itemFaqQuestionTitle.text = question.question
+		binding.itemFaqQuestionAnswer.apply {
 			text = question.answer
 			isVisible = question.isSelected
 		}
-		val linkGroup = view.findViewById<View>(R.id.item_faq_question_link)
-		val linkLabel = view.findViewById<TextView>(R.id.item_faq_question_link_label)
 		val hasLink = !question.linkTitle.isNullOrEmpty() && !question.linkUrl.isNullOrEmpty()
-		(hasLink && question.isSelected)?.let { visible ->
-			linkLabel.isVisible = visible
-			linkGroup.isVisible = visible
-		}
-		if (hasLink) {
-			linkLabel.text = question.linkTitle
-			linkGroup.setOnClickListener { onLinkClickListener?.onLinkClicked(question.linkUrl!!) }
-		} else {
-			linkGroup.setOnClickListener(null)
+		(hasLink && question.isSelected).let { visible ->
+			binding.itemFaqQuestionLinkLabel.isVisible = visible
+			binding.itemFaqQuestionLink.isVisible = visible
 		}
 
-		view.findViewById<ImageView>(R.id.item_faq_question_chevron)
-			.setImageResource(if (question.isSelected) R.drawable.ic_arrow_contract else R.drawable.ic_arrow_expand)
+		if (hasLink) {
+			binding.itemFaqQuestionLinkLabel.text = question.linkTitle
+			binding.itemFaqQuestionLink.setOnClickListener { onLinkClickListener?.onLinkClicked(question.linkUrl!!) }
+		} else {
+			binding.itemFaqQuestionLink.setOnClickListener(null)
+		}
+
+		binding.itemFaqQuestionChevron.setImageResource(if (question.isSelected) R.drawable.ic_arrow_contract else R.drawable.ic_arrow_expand)
+	}
+}
+
+data class IntroSectionItem(val introSection: IntroSection) : FaqItem() {
+	companion object {
+		val layoutResource = R.layout.item_faq_intro_section
+	}
+
+	override fun bindView(view: View, onItemClickListener: (() -> Unit)?) {
+		val binding = ItemFaqIntroSectionBinding.bind(view)
+		val drawableId = view.context.resources.getIdentifier(introSection.iconName, "drawable", view.context.packageName)
+		binding.faqIntroSectionIcon.setImageResource(drawableId)
+		binding.faqIntroSectionText.text = introSection.text
 	}
 }

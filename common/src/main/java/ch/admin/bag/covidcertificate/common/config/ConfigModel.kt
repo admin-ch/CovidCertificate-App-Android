@@ -20,11 +20,15 @@ data class ConfigModel(
 	val forceUpdate: Boolean,
 	val infoBox: Map<String, InfoBoxModel>?,
 	val questions: Map<String, FaqModel>?,
-	val works: Map<String, FaqModel>?
+	val works: Map<String, FaqModel>?,
+	val transferQuestions: Map<String, FaqModel>?,
+	val transferWorks: Map<String, FaqModel>?,
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
 	fun getWorksFaqs(languageKey: String): FaqModel? = works?.get(languageKey)
+	fun getTransferQuestionsFaqs(languageKey: String): FaqModel? = transferQuestions?.get(languageKey)
+	fun getTransferWorksFaqs(languageKey: String): FaqModel? = transferWorks?.get(languageKey)
 
 	fun generateFaqItems(languageKey: String) : List<Faq> {
 		val itemsList = mutableListOf<Faq>()

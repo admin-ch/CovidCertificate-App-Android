@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -27,10 +26,10 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:background="@color/white"
+			android:elevation="@dimen/toolbar_elevation"
 			app:layout_constraintTop_toTopOf="parent"
 			app:navigationIcon="@drawable/ic_close_red"
 			app:title="@string/wallet_certificate_list_title"
-			android:elevation="@dimen/toolbar_elevation"
 			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
 			app:titleTextColor="@color/grey" />
 
@@ -39,6 +38,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="0dp"
 			android:background="@color/background_light"
+			android:scrollbars="vertical"
+			app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/certificates_overview_toolbar"
 			tools:listitem="@layout/item_certificate_list" />

@@ -20,6 +20,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity() {
 		private const val KEY_IS_INTENT_CONSUMED = "KEY_IS_INTENT_CONSUMED"
 	}
 
-	private val certificateViewModel by viewModels<CertificatesViewModel>()
+	private val configViewModel by viewModels<ConfigViewModel>()
 	private val pdfViewModel by viewModels<PdfViewModel>()
 
 	private lateinit var binding: ActivityMainBinding
@@ -72,7 +73,7 @@ class MainActivity : AppCompatActivity() {
 			}
 		}
 
-		certificateViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
+		configViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
 
 		CovidCertificateSdk.registerWithLifecycle(lifecycle)
 
@@ -120,7 +121,7 @@ class MainActivity : AppCompatActivity() {
 
 	override fun onStart() {
 		super.onStart()
-		certificateViewModel.loadConfig()
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
 		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
 	}
 

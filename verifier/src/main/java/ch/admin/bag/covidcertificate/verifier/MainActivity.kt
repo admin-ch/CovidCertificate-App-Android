@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityMainBinding
 
-	private val verifierViewModel by viewModels<VerifierViewModel>()
+	private val configViewModel by viewModels<ConfigViewModel>()
 
 	private var forceUpdateDialog: AlertDialog? = null
 
@@ -45,14 +46,14 @@ class MainActivity : AppCompatActivity() {
 				.commit()
 		}
 
-		verifierViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
+		configViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
 
 		CovidCertificateSdk.registerWithLifecycle(lifecycle)
 	}
 
 	override fun onStart() {
 		super.onStart()
-		verifierViewModel.loadConfig()
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
 		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
 	}
 

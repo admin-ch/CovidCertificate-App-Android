@@ -15,12 +15,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
 import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
@@ -29,6 +31,9 @@ import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
+import ch.admin.bag.covidcertificate.common.views.hideAnimated
+import ch.admin.bag.covidcertificate.common.views.rotate
+import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
@@ -40,9 +45,11 @@ import ch.admin.bag.covidcertificate.wallet.debug.DebugFragment
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.faq.WalletFaqFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.CertificatesPagerAdapter
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
 import ch.admin.bag.covidcertificate.wallet.list.CertificatesListFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 import ch.admin.bag.covidcertificate.wallet.qr.WalletQrScanFragment
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeIntroFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.concurrent.atomic.AtomicLong
 
@@ -56,12 +63,15 @@ class HomeFragment : Fragment() {
 	}
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val configViewModel by activityViewModels<ConfigViewModel>()
 	private val pdfViewModel by activityViewModels<PdfViewModel>()
 
 	private var _binding: FragmentHomeBinding? = null
 	private val binding get() = _binding!!
 
 	private lateinit var certificatesAdapter: CertificatesPagerAdapter
+
+	private var isAddOptionsShowing = false
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -85,20 +95,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun setupButtons() {
-		binding.homescreenScanButtonBig.setOnClickListener {
-			parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, WalletQrScanFragment.newInstance())
-				.addToBackStack(WalletQrScanFragment::class.java.canonicalName)
-				.commit()
-		}
-		binding.homescreenScanButtonSmall.setOnClickListener {
-			parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, WalletQrScanFragment.newInstance())
-				.addToBackStack(WalletQrScanFragment::class.java.canonicalName)
-				.commit()
-		}
+		setupAddCertificateOptions()
 		binding.homescreenSupportButton.setOnClickListener {
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
@@ -175,11 +172,11 @@ class HomeFragment : Fragment() {
 		certificatesAdapter = CertificatesPagerAdapter(this)
 		viewPager.offscreenPageLimit = 1
 		viewPager.adapter = certificatesAdapter
-		TabLayoutMediator(binding.homescreenCertificatesTabLayout, viewPager) { tab, position -> }.attach()
+		TabLayoutMediator(binding.homescreenCertificatesTabLayout, viewPager) { _, _ -> }.attach()
 
-		certificatesViewModel.dccHolderCollectionLiveData.observe(viewLifecycleOwner) {
+		certificatesViewModel.walletItems.observe(viewLifecycleOwner) {
 			it ?: return@observe
-			binding.homescreenLoadingGroup.isVisible = false
+			binding.homescreenLoadingIndicator.isVisible = false
 			updateHomescreen(it)
 		}
 
@@ -214,6 +211,48 @@ class HomeFragment : Fragment() {
 
 	}
 
+	private fun setupAddCertificateOptions() {
+		binding.homescreenScanButtonSmall.setOnClickListener {
+			showAddCertificateOptions(!isAddOptionsShowing)
+		}
+
+		binding.backgroundDimmed.setOnClickListener {
+			showAddCertificateOptions(!isAddOptionsShowing)
+		}
+
+		binding.homescreenAddCertificateOptions.optionScanCertificate.setOnClickListener {
+			isAddOptionsShowing = false
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, WalletQrScanFragment.newInstance())
+				.addToBackStack(WalletQrScanFragment::class.java.canonicalName)
+				.commit()
+		}
+
+		binding.homescreenAddCertificateOptions.optionTransferCode.setOnClickListener {
+			isAddOptionsShowing = false
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, TransferCodeIntroFragment.newInstance())
+				.addToBackStack(TransferCodeIntroFragment::class.java.canonicalName)
+				.commit()
+		}
+	}
+
+	private fun showAddCertificateOptions(show: Boolean) {
+		if (show) {
+			binding.homescreenScanButtonSmall.rotate(45f)
+			binding.backgroundDimmed.showAnimated()
+			binding.homescreenAddCertificateOptions.root.showAnimated()
+		} else {
+			binding.homescreenScanButtonSmall.rotate(0f)
+			binding.backgroundDimmed.hideAnimated()
+			binding.homescreenAddCertificateOptions.root.hideAnimated()
+		}
+
+		isAddOptionsShowing = show
+	}
+
 	private fun showCertificationAddFragment(dccHolder: DccHolder) {
 		parentFragmentManager.beginTransaction()
 			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
@@ -223,24 +262,27 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun reloadCertificates() {
-		binding.homescreenLoadingGroup.isVisible = true
-		certificatesViewModel.loadCertificates()
+		binding.homescreenLoadingIndicator.isVisible = true
+		certificatesViewModel.loadWalletData()
 	}
 
-	private fun updateHomescreen(dccHolders: List<DccHolder>) {
-		val hasCertificates = dccHolders.isNotEmpty()
+	private fun updateHomescreen(pagerItems: List<WalletItem>) {
+		val hasData = pagerItems.isNotEmpty()
 
-		binding.homescreenContentEmptyScrollView.isVisible = !hasCertificates
-		binding.homescreenScanButtonBig.isVisible = !hasCertificates
-		binding.homescreenScanButtonSmall.isVisible = hasCertificates
-		binding.homescreenListButton.isVisible = hasCertificates
-		binding.homescreenCertificatesViewPager.isVisible = hasCertificates
-		binding.homescreenCertificatesTabLayout.isVisible = dccHolders.size > 1
-		binding.homescreenHeaderEmpty.root.isVisible = !hasCertificates
-		binding.homescreenHeaderNotEmpty.root.isVisible = hasCertificates
-		binding.homescreenListButton.isVisible = dccHolders.size > 1
-		certificatesAdapter.setData(dccHolders)
-		if (hasCertificates) {
+		updateAddCertificateOptionsConstraints(!hasData)
+		binding.homescreenEmptyContentGroup.isVisible = !hasData
+		binding.homescreenScanButtonSmall.isVisible = hasData
+		binding.homescreenListButton.isVisible = hasData
+		binding.homescreenCertificatesViewPager.isVisible = hasData
+		binding.homescreenCertificatesTabLayout.isVisible = pagerItems.size > 1
+		binding.homescreenHeaderEmpty.root.isVisible = !hasData
+		binding.homescreenHeaderNotEmpty.root.isVisible = hasData
+		binding.homescreenListButton.isVisible = pagerItems.size > 1
+		binding.homescreenAddCertificateOptions.root.isVisible = !hasData || isAddOptionsShowing
+
+		certificatesAdapter.setData(pagerItems)
+
+		if (hasData) {
 			binding.homescreenCertificatesViewPager.postDelayed(250) {
 				if (isAdded) {
 					binding.homescreenCertificatesViewPager.setCurrentItem(0, true)
@@ -249,8 +291,23 @@ class HomeFragment : Fragment() {
 		}
 	}
 
+	private fun updateAddCertificateOptionsConstraints(isEmpty: Boolean) {
+		val set = ConstraintSet()
+		set.clone(binding.homescreenConstraintLayout)
+		if (isEmpty) {
+			val margin = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_large)
+			set.clear(R.id.homescreen_add_certificate_options, ConstraintSet.BOTTOM)
+			set.connect(R.id.homescreen_add_certificate_options, ConstraintSet.TOP, R.id.homescreen_add_certificate_options_title, ConstraintSet.BOTTOM, margin)
+		} else {
+			val margin = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_medium_large)
+			set.clear(R.id.homescreen_add_certificate_options, ConstraintSet.TOP)
+			set.connect(R.id.homescreen_add_certificate_options, ConstraintSet.BOTTOM, R.id.button_bar_bubble, ConstraintSet.TOP, margin)
+		}
+		set.applyTo(binding.homescreenConstraintLayout)
+	}
+
 	private fun setupInfoBox() {
-		certificatesViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
+		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
 			val buttonHeaderEmpty = binding.homescreenHeaderEmpty.headerNotification
 			val buttonHeaderNotEmpty = binding.homescreenHeaderNotEmpty.headerNotification
 			val localizedInfo = config.getInfoBox(getString(R.string.language_key))
@@ -264,7 +321,7 @@ class HomeFragment : Fragment() {
 					secureStorage.setLastShownInfoBoxId(infoBox.infoId)
 				}
 
-				return@let View.OnClickListener { view ->
+				return@let View.OnClickListener {
 					closeCurrentInfoDialog()
 					showInfoDialog(infoBox)
 					secureStorage.setLastShownInfoBoxId(infoBox.infoId)
