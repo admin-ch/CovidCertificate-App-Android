@@ -17,6 +17,7 @@ import ch.admin.bag.covidcertificate.eval.data.Config
 import ch.admin.bag.covidcertificate.eval.net.CertificatePinning
 import ch.admin.bag.covidcertificate.eval.net.JwsInterceptor
 import ch.admin.bag.covidcertificate.eval.net.UserAgentInterceptor
+import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.eval.utils.toBase64
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
 import okhttp3.Cache
@@ -27,6 +28,10 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import java.security.KeyPair
 
 internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec) {
+
+	companion object : SingletonHolder<DeliveryRepository, DeliverySpec>(::DeliveryRepository) {
+		private const val KEY_PAIR_ALGORITHM = "RSA2048"
+	}
 
 	private val deliveryService: DeliveryService
 
@@ -60,8 +65,13 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 	suspend fun register(transferCode: String, keyPair: KeyPair): Boolean {
 		val signaturePayload = TransferCodeCrypto.buildMessage("register", transferCode)
 		val signature = TransferCodeCrypto.sign(keyPair, signaturePayload) ?: return false
-		val deliveryRegistration =
-			DeliveryRegistration(transferCode, keyPair.public.encoded.toBase64(), "RSA2048", signaturePayload, signature)
+		val deliveryRegistration = DeliveryRegistration(
+			transferCode,
+			keyPair.public.encoded.toBase64(),
+			KEY_PAIR_ALGORITHM,
+			signaturePayload,
+			signature
+		)
 
 		val response = deliveryService.register(deliveryRegistration)
 		return response.isSuccessful

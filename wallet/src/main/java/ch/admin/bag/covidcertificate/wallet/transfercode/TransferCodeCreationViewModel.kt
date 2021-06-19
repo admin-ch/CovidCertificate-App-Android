@@ -11,22 +11,37 @@
 package ch.admin.bag.covidcertificate.wallet.transfercode
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
+import ch.admin.bag.covidcertificate.eval.data.state.Error
+import ch.admin.bag.covidcertificate.eval.utils.NetworkUtil
+import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.MainApplication
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
+import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn
+import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
+import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
+import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.io.IOException
+import java.security.KeyPair
 import java.time.Instant
 
 class TransferCodeCreationViewModel(application: Application) : AndroidViewModel(application) {
 
+	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+	private val deliveryRepository = DeliveryRepository.getInstance(DeliverySpec(application.applicationContext, BuildConfig.BASE_URL_DELIVERY))
 	private val walletDataStorage = WalletDataSecureStorage.getInstance(application.applicationContext)
 
 	private val creationStateMutableLiveData = MutableLiveData<TransferCodeCreationState>()
@@ -34,19 +49,41 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 
 	private var transferCodeCreationJob: Job? = null
 
-	fun createTransferCode() {
+	fun createAndRegisterTransferCode() {
 		if (transferCodeCreationJob != null && transferCodeCreationJob?.isActive == true) return
 
 		creationStateMutableLiveData.value = TransferCodeCreationState.LOADING
 		transferCodeCreationJob = viewModelScope.launch(Dispatchers.Default) {
-			delay(1000L)
+			val transferCode = Luhn.generateNewTransferCode()
+			val keyPair = TransferCodeCrypto.createKeyPair(transferCode, getApplication<MainApplication>().applicationContext)
 
-			// TODO Generate public key, signature payload and signature and call backend endpoint
-			val transferCode = TransferCodeModel("A2X56K7WP", Instant.now())
-			walletDataStorage.saveWalletDataItem(WalletDataItem.TransferCodeWalletData(transferCode))
-			creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCode))
+			if (keyPair != null) {
+				registerTransferCode(transferCode, keyPair)
+			} else {
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(Error(ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
+			}
 
 			transferCodeCreationJob = null
+		}
+	}
+
+	private suspend fun registerTransferCode(transferCode: String, keyPair: KeyPair) = withContext(Dispatchers.IO) {
+		try {
+			val isRegisterSuccessful = deliveryRepository.register(transferCode, keyPair)
+			if (isRegisterSuccessful) {
+				val now = Instant.now()
+				val transferCodeModel = TransferCodeModel(transferCode, now, now)
+				walletDataStorage.saveWalletDataItem(WalletDataItem.TransferCodeWalletData(transferCodeModel))
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCodeModel))
+			} else {
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(Error(ErrorCodes.INAPP_DELIVERY_REGISTRATION_FAILED)))
+			}
+		} catch (e: IOException) {
+			if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(Error(ErrorCodes.GENERAL_NETWORK_FAILURE)))
+			} else {
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(Error(ErrorCodes.GENERAL_OFFLINE)))
+			}
 		}
 	}
 

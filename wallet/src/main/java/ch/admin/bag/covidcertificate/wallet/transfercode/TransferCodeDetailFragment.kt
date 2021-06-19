@@ -49,6 +49,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 
 	private val configViewModel by activityViewModels<ConfigViewModel>()
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val transferCodeViewModel by activityViewModels<TransferCodeViewModel>()
 	private val faqAdapter = FaqAdapter()
 	private lateinit var transferCode: TransferCodeModel
 

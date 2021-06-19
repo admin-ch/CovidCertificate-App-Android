@@ -9,7 +9,7 @@
  */
 package ch.admin.bag.covidcertificate.wallet.transfercode.logic
 
-import android.app.Application
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
@@ -17,7 +17,11 @@ import android.security.keystore.KeyInfo
 import android.security.keystore.KeyProperties
 import ch.admin.bag.covidcertificate.eval.utils.fromBase64
 import ch.admin.bag.covidcertificate.eval.utils.toBase64
-import java.security.*
+import java.security.KeyFactory
+import java.security.KeyPair
+import java.security.KeyPairGenerator
+import java.security.KeyStore
+import java.security.Signature
 import java.security.spec.RSAKeyGenParameterSpec
 import java.time.Instant
 import javax.crypto.Cipher
@@ -27,7 +31,9 @@ import javax.crypto.spec.SecretKeySpec
 
 object TransferCodeCrypto {
 
-	fun createKeyPair(keyAlias: String, application: Application): KeyPair? {
+	const val ANDROID_KEYSTORE_NAME = "AndroidKeyStore"
+
+	fun createKeyPair(keyAlias: String, context: Context): KeyPair? {
 		val keyPurpose =
 			KeyProperties.PURPOSE_DECRYPT or KeyProperties.PURPOSE_ENCRYPT or KeyProperties.PURPOSE_SIGN or KeyProperties.PURPOSE_VERIFY
 
@@ -41,7 +47,7 @@ object TransferCodeCrypto {
 
 				// Encourage storing the key in strongbox (the TPM)
 				val hasStrongBox = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-					application.packageManager.hasSystemFeature(PackageManager.FEATURE_STRONGBOX_KEYSTORE)
+					context.packageManager.hasSystemFeature(PackageManager.FEATURE_STRONGBOX_KEYSTORE)
 				} else false
 				if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P && hasStrongBox) {
 					setIsStrongBoxBacked(true)
@@ -49,7 +55,7 @@ object TransferCodeCrypto {
 			}.build()
 
 		try {
-			KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, "AndroidKeyStore").apply {
+			KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, ANDROID_KEYSTORE_NAME).apply {
 				initialize(keyGenParameterSpec)
 				return generateKeyPair()
 			}
@@ -60,7 +66,7 @@ object TransferCodeCrypto {
 	}
 
 	fun loadKeyPair(keyAlias: String): KeyPair? {
-		val keystore = KeyStore.getInstance("AndroidKeyStore").apply {
+		val keystore = KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
 			load(null)
 		}
 		if (!keystore.containsAlias(keyAlias)) {
@@ -131,14 +137,14 @@ object TransferCodeCrypto {
 	 * This binds the context for which the signature is intended.
 	 */
 	fun buildMessage(action: String, transferCode: String): String {
-		val timestamp = Instant.now().epochSecond
+		val timestamp = Instant.now().toEpochMilli()
 		return "$action:$transferCode:$timestamp"
 	}
 
 }
 
 fun KeyPair.isInsideSecureHardware(): Boolean {
-	val factory: KeyFactory = KeyFactory.getInstance(private.algorithm, "AndroidKeyStore")
+	val factory: KeyFactory = KeyFactory.getInstance(private.algorithm, TransferCodeCrypto.ANDROID_KEYSTORE_NAME)
 	val keyInfo: KeyInfo = factory.getKeySpec(private, KeyInfo::class.java) as KeyInfo
 	return keyInfo.isInsideSecureHardware
 }

@@ -20,7 +20,8 @@ import kotlin.math.roundToInt
 @JsonClass(generateAdapter = true)
 data class TransferCodeModel(
 	val code: String,
-	val creationTimestamp: Instant
+	val creationTimestamp: Instant,
+	val lastUpdatedTImestamp: Instant,
 ): Serializable {
 
 	val expirationTimestamp = creationTimestamp.plus(7, ChronoUnit.DAYS)
