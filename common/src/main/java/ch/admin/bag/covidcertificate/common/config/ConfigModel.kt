@@ -22,7 +22,7 @@ data class ConfigModel(
 	val questions: Map<String, FaqModel>?,
 	val works: Map<String, FaqModel>?,
 	val transferQuestions: Map<String, FaqModel>?,
-	val transferWorks: Map<String, FaqModel>?
+	val transferWorks: Map<String, FaqModel>?,
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)

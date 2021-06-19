@@ -11,8 +11,9 @@
 package ch.admin.bag.covidcertificate.wallet.faq
 
 import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.faq.FaqFragment
-import ch.admin.bag.covidcertificate.wallet.ConfigViewModel
+import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.R
 
 class WalletFaqFragment : FaqFragment() {
@@ -29,7 +30,7 @@ class WalletFaqFragment : FaqFragment() {
 			val languageKey = getString(R.string.language_key)
 			setupFaqList(config.generateFaqItems(languageKey))
 		})
-		configViewModel.loadConfig()
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
 	}
 
 }

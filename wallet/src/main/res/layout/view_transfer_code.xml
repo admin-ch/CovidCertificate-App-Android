@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
@@ -16,6 +25,7 @@
 		android:layout_marginHorizontal="@dimen/spacing_tiny_small"
 		android:background="@color/white"
 		android:fontFeatureSettings="tnum"
+		android:lines="1"
 		android:paddingHorizontal="@dimen/spacing_very_small"
 		android:textAllCaps="true"
 		android:textColor="@color/blue"
@@ -33,6 +43,7 @@
 		android:layout_marginHorizontal="@dimen/spacing_tiny_small"
 		android:background="@color/white"
 		android:fontFeatureSettings="tnum"
+		android:lines="1"
 		android:paddingHorizontal="@dimen/spacing_very_small"
 		android:textAllCaps="true"
 		android:textColor="@color/blue"
@@ -50,6 +61,7 @@
 		android:layout_marginHorizontal="@dimen/spacing_tiny_small"
 		android:background="@color/white"
 		android:fontFeatureSettings="tnum"
+		android:lines="1"
 		android:paddingHorizontal="@dimen/spacing_very_small"
 		android:textAllCaps="true"
 		android:textColor="@color/blue"

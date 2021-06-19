@@ -14,11 +14,20 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodePagerBinding
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
+import ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeBubbleView
+import ch.admin.bag.covidcertificate.common.util.CutOutEdgeTreatment
+import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
+import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import com.google.android.material.shape.MaterialShapeDrawable
+import com.google.android.material.shape.ShapeAppearanceModel
 
 class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager) {
 
@@ -33,6 +42,7 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 	private var _binding: FragmentTransferCodePagerBinding? = null
 	private val binding get() = _binding!!
 
+	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 	private lateinit var transferCode: TransferCodeModel
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -48,10 +58,40 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+
+		binding.transferCodePageCard.setCutOutCardBackground()
+		binding.transferCodePageBubble.setTransferCode(transferCode)
+		setTransferCodeBubbleViewState()
+
+		binding.transferCodePageCard.setOnClickListener { certificatesViewModel.onTransferCodeClicked(transferCode) }
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	private fun setTransferCodeBubbleViewState() {
+		when {
+			transferCode.isFailed() -> {
+				binding.transferCodePageWaitingImage.isVisible = false
+				binding.transferCodePageImage.isVisible = true
+				binding.transferCodePageImage.setImageResource(R.drawable.illu_transfer_code_failed)
+				binding.transferCodePageStatusLabel.text = requireContext().getString(R.string.wallet_transfer_code_state_expired)
+				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(true))
+			}
+			transferCode.isExpired() -> {
+				binding.transferCodePageWaitingImage.isVisible = true
+				binding.transferCodePageImage.isVisible = false
+				binding.transferCodePageStatusLabel.text = requireContext().getString(R.string.wallet_transfer_code_state_waiting)
+				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(false))
+			}
+			else -> {
+				binding.transferCodePageWaitingImage.isVisible = true
+				binding.transferCodePageImage.isVisible = false
+				binding.transferCodePageStatusLabel.text = requireContext().getString(R.string.wallet_transfer_code_state_waiting)
+				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(false))
+			}
+		}
 	}
 }

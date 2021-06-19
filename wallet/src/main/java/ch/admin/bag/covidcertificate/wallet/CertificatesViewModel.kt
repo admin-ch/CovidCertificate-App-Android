@@ -27,6 +27,7 @@ import ch.admin.bag.covidcertificate.eval.verification.CertificateVerificationTa
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -50,6 +51,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	private val verificationJobs = mutableMapOf<DccHolder, Job>()
 
 	val onQrCodeClickedSingleLiveEvent = SingleLiveEvent<DccHolder>()
+	val onTransferCodeClickedSingleLiveEvent = SingleLiveEvent<TransferCodeModel>()
 
 	init {
 		walletItems.observeForever { items ->
@@ -92,45 +94,33 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 	fun startVerification(dccHolder: DccHolder, delayInMillis: Long = 0L, isForceVerification: Boolean = false) {
 		if (isForceVerification) {
-			verificationController.refreshTrustList(viewModelScope)
-		}
+			// Manually show the loading state for this certificate. This would be done by the verification task,
+			// but since we first load the trust list, that happens too late in the UI
+			val verifiedCertificatesWithLoading = updateVerificationStateForDccHolder(dccHolder, VerificationState.LOADING)
+			verifiedCertificatesMutableLiveData.value = verifiedCertificatesWithLoading
 
-		verificationJobs[dccHolder]?.cancel()
-
-		val task = CertificateVerificationTask(dccHolder, connectivityManager)
-		val job = viewModelScope.launch {
-			task.verificationStateFlow.collect { state ->
-				// Replace the verified certificate in the live data
-				val newVerifiedCertificates = verifiedCertificates.value?.toMutableList() ?: mutableListOf()
-				val index = newVerifiedCertificates.indexOfFirst { it.dccHolder == dccHolder }
-				if (index >= 0) {
-					newVerifiedCertificates[index] = VerifiedCertificate(dccHolder, state)
-				} else {
-					newVerifiedCertificates.add(VerifiedCertificate(dccHolder, state))
-				}
-
-				// Set the livedata value on the main dispatcher to prevent multiple posts overriding each other
-				withContext(Dispatchers.Main.immediate) {
-					verifiedCertificatesMutableLiveData.value = newVerifiedCertificates
-				}
-
-				// Once the verification state is not loading anymore, cancel the flow collection job (otherwise the flow stays active without emitting anything)
-				if (state !is VerificationState.LOADING) {
-					verificationJobs[dccHolder]?.cancel()
-					verificationJobs.remove(dccHolder)
-				}
-			}
-		}
-		verificationJobs[dccHolder] = job
-
-		viewModelScope.launch {
-			if (delayInMillis > 0) delay(delayInMillis)
-			verificationController.enqueue(task, viewModelScope)
+			// If this is a force verification (from the detail page), frist refresh the trust list
+			verificationController.refreshTrustList(viewModelScope, onCompletionCallback = {
+				val task = CertificateVerificationTask(dccHolder, connectivityManager)
+				enqueueVerificationTask(task, delayInMillis)
+			}, onErrorCallback = {
+				// If loading the trust list failed, tell the verification task to ignore the local trust list.
+				// That way the offline mode / network failure error handling is already taken care of by the verification controller
+				val task = CertificateVerificationTask(dccHolder, connectivityManager, ignoreLocalTrustList = true)
+				enqueueVerificationTask(task, delayInMillis)
+			})
+		} else {
+			val task = CertificateVerificationTask(dccHolder, connectivityManager)
+			enqueueVerificationTask(task, delayInMillis)
 		}
 	}
 
 	fun onQrCodeClicked(dccHolder: DccHolder) {
 		onQrCodeClickedSingleLiveEvent.postValue(dccHolder)
+	}
+
+	fun onTransferCodeClicked(transferCode: TransferCodeModel) {
+		onTransferCodeClickedSingleLiveEvent.postValue(transferCode)
 	}
 
 	fun containsCertificate(certificate: String): Boolean {
@@ -149,6 +139,56 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	fun removeCertificate(certificate: String) {
 		walletDataStorage.deleteCertificate(certificate)
 		loadWalletData()
+	}
+
+	fun removeTransferCode(transferCode: TransferCodeModel) {
+		walletDataStorage.deleteTransferCode(transferCode)
+		loadWalletData()
+	}
+
+	private fun enqueueVerificationTask(task: CertificateVerificationTask, delayInMillis: Long) {
+		val dccHolder = task.dccHolder
+		verificationJobs[dccHolder]?.cancel()
+
+		// Wait for above refresh
+		val job = viewModelScope.launch {
+			task.verificationStateFlow.collect { state ->
+				// Replace the verified certificate in the live data
+				val updatedVerifiedCertificates = updateVerificationStateForDccHolder(dccHolder, state)
+
+				// Set the livedata value on the main dispatcher to prevent multiple posts overriding each other
+				withContext(Dispatchers.Main.immediate) {
+					verifiedCertificatesMutableLiveData.value = updatedVerifiedCertificates
+				}
+
+				// Once the verification state is not loading anymore, cancel the flow collection job (otherwise the flow stays active without emitting anything)
+				if (state !is VerificationState.LOADING) {
+					verificationJobs[dccHolder]?.cancel()
+					verificationJobs.remove(dccHolder)
+				}
+			}
+		}
+		verificationJobs[dccHolder] = job
+
+		viewModelScope.launch {
+			if (delayInMillis > 0) delay(delayInMillis)
+			verificationController.enqueue(task, viewModelScope)
+		}
+	}
+
+	private fun updateVerificationStateForDccHolder(
+		dccHolder: DccHolder,
+		newVerificationState: VerificationState
+	): List<VerifiedCertificate> {
+		val newVerifiedCertificates = verifiedCertificates.value?.toMutableList() ?: mutableListOf()
+		val index = newVerifiedCertificates.indexOfFirst { it.dccHolder == dccHolder }
+		if (index >= 0) {
+			newVerifiedCertificates[index] = VerifiedCertificate(dccHolder, newVerificationState)
+		} else {
+			newVerifiedCertificates.add(VerifiedCertificate(dccHolder, newVerificationState))
+		}
+
+		return newVerifiedCertificates
 	}
 
 	data class VerifiedCertificate(val dccHolder: DccHolder, val state: VerificationState)

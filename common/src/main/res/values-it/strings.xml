@@ -26,7 +26,7 @@
     <string name="verifier_homescreen_pager_description_1">"Scansionare il certificato esibito"</string>
 
     <!-- Beschreibung für Pager Bild 2 -->
-    <string name="verifier_homescreen_pager_description_2">"I certificati sono verificati automaticamente"</string>
+    <string name="verifier_homescreen_pager_description_2">"I certificati vengono verificati automaticamente"</string>
 
     <!-- Homescreen Button für Scanning -->
     <string name="verifier_homescreen_scan_button">"Verifica"</string>
@@ -44,7 +44,7 @@
     <string name="ok_button">"OK"</string>
     <string name="camera_permission_dialog_text">"L'app necessita dell'accesso alla fotocamera per scansionare il codice QR."</string>
     <string name="camera_permission_dialog_action">"Consentire l'accesso alla fotocamera"</string>
-    <string name="verifier_qr_scanner_scan_qr_text">"Scansionare il codice QR 
+    <string name="verifier_qr_scanner_scan_qr_text">"Inquadrare il codice QR 
 per verificare"</string>
 
     <!-- Titel auf dem Verifikations-Screen -->
@@ -63,7 +63,7 @@ per verificare"</string>
     <string name="wallet_certificate">"Certificato COVID"</string>
 
     <!-- Wallet: Homescreen Erklärung -->
-    <string name="wallet_homescreen_explanation">"Scansionare il codice QR apposto sul certificato COVID per aggiungerlo all'app."</string>
+    <string name="wallet_homescreen_explanation">"Inquadrare il codice QR apposto sul certificato COVID per aggiungerlo all'app."</string>
 
     <!-- Wallet: Scanner Titel -->
     <string name="wallet_scanner_title">"Aggiungere"</string>
@@ -97,7 +97,7 @@ di legittimazione"</string>
     <string name="verifier_verify_error_list_info_text">"Si è verificato un errore imprevisto."</string>
 
     <!-- Wallet: Scanner Text unten -->
-    <string name="wallet_scanner_explanation">"Scansionare il codice QR apposto sul certificato COVID."</string>
+    <string name="wallet_scanner_explanation">"Inquadrare il codice QR apposto sul certificato COVID."</string>
 
     <!-- Wallet: Scanner Info Button unten -->
     <string name="wallet_scanner_info_button">"Funziona così"</string>
@@ -124,7 +124,7 @@ di legittimazione"</string>
     <string name="wallet_onboarding_app_title">"COVID Certificate"</string>
 
     <!-- Text im Onboardingscreen "Die App" -->
-    <string name="wallet_onboarding_app_text">"Con la app può conservare in sicurezza i certificati COVID sullo smartphone ed esibirli facilmente."</string>
+    <string name="wallet_onboarding_app_text">"Con l'app può conservare in sicurezza i certificati COVID sullo smartphone e mostrarli facilmente."</string>
 
     <!-- Weiter-Button Titel -->
     <string name="continue_button">"Avanti"</string>
@@ -137,7 +137,7 @@ di legittimazione"</string>
 nell'app"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_text">"I certificati sono salvati solo localmente sullo smartphone. I dati non sono salvati su un sistema centralizzato."</string>
+    <string name="wallet_onboarding_privacy_text">"I certificati sono salvati solo localmente sullo smartphone. I dati non sono salvati in un sistema centralizzato."</string>
 
     <!-- Titel im Onboardingscreen "Vorteile, Vorweisen" -->
     <string name="wallet_onboarding_show_title">"Esibire facilmente i certificati"</string>
@@ -169,7 +169,7 @@ certificati Covid"</string>
     <string name="wallet_scanner_howitworks_text1">"Per aggiungere un certificato COVID a un'app è necessario il certificato originale cartaceo o in formato PDF."</string>
 
     <!-- Textblock 2 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_text2">"Nell'app prema su «aggiungi» per aggiungere un nuovo certificato allʼapp."</string>
+    <string name="wallet_scanner_howitworks_text2">"Prema su «aggiungi» per aggiungere un nuovo certificato allʼapp."</string>
 
     <!-- Textblock 3 im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_text3">"Tenga la fotocamera dello smartphone sopra il codice QR apposto sul certificato originale per scansionarlo."</string>
@@ -199,7 +199,7 @@ certificati Covid"</string>
     <string name="wallet_faq_questions_question_3">"Dove vengono salvati i miei dati?"</string>
 
     <!-- Frage 4 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_question_4">"Come vengono impediti usi abusivi e falsificazioni?"</string>
+    <string name="wallet_faq_questions_question_4">"Come vengono impediti l'uso improprio e le falsificazioni?"</string>
 
     <!-- Frage 5 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_question_5">"Cosa succede se perdo il mio certificato COVID su carta?"</string>
@@ -228,19 +228,19 @@ certificati Covid"</string>
     <!-- Antwort 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_2">"Può mostrare il Suo certificato COVID in formato cartaceo oppure salvarlo e presentarlo utilizzando l'app COVID Certificate. Può decidere liberamente se mostrare il certificato in formato cartaceo o elettronico.
 
-In entrambi i casi, dovrà esibire su richiesta anche un documento di legittimazione."</string>
+In entrambi i casi, dovrà mostrare su richiesta anche un documento di legittimazione."</string>
 
     <!-- Antwort 3 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_3">"I Suoi dati non vengono salvati in un sistema centrale ma solo localmente sul Suo dispositivo mobile oppure nel codice QR indicato nel certificato COVID in formato cartaceo."</string>
+    <string name="wallet_faq_questions_answer_3">"I Suoi dati non vengono salvati in un sistema centrale ma solo localmente sul Suo dispositivo mobile, rispettivamente nel codice QR stampato sul certificato COVID in formato cartaceo."</string>
 
     <!-- Antwort 4 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_4">"Il codice QR sul certificato COVID contiene una firma elettronica. Questa firma è un elemento di sicurezza importante e garantisce che il certificato non possa essere falsificato. Inoltre, il certificato COVID è valido solo con un documento di legittimazione."</string>
 
     <!-- Antwort 5 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_5">"Il Suo certificato COVID non è salvato su un sistema centrale. Lei ne ha il possesso esclusivo. Conservi quindi con cura il certificato COVID su carta. In caso di smarrimento, dovrà richiedere un nuovo certificato presso l'ufficio emittente."</string>
+    <string name="wallet_faq_questions_answer_5">"Il Suo certificato COVID non è salvato su un sistema centrale. Lei ne ha il possesso esclusivo. Conservi quindi con cura il certificato COVID su carta. In caso di smarrimento, dovrà richiedere un nuovo certificato presso l'ufficio che lo ha emesso."</string>
 
     <!-- Antwort 6 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_1">"Per inserire sull'app un certificato COVID serve il certificato originale rilasciatole su carta o in formato PDF. Utilizzando l'app COVID Certificate può scansionare e aggiungere il codice QR raffigurato sul certificato. In questo modo, il certificato COVID appare direttamente sull'app."</string>
+    <string name="wallet_faq_works_answer_1">"Per inserire sull'app un certificato COVID serve il certificato originale rilasciatole su carta o in formato PDF. Utilizzando l'app COVID Certificate può aggiungere il certificato inquadrando il codice QR raffigurato sul certificato. In questo modo, il certificato COVID appare direttamente sull'app."</string>
 
     <!-- Antwort 7 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_2">"Sì, è possibile. Ad esempio, può salvare nella Sua app i certificati COVID dei suoi familiari. Anche in questo caso, il certificato COVID è valido solo con un documento di legittimazione del titolare."</string>
@@ -264,9 +264,8 @@ l'app?"</string>
     <!-- Text 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_subtitle">"Con l'app COVID Certificate può salvare e mostrare i certificati COVID in modo semplice e sicuro sul Suo dispositivo mobile."</string>
 
-    <!-- Vergleichen mit FAQ -->
     <!-- Antwort 1 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_answer1">"Può ricevere un certificato COVID in seguito alla completa vaccinazione anti-COVID-19, all'avvenuta guarigione o a un risultato negativo al test. Normalmente, il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie."</string>
+    <string name="wallet_scanner_howitworks_answer1">"Può ricevere un certificato COVID in seguito alla completa vaccinazione COVID-19, all'avvenuta guarigione o a un risultato negativo al test. Il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie."</string>
 
     <!-- Verifier: Detail Check Vorname -->
     <string name="verifier_covid_certificate_prename">"Nome"</string>
@@ -303,7 +302,7 @@ l'app?"</string>
     <string name="wallet_onboarding_store_text1">"I certificati COVID possono essere aggiunti facilmente all'app e conservati in formato digitalizzato."</string>
 
     <!-- Text2 im Onboardingscreen "Vorteile, Aufbewahren" -->
-    <string name="wallet_onboarding_store_text2">"Lʼapp verifica la validità dei certificati in Svizzera. In tal modo hai la certezza che i tuoi certificati sono validi."</string>
+    <string name="wallet_onboarding_store_text2">"Lʼapp verifica la validità dei certificati in Svizzera. In questo puoi assicurarti che i tuoi certificati siano validi."</string>
 
     <!-- Header im Onboarding-Screen "Vorteile, Vorweisen" -->
     <string name="wallet_onboarding_show_header">"Vantaggi"</string>
@@ -336,10 +335,14 @@ l'app?"</string>
     <string name="unknown_error">"Si è verificato un errore sconosciuto."</string>
 
     <!-- Verifier: Die Gültigkeit des Zertifikat ist abgelaufen -->
-    <string name="verifier_verifiy_error_expired">"Non conforme ai criteri di validità svizzeri: La validità del certificato è scaduta."</string>
+    <string name="verifier_verifiy_error_expired">"Non conforme ai criteri di validità svizzeri.
+
+La validità del certificato è scaduta."</string>
 
     <!-- Verifier: Zertifikat ist erst gültig ab {DATE} -->
-    <string name="verifier_verifiy_error_notyetvalid">"Non conforme ai criteri di validità svizzeri: Il certificato non è ancora valido."</string>
+    <string name="verifier_verifiy_error_notyetvalid">"Non conforme ai criteri di validità svizzeri.
+
+Il certificato non è ancora valido."</string>
 
     <!-- Verifier: Ein Netzwerkfehler ist aufgetreten. -->
     <string name="verifier_retry_network_error">"Si è verificato un errore di rete."</string>
@@ -382,9 +385,6 @@ firma non valida"</string>
     <string name="wallet_certificate_validity">"Validità in 
 Svizzera"</string>
 
-    <!-- Kontext:
-Validità in Svizzera
-fino al -->
     <!-- "Bis" Label im Zertifikats-Detail -->
     <string name="wallet_certificate_valid_until">"fino al"</string>
 
@@ -406,8 +406,6 @@ fino al -->
     <string name="wallet_certificate_impfstoff_holder">"Fabbricante"</string>
     <string name="wallet_certificate_vaccination_date_title">"Data di vaccinazione"</string>
     <string name="wallet_certificate_vaccination_country_title">"Paese della vaccinazione"</string>
-
-    <!-- Prüfen mit PDF Translation -->
     <string name="wallet_certificate_vaccination_issuer_title">"Emittente"</string>
     <string name="covid_certificate_recovery_title">"Guarigione"</string>
     <string name="wallet_certificate_recovery_first_positiv_result">"Data del primo risultato positivo"</string>
@@ -456,7 +454,7 @@ fino al -->
     <string name="wallet_certificate_test_done_by">"Centro di test"</string>
 
     <!-- iOS: Erklärung bei Kamera  -->
-    <string name="NSCameraUsageDescription">"Per poter scannerizzare il codice QR l'app deve accedere alla fotocamera"</string>
+    <string name="NSCameraUsageDescription">"Per poter inquadrare il codice QR l'app deve accedere alla fotocamera."</string>
 
     <!-- Titel 1 im FAQ der Verifier App -->
     <string name="verifier_faq_works_title">"Come avviene la verifica dei certificati COVID?"</string>
@@ -468,7 +466,7 @@ fino al -->
     <string name="verifier_faq_works_question_1">"Come posso verificare i certificati COVID?"</string>
 
     <!-- Antwort 1 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_answer_1">"Per verificare un certificato COVID, può scansionare il codice QR che trova sulla copia cartacea del certificato oppure, tramite la pertinente app COVID Certificate Check, sull’app che le viene mostrata."</string>
+    <string name="verifier_faq_works_answer_1">"Per verificare un certificato COVID tramite l'app COVID Certificate Check, può scansionare il codice QR che trova sulla copia cartacea del certificato oppure sull’app che le viene mostrata."</string>
 
     <!-- Frage 2 im FAQ der Verifier App -->
     <string name="verifier_faq_works_question_2">"Cosa viene verificato esattamente?"</string>
@@ -513,11 +511,11 @@ Se tutti i tre aspetti sono valutati positivamente, il certificato COVID è cons
     <string name="wallet_onboarding_external_privacy_button">"Informativa sulla privacy e condizioni d'uso"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_note">"Il presente certificato non è un documento di viaggio. 
+    <string name="wallet_certificate_detail_note">"La presente certificato non costituisce un documento di viaggio. 
 
-I dati scientifici relativi alla vaccinazione, ai test e alla guarigione dalla COVID-19 continuano a evolvere, anche alla luce delle nuove varianti del virus che destano preoccupazione. 
+Si acquisiscono sempre più conoscenze scientifiche sulla vaccinazione COVID-19, sulla guarigione dalla COVID-19 e sui test COVID-19, così come sulle nuove varianti problematiche del virus. 
 
-Prima di mettersi in viaggio, verificare le misure sanitarie pubbliche applicabili e le relative restrizioni applicabili nel luogo di destinazione."</string>
+Prima di mettersi in viaggio, si informi sulle misure sanitarie e sulle relative restrizioni applicate nel luogo di destinazione."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/it/home/documentazione/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/it/home/documentazione/covid-certificate-check-app.html"</string>
 
@@ -527,28 +525,28 @@ Prima di mettersi in viaggio, verificare le misure sanitarie pubbliche applicabi
     <string name="wallet_faq_questions_answer_1_1">"Le persone guarite dalla COVID-19 possono richiedere il certificato COVID tramite un modulo online disponibile sul sito Internet del Cantone. Il certificato viene poi inviato per posta."</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
-    <string name="wallet_homescreen_what_to_do">"Nächsten Schritt wählen"</string>
+    <string name="wallet_homescreen_what_to_do">"Vai al passaggio successivo"</string>
 
     <!-- Wallet: Homescreen Titel Zertifikat hinzufügen -->
-    <string name="wallet_homescreen_add_title">"Zertifikat hinzufügen"</string>
+    <string name="wallet_homescreen_add_title">"Aggiungi certificato"</string>
 
     <!-- Wallet: Homescreen Zertifikat Description Text -->
-    <string name="wallet_homescreen_add_certificate_description">"Sie haben ein Covid-Zertifikat auf Papier oder als PDF und möchten es zur App hinzufügen."</string>
+    <string name="wallet_homescreen_add_certificate_description">"Possiedi un certificato COVID in formato cartaceo o in PDF e desideri aggiungerlo nell'app."</string>
 
     <!-- Wallet: Homescreen Transfer-Code erstellen -->
-    <string name="wallet_homescreen_add_transfer_code">"Transfer-Code erstellen"</string>
+    <string name="wallet_homescreen_add_transfer_code">"Crea codice di trasferimento"</string>
 
     <!-- Wallet: Transfer Codes Titel -->
-    <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
+    <string name="wallet_transfer_code_onboarding_title">"Codici di trasferimento"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes z. B. bei Covid-Tests angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Puoi fornire i codici di trasferimento per esempio quando fai i test COVID. Il tuo certificato COVID sarà poi trasmesso direttamente all'app."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
-    <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
+    <string name="wallet_transfer_code_onboarding_button">"Crea codice"</string>
 
     <!-- Wallet: Transfer Code Onboarding So funktioniert's -->
-    <string name="wallet_transfer_code_onboarding_howto">"So funktioniert's"</string>
+    <string name="wallet_transfer_code_onboarding_howto">"Ecco come funziona"</string>
 
     <!-- Wallet: Transfer Code: FAQ Titel -->
     <string name="wallet_transfer_code_faq_questions_title">"Covid-Zertifikate direkt in die App geliefert"</string>
@@ -600,50 +598,50 @@ Prima di mettersi in viaggio, verificare le misure sanitarie pubbliche applicabi
     <string name="wallet_transfer_code_faq_works_answer_3">"Text"</string>
 
     <!-- Wallet: Transfer Code erstellt Titel -->
-    <string name="wallet_transfer_code_code_created_title">"Ihr Transfer-Code wurde erstellt"</string>
+    <string name="wallet_transfer_code_code_created_title">"Il tuo codice di trasferimento è stato creato"</string>
 
     <!-- Wallet: Transfer-Code -->
-    <string name="wallet_transfer_code_title">"Transfer-Code"</string>
+    <string name="wallet_transfer_code_title">"Codice di trasferimento"</string>
 
     <!-- Wallet: Transfer Code Erstelltm am {DATE} -->
-    <string name="wallet_transfer_code_createdat">"Erstellt am {DATE}"</string>
+    <string name="wallet_transfer_code_createdat">"Creato il {DATE}"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte -->
-    <string name="wallet_transfer_code_next_steps">"Nächste Schritte"</string>
+    <string name="wallet_transfer_code_next_steps">"Passaggi successivi"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 1 -->
-    <string name="wallet_transfer_code_next_steps1">"Übergeben Sie den Code bei der Testentnahme der Apotheke, dem Testcenter oder der Ärztin / dem Arzt."</string>
+    <string name="wallet_transfer_code_next_steps1">"Al momento dell'esecuzione del test comunica il codice alla farmacia, al centro di test o al medico."</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 2 -->
-    <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate zB. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
+    <string name="wallet_transfer_code_next_steps2">"Al momento dell'esecuzione del test comunica il codice alla farmacia, al centro di test o al medico."</string>
 
     <!-- Wallet: Transfer Code Fertig Button -->
-    <string name="wallet_transfer_code_done_button">"Fertig"</string>
+    <string name="wallet_transfer_code_done_button">"Fatto"</string>
 
     <!-- Wallet: Transfer Code Card Titel -->
-    <string name="wallet_transfer_code_card_title">"Transfer"</string>
+    <string name="wallet_transfer_code_card_title">"Trasferimento"</string>
 
     <!-- Wallet: Transfer Code Staus Warten auf Transfer -->
-    <string name="wallet_transfer_code_state_waiting">"Warten auf Transfer"</string>
+    <string name="wallet_transfer_code_state_waiting">"In attesa del trasferimento"</string>
 
     <!-- Wallet: Transfer Code Ablauf in 1 Tag -->
-    <string name="wallet_transfer_code_expire_singular">"Noch 1 Tag gültig"</string>
+    <string name="wallet_transfer_code_expire_singular">"Valido ancora 1 giorno"</string>
 
     <!-- Wallet: Transfer Code: Läuft ab in {DAYS} Tagen -->
-    <string name="wallet_transfer_code_expire_plural">"Noch {DAYS} Tage gültig"</string>
+    <string name="wallet_transfer_code_expire_plural">"Valido ancora {DAYS} giorni"</string>
 
     <!-- Wallet: Transfer Code Status Abgelaufen -->
-    <string name="wallet_transfer_code_state_expired">"Transfer fehlgeschlagen"</string>
+    <string name="wallet_transfer_code_state_expired">"Trasferimento non riuscito"</string>
 
     <!-- Wallet: Transfer Code Alter Code Titel -->
-    <string name="wallet_transfer_code_old_code">"Code abgelaufen"</string>
+    <string name="wallet_transfer_code_old_code">"Codice scaduto"</string>
 
     <!-- Wallet: Transfer Code State Zuletzt aktualisiert {DATE} -->
-    <string name="wallet_transfer_code_state_updated">"Zuletzt aktualisiert
+    <string name="wallet_transfer_code_state_updated">"Ultimo aggiornamento
 {DATE}"</string>
 
     <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
-    <string name="wallet_transfer_code_state_no_certificate">"Mit diesem Transfer kann kein  Zertifikat mehr empfangen werden."</string>
+    <string name="wallet_transfer_code_state_no_certificate">"Con questo trasferimento non è più possibile ricevere alcun certificato."</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig -->
     <string name="wallet_error_invalid_format">"Formato del certificato 
@@ -695,17 +693,67 @@ non valido"</string>
     <string name="wallet_transfer_code_faq_works_intro_3">"Nach 7 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor dieser abgebrochen wird."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_title">"Mitteilungen erlauben"</string>
+    <string name="wallet_notification_permission_title">"Consenti notifiche"</string>
 
     <!-- Wallet: Text im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_text">"Die App kann Sie informieren, sobald das Zertifikat eingetroffen ist.  Erlauben Sie dazu der App, Ihnen Mitteilungen zu senden."</string>
+    <string name="wallet_notification_permission_text">"L'app ti può informare non appena il certificato è pervenuto. Consenti all'app di inviarti le notifiche."</string>
 
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_button">"Weiter"</string>
+    <string name="wallet_notification_permission_button">"Avanti"</string>
 
     <!-- Externe URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link">"https://ufsp-coronavirus.ch/certificato/come-si-ottiene-il-certificato-covid-e-come-si-impiega/"</string>
 
     <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link_title">"Ulteriori informazioni"</string>
+
+    <!-- Buttontitel im Screen, wo ein Code erstellt werden kann -->
+    <string name="wallet_transfer_code_create_code_button">"Crea codice"</string>
+
+    <!-- Wallet: Transfer Code Ablauf in 1 Tag (fetter Teil) -->
+    <string name="wallet_transfer_code_expire_singular_bold">"1 giorno"</string>
+
+    <!-- Wallet: Transfer Code: Läuft in {DAYS} Tagen ab (fetter Teil) -->
+    <string name="wallet_transfer_code_expire_plural_bold">"{DAYS} giorni"</string>
+
+    <!-- Infotext bei erfolgreicher Prüfung (Blacklist) -->
+    <string name="verifier_verify_success_info_for_blacklist">"Non revocare"</string>
+
+    <!-- Infotext bei erfolgreicher Prüfung (Zertifikat) -->
+    <string name="verifier_verify_success_info_for_certificate_valid">"Firma valida"</string>
+
+    <!-- Teil der Fehlermeldung bei noch nicht/nicht mehr gültigem Zertifikat, der Bold sein sollte (ref. verifier_verifiy_error_expired und _notyetvalid) -->
+    <string name="verifier_verify_error_validity_range_bold">"Non conforme ai criteri di validità svizzeri."</string>
+
+    <!-- Wallet: Transfer Code Fehler Titel -->
+    <string name="wallet_transfer_code_error_title">"Non è stato possibile creare il codice di trasferimento."</string>
+
+    <!-- Wallet: Erstellen Fehler Titel -->
+    <string name="wallet_transfer_code_no_internet_title">"Nessuna connessione a Internet"</string>
+
+    <!-- Wallet: Erstellen anderer Fehler Titel -->
+    <string name="wallet_transfer_code_generate_error_title">"Si è verificato un errore imprevisto."</string>
+
+    <!-- Wallet: Aktualisierung Transfer Code Fehler Titel -->
+    <string name="wallet_transfer_code_update_error_title">"Aggiornamento al momento non disponibile"</string>
+
+    <!-- Wallet: Transfer Code Update Fehler Text -->
+    <string name="wallet_transfer_code_update_no_internet_error_text">"Per effettuare il trasferimento l'app deve essere on-line."</string>
+
+    <!-- Wallet Transfer Code Update Fehler Text -->
+    <string name="wallet_transfer_code_update_general_error_text">"Si è verificato un errore imprevisto. Riprova più tardi"</string>
+
+    <!-- Wallet: Transfer Code Fehlertext bei Generieren -->
+    <string name="wallet_transfer_code_generate_error_text">"Riprova più tardi."</string>
+
+    <!-- Wallet: Transfer Code Fehlertext bei Generieren ohne Internet -->
+    <string name="wallet_transfer_code_generate_no_internet_error_text">"Per creare un codice di trasferimento l'app deve essere on-line."</string>
+
+    <!-- Wallet: Accessibility Name für Refresh Button -->
+    <string name="accessibility_refresh_button">"Aggiorna"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_delete_confirm_text">"Eliminare il trasferimento?"</string>
+    <string name="wallet_notification_transfer_title">"Trasferimento riuscito"</string>
+    <string name="wallet_notification_transfer_text">"Il certificato COVID è pervenuto"</string>
 </resources>

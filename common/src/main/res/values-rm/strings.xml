@@ -332,10 +332,14 @@ l'app?"</string>
     <string name="unknown_error">"Igl è capità in sbagl nunenconuschent."</string>
 
     <!-- Verifier: Die Gültigkeit des Zertifikat ist abgelaufen -->
-    <string name="verifier_verifiy_error_expired">"Na correspunda betg als criteris da valaivladad da la Svizra. La valaivladad dal certificat è scadida."</string>
+    <string name="verifier_verifiy_error_expired">"Na correspunda betg als criteris da valaivladad da la Svizra.
+
+La valaivladad dal certificat è scadida."</string>
 
     <!-- Verifier: Zertifikat ist erst gültig ab {DATE} -->
-    <string name="verifier_verifiy_error_notyetvalid">"Na correspunda betg als criteris da valaivladad da la Svizra. Il certificat n'è anc betg valaivel."</string>
+    <string name="verifier_verifiy_error_notyetvalid">"Na correspunda betg als criteris da valaivladad da la Svizra.
+
+Il certificat n'è anc betg valaivel."</string>
 
     <!-- Verifier: Ein Netzwerkfehler ist aufgetreten. -->
     <string name="verifier_retry_network_error">"Igl è capità in sbagl en la rait."</string>
@@ -392,14 +396,12 @@ signatura nunvalaivla"</string>
     <!-- Button Schliessen -->
     <string name="close_button">"Serrar"</string>
     <string name="wallet_certificate_impfdosis_title">"Dosa"</string>
-    <string name="target_disease_name">"Covid-19"</string>
+    <string name="target_disease_name">"COVID-19"</string>
     <string name="wallet_certificate_target_disease_title">"Malsogna u agent patogen"</string>
     <string name="wallet_certificate_impfstoff_product_name_title">"Product"</string>
     <string name="wallet_certificate_impfstoff_holder">"Producent"</string>
     <string name="wallet_certificate_vaccination_date_title">"Data da la vaccinaziun"</string>
     <string name="wallet_certificate_vaccination_country_title">"Pajais da la vaccinaziun"</string>
-
-    <!-- Prüfen mit PDF Translation -->
     <string name="wallet_certificate_vaccination_issuer_title">"Emess da"</string>
     <string name="covid_certificate_recovery_title">"Guariziun"</string>
     <string name="wallet_certificate_recovery_first_positiv_result">"Data da l'emprim resultat positiv"</string>
@@ -519,28 +521,28 @@ As infurmai per plaschair – avant d'As metter en viadi – davart las mesiras 
     <string name="wallet_faq_questions_answer_1_1">"Cun agid d’in formular online sin la pagina d’internet dal chantun pon las persunas guaridas da COVID-19 far ina dumonda per in certificat COVID. Il certificat COVID vegn alura tramess per posta."</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
-    <string name="wallet_homescreen_what_to_do">"Nächsten Schritt wählen"</string>
+    <string name="wallet_homescreen_what_to_do">"Tscherner il proxim pass"</string>
 
     <!-- Wallet: Homescreen Titel Zertifikat hinzufügen -->
-    <string name="wallet_homescreen_add_title">"Zertifikat hinzufügen"</string>
+    <string name="wallet_homescreen_add_title">"Agiuntar in certificat"</string>
 
     <!-- Wallet: Homescreen Zertifikat Description Text -->
-    <string name="wallet_homescreen_add_certificate_description">"Sie haben ein Covid-Zertifikat auf Papier oder als PDF und möchten es zur App hinzufügen."</string>
+    <string name="wallet_homescreen_add_certificate_description">"Vus avais in certificat COVID sin palpiri u sco PDF ed al vulais agiuntar a l'app."</string>
 
     <!-- Wallet: Homescreen Transfer-Code erstellen -->
-    <string name="wallet_homescreen_add_transfer_code">"Transfer-Code erstellen"</string>
+    <string name="wallet_homescreen_add_transfer_code">"Crear in code da transfer"</string>
 
     <!-- Wallet: Transfer Codes Titel -->
-    <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
+    <string name="wallet_transfer_code_onboarding_title">"Codes da transfer"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes z. B. bei Covid-Tests angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Vus pudais inditgar ils codes da transfer p.ex. a chaschun da tests da COVID. Vus retschavais alura il certificat COVID directamain en l'app."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
-    <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
+    <string name="wallet_transfer_code_onboarding_button">"Crear in code"</string>
 
     <!-- Wallet: Transfer Code Onboarding So funktioniert's -->
-    <string name="wallet_transfer_code_onboarding_howto">"So funktioniert's"</string>
+    <string name="wallet_transfer_code_onboarding_howto">"Uschia funcziuni"</string>
 
     <!-- Wallet: Transfer Code: FAQ Titel -->
     <string name="wallet_transfer_code_faq_questions_title">"Covid-Zertifikate direkt in die App geliefert"</string>
@@ -592,50 +594,50 @@ As infurmai per plaschair – avant d'As metter en viadi – davart las mesiras 
     <string name="wallet_transfer_code_faq_works_answer_3">"Text"</string>
 
     <!-- Wallet: Transfer Code erstellt Titel -->
-    <string name="wallet_transfer_code_code_created_title">"Ihr Transfer-Code wurde erstellt"</string>
+    <string name="wallet_transfer_code_code_created_title">"Voss code da transfer è vegnì creà"</string>
 
     <!-- Wallet: Transfer-Code -->
-    <string name="wallet_transfer_code_title">"Transfer-Code"</string>
+    <string name="wallet_transfer_code_title">"Code da transfer"</string>
 
     <!-- Wallet: Transfer Code Erstelltm am {DATE} -->
-    <string name="wallet_transfer_code_createdat">"Erstellt am {DATE}"</string>
+    <string name="wallet_transfer_code_createdat">"Creà ils {DATE}"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte -->
-    <string name="wallet_transfer_code_next_steps">"Nächste Schritte"</string>
+    <string name="wallet_transfer_code_next_steps">"Proxims pass"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 1 -->
-    <string name="wallet_transfer_code_next_steps1">"Übergeben Sie den Code bei der Testentnahme der Apotheke, dem Testcenter oder der Ärztin / dem Arzt."</string>
+    <string name="wallet_transfer_code_next_steps1">"Consegnai il code a l'apoteca, al center da test u a la media / al medi a chaschun da la prova da test."</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 2 -->
-    <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate zB. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
+    <string name="wallet_transfer_code_next_steps2">"En cas che Vus vulais retschaiver plirs certificats, per exempel da confamigliaras u confamigliars, creai per mintga certificat in nov code."</string>
 
     <!-- Wallet: Transfer Code Fertig Button -->
-    <string name="wallet_transfer_code_done_button">"Fertig"</string>
+    <string name="wallet_transfer_code_done_button">"Terminà"</string>
 
     <!-- Wallet: Transfer Code Card Titel -->
     <string name="wallet_transfer_code_card_title">"Transfer"</string>
 
     <!-- Wallet: Transfer Code Staus Warten auf Transfer -->
-    <string name="wallet_transfer_code_state_waiting">"Warten auf Transfer"</string>
+    <string name="wallet_transfer_code_state_waiting">"Spetgar il transfer"</string>
 
     <!-- Wallet: Transfer Code Ablauf in 1 Tag -->
-    <string name="wallet_transfer_code_expire_singular">"Noch 1 Tag gültig"</string>
+    <string name="wallet_transfer_code_expire_singular">"Anc valaivel 1 di"</string>
 
     <!-- Wallet: Transfer Code: Läuft ab in {DAYS} Tagen -->
-    <string name="wallet_transfer_code_expire_plural">"Noch {DAYS} Tage gültig"</string>
+    <string name="wallet_transfer_code_expire_plural">"Anc valaivel {DAYS} dis"</string>
 
     <!-- Wallet: Transfer Code Status Abgelaufen -->
-    <string name="wallet_transfer_code_state_expired">"Transfer fehlgeschlagen"</string>
+    <string name="wallet_transfer_code_state_expired">"Il transfer n'è betg reussì"</string>
 
     <!-- Wallet: Transfer Code Alter Code Titel -->
-    <string name="wallet_transfer_code_old_code">"Code abgelaufen"</string>
+    <string name="wallet_transfer_code_old_code">"Il code è scadì"</string>
 
     <!-- Wallet: Transfer Code State Zuletzt aktualisiert {DATE} -->
-    <string name="wallet_transfer_code_state_updated">"Zuletzt aktualisiert
+    <string name="wallet_transfer_code_state_updated">"Actualisà l'ultima giada
 {DATE}"</string>
 
     <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
-    <string name="wallet_transfer_code_state_no_certificate">"Mit diesem Transfer kann kein  Zertifikat mehr empfangen werden."</string>
+    <string name="wallet_transfer_code_state_no_certificate">"Cun quest transfer na po vegnir retschavì pli nagin certificat."</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig -->
     <string name="wallet_error_invalid_format">"Il format dal certificat 
@@ -687,17 +689,67 @@ n’è betg valaivel"</string>
     <string name="wallet_transfer_code_faq_works_intro_3">"Nach 7 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor dieser abgebrochen wird."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_title">"Mitteilungen erlauben"</string>
+    <string name="wallet_notification_permission_title">"Permetter avis"</string>
 
     <!-- Wallet: Text im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_text">"Die App kann Sie informieren, sobald das Zertifikat eingetroffen ist.  Erlauben Sie dazu der App, Ihnen Mitteilungen zu senden."</string>
+    <string name="wallet_notification_permission_text">"L'app As po infurmar, uschespert ch'il certificat è arrivà. Permettai a l'app d'As trametter avis."</string>
 
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_button">"Weiter"</string>
+    <string name="wallet_notification_permission_button">"Vinavant"</string>
 
     <!-- Externe URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link">"https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/"</string>
 
     <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link_title">"Ulteriuras infurmaziuns"</string>
+
+    <!-- Buttontitel im Screen, wo ein Code erstellt werden kann -->
+    <string name="wallet_transfer_code_create_code_button">"Crear in code"</string>
+
+    <!-- Wallet: Transfer Code Ablauf in 1 Tag (fetter Teil) -->
+    <string name="wallet_transfer_code_expire_singular_bold">"1 di"</string>
+
+    <!-- Wallet: Transfer Code: Läuft in {DAYS} Tagen ab (fetter Teil) -->
+    <string name="wallet_transfer_code_expire_plural_bold">"{DAYS} dis"</string>
+
+    <!-- Infotext bei erfolgreicher Prüfung (Blacklist) -->
+    <string name="verifier_verify_success_info_for_blacklist">"Betg revocar"</string>
+
+    <!-- Infotext bei erfolgreicher Prüfung (Zertifikat) -->
+    <string name="verifier_verify_success_info_for_certificate_valid">"La signatura è valaivla"</string>
+
+    <!-- Teil der Fehlermeldung bei noch nicht/nicht mehr gültigem Zertifikat, der Bold sein sollte (ref. verifier_verifiy_error_expired und _notyetvalid) -->
+    <string name="verifier_verify_error_validity_range_bold">"Na correspunda betg als criteris da valaivladad da la Svizra."</string>
+
+    <!-- Wallet: Transfer Code Fehler Titel -->
+    <string name="wallet_transfer_code_error_title">"Il code da transfer n'ha betg pudì vegnir creà"</string>
+
+    <!-- Wallet: Erstellen Fehler Titel -->
+    <string name="wallet_transfer_code_no_internet_title">"Nagina colliaziun cun l'internet"</string>
+
+    <!-- Wallet: Erstellen anderer Fehler Titel -->
+    <string name="wallet_transfer_code_generate_error_title">"Igl è capità in sbagl imprevis."</string>
+
+    <!-- Wallet: Aktualisierung Transfer Code Fehler Titel -->
+    <string name="wallet_transfer_code_update_error_title">"Actualmain n'è l'actualisaziun betg pussaivla"</string>
+
+    <!-- Wallet: Transfer Code Update Fehler Text -->
+    <string name="wallet_transfer_code_update_no_internet_error_text">"Per pudair retschaiver il transfer, sto l'app esser online."</string>
+
+    <!-- Wallet Transfer Code Update Fehler Text -->
+    <string name="wallet_transfer_code_update_general_error_text">"Igl è capità in sbagl imprevis. Empruvai pli tard anc ina giada."</string>
+
+    <!-- Wallet: Transfer Code Fehlertext bei Generieren -->
+    <string name="wallet_transfer_code_generate_error_text">"Empruvai pli tard anc ina giada."</string>
+
+    <!-- Wallet: Transfer Code Fehlertext bei Generieren ohne Internet -->
+    <string name="wallet_transfer_code_generate_no_internet_error_text">"Per pudair crear in code da transfer, sto l'app esser online."</string>
+
+    <!-- Wallet: Accessibility Name für Refresh Button -->
+    <string name="accessibility_refresh_button">"Actualisar"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_delete_confirm_text">"Vulais Vus propi stizzar il transfer?"</string>
+    <string name="wallet_notification_transfer_title">"Transfer reussì"</string>
+    <string name="wallet_notification_transfer_text">"Il certificat COVID è arrivà"</string>
 </resources>

@@ -11,9 +11,10 @@
 package ch.admin.bag.covidcertificate.verifier.faq
 
 import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.faq.FaqFragment
+import ch.admin.bag.covidcertificate.verifier.BuildConfig
 import ch.admin.bag.covidcertificate.verifier.R
-import ch.admin.bag.covidcertificate.verifier.VerifierViewModel
 
 class VerifierFaqFragment : FaqFragment() {
 
@@ -21,14 +22,14 @@ class VerifierFaqFragment : FaqFragment() {
 		fun newInstance(): FaqFragment = VerifierFaqFragment()
 	}
 
-	private val verifierViewModel by activityViewModels<VerifierViewModel>()
+	private val configViewModel by activityViewModels<ConfigViewModel>()
 
 	override fun setupFaqProvider() {
 		toolbar.setTitle(R.string.verifier_support_header)
-		verifierViewModel.configLiveData.observe(viewLifecycleOwner, { config ->
+		configViewModel.configLiveData.observe(viewLifecycleOwner, { config ->
 			val languageKey = getString(R.string.language_key)
 			setupFaqList(config.generateFaqItems(languageKey))
 		})
-		verifierViewModel.loadConfig()
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
 	}
 }

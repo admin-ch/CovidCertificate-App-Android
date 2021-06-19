@@ -335,10 +335,14 @@ die App?"</string>
     <string name="unknown_error">"Ein unbekannter Fehler ist aufgetreten."</string>
 
     <!-- Verifier: Die Gültigkeit des Zertifikat ist abgelaufen -->
-    <string name="verifier_verifiy_error_expired">"Entspricht nicht den Gültigkeitskriterien der Schweiz: Die Gültigkeit des Zertifikat ist abgelaufen."</string>
+    <string name="verifier_verifiy_error_expired">"Entspricht nicht den Gültigkeitskriterien der Schweiz.
+
+Die Gültigkeit des Zertifikat ist abgelaufen."</string>
 
     <!-- Verifier: Zertifikat ist erst gültig ab {DATE} -->
-    <string name="verifier_verifiy_error_notyetvalid">"Entspricht nicht den Gültigkeitskriterien der Schweiz: Das Zertifikat ist noch nicht gültig."</string>
+    <string name="verifier_verifiy_error_notyetvalid">"Entspricht nicht den Gültigkeitskriterien der Schweiz.
+
+Das Zertifikat ist noch nicht gültig."</string>
 
     <!-- Verifier: Ein Netzwerkfehler ist aufgetreten. -->
     <string name="verifier_retry_network_error">"Ein Netzwerkfehler ist aufgetreten."</string>
@@ -402,8 +406,6 @@ Schweiz"</string>
     <string name="wallet_certificate_impfstoff_holder">"Hersteller"</string>
     <string name="wallet_certificate_vaccination_date_title">"Impfdatum"</string>
     <string name="wallet_certificate_vaccination_country_title">"Land der Impfung"</string>
-
-    <!-- Prüfen mit PDF Translation -->
     <string name="wallet_certificate_vaccination_issuer_title">"Herausgeber"</string>
     <string name="covid_certificate_recovery_title">"Genesung"</string>
     <string name="wallet_certificate_recovery_first_positiv_result">"Datum des ersten positiven Resultats"</string>
@@ -511,9 +513,9 @@ Nutzungsbedingungen"</string>
     <!-- Wallet: Hinweis im Zertifikat Detail -->
     <string name="wallet_certificate_detail_note">"Dieses Zertifikat ist kein Reisedokument. 
 
-Die wissenschaftlichen Erkenntnisse über COVID-19-Impfungen und ‑Tests sowie über die Genesung von einer COVID-19-Infektion entwickeln sich ständig weiter, auch im Hinblick auf neue besorgniserregende Virusvarianten. 
+Die wissenschaftlichen Erkenntnisse über Covid-19-Impfungen und -Tests sowie über die Genesung von einer Covid-19-Infektion entwickeln sich ständig weiter, auch im Hinblick auf neue besorgniserregende Virusvarianten. 
 
-Bitte informieren Sie sich vor der Reise über die am Zielort geltenden Gesundheitsmaßnahmen und damit verbundenen Beschränkungen."</string>
+Bitte informieren Sie sich vor der Reise über die am Zielort geltenden Gesundheitsmassnahmen und damit verbundenen Beschränkungen."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-check-app.html"</string>
 
@@ -629,7 +631,7 @@ Bitte informieren Sie sich vor der Reise über die am Zielort geltenden Gesundhe
     <string name="wallet_transfer_code_next_steps1">"Übergeben Sie den Code bei der Testentnahme der Apotheke, dem Testcenter oder der Ärztin / dem Arzt."</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 2 -->
-    <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate zB. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
+    <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate z. B. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
 
     <!-- Wallet: Transfer Code Fertig Button -->
     <string name="wallet_transfer_code_done_button">"Fertig"</string>
@@ -725,4 +727,58 @@ ungültig"</string>
 
     <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link_title">"Weitere Informationen"</string>
+
+    <!-- Buttontitel im Screen, wo ein Code erstellt werden kann -->
+    <string name="wallet_transfer_code_create_code_button">"Code erstellen"</string>
+
+    <!-- Wallet: Transfer Code Ablauf in 1 Tag (fetter Teil) -->
+    <string name="wallet_transfer_code_expire_singular_bold">"1 Tag"</string>
+
+    <!-- Wallet: Transfer Code: Läuft in {DAYS} Tagen ab (fetter Teil) -->
+    <string name="wallet_transfer_code_expire_plural_bold">"{DAYS} Tage"</string>
+
+    <!-- Infotext bei erfolgreicher Prüfung (Blacklist) -->
+    <string name="verifier_verify_success_info_for_blacklist">"Nicht widerrufen"</string>
+
+    <!-- Infotext bei erfolgreicher Prüfung (Zertifikat) -->
+    <string name="verifier_verify_success_info_for_certificate_valid">"Signatur gültig"</string>
+
+    <!-- Teil der Fehlermeldung bei noch nicht/nicht mehr gültigem Zertifikat, der Bold sein sollte (ref. verifier_verifiy_error_expired und _notyetvalid) -->
+    <string name="verifier_verify_error_validity_range_bold">"Entspricht nicht den Gültigkeitskriterien der Schweiz."</string>
+
+    <!-- Wallet: Transfer Code Fehler Titel -->
+    <string name="wallet_transfer_code_error_title">"Transfer-Code konnte nicht erstellt werden"</string>
+
+    <!-- Wallet: Erstellen Fehler Titel -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_no_internet_title">"Keine Verbindung zum Internet"</string>
+
+    <!-- Wallet: Erstellen anderer Fehler Titel -->
+    <string name="wallet_transfer_code_generate_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
+
+    <!-- Wallet: Aktualisierung Transfer Code Fehler Titel -->
+    <string name="wallet_transfer_code_update_error_title">"Aktualisierung zur Zeit nicht möglich"</string>
+
+    <!-- Wallet: Transfer Code Update Fehler Text -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_update_no_internet_error_text">"Um den Transfer empfangen zu können, muss die App online sein."</string>
+
+    <!-- Wallet Transfer Code Update Fehler Text -->
+    <string name="wallet_transfer_code_update_general_error_text">"Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut."</string>
+
+    <!-- Wallet: Transfer Code Fehlertext bei Generieren -->
+    <string name="wallet_transfer_code_generate_error_text">"Versuchen Sie es später erneut."</string>
+
+    <!-- Wallet: Transfer Code Fehlertext bei Generieren ohne Internet -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_generate_no_internet_error_text">"Um einen Transfer-Code erstellen zu können, muss die App online sein."</string>
+
+    <!-- Wallet: Accessibility Name für Refresh Button -->
+    <!-- Fuzzy -->
+    <string name="accessibility_refresh_button">"Aktualisieren"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_delete_confirm_text">"Wollen Sie den Transfer wirklich löschen?"</string>
+    <string name="wallet_notification_transfer_title">"Transfer erfolgreich"</string>
+    <string name="wallet_notification_transfer_text">"Das Covid-Zertifikat ist eingetroffen"</string>
 </resources>

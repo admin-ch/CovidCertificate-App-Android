@@ -124,11 +124,35 @@ sealed class WalletDataListItem {
 		}
 	}
 
-	// TODO This also needs a state and not just the model
 	data class TransferCodeItem(val transferCode: TransferCodeModel) : WalletDataListItem() {
 		fun bindView(itemView: View, onTransferCodeClickListener: ((TransferCodeModel) -> Unit)? = null) {
 			val binding = ItemTransferCodeListBinding.bind(itemView)
-			binding.itemTransferCodeListCode.text = transferCode.code
+
+			when {
+				transferCode.isFailed() -> {
+					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_transfer_code_list_failed)
+					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_expired)
+					binding.itemTransferCodeListInfo.setText(R.string.wallet_transfer_code_old_code)
+					binding.itemTransferCodeListInfo.setTextColor(ContextCompat.getColor(itemView.context, R.color.red))
+					binding.itemTransferCodeListInfo.isVisible = true
+					binding.itemTransferCodeListCode.isVisible = false
+				}
+				transferCode.isExpired() -> {
+					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_transfer_code_list_valid)
+					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_waiting)
+					binding.itemTransferCodeListInfo.setText(R.string.wallet_transfer_code_old_code)
+					binding.itemTransferCodeListInfo.setTextColor(ContextCompat.getColor(itemView.context, R.color.blue))
+					binding.itemTransferCodeListInfo.isVisible = true
+					binding.itemTransferCodeListCode.isVisible = false
+				}
+				else -> {
+					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_transfer_code_list_valid)
+					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_waiting)
+					binding.itemTransferCodeListCode.text = transferCode.code
+					binding.itemTransferCodeListInfo.isVisible = false
+					binding.itemTransferCodeListCode.isVisible = true
+				}
+			}
 
 			binding.root.setOnClickListener {
 				onTransferCodeClickListener?.invoke(transferCode)
