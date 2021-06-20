@@ -17,7 +17,7 @@ import retrofit2.http.POST
 
 interface DeliveryService {
 
-	@Headers("Accept: application/json+jws")
+	@Headers("Accept: application/json")
 	@POST("covidcert/register")
 	suspend fun register(@Body deliveryRegistration: DeliveryRegistration): Response<Unit>
 
@@ -25,7 +25,7 @@ interface DeliveryService {
 	@POST("covidcert")
 	suspend fun get(@Body requestDeliveryPayload: RequestDeliveryPayload): Response<CovidCertDelivery>
 
-	@Headers("Accept: application/json+jws")
+	@Headers("Accept: application/json")
 	@POST("covidcert/complete")
 	suspend fun complete(@Body requestDeliveryPayload: RequestDeliveryPayload): Response<Unit>
 }

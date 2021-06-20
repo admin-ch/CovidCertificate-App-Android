@@ -90,9 +90,10 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 		if (covidCertDelivery.covidCerts.isEmpty()) {
 			return null
 		}
+		// TODO Handle more than the first certificate
 		val encryptedHcert = covidCertDelivery.covidCerts.first().encryptedHcert
-		val decryptedHcert = TransferCodeCrypto.decryptDeliveredHealthCertificate(keyPair, encryptedHcert)
-		return decryptedHcert
+		// TODO Handle PDF
+		return TransferCodeCrypto.decryptDeliveredHealthCertificate(keyPair, encryptedHcert)
 	}
 
 	suspend fun complete(transferCode: String, keyPair: KeyPair): Boolean {
@@ -100,7 +101,7 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 		val signature = TransferCodeCrypto.sign(keyPair, signaturePayload) ?: return false
 		val requestDeliveryPayload = RequestDeliveryPayload(transferCode, signaturePayload, signature)
 
-		val response = deliveryService.get(requestDeliveryPayload)
+		val response = deliveryService.complete(requestDeliveryPayload)
 		return response.isSuccessful
 	}
 

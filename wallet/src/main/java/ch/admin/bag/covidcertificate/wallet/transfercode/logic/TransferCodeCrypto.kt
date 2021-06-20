@@ -44,6 +44,7 @@ object TransferCodeCrypto {
 				setAlgorithmParameterSpec(RSAKeyGenParameterSpec(2048, RSAKeyGenParameterSpec.F4))
 				setDigests(KeyProperties.DIGEST_SHA256, KeyProperties.DIGEST_SHA1)
 				setEncryptionPaddings(KeyProperties.ENCRYPTION_PADDING_RSA_OAEP)
+				setSignaturePaddings(KeyProperties.SIGNATURE_PADDING_RSA_PSS)
 
 				// Encourage storing the key in strongbox (the TPM)
 				val hasStrongBox = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {

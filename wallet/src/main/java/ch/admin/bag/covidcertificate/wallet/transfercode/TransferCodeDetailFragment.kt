@@ -10,12 +10,15 @@
 
 package ch.admin.bag.covidcertificate.wallet.transfercode
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AlertDialog
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
@@ -25,8 +28,11 @@ import ch.admin.bag.covidcertificate.common.faq.model.Faq
 import ch.admin.bag.covidcertificate.common.faq.model.Header
 import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
 import ch.admin.bag.covidcertificate.common.faq.model.Question
+import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.views.rotate
+import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+import ch.admin.bag.covidcertificate.eval.utils.prettyPrint
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -38,6 +44,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 
 	companion object {
 		private const val ARG_TRANSFER_CODE = "ARG_TRANSFER_CODE"
+		private const val DATE_REPLACEMENT_STRING = "{DATE}"
 
 		fun newInstance(transferCode: TransferCodeModel) = TransferCodeDetailFragment().apply {
 			arguments = bundleOf(ARG_TRANSFER_CODE to transferCode)
@@ -81,6 +88,8 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				showTransferCodeFaqItems(it)
 			}
 		}
+
+		transferCodeViewModel.downloadCertificateForTransferCode(transferCode)
 	}
 
 	override fun onDestroyView() {
@@ -92,23 +101,36 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 		when {
 			transferCode.isFailed() -> {
 				binding.transferCodeDetailIllu.setImageResource(R.drawable.illu_transfer_code_failed)
-				binding.transferCodeDetailTitle.text = requireContext().getString(R.string.wallet_transfer_code_state_expired)
+				binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_expired)
 				binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(true))
+				binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.redish))
+				binding.transferCodeRefreshButton.isVisible = false
+				binding.transferCodeLastUpdate.setText(R.string.wallet_transfer_code_state_no_certificate)
 			}
 			transferCode.isExpired() -> {
-				binding.transferCodeDetailTitle.text = requireContext().getString(R.string.wallet_transfer_code_state_waiting)
+				binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_waiting)
 				binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(false))
+				binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blueish))
+				binding.transferCodeRefreshButton.isVisible = true
+				val lastUpdated = transferCode.lastUpdatedTImestamp.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
+				binding.transferCodeLastUpdate.text = requireContext().getString(R.string.wallet_transfer_code_state_updated)
+					.replace(DATE_REPLACEMENT_STRING, lastUpdated).makeSubStringBold(lastUpdated)
 			}
 			else -> {
-				binding.transferCodeDetailTitle.text = requireContext().getString(R.string.wallet_transfer_code_state_waiting)
+				binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_waiting)
 				binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(false))
+				binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blueish))
+				binding.transferCodeRefreshButton.isVisible = true
+				val lastUpdated = transferCode.lastUpdatedTImestamp.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
+				binding.transferCodeLastUpdate.text = requireContext().getString(R.string.wallet_transfer_code_state_updated)
+					.replace(DATE_REPLACEMENT_STRING, lastUpdated).makeSubStringBold(lastUpdated)
 			}
 		}
 	}
 
 	private fun onRefreshButtonClicked() {
 		binding.transferCodeRefreshButton.rotate(360f, 1000L, 0f)
-		// TODO Call backend to check if certificate has arrived yet
+		transferCodeViewModel.downloadCertificateForTransferCode(transferCode)
 	}
 
 	private fun onDeleteButtonClicked() {
