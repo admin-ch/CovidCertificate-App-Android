@@ -132,6 +132,10 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 		walletDataStorage.saveWalletDataItem(item)
 	}
 
+	fun updateTransferCodeLastUpdated(transferCode: TransferCodeModel): TransferCodeModel {
+		return walletDataStorage.updateTransferCodeLastUpdated(transferCode)
+	}
+
 	fun moveWalletDataItem(from: Int, to: Int) {
 		walletDataStorage.changeWalletDataItemPosition(from, to)
 	}

@@ -22,6 +22,7 @@ import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import java.io.IOException
 import java.security.GeneralSecurityException
+import java.time.Instant
 
 class WalletDataSecureStorage private constructor(context: Context) {
 
@@ -53,6 +54,19 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		return getWalletData().filterIsInstance<WalletDataItem.CertificateWalletData>()
 			.map { it.qrCodeData }
 			.contains(certificateQrCodeData)
+	}
+
+	fun updateTransferCodeLastUpdated(transferCode: TransferCodeModel): TransferCodeModel {
+		val walletData = getWalletData().toMutableList()
+		val index = walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode == transferCode }
+		if (index >= 0) {
+			val updatedTransferCode = transferCode.copy(lastUpdatedTImestamp = Instant.now())
+			walletData.removeAt(index)
+			walletData.add(index, WalletDataItem.TransferCodeWalletData(updatedTransferCode))
+			updateWalletData(walletData)
+			return updatedTransferCode
+		}
+		return transferCode
 	}
 
 	fun deleteCertificate(certificateQrCodeData: String) {
