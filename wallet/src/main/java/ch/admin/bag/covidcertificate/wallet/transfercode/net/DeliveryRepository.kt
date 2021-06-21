@@ -20,6 +20,7 @@ import ch.admin.bag.covidcertificate.eval.net.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.eval.utils.toBase64
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.ConvertedCertificate
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -77,23 +78,29 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 		return response.isSuccessful
 	}
 
-	suspend fun download(transferCode: String, keyPair: KeyPair): String? {
+	suspend fun download(transferCode: String, keyPair: KeyPair): List<ConvertedCertificate> {
 		val signaturePayload = TransferCodeCrypto.buildMessage("get", transferCode)
-		val signature = TransferCodeCrypto.sign(keyPair, signaturePayload) ?: return null
+		val signature = TransferCodeCrypto.sign(keyPair, signaturePayload) ?: return emptyList()
 		val requestDeliveryPayload = RequestDeliveryPayload(transferCode, signaturePayload, signature)
 
 		val response = deliveryService.get(requestDeliveryPayload)
 		if (!response.isSuccessful) {
-			return null
+			return emptyList()
 		}
-		val covidCertDelivery = response.body() ?: return null
+		val covidCertDelivery = response.body() ?: return emptyList()
 		if (covidCertDelivery.covidCerts.isEmpty()) {
-			return null
+			return emptyList()
 		}
-		// TODO Handle more than the first certificate
-		val encryptedHcert = covidCertDelivery.covidCerts.first().encryptedHcert
-		// TODO Handle PDF
-		return TransferCodeCrypto.decryptDeliveredHealthCertificate(keyPair, encryptedHcert)
+
+		return covidCertDelivery.covidCerts.mapNotNull {
+			val hcert = TransferCodeCrypto.decrypt(keyPair, it.encryptedHcert)
+			val pdf = TransferCodeCrypto.decrypt(keyPair, it.encryptedPdf)
+			if (hcert != null && pdf != null) {
+				ConvertedCertificate(hcert, pdf)
+			} else {
+				null
+			}
+		}
 	}
 
 	suspend fun complete(transferCode: String, keyPair: KeyPair): Boolean {

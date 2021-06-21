@@ -23,6 +23,7 @@ import ch.admin.bag.covidcertificate.eval.data.state.Error
 import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.utils.NetworkUtil
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
@@ -56,19 +57,26 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 
 			if (keyPair != null) {
 				try {
-					val certificateQrCodeData = deliveryRepository.download(transferCode.code, keyPair)
+					val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
 
-					if (certificateQrCodeData != null) {
-						val decodeState = CertificateDecoder.decode(certificateQrCodeData)
+					if (decryptedCertificates.isNotEmpty()) {
+						decryptedCertificates.forEachIndexed { index, convertedCertificate ->
+							val qrCodeData = convertedCertificate.qrCodeData
+							if (index == 0) {
+								val decodeState = CertificateDecoder.decode(qrCodeData)
 
-						if (decodeState is DecodeState.SUCCESS) {
-							walletDataStorage.replaceTransferCodeWithCertificate(transferCode, certificateQrCodeData)
+								if (decodeState is DecodeState.SUCCESS) {
+									walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData)
+									conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(decodeState.dccHolder))
+								} else {
+									// The certificate returned from the server could not be decoded
+									conversionStateMutableLiveData.postValue(TransferCodeConversionState.NOT_CONVERTED)
+								}
+							} else {
+								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData))
+							}
+							// TODO Store PDF
 							deleteTransferCodeOnServer(transferCode, keyPair)
-
-							conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(decodeState.dccHolder))
-						} else {
-							// The certificate returned from the server could not be decoded
-							conversionStateMutableLiveData.postValue(TransferCodeConversionState.NOT_CONVERTED)
 						}
 					} else {
 						// The server returned no certificate

@@ -78,7 +78,7 @@ object TransferCodeCrypto {
 		return KeyPair(entry.certificate.publicKey, entry.privateKey)
 	}
 
-	fun decryptDeliveredHealthCertificate(keyPair: KeyPair, ciphertextBase64: String): String? {
+	fun decrypt(keyPair: KeyPair, ciphertextBase64: String): String? {
 		/*
 		 * This is somewhat like a KEM:
 		 * ciphertext = RSA-OAEP( aesIV || aesKey ) || AES-GCM(healthcert)
