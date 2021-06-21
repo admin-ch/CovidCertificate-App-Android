@@ -17,14 +17,22 @@ object Luhn {
 	private val N = ALPHABET.size
 	internal const val TRANSFER_CODE_LEN = 9
 
+	/**
+	* Computes the check character for the given transfer code.
+	*
+	* If the code is of wrong format then a generic char is returned.
+	*/
 	internal fun computeCheckCharacter(code: CharArray): Char {
 		val reversed = code.reversedArray()
 		var sum = 0
 		var factor = 2
 
 		for (char in reversed) {
-			// Assumption: code contains only characters from the alphabet
-			val toAdd = factor * ALPHABET.indexOf(char)
+			val idx: Int = ALPHABET.indexOf(char)
+			if (idx < 0) {
+				return '0'
+			}
+			val toAdd = factor * idx
 
 			sum += (toAdd / N) + (toAdd % N)
 			factor = if (factor == 1) 2 else 1

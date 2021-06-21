@@ -1,4 +1,4 @@
-package ch.admin.bag.covidcertificate.wallet.inappdelivery
+package ch.admin.bag.covidcertificate.wallet.transfercode
 
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn.TRANSFER_CODE_LEN
@@ -52,13 +52,13 @@ class LuhnTest(
 	}
 
 	@Test
-	fun computeCheckCharacter() {
+	fun testComputeCheckCharacter() {
 		val checkChar = Luhn.computeCheckCharacter(code)
 		assertEquals(expectedCheckChar, checkChar)
 	}
 
 	@Test
-	fun generateNewTransferCode() {
+	fun testGenerateNewTransferCode() {
 		for (i in 0 until 5) {
 			val code = Luhn.generateNewTransferCode()
 			val prefix = code.substring(0, TRANSFER_CODE_LEN - 1).toCharArray()
