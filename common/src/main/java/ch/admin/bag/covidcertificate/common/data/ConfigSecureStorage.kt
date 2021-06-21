@@ -11,20 +11,14 @@
 package ch.admin.bag.covidcertificate.common.data
 
 import android.content.Context
-import android.content.SharedPreferences
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKey
-import androidx.security.crypto.MasterKeys
-import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.eval.utils.EncryptedSharedPreferencesUtil
+import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import com.squareup.moshi.Moshi
-import java.io.IOException
-import java.security.GeneralSecurityException
 
 class ConfigSecureStorage private constructor(context: Context) {
 
 	companion object : SingletonHolder<ConfigSecureStorage, Context>(::ConfigSecureStorage) {
-
 		private const val PREFERENCES = "ConfigSecureStorage"
 
 		private const val KEY_CONFIG = "ConfigKey"
@@ -36,43 +30,7 @@ class ConfigSecureStorage private constructor(context: Context) {
 		private val configModelAdapter = moshi.adapter(ConfigModel::class.java)
 	}
 
-	private val prefs: SharedPreferences
-
-	init {
-		prefs = initializeSharedPreferences(context)
-	}
-
-	@Synchronized
-	private fun initializeSharedPreferences(context: Context): SharedPreferences {
-		return try {
-			createEncryptedSharedPreferences(context)
-		} catch (e: GeneralSecurityException) {
-			throw RuntimeException(e)
-		} catch (e: IOException) {
-			throw RuntimeException(e)
-		}
-	}
-
-	/**
-	 * Create or obtain an encrypted SharedPreferences instance. Note that this method is synchronized because the AndroidX
-	 * Security
-	 * library is not thread-safe.
-	 * @see [https://developer.android.com/topic/security/data](https://developer.android.com/topic/security/data)
-	 */
-	@Synchronized
-	@Throws(GeneralSecurityException::class, IOException::class)
-	private fun createEncryptedSharedPreferences(context: Context): SharedPreferences {
-		val masterKey = MasterKey.Builder(context)
-			.setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
-			.build()
-		return EncryptedSharedPreferences.create(
-			context,
-			PREFERENCES,
-			masterKey,
-			EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-			EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-		)
-	}
+	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, PREFERENCES)
 
 	fun updateConfigData(config: ConfigModel, timestamp: Long, appVersion: String) {
 		val editor = prefs.edit()
