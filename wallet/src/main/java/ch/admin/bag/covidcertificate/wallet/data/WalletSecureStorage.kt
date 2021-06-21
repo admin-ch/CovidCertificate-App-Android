@@ -13,6 +13,7 @@ package ch.admin.bag.covidcertificate.wallet.data
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
 import androidx.security.crypto.MasterKeys
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import java.io.IOException
@@ -52,12 +53,16 @@ class WalletSecureStorage private constructor(context: Context) {
 	@Synchronized
 	@Throws(GeneralSecurityException::class, IOException::class)
 	private fun createEncryptedSharedPreferences(context: Context): SharedPreferences {
-		val masterKeys = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-		return EncryptedSharedPreferences
-			.create(
-				PREFERENCES, masterKeys, context, EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-				EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-			)
+		val masterKey = MasterKey.Builder(context)
+			.setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+			.build()
+		return EncryptedSharedPreferences.create(
+			context,
+			PREFERENCES,
+			masterKey,
+			EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+			EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+		)
 	}
 
 
