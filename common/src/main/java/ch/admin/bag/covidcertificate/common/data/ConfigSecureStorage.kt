@@ -13,6 +13,7 @@ package ch.admin.bag.covidcertificate.common.data
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
+import androidx.security.crypto.MasterKey
 import androidx.security.crypto.MasterKeys
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
@@ -61,12 +62,16 @@ class ConfigSecureStorage private constructor(context: Context) {
 	@Synchronized
 	@Throws(GeneralSecurityException::class, IOException::class)
 	private fun createEncryptedSharedPreferences(context: Context): SharedPreferences {
-		val masterKeys = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-		return EncryptedSharedPreferences
-			.create(
-				PREFERENCES, masterKeys, context, EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-				EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-			)
+		val masterKey = MasterKey.Builder(context)
+			.setKeyScheme(MasterKey.KeyScheme.AES256_GCM)
+			.build()
+		return EncryptedSharedPreferences.create(
+			context,
+			PREFERENCES,
+			masterKey,
+			EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+			EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
+		)
 	}
 
 	fun updateConfigData(config: ConfigModel, timestamp: Long, appVersion: String) {
@@ -89,5 +94,5 @@ class ConfigSecureStorage private constructor(context: Context) {
 
 	fun setLastShownInfoBoxId(infoBoxId: Long) = prefs.edit().putLong(KEY_CONFIG_SHOWN_INFO_BOX_ID, infoBoxId).apply()
 
-	fun getLastShownInfoBoxId() : Long = prefs.getLong(KEY_CONFIG_SHOWN_INFO_BOX_ID, 0L)
+	fun getLastShownInfoBoxId(): Long = prefs.getLong(KEY_CONFIG_SHOWN_INFO_BOX_ID, 0L)
 }
