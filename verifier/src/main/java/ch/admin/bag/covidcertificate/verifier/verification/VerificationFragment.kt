@@ -67,7 +67,7 @@ class VerificationFragment : Fragment() {
 		override fun handleOnBackPressed() {
 			isClosedByUser = true
 			parentFragmentManager.popBackStack()
-			isEnabled = false
+			remove()
 		}
 	}
 
@@ -102,7 +102,7 @@ class VerificationFragment : Fragment() {
 
 		binding.verificationFooterButton.setOnClickListener {
 			isClosedByUser = true
-			onBackPressedCallback.isEnabled = false
+			onBackPressedCallback.remove()
 			parentFragmentManager.popBackStack()
 		}
 
@@ -120,7 +120,7 @@ class VerificationFragment : Fragment() {
 		// Pop the entire backstack back to the home screen when the verification fragment is put into the background, unless
 		// it was closed by the user (e.g. with the back or OK button)
 		if (!isClosedByUser) {
-			onBackPressedCallback.isEnabled = false
+			onBackPressedCallback.remove()
 			parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 		}
 	}
