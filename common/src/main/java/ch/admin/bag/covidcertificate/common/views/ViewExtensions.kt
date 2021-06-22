@@ -63,6 +63,19 @@ fun View.hideAnimated(
 		})
 }
 
+fun View.rotate(
+	toDegrees: Float,
+	duration: Long = resources.getInteger(android.R.integer.config_shortAnimTime).toLong()
+) {
+	animation?.cancel()
+
+	animate()
+		.setDuration(duration)
+		.rotation(toDegrees)
+		.setInterpolator(DecelerateInterpolator())
+		.setListener(null)
+}
+
 fun List<View>.animateBackgroundTintColor(
 	@ColorInt targetColor: Int,
 	duration: Long = get(0).resources.getInteger(android.R.integer.config_shortAnimTime).toLong()

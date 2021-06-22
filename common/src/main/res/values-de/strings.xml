@@ -335,10 +335,14 @@ die App?"</string>
     <string name="unknown_error">"Ein unbekannter Fehler ist aufgetreten."</string>
 
     <!-- Verifier: Die Gültigkeit des Zertifikat ist abgelaufen -->
-    <string name="verifier_verifiy_error_expired">"Entspricht nicht den Gültigkeitskriterien der Schweiz: Die Gültigkeit des Zertifikat ist abgelaufen."</string>
+    <string name="verifier_verifiy_error_expired">"Entspricht nicht den Gültigkeitskriterien der Schweiz.
+
+Die Gültigkeit des Zertifikat ist abgelaufen."</string>
 
     <!-- Verifier: Zertifikat ist erst gültig ab {DATE} -->
-    <string name="verifier_verifiy_error_notyetvalid">"Entspricht nicht den Gültigkeitskriterien der Schweiz: Das Zertifikat ist noch nicht gültig."</string>
+    <string name="verifier_verifiy_error_notyetvalid">"Entspricht nicht den Gültigkeitskriterien der Schweiz.
+
+Das Zertifikat ist noch nicht gültig."</string>
 
     <!-- Verifier: Ein Netzwerkfehler ist aufgetreten. -->
     <string name="verifier_retry_network_error">"Ein Netzwerkfehler ist aufgetreten."</string>
@@ -728,4 +732,50 @@ ungültig"</string>
 
     <!-- Buttontitel im Screen, wo ein Code erstellt werden kann -->
     <string name="wallet_transfer_code_create_code_button">"Code erstellen"</string>
+
+    <!-- Wallet: Transfer Code Ablauf in 1 Tag (fetter Teil) -->
+    <string name="wallet_transfer_code_expire_singular_bold">"1 Tag"</string>
+
+    <!-- Wallet: Transfer Code: Läuft in {DAYS} Tagen ab (fetter Teil) -->
+    <string name="wallet_transfer_code_expire_plural_bold">"{DAYS} Tage"</string>
+
+    <!-- Infotext bei erfolgreicher Prüfung (Blacklist) -->
+    <string name="verifier_verify_success_info_for_blacklist">"Nicht wiederrufen"</string>
+
+    <!-- Infotext bei erfolgreicher Prüfung (Zertifikat) -->
+    <string name="verifier_verify_success_info_for_certificate_valid">"Signatur gültig"</string>
+
+    <!-- Teil der Fehlermeldung bei noch nicht/nicht mehr gültigem Zertifikat, der Bold sein sollte (ref. verifier_verifiy_error_expired und _notyetvalid) -->
+    <string name="verifier_verify_error_validity_range_bold">"Entspricht nicht den Gültigkeitskriterien der Schweiz."</string>
+
+    <!-- Wallet: Transfer Code Fehler Titel -->
+    <string name="wallet_transfer_code_error_title">"Transfer-Code konnte nicht erstellt werden"</string>
+
+    <!-- Wallet: Erstellen Fehler Titel -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_no_internet_title">"Keine Verbindung zum Internet"</string>
+
+    <!-- Wallet: Erstellen anderer Fehler Titel -->
+    <string name="wallet_transfer_code_generate_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
+
+    <!-- Wallet: Aktualisierung Transfer Code Fehler Titel -->
+    <string name="wallet_transfer_code_update_error_title">"Aktualisierung zur Zeit nicht möglich"</string>
+
+    <!-- Wallet: Transfer Code Update Fehler Text -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_update_no_internet_error_text">"Um den Transfer empfangen zu können, muss die App online sein."</string>
+
+    <!-- Wallet Transfer Code Update Fehler Text -->
+    <string name="wallet_transfer_code_update_general_error_text">"Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut."</string>
+
+    <!-- Wallet: Transfer Code Fehlertext bei Generieren -->
+    <string name="wallet_transfer_code_generate_error_text">"Versuchen Sie es später erneut."</string>
+
+    <!-- Wallet: Transfer Code Fehlertext bei Generieren ohne Internet -->
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_generate_no_internet_error_text">"Um einen Transfer-Code erstellen zu können, muss die App online sein."</string>
+
+    <!-- Wallet: Accessibility Name für Refresh Button -->
+    <!-- Fuzzy -->
+    <string name="accessibility_refresh_button">"Aktualisieren"</string>
 </resources>

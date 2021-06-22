@@ -16,6 +16,7 @@ import com.squareup.moshi.JsonClass
 data class FaqModel(
 	val faqTitle: String,
 	val faqSubTitle: String?,
+	val faqIntroSections: List<FaqIntroSection>?,
 	val faqIconAndroid: String?,
 	val faqEntries: List<FaqEntryModel>?
 )

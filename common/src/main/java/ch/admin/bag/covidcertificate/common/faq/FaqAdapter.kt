@@ -15,8 +15,8 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ch.admin.bag.covidcertificate.common.faq.model.Faq
 import ch.admin.bag.covidcertificate.common.faq.model.Header
+import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
 import ch.admin.bag.covidcertificate.common.faq.model.Question
-
 
 class FaqAdapter(val onItemClickListener: OnUrlClickListener? = null) : RecyclerView.Adapter<FaqViewHolder>() {
 
@@ -27,6 +27,7 @@ class FaqAdapter(val onItemClickListener: OnUrlClickListener? = null) : Recycler
 		return when (viewType) {
 			0 -> FaqViewHolder(inflater.inflate(HeaderItem.layoutResource, parent, false))
 			1 -> FaqViewHolder(inflater.inflate(QuestionItem.layoutResource, parent, false))
+			2 -> FaqViewHolder(inflater.inflate(IntroSectionItem.layoutResource, parent, false))
 			else -> throw IllegalStateException("Unknown viewType $viewType in FaqAdapter")
 		}
 	}
@@ -41,18 +42,21 @@ class FaqAdapter(val onItemClickListener: OnUrlClickListener? = null) : Recycler
 		return when (items[position]) {
 			is HeaderItem -> 0
 			is QuestionItem -> 1
+			is IntroSectionItem -> 2
 		}
 	}
 
 	fun setItems(items: List<Faq>) {
 		this.items.clear()
-		for (item in items) {
-			if (item is Header) {
-				this.items.add(HeaderItem(item))
-			} else if (item is Question) {
-				this.items.add(QuestionItem(item, onLinkClickListener = onItemClickListener))
+		val newItems = items.mapNotNull {
+			when (it) {
+				is Header -> HeaderItem(it)
+				is Question -> QuestionItem(it, onItemClickListener)
+				is IntroSection -> IntroSectionItem(it)
+				else -> null
 			}
 		}
+		this.items.addAll(newItems)
 		notifyDataSetChanged()
 	}
 

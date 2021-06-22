@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	app:applyWindowInsets="all">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			android:elevation="@dimen/toolbar_elevation"
+			app:navigationIcon="@drawable/ic_close_red"
+			app:title="@string/wallet_transfer_code_card_title"
+			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
+			app:titleTextColor="@color/grey" />
+
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<androidx.constraintlayout.widget.ConstraintLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content">
+
+				<ImageView
+					android:id="@+id/transfer_code_detail_illu"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_very_large"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toTopOf="parent"
+					tools:src="@drawable/illu_transfer_code_howto" />
+
+				<TextView
+					android:id="@+id/transfer_code_detail_title"
+					style="@style/CovidCertificate.Text.Bold.Title"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_very_large"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/transfer_code_detail_illu"
+					tools:text="@string/wallet_transfer_code_state_waiting" />
+
+				<ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeBubbleView
+					android:id="@+id/transfer_code_detail_bubble"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_very_large"
+					app:layout_constraintTop_toBottomOf="@+id/transfer_code_detail_title" />
+
+				<androidx.constraintlayout.widget.ConstraintLayout
+					android:id="@+id/transfer_code_detail_refresh_layout"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_very_large"
+					android:layout_marginTop="@dimen/spacing_very_small"
+					android:background="@drawable/bg_certificate_bubble"
+					android:backgroundTint="@color/blueish"
+					android:clickable="true"
+					android:focusable="true"
+					app:layout_constraintTop_toBottomOf="@+id/transfer_code_detail_bubble">
+
+					<TextView
+						android:id="@+id/transfer_code_last_update"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="@dimen/spacing_medium_large"
+						android:layout_marginVertical="@dimen/spacing_medium_small"
+						android:text="@string/wallet_transfer_code_state_updated"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<ImageButton
+						android:id="@+id/transfer_code_refresh_button"
+						style="@style/CovidCertificate.FloatingImageButton"
+						android:layout_width="@dimen/floating_button_small_height"
+						android:layout_height="@dimen/floating_button_small_height"
+						android:layout_marginHorizontal="@dimen/spacing_medium_large"
+						android:layout_marginVertical="@dimen/spacing_medium"
+						android:elevation="@dimen/floating_button_elevation"
+						android:src="@drawable/ic_load"
+						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+				</androidx.constraintlayout.widget.ConstraintLayout>
+
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/transfer_code_detail_faq_list"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_large"
+					android:layout_marginTop="@dimen/spacing_huger"
+					app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+					app:layout_constraintTop_toBottomOf="@+id/transfer_code_detail_refresh_layout"
+					tools:itemCount="3"
+					tools:listitem="@layout/item_faq_question" />
+
+				<Button
+					android:id="@+id/transfer_code_detail_delete_button"
+					style="@style/CovidCertificate.Button.Red"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginTop="@dimen/spacing_huger"
+					android:layout_marginBottom="@dimen/spacing_huge"
+					android:text="@string/delete_button"
+					app:layout_constraintBottom_toBottomOf="parent"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/transfer_code_detail_faq_list" />
+
+			</androidx.constraintlayout.widget.ConstraintLayout>
+		</androidx.core.widget.NestedScrollView>
+	</LinearLayout>
+</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>

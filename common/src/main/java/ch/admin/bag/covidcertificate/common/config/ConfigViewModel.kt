@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.verifier
+package ch.admin.bag.covidcertificate.common.config
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -20,16 +20,15 @@ import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.net.ConfigSpec
 import kotlinx.coroutines.launch
 
-class VerifierViewModel(application: Application) : AndroidViewModel(application) {
+class ConfigViewModel(application: Application) : AndroidViewModel(application) {
 
 	private val configMutableLiveData = MutableLiveData<ConfigModel>()
 	val configLiveData: LiveData<ConfigModel> = configMutableLiveData
 
-	fun loadConfig() {
-		val configRepository = ConfigRepository.getInstance(ConfigSpec(getApplication(),
-			BuildConfig.BASE_URL,
-			BuildConfig.VERSION_NAME,
-			BuildConfig.BUILD_TIME.toString()))
+	fun loadConfig(baseUrl: String, versionName: String, buildTime: String) {
+		val configSpec = ConfigSpec(getApplication(), baseUrl, versionName, buildTime)
+		val configRepository = ConfigRepository.getInstance(configSpec)
+
 		viewModelScope.launch {
 			configRepository.loadConfig(getApplication())?.let { config -> configMutableLiveData.postValue(config) }
 		}

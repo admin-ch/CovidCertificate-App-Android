@@ -14,7 +14,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
-import ch.admin.bag.covidcertificate.wallet.list.VerifiedCeritificateItem
 
 class DebugCertificatesListAdapter(
 	private val onShareClickListener: ((DccHolder) -> Unit),
