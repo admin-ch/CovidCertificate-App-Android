@@ -169,16 +169,16 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 					if (decryptedCertificates.isNotEmpty()) {
 						decryptedCertificates.forEachIndexed { index, convertedCertificate ->
 							val qrCodeData = convertedCertificate.qrCodeData
+							val pdfData = convertedCertificate.pdfData
 							if (index == 0) {
 								val decodeState = CertificateDecoder.decode(qrCodeData)
 
 								if (decodeState is DecodeState.SUCCESS) {
-									walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData)
+									walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
 								}
 							} else {
-								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData))
+								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
 							}
-							// TODO Store PDF
 							deliveryRepository.complete(transferCode.code, keyPair)
 						}
 						loadWalletData()

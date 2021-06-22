@@ -118,16 +118,16 @@ object TransferCodeCrypto {
 
 	fun sign(keyPair: KeyPair, message: String): String? {
 		val msg = message.encodeToByteArray()
-		try {
+		return try {
 			val signature = Signature.getInstance("SHA256withRSA/PSS").run {
 				initSign(keyPair.private)
 				update(msg)
 				sign()
 			}
-			return signature.toBase64()
+			signature.toBase64()
 		} catch (e: Throwable) {
 			e.printStackTrace()
-			return null
+			null
 		}
 	}
 

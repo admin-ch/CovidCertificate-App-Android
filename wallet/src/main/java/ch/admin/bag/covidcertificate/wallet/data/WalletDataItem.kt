@@ -15,7 +15,7 @@ import com.squareup.moshi.JsonClass
 
 sealed class WalletDataItem {
 	@JsonClass(generateAdapter = true)
-	data class CertificateWalletData(val qrCodeData: String) : WalletDataItem()
+	data class CertificateWalletData(val qrCodeData: String, val pdfData: String? = null) : WalletDataItem()
 
 	@JsonClass(generateAdapter = true)
 	data class TransferCodeWalletData(val transferCode: TransferCodeModel) : WalletDataItem()

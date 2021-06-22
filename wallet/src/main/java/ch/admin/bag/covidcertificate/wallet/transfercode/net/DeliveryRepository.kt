@@ -27,6 +27,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.security.KeyPair
+import java.security.KeyStore
 
 internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec) {
 
@@ -60,8 +61,6 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 			.build()
 			.create(DeliveryService::class.java)
 	}
-
-	// TODO proper error codes in return values --> see also HTTP codes that the backend provides
 
 	suspend fun register(transferCode: String, keyPair: KeyPair): Boolean {
 		val signaturePayload = TransferCodeCrypto.buildMessage("register", transferCode)

@@ -81,12 +81,12 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		updateWalletData(walletData)
 	}
 
-	fun replaceTransferCodeWithCertificate(transferCode: TransferCodeModel, certificateQrCodeData: String) {
+	fun replaceTransferCodeWithCertificate(transferCode: TransferCodeModel, certificateQrCodeData: String, pdfData: String? = null) {
 		val walletData = getWalletData().toMutableList()
 		val index = walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode == transferCode }
 		if (index >= 0) {
 			walletData.removeAt(index)
-			walletData.add(index, WalletDataItem.CertificateWalletData(certificateQrCodeData))
+			walletData.add(index, WalletDataItem.CertificateWalletData(certificateQrCodeData, pdfData))
 			updateWalletData(walletData)
 		}
 	}
