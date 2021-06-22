@@ -15,23 +15,23 @@ import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
-import android.util.DisplayMetrics
-import android.util.Log
 import android.util.Size
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
-import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
-import androidx.camera.core.*
+import androidx.camera.core.Camera
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
@@ -39,7 +39,6 @@ import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.data.state.Error
 import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
-import com.google.zxing.*
 import java.util.concurrent.Executor
 
 
@@ -48,6 +47,7 @@ abstract class QrScanFragment : Fragment() {
 	companion object {
 		val TAG = QrScanFragment::class.java.canonicalName
 
+		private const val STATE_IS_TORCH_ON = "STATE_IS_TORCH_ON"
 		private const val PERMISSION_REQUEST_CAMERA = 13
 		private const val MIN_ERROR_VISIBILITY = 1000L
 	}
@@ -78,7 +78,6 @@ abstract class QrScanFragment : Fragment() {
 	private var lastUIErrorUpdate = 0L
 
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
-	private val IS_TORCH_ON = "IS_TORCH_ON"
 	private var isTorchOn: Boolean = false
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,14 +87,12 @@ abstract class QrScanFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		isTorchOn = savedInstanceState?.getBoolean(IS_TORCH_ON, isTorchOn) ?: isTorchOn
+		isTorchOn = savedInstanceState?.getBoolean(STATE_IS_TORCH_ON, isTorchOn) ?: isTorchOn
 		toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 
 		// Wait for the views to be properly laid out
 		qrCodeScanner.post {
-
 			bindCameraUseCases()
-
 		}
 	}
 
@@ -106,13 +103,12 @@ abstract class QrScanFragment : Fragment() {
 		// Be careful to avoid popup loops, since our fragment is resumed whenever the user returns from the dialog!
 		checkCameraPermission()
 
-		setupFlashButtonStyle()
+		setFlashAndButtonStyle()
 	}
-
 
 	override fun onSaveInstanceState(outState: Bundle) {
 		super.onSaveInstanceState(outState)
-		outState.putBoolean(IS_TORCH_ON, isTorchOn)
+		outState.putBoolean(STATE_IS_TORCH_ON, isTorchOn)
 	}
 
 	abstract fun onDecodeSuccess(dccHolder: DccHolder)
@@ -127,10 +123,9 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	private fun bindCameraUseCases() {
-
 		val cameraSelector = CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
 		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-		cameraProviderFuture.addListener(Runnable {
+		cameraProviderFuture.addListener({
 			val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 			preview = Preview.Builder()
 				.setTargetResolution(Size(1280, 720))
@@ -157,6 +152,9 @@ abstract class QrScanFragment : Fragment() {
 								//do nothing
 							}
 							is DecodeCertificateState.SUCCESS -> {
+								// Once successfully decoded, clear the analyzer from stopping more frames being analyzed and possibly decoded successfully
+								imageAnalysis.clearAnalyzer()
+
 								val qrCodeData = decodeCertificateState.qrCode
 								qrCodeData?.let {
 									when (val decodeState = CertificateDecoder.decode(it)) {
@@ -175,11 +173,12 @@ abstract class QrScanFragment : Fragment() {
 					})
 
 				}
+
 			cameraProvider.unbindAll()
+
 			try {
-				camera = cameraProvider.bindToLifecycle(
-					this as LifecycleOwner, cameraSelector, preview, imageCapture, imageAnalyzer
-				)
+				camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
+				setupFlashButton()
 			} catch (e: Exception) {
 				e.printStackTrace()
 			}
@@ -206,7 +205,6 @@ abstract class QrScanFragment : Fragment() {
 		when (cameraPermissionState) {
 			CameraPermissionState.GRANTED -> {
 				errorView.isVisible = false
-				startCameraAndQrAnalyzer()
 			}
 			CameraPermissionState.REQUESTING -> {
 				errorView.isVisible = false
@@ -233,46 +231,27 @@ abstract class QrScanFragment : Fragment() {
 		}
 	}
 
-	private fun startCameraAndQrAnalyzer() {
-		setupFlashButton()
-	}
-
 	private fun setupFlashButton() {
-		/*barcodeScanner.setTorchListener(object : DecoratedBarcodeView.TorchListener {
-			override fun onTorchOn() {
-				this@QrScanFragment.isTorchOn = true
-				setupFlashButtonStyle()
-			}
+		val camera = camera ?: return
 
-			override fun onTorchOff() {
-				this@QrScanFragment.isTorchOn = false
-				setupFlashButtonStyle()
-			}
-
-		})
+		if (camera.cameraInfo.hasFlashUnit()) {
+			flashButton.isVisible = true
+			setFlashAndButtonStyle()
+		} else {
+			flashButton.isVisible = false
+		}
 
 		flashButton.setOnClickListener {
-			val isOn = flashButton.isSelected
-			if (isOn) {
-				barcodeScanner.setTorchOff()
-			} else {
-				barcodeScanner.setTorchOn()
-			}
-		}*/
+			isTorchOn = !flashButton.isSelected
+			setFlashAndButtonStyle()
+		}
 	}
 
-	private fun setupFlashButtonStyle() {
-		if (isTorchOn) {
-			flashButton.apply {
-				isSelected = true
-				setImageDrawable(ContextCompat.getDrawable(context, torchOnDrawable))
-			}
-		} else {
-			flashButton.apply {
-				isSelected = false
-				setImageDrawable(ContextCompat.getDrawable(context, torchOffDrawable))
-			}
-		}
+	private fun setFlashAndButtonStyle() {
+		camera?.cameraControl?.enableTorch(isTorchOn)
+		val drawableId = if (isTorchOn) torchOnDrawable else torchOffDrawable
+		flashButton.isSelected = isTorchOn
+		flashButton.setImageResource(drawableId)
 	}
 
 	private fun handleInvalidQRCodeExceptions(qrCodeData: String?, error: Error?) {
