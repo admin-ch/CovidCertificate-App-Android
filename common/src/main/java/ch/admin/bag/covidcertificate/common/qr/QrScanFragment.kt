@@ -123,23 +123,27 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	private fun bindCameraUseCases() {
+		val rotation = qrCodeScanner.display.rotation
 		val cameraSelector = CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
 		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 		cameraProviderFuture.addListener({
 			val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
 			preview = Preview.Builder()
-				.setTargetResolution(Size(1280, 720))
+				.setTargetResolution(Size(720, 1280))
+				.setTargetRotation(rotation)
 				.build()
 
 			preview?.setSurfaceProvider(qrCodeScanner.surfaceProvider)
 
 			imageCapture = ImageCapture.Builder()
 				.setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
-				.setTargetResolution(Size(1280, 720))
+				.setTargetResolution(Size(720, 1280))
+				.setTargetRotation(rotation)
 				.build()
 
 			imageAnalyzer = ImageAnalysis.Builder()
-				.setTargetResolution(Size(1280, 720))
+				.setTargetResolution(Size(720, 1280))
+				.setTargetRotation(rotation)
 				.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
 				.build()
 				.also { imageAnalysis ->
