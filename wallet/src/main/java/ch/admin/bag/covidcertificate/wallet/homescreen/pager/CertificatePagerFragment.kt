@@ -24,6 +24,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.util.makeBold
+import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
@@ -76,9 +77,10 @@ class CertificatePagerFragment : Fragment() {
 		val dateOfBirth = dccHolder.euDGC.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificatePageBirthdate.text = dateOfBirth
 
+		binding.certificatePageCard.setCutOutCardBackground()
 		setupStatusInfo()
 
-		binding.certificatePageMainGroup.setOnClickListener { certificatesViewModel.onQrCodeClicked(dccHolder) }
+		binding.certificatePageCard.setOnClickListener { certificatesViewModel.onQrCodeClicked(dccHolder) }
 	}
 
 	override fun onDestroyView() {

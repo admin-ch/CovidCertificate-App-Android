@@ -8,18 +8,91 @@
   ~ SPDX-License-Identifier: MPL-2.0
   -->
 
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
-	android:layout_height="match_parent"
-	xmlns:app="http://schemas.android.com/apk/res-auto">
+	android:layout_height="wrap_content"
+	android:clipChildren="false"
+	android:clipToPadding="false"
+	android:padding="@dimen/spacing_small"
+	tools:background="@color/greyish">
 
-	<TextView
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		app:layout_constraintTop_toTopOf="parent"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintBottom_toBottomOf="parent"
-		android:text="Transfer Code" />
+	<androidx.constraintlayout.widget.ConstraintLayout
+		android:id="@+id/transfer_code_page_card"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:clipChildren="false"
+		android:clipToPadding="false"
+		android:elevation="@dimen/certificates_elevation"
+		android:foreground="@drawable/ripple_rounded_rect"
+		tools:background="@color/white">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+		<TextView
+			android:id="@+id/transfer_code_page_title"
+			style="@style/CovidCertificate.Text.Bold.Lead.Grey"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="@dimen/spacing_huger"
+			android:layout_marginTop="@dimen/spacing_larger"
+			android:text="@string/wallet_transfer_code_card_title"
+			app:layout_constraintTop_toTopOf="parent" />
+
+		<ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeWaitingView
+			android:id="@+id/transfer_code_page_waiting_image"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="@dimen/spacing_huger"
+			android:layout_marginTop="@dimen/spacing_large"
+			android:visibility="gone"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/transfer_code_page_title"
+			tools:visibility="visible" />
+
+		<ImageView
+			android:id="@+id/transfer_code_page_image"
+			android:layout_width="0dp"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="@dimen/spacing_huger"
+			android:layout_marginTop="@dimen/spacing_very_large"
+			android:visibility="gone"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
+			app:layout_constraintTop_toBottomOf="@id/transfer_code_page_title"
+			tools:src="@drawable/illu_transfer_code_failed"
+			tools:visibility="gone" />
+
+		<androidx.constraintlayout.widget.Barrier
+			android:id="@+id/transfer_code_page_image_barrier"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			app:barrierDirection="bottom"
+			app:constraint_referenced_ids="transfer_code_page_waiting_image,transfer_code_page_image" />
+
+		<TextView
+			android:id="@+id/transfer_code_page_status_label"
+			style="@style/CovidCertificate.Text.Bold.Title"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/spacing_medium"
+			android:gravity="center"
+			android:maxLines="2"
+			android:minLines="2"
+			app:autoSizeMaxTextSize="@dimen/text_size_large"
+			app:autoSizeMinTextSize="@dimen/text_size_small"
+			app:autoSizeTextType="uniform"
+			app:layout_constraintBottom_toTopOf="@+id/transfer_code_page_bubble"
+			app:layout_constraintTop_toBottomOf="@+id/transfer_code_page_image_barrier"
+			tools:text="@string/wallet_transfer_code_state_waiting" />
+
+		<ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeBubbleView
+			android:id="@+id/transfer_code_page_bubble"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:layout_marginHorizontal="@dimen/spacing_medium"
+			android:layout_marginBottom="@dimen/spacing_medium"
+			app:layout_constraintBottom_toBottomOf="parent" />
+
+	</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

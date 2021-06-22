@@ -46,6 +46,8 @@
 	<dimen name="corner_radius_sheet">20dp</dimen>
 	<dimen name="corner_radius_sheet_inner">11dp</dimen>
 
+	<dimen name="card_cutout_radius">10dp</dimen>
+
 	<dimen name="pager_bullet_size">10dp</dimen>
 
 	<dimen name="icon_size_small">24dp</dimen>

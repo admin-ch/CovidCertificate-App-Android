@@ -406,8 +406,6 @@ Schweiz"</string>
     <string name="wallet_certificate_impfstoff_holder">"Hersteller"</string>
     <string name="wallet_certificate_vaccination_date_title">"Impfdatum"</string>
     <string name="wallet_certificate_vaccination_country_title">"Land der Impfung"</string>
-
-    <!-- Prüfen mit PDF Translation -->
     <string name="wallet_certificate_vaccination_issuer_title">"Herausgeber"</string>
     <string name="covid_certificate_recovery_title">"Genesung"</string>
     <string name="wallet_certificate_recovery_first_positiv_result">"Datum des ersten positiven Resultats"</string>
@@ -630,10 +628,10 @@ Bitte informieren Sie sich vor der Reise über die am Zielort geltenden Gesundhe
     <string name="wallet_transfer_code_next_steps">"Nächste Schritte"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 1 -->
-    <string name="wallet_transfer_code_next_steps1">"Notieren Sie den Code in das entsprechende Feld auf dem Anmeldeformular zum Covid-Test."</string>
+    <string name="wallet_transfer_code_next_steps1">"Übergeben Sie den Code bei der Testentnahme der Apotheke, dem Testcenter oder der Ärztin / dem Arzt."</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 2 -->
-    <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate zB. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
+    <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate z. B. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
 
     <!-- Wallet: Transfer Code Fertig Button -->
     <string name="wallet_transfer_code_done_button">"Fertig"</string>
@@ -740,7 +738,7 @@ ungültig"</string>
     <string name="wallet_transfer_code_expire_plural_bold">"{DAYS} Tage"</string>
 
     <!-- Infotext bei erfolgreicher Prüfung (Blacklist) -->
-    <string name="verifier_verify_success_info_for_blacklist">"Nicht wiederrufen"</string>
+    <string name="verifier_verify_success_info_for_blacklist">"Nicht widerrufen"</string>
 
     <!-- Infotext bei erfolgreicher Prüfung (Zertifikat) -->
     <string name="verifier_verify_success_info_for_certificate_valid">"Signatur gültig"</string>
@@ -778,4 +776,9 @@ ungültig"</string>
     <!-- Wallet: Accessibility Name für Refresh Button -->
     <!-- Fuzzy -->
     <string name="accessibility_refresh_button">"Aktualisieren"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_delete_confirm_text">"Wollen Sie den Transfer wirklich löschen?"</string>
+    <string name="wallet_notification_transfer_title">"Transfer erfolgreich"</string>
+    <string name="wallet_notification_transfer_text">"Das Covid-Zertifikat ist eingetroffen"</string>
 </resources>

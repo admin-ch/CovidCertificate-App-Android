@@ -264,7 +264,6 @@ l'app?"</string>
     <!-- Text 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_subtitle">"Con l'app COVID Certificate può salvare e mostrare i certificati COVID in modo semplice e sicuro sul Suo dispositivo mobile."</string>
 
-    <!-- Vergleichen mit FAQ -->
     <!-- Antwort 1 im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_answer1">"Può ricevere un certificato COVID in seguito alla completa vaccinazione COVID-19, all'avvenuta guarigione o a un risultato negativo al test. Il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie."</string>
 
@@ -386,9 +385,6 @@ firma non valida"</string>
     <string name="wallet_certificate_validity">"Validità in 
 Svizzera"</string>
 
-    <!-- Kontext:
-Validità in Svizzera
-fino al -->
     <!-- "Bis" Label im Zertifikats-Detail -->
     <string name="wallet_certificate_valid_until">"fino al"</string>
 
@@ -410,8 +406,6 @@ fino al -->
     <string name="wallet_certificate_impfstoff_holder">"Fabbricante"</string>
     <string name="wallet_certificate_vaccination_date_title">"Data di vaccinazione"</string>
     <string name="wallet_certificate_vaccination_country_title">"Paese della vaccinazione"</string>
-
-    <!-- Prüfen mit PDF Translation -->
     <string name="wallet_certificate_vaccination_issuer_title">"Emittente"</string>
     <string name="covid_certificate_recovery_title">"Guarigione"</string>
     <string name="wallet_certificate_recovery_first_positiv_result">"Data del primo risultato positivo"</string>
@@ -531,28 +525,28 @@ Prima di mettersi in viaggio, si informi sulle misure sanitarie e sulle relative
     <string name="wallet_faq_questions_answer_1_1">"Le persone guarite dalla COVID-19 possono richiedere il certificato COVID tramite un modulo online disponibile sul sito Internet del Cantone. Il certificato viene poi inviato per posta."</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
-    <string name="wallet_homescreen_what_to_do">"Nächsten Schritt wählen"</string>
+    <string name="wallet_homescreen_what_to_do">"Vai al passaggio successivo"</string>
 
     <!-- Wallet: Homescreen Titel Zertifikat hinzufügen -->
-    <string name="wallet_homescreen_add_title">"Zertifikat hinzufügen"</string>
+    <string name="wallet_homescreen_add_title">"Aggiungi certificato"</string>
 
     <!-- Wallet: Homescreen Zertifikat Description Text -->
-    <string name="wallet_homescreen_add_certificate_description">"Sie haben ein Covid-Zertifikat auf Papier oder als PDF und möchten es zur App hinzufügen."</string>
+    <string name="wallet_homescreen_add_certificate_description">"Possiedi un certificato COVID in formato cartaceo o in PDF e desideri aggiungerlo nell'app."</string>
 
     <!-- Wallet: Homescreen Transfer-Code erstellen -->
-    <string name="wallet_homescreen_add_transfer_code">"Transfer-Code erstellen"</string>
+    <string name="wallet_homescreen_add_transfer_code">"Crea codice di trasferimento"</string>
 
     <!-- Wallet: Transfer Codes Titel -->
-    <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
+    <string name="wallet_transfer_code_onboarding_title">"Codici di trasferimento"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes z. B. bei Covid-Tests angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Puoi fornire i codici di trasferimento per esempio quando fai i test COVID. Il tuo certificato COVID sarà poi trasmesso direttamente all'app."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
-    <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
+    <string name="wallet_transfer_code_onboarding_button">"Crea codice"</string>
 
     <!-- Wallet: Transfer Code Onboarding So funktioniert's -->
-    <string name="wallet_transfer_code_onboarding_howto">"So funktioniert's"</string>
+    <string name="wallet_transfer_code_onboarding_howto">"Ecco come funziona"</string>
 
     <!-- Wallet: Transfer Code: FAQ Titel -->
     <string name="wallet_transfer_code_faq_questions_title">"Covid-Zertifikate direkt in die App geliefert"</string>
@@ -604,50 +598,50 @@ Prima di mettersi in viaggio, si informi sulle misure sanitarie e sulle relative
     <string name="wallet_transfer_code_faq_works_answer_3">"Text"</string>
 
     <!-- Wallet: Transfer Code erstellt Titel -->
-    <string name="wallet_transfer_code_code_created_title">"Ihr Transfer-Code wurde erstellt"</string>
+    <string name="wallet_transfer_code_code_created_title">"Il tuo codice di trasferimento è stato creato"</string>
 
     <!-- Wallet: Transfer-Code -->
-    <string name="wallet_transfer_code_title">"Transfer-Code"</string>
+    <string name="wallet_transfer_code_title">"Codice di trasferimento"</string>
 
     <!-- Wallet: Transfer Code Erstelltm am {DATE} -->
-    <string name="wallet_transfer_code_createdat">"Erstellt am {DATE}"</string>
+    <string name="wallet_transfer_code_createdat">"Creato il {DATE}"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte -->
-    <string name="wallet_transfer_code_next_steps">"Nächste Schritte"</string>
+    <string name="wallet_transfer_code_next_steps">"Passaggi successivi"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 1 -->
-    <string name="wallet_transfer_code_next_steps1">"Notieren Sie den Code in das entsprechende Feld auf dem Anmeldeformular zum Covid-Test."</string>
+    <string name="wallet_transfer_code_next_steps1">"Al momento dell'esecuzione del test comunica il codice alla farmacia, al centro di test o al medico."</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 2 -->
-    <string name="wallet_transfer_code_next_steps2">"Falls Sie mehrere Zertifikate zB. von Familienangehörigen empfangen möchten, erstellen Sie für jedes Zertifikat einen neuen Code."</string>
+    <string name="wallet_transfer_code_next_steps2">"Al momento dell'esecuzione del test comunica il codice alla farmacia, al centro di test o al medico."</string>
 
     <!-- Wallet: Transfer Code Fertig Button -->
-    <string name="wallet_transfer_code_done_button">"Fertig"</string>
+    <string name="wallet_transfer_code_done_button">"Fatto"</string>
 
     <!-- Wallet: Transfer Code Card Titel -->
-    <string name="wallet_transfer_code_card_title">"Transfer"</string>
+    <string name="wallet_transfer_code_card_title">"Trasferimento"</string>
 
     <!-- Wallet: Transfer Code Staus Warten auf Transfer -->
-    <string name="wallet_transfer_code_state_waiting">"Warten auf Transfer"</string>
+    <string name="wallet_transfer_code_state_waiting">"In attesa del trasferimento"</string>
 
     <!-- Wallet: Transfer Code Ablauf in 1 Tag -->
-    <string name="wallet_transfer_code_expire_singular">"Noch 1 Tag gültig"</string>
+    <string name="wallet_transfer_code_expire_singular">"Valido ancora 1 giorno"</string>
 
     <!-- Wallet: Transfer Code: Läuft ab in {DAYS} Tagen -->
-    <string name="wallet_transfer_code_expire_plural">"Noch {DAYS} Tage gültig"</string>
+    <string name="wallet_transfer_code_expire_plural">"Valido ancora {DAYS} giorni"</string>
 
     <!-- Wallet: Transfer Code Status Abgelaufen -->
-    <string name="wallet_transfer_code_state_expired">"Transfer fehlgeschlagen"</string>
+    <string name="wallet_transfer_code_state_expired">"Trasferimento non riuscito"</string>
 
     <!-- Wallet: Transfer Code Alter Code Titel -->
-    <string name="wallet_transfer_code_old_code">"Code abgelaufen"</string>
+    <string name="wallet_transfer_code_old_code">"Codice scaduto"</string>
 
     <!-- Wallet: Transfer Code State Zuletzt aktualisiert {DATE} -->
-    <string name="wallet_transfer_code_state_updated">"Zuletzt aktualisiert
+    <string name="wallet_transfer_code_state_updated">"Ultimo aggiornamento
 {DATE}"</string>
 
     <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
-    <string name="wallet_transfer_code_state_no_certificate">"Mit diesem Transfer kann kein  Zertifikat mehr empfangen werden."</string>
+    <string name="wallet_transfer_code_state_no_certificate">"Con questo trasferimento non è più possibile ricevere alcun certificato."</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig -->
     <string name="wallet_error_invalid_format">"Formato del certificato 
@@ -699,13 +693,13 @@ non valido"</string>
     <string name="wallet_transfer_code_faq_works_intro_3">"Nach 7 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor dieser abgebrochen wird."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_title">"Mitteilungen erlauben"</string>
+    <string name="wallet_notification_permission_title">"Consenti notifiche"</string>
 
     <!-- Wallet: Text im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_text">"Die App kann Sie informieren, sobald das Zertifikat eingetroffen ist.  Erlauben Sie dazu der App, Ihnen Mitteilungen zu senden."</string>
+    <string name="wallet_notification_permission_text">"L'app ti può informare non appena il certificato è pervenuto. Consenti all'app di inviarti le notifiche."</string>
 
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_button">"Weiter"</string>
+    <string name="wallet_notification_permission_button">"Avanti"</string>
 
     <!-- Externe URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link">"https://ufsp-coronavirus.ch/certificato/come-si-ottiene-il-certificato-covid-e-come-si-impiega/"</string>
@@ -714,47 +708,52 @@ non valido"</string>
     <string name="wallet_scanner_howitworks_external_link_title">"Ulteriori informazioni"</string>
 
     <!-- Buttontitel im Screen, wo ein Code erstellt werden kann -->
-    <string name="wallet_transfer_code_create_code_button">"Code erstellen"</string>
+    <string name="wallet_transfer_code_create_code_button">"Crea codice"</string>
 
     <!-- Wallet: Transfer Code Ablauf in 1 Tag (fetter Teil) -->
-    <string name="wallet_transfer_code_expire_singular_bold">"1 Tag"</string>
+    <string name="wallet_transfer_code_expire_singular_bold">"1 giorno"</string>
 
     <!-- Wallet: Transfer Code: Läuft in {DAYS} Tagen ab (fetter Teil) -->
-    <string name="wallet_transfer_code_expire_plural_bold">"{DAYS} Tage"</string>
+    <string name="wallet_transfer_code_expire_plural_bold">"{DAYS} giorni"</string>
 
     <!-- Infotext bei erfolgreicher Prüfung (Blacklist) -->
-    <string name="verifier_verify_success_info_for_blacklist">"Nicht wiederrufen"</string>
+    <string name="verifier_verify_success_info_for_blacklist">"Non revocare"</string>
 
     <!-- Infotext bei erfolgreicher Prüfung (Zertifikat) -->
-    <string name="verifier_verify_success_info_for_certificate_valid">"Signatur gültig"</string>
+    <string name="verifier_verify_success_info_for_certificate_valid">"Firma valida"</string>
 
     <!-- Teil der Fehlermeldung bei noch nicht/nicht mehr gültigem Zertifikat, der Bold sein sollte (ref. verifier_verifiy_error_expired und _notyetvalid) -->
     <string name="verifier_verify_error_validity_range_bold">"Non conforme ai criteri di validità svizzeri."</string>
 
     <!-- Wallet: Transfer Code Fehler Titel -->
-    <string name="wallet_transfer_code_error_title">"Transfer-Code konnte nicht erstellt werden"</string>
+    <string name="wallet_transfer_code_error_title">"Non è stato possibile creare il codice di trasferimento."</string>
 
     <!-- Wallet: Erstellen Fehler Titel -->
-    <string name="wallet_transfer_code_no_internet_title">"Keine Verbindung zum Internet"</string>
+    <string name="wallet_transfer_code_no_internet_title">"Nessuna connessione a Internet"</string>
 
     <!-- Wallet: Erstellen anderer Fehler Titel -->
-    <string name="wallet_transfer_code_generate_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
+    <string name="wallet_transfer_code_generate_error_title">"Si è verificato un errore imprevisto."</string>
 
     <!-- Wallet: Aktualisierung Transfer Code Fehler Titel -->
-    <string name="wallet_transfer_code_update_error_title">"Aktualisierung zur Zeit nicht möglich"</string>
+    <string name="wallet_transfer_code_update_error_title">"Aggiornamento al momento non disponibile"</string>
 
     <!-- Wallet: Transfer Code Update Fehler Text -->
-    <string name="wallet_transfer_code_update_no_internet_error_text">"Um den Transfer empfangen zu können, muss die App online sein."</string>
+    <string name="wallet_transfer_code_update_no_internet_error_text">"Per effettuare il trasferimento l'app deve essere on-line."</string>
 
     <!-- Wallet Transfer Code Update Fehler Text -->
-    <string name="wallet_transfer_code_update_general_error_text">"Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut."</string>
+    <string name="wallet_transfer_code_update_general_error_text">"Si è verificato un errore imprevisto. Riprova più tardi"</string>
 
     <!-- Wallet: Transfer Code Fehlertext bei Generieren -->
-    <string name="wallet_transfer_code_generate_error_text">"Versuchen Sie es später erneut."</string>
+    <string name="wallet_transfer_code_generate_error_text">"Riprova più tardi."</string>
 
     <!-- Wallet: Transfer Code Fehlertext bei Generieren ohne Internet -->
-    <string name="wallet_transfer_code_generate_no_internet_error_text">"Um einen Transfer-Code erstellen zu können, muss die App online sein."</string>
+    <string name="wallet_transfer_code_generate_no_internet_error_text">"Per creare un codice di trasferimento l'app deve essere on-line."</string>
 
     <!-- Wallet: Accessibility Name für Refresh Button -->
-    <string name="accessibility_refresh_button">"Aktualisieren"</string>
+    <string name="accessibility_refresh_button">"Aggiorna"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_delete_confirm_text">"Eliminare il trasferimento?"</string>
+    <string name="wallet_notification_transfer_title">"Trasferimento riuscito"</string>
+    <string name="wallet_notification_transfer_text">"Il certificato COVID è pervenuto"</string>
 </resources>
