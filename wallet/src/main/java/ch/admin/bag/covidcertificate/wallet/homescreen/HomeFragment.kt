@@ -38,6 +38,7 @@ import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.DeeplinkViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.add.CertificateAddFragment
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
@@ -64,6 +65,7 @@ class HomeFragment : Fragment() {
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private val deeplinkViewModel by activityViewModels<DeeplinkViewModel>()
 	private val pdfViewModel by activityViewModels<PdfViewModel>()
 
 	private var _binding: FragmentHomeBinding? = null
@@ -82,6 +84,7 @@ class HomeFragment : Fragment() {
 		setupButtons()
 		setupPager()
 		setupInfoBox()
+		setupImportObservers()
 	}
 
 	override fun onResume() {
@@ -187,6 +190,20 @@ class HomeFragment : Fragment() {
 				.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
 				.commit()
 		}
+	}
+
+	private fun setupImportObservers() {
+		deeplinkViewModel.deeplinkImportLiveData.observe(viewLifecycleOwner) { decodeState ->
+			when (decodeState) {
+				is DecodeState.SUCCESS -> {
+					showCertificationAddFragment(decodeState.dccHolder)
+					deeplinkViewModel.clearDeeplink()
+				}
+				is DecodeState.ERROR -> {
+					showImportError(decodeState.error.code)
+				}
+			}
+		}
 
 		pdfViewModel.pdfImportLiveData.observe(viewLifecycleOwner) { decodeState ->
 			when (decodeState) {
@@ -195,20 +212,10 @@ class HomeFragment : Fragment() {
 					pdfViewModel.clearPdf()
 				}
 				is DecodeState.ERROR -> {
-					AlertDialog.Builder(requireContext(), R.style.CovidCertificate_AlertDialogStyle)
-						.setTitle(R.string.error_title)
-						.setMessage(R.string.verifier_error_invalid_format)
-						.setPositiveButton(R.string.ok_button) { dialog, _ ->
-							dialog.dismiss()
-						}
-						.setCancelable(true)
-						.create()
-						.apply { window?.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR) }
-						.show()
+					showImportError(decodeState.error.code)
 				}
 			}
 		}
-
 	}
 
 	private fun setupAddCertificateOptions() {
@@ -261,6 +268,20 @@ class HomeFragment : Fragment() {
 			.commit()
 	}
 
+	private fun showImportError(errorCode: String) {
+		val message = getString(R.string.verifier_error_invalid_format) + " ($errorCode)"
+		AlertDialog.Builder(requireContext(), R.style.CovidCertificate_AlertDialogStyle)
+			.setTitle(R.string.error_title)
+			.setMessage(message)
+			.setPositiveButton(R.string.ok_button) { dialog, _ ->
+				dialog.dismiss()
+			}
+			.setCancelable(true)
+			.create()
+			.apply { window?.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR) }
+			.show()
+	}
+
 	private fun reloadCertificates() {
 		binding.homescreenLoadingIndicator.isVisible = true
 		certificatesViewModel.loadWalletData()
@@ -297,11 +318,23 @@ class HomeFragment : Fragment() {
 		if (isEmpty) {
 			val margin = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_large)
 			set.clear(R.id.homescreen_add_certificate_options, ConstraintSet.BOTTOM)
-			set.connect(R.id.homescreen_add_certificate_options, ConstraintSet.TOP, R.id.homescreen_add_certificate_options_title, ConstraintSet.BOTTOM, margin)
+			set.connect(
+				R.id.homescreen_add_certificate_options,
+				ConstraintSet.TOP,
+				R.id.homescreen_add_certificate_options_title,
+				ConstraintSet.BOTTOM,
+				margin
+			)
 		} else {
 			val margin = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_medium_large)
 			set.clear(R.id.homescreen_add_certificate_options, ConstraintSet.TOP)
-			set.connect(R.id.homescreen_add_certificate_options, ConstraintSet.BOTTOM, R.id.button_bar_bubble, ConstraintSet.TOP, margin)
+			set.connect(
+				R.id.homescreen_add_certificate_options,
+				ConstraintSet.BOTTOM,
+				R.id.button_bar_bubble,
+				ConstraintSet.TOP,
+				margin
+			)
 		}
 		set.applyTo(binding.homescreenConstraintLayout)
 	}
