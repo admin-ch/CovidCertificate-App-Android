@@ -106,12 +106,14 @@
 
 					<TextView
 						android:id="@+id/transfer_code_last_update"
+						style="@style/CovidCertificate.Text"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="@dimen/spacing_medium_large"
 						android:layout_marginVertical="@dimen/spacing_medium_small"
 						android:text="@string/wallet_transfer_code_state_updated"
 						app:layout_constraintBottom_toBottomOf="parent"
+						app:layout_constraintEnd_toStartOf="@+id/transfer_code_refresh_button"
 						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintTop_toTopOf="parent" />
 
@@ -130,6 +132,20 @@
 
 				</androidx.constraintlayout.widget.ConstraintLayout>
 
+				<TextView
+					android:id="@+id/transfer_code_error_code"
+					style="@style/CovidCertificate.Text.Grey"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginVertical="@dimen/spacing_medium_small"
+					android:textAllCaps="true"
+					android:textSize="@dimen/text_size_small"
+					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/transfer_code_detail_refresh_layout"
+					tools:text="Error-Code" />
+
 				<androidx.recyclerview.widget.RecyclerView
 					android:id="@+id/transfer_code_detail_faq_list"
 					android:layout_width="match_parent"
@@ -137,7 +153,7 @@
 					android:layout_marginHorizontal="@dimen/spacing_medium_large"
 					android:layout_marginTop="@dimen/spacing_huger"
 					app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-					app:layout_constraintTop_toBottomOf="@+id/transfer_code_detail_refresh_layout"
+					app:layout_constraintTop_toBottomOf="@+id/transfer_code_error_code"
 					tools:itemCount="3"
 					tools:listitem="@layout/item_faq_question" />
 

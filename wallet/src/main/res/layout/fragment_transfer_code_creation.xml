@@ -157,9 +157,7 @@
 								android:layout_marginVertical="@dimen/spacing_medium_small"
 								android:textAllCaps="true"
 								android:textSize="@dimen/text_size_small"
-								android:visibility="gone"
-								tools:text="Error-Code"
-								tools:visibility="visible" />
+								tools:text="Error-Code" />
 
 							<Button
 								android:id="@+id/transfer_code_creation_retry_button"

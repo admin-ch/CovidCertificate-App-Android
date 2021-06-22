@@ -14,20 +14,22 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
+import androidx.transition.TransitionManager
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodePagerBinding
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeBubbleView
-import ch.admin.bag.covidcertificate.common.util.CutOutEdgeTreatment
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
+import ch.admin.bag.covidcertificate.eval.data.state.Error
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
-import com.google.android.material.shape.MaterialShapeDrawable
-import com.google.android.material.shape.ShapeAppearanceModel
+import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeViewModel
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 
 class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager) {
 
@@ -43,7 +45,8 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 	private val binding get() = _binding!!
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
-	private lateinit var transferCode: TransferCodeModel
+	private val transferCodeViewModel by viewModels<TransferCodeViewModel>()
+	private var transferCode: TransferCodeModel? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -58,12 +61,17 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+		val transferCode = transferCode ?: return
 
 		binding.transferCodePageCard.setCutOutCardBackground()
 		binding.transferCodePageBubble.setTransferCode(transferCode)
-		setTransferCodeBubbleViewState()
+		setTransferCodeViewState(false)
 
 		binding.transferCodePageCard.setOnClickListener { certificatesViewModel.onTransferCodeClicked(transferCode) }
+
+		transferCodeViewModel.conversionState.observe(viewLifecycleOwner) { onConversionStateChanged(it) }
+
+		transferCodeViewModel.downloadCertificateForTransferCode(transferCode)
 	}
 
 	override fun onDestroyView() {
@@ -71,7 +79,9 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 		_binding = null
 	}
 
-	private fun setTransferCodeBubbleViewState() {
+	private fun setTransferCodeViewState(isRefreshing: Boolean, error: Error? = null) {
+		val transferCode = transferCode ?: return
+		TransitionManager.beginDelayedTransition(binding.root)
 		when {
 			transferCode.isFailed() -> {
 				binding.transferCodePageWaitingImage.isVisible = false
@@ -90,7 +100,33 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 				binding.transferCodePageWaitingImage.isVisible = true
 				binding.transferCodePageImage.isVisible = false
 				binding.transferCodePageStatusLabel.text = requireContext().getString(R.string.wallet_transfer_code_state_waiting)
-				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(false))
+				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing, error))
+			}
+		}
+	}
+
+	private fun onConversionStateChanged(state: TransferCodeConversionState) {
+		when (state) {
+			is TransferCodeConversionState.LOADING -> {
+				setTransferCodeViewState(true)
+			}
+			is TransferCodeConversionState.CONVERTED -> {
+				val dccHolder = state.dccHolder
+				parentFragmentManager.popBackStack()
+				parentFragmentManager.beginTransaction()
+					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+					.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(dccHolder))
+					.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
+					.commit()
+			}
+			is TransferCodeConversionState.NOT_CONVERTED -> {
+				transferCode = transferCode?.let {
+					certificatesViewModel.updateTransferCodeLastUpdated(it)
+				}
+				setTransferCodeViewState(false)
+			}
+			is TransferCodeConversionState.ERROR -> {
+				setTransferCodeViewState(false, state.error)
 			}
 		}
 	}
