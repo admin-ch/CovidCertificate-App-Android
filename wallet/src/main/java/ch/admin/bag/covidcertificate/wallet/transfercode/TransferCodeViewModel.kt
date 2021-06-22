@@ -32,6 +32,7 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.io.IOException
 import java.security.KeyPair
@@ -48,7 +49,7 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 
 	private var downloadJob: Job? = null
 
-	fun downloadCertificateForTransferCode(transferCode: TransferCodeModel) {
+	fun downloadCertificateForTransferCode(transferCode: TransferCodeModel, delayInMillis: Long = 0L) {
 		downloadJob?.cancel()
 
 		conversionStateMutableLiveData.value = TransferCodeConversionState.LOADING
@@ -57,6 +58,8 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 
 			if (keyPair != null) {
 				try {
+					if (delayInMillis > 0) delay(delayInMillis)
+
 					val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
 
 					if (decryptedCertificates.isNotEmpty()) {

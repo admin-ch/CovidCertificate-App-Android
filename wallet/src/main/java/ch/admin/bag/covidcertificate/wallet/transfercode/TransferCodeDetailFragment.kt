@@ -52,6 +52,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	companion object {
 		private const val ARG_TRANSFER_CODE = "ARG_TRANSFER_CODE"
 		private const val DATE_REPLACEMENT_STRING = "{DATE}"
+		private const val FORCE_RELOAD_DELAY = 1000L
 
 		fun newInstance(transferCode: TransferCodeModel) = TransferCodeDetailFragment().apply {
 			arguments = bundleOf(ARG_TRANSFER_CODE to transferCode)
@@ -171,24 +172,31 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	private fun onConversionStateChanged(state: TransferCodeConversionState) {
 		when (state) {
 			is TransferCodeConversionState.LOADING -> {
-				setTransferCodeViewState(true)
+				binding.transferCodeLoadingIndicator.isVisible = true
+				binding.transferCodeContent.isVisible = false
 			}
 			is TransferCodeConversionState.CONVERTED -> {
 				val dccHolder = state.dccHolder
 				parentFragmentManager.popBackStack()
+
+				// If the transfer code was converted to a certificate, open the certificate detail without an animation
 				parentFragmentManager.beginTransaction()
-					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 					.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(dccHolder))
 					.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
 					.commit()
 			}
 			is TransferCodeConversionState.NOT_CONVERTED -> {
+				binding.transferCodeLoadingIndicator.isVisible = false
+				binding.transferCodeContent.isVisible = true
+
 				transferCode = transferCode?.let {
 					certificatesViewModel.updateTransferCodeLastUpdated(it)
 				}
 				setTransferCodeViewState(false)
 			}
 			is TransferCodeConversionState.ERROR -> {
+				binding.transferCodeLoadingIndicator.isVisible = false
+				binding.transferCodeContent.isVisible = true
 				setTransferCodeViewState(false, state.error)
 			}
 		}
@@ -197,7 +205,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	private fun onRefreshButtonClicked() {
 		transferCode?.let {
 			binding.transferCodeRefreshButton.rotate(360f, 300L, 0f)
-			transferCodeViewModel.downloadCertificateForTransferCode(it)
+			transferCodeViewModel.downloadCertificateForTransferCode(it, FORCE_RELOAD_DELAY)
 		}
 	}
 
