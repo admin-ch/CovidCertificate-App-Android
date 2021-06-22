@@ -1,4 +1,4 @@
-name: Android Build AppCenter Wallet Prod
+name: Build Wallet PROD
 
 on:
   push:

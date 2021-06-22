@@ -1,4 +1,4 @@
-name: Android Build Wallet
+name: Build Wallet DEV
 
 on:
   push:

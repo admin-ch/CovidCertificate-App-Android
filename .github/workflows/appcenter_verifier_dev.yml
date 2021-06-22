@@ -1,4 +1,4 @@
-name: Android Build Verifier
+name: Build Verifier DEV
 
 on:
   push:
