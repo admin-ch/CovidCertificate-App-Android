@@ -46,7 +46,7 @@ class WalletQrScanFragment : QrScanFragment() {
 		_binding = FragmentQrScanBinding.inflate(inflater, container, false)
 
 		toolbar = binding.fragmentQrScannerToolbar
-		barcodeScanner = binding.barcodeScanner
+		qrCodeScanner = binding.qrCodeScanner
 		flashButton = binding.fragmentQrScannerFlashButton
 		errorView = binding.fragmentQrScannerErrorView
 

@@ -11,20 +11,27 @@
 package ch.admin.bag.covidcertificate.common.qr
 
 import android.Manifest
-import android.R.attr.bitmap
 import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
+import android.util.DisplayMetrics
+import android.util.Log
+import android.util.Size
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
+import androidx.camera.core.*
+import androidx.camera.lifecycle.ProcessCameraProvider
+import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
@@ -33,10 +40,7 @@ import ch.admin.bag.covidcertificate.eval.data.state.Error
 import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import com.google.zxing.*
-import com.google.zxing.qrcode.QRCodeReader
-import com.journeyapps.barcodescanner.BarcodeCallback
-import com.journeyapps.barcodescanner.BarcodeResult
-import com.journeyapps.barcodescanner.DecoratedBarcodeView
+import java.util.concurrent.Executor
 
 
 abstract class QrScanFragment : Fragment() {
@@ -50,7 +54,6 @@ abstract class QrScanFragment : Fragment() {
 
 	// These need to be set by implementing classes during onCreateView. That's why they are not private.
 	lateinit var toolbar: Toolbar
-	lateinit var barcodeScanner: DecoratedBarcodeView
 	lateinit var flashButton: ImageButton
 	lateinit var errorView: View
 
@@ -59,6 +62,13 @@ abstract class QrScanFragment : Fragment() {
 	lateinit var viewFinderTopRightIndicator: View
 	lateinit var viewFinderBottomLeftIndicator: View
 	lateinit var viewFinderBottomRightIndicator: View
+	lateinit var qrCodeScanner: PreviewView
+	private var preview: Preview? = null
+	private var imageCapture: ImageCapture? = null
+	private var imageAnalyzer: ImageAnalysis? = null
+	private lateinit var mainExecutor: Executor
+	private var camera: Camera? = null
+
 
 	abstract val viewFinderColor: Int
 	abstract val viewFinderErrorColor: Int
@@ -67,17 +77,26 @@ abstract class QrScanFragment : Fragment() {
 
 	private var lastUIErrorUpdate = 0L
 
-	private val callback: BarcodeCallback = buildBarcodeCallback()
-
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
 	private val IS_TORCH_ON = "IS_TORCH_ON"
 	private var isTorchOn: Boolean = false
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		mainExecutor = ContextCompat.getMainExecutor(requireContext())
+	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		isTorchOn = savedInstanceState?.getBoolean(IS_TORCH_ON, isTorchOn) ?: isTorchOn
 		toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
-		barcodeScanner.setStatusText("")
+
+		// Wait for the views to be properly laid out
+		qrCodeScanner.post {
+
+			bindCameraUseCases()
+
+		}
 	}
 
 	override fun onResume() {
@@ -87,15 +106,9 @@ abstract class QrScanFragment : Fragment() {
 		// Be careful to avoid popup loops, since our fragment is resumed whenever the user returns from the dialog!
 		checkCameraPermission()
 
-		barcodeScanner.resume()
-
 		setupFlashButtonStyle()
 	}
 
-	override fun onPause() {
-		super.onPause()
-		barcodeScanner.pause()
-	}
 
 	override fun onSaveInstanceState(outState: Bundle) {
 		super.onSaveInstanceState(outState)
@@ -111,6 +124,66 @@ abstract class QrScanFragment : Fragment() {
 			cameraPermissionState = if (isGranted) CameraPermissionState.GRANTED else CameraPermissionState.DENIED
 			refreshView()
 		}
+	}
+
+	private fun bindCameraUseCases() {
+
+		val cameraSelector = CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
+		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+		cameraProviderFuture.addListener(Runnable {
+			val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
+			preview = Preview.Builder()
+				.setTargetResolution(Size(1280, 720))
+				.build()
+
+			preview?.setSurfaceProvider(qrCodeScanner.surfaceProvider)
+
+			imageCapture = ImageCapture.Builder()
+				.setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
+				.setTargetResolution(Size(1280, 720))
+				.build()
+
+			imageAnalyzer = ImageAnalysis.Builder()
+				.setTargetResolution(Size(1280, 720))
+				.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+				.build()
+				.also { imageAnalysis ->
+					imageAnalysis.setAnalyzer(mainExecutor, QRCodeAnalyzer { decodeCertificateState: DecodeCertificateState ->
+						when (decodeCertificateState) {
+							is DecodeCertificateState.ERROR -> {
+								handleInvalidQRCodeExceptions(null, decodeCertificateState.error)
+							}
+							DecodeCertificateState.SCANNING -> {
+								//do nothing
+							}
+							is DecodeCertificateState.SUCCESS -> {
+								val qrCodeData = decodeCertificateState.qrCode
+								qrCodeData?.let {
+									when (val decodeState = CertificateDecoder.decode(it)) {
+										is DecodeState.SUCCESS -> {
+											onDecodeSuccess(decodeState.dccHolder)
+											view?.post { indicateInvalidQrCode(QrScannerState.VALID) }
+										}
+										is DecodeState.ERROR -> {
+											view?.post { handleInvalidQRCodeExceptions(qrCodeData, decodeState.error) }
+										}
+									}
+								}
+							}
+
+						}
+					})
+
+				}
+			cameraProvider.unbindAll()
+			try {
+				camera = cameraProvider.bindToLifecycle(
+					this as LifecycleOwner, cameraSelector, preview, imageCapture, imageAnalyzer
+				)
+			} catch (e: Exception) {
+				e.printStackTrace()
+			}
+		}, mainExecutor)
 	}
 
 	private fun checkCameraPermission() {
@@ -161,20 +234,11 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	private fun startCameraAndQrAnalyzer() {
-		barcodeScanner.apply {
-			val formats: Collection<BarcodeFormat> = listOf(BarcodeFormat.AZTEC, BarcodeFormat.QR_CODE)
-			barcodeView.decoderFactory = DefaultDecoderFactory(formats)
-			decodeContinuous(callback)
-			setStatusText("")
-			viewFinder.visibility = View.GONE
-		}
-		val cameraSettings = barcodeScanner.cameraSettings
-		cameraSettings.focusMode
 		setupFlashButton()
 	}
 
 	private fun setupFlashButton() {
-		barcodeScanner.setTorchListener(object : DecoratedBarcodeView.TorchListener {
+		/*barcodeScanner.setTorchListener(object : DecoratedBarcodeView.TorchListener {
 			override fun onTorchOn() {
 				this@QrScanFragment.isTorchOn = true
 				setupFlashButtonStyle()
@@ -194,7 +258,7 @@ abstract class QrScanFragment : Fragment() {
 			} else {
 				barcodeScanner.setTorchOn()
 			}
-		}
+		}*/
 	}
 
 	private fun setupFlashButtonStyle() {
@@ -212,8 +276,8 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	private fun handleInvalidQRCodeExceptions(qrCodeData: String?, error: Error?) {
+		//TODO maybe
 		indicateInvalidQrCode(QrScannerState.INVALID_FORMAT)
-		barcodeScanner.resume()
 	}
 
 	private fun indicateInvalidQrCode(qrScannerState: QrScannerState) {
@@ -246,27 +310,6 @@ abstract class QrScanFragment : Fragment() {
 			resources.getDimensionPixelSize(R.dimen.qr_scanner_indicator_stroke_width),
 			resources.getColor(color, null)
 		)
-	}
-
-	private fun buildBarcodeCallback(): BarcodeCallback = object : BarcodeCallback {
-		override fun barcodeResult(result: BarcodeResult) {
-			val qrCodeData = result.text
-
-			qrCodeData?.let {
-				when (val decodeState = CertificateDecoder.decode(qrCodeData)) {
-					is DecodeState.SUCCESS -> {
-						onDecodeSuccess(decodeState.dccHolder)
-						view?.post { indicateInvalidQrCode(QrScannerState.VALID) }
-					}
-					is DecodeState.ERROR -> {
-						view?.post { handleInvalidQRCodeExceptions(qrCodeData, decodeState.error) }
-					}
-				}
-				barcodeScanner.pause()
-			}
-		}
-
-		override fun possibleResultPoints(resultPoints: List<ResultPoint>) {}
 	}
 
 	enum class CameraPermissionState {
