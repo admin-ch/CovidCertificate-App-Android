@@ -13,9 +13,11 @@ class QRCodeAnalyzer(
 	private val onDecodeCertificate: (decodeCertificateState: DecodeCertificateState) -> Unit,
 ) : ImageAnalysis.Analyzer {
 
-	val QR_CODE_ERROR_WRONG_FORMAT = "Q|YWF"
+	companion object {
+		private const val QR_CODE_ERROR_WRONG_FORMAT = "Q|YWF"
+	}
 
-	private val yuvFormats = mutableListOf(ImageFormat.YUV_420_888, ImageFormat.YUV_422_888, ImageFormat.YUV_444_888)
+	private val yuvFormats = listOf(ImageFormat.YUV_420_888, ImageFormat.YUV_422_888, ImageFormat.YUV_444_888)
 
 	private val reader = MultiFormatReader().apply {
 		val map = mapOf(
@@ -70,10 +72,8 @@ class QRCodeAnalyzer(
 	}
 }
 
-
 sealed class DecodeCertificateState {
 	data class SUCCESS(val qrCode: String?) : DecodeCertificateState()
 	object SCANNING : DecodeCertificateState()
 	data class ERROR(val error: Error) : DecodeCertificateState()
 }
-

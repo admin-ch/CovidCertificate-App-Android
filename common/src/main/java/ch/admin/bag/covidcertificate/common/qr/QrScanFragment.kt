@@ -41,12 +41,9 @@ import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import java.util.concurrent.Executor
 
-
 abstract class QrScanFragment : Fragment() {
 
 	companion object {
-		val TAG = QrScanFragment::class.java.canonicalName
-
 		private const val STATE_IS_TORCH_ON = "STATE_IS_TORCH_ON"
 		private const val PERMISSION_REQUEST_CAMERA = 13
 		private const val MIN_ERROR_VISIBILITY = 1000L
@@ -259,7 +256,7 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	private fun handleInvalidQRCodeExceptions(qrCodeData: String?, error: Error?) {
-		//TODO maybe
+		//TODO Show error code on screen
 		indicateInvalidQrCode(QrScannerState.INVALID_FORMAT)
 	}
 

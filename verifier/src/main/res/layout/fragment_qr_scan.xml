@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -20,7 +19,7 @@
 		android:id="@+id/qr_code_scanner"
 		android:layout_width="match_parent"
 		android:layout_height="match_parent" />
-	
+
 	<View
 		android:layout_width="match_parent"
 		android:layout_height="@dimen/header_height_default"
@@ -92,10 +91,10 @@
 				android:text="@string/qr_scanner_error"
 				android:visibility="invisible"
 				app:drawableStartCompat="@drawable/ic_scanner_alert"
+				app:layout_constraintBottom_toTopOf="@id/camera_preview_container"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/toolbar_place_holder"
-				app:layout_constraintBottom_toTopOf="@id/camera_preview_container" />
+				app:layout_constraintTop_toBottomOf="@id/toolbar_place_holder" />
 
 			<View
 				android:id="@+id/qr_code_scanner_camera_hole"
