@@ -1,0 +1,36 @@
+<!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+  <path
+      android:pathData="M11.2727,12.7277v8L3.2727,20.7277v-8h8zM14.9087,17.8177L14.9087,19.2727l5.819,0.001v1.455h-7.273v-2.91h1.454zM9.8177,14.1827h-5.09v5.09h5.09v-5.09zM14.9087,12.7287v2.181h1.454L16.3627,12.7277h4.365v5.09L19.2727,17.8177L19.2727,14.1827h-1.455v2.182h-4.363L13.4547,12.7277h1.454zM8.3637,15.6377v2.181L6.1817,17.8187v-2.181h2.182zM11.2727,3.2727v8L3.2727,11.2727L3.2727,3.2727h8zM20.7277,3.2727v8h-8L12.7277,3.2727h8zM9.8177,4.7267h-5.09v5.09h5.09v-5.09zM19.2717,4.7267h-5.09v5.09h5.09v-5.09zM8.3637,6.1827v2.182L6.1817,8.3647L6.1817,6.1817h2.182zM17.8177,6.1827v2.182h-2.181L15.6367,6.1817h2.181z"
+      android:fillColor="#000"
+      android:fillType="evenOdd"/>
+  <path
+      android:pathData="M4.364,0L4.364,1.091 1.091,1.091 1.091,4.364 0,4.364 0,0z"
+      android:fillColor="#000"
+      android:fillType="nonZero"/>
+  <path
+      android:pathData="M4.364,24.0004L4.364,22.9094 1.091,22.9094 1.091,19.6364 0,19.6364 0,24.0004z"
+      android:fillColor="#000"
+      android:fillType="nonZero"/>
+  <path
+      android:pathData="M19.6364,0L19.6364,1.091 22.9094,1.091 22.9094,4.364 24.0004,4.364 24.0004,0z"
+      android:fillColor="#000"
+      android:fillType="nonZero"/>
+  <path
+      android:pathData="M19.6364,24.0004L19.6364,22.9094 22.9094,22.9094 22.9094,19.6364 24.0004,19.6364 24.0004,24.0004z"
+      android:fillColor="#000"
+      android:fillType="nonZero"/>
+</vector>
