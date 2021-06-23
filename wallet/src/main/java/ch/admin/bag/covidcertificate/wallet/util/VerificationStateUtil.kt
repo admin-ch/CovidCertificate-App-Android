@@ -15,7 +15,7 @@ import android.text.SpannableString
 import androidx.annotation.ColorRes
 import ch.admin.bag.covidcertificate.common.util.addBoldDate
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
-import ch.admin.bag.covidcertificate.eval.data.EvalErrorCodes
+import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
@@ -27,12 +27,12 @@ const val DATE_REPLACEMENT_STRING = "{DATE}"
 /**
  * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
  */
-fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.GENERAL_OFFLINE
+fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == ErrorCodes.GENERAL_OFFLINE
 
 fun VerificationState.INVALID.getValidationStatusString(context: Context) = when {
 	signatureState is CheckSignatureState.INVALID -> {
 		val invalidSignatureState = signatureState as CheckSignatureState.INVALID
-		if (invalidSignatureState.signatureErrorCode == EvalErrorCodes.SIGNATURE_TYPE_INVALID) {
+		if (invalidSignatureState.signatureErrorCode == ErrorCodes.SIGNATURE_TYPE_INVALID) {
 			context.getString(R.string.wallet_error_invalid_format)
 				.makeSubStringBold(context.getString(R.string.wallet_error_invalid_format_bold))
 		} else {

@@ -18,8 +18,7 @@ import androidx.annotation.ColorRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import ch.admin.bag.covidcertificate.eval.data.EvalErrorCodes
-import ch.admin.bag.covidcertificate.eval.data.state.Error
+import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.prettyPrint
 import ch.admin.bag.covidcertificate.wallet.R
@@ -58,7 +57,7 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 		setPaddingRelative(0, context.resources.getDimensionPixelSize(R.dimen.spacing_medium_large), 0, 0)
 
 		if (isInEditMode) {
-			setTransferCode(TransferCodeModel("A2X56K7WP", Instant.now()))
+			setTransferCode(TransferCodeModel("A2X56K7WP", Instant.now(), Instant.now()))
 			setState(TransferCodeBubbleState.Valid(false))
 		}
 	}
@@ -128,12 +127,13 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 		}
 
 		if (!state.isRefreshing) {
-			binding.transferCodeStatusIcon.setImageResource(validityIcons[daysUntilExpiration - 1])
+			val imageIndex = (daysUntilExpiration - 1).coerceAtLeast(0)
+			binding.transferCodeStatusIcon.setImageResource(validityIcons[imageIndex])
 		}
 
 		state.error?.let {
 			binding.transferCodeErrorIcon.isVisible = true
-			if (it.code == EvalErrorCodes.GENERAL_OFFLINE) {
+			if (it.code == ErrorCodes.GENERAL_OFFLINE) {
 				binding.transferCodeErrorIcon.setImageResource(R.drawable.ic_corner_offline)
 			} else {
 				binding.transferCodeErrorIcon.setImageResource(R.drawable.ic_corner_process_error)

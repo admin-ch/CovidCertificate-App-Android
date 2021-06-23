@@ -53,16 +53,19 @@ android {
 		// If you intend to integrate the CovidCertificate-SDK into your app, please get in touch with BIT/BAG to get a token assigned.
 		dev {
 			buildConfigField "String", "BASE_URL", '"https://www.cc-d.bit.admin.ch/app/wallet/v1/"'
+			buildConfigField "String", "BASE_URL_DELIVERY", '"https://covidcertificate-app-d.bit.admin.ch/app/delivery/v1/"'
 			buildConfigField "String", "SDK_APP_TOKEN", '"c838a4c4-39e5-4bbb-8e75-e4382df2edfe"'
 			applicationIdSuffix '.dev'
 		}
 		abn {
 			buildConfigField "String", "BASE_URL", '"https://www.cc-a.bit.admin.ch/app/wallet/v1/"'
+			buildConfigField "String", "BASE_URL_DELIVERY", '"https://covidcertificate-app-a.bit.admin.ch/app/delivery/v1/"'
 			buildConfigField "String", "SDK_APP_TOKEN", '"e9802c49-4f2b-49cc-a645-24c206366455"'
 			applicationIdSuffix '.abn'
 		}
 		prod {
 			buildConfigField "String", "BASE_URL", '"https://www.cc.bit.admin.ch/app/wallet/v1/"'
+			buildConfigField "String", "BASE_URL_DELIVERY", '"https://covidcertificate-app.bit.admin.ch/app/delivery/v1/"'
 			buildConfigField "String", "SDK_APP_TOKEN", '"0795dc8b-d8d0-4313-abf2-510b12d50939"'
 		}
 	}

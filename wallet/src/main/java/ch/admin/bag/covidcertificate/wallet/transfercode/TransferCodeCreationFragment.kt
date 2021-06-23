@@ -18,7 +18,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.transition.TransitionManager
-import ch.admin.bag.covidcertificate.eval.data.EvalErrorCodes
+import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeCreationBinding
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationState
@@ -46,7 +46,7 @@ class TransferCodeCreationFragment : Fragment(R.layout.fragment_transfer_code_cr
 		binding.transferCodeCreationDoneButton.setOnClickListener { parentFragmentManager.popBackStack() }
 
 		viewModel.creationState.observe(viewLifecycleOwner) { onViewStateChanged(it) }
-		viewModel.createTransferCode()
+		viewModel.createAndRegisterTransferCode()
 	}
 
 	override fun onDestroyView() {
@@ -80,11 +80,11 @@ class TransferCodeCreationFragment : Fragment(R.layout.fragment_transfer_code_cr
 				binding.transferCodeCreationDoneLayout.isVisible = false
 
 				binding.transferCodeCreationTitle.setText(R.string.wallet_transfer_code_error_title)
-				val isOfflineError = state.error.code == EvalErrorCodes.GENERAL_OFFLINE
+				val isOfflineError = state.error.code == ErrorCodes.GENERAL_OFFLINE
 				binding.transferCodeBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Error(isOfflineError))
 				binding.transferCodeErrorCode.text = state.error.code
 				binding.transferCodeCreationRetryButton.setOnClickListener {
-					viewModel.createTransferCode()
+					viewModel.createAndRegisterTransferCode()
 				}
 			}
 		}

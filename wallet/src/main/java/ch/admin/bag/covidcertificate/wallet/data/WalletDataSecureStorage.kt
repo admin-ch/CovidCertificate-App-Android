@@ -23,6 +23,7 @@ import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import java.io.IOException
 import java.security.GeneralSecurityException
+import java.time.Instant
 
 class WalletDataSecureStorage private constructor(context: Context) {
 
@@ -56,6 +57,19 @@ class WalletDataSecureStorage private constructor(context: Context) {
 			.contains(certificateQrCodeData)
 	}
 
+	fun updateTransferCodeLastUpdated(transferCode: TransferCodeModel): TransferCodeModel {
+		val walletData = getWalletData().toMutableList()
+		val index = walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode.code == transferCode.code }
+		if (index >= 0) {
+			val updatedTransferCode = transferCode.copy(lastUpdatedTImestamp = Instant.now())
+			walletData.removeAt(index)
+			walletData.add(index, WalletDataItem.TransferCodeWalletData(updatedTransferCode))
+			updateWalletData(walletData)
+			return updatedTransferCode
+		}
+		return transferCode
+	}
+
 	fun deleteCertificate(certificateQrCodeData: String) {
 		val walletData = getWalletData().toMutableList()
 		walletData.removeIf { it is WalletDataItem.CertificateWalletData && it.qrCodeData == certificateQrCodeData }
@@ -64,8 +78,18 @@ class WalletDataSecureStorage private constructor(context: Context) {
 
 	fun deleteTransferCode(transferCode: TransferCodeModel) {
 		val walletData = getWalletData().toMutableList()
-		walletData.removeIf { it is WalletDataItem.TransferCodeWalletData && it.transferCode == transferCode }
+		walletData.removeIf { it is WalletDataItem.TransferCodeWalletData && it.transferCode.code == transferCode.code }
 		updateWalletData(walletData)
+	}
+
+	fun replaceTransferCodeWithCertificate(transferCode: TransferCodeModel, certificateQrCodeData: String, pdfData: String? = null) {
+		val walletData = getWalletData().toMutableList()
+		val index = walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode.code == transferCode.code }
+		if (index >= 0) {
+			walletData.removeAt(index)
+			walletData.add(index, WalletDataItem.CertificateWalletData(certificateQrCodeData, pdfData))
+			updateWalletData(walletData)
+		}
 	}
 
 	fun changeWalletDataItemPosition(oldPosition: Int, newPosition: Int) {

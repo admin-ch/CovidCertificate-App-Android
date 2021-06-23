@@ -11,13 +11,11 @@
 package ch.admin.bag.covidcertificate.common.util
 
 import android.content.Context
-import android.content.res.ColorStateList
 import android.text.SpannableString
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
-import androidx.core.content.ContextCompat
 import ch.admin.bag.covidcertificate.common.R
-import ch.admin.bag.covidcertificate.eval.data.EvalErrorCodes
+import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
@@ -29,7 +27,7 @@ import ch.admin.bag.covidcertificate.verifier.verification.VerificationItem
 /**
  * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
  */
-fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == EvalErrorCodes.GENERAL_OFFLINE
+fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == ErrorCodes.GENERAL_OFFLINE
 
 fun VerificationState.getVerificationStateItems(context: Context) : List<VerificationItem> {
 	val items = mutableListOf<VerificationItem>()
