@@ -19,9 +19,7 @@
 		android:id="@+id/option_scan_certificate"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
-		android:background="@drawable/bg_certificate_bubble"
-		android:backgroundTint="@color/white"
-		android:foreground="@drawable/ripple_rounded_rect_small"
+		android:background="@drawable/bg_add_certificate_option"
 		android:paddingBottom="@dimen/spacing_very_large">
 
 		<TextView
@@ -66,15 +64,25 @@
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 
+	<!--TODO Design is WIP -->
+	<TextView
+		android:id="@+id/option_import_pdf"
+		style="@style/CovidCertificate.Text.Bold.Emphasized"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_medium_small"
+		android:background="@drawable/bg_add_certificate_option"
+		android:paddingHorizontal="@dimen/spacing_large"
+		android:paddingVertical="@dimen/spacing_medium_large"
+		android:text="Import PDF" />
+
 	<TextView
 		android:id="@+id/option_transfer_code"
 		style="@style/CovidCertificate.Text.Bold.Emphasized"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:layout_marginTop="@dimen/spacing_medium_small"
-		android:background="@drawable/bg_certificate_bubble"
-		android:backgroundTint="@color/white"
-		android:foreground="@drawable/ripple_rounded_rect_small"
+		android:background="@drawable/bg_add_certificate_option"
 		android:paddingHorizontal="@dimen/spacing_large"
 		android:paddingVertical="@dimen/spacing_medium_large"
 		android:text="@string/wallet_homescreen_add_transfer_code" />

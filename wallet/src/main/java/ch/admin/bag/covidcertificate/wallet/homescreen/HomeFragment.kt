@@ -10,11 +10,15 @@
 
 package ch.admin.bag.covidcertificate.wallet.homescreen
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
 import androidx.core.view.postDelayed
@@ -48,6 +52,7 @@ import ch.admin.bag.covidcertificate.wallet.faq.WalletFaqFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.CertificatesPagerAdapter
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
 import ch.admin.bag.covidcertificate.wallet.list.CertificatesListFragment
+import ch.admin.bag.covidcertificate.wallet.pdf.PdfImportState
 import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 import ch.admin.bag.covidcertificate.wallet.qr.WalletQrScanFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeDetailFragment
@@ -75,6 +80,15 @@ class HomeFragment : Fragment() {
 	private lateinit var certificatesAdapter: CertificatesPagerAdapter
 
 	private var isAddOptionsShowing = false
+
+	private val filePickerLauncher =
+		registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult: ActivityResult ->
+			if (activityResult.resultCode == AppCompatActivity.RESULT_OK) {
+				activityResult.data?.data?.let { uri ->
+					pdfViewModel.importPdf(uri)
+				}
+			}
+		}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -214,14 +228,23 @@ class HomeFragment : Fragment() {
 				.commit()
 		}
 
-		pdfViewModel.pdfImportLiveData.observe(viewLifecycleOwner) { decodeState ->
-			when (decodeState) {
-				is DecodeState.SUCCESS -> {
-					showCertificationAddFragment(decodeState.dccHolder)
-					pdfViewModel.clearPdf()
+		pdfViewModel.pdfImportLiveData.observe(viewLifecycleOwner) { importState ->
+			when (importState) {
+				is PdfImportState.LOADING -> {
+					binding.loadingSpinner.showAnimated()
 				}
-				is DecodeState.ERROR -> {
-					showImportError(decodeState.error.code)
+				is PdfImportState.DONE -> {
+					binding.loadingSpinner.hideAnimated()
+					when (importState.decodeState) {
+						is DecodeState.SUCCESS -> {
+							isAddOptionsShowing = false
+							showCertificationAddFragment(importState.decodeState.dccHolder)
+						}
+						is DecodeState.ERROR -> {
+							showImportError(importState.decodeState.error.code)
+						}
+					}
+					pdfViewModel.clearPdf()
 				}
 			}
 		}
@@ -243,6 +266,13 @@ class HomeFragment : Fragment() {
 				.replace(R.id.fragment_container, WalletQrScanFragment.newInstance())
 				.addToBackStack(WalletQrScanFragment::class.java.canonicalName)
 				.commit()
+		}
+
+		binding.homescreenAddCertificateOptions.optionImportPdf.setOnClickListener {
+			val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+				type = "application/pdf"
+			}
+			filePickerLauncher.launch(intent)
 		}
 
 		binding.homescreenAddCertificateOptions.optionTransferCode.setOnClickListener {
