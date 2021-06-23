@@ -176,18 +176,18 @@ abstract class QrScanFragment : Fragment() {
 
 			try {
 				camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
+				// Set focus to the center of the viewfinder to help the auto focus
+				val metricPointFactory = qrCodeScanner.meteringPointFactory
+				val centerX = cutOut.left + cutOut.width / 2.0f
+				val centerY = cutOut.top + cutOut.height / 2.0f
+				val point = metricPointFactory.createPoint(centerX, centerY)
+				val action = FocusMeteringAction.Builder(point).build()
+				camera?.cameraControl?.startFocusAndMetering(action)
 				setupFlashButton()
 			} catch (e: Exception) {
 				e.printStackTrace()
 			}
 		}, mainExecutor)
-		
-		val metricPointFactory = qrCodeScanner.meteringPointFactory
-		val centerX = cutOut.left + cutOut.width / 2.0f
-		val centerY = cutOut.top + cutOut.height / 2.0f
-		val point = metricPointFactory.createPoint(centerX, centerY)
-		val action = FocusMeteringAction.Builder(point).build()
-		camera?.cameraControl?.startFocusAndMetering(action)
 
 	}
 
