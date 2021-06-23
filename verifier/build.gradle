@@ -38,7 +38,7 @@ android {
 
 	defaultConfig {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
-		minSdkVersion 23
+		minSdkVersion 24
 		targetSdkVersion 30
 		versionCode 1210
 		versionName "1.2.1"
