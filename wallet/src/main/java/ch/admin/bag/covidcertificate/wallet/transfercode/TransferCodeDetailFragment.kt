@@ -163,7 +163,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 			}
 		} else {
 			binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blueish))
-			val lastUpdated = transferCode.lastUpdatedTImestamp.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
+			val lastUpdated = transferCode.lastUpdatedTimestamp.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
 			binding.transferCodeLastUpdate.text = getString(R.string.wallet_transfer_code_state_updated)
 				.replace(DATE_REPLACEMENT_STRING, lastUpdated).makeSubStringBold(lastUpdated)
 		}

@@ -354,27 +354,8 @@ class HomeFragment : Fragment() {
 	private fun updateAddCertificateOptionsConstraints(isEmpty: Boolean) {
 		val set = ConstraintSet()
 		set.clone(binding.homescreenConstraintLayout)
-		if (isEmpty) {
-			val margin = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_large)
-			set.clear(R.id.homescreen_add_certificate_options, ConstraintSet.BOTTOM)
-			set.connect(
-				R.id.homescreen_add_certificate_options,
-				ConstraintSet.TOP,
-				R.id.homescreen_add_certificate_options_title,
-				ConstraintSet.BOTTOM,
-				margin
-			)
-		} else {
-			val margin = requireContext().resources.getDimensionPixelSize(R.dimen.spacing_medium_large)
-			set.clear(R.id.homescreen_add_certificate_options, ConstraintSet.TOP)
-			set.connect(
-				R.id.homescreen_add_certificate_options,
-				ConstraintSet.BOTTOM,
-				R.id.button_bar_bubble,
-				ConstraintSet.TOP,
-				margin
-			)
-		}
+		val verticalBias = if (isEmpty) 0f else 1f
+		set.setVerticalBias(R.id.homescreen_add_certificate_options, verticalBias)
 		set.applyTo(binding.homescreenConstraintLayout)
 	}
 

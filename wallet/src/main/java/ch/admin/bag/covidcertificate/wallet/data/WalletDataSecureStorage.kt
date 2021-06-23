@@ -11,9 +11,6 @@
 package ch.admin.bag.covidcertificate.wallet.data
 
 import android.content.Context
-import android.content.SharedPreferences
-import androidx.security.crypto.EncryptedSharedPreferences
-import androidx.security.crypto.MasterKeys
 import ch.admin.bag.covidcertificate.eval.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.wallet.data.adapter.InstantJsonAdapter
@@ -21,8 +18,6 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
-import java.io.IOException
-import java.security.GeneralSecurityException
 import java.time.Instant
 
 class WalletDataSecureStorage private constructor(context: Context) {
@@ -61,7 +56,7 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		val walletData = getWalletData().toMutableList()
 		val index = walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode.code == transferCode.code }
 		if (index >= 0) {
-			val updatedTransferCode = transferCode.copy(lastUpdatedTImestamp = Instant.now())
+			val updatedTransferCode = transferCode.copy(lastUpdatedTimestamp = Instant.now())
 			walletData.removeAt(index)
 			walletData.add(index, WalletDataItem.TransferCodeWalletData(updatedTransferCode))
 			updateWalletData(walletData)
