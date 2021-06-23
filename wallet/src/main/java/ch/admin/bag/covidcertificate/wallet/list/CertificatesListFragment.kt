@@ -83,6 +83,7 @@ class CertificatesListFragment : Fragment() {
 				when (it) {
 					is WalletItem.DccHolderItem -> WalletDataListItem.VerifiedCeritificateItem(
 						CertificatesViewModel.VerifiedCertificate(
+							it.qrCodeData,
 							it.dccHolder,
 							VerificationState.LOADING
 						)
@@ -99,7 +100,7 @@ class CertificatesListFragment : Fragment() {
 				// Update the certificate verification state if it is a certificate item, otherwise just return the same item
 				if (item is WalletDataListItem.VerifiedCeritificateItem) {
 					verifiedCertificates.find {
-						it.dccHolder == item.verifiedCertificate.dccHolder
+						it.qrCodeData == item.verifiedCertificate.qrCodeData
 					}?.let {
 						item.copy(verifiedCertificate = it)
 					} ?: item

@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 
 class DebugCertificatesListAdapter(
-	private val onShareClickListener: ((DccHolder) -> Unit),
+	private val onShareClickListener: ((String) -> Unit),
 ) :
 	RecyclerView.Adapter<DebugCertificatesListViewHolder>() {
 

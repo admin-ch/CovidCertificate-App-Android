@@ -31,6 +31,6 @@ class DebugCertificatesListViewHolder(
 		}
 	}
 
-	fun bindItem(certItem: DebugCertificateItem, onCopyClickListener: ((DccHolder) -> Unit)) =
+	fun bindItem(certItem: DebugCertificateItem, onCopyClickListener: ((String) -> Unit)) =
 		certItem.bindView(itemView, onCopyClickListener)
 }

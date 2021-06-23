@@ -70,12 +70,12 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 			val currentVerifiedCertificates = verifiedCertificates.value ?: emptyList()
 			verifiedCertificatesMutableLiveData.value = certificates.map { certificate ->
 				currentVerifiedCertificates.find {
-					it.dccHolder == certificate.dccHolder
-				} ?: VerifiedCertificate(certificate.dccHolder, VerificationState.LOADING)
+					it.qrCodeData == certificate.qrCodeData
+				} ?: VerifiedCertificate(certificate.qrCodeData, certificate.dccHolder, VerificationState.LOADING)
 			}
 
 			// (Re-)Verify all certificates
-			certificates.forEach { startVerification(it.dccHolder) }
+			certificates.forEach { certificate -> certificate?.dccHolder?.let { startVerification(it) } }
 		}
 	}
 
@@ -83,10 +83,24 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 		viewModelScope.launch(Dispatchers.Default) {
 			val pagerHolders = walletDataStorage.getWalletData().mapNotNull { dataItem ->
 				when (dataItem) {
-					is WalletDataItem.CertificateWalletData -> (CertificateDecoder.decode(dataItem.qrCodeData) as? DecodeState.SUCCESS)?.let {
+					is WalletDataItem.CertificateWalletData -> {
+						val decodeState = CertificateDecoder.decode(dataItem.qrCodeData)
+						if (decodeState is DecodeState.ERROR) {
+							verifiedCertificatesMutableLiveData.postValue(
+								(verifiedCertificates.value?.toMutableList() ?: mutableListOf()).apply {
+									add(
+										VerifiedCertificate(
+											dataItem.qrCodeData,
+											null,
+											VerificationState.ERROR(decodeState.error, null)
+										)
+									)
+								})
+						}
 						WalletItem.DccHolderItem(
-							it.dccHolder.qrCodeData.hashCode(),
-							it.dccHolder
+							dataItem.qrCodeData.hashCode(),
+							dataItem.qrCodeData,
+							(decodeState as? DecodeState.SUCCESS?)?.dccHolder
 						)
 					}
 					is WalletDataItem.TransferCodeWalletData -> WalletItem.TransferCodeHolderItem(
@@ -223,13 +237,13 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 		val newVerifiedCertificates = verifiedCertificates.value?.toMutableList() ?: mutableListOf()
 		val index = newVerifiedCertificates.indexOfFirst { it.dccHolder == dccHolder }
 		if (index >= 0) {
-			newVerifiedCertificates[index] = VerifiedCertificate(dccHolder, newVerificationState)
+			newVerifiedCertificates[index] = VerifiedCertificate(dccHolder.qrCodeData, dccHolder, newVerificationState)
 		} else {
-			newVerifiedCertificates.add(VerifiedCertificate(dccHolder, newVerificationState))
+			newVerifiedCertificates.add(VerifiedCertificate(dccHolder.qrCodeData, dccHolder, newVerificationState))
 		}
 
 		return newVerifiedCertificates
 	}
 
-	data class VerifiedCertificate(val dccHolder: DccHolder, val state: VerificationState)
+	data class VerifiedCertificate(val qrCodeData: String, val dccHolder: DccHolder?, val state: VerificationState)
 }
