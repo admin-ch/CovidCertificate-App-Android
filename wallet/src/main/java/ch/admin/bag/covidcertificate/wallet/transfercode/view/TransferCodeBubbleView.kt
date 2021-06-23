@@ -18,6 +18,7 @@ import androidx.annotation.ColorRes
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.prettyPrint
@@ -120,10 +121,14 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 
 		val daysUntilExpiration = transferCode.getDaysUntilExpiration()
 		if (daysUntilExpiration > 1) {
+			val boldPart = context.getString(R.string.wallet_transfer_code_expire_plural_bold)
+				.replace(DAYS_REPLACEMENT_STRING, daysUntilExpiration.toString())
 			binding.transferCodeValidity.text = context.getString(R.string.wallet_transfer_code_expire_plural)
 				.replace(DAYS_REPLACEMENT_STRING, daysUntilExpiration.toString())
+				.makeSubStringBold(boldPart)
 		} else {
 			binding.transferCodeValidity.text = context.getString(R.string.wallet_transfer_code_expire_singular)
+				.makeSubStringBold(context.getString(R.string.wallet_transfer_code_expire_singular_bold))
 		}
 
 		if (!state.isRefreshing) {
