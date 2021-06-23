@@ -127,7 +127,8 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 		}
 
 		if (!state.isRefreshing) {
-			binding.transferCodeStatusIcon.setImageResource(validityIcons[daysUntilExpiration - 1])
+			val imageIndex = (daysUntilExpiration - 1).coerceAtLeast(0)
+			binding.transferCodeStatusIcon.setImageResource(validityIcons[imageIndex])
 		}
 
 		state.error?.let {

@@ -148,7 +148,7 @@ sealed class WalletDataListItem {
 				else -> {
 					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_transfer_code_list_valid)
 					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_waiting)
-					binding.itemTransferCodeListCode.text = transferCode.code
+					binding.itemTransferCodeListCode.text = formatTransferCode(transferCode.code)
 					binding.itemTransferCodeListInfo.isVisible = false
 					binding.itemTransferCodeListCode.isVisible = true
 				}
@@ -157,6 +157,10 @@ sealed class WalletDataListItem {
 			binding.root.setOnClickListener {
 				onTransferCodeClickListener?.invoke(transferCode)
 			}
+		}
+
+		private fun formatTransferCode(code: String): String {
+			return code.chunked(3).joinToString(" ")
 		}
 	}
 }
