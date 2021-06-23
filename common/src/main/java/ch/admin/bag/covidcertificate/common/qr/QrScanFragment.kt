@@ -21,11 +21,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
-import androidx.camera.core.Camera
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.ImageAnalysis
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.Preview
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
@@ -60,6 +56,7 @@ abstract class QrScanFragment : Fragment() {
 	lateinit var viewFinderBottomLeftIndicator: View
 	lateinit var viewFinderBottomRightIndicator: View
 	lateinit var qrCodeScanner: PreviewView
+	lateinit var cutOut: View
 	private var preview: Preview? = null
 	private var imageCapture: ImageCapture? = null
 	private var imageAnalyzer: ImageAnalysis? = null
@@ -184,6 +181,14 @@ abstract class QrScanFragment : Fragment() {
 				e.printStackTrace()
 			}
 		}, mainExecutor)
+		
+		val metricPointFactory = qrCodeScanner.meteringPointFactory
+		val centerX = cutOut.left + cutOut.width / 2.0f
+		val centerY = cutOut.top + cutOut.height / 2.0f
+		val point = metricPointFactory.createPoint(centerX, centerY)
+		val action = FocusMeteringAction.Builder(point).build()
+		camera?.cameraControl?.startFocusAndMetering(action)
+
 	}
 
 	private fun checkCameraPermission() {

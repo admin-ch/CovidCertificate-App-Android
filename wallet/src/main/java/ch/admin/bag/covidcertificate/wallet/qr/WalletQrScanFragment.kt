@@ -51,6 +51,7 @@ class WalletQrScanFragment : QrScanFragment() {
 		errorView = binding.fragmentQrScannerErrorView
 
 		invalidCodeText = binding.qrCodeScannerInvalidCodeText
+		cutOut = binding.cameraPreviewContainer
 		viewFinderTopLeftIndicator = binding.qrCodeScannerTopLeftIndicator
 		viewFinderTopRightIndicator = binding.qrCodeScannerTopRightIndicator
 		viewFinderBottomLeftIndicator = binding.qrCodeScannerBottomLeftIndicator
