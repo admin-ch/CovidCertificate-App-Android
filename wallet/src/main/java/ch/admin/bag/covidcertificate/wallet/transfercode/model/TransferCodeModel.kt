@@ -21,7 +21,7 @@ import kotlin.math.roundToInt
 data class TransferCodeModel(
 	val code: String,
 	val creationTimestamp: Instant,
-	val lastUpdatedTImestamp: Instant,
+	val lastUpdatedTimestamp: Instant,
 ): Serializable {
 
 	val expirationTimestamp = creationTimestamp.plus(7, ChronoUnit.DAYS)
