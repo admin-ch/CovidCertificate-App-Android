@@ -8,21 +8,20 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.common.util
+package ch.admin.bag.covidcertificate.verifier.verification
 
 import android.content.Context
 import android.text.SpannableString
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import ch.admin.bag.covidcertificate.common.R
+import ch.admin.bag.covidcertificate.common.util.makeBold
+import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
-import ch.admin.bag.covidcertificate.verifier.verification.InfoItem
-import ch.admin.bag.covidcertificate.verifier.verification.StatusItem
-import ch.admin.bag.covidcertificate.verifier.verification.VerificationItem
 
 /**
  * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)

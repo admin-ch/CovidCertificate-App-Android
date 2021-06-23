@@ -152,7 +152,7 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun setupStatusInfo() {
 		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { certificates ->
-			certificates.find { it.dccHolder == dccHolder }?.let {
+			certificates.find { it.dccHolder?.qrCodeData == dccHolder.qrCodeData }?.let {
 				binding.certificateDetailButtonReverify.showAnimated()
 				updateStatusInfo(it.state)
 			}

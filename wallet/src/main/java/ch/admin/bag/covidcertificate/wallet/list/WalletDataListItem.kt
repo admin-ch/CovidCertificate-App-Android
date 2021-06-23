@@ -33,15 +33,15 @@ sealed class WalletDataListItem {
 			val binding = ItemCertificateListBinding.bind(itemView)
 			val state = verifiedCertificate.state
 			val certificate = verifiedCertificate.dccHolder
-			val certType = certificate.certType
+			val certType = certificate?.certType
 
-			val name = "${certificate.euDGC.person.familyName} ${certificate.euDGC.person.givenName}"
+			val name = certificate?.let { "${it.euDGC.person.familyName} ${it.euDGC.person.givenName}" }
 			val qrAlpha = state.getQrAlpha()
 			binding.itemCertificateListName.text = name
 			binding.itemCertificateListName.alpha = qrAlpha
 			binding.itemCertificateListIconQr.alpha = qrAlpha
 
-			setCertificateType(binding.itemCertificateListType, state, certificate.certType)
+			setCertificateType(binding.itemCertificateListType, state, certType)
 			binding.itemCertificateListType.isVisible = certType != null
 
 			when (state) {
@@ -80,8 +80,14 @@ sealed class WalletDataListItem {
 				}
 			}
 
-			binding.root.setOnClickListener {
-				onCertificateClickListener?.invoke(certificate)
+			if (certificate != null) {
+				binding.root.setOnClickListener {
+					onCertificateClickListener?.invoke(certificate)
+				}
+				binding.root.isClickable = true
+			} else {
+				binding.root.setOnClickListener(null)
+				binding.root.isClickable = false
 			}
 		}
 

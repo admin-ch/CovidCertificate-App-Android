@@ -26,16 +26,17 @@ data class DebugCertificateItem(val verifiedCertificate: CertificatesViewModel.V
 
 	fun bindView(
 		itemView: View,
-		onShareClickListener: ((DccHolder) -> Unit),
+		onShareClickListener: ((String) -> Unit),
 	) {
 		val context = itemView.context
 		val certificate = verifiedCertificate.dccHolder
 		val state = verifiedCertificate.state
+		val certType = certificate?.certType
 
 		var typeBackgroundColor = R.color.blue
 		var typeTextColor = R.color.white
-		var typeLabelRes = R.string.certificate_reason_vaccinated
-		when (certificate.certType) {
+		var typeLabelRes: Int? = null
+		when (certType) {
 			CertType.RECOVERY -> {
 				typeLabelRes = R.string.certificate_reason_recovered
 			}
@@ -43,6 +44,9 @@ data class DebugCertificateItem(val verifiedCertificate: CertificatesViewModel.V
 				typeLabelRes = R.string.certificate_reason_tested
 				typeBackgroundColor = R.color.blueish
 				typeTextColor = R.color.blue
+			}
+			CertType.VACCINATION -> {
+				typeLabelRes = R.string.certificate_reason_vaccinated
 			}
 		}
 
@@ -53,7 +57,8 @@ data class DebugCertificateItem(val verifiedCertificate: CertificatesViewModel.V
 		}
 
 		// Name
-		val name = "${certificate.euDGC.person.familyName} ${certificate.euDGC.person.givenName}"
+		val name =
+			certificate?.let { "${it.euDGC.person.familyName} ${it.euDGC.person.givenName}" } ?: verifiedCertificate.qrCodeData
 		val qrAlpha = state.getQrAlpha()
 		itemView.findViewById<TextView>(R.id.item_certificate_list_name).apply {
 			text = name
@@ -64,13 +69,13 @@ data class DebugCertificateItem(val verifiedCertificate: CertificatesViewModel.V
 		itemView.findViewById<TextView>(R.id.item_certificate_list_type).apply {
 			backgroundTintList = context.resources.getColorStateList(typeBackgroundColor, context.theme)
 			setTextColor(ContextCompat.getColor(context, typeTextColor))
-			setText(typeLabelRes)
-			isVisible = certificate.certType != null
+			typeLabelRes?.let { setText(it) }
+			isVisible = certType != null
 		}
 
 		// Buttons
 		itemView.findViewById<Button>(R.id.button_share_string).setOnClickListener {
-			onShareClickListener.invoke(certificate)
+			onShareClickListener.invoke(verifiedCertificate.qrCodeData)
 		}
 
 	}

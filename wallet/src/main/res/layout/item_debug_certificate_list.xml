@@ -29,6 +29,8 @@
 			android:layout_height="wrap_content"
 			android:layout_width="0dp"
 			android:layout_weight="1"
+			android:maxLines="2"
+			android:ellipsize="end"
 			tools:text="Muster Marta" />
 
 		<TextView

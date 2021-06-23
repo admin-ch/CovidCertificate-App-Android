@@ -69,10 +69,10 @@ class DebugFragment : Fragment() {
 		certificatesViewModel.loadWalletData()
 	}
 
-	private fun onShareClickListener(holder: DccHolder) {
+	private fun onShareClickListener(qrCodeData: String) {
 		val sendIntent = Intent().apply {
 			action = Intent.ACTION_SEND
-			putExtra(Intent.EXTRA_TEXT, holder.qrCodeData)
+			putExtra(Intent.EXTRA_TEXT, qrCodeData)
 			type = "text/plain"
 		}
 		val shareIntent = Intent.createChooser(sendIntent, null)
