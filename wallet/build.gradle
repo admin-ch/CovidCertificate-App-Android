@@ -40,8 +40,8 @@ android {
 		applicationId "ch.admin.bag.covidcertificate.wallet"
 		minSdkVersion 24
 		targetSdkVersion 30
-		versionCode 1200
-		versionName "1.2.0"
+		versionCode 1210
+		versionName "1.2.1"
 
 		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
 

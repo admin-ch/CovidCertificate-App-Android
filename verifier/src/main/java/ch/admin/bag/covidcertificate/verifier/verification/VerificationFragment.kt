@@ -60,6 +60,14 @@ class VerificationFragment : Fragment() {
 
 	private lateinit var verificationAdapter: VerificationAdapter
 
+	private val onBackPressedCallback = object : OnBackPressedCallback(true) {
+		override fun handleOnBackPressed() {
+			isClosedByUser = true
+			parentFragmentManager.popBackStack()
+			remove()
+		}
+	}
+
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		if (arguments?.containsKey(ARG_DECODE_DGC) == false) {
@@ -68,12 +76,7 @@ class VerificationFragment : Fragment() {
 
 		dccHolder = requireArguments().getSerializable(ARG_DECODE_DGC) as DccHolder
 
-		requireActivity().onBackPressedDispatcher.addCallback(object : OnBackPressedCallback(true) {
-			override fun handleOnBackPressed() {
-				isClosedByUser = true
-				parentFragmentManager.popBackStack()
-			}
-		})
+		requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -96,6 +99,7 @@ class VerificationFragment : Fragment() {
 
 		binding.verificationFooterButton.setOnClickListener {
 			isClosedByUser = true
+			onBackPressedCallback.remove()
 			parentFragmentManager.popBackStack()
 		}
 
@@ -110,6 +114,7 @@ class VerificationFragment : Fragment() {
 		verificationAdapter = VerificationAdapter {
 			verificationViewModel.retryVerification(dccHolder)
 		}
+
 		binding.verificationStatusRecyclerView.apply {
 			layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
 			adapter = verificationAdapter
@@ -122,6 +127,7 @@ class VerificationFragment : Fragment() {
 		// Pop the entire backstack back to the home screen when the verification fragment is put into the background, unless
 		// it was closed by the user (e.g. with the back or OK button)
 		if (!isClosedByUser) {
+			onBackPressedCallback.remove()
 			parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
 		}
 	}

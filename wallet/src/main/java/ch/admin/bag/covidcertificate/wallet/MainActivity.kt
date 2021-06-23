@@ -37,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 	}
 
 	private val configViewModel by viewModels<ConfigViewModel>()
+	private val deeplinkViewModel by viewModels<DeeplinkViewModel>()
 	private val pdfViewModel by viewModels<PdfViewModel>()
 
 	private lateinit var binding: ActivityMainBinding
@@ -98,27 +99,6 @@ class MainActivity : AppCompatActivity() {
 		outState.putBoolean(KEY_IS_INTENT_CONSUMED, isIntentConsumed)
 	}
 
-	private fun checkIntentForActions() {
-		val launchedFromHistory = intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
-		if (!launchedFromHistory && !isIntentConsumed) {
-			isIntentConsumed = true
-			when (intent.action) {
-				Intent.ACTION_SEND -> {
-					if ("application/pdf" == intent.type) {
-						handleCertificatePDF(intent)
-					}
-				}
-			}
-		}
-	}
-
-	private fun handleCertificatePDF(intent: Intent) {
-		if (secureStorage.getOnboardingCompleted()) {
-			intent.clipData?.let { pdfViewModel.importPdf(clipData = it) }
-		}
-	}
-
-
 	override fun onStart() {
 		super.onStart()
 		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
@@ -154,6 +134,44 @@ class MainActivity : AppCompatActivity() {
 			}
 			this.forceUpdateDialog = forceUpdateDialog
 			forceUpdateDialog.show()
+		}
+	}
+
+	private fun checkIntentForActions() {
+		val launchedFromHistory = intent.flags and Intent.FLAG_ACTIVITY_LAUNCHED_FROM_HISTORY != 0
+		if (!launchedFromHistory && !isIntentConsumed) {
+			isIntentConsumed = true
+			when (intent.action) {
+				Intent.ACTION_SEND -> {
+					if ("application/pdf" == intent.type) {
+						handleCertificatePDF(intent)
+					}
+				}
+				Intent.ACTION_VIEW -> {
+					handleCertificateDeeplink(intent)
+				}
+			}
+		}
+	}
+
+	private fun handleCertificatePDF(intent: Intent) {
+		if (secureStorage.getOnboardingCompleted()) {
+			intent.clipData?.let { pdfViewModel.importPdf(clipData = it) }
+		}
+	}
+
+	// Expect URIs of the form "covidcert://hc1:<base45>" and "hcert://hc1:<base45>"
+	private fun handleCertificateDeeplink(intent: Intent) {
+		val uri = intent.data ?: return
+		// The base45 contains weird characters that confuse normal uri parsing (so we can't simply use uri.scheme and uri.path)
+		val uriString = uri.toString()
+
+		val prefixes = listOf("covidcert://", "hcert://")
+		for (prefix in prefixes) {
+			if (uriString.startsWith(prefix)) {
+				val cert = uriString.substringAfter(prefix)
+				deeplinkViewModel.importDeeplink(cert)
+			}
 		}
 	}
 }

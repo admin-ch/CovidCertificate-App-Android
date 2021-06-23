@@ -14,6 +14,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
+import ch.admin.bag.covidcertificate.eval.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.wallet.data.adapter.InstantJsonAdapter
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
@@ -38,7 +39,7 @@ class WalletDataSecureStorage private constructor(context: Context) {
 			moshi.adapter<List<WalletDataItem>>(Types.newParameterizedType(List::class.java, WalletDataItem::class.java))
 	}
 
-	private val prefs = initializeSharedPreferences(context)
+	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, SHARED_PREFERENCES_NAME)
 
 	fun saveWalletDataItem(dataItem: WalletDataItem) {
 		val walletData = getWalletData().toMutableList()
@@ -108,30 +109,6 @@ class WalletDataSecureStorage private constructor(context: Context) {
 			return emptyList()
 		}
 		return walletDataItemAdapter.fromJson(json) ?: emptyList()
-	}
-
-	@Synchronized
-	private fun initializeSharedPreferences(context: Context): SharedPreferences {
-		return try {
-			createEncryptedSharedPreferences(context)
-		} catch (e: GeneralSecurityException) {
-			throw RuntimeException(e)
-		} catch (e: IOException) {
-			throw RuntimeException(e)
-		}
-	}
-
-	@Synchronized
-	@Throws(GeneralSecurityException::class, IOException::class)
-	private fun createEncryptedSharedPreferences(context: Context): SharedPreferences {
-		val masterKeyAlias: String = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
-		return EncryptedSharedPreferences.create(
-			SHARED_PREFERENCES_NAME,
-			masterKeyAlias,
-			context,
-			EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
-			EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM
-		)
 	}
 
 	private fun updateWalletData(walletData: List<WalletDataItem>) {

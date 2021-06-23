@@ -13,9 +13,14 @@ The app design, UX and implementation was done by [Ubique](https://www.ubique.ch
 COVID Certificate is the official app for storing and presenting COVID certificates issued in Switzerland.
 The certificates are kept and checked locally on the user's phone.
 
+<p align="verticalcenter">
 <a href='https://play.google.com/store/apps/details?id=ch.admin.bag.covidcertificate.wallet'>
-<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="20%"/>
+<img alt='Get it on Google Play' src='badges/googleplay.png' width="30%"/>
 </a>
+<a href='https://appgallery.huawei.com/#/app/C104434571'>
+<img alt='Explore it on AppGallery' src='badges/appgallery.png' width="30%"/>
+</a>
+</p>
 
 <p align="center">
 <img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_01.png" width="20%">
@@ -29,9 +34,14 @@ The certificates are kept and checked locally on the user's phone.
 COVID Certificate Check is the official app for checking COVID certificates in Switzerland.
 The validation is executed locally on the phone and no information of the scanned certificates is saved.
 
+<p align="verticalcenter">
 <a href='https://play.google.com/store/apps/details?id=ch.admin.bag.covidcertificate.verifier'>
-<img alt='Get it on Google Play' src='https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png' width="20%"/>
+<img alt='Get it on Google Play' src='badges/googleplay.png' width="30%"/>
 </a>
+<a href='https://appgallery.huawei.com/#/app/C104435637'>
+<img alt='Explore it on AppGallery' src='badges/appgallery.png' width="30%"/>
+</a>
+</p>
 
 <p align="center">
 <img src="verifier/src/main/play/listings/en-US/graphics/phone-screenshots/EN_01.png" width="20%">
