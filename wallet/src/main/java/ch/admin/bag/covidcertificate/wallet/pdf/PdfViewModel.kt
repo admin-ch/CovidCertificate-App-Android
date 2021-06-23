@@ -49,6 +49,7 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 				val inputStream: InputStream? = getApplication<Application>().contentResolver.openInputStream(uri)
 				val outputFile: File = File.createTempFile("certificate", ".pdf", getApplication<Application>().cacheDir)
 				inputStream?.copyTo(outputFile.outputStream())
+
 				val bitmaps = QRCodeReaderHelper.pdfToBitmap(getApplication<Application>(), outputFile)
 
 				for (bitmap in bitmaps) {
