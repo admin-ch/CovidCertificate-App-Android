@@ -23,6 +23,8 @@ data class ConfigModel(
 	val works: Map<String, FaqModel>?,
 	val transferQuestions: Map<String, FaqModel>?,
 	val transferWorks: Map<String, FaqModel>?,
+	val androidTransferCheckIntervalMs: Long?,
+	val androidTransferCheckBackoffMs: Long?
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)

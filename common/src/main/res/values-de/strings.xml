@@ -228,7 +228,7 @@ hinzufügen"</string>
     <!-- Antwort 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_2">"Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. 
 
-Beachten Sie, dass sie in jedem Fall auf Verlangen auch noch ein Ausweisdokument vorweisen müssen."</string>
+Beachten Sie, dass Sie in jedem Fall auf Verlangen auch noch ein Ausweisdokument vorweisen müssen."</string>
 
     <!-- Antwort 3 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_3">"Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform."</string>
@@ -659,7 +659,7 @@ Bitte informieren Sie sich vor der Reise über die am Zielort geltenden Gesundhe
 {DATE}"</string>
 
     <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
-    <string name="wallet_transfer_code_state_no_certificate">"Mit diesem Transfer kann kein  Zertifikat mehr empfangen werden."</string>
+    <string name="wallet_transfer_code_state_no_certificate">"Mit diesem Transfer kann kein Zertifikat mehr empfangen werden."</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig -->
     <string name="wallet_error_invalid_format">"Format des Zertifikat
@@ -778,7 +778,29 @@ ungültig"</string>
     <string name="accessibility_refresh_button">"Aktualisieren"</string>
 
     <!-- Fuzzy -->
-    <string name="wallet_transfer_delete_confirm_text">"Wollen Sie den Transfer wirklich löschen?"</string>
+    <string name="wallet_transfer_delete_confirm_text">"Wollen Sie den Transfer-Code wirklich löschen?"</string>
     <string name="wallet_notification_transfer_title">"Transfer erfolgreich"</string>
     <string name="wallet_notification_transfer_text">"Das Covid-Zertifikat ist eingetroffen"</string>
+    <string name="wallet_faq_questions_question_2_1">"Wie lange ist das Covid-Zertifikat gültig?"</string>
+    <string name="wallet_faq_questions_answer_2_1">"Die Gültigkeitsdauer unterscheidet sich je nachdem, ob Sie eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis haben. Aufgrund neuer wissenschaftlicher Erkenntnisse kann sich die Gültigkeitsdauer verändern. Die aktuell geltende Gültigkeitsdauer von Covid-Zertifikaten finden Sie hier:"</string>
+    <string name="wallet_faq_questions_linktext_2_1">"Weitere Informationen"</string>
+    <string name="wallet_faq_questions_linkurl_2_1">"https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/#contents2"</string>
+    <string name="wallet_faq_works_question_3_1">"Kann ich die App auch offline verwenden?"</string>
+    <string name="wallet_faq_works_answer_3_1">"Sie können die App ohne eine Internetverbindung verwenden. Auch im Offline-Modus können Zertifikate vorgewiesen und von den Prüfern gescannt und verifiziert werden.
+
+Um in der «COVID Certificate»-App anzeigen zu können, ob ihr Zertifikat den Gültigkeitskriterien der Schweiz entspricht und bis wann Ihr Zertifikat gültig ist, muss die App jedoch regelmässig online sein."</string>
+    <string name="verifier_faq_works_question_2_1">"Was sind die aktuellen Gültigkeitskriterien der Schweiz?"</string>
+    <string name="verifier_faq_works_answer_2_1">"Die aktuell geltende Gültigkeitsdauer von Covid-Zertifikaten finden Sie hier:"</string>
+    <string name="verifier_faq_works_linktext_2_1">"Weitere Informationen"</string>
+    <string name="verifier_faq_works_linkurl_2_1">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"</string>
+    <string name="verifier_faq_works_question_7">"Können Zertifikate auch offline geprüft werden?"</string>
+    <string name="verifier_faq_works_answer_7">"Grundsätzlich können Covid-Zertifikate auch ohne eine Internetverbindung geprüft werden. Dazu werden regelmässig aktualisierte Prüflisten von einem zentralen Server heruntergeladen. Diese lokal gespeicherten Prüflisten dürfen nicht älter als 48h sein. 
+
+Um die Prüflisten zu aktualisieren muss die App mit dem Internet verbunden sein und geöffnet werden. Die Aktualisierung erfolgt unmittelbar und automatisch."</string>
+
+    <!-- Button zum QR Code Scannen öffnen -->
+    <string name="wallet_homescreen_qr_code_scannen">"QR-Code scannen"</string>
+
+    <!-- Button zum PDF importieren -->
+    <string name="wallet_homescreen_pdf_import">"PDF importieren"</string>
 </resources>

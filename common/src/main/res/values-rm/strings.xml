@@ -752,4 +752,26 @@ n’è betg valaivel"</string>
     <string name="wallet_transfer_delete_confirm_text">"Vulais Vus propi stizzar il transfer?"</string>
     <string name="wallet_notification_transfer_title">"Transfer reussì"</string>
     <string name="wallet_notification_transfer_text">"Il certificat COVID è arrivà"</string>
+    <string name="wallet_faq_questions_question_2_1">"Quant ditg è il certificat COVID valaivel?"</string>
+    <string name="wallet_faq_questions_answer_2_1">"La durada da valaivladad variescha tut tenor, sche Vus avais ina vaccinaziun cunter COVID-19, sche Vus essas guarida u guarì d'ina infecziun u sche Vus avais in test negativ. A basa da novas enconuschientschas scientificas po la durada da valaivladad sa midar. La durada da valaivladad actuala dals certificats COVID chattais Vus qua:"</string>
+    <string name="wallet_faq_questions_linktext_2_1">"Ulteriuras infurmaziuns"</string>
+    <string name="wallet_faq_questions_linkurl_2_1">"https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/#contents2"</string>
+    <string name="wallet_faq_works_question_3_1">"Poss jau er duvrar l'app offline?"</string>
+    <string name="wallet_faq_works_answer_3_1">"Vus pudais duvrar l'app senza ina colliaziun cun l'internet. Er en il modus offline pon ils certificats vegnir preschentads sco er scannads e verifitgads dals verifitgaders.
+
+Per vesair en l'app «COVID Certificate», sche Voss certificat correspunda als criteris da valaivladad da la Svizra e fin cura che Voss certificat è valaivel, sto l'app però esser regularmain online."</string>
+    <string name="verifier_faq_works_question_2_1">"Tge èn ils criteris da valaivladad actuals da la Svizra?"</string>
+    <string name="verifier_faq_works_answer_2_1">"La durada da valaivladad vertenta actuala dals certificats COVID chattais Vus qua:"</string>
+    <string name="verifier_faq_works_linktext_2_1">"Ulteriuras infurmaziuns"</string>
+    <string name="verifier_faq_works_linkurl_2_1">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"</string>
+    <string name="verifier_faq_works_question_7">"Pon ils certificats er vegnir verifitgads offline?"</string>
+    <string name="verifier_faq_works_answer_7">"Da princip pon ils certificats COVID er vegnir verifitgads senza ina colliaziun cun l'internet. Per far quai vegnan chargiadas giu regularmain d'in server central glistas da verificaziun actualisadas. Questas glistas da verificaziun arcunadas localmain na dastgan betg esser pli veglias che 48 uras.
+
+Per actualisar las glistas da verificaziun sto l'app esser colliada cun l'internet e vegnir averta. L'actualisaziun succeda immediatamain ed automaticamain."</string>
+
+    <!-- Button zum QR Code Scannen öffnen -->
+    <string name="wallet_homescreen_qr_code_scannen">"QR-Code scannen"</string>
+
+    <!-- Button zum PDF importieren -->
+    <string name="wallet_homescreen_pdf_import">"PDF importieren"</string>
 </resources>
