@@ -39,6 +39,9 @@ class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 
 		private const val MIN_LOAD_WAIT_TIME = 60 * 60 * 1000L // 1h
 		private const val MAX_AGE_STATUS_VALID_CACHED_CONFIG = 48 * 60 * 60 * 1000L // 48h
+
+		fun getCurrentConfig(context: Context) =
+			ConfigSecureStorage.getInstance(context).getConfig() ?: AssetUtil.loadDefaultConfig(context)
 	}
 
 	private val configService: ConfigService

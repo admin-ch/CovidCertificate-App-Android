@@ -2,6 +2,11 @@ package ch.admin.bag.covidcertificate.wallet
 
 import android.app.Application
 import android.os.Build
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.LifecycleObserver
+import androidx.lifecycle.OnLifecycleEvent
+import androidx.lifecycle.ProcessLifecycleOwner
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.eval.data.Config
 import ch.admin.bag.covidcertificate.eval.net.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
@@ -9,6 +14,7 @@ import ch.admin.bag.covidcertificate.wallet.data.CertificateStorage
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
+import ch.admin.bag.covidcertificate.wallet.transfercode.worker.TransferWorker
 
 class MainApplication : Application() {
 
@@ -21,6 +27,8 @@ class MainApplication : Application() {
 		CovidCertificateSdk.init(this)
 
 		migrateCertificatesToWalletData()
+
+		setupTransferWorker()
 	}
 
 	@Suppress("DEPRECATION")
@@ -38,5 +46,25 @@ class MainApplication : Application() {
 
 			walletStorage.setMigratedCertificatesToWalletData(true)
 		}
+	}
+
+	private fun setupTransferWorker() {
+		ProcessLifecycleOwner.get().lifecycle.addObserver(object : LifecycleObserver {
+			@OnLifecycleEvent(Lifecycle.Event.ON_START)
+			fun onAppStart() {
+				TransferWorker.cancelScheduledTransferWorker(this@MainApplication)
+			}
+
+			@OnLifecycleEvent(Lifecycle.Event.ON_STOP)
+			fun onAppStop() {
+				val hasTransferCodes = WalletDataSecureStorage.getInstance(this@MainApplication).getWalletData()
+					.filterIsInstance<WalletDataItem.TransferCodeWalletData>().isNotEmpty()
+				if (hasTransferCodes) {
+					TransferWorker.scheduleTransferWorker(
+						this@MainApplication, ConfigRepository.getCurrentConfig(this@MainApplication)
+					)
+				}
+			}
+		})
 	}
 }
