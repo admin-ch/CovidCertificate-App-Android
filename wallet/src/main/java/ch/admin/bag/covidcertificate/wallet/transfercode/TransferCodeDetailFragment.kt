@@ -151,6 +151,8 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 		val transferCode = transferCode ?: return
 		if (error != null) {
 			binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.orangeish))
+			binding.transferCodeRefreshButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.orange))
+			binding.transferCodeRefreshButton.setImageResource(R.drawable.ic_retry)
 
 			if (error.code == ErrorCodes.GENERAL_OFFLINE) {
 				val offlineTitle = getString(R.string.wallet_transfer_code_no_internet_title)
@@ -163,6 +165,8 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 			}
 		} else {
 			binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blueish))
+			binding.transferCodeRefreshButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
+			binding.transferCodeRefreshButton.setImageResource(R.drawable.ic_load)
 			val lastUpdated = transferCode.lastUpdatedTimestamp.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
 			binding.transferCodeLastUpdate.text = getString(R.string.wallet_transfer_code_state_updated)
 				.replace(DATE_REPLACEMENT_STRING, lastUpdated).makeSubStringBold(lastUpdated)
