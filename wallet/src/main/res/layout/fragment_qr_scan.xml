@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
   ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
   ~
   ~ This Source Code Form is subject to the terms of the Mozilla Public
@@ -16,12 +15,12 @@
 	android:layout_height="match_parent"
 	tools:context=".qr.WalletQrScanFragment">
 
-	<com.journeyapps.barcodescanner.DecoratedBarcodeView
-		android:id="@+id/barcode_scanner"
+	<androidx.camera.view.PreviewView
+		android:id="@+id/qr_code_scanner"
 		android:layout_width="match_parent"
 		android:layout_height="0dp"
-		app:layout_constraintTop_toBottomOf="@id/fragment_qr_toolbar_inset_group"
-		app:layout_constraintBottom_toTopOf="@id/qr_code_scanner_footer_group"/>
+		app:layout_constraintBottom_toTopOf="@id/qr_code_scanner_footer_group"
+		app:layout_constraintTop_toBottomOf="@id/fragment_qr_toolbar_inset_group" />
 
 	<View
 		android:layout_width="match_parent"
@@ -116,11 +115,11 @@
 					android:paddingEnd="@dimen/spacing_large"
 					android:text="@string/qr_scanner_error"
 					android:visibility="invisible"
-					tools:visibility="visible"
 					app:drawableStartCompat="@drawable/ic_scanner_alert_white"
 					app:layout_constraintEnd_toEndOf="parent"
 					app:layout_constraintStart_toStartOf="parent"
-					app:layout_constraintTop_toTopOf="parent" />
+					app:layout_constraintTop_toTopOf="parent"
+					tools:visibility="visible" />
 
 				<View
 					android:id="@+id/qr_code_scanner_camera_hole"
@@ -136,11 +135,11 @@
 					android:id="@+id/camera_preview_container"
 					android:layout_width="match_parent"
 					android:layout_height="0dp"
-					android:layout_marginTop="@dimen/spacing_larger"
 					android:layout_marginHorizontal="@dimen/spacing_huge"
+					android:layout_marginTop="@dimen/spacing_larger"
+					app:layout_constraintBottom_toBottomOf="parent"
 					app:layout_constraintDimensionRatio="1:1"
-					app:layout_constraintTop_toTopOf="parent"
-					app:layout_constraintBottom_toBottomOf="parent">
+					app:layout_constraintTop_toTopOf="parent">
 
 					<View
 						android:id="@+id/qr_code_scanner_top_right_indicator"
@@ -177,23 +176,23 @@
 				</androidx.constraintlayout.widget.ConstraintLayout>
 
 				<TextView
-					style="@style/CovidCertificate.Text.Bold.Error.Bundesrot"
 					android:id="@+id/qr_code_scanner_error_code"
+					style="@style/CovidCertificate.Text.Bold.Error.Bundesrot"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
 					android:textSize="@dimen/text_size_small"
-					tools:text="ER-14"
-					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintBottom_toTopOf="@id/camera_preview_container"
 					app:layout_constraintEnd_toEndOf="parent"
+					app:layout_constraintStart_toStartOf="parent"
 					app:layout_constraintTop_toTopOf="@id/camera_preview_container"
-					app:layout_constraintBottom_toTopOf="@id/camera_preview_container"/>
+					tools:text="ER-14" />
 
 				<View
 					android:layout_width="match_parent"
 					android:layout_height="22dp"
-					android:rotation="180"
 					android:background="@drawable/ic_header_slim"
-					app:layout_constraintBottom_toBottomOf="parent"/>
+					android:rotation="180"
+					app:layout_constraintBottom_toBottomOf="parent" />
 
 			</androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -223,16 +222,16 @@
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
 		android:background="@color/white"
-		app:layout_constraintBottom_toBottomOf="parent"
 		android:gravity="center_horizontal"
+		android:orientation="vertical"
 		android:paddingHorizontal="@dimen/spacing_larger"
 		android:paddingBottom="@dimen/spacing_very_large"
-		android:orientation="vertical">
+		app:layout_constraintBottom_toBottomOf="parent">
 
 		<ImageView
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:src="@drawable/ic_scan_code"/>
+			android:src="@drawable/ic_scan_code" />
 
 		<TextView
 			android:id="@+id/qr_code_scanner_explanation"
@@ -240,9 +239,9 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_medium"
-			android:textSize="@dimen/text_size_emphasize"
 			android:gravity="center"
-			android:text="@string/wallet_scanner_explanation"/>
+			android:text="@string/wallet_scanner_explanation"
+			android:textSize="@dimen/text_size_emphasize" />
 
 		<TextView
 			android:id="@+id/qr_code_scanner_button_how"
@@ -251,9 +250,9 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_medium"
 			android:background="@drawable/ripple_rounded_rect"
-			android:padding="@dimen/spacing_medium"
 			android:gravity="center"
-			android:text="@string/wallet_scanner_info_button"/>
+			android:padding="@dimen/spacing_medium"
+			android:text="@string/wallet_scanner_info_button" />
 
 	</LinearLayout>
 
@@ -266,7 +265,7 @@
 		android:elevation="@dimen/floating_button_elevation"
 		android:src="@drawable/ic_light_off_blue"
 		app:layout_constraintBottom_toTopOf="@id/qr_code_scanner_footer_group"
-		app:layout_constraintTop_toTopOf="@id/qr_code_scanner_footer_group"
-		app:layout_constraintEnd_toEndOf="parent"/>
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintTop_toTopOf="@id/qr_code_scanner_footer_group" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
