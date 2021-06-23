@@ -111,13 +111,7 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 				setTransferCodeViewState(true)
 			}
 			is TransferCodeConversionState.CONVERTED -> {
-				val dccHolder = state.dccHolder
-				parentFragmentManager.popBackStack()
-				parentFragmentManager.beginTransaction()
-					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-					.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(dccHolder))
-					.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
-					.commit()
+				// do nothing - will be removed
 			}
 			is TransferCodeConversionState.NOT_CONVERTED -> {
 				transferCode = transferCode?.let {

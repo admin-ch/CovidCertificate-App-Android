@@ -55,7 +55,7 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 		creationStateMutableLiveData.value = TransferCodeCreationState.LOADING
 		transferCodeCreationJob = viewModelScope.launch(Dispatchers.Default) {
 			val transferCode = Luhn.generateNewTransferCode()
-			val keyPair = TransferCodeCrypto.createKeyPair(transferCode, getApplication<MainApplication>().applicationContext)
+			val keyPair = TransferCodeCrypto.createKeyPair(transferCode, getApplication())
 
 			if (keyPair != null) {
 				registerTransferCode(transferCode, keyPair)
