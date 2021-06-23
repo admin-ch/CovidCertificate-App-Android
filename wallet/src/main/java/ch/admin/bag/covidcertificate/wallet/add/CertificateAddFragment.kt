@@ -32,9 +32,13 @@ class CertificateAddFragment : Fragment() {
 
 	companion object {
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
+		private const val ARG_FROM_CAMERA = "ARG_FROM_CAMERA"
 
-		fun newInstance(certificate: DccHolder): CertificateAddFragment = CertificateAddFragment().apply {
-			arguments = bundleOf(ARG_CERTIFICATE to certificate)
+		fun newInstance(certificate: DccHolder, fromCamera: Boolean): CertificateAddFragment = CertificateAddFragment().apply {
+			arguments = bundleOf(
+				ARG_CERTIFICATE to certificate,
+				ARG_FROM_CAMERA to fromCamera,
+			)
 		}
 	}
 
@@ -44,12 +48,15 @@ class CertificateAddFragment : Fragment() {
 	private val binding get() = _binding!!
 
 	private lateinit var dccHolder: DccHolder
+	private var openedFragmentFromCamera: Boolean = false
 	private var isAlreadyAdded = false
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
+
 		dccHolder = (arguments?.getSerializable(ARG_CERTIFICATE) as? DccHolder)
-			?: throw IllegalStateException("Certificate detail fragment created without Certificate!")
+			?: throw IllegalStateException("CertificateAddFragment created without Certificate!")
+		openedFragmentFromCamera = arguments?.getBoolean(ARG_FROM_CAMERA) ?: throw IllegalStateException("Missing fromCamera!")
 		isAlreadyAdded = certificatesViewModel.containsCertificate(dccHolder.qrCodeData)
 	}
 
@@ -81,8 +88,13 @@ class CertificateAddFragment : Fragment() {
 				}
 			}
 		}
-		binding.certificateAddRetry.setOnClickListener {
-			parentFragmentManager.popBackStack()
+		if (openedFragmentFromCamera) {
+			binding.certificateAddRetry.isVisible = true
+			binding.certificateAddRetry.setOnClickListener {
+				parentFragmentManager.popBackStack()
+			}
+		} else {
+			binding.certificateAddRetry.isVisible = false
 		}
 
 	}
