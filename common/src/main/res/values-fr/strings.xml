@@ -753,4 +753,26 @@ non valide"</string>
     <string name="wallet_transfer_delete_confirm_text">"Voulez-vous vraiment supprimer le transfer ?"</string>
     <string name="wallet_notification_transfer_title">"Transfert réussi"</string>
     <string name="wallet_notification_transfer_text">"Le certificat COVID est arrivé"</string>
+    <string name="wallet_faq_questions_question_2_1">"Quelle est la durée de validité du certificat COVID ?"</string>
+    <string name="wallet_faq_questions_answer_2_1">"La durée de validité varie selon que votre certificat COVID consigne une vaccination, une guérison ou un résultat de test négatif. Elle peut changer en fonction de l’évolution des connaissances scientifiques. Vous trouverez des informations sur la durée de validité actuelle du certificat COVID à l’adresse suivante :"</string>
+    <string name="wallet_faq_questions_linktext_2_1">"Informations supplémentaires"</string>
+    <string name="wallet_faq_questions_linkurl_2_1">"https://ofsp-coronavirus.ch/certificat/comment-obtenir-le-certificat-covid-et-comment-men-servir/#contents2"</string>
+    <string name="wallet_faq_works_question_3_1">"Puis-je également utiliser l’application hors ligne ?"</string>
+    <string name="wallet_faq_works_answer_3_1">"Oui, vous pouvez utiliser l’application sans connexion Internet. Les certificats peuvent aussi être présentés, scannés et vérifiés en mode hors ligne.
+
+Toutefois, pour pouvoir afficher dans l’application «COVID Certificate» si votre certificat répond aux critères de validité de la Suisse et pour présenter sa durée de validité, l’application requiert une connexion Internet régulière."</string>
+    <string name="verifier_faq_works_question_2_1">"Quels sont les critères de validité actuels de la Suisse ?"</string>
+    <string name="verifier_faq_works_answer_2_1">"Vous trouverez des informations sur la durée de validité actuelle du certificat COVID à l’adresse suivante :"</string>
+    <string name="verifier_faq_works_linktext_2_1">"Informations supplémentaires"</string>
+    <string name="verifier_faq_works_linkurl_2_1">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"</string>
+    <string name="verifier_faq_works_question_7">"La vérification des certificats est-elle possible hors ligne ?"</string>
+    <string name="verifier_faq_works_answer_7">"En principe, il est aussi possible de vérifier les certificats COVID sans connexion Internet. À cette fin, des listes de contrôle régulièrement mises à jour sont téléchargées à partir d’un serveur central. Elles sont enregistrées localement et ne doivent pas remonter à plus de 48 h.
+
+Pour actualiser les listes de contrôle, l’application doit être ouverte et connectée à Internet. La mise à jour s’effectue immédiatement et automatiquement."</string>
+
+    <!-- Button zum QR Code Scannen öffnen -->
+    <string name="wallet_homescreen_qr_code_scannen">"QR-Code scannen"</string>
+
+    <!-- Button zum PDF importieren -->
+    <string name="wallet_homescreen_pdf_import">"PDF importieren"</string>
 </resources>

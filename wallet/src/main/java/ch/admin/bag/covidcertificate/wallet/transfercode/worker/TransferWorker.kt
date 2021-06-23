@@ -24,6 +24,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.util.concurrent.TimeUnit
+import kotlin.math.max
 
 class TransferWorker(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
 
@@ -31,18 +32,20 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 		val WORKER_NAME = TransferWorker::class.java.canonicalName
 
 		private const val DEFAULT_REPEAT_INTERVAL = 120 * 60 * 1000L
-		private const val DEFAULT_FLEX_INTERVAL = 5 * 60 * 1000L
+		private const val DEFAULT_FLEX_INTERVAL = 10 * 60 * 1000L
+		private const val MIN_FLEX_INTERVAL = 5 * 60 * 1000L
 		private const val DEFAULT_BACKOFF_DELAY = 30 * 1000L
 
 		fun scheduleTransferWorker(context: Context, config: ConfigModel? = null) {
+			val checkIntervalConfig = config?.androidTransferCheckIntervalMs
 			val transferWorkRequest = PeriodicWorkRequest.Builder(
 				TransferWorker::class.java,
-				DEFAULT_REPEAT_INTERVAL,
+				checkIntervalConfig ?: DEFAULT_REPEAT_INTERVAL,
 				TimeUnit.MILLISECONDS,
-				DEFAULT_FLEX_INTERVAL,
+				max(checkIntervalConfig?.let { it / 20 } ?: DEFAULT_FLEX_INTERVAL, MIN_FLEX_INTERVAL),
 				TimeUnit.MILLISECONDS
 			)
-				.setBackoffCriteria(BackoffPolicy.EXPONENTIAL, DEFAULT_BACKOFF_DELAY, TimeUnit.MILLISECONDS)
+				.setBackoffCriteria(BackoffPolicy.EXPONENTIAL, config?.androidTransferCheckBackoffMs ?: DEFAULT_BACKOFF_DELAY, TimeUnit.MILLISECONDS)
 				.build()
 
 			WorkManager.getInstance(context)
