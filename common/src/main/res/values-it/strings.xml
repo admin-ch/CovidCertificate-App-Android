@@ -791,9 +791,7 @@ Per poter aggiornare gli elenchi di verifica, l’app deve essere aperta e colle
     <!-- Typenbezeichnung für eine unvollständige Impfung -->
     <string name="wallet_certificate_type_incomplete_vaccine">"Vaccinazione incompleta"</string>
 
-    <!-- Label für den Aussteller eines Nachweises -->
-    <string name="wallet_certificate_evidence_issuer">"La documentazione è stata emessa da"</string>
-
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
-    <string name="wallet_certificate_evidence_creation_date">"Documentazione emessa il {DATE} alle {TIME}"</string>
+    <string name="wallet_certificate_evidence_creation_date">"Documentazione emessa il
+{DATE}"</string>
 </resources>

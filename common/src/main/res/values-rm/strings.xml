@@ -787,9 +787,7 @@ Per actualisar las glistas da verificaziun sto l'app esser colliada cun l'intern
     <!-- Typenbezeichnung für eine unvollständige Impfung -->
     <string name="wallet_certificate_type_incomplete_vaccine">"Vaccinaziun incumpletta"</string>
 
-    <!-- Label für den Aussteller eines Nachweises -->
-    <string name="wallet_certificate_evidence_issuer">"La cumprova è vegnida emessa da"</string>
-
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
-    <string name="wallet_certificate_evidence_creation_date">"Cumprova emessa ils {DATE} a las {TIME}"</string>
+    <string name="wallet_certificate_evidence_creation_date">"Cumprova emessa ils
+{DATE}"</string>
 </resources>

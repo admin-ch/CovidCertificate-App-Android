@@ -788,9 +788,7 @@ Pour actualiser les listes de contrôle, l’application doit être ouverte et c
     <!-- Typenbezeichnung für eine unvollständige Impfung -->
     <string name="wallet_certificate_type_incomplete_vaccine">"Vaccination incomplète"</string>
 
-    <!-- Label für den Aussteller eines Nachweises -->
-    <string name="wallet_certificate_evidence_issuer">"Le justificatif a été délivré par"</string>
-
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
-    <string name="wallet_certificate_evidence_creation_date">"Justificatif établi le {DATE} à {TIME}"</string>
+    <string name="wallet_certificate_evidence_creation_date">"Justificatif établi le
+{DATE}"</string>
 </resources>

@@ -1,4 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
 <resources>
 
     <!-- Android App Name -->
@@ -780,9 +790,7 @@ In order to update the checklists, the app must be open and connected to the Int
     <!-- Typenbezeichnung für eine unvollständige Impfung -->
     <string name="wallet_certificate_type_incomplete_vaccine">"Vaccination incomplete"</string>
 
-    <!-- Label für den Aussteller eines Nachweises -->
-    <string name="wallet_certificate_evidence_issuer">"The evidence was issued by"</string>
-
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
-    <string name="wallet_certificate_evidence_creation_date">"Evidence created on {DATE} at {TIME}"</string>
+    <string name="wallet_certificate_evidence_creation_date">"Evidence created on
+{DATE}"</string>
 </resources>

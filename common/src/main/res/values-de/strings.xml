@@ -816,9 +816,7 @@ Um die Prüflisten zu aktualisieren muss die App mit dem Internet verbunden sein
     <!-- Typenbezeichnung für eine unvollständige Impfung -->
     <string name="wallet_certificate_type_incomplete_vaccine">"Unvollständige Impfung"</string>
 
-    <!-- Label für den Aussteller eines Nachweises -->
-    <string name="wallet_certificate_evidence_issuer">"Der Nachweis wurde herausgegeben durch"</string>
-
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
-    <string name="wallet_certificate_evidence_creation_date">"Nachweis erstellt am {DATE} um {TIME}"</string>
+    <string name="wallet_certificate_evidence_creation_date">"Nachweis erstellt am
+{DATE}"</string>
 </resources>
