@@ -9,13 +9,11 @@
   -->
 
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
-    android:width="110dp"
-    android:height="110dp"
-    android:viewportWidth="110"
-    android:viewportHeight="110">
-  <path
-      android:pathData="M110,110C110,49.249 60.751,0 0,0v110"
-      android:fillColor="#000"
-      android:fillAlpha="0.1"
-      android:fillType="evenOdd"/>
+	android:width="110dp"
+	android:height="110dp"
+	android:viewportWidth="110"
+	android:viewportHeight="110">
+	<path
+		android:fillColor="@color/blue_dark"
+		android:pathData="M110,110C110,49.249 60.751,0 0,0v110" />
 </vector>
