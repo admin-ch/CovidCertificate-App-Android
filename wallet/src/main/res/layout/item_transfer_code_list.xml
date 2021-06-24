@@ -54,16 +54,13 @@
 
 		<TextView
 			android:id="@+id/item_transfer_code_list_code"
-			style="@style/CovidCertificate.Text.Bold.Lead"
+			style="@style/CovidCertificate.Text.Transfer.Bubble"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:background="@drawable/bg_type_bubble_small"
 			android:backgroundTint="@color/blueish"
-			android:fontFeatureSettings="tnum"
 			android:paddingHorizontal="@dimen/spacing_very_small"
 			android:paddingVertical="1dp"
-			android:textColor="@color/blue"
-			android:textSize="@dimen/text_size_type_bubble"
 			android:visibility="gone"
 			tools:text="A2X56K7WP"
 			tools:visibility="visible" />

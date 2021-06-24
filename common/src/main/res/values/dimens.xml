@@ -30,6 +30,7 @@
 	<dimen name="text_size_large">26sp</dimen>
 	<dimen name="text_size_very_large">32sp</dimen>
 
+	<dimen name="text_line_height_bubble">18sp</dimen>
 	<dimen name="text_line_height_normal">22sp</dimen>
 	<dimen name="text_line_height_large">28sp</dimen>
 
