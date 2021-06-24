@@ -166,6 +166,18 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 
 		binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_info_outline)
 
+		if (!state.isHighlighted) {
+			// Show errors if the transfer code is not highlighted (failed)
+			state.error?.let {
+				binding.transferCodeErrorIcon.isVisible = true
+				if (it.code == ErrorCodes.GENERAL_OFFLINE) {
+					binding.transferCodeErrorIcon.setImageResource(R.drawable.ic_corner_offline)
+				} else {
+					binding.transferCodeErrorIcon.setImageResource(R.drawable.ic_corner_process_error)
+				}
+			}
+		}
+
 		setIconAndTextColor(if (state.isHighlighted) R.color.red else R.color.blue)
 		setBubbleBackgroundColor(if (state.isHighlighted) R.color.redish else R.color.blueish)
 		showCreationTimestamp()
@@ -221,8 +233,13 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 			val isRefreshing: Boolean,
 			val error: ch.admin.bag.covidcertificate.eval.data.state.Error? = null
 		) : TransferCodeBubbleState()
-		data class Expired(val isHighlighted: Boolean) : TransferCodeBubbleState()
-		data class Error(val isOffline: Boolean): TransferCodeBubbleState()
+
+		data class Expired(
+			val isHighlighted: Boolean,
+			val error: ch.admin.bag.covidcertificate.eval.data.state.Error? = null
+		) : TransferCodeBubbleState()
+
+		data class Error(val isOffline: Boolean) : TransferCodeBubbleState()
 	}
 
 }
