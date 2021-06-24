@@ -14,6 +14,7 @@ import android.content.Context
 import ch.admin.bag.covidcertificate.eval.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.wallet.data.adapter.InstantJsonAdapter
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
@@ -38,7 +39,9 @@ class WalletDataSecureStorage private constructor(context: Context) {
 
 	fun saveWalletDataItem(dataItem: WalletDataItem) {
 		val walletData = getWalletData().toMutableList()
-		if (walletData.contains(dataItem)) {
+		if ((dataItem is WalletDataItem.CertificateWalletData && walletData.containsCertificate(dataItem.qrCodeData)
+					|| walletData.contains(dataItem))
+		) {
 			return
 		}
 
@@ -54,7 +57,8 @@ class WalletDataSecureStorage private constructor(context: Context) {
 
 	fun updateTransferCodeLastUpdated(transferCode: TransferCodeModel): TransferCodeModel {
 		val walletData = getWalletData().toMutableList()
-		val index = walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode.code == transferCode.code }
+		val index =
+			walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode.code == transferCode.code }
 		if (index >= 0) {
 			val updatedTransferCode = transferCode.copy(lastUpdatedTimestamp = Instant.now())
 			walletData.removeAt(index)
@@ -77,12 +81,19 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		updateWalletData(walletData)
 	}
 
-	fun replaceTransferCodeWithCertificate(transferCode: TransferCodeModel, certificateQrCodeData: String, pdfData: String? = null) {
+	fun replaceTransferCodeWithCertificate(
+		transferCode: TransferCodeModel,
+		certificateQrCodeData: String,
+		pdfData: String? = null
+	) {
 		val walletData = getWalletData().toMutableList()
-		val index = walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode.code == transferCode.code }
+		val index =
+			walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode.code == transferCode.code }
 		if (index >= 0) {
 			walletData.removeAt(index)
-			walletData.add(index, WalletDataItem.CertificateWalletData(certificateQrCodeData, pdfData))
+			if (!walletData.containsCertificate(certificateQrCodeData)) {
+				walletData.add(index, WalletDataItem.CertificateWalletData(certificateQrCodeData, pdfData))
+			}
 			updateWalletData(walletData)
 		}
 	}
@@ -110,5 +121,8 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		val json = walletDataItemAdapter.toJson(walletData)
 		prefs.edit().putString(KEY_WALLET_DATA_ITEMS, json).apply()
 	}
+
+	private fun List<WalletDataItem>.containsCertificate(qrCodeData: String) =
+		this.filterIsInstance<WalletDataItem.CertificateWalletData>().find { it.qrCodeData == qrCodeData } != null
 
 }
