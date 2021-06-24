@@ -129,6 +129,8 @@ fun View.setCutOutCardBackground() {
 
 	val backgroundDrawable = MaterialShapeDrawable(backgroundShape).apply {
 		fillColor = ContextCompat.getColorStateList(context, R.color.white)
+		elevation = context.resources.getDimension(R.dimen.certificates_elevation)
+		shadowCompatibilityMode = MaterialShapeDrawable.SHADOW_COMPAT_MODE_ALWAYS
 	}
 
 	background = backgroundDrawable

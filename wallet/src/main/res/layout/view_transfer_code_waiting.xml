@@ -11,14 +11,15 @@
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
 	xmlns:tools="http://schemas.android.com/tools"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
 	tools:parentTag="androidx.constraintlayout.widget.ConstraintLayout">
 
 	<ImageView
 		android:id="@+id/illu_transfer_code_waiting_ripple"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:adjustViewBounds="true"
 		app:layout_constraintBottom_toBottomOf="@+id/illu_transfer_code_waiting_phone"
 		app:layout_constraintEnd_toEndOf="@+id/illu_transfer_code_waiting_phone"
 		app:layout_constraintStart_toStartOf="@+id/illu_transfer_code_waiting_phone"
@@ -26,24 +27,27 @@
 		app:srcCompat="@drawable/illu_transfer_code_waiting_ripple" />
 
 	<ImageView
-		android:id="@+id/illu_transfer_code_waiting_phone"
-		android:layout_width="wrap_content"
+		android:id="@+id/illu_transfer_code_waiting_shadow"
+		android:layout_width="0dp"
 		android:layout_height="wrap_content"
-		android:layout_margin="@dimen/spacing_huge"
+		android:layout_marginTop="@dimen/spacing_small"
+		android:adjustViewBounds="true"
+		app:layout_constraintEnd_toEndOf="@id/illu_transfer_code_waiting_phone"
+		app:layout_constraintStart_toStartOf="@id/illu_transfer_code_waiting_phone"
 		app:layout_constraintBottom_toBottomOf="parent"
+		app:srcCompat="@drawable/illu_transfer_code_waiting_shadow" />
+
+	<ImageView
+		android:id="@+id/illu_transfer_code_waiting_phone"
+		android:layout_width="0dp"
+		android:layout_height="0dp"
+		android:layout_margin="@dimen/spacing_medium"
+		android:adjustViewBounds="true"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintDimensionRatio="74:146"
+		app:layout_constraintBottom_toTopOf="@id/illu_transfer_code_waiting_shadow"
 		app:srcCompat="@drawable/illu_transfer_code_waiting_phone" />
-
-	<ImageView
-		android:id="@+id/illu_transfer_code_waiting_shadow"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
-		android:layout_marginTop="@dimen/spacing_small"
-		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toBottomOf="@+id/illu_transfer_code_waiting_phone"
-		app:srcCompat="@drawable/illu_transfer_code_waiting_shadow" />
 
 </merge>

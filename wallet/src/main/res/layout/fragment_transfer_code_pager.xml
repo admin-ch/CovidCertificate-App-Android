@@ -24,7 +24,6 @@
 		android:layout_height="match_parent"
 		android:clipChildren="false"
 		android:clipToPadding="false"
-		android:elevation="@dimen/certificates_elevation"
 		android:foreground="@drawable/ripple_rounded_rect"
 		tools:background="@color/white">
 
@@ -42,9 +41,10 @@
 			android:id="@+id/transfer_code_page_waiting_image"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:layout_marginHorizontal="@dimen/spacing_huger"
 			android:layout_marginTop="@dimen/spacing_large"
 			android:visibility="gone"
+			app:layout_constraintDimensionRatio="h3:2"
+			app:layout_constraintWidth_percent="0.33"
 			app:layout_constrainedHeight="true"
 			app:layout_constraintBottom_toTopOf="@+id/transfer_code_page_status_label"
 			app:layout_constraintEnd_toEndOf="parent"
