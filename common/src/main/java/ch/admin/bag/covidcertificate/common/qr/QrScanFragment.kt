@@ -16,6 +16,7 @@ import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.util.Size
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
@@ -188,7 +189,27 @@ abstract class QrScanFragment : Fragment() {
 				e.printStackTrace()
 			}
 		}, mainExecutor)
+		cutOut.setOnTouchListener { view: View, motionEvent: MotionEvent ->
+			when (motionEvent.action) {
+				MotionEvent.ACTION_DOWN -> true
+				MotionEvent.ACTION_UP -> {
+					// Get the MeteringPointFactory from PreviewView
+					val factory = qrCodeScanner.getMeteringPointFactory()
 
+					// Create a MeteringPoint from the tap coordinates
+					val point = factory.createPoint(motionEvent.x, motionEvent.y)
+
+					// Create a MeteringAction from the MeteringPoint, you can configure it to specify the metering mode
+					val action = FocusMeteringAction.Builder(point).build()
+
+					// Trigger the focus and metering. The method returns a ListenableFuture since the operation
+					// is asynchronous. You can use it get notified when the focus is successful or if it fails.
+					camera?.cameraControl?.startFocusAndMetering(action)
+					true
+				}
+				else -> false
+			}
+		}
 	}
 
 	private fun checkCameraPermission() {

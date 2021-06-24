@@ -10,13 +10,15 @@
 
 package ch.admin.bag.covidcertificate.common.qr
 
-import android.graphics.ImageFormat
+import android.graphics.*
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import ch.admin.bag.covidcertificate.eval.data.state.Error
 import com.google.zxing.*
+import com.google.zxing.common.GlobalHistogramBinarizer
 import com.google.zxing.common.HybridBinarizer
 import java.nio.ByteBuffer
+
 
 class QRCodeAnalyzer(
 	private val onDecodeCertificate: (decodeCertificateState: DecodeCertificateState) -> Unit,
@@ -30,7 +32,8 @@ class QRCodeAnalyzer(
 
 	private val reader = MultiFormatReader().apply {
 		val map = mapOf(
-			DecodeHintType.POSSIBLE_FORMATS to arrayListOf(BarcodeFormat.QR_CODE)
+			DecodeHintType.POSSIBLE_FORMATS to arrayListOf(BarcodeFormat.QR_CODE),
+			DecodeHintType.TRY_HARDER to true,
 		)
 		setHints(map)
 	}
