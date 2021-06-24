@@ -19,7 +19,6 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isVisible
 import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
@@ -252,48 +251,64 @@ class HomeFragment : Fragment() {
 
 	private fun setupAddCertificateOptions() {
 		binding.homescreenScanButtonSmall.setOnClickListener {
-			showAddCertificateOptions(!isAddOptionsShowing)
+			showAddCertificateOptionsOverlay(!isAddOptionsShowing)
 		}
 
 		binding.backgroundDimmed.setOnClickListener {
-			showAddCertificateOptions(!isAddOptionsShowing)
+			showAddCertificateOptionsOverlay(!isAddOptionsShowing)
 		}
 
-		binding.homescreenAddCertificateOptions.optionScanCertificate.setOnClickListener {
+		binding.homescreenAddCertificateOptionsEmpty.optionScanCertificate.setOnClickListener { showQrScanFragment() }
+		binding.homescreenAddCertificateOptionsNotEmpty.optionScanCertificate.setOnClickListener {
 			isAddOptionsShowing = false
-			parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, WalletQrScanFragment.newInstance())
-				.addToBackStack(WalletQrScanFragment::class.java.canonicalName)
-				.commit()
+			showQrScanFragment()
 		}
 
-		binding.homescreenAddCertificateOptions.optionImportPdf.setOnClickListener {
-			val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
-				type = "application/pdf"
-			}
-			filePickerLauncher.launch(intent)
-		}
-
-		binding.homescreenAddCertificateOptions.optionTransferCode.setOnClickListener {
+		binding.homescreenAddCertificateOptionsEmpty.optionImportPdf.setOnClickListener { launchPdfFilePicker() }
+		binding.homescreenAddCertificateOptionsNotEmpty.optionImportPdf.setOnClickListener {
 			isAddOptionsShowing = false
-			parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, TransferCodeIntroFragment.newInstance())
-				.addToBackStack(TransferCodeIntroFragment::class.java.canonicalName)
-				.commit()
+			launchPdfFilePicker()
+		}
+
+		binding.homescreenAddCertificateOptionsEmpty.optionTransferCode.setOnClickListener { showTransferCodeIntroFragment() }
+		binding.homescreenAddCertificateOptionsNotEmpty.optionTransferCode.setOnClickListener {
+			isAddOptionsShowing = false
+			showTransferCodeIntroFragment()
 		}
 	}
 
-	private fun showAddCertificateOptions(show: Boolean) {
+	private fun showQrScanFragment() {
+		parentFragmentManager.beginTransaction()
+			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+			.replace(R.id.fragment_container, WalletQrScanFragment.newInstance())
+			.addToBackStack(WalletQrScanFragment::class.java.canonicalName)
+			.commit()
+	}
+
+	private fun launchPdfFilePicker() {
+		val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
+			type = "application/pdf"
+		}
+		filePickerLauncher.launch(intent)
+	}
+
+	private fun showTransferCodeIntroFragment() {
+		parentFragmentManager.beginTransaction()
+			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+			.replace(R.id.fragment_container, TransferCodeIntroFragment.newInstance())
+			.addToBackStack(TransferCodeIntroFragment::class.java.canonicalName)
+			.commit()
+	}
+
+	private fun showAddCertificateOptionsOverlay(show: Boolean) {
 		if (show) {
 			binding.homescreenScanButtonSmall.rotate(45f)
 			binding.backgroundDimmed.showAnimated()
-			binding.homescreenAddCertificateOptions.root.showAnimated()
+			binding.homescreenOptionsOverlay.showAnimated()
 		} else {
 			binding.homescreenScanButtonSmall.rotate(0f)
 			binding.backgroundDimmed.hideAnimated()
-			binding.homescreenAddCertificateOptions.root.hideAnimated()
+			binding.homescreenOptionsOverlay.hideAnimated()
 		}
 
 		isAddOptionsShowing = show
@@ -329,8 +344,7 @@ class HomeFragment : Fragment() {
 	private fun updateHomescreen(pagerItems: List<WalletItem>) {
 		val hasData = pagerItems.isNotEmpty()
 
-		updateAddCertificateOptionsConstraints(!hasData)
-		binding.homescreenEmptyContentGroup.isVisible = !hasData
+		binding.homescreenEmptyContent.isVisible = !hasData
 		binding.homescreenScanButtonSmall.isVisible = hasData
 		binding.homescreenListButton.isVisible = hasData
 		binding.homescreenCertificatesViewPager.isVisible = hasData
@@ -338,7 +352,6 @@ class HomeFragment : Fragment() {
 		binding.homescreenHeaderEmpty.root.isVisible = !hasData
 		binding.homescreenHeaderNotEmpty.root.isVisible = hasData
 		binding.homescreenListButton.isVisible = pagerItems.size > 1
-		binding.homescreenAddCertificateOptions.root.isVisible = !hasData || isAddOptionsShowing
 
 		certificatesAdapter.setData(pagerItems)
 
@@ -349,14 +362,6 @@ class HomeFragment : Fragment() {
 				}
 			}
 		}
-	}
-
-	private fun updateAddCertificateOptionsConstraints(isEmpty: Boolean) {
-		val set = ConstraintSet()
-		set.clone(binding.homescreenConstraintLayout)
-		val verticalBias = if (isEmpty) 0f else 1f
-		set.setVerticalBias(R.id.homescreen_add_certificate_options, verticalBias)
-		set.applyTo(binding.homescreenConstraintLayout)
 	}
 
 	private fun setupInfoBox() {
