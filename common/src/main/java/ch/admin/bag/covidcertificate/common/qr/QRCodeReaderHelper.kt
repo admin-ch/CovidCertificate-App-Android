@@ -17,27 +17,26 @@ import android.graphics.Color
 import android.graphics.Rect
 import android.graphics.pdf.PdfRenderer
 import android.os.ParcelFileDescriptor
-import com.google.zxing.BinaryBitmap
-import com.google.zxing.ChecksumException
-import com.google.zxing.FormatException
-import com.google.zxing.LuminanceSource
-import com.google.zxing.MultiFormatReader
-import com.google.zxing.NotFoundException
-import com.google.zxing.RGBLuminanceSource
-import com.google.zxing.Result
+import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import java.io.File
 import java.util.*
 
 object QRCodeReaderHelper {
 
+	private val hints = mapOf(
+		DecodeHintType.POSSIBLE_FORMATS to arrayListOf(BarcodeFormat.QR_CODE),
+		DecodeHintType.TRY_HARDER to true,
+	)
+	private val reader = MultiFormatReader().apply { setHints(hints) }
+
 	fun decodeQrCode(bitmap: Bitmap): String? {
 		var decoded: String? = null
+
 		val intArray = IntArray(bitmap.width * bitmap.height)
 		bitmap.getPixels(intArray, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
 		val source: LuminanceSource = RGBLuminanceSource(bitmap.width, bitmap.height, intArray)
 		val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
-		val reader = MultiFormatReader()
 
 		try {
 			val result: Result = reader.decodeWithState(binaryBitmap)

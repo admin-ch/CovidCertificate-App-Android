@@ -76,7 +76,7 @@ class WalletQrScanFragment : QrScanFragment() {
 	private fun showCertificationAddFragment(dccHolder: DccHolder) {
 		parentFragmentManager.beginTransaction()
 			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-			.replace(R.id.fragment_container, CertificateAddFragment.newInstance(dccHolder))
+			.replace(R.id.fragment_container, CertificateAddFragment.newInstance(dccHolder, true))
 			.addToBackStack(CertificateAddFragment::class.java.canonicalName)
 			.commit()
 	}
