@@ -121,6 +121,22 @@
 		<item name="android:letterSpacing">0.0937</item>
 	</style>
 
+	<style name="CovidCertificate.Text.Transfer">
+		<item name="android:fontFamily">@font/fira_code_bold</item>
+		<item name="fontFamily">@font/fira_code_bold</item>
+		<item name="android:textSize">@dimen/text_size_large</item>
+		<item name="android:textColor">@color/blue</item>
+		<item name="lineHeight">@dimen/text_line_height_large</item>
+		<item name="android:letterSpacing">0.076</item>
+		<item name="android:fontFeatureSettings">"tnum</item>
+	</style>
+
+	<style name="CovidCertificate.Text.Transfer.Bubble">
+		<item name="android:textSize">@dimen/text_size_type_bubble</item>
+		<item name="lineHeight">@dimen/text_line_height_bubble</item>
+		<item name="android:letterSpacing">0.153</item>
+	</style>
+
 	<style name="CovidCertificate.ToolbarTitle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
 		<item name="android:textAllCaps">true</item>
 		<item name="android:fontFamily">@font/inter</item>
