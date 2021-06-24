@@ -10,12 +10,19 @@
 
 package ch.admin.bag.covidcertificate.common.qr
 
-import android.graphics.*
+import android.graphics.ImageFormat
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import ch.admin.bag.covidcertificate.eval.data.state.Error
-import com.google.zxing.*
-import com.google.zxing.common.GlobalHistogramBinarizer
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.BinaryBitmap
+import com.google.zxing.ChecksumException
+import com.google.zxing.DecodeHintType
+import com.google.zxing.FormatException
+import com.google.zxing.MultiFormatReader
+import com.google.zxing.NotFoundException
+import com.google.zxing.PlanarYUVLuminanceSource
+import com.google.zxing.Result
 import com.google.zxing.common.HybridBinarizer
 import java.nio.ByteBuffer
 

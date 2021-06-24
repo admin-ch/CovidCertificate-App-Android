@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.common.qr
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
@@ -117,6 +118,7 @@ abstract class QrScanFragment : Fragment() {
 		}
 	}
 
+	@SuppressLint("ClickableViewAccessibility")
 	private fun bindCameraUseCases() {
 		val rotation = qrCodeScanner.display.rotation
 		val cameraSelector = CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
@@ -177,6 +179,7 @@ abstract class QrScanFragment : Fragment() {
 
 			try {
 				camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
+
 				// Set focus to the center of the viewfinder to help the auto focus
 				val metricPointFactory = qrCodeScanner.meteringPointFactory
 				val centerX = cutOut.left + cutOut.width / 2.0f
@@ -189,21 +192,19 @@ abstract class QrScanFragment : Fragment() {
 				e.printStackTrace()
 			}
 		}, mainExecutor)
-		cutOut.setOnTouchListener { view: View, motionEvent: MotionEvent ->
+
+		cutOut.setOnTouchListener { _: View, motionEvent: MotionEvent ->
 			when (motionEvent.action) {
 				MotionEvent.ACTION_DOWN -> true
 				MotionEvent.ACTION_UP -> {
-					// Get the MeteringPointFactory from PreviewView
-					val factory = qrCodeScanner.getMeteringPointFactory()
-
 					// Create a MeteringPoint from the tap coordinates
+					val factory = qrCodeScanner.meteringPointFactory
 					val point = factory.createPoint(motionEvent.x, motionEvent.y)
 
-					// Create a MeteringAction from the MeteringPoint, you can configure it to specify the metering mode
+					// Create a MeteringAction from the MeteringPoint
 					val action = FocusMeteringAction.Builder(point).build()
 
-					// Trigger the focus and metering. The method returns a ListenableFuture since the operation
-					// is asynchronous. You can use it get notified when the focus is successful or if it fails.
+					// Trigger the focus and metering as a fire-and-forget, ignoring the ListenableFuture return value
 					camera?.cameraControl?.startFocusAndMetering(action)
 					true
 				}
