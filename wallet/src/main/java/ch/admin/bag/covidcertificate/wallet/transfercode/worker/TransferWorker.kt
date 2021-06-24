@@ -20,6 +20,7 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypt
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
+import ch.admin.bag.covidcertificate.wallet.util.NotificationUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.io.IOException
@@ -73,6 +74,10 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 				return@withContext Result.retry()
 			} else if (!transferStates.contains(TransferState.NOT_AVAILABLE)) {
 				workManager.cancelUniqueWork(WORKER_NAME)
+			}
+
+			if (transferStates.contains(TransferState.SUCCESS)) {
+				NotificationUtil.showTransferSuccessNotification(applicationContext)
 			}
 			Result.success()
 		}
