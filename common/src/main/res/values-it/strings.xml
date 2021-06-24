@@ -778,4 +778,22 @@ Per poter aggiornare gli elenchi di verifica, l’app deve essere aperta e colle
 
     <!-- Button zum PDF importieren -->
     <string name="wallet_homescreen_pdf_import">"PDF importieren"</string>
+
+    <!-- Wallet: Titel im Transfer Code screen bei deaktiveren Notifications -->
+    <string name="wallet_notification_disabled_titel">"Suggerimento: Attiva notifiche"</string>
+
+    <!-- Wallet: Button im Transfer Code screen bei deaktiveren Notifications der die Einstellungen öffnet -->
+    <string name="wallet_notification_disabled_button">"Attiva"</string>
+
+    <!-- Titel für einen "Nachweis" (e.g. unvollständige Impfung) -->
+    <string name="wallet_certificate_evidence_title">"Documentazione"</string>
+
+    <!-- Typenbezeichnung für eine unvollständige Impfung -->
+    <string name="wallet_certificate_type_incomplete_vaccine">"Vaccinazione incompleta"</string>
+
+    <!-- Label für den Aussteller eines Nachweises -->
+    <string name="wallet_certificate_evidence_issuer">"La documentazione è stata emessa da"</string>
+
+    <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
+    <string name="wallet_certificate_evidence_creation_date">"Documentazione emessa il {DATE} alle {TIME}"</string>
 </resources>

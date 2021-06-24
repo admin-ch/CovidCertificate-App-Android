@@ -774,4 +774,22 @@ Per actualisar las glistas da verificaziun sto l'app esser colliada cun l'intern
 
     <!-- Button zum PDF importieren -->
     <string name="wallet_homescreen_pdf_import">"PDF importieren"</string>
+
+    <!-- Wallet: Titel im Transfer Code screen bei deaktiveren Notifications -->
+    <string name="wallet_notification_disabled_titel">"Activar avis"</string>
+
+    <!-- Wallet: Button im Transfer Code screen bei deaktiveren Notifications der die Einstellungen öffnet -->
+    <string name="wallet_notification_disabled_button">"Activar"</string>
+
+    <!-- Titel für einen "Nachweis" (e.g. unvollständige Impfung) -->
+    <string name="wallet_certificate_evidence_title">"Cumprova"</string>
+
+    <!-- Typenbezeichnung für eine unvollständige Impfung -->
+    <string name="wallet_certificate_type_incomplete_vaccine">"Vaccinaziun incumpletta"</string>
+
+    <!-- Label für den Aussteller eines Nachweises -->
+    <string name="wallet_certificate_evidence_issuer">"La cumprova è vegnida emessa da"</string>
+
+    <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
+    <string name="wallet_certificate_evidence_creation_date">"Cumprova emessa ils {DATE} a las {TIME}"</string>
 </resources>
