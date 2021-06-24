@@ -38,7 +38,12 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 		}
 
 		detailItems.add(DividerItem)
-		detailItems.add(TitleItem(R.string.covid_certificate_vaccination_title, showEnglishVersionForLabels))
+		val firstVaccine = vaccinations.first()
+		if (firstVaccine.isNotFullyProtected()) {
+			detailItems.add(TitleItem(R.string.wallet_certificate_type_incomplete_vaccine, showEnglishVersionForLabels))
+		} else {
+			detailItems.add(TitleItem(R.string.covid_certificate_vaccination_title, showEnglishVersionForLabels))
+		}
 
 		for (vaccinationEntry in vaccinations) {
 			detailItems.add(DividerItem)
@@ -85,12 +90,16 @@ class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccH
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier,
 				vaccinationEntry.getCertificateIdentifier(),
 				false))
+			var isssuerText: Int = R.string.wallet_certificate_date
+			if (vaccinationEntry.isNotFullyProtected()) {
+				isssuerText = R.string.wallet_certificate_evidence_creation_date
+			}
 			dccHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
+				val dateText = context.getString(isssuerText).replace("{DATE}", dateString)
 				detailItems.add(ValueItemWithoutLabel(dateText))
 				if (showEnglishVersionForLabels) {
 					val dateTextEnglish =
-						getEnglishTranslation(context, R.string.wallet_certificate_date).replace("{DATE}", dateString)
+						getEnglishTranslation(context, isssuerText).replace("{DATE}", dateString)
 					detailItems.add(ValueItemWithoutLabel(dateTextEnglish, true))
 				}
 

@@ -37,6 +37,7 @@ import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
+import ch.admin.bag.covidcertificate.eval.euhealthcert.VaccinationEntry
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*
@@ -88,6 +89,7 @@ class CertificateDetailFragment : Fragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		displayQrCode()
+		updateToolbarTitle()
 		setupCertificateDetails()
 		setupStatusInfo()
 
@@ -118,6 +120,14 @@ class CertificateDetailFragment : Fragment() {
 			isForceValidate = true
 			hideDelayedJob?.cancel()
 			certificatesViewModel.startVerification(dccHolder, delayInMillis = STATUS_LOAD_DELAY, isForceVerification = true)
+		}
+	}
+
+	private fun updateToolbarTitle() {
+		val vaccinationEntry: VaccinationEntry? = dccHolder.euDGC.vaccinations?.firstOrNull()
+		binding.certificateDetailToolbar.setTitle(R.string.covid_certificate_title)
+		if (vaccinationEntry?.isNotFullyProtected() == true) {
+			binding.certificateDetailToolbar.setTitle(R.string.wallet_certificate_evidence_title)
 		}
 	}
 
