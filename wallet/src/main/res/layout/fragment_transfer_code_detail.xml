@@ -52,15 +52,17 @@
 
 				<androidx.constraintlayout.widget.ConstraintLayout
 					android:layout_width="match_parent"
-					android:layout_height="wrap_content">
+					android:layout_height="wrap_content"
+					android:clipChildren="false">
 
 					<ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeWaitingView
 						android:id="@+id/transfer_code_detail_waiting_image"
 						android:layout_width="0dp"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="@dimen/spacing_very_large"
-						android:layout_marginTop="@dimen/spacing_medium_large"
+						android:layout_marginTop="@dimen/spacing_larger"
 						android:visibility="gone"
+						app:layout_constraintWidth_percent="0.26"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintTop_toTopOf="parent"
@@ -92,7 +94,7 @@
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="@dimen/spacing_very_large"
-						android:layout_marginTop="@dimen/spacing_huge"
+						android:layout_marginTop="@dimen/spacing_very_large"
 						app:layout_constraintEnd_toEndOf="parent"
 						app:layout_constraintStart_toStartOf="parent"
 						app:layout_constraintTop_toBottomOf="@+id/transfer_code_detail_image_barrier"

@@ -25,7 +25,6 @@
 		android:layout_height="match_parent"
 		android:clipChildren="false"
 		android:clipToPadding="false"
-		android:elevation="@dimen/certificates_elevation"
 		android:foreground="@drawable/ripple_rounded_rect"
 		tools:background="@color/white">
 
