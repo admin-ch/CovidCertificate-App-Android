@@ -15,6 +15,7 @@ import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.transfercode.worker.TransferWorker
+import ch.admin.bag.covidcertificate.wallet.util.NotificationUtil
 
 class MainApplication : Application() {
 
@@ -66,5 +67,6 @@ class MainApplication : Application() {
 				}
 			}
 		})
+		NotificationUtil.createTransferNotificationChannel(this)
 	}
 }
