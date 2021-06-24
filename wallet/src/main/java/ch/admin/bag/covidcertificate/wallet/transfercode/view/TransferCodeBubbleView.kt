@@ -137,13 +137,13 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 		}
 
 		state.error?.let {
-			binding.transferCodeErrorIcon.isVisible = true
 			if (it.code == ErrorCodes.GENERAL_OFFLINE) {
 				binding.transferCodeErrorIcon.setImageResource(R.drawable.ic_corner_offline)
 			} else {
 				binding.transferCodeErrorIcon.setImageResource(R.drawable.ic_corner_process_error)
 			}
 		}
+		binding.transferCodeErrorIcon.isVisible = state.error != null
 
 		binding.transferCodeValue.setTransferCode(transferCode.code)
 
