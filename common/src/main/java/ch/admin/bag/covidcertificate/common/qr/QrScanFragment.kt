@@ -11,11 +11,13 @@
 package ch.admin.bag.covidcertificate.common.qr
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
 import android.util.Size
+import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
@@ -116,6 +118,7 @@ abstract class QrScanFragment : Fragment() {
 		}
 	}
 
+	@SuppressLint("ClickableViewAccessibility")
 	private fun bindCameraUseCases() {
 		val rotation = qrCodeScanner.display.rotation
 		val cameraSelector = CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
@@ -176,6 +179,7 @@ abstract class QrScanFragment : Fragment() {
 
 			try {
 				camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
+
 				// Set focus to the center of the viewfinder to help the auto focus
 				val metricPointFactory = qrCodeScanner.meteringPointFactory
 				val centerX = cutOut.left + cutOut.width / 2.0f
@@ -189,6 +193,24 @@ abstract class QrScanFragment : Fragment() {
 			}
 		}, mainExecutor)
 
+		cutOut.setOnTouchListener { _: View, motionEvent: MotionEvent ->
+			when (motionEvent.action) {
+				MotionEvent.ACTION_DOWN -> true
+				MotionEvent.ACTION_UP -> {
+					// Create a MeteringPoint from the tap coordinates
+					val factory = qrCodeScanner.meteringPointFactory
+					val point = factory.createPoint(motionEvent.x, motionEvent.y)
+
+					// Create a MeteringAction from the MeteringPoint
+					val action = FocusMeteringAction.Builder(point).build()
+
+					// Trigger the focus and metering as a fire-and-forget, ignoring the ListenableFuture return value
+					camera?.cameraControl?.startFocusAndMetering(action)
+					true
+				}
+				else -> false
+			}
+		}
 	}
 
 	private fun checkCameraPermission() {
