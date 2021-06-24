@@ -54,7 +54,9 @@
 				<ScrollView
 					android:layout_width="match_parent"
 					android:layout_height="0dp"
-					android:layout_weight="1">
+					android:layout_weight="1"
+					android:clipToPadding="false"
+					android:paddingBottom="@dimen/spacing_medium_large">
 
 					<LinearLayout
 						android:layout_width="match_parent"
@@ -84,7 +86,8 @@
 							android:layout_height="wrap_content"
 							android:layout_marginTop="@dimen/spacing_huge"
 							android:orientation="vertical"
-							android:visibility="gone">
+							android:visibility="gone"
+							tools:visibility="visible">
 
 							<TextView
 								style="@style/CovidCertificate.Text.Bold"
@@ -181,7 +184,7 @@
 					android:gravity="center"
 					android:orientation="vertical"
 					android:outlineProvider="bounds"
-					android:padding="@dimen/spacing_medium">
+					android:padding="@dimen/spacing_medium_large">
 
 					<Button
 						android:id="@+id/transfer_code_creation_done_button"
