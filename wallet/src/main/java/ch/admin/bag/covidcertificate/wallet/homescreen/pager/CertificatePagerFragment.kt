@@ -95,9 +95,10 @@ class CertificatePagerFragment : Fragment() {
 
 	private fun updateTitle() {
 		val vaccinationEntry: VaccinationEntry? = dccHolder?.euDGC?.vaccinations?.firstOrNull()
-		binding.certificatePageTitle.setText(R.string.covid_certificate_title)
 		if (vaccinationEntry?.isNotFullyProtected() == true) {
 			binding.certificatePageTitle.setText(R.string.wallet_certificate_evidence_title)
+		} else {
+			binding.certificatePageTitle.setText(R.string.covid_certificate_title)
 		}
 	}
 

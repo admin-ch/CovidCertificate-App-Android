@@ -125,9 +125,10 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun updateToolbarTitle() {
 		val vaccinationEntry: VaccinationEntry? = dccHolder.euDGC.vaccinations?.firstOrNull()
-		binding.certificateDetailToolbar.setTitle(R.string.covid_certificate_title)
 		if (vaccinationEntry?.isNotFullyProtected() == true) {
 			binding.certificateDetailToolbar.setTitle(R.string.wallet_certificate_evidence_title)
+		} else {
+			binding.certificateDetailToolbar.setTitle(R.string.covid_certificate_title)
 		}
 	}
 
