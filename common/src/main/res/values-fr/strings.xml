@@ -775,4 +775,20 @@ Pour actualiser les listes de contrôle, l’application doit être ouverte et c
 
     <!-- Button zum PDF importieren -->
     <string name="wallet_homescreen_pdf_import">"PDF importieren"</string>
+
+    <!-- Wallet: Titel im Transfer Code screen bei deaktiveren Notifications -->
+    <string name="wallet_notification_disabled_titel">"Astuce: Activer les messages"</string>
+
+    <!-- Wallet: Button im Transfer Code screen bei deaktiveren Notifications der die Einstellungen öffnet -->
+    <string name="wallet_notification_disabled_button">"Activer"</string>
+
+    <!-- Titel für einen "Nachweis" (e.g. unvollständige Impfung) -->
+    <string name="wallet_certificate_evidence_title">"Justificatif"</string>
+
+    <!-- Typenbezeichnung für eine unvollständige Impfung -->
+    <string name="wallet_certificate_type_incomplete_vaccine">"Vaccination incomplète"</string>
+
+    <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
+    <string name="wallet_certificate_evidence_creation_date">"Justificatif établi le
+{DATE}"</string>
 </resources>

@@ -803,4 +803,20 @@ Um die Prüflisten zu aktualisieren muss die App mit dem Internet verbunden sein
 
     <!-- Button zum PDF importieren -->
     <string name="wallet_homescreen_pdf_import">"PDF importieren"</string>
+
+    <!-- Wallet: Titel im Transfer Code screen bei deaktiveren Notifications -->
+    <string name="wallet_notification_disabled_titel">"Tipp: Mitteilungen aktivieren"</string>
+
+    <!-- Wallet: Button im Transfer Code screen bei deaktiveren Notifications der die Einstellungen öffnet -->
+    <string name="wallet_notification_disabled_button">"Aktivieren"</string>
+
+    <!-- Titel für einen "Nachweis" (e.g. unvollständige Impfung) -->
+    <string name="wallet_certificate_evidence_title">"Nachweis"</string>
+
+    <!-- Typenbezeichnung für eine unvollständige Impfung -->
+    <string name="wallet_certificate_type_incomplete_vaccine">"Unvollständige Impfung"</string>
+
+    <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
+    <string name="wallet_certificate_evidence_creation_date">"Nachweis erstellt am
+{DATE}"</string>
 </resources>

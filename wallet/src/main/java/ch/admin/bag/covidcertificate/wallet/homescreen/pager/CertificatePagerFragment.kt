@@ -27,17 +27,15 @@ import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
+import ch.admin.bag.covidcertificate.eval.euhealthcert.VaccinationEntry
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.utils.isNotFullyProtected
 import ch.admin.bag.covidcertificate.eval.utils.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding
-import ch.admin.bag.covidcertificate.wallet.util.QrCode
-import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
-import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
-import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
-import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
+import ch.admin.bag.covidcertificate.wallet.util.*
 
 class CertificatePagerFragment : Fragment() {
 
@@ -81,8 +79,8 @@ class CertificatePagerFragment : Fragment() {
 		binding.certificatePageName.text = name
 		val dateOfBirth = dccHolder?.euDGC?.dateOfBirth?.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificatePageBirthdate.text = dateOfBirth
-
 		binding.certificatePageCard.setCutOutCardBackground()
+		updateTitle()
 		setupStatusInfo()
 
 		dccHolder?.let { certificate ->
@@ -93,6 +91,15 @@ class CertificatePagerFragment : Fragment() {
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	private fun updateTitle() {
+		val vaccinationEntry: VaccinationEntry? = dccHolder?.euDGC?.vaccinations?.firstOrNull()
+		if (vaccinationEntry?.isNotFullyProtected() == true) {
+			binding.certificatePageTitle.setText(R.string.wallet_certificate_evidence_title)
+		} else {
+			binding.certificatePageTitle.setText(R.string.covid_certificate_title)
+		}
 	}
 
 	private fun setupStatusInfo() {
