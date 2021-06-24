@@ -118,7 +118,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				binding.transferCodeDetailImage.isVisible = true
 				binding.transferCodeDetailImage.setImageResource(R.drawable.illu_transfer_code_failed)
 				binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_expired)
-				binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(true))
+				binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(true, error))
 				binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.redish))
 				binding.transferCodeRefreshButton.isVisible = false
 				binding.transferCodeErrorCode.isVisible = false
@@ -128,7 +128,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				binding.transferCodeDetailWaitingImage.isVisible = true
 				binding.transferCodeDetailImage.isVisible = false
 				binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_waiting)
-				binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(false))
+				binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(false, error))
 				binding.transferCodeRefreshButton.isVisible = true
 				binding.transferCodeErrorCode.isVisible = false
 				showErrorOrLastUpdated(error)
