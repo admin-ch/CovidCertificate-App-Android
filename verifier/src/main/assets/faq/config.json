@@ -6,6 +6,7 @@
 		"de": {
 			"faqTitle": "So werden Covid-Zertifikate geprüft",
 			"faqSubTitle": "Mit der COVID Certificate Check App können QR-Codes auf Covid-Zertifikaten gescannt und die Zertifikate auf Echtheit und Gültigkeit überprüft werden.",
+			"faqIntroSections": null,
 			"faqIconIos": "ic-faq-image",
 			"faqIconAndroid": "ic_faq_image",
 			"faqEntries": [
@@ -70,6 +71,7 @@
 		"en": {
 			"faqTitle": "How COVID certificates are checked",
 			"faqSubTitle": "The COVID Certificate Check app can be used to scan the QR codes on COVID certificates and check the certificates for authenticity and validity.",
+			"faqIntroSections": null,
 			"faqIconIos": "ic-faq-image",
 			"faqIconAndroid": "ic_faq_image",
 			"faqEntries": [
@@ -134,6 +136,7 @@
 		"fr": {
 			"faqTitle": "Contrôle de certificats COVID",
 			"faqSubTitle": "L'app de contrôle permet de scanner le code QR figurant sur un certificat COVID et de vérifier l'authenticité et la validité de ce dernier.",
+			"faqIntroSections": null,
 			"faqIconIos": "ic-faq-image",
 			"faqIconAndroid": "ic_faq_image",
 			"faqEntries": [
@@ -198,6 +201,7 @@
 		"it": {
 			"faqTitle": "Come avviene la verifica dei certificati COVID?",
 			"faqSubTitle": "Con l'app COVID Certificate Check è possibile scansionare i relativi codici QR e verificare l'autenticità e la validità dei certificati COVID.",
+			"faqIntroSections": null,
 			"faqIconIos": "ic-faq-image",
 			"faqIconAndroid": "ic_faq_image",
 			"faqEntries": [
@@ -262,6 +266,7 @@
 		"rm": {
 			"faqTitle": "Uschia vegnan verifitgads ils certificats COVID",
 			"faqSubTitle": "Cun l'app COVID Certificate Check pon vegnir scannads ils codes QR sin ils certificats COVID per verifitgar l'autenticitad e la valaivladad dals certificats.",
+			"faqIntroSections": null,
 			"faqIconIos": "ic-faq-image",
 			"faqIconAndroid": "ic_faq_image",
 			"faqEntries": [
