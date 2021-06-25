@@ -18,7 +18,7 @@ import ch.admin.bag.covidcertificate.common.faq.model.Header
 import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
 import ch.admin.bag.covidcertificate.common.faq.model.Question
 
-class FaqAdapter(val onItemClickListener: OnUrlClickListener? = null) : RecyclerView.Adapter<FaqViewHolder>() {
+class FaqAdapter(val onLinkClickListener: ((String) -> Unit)? = null) : RecyclerView.Adapter<FaqViewHolder>() {
 
 	private val items = mutableListOf<FaqItem>()
 
@@ -51,7 +51,7 @@ class FaqAdapter(val onItemClickListener: OnUrlClickListener? = null) : Recycler
 		val newItems = items.mapNotNull {
 			when (it) {
 				is Header -> HeaderItem(it)
-				is Question -> QuestionItem(it, onItemClickListener)
+				is Question -> QuestionItem(it, onLinkClickListener)
 				is IntroSection -> IntroSectionItem(it)
 				else -> null
 			}
@@ -60,8 +60,4 @@ class FaqAdapter(val onItemClickListener: OnUrlClickListener? = null) : Recycler
 		notifyDataSetChanged()
 	}
 
-}
-
-interface OnUrlClickListener {
-	fun onLinkClicked(url: String)
 }
