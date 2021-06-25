@@ -76,13 +76,14 @@ class HomeFragment : Fragment() {
 		}.attach()
 
 		binding.homescreenHeader.headerImpressum.setOnClickListener {
-			val buildInfo =
-				BuildInfo(getString(R.string.verifier_app_title),
-					BuildConfig.VERSION_NAME,
-					BuildConfig.BUILD_TIME,
-					BuildConfig.FLAVOR,
-					getString(R.string.verifier_terms_privacy_link)
-					)
+			val buildInfo = BuildInfo(
+				getString(R.string.verifier_app_title),
+				BuildConfig.VERSION_NAME,
+				BuildConfig.BUILD_TIME,
+				BuildConfig.FLAVOR,
+				getString(R.string.verifier_terms_privacy_link),
+				"covidCheck",
+			)
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 				.replace(
