@@ -196,8 +196,8 @@
 							style="@style/CovidCertificate.Text"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
-							android:gravity="center"
 							android:layout_weight="1"
+							android:gravity="center"
 							tools:text="@string/wallet_offline_description" />
 
 					</LinearLayout>
@@ -266,9 +266,10 @@
 						android:id="@+id/certificate_detail_data_recycler_view"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginTop="@dimen/spacing_very_large"
+						android:layout_marginTop="@dimen/spacing_large"
 						android:overScrollMode="never"
 						android:scrollbars="none"
+						app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 						tools:listitem="@layout/item_detail_divider" />
 
 					<TextView
@@ -276,7 +277,7 @@
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="-20dp"
-						android:layout_marginTop="@dimen/spacing_large"
+						android:layout_marginTop="@dimen/spacing_medium_large"
 						android:background="@drawable/bg_certificate_detail_note"
 						android:padding="@dimen/spacing_large"
 						android:text="@string/wallet_certificate_detail_note" />
