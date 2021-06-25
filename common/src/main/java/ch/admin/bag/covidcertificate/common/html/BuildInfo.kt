@@ -17,5 +17,6 @@ data class BuildInfo(
 	val versionName: String,
 	val buildTime: Long,
 	val flavor: String,
-	val agbUrl: String
+	val agbUrl: String,
+	val appIdentifier: String,
 ) : Serializable

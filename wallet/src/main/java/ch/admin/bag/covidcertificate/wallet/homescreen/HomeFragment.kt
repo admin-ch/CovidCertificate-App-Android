@@ -128,14 +128,14 @@ class HomeFragment : Fragment() {
 				.commit()
 		}
 		val impressumClickListener = View.OnClickListener {
-			val buildInfo =
-				BuildInfo(
-					getString(R.string.wallet_onboarding_app_title),
-					BuildConfig.VERSION_NAME,
-					BuildConfig.BUILD_TIME,
-					BuildConfig.FLAVOR,
-					getString(R.string.wallet_terms_privacy_link)
-				)
+			val buildInfo = BuildInfo(
+				getString(R.string.wallet_onboarding_app_title),
+				BuildConfig.VERSION_NAME,
+				BuildConfig.BUILD_TIME,
+				BuildConfig.FLAVOR,
+				getString(R.string.wallet_terms_privacy_link),
+				"covidCert",
+			)
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 				.replace(
