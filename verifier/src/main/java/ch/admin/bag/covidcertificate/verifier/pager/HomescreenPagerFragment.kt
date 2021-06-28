@@ -15,7 +15,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
-import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeScreenPagerBinding
@@ -50,6 +49,12 @@ class HomescreenPagerFragment : Fragment() {
 		with(binding) {
 			homescreenImage.setImageResource(homescreenImages[position])
 			homescreenDescription.setText(homescreenPagerDescriptions[position])
+
+			root.post {
+				// It seems that the viewpager has an issue with wrap_content and multiline text views. That's why we have to
+				// request a layout on the description again after the full view is laid out, to ensure the whole text is visible.
+				homescreenDescription.requestLayout()
+			}
 		}
 	}
 

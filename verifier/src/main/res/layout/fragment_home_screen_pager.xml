@@ -20,8 +20,6 @@
 		android:layout_gravity="center"
 		android:src="@drawable/ic_illu_home_1" />
 
-	<!-- Apparently the viewpager has an issue with multiline text views when it is wrap_content where it cuts off additional lines,
-	so we set it to minLines="2" -->
 	<TextView
 		android:id="@+id/homescreen_description"
 		style="@style/CovidCertificate.Text"
@@ -30,7 +28,6 @@
 		android:layout_marginHorizontal="@dimen/spacing_large"
 		android:layout_marginVertical="@dimen/spacing_large"
 		android:gravity="center"
-		android:minLines="2"
 		android:text="@string/verifier_homescreen_pager_description_2" />
 
 </LinearLayout>
