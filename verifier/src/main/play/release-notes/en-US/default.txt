@@ -1,0 +1,4 @@
+- COVID certificates transmitted directly to the app: COVID certificates can be transmitted directly to the app quickly and securely using transfer codes.
+- PDF certificates can be imported directly into the app
+- Performance of QR code scanner optimised
+- Further improvements and bug fixes

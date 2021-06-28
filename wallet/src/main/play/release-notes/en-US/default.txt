@@ -1,0 +1,3 @@
+- Details expanded in the event of an error
+- Performance of QR code scanner optimised
+- Further improvements and bug fixes

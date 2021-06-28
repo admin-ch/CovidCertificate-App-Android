@@ -549,53 +549,65 @@ Prima di mettersi in viaggio, si informi sulle misure sanitarie e sulle relative
     <string name="wallet_transfer_code_onboarding_howto">"Ecco come funziona"</string>
 
     <!-- Wallet: Transfer Code: FAQ Titel -->
-    <string name="wallet_transfer_code_faq_questions_title">"Covid-Zertifikate direkt in die App geliefert"</string>
+    <string name="wallet_transfer_code_faq_questions_title">"Ricevere i certificati COVID direttamente nell’app"</string>
 
     <!-- Wallet: Transfer Code FAQ Text -->
-    <string name="wallet_transfer_code_faq_questions_subtitle">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat nach einem negativen Covid-Test direkt in die App geliefert."</string>
+    <string name="wallet_transfer_code_faq_questions_subtitle">"Con i codici di trasferimento i certificati COVID possono essere trasmessi in modo rapido e sicuro. Tramite questo canale puoi ricevere il certificato COVID direttamente nell’app, ad esempio dopo aver fatto un test COVID."</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 1 -->
-    <string name="wallet_transfer_code_faq_questions_question_1">"Wer bietet die Übermittlung per Transfer-Code an?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_1">"Chi offre la trasmissione mediante codice di trasferimento?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 2 -->
-    <string name="wallet_transfer_code_faq_questions_question_2">"Können Transfer–Codes nur für Covid-Tests genutzt werden?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_2">"I codici di trasferimento possono essere impiegati anche per trasmettere i certificati di vaccinazione?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 3 -->
-    <string name="wallet_transfer_code_faq_questions_question_3">"Wie funktioniert die Übermittlung per Transfer-Code?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_3">"Come funziona la trasmissione mediante codice di trasferimento?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 4 -->
-    <string name="wallet_transfer_code_faq_questions_question_4">"Kann ich den Transfer-Code mehrmals benutzen?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_4">"Posso utilizzare lo stesso codice di trasferimento più volte?"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 1 -->
-    <string name="wallet_transfer_code_faq_questions_answer_1">"Text"</string>
+    <string name="wallet_transfer_code_faq_questions_answer_1">"Quando fai un test COVID (test PCR o test antigenico rapido), è possibile impiegare il codice di trasferimento per la trasmissione rapida dei certificati COVID.
+
+Chiedi al centro di test, alla farmacia o al medico se offrono la trasmissione mediante codice di trasferimento.
+
+"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 2 -->
-    <string name="wallet_transfer_code_faq_questions_answer_2">"Text"</string>
+    <string name="wallet_transfer_code_faq_questions_answer_2">"Attualmente la trasmissione mediante codice di trasferimento funziona solo per i test COVID. Qui trovi maggiori informazioni su come ottenere un certificato COVID dopo una vaccinazione:"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 3 -->
-    <string name="wallet_transfer_code_faq_questions_answer_3">"Text"</string>
+    <string name="wallet_transfer_code_faq_questions_answer_3">"Se il servizio che effettua il test COVID offre la trasmissione mediante codice di trasferimento, te ne chiede uno già al momento della prenotazione o dell’esecuzione del test.
+
+Puoi creare il codice di trasferimento nell’app «COVID Certificate» toccando il pulsante «Aggiungi» nella schermata iniziale o il simbolo «Più» in basso a destra. Poi tocca «Crea codice di trasferimento».
+
+L’app visualizza un codice a 9 cifre, che puoi inserire nel modulo di prenotazione o fornire direttamente al momento dell’esecuzione del test."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 4 -->
-    <string name="wallet_transfer_code_faq_questions_answer_4">"Text"</string>
-    <string name="wallet_transfer_code_faq_works_title">"So funktioniert der Transfer"</string>
+    <string name="wallet_transfer_code_faq_questions_answer_4">"No, un codice di trasferimento può essere utilizzato una volta sola. Se desideri ricevere più di un certificato, per esempio i certificati dei tuoi familiari, crea un nuovo codice per ciascun certificato."</string>
+    <string name="wallet_transfer_code_faq_works_title">"Il trasferimento funziona così"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 1 -->
-    <string name="wallet_transfer_code_faq_works_question_1">"Wie sind meine Daten beim Transfer geschützt?"</string>
+    <string name="wallet_transfer_code_faq_works_question_1">"Come sono protetti i miei dati durante il trasferimento?"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 2 -->
-    <string name="wallet_transfer_code_faq_works_question_2">"Was kann ich tun, wenn das Zertifikat nicht ankommt?"</string>
+    <string name="wallet_transfer_code_faq_works_question_2">"Cosa posso fare se il certificato non arriva?"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 3 -->
-    <string name="wallet_transfer_code_faq_works_question_3">"Was passiert bei einem positiven Testresultat?"</string>
+    <string name="wallet_transfer_code_faq_works_question_3">"Cosa accade in caso di risultato positivo del test?"</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 1 -->
-    <string name="wallet_transfer_code_faq_works_answer_1">"Text"</string>
+    <string name="wallet_transfer_code_faq_works_answer_1">"Il tuo certificato COVID è messo a disposizione per il trasferimento in forma criptata. Il codice di trasferimento assicura che soltanto la tua app sia in grado di riceverlo. I dati sono eliminati dal server immediatamente dopo il trasferimento."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 2 -->
-    <string name="wallet_transfer_code_faq_works_answer_2">"Text"</string>
+    <string name="wallet_transfer_code_faq_works_answer_2">"Non appena il certificato è stato generato dal laboratorio o dal centro di test, è disponibile per il trasferimento. Accertati che il tuo smartphone sia connesso a Internet per poter ricevere i certificati.
+
+Se comunque non dovessi ricevere il tuo certificato COVID, rivolgiti al servizio che ha effettuato il test (centro di test, farmacia, medico)."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 3 -->
-    <string name="wallet_transfer_code_faq_works_answer_3">"Text"</string>
+    <string name="wallet_transfer_code_faq_works_answer_3">"In caso di test antigenico positivo, non ricevi alcun certificato di test dal laboratorio. 
+
+In caso di test PCR positivo, ricevi un certificato COVID per persone guarite, valido a partire dall’undicesimo giorno dopo l’esecuzione del test."</string>
 
     <!-- Wallet: Transfer Code erstellt Titel -->
     <string name="wallet_transfer_code_code_created_title">"Il tuo codice di trasferimento è stato creato"</string>
@@ -684,13 +696,13 @@ non valido"</string>
     <string name="wallet_homescreen_network_error">"Impossibile determinare la validità"</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_1">"Die App prüft regelmässig, ob ein Covid-Zertifikat für Ihren Transfer-Code verfügbar ist."</string>
+    <string name="wallet_transfer_code_faq_works_intro_1">"L’app verifica periodicamente se è disponibile un certificato COVID per il tuo codice di trasferimento."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 2 -->
-    <string name="wallet_transfer_code_faq_works_intro_2">"Sobald das Covid-Zertifikat verfügbar ist, erscheint es in der App. Wenn Sie Mitteilungen aktiviert haben, werden Sie von der App benachrichtigt."</string>
+    <string name="wallet_transfer_code_faq_works_intro_2">"Non appena il certificato COVID è disponibile, viene visualizzato nell’app. Se hai attivato le notifiche, ne riceverai una dall’app."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"Nach 7 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor dieser abgebrochen wird."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"Il codice di trasferimento scade dopo 7 giorni. Poi l’app attende un eventuale trasferimento per altre 72 ore prima di considerare scaduto il codice."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Consenti notifiche"</string>
@@ -774,10 +786,10 @@ Tuttavia, per poter visualizzare nell’app «COVID Certificate» se il certific
 Per poter aggiornare gli elenchi di verifica, l’app deve essere aperta e collegata a Internet. L’aggiornamento avviene in modo immediato e automatico."</string>
 
     <!-- Button zum QR Code Scannen öffnen -->
-    <string name="wallet_homescreen_qr_code_scannen">"QR-Code scannen"</string>
+    <string name="wallet_homescreen_qr_code_scannen">"Inquadrare il codice QR"</string>
 
     <!-- Button zum PDF importieren -->
-    <string name="wallet_homescreen_pdf_import">"PDF importieren"</string>
+    <string name="wallet_homescreen_pdf_import">"Importa PDF"</string>
 
     <!-- Wallet: Titel im Transfer Code screen bei deaktiveren Notifications -->
     <string name="wallet_notification_disabled_titel">"Suggerimento: Attiva notifiche"</string>
@@ -794,4 +806,6 @@ Per poter aggiornare gli elenchi di verifica, l’app deve essere aperta e colle
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
     <string name="wallet_certificate_evidence_creation_date">"Documentazione emessa il
 {DATE}"</string>
+    <string name="wallet_transfer_code_faq_linktext_2_1">"Ulteriori informazioni"</string>
+    <string name="wallet_transfer_code_faq_linkurl_2_1">"https://ufsp-coronavirus.ch/certificato/come-si-ottiene-il-certificato-covid-e-come-si-impiega/"</string>
 </resources>

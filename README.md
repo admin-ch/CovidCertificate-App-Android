@@ -23,10 +23,11 @@ The certificates are kept and checked locally on the user's phone.
 </p>
 
 <p align="center">
-<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_01.png" width="20%">
-<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_02.png" width="20%">
-<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_03.png" width="20%">
-<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_04.png" width="20%">
+<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_01.png" width="15%">
+<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_02.png" width="15%">
+<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_03.png" width="15%">
+<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_04.png" width="15%">
+<img src="wallet/src/main/play/listings/en-US/graphics/phone-screenshots/EN_05.png" width="15%">
 </p>
 
 ## COVID Certificate Check App

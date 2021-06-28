@@ -51,7 +51,7 @@ data class HeaderItem(val header: Header) : FaqItem() {
 
 data class QuestionItem(
 	val question: Question,
-	val onLinkClickListener: OnUrlClickListener? = null,
+	val onLinkClickListener: ((String) -> Unit)? = null,
 ) : FaqItem() {
 	companion object {
 		val layoutResource = R.layout.item_faq_question
@@ -77,7 +77,7 @@ data class QuestionItem(
 
 		if (hasLink) {
 			binding.itemFaqQuestionLinkLabel.text = question.linkTitle
-			binding.itemFaqQuestionLink.setOnClickListener { onLinkClickListener?.onLinkClicked(question.linkUrl!!) }
+			binding.itemFaqQuestionLink.setOnClickListener { onLinkClickListener?.invoke(question.linkUrl!!) }
 		} else {
 			binding.itemFaqQuestionLink.setOnClickListener(null)
 		}

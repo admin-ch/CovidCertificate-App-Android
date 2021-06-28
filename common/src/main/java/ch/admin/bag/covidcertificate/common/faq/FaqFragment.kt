@@ -60,12 +60,9 @@ abstract class FaqFragment : Fragment() {
 		(recyclerView.itemAnimator as SimpleItemAnimator?)?.supportsChangeAnimations = false
 		val layoutManager = LinearLayoutManager(recyclerView.context, LinearLayoutManager.VERTICAL, false)
 		recyclerView.layoutManager = layoutManager
-		val adapter = FaqAdapter(onItemClickListener = object : OnUrlClickListener {
-			override fun onLinkClicked(url: String) {
-				context?.let { UrlUtil.openUrl(it, url) }
-			}
-
-		})
+		val adapter = FaqAdapter { url: String ->
+			context?.let { UrlUtil.openUrl(it, url) }
+		}
 		recyclerView.adapter = adapter
 		adapter.setItems(items)
 	}
