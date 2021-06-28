@@ -31,6 +31,7 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -97,6 +98,18 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 			}
 
 			downloadJob = null
+		}
+	}
+
+	fun removeTransferCode(transferCode: TransferCodeModel) {
+		// Since the user shouldn't wait for this request to finish, the popBackStack is called shortly after calling this method.
+		// In that case, the viewModelScope wouldn't make sense because it is cleared when the fragment is popped.
+		// For this kind of fire-and-forget coroutine, the GlobalScope is therefore fine.
+		GlobalScope.launch(Dispatchers.IO) {
+			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code)
+			if (keyPair != null) {
+				deleteTransferCodeOnServer(transferCode, keyPair)
+			}
 		}
 	}
 

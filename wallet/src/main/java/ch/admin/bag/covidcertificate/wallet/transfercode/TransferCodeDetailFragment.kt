@@ -219,6 +219,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 			.setMessage(R.string.wallet_transfer_delete_confirm_text)
 			.setPositiveButton(R.string.delete_button) { _, _ ->
 				transferCode?.let {
+					transferCodeViewModel.removeTransferCode(it)
 					certificatesViewModel.removeTransferCode(it)
 					parentFragmentManager.popBackStack()
 				}
