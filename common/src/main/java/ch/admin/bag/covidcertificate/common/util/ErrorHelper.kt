@@ -10,6 +10,7 @@
 
 package ch.admin.bag.covidcertificate.common.util
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
 import android.graphics.Paint
@@ -18,6 +19,7 @@ import android.provider.Settings
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import ch.admin.bag.covidcertificate.common.R
 
@@ -58,6 +60,10 @@ object ErrorHelper {
 		val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
 		val uri = Uri.fromParts("package", context.packageName, null)
 		intent.data = uri
-		context.startActivity(intent)
+		try {
+			context.startActivity(intent)
+		} catch (e: ActivityNotFoundException) {
+			Toast.makeText(context, "Could not open settings", Toast.LENGTH_LONG).show()
+		}
 	}
 }
