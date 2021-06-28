@@ -23,7 +23,12 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
-import androidx.camera.core.*
+import androidx.camera.core.Camera
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.FocusMeteringAction
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
@@ -65,7 +70,6 @@ abstract class QrScanFragment : Fragment() {
 	private lateinit var mainExecutor: Executor
 	private var camera: Camera? = null
 
-
 	abstract val viewFinderColor: Int
 	abstract val viewFinderErrorColor: Int
 	abstract val torchOnDrawable: Int
@@ -74,6 +78,7 @@ abstract class QrScanFragment : Fragment() {
 	private var lastUIErrorUpdate = 0L
 
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
+	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -247,13 +252,20 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	private fun showCameraPermissionExplanationDialog() {
-		CameraPermissionExplanationDialog(requireContext()).apply {
+		if (cameraPermissionExplanationDialog?.isShowing == true) {
+			return
+		}
+
+		cameraPermissionExplanationDialog = CameraPermissionExplanationDialog(requireContext()).apply {
 			setOnCancelListener {
 				cameraPermissionState = CameraPermissionState.CANCELLED
 				refreshView()
 			}
 			setGrantCameraAccessClickListener {
 				requestPermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_REQUEST_CAMERA)
+			}
+			setOnDismissListener {
+				cameraPermissionExplanationDialog = null
 			}
 			show()
 		}
