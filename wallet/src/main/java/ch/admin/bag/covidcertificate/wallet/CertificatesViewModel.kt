@@ -27,25 +27,19 @@ import ch.admin.bag.covidcertificate.eval.verification.CertificateVerificationTa
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
-import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
-import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
-import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import java.io.IOException
 import kotlin.collections.set
 
 class CertificatesViewModel(application: Application) : AndroidViewModel(application) {
 
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val verificationController = CovidCertificateSdk.getCertificateVerificationController()
-	private val deliveryRepository =
-		DeliveryRepository.getInstance(DeliverySpec(application.applicationContext, BuildConfig.BASE_URL_DELIVERY))
 
 	private val walletDataStorage: WalletDataSecureStorage by lazy { WalletDataSecureStorage.getInstance(application.applicationContext) }
 
@@ -61,10 +55,6 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 	init {
 		walletItems.observeForever { items ->
-			// Check for each transfer code if there is a certificate for download
-			val transferCodes = items.filterIsInstance<WalletItem.TransferCodeHolderItem>()
-			transferCodes.forEach { downloadCertificateForTransferCode(it.transferCode) }
-
 			// When the wallet items change, map the certificates with the existing verification state or LOADING
 			val certificates = items.filterIsInstance<WalletItem.DccHolderItem>()
 			val currentVerifiedCertificates = verifiedCertificates.value ?: emptyList()
@@ -75,13 +65,13 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 			}
 
 			// (Re-)Verify all certificates
-			certificates.forEach { certificate -> certificate?.dccHolder?.let { startVerification(it) } }
+			certificates.forEach { certificate -> certificate.dccHolder?.let { startVerification(it) } }
 		}
 	}
 
 	fun loadWalletData() {
 		viewModelScope.launch(Dispatchers.Default) {
-			val pagerHolders = walletDataStorage.getWalletData().mapNotNull { dataItem ->
+			val pagerHolders = walletDataStorage.getWalletData().map { dataItem ->
 				when (dataItem) {
 					is WalletDataItem.CertificateWalletData -> {
 						val decodeState = CertificateDecoder.decode(dataItem.qrCodeData)
@@ -170,34 +160,6 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	fun removeTransferCode(transferCode: TransferCodeModel) {
 		walletDataStorage.deleteTransferCode(transferCode)
 		loadWalletData()
-	}
-
-	private fun downloadCertificateForTransferCode(transferCode: TransferCodeModel) {
-		viewModelScope.launch(Dispatchers.IO) {
-			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code)
-
-			if (keyPair != null) {
-				try {
-					val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
-
-					if (decryptedCertificates.isNotEmpty()) {
-						decryptedCertificates.forEachIndexed { index, convertedCertificate ->
-							val qrCodeData = convertedCertificate.qrCodeData
-							val pdfData = convertedCertificate.pdfData
-							if (index == 0) {
-								walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
-							} else {
-								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
-							}
-							deliveryRepository.complete(transferCode.code, keyPair)
-						}
-						loadWalletData()
-					}
-				} catch (e: IOException) {
-					// Ignore an exception and just keep the transfer code
-				}
-			}
-		}
 	}
 
 	private fun enqueueVerificationTask(task: CertificateVerificationTask, delayInMillis: Long) {
