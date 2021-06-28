@@ -69,10 +69,8 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 	}
 
 	fun setState(newState: TransferCodeBubbleState) {
-		if (newState != viewState) {
-			viewState = newState
-			updateView()
-		}
+		viewState = newState
+		updateView()
 	}
 
 	private fun updateView() {
