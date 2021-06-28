@@ -46,7 +46,7 @@ class MainActivity : AppCompatActivity() {
 	private var forceUpdateDialog: AlertDialog? = null
 	private var isIntentConsumed = false
 
-	private val onAndUpdateBoardingLauncher =
+	private val onboardingLauncher =
 		registerForActivityResult(StartActivityForResult()) { activityResult: ActivityResult ->
 			if (activityResult.resultCode == RESULT_OK) {
 				secureStorage.setOnboardingCompleted(true)
@@ -68,15 +68,13 @@ class MainActivity : AppCompatActivity() {
 		if (savedInstanceState == null) {
 			val onboardingCompleted: Boolean = secureStorage.getOnboardingCompleted()
 			if (!onboardingCompleted) {
-				onAndUpdateBoardingLauncher.launch(Intent(this, OnboardingActivity::class.java))
+				onboardingLauncher.launch(Intent(this, OnboardingActivity::class.java))
 			} else {
 				showHomeFragment()
 			}
 		}
 
 		configViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
-
-		CovidCertificateSdk.registerWithLifecycle(lifecycle)
 
 		if (savedInstanceState != null) {
 			isIntentConsumed = savedInstanceState.getBoolean(KEY_IS_INTENT_CONSUMED)
@@ -99,18 +97,14 @@ class MainActivity : AppCompatActivity() {
 		outState.putBoolean(KEY_IS_INTENT_CONSUMED, isIntentConsumed)
 	}
 
-	override fun onStart() {
-		super.onStart()
-		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
-		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
-	}
-
 	override fun onDestroy() {
 		super.onDestroy()
 		CovidCertificateSdk.unregisterWithLifecycle(lifecycle)
 	}
 
 	private fun showHomeFragment() {
+		CovidCertificateSdk.registerWithLifecycle(lifecycle)
+
 		supportFragmentManager.beginTransaction()
 			.add(R.id.fragment_container, HomeFragment.newInstance())
 			.commit()

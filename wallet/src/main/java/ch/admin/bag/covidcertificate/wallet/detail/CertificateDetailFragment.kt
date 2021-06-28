@@ -26,7 +26,6 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
@@ -93,19 +92,19 @@ class CertificateDetailFragment : Fragment() {
 		setupCertificateDetails()
 		setupStatusInfo()
 
-		binding.certificateDetailToolbar.setNavigationOnClickListener { v: View? ->
+		binding.certificateDetailToolbar.setNavigationOnClickListener {
 			parentFragmentManager.popBackStack()
 		}
 
-		binding.certificateDetailButtonDelete.setOnClickListener { view ->
+		binding.certificateDetailButtonDelete.setOnClickListener {
 			AlertDialog.Builder(view.context, R.style.CovidCertificate_AlertDialogStyle)
 				.setTitle(R.string.delete_button)
 				.setMessage(R.string.wallet_certificate_delete_confirm_text)
-				.setPositiveButton(R.string.delete_button) { dialog, which ->
+				.setPositiveButton(R.string.delete_button) { _, _ ->
 					certificatesViewModel.removeCertificate(dccHolder.qrCodeData)
 					parentFragmentManager.popBackStack()
 				}
-				.setNegativeButton(R.string.cancel_button) { dialog, which ->
+				.setNegativeButton(R.string.cancel_button) { dialog, _ ->
 					dialog.dismiss()
 				}
 				.setCancelable(true)
@@ -145,8 +144,6 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun setupCertificateDetails() {
 		val recyclerView = binding.certificateDetailDataRecyclerView
-		val layoutManager = LinearLayoutManager(recyclerView.context, LinearLayoutManager.VERTICAL, false)
-		recyclerView.layoutManager = layoutManager
 		val adapter = CertificateDetailAdapter()
 		recyclerView.adapter = adapter
 

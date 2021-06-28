@@ -26,10 +26,10 @@ object AssetUtil {
 	private const val PREFIX_ASSET_FILE = "file:///android_asset/"
 	private const val FOLDER_NAME_IMPRESSUM = "impressum/"
 	private const val FILE_NAME_IMPRESSUM = "impressum.html"
-	private const val FOLDER_NAME_DISCLAIMER = "disclaimer/";
-	private const val DISCLAIMER_FALLBACK_LANGUAGE = "de";
-	private const val FILE_NAME_DATA_PROTECTION_STATEMENT = "data_protection_statement.html";
-	private const val FILE_NAME_TERMS_OF_USE = "terms_of_use.html";
+	private const val FOLDER_NAME_DISCLAIMER = "disclaimer/"
+	private const val DISCLAIMER_FALLBACK_LANGUAGE = "de"
+	private const val FILE_NAME_DATA_PROTECTION_STATEMENT = "data_protection_statement.html"
+	private const val FILE_NAME_TERMS_OF_USE = "terms_of_use.html"
 
 	private const val REPLACE_STRING_APP_NAME = "{APP_NAME}"
 	private const val REPLACE_STRING_VERSION = "{VERSION}"
@@ -37,6 +37,7 @@ object AssetUtil {
 	private const val REPLACE_STRING_RELEASEDATE = "{RELEASEDATE}"
 	private const val REPLACE_STRING_BUILDNR = "{BUILD}"
 	private const val REPLACE_STRING_LAW_LINK = "{LAW_LINK}"
+	private const val REPLACE_STRING_APP_IDENTIFIER = "{PARAM_APP_IDENTIFIER}"
 
 	private val RELEASE_DATE_FORMAT = SimpleDateFormat("dd.MM.yyyy").apply { timeZone = TimeZone.getTimeZone("Europe/Zurich") }
 
@@ -91,6 +92,7 @@ object AssetUtil {
 			impressum = impressum.replace(REPLACE_STRING_BUILDNR, buildString)
 			impressum = impressum.replace(REPLACE_STRING_APP_NAME, buildInfo.appName)
 			impressum = impressum.replace(REPLACE_STRING_LAW_LINK, buildInfo.agbUrl)
+			impressum = impressum.replace(REPLACE_STRING_APP_IDENTIFIER, buildInfo.appIdentifier)
 			impressum
 		} catch (e: IOException) {
 			e.printStackTrace()
@@ -102,8 +104,8 @@ object AssetUtil {
 		return FOLDER_NAME_DISCLAIMER + context.getString(R.string.language_key) + "/"
 	}
 
-	private fun getDefaultLanguageFolderNameDisclaimer(context: Context): String {
-		return FOLDER_NAME_DISCLAIMER + DISCLAIMER_FALLBACK_LANGUAGE + "/"
+	private fun getDefaultLanguageFolderNameDisclaimer(): String {
+		return "$FOLDER_NAME_DISCLAIMER$DISCLAIMER_FALLBACK_LANGUAGE/"
 	}
 
 	fun getTermsOfUse(context: Context): String {
@@ -113,7 +115,7 @@ object AssetUtil {
 		)
 		if (htmlString == null) htmlString = loadHtml(
 			context,
-			getDefaultLanguageFolderNameDisclaimer(context) + FILE_NAME_TERMS_OF_USE
+			getDefaultLanguageFolderNameDisclaimer() + FILE_NAME_TERMS_OF_USE
 		)
 		if (htmlString == null) htmlString = ""
 		return replaceUlTags(htmlString)
@@ -126,7 +128,7 @@ object AssetUtil {
 		)
 		if (htmlString == null) htmlString = loadHtml(
 			context,
-			getDefaultLanguageFolderNameDisclaimer(context) + FILE_NAME_DATA_PROTECTION_STATEMENT
+			getDefaultLanguageFolderNameDisclaimer() + FILE_NAME_DATA_PROTECTION_STATEMENT
 		)
 		if (htmlString == null) htmlString = ""
 		return replaceUlTags(htmlString)

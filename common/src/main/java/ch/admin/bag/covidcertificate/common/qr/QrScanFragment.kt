@@ -23,7 +23,12 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
-import androidx.camera.core.*
+import androidx.camera.core.Camera
+import androidx.camera.core.CameraSelector
+import androidx.camera.core.FocusMeteringAction
+import androidx.camera.core.ImageAnalysis
+import androidx.camera.core.ImageCapture
+import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
@@ -65,7 +70,6 @@ abstract class QrScanFragment : Fragment() {
 	private lateinit var mainExecutor: Executor
 	private var camera: Camera? = null
 
-
 	abstract val viewFinderColor: Int
 	abstract val viewFinderErrorColor: Int
 	abstract val torchOnDrawable: Int
@@ -74,6 +78,7 @@ abstract class QrScanFragment : Fragment() {
 	private var lastUIErrorUpdate = 0L
 
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
+	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -150,18 +155,19 @@ abstract class QrScanFragment : Fragment() {
 								handleInvalidQRCodeExceptions(null, decodeCertificateState.error)
 							}
 							DecodeCertificateState.SCANNING -> {
-								//do nothing
+								view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
 							}
 							is DecodeCertificateState.SUCCESS -> {
-								// Once successfully decoded, clear the analyzer from stopping more frames being analyzed and possibly decoded successfully
-								imageAnalysis.clearAnalyzer()
-
 								val qrCodeData = decodeCertificateState.qrCode
 								qrCodeData?.let {
 									when (val decodeState = CertificateDecoder.decode(it)) {
 										is DecodeState.SUCCESS -> {
+											// Once successfully decoded, clear the analyzer from stopping more frames being
+											// analyzed and possibly decoded successfully
+											imageAnalysis.clearAnalyzer()
+
 											onDecodeSuccess(decodeState.dccHolder)
-											view?.post { indicateInvalidQrCode(QrScannerState.VALID) }
+											view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
 										}
 										is DecodeState.ERROR -> {
 											view?.post { handleInvalidQRCodeExceptions(qrCodeData, decodeState.error) }
@@ -169,10 +175,8 @@ abstract class QrScanFragment : Fragment() {
 									}
 								}
 							}
-
 						}
 					})
-
 				}
 
 			cameraProvider.unbindAll()
@@ -224,7 +228,6 @@ abstract class QrScanFragment : Fragment() {
 		// I.e. don't show the popup but the error view
 		else if (cameraPermissionState != CameraPermissionState.DENIED) {
 			cameraPermissionState = CameraPermissionState.REQUESTING
-
 		}
 		refreshView()
 	}
@@ -243,17 +246,24 @@ abstract class QrScanFragment : Fragment() {
 				ErrorHelper.updateErrorView(errorView, ErrorState.CAMERA_ACCESS_DENIED, null, context)
 			}
 		}
-		indicateInvalidQrCode(QrScannerState.NO_CODE_FOUND)
+		updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND)
 	}
 
 	private fun showCameraPermissionExplanationDialog() {
-		CameraPermissionExplanationDialog(requireContext()).apply {
+		if (cameraPermissionExplanationDialog?.isShowing == true) {
+			return
+		}
+
+		cameraPermissionExplanationDialog = CameraPermissionExplanationDialog(requireContext()).apply {
 			setOnCancelListener {
 				cameraPermissionState = CameraPermissionState.CANCELLED
 				refreshView()
 			}
 			setGrantCameraAccessClickListener {
 				requestPermissions(arrayOf(Manifest.permission.CAMERA), PERMISSION_REQUEST_CAMERA)
+			}
+			setOnDismissListener {
+				cameraPermissionExplanationDialog = null
 			}
 			show()
 		}
@@ -284,14 +294,15 @@ abstract class QrScanFragment : Fragment() {
 
 	private fun handleInvalidQRCodeExceptions(qrCodeData: String?, error: Error?) {
 		//TODO Show error code on screen
-		indicateInvalidQrCode(QrScannerState.INVALID_FORMAT)
+		updateQrCodeScannerState(QrScannerState.INVALID_FORMAT)
 	}
 
-	private fun indicateInvalidQrCode(qrScannerState: QrScannerState) {
+	private fun updateQrCodeScannerState(qrScannerState: QrScannerState) {
 		val currentTime = System.currentTimeMillis()
 		if (lastUIErrorUpdate > currentTime - MIN_ERROR_VISIBILITY && qrScannerState == QrScannerState.NO_CODE_FOUND) {
 			return
 		}
+
 		lastUIErrorUpdate = currentTime
 		var color: Int = viewFinderColor
 		when (qrScannerState) {

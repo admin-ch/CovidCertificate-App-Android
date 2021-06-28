@@ -31,6 +31,7 @@ import ch.admin.bag.covidcertificate.common.faq.model.Faq
 import ch.admin.bag.covidcertificate.common.faq.model.Header
 import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
 import ch.admin.bag.covidcertificate.common.faq.model.Question
+import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.views.rotate
@@ -65,7 +66,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	private val configViewModel by activityViewModels<ConfigViewModel>()
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 	private val transferCodeViewModel by viewModels<TransferCodeViewModel>()
-	private val faqAdapter = FaqAdapter()
+	private val faqAdapter = FaqAdapter { url: String  -> context?.let { UrlUtil.openUrl(it, url) }}
 	private var transferCode: TransferCodeModel? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -219,6 +220,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 			.setMessage(R.string.wallet_transfer_delete_confirm_text)
 			.setPositiveButton(R.string.delete_button) { _, _ ->
 				transferCode?.let {
+					transferCodeViewModel.removeTransferCode(it)
 					certificatesViewModel.removeTransferCode(it)
 					parentFragmentManager.popBackStack()
 				}

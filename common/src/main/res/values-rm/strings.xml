@@ -545,53 +545,63 @@ As infurmai per plaschair – avant d'As metter en viadi – davart las mesiras 
     <string name="wallet_transfer_code_onboarding_howto">"Uschia funcziuni"</string>
 
     <!-- Wallet: Transfer Code: FAQ Titel -->
-    <string name="wallet_transfer_code_faq_questions_title">"Covid-Zertifikate direkt in die App geliefert"</string>
+    <string name="wallet_transfer_code_faq_questions_title">"Certificats COVID furnids directamain en l'app"</string>
 
     <!-- Wallet: Transfer Code FAQ Text -->
-    <string name="wallet_transfer_code_faq_questions_subtitle">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat nach einem negativen Covid-Test direkt in die App geliefert."</string>
+    <string name="wallet_transfer_code_faq_questions_subtitle">"Cun ils codes da transfer pon ils certificats COVID vegnir transmess en moda svelta e segira. Sin questa via vegn il certificat COVID furnì directamain en l'app, p.ex. suenter in test dal coronavirus."</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 1 -->
-    <string name="wallet_transfer_code_faq_questions_question_1">"Wer bietet die Übermittlung per Transfer-Code an?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_1">"Tgi porscha la transmissiun cun in code da transfer?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 2 -->
-    <string name="wallet_transfer_code_faq_questions_question_2">"Können Transfer–Codes nur für Covid-Tests genutzt werden?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_2">"Pon ils codes da transfer vegnir duvrads er per transmetter certificats da vaccinaziun?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 3 -->
-    <string name="wallet_transfer_code_faq_questions_question_3">"Wie funktioniert die Übermittlung per Transfer-Code?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_3">"Co funcziuna la transmissiun cun in code da transfer?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 4 -->
-    <string name="wallet_transfer_code_faq_questions_question_4">"Kann ich den Transfer-Code mehrmals benutzen?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_4">"Poss jau duvrar pliras giadas il medem code da transfer?"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 1 -->
-    <string name="wallet_transfer_code_faq_questions_answer_1">"Text"</string>
+    <string name="wallet_transfer_code_faq_questions_answer_1">"Sche Vus faschais in test dal coronavirus (test da PCR u test svelt d'antigens), po il code da transfer vegnir en funcziun per transmetter sveltamain ils certificats COVID.
+
+As infurmai tar Voss center da test, en l'apoteca u tar Vossa media u Voss medi, sche la transmissiun cun in code da transfer è pussaivla."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 2 -->
-    <string name="wallet_transfer_code_faq_questions_answer_2">"Text"</string>
+    <string name="wallet_transfer_code_faq_questions_answer_2">"Actualmain è la transmissiun cun in code da transfer concepì per tests dal coronavirus. Co che Vus survegnis in certificat COVID suenter ina vaccinaziun, vegnis Vus a savair qua:"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 3 -->
-    <string name="wallet_transfer_code_faq_questions_answer_3">"Text"</string>
+    <string name="wallet_transfer_code_faq_questions_answer_3">"En cas ch'il post che fa il test dal coronavirus porscha la transmissiun cun in code da transfer, vegnis Vus supplitgà d'inditgar Voss code da transfer gia tar l'annunzia u a chaschun da la prelevaziun dal test.
+
+Il code da transfer pudais Vus crear en l'app «COVID Certificate». Smatgai sin la pagina iniziala sin «Agiuntar» resp. sin il simbol «+» sutvart a dretga. Smatgai alura sin «Crear in code da transfer».
+
+L'app As mussa in code da 9 cifras. Quest code pudais Vus u endatar tar l'annunzia en in formular u inditgar directamain a chaschun da la prelevaziun dal test."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 4 -->
-    <string name="wallet_transfer_code_faq_questions_answer_4">"Text"</string>
-    <string name="wallet_transfer_code_faq_works_title">"So funktioniert der Transfer"</string>
+    <string name="wallet_transfer_code_faq_questions_answer_4">"Na, in code da transfer po vegnir duvrà mo ina giada. En cas che Vus vulais retschaiver plirs certificats, per exempel da confamigliaras u confamigliars, creai per plaschair per mintga certificat in nov code."</string>
+    <string name="wallet_transfer_code_faq_works_title">"Uschia funcziuna il transfer"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 1 -->
-    <string name="wallet_transfer_code_faq_works_question_1">"Wie sind meine Daten beim Transfer geschützt?"</string>
+    <string name="wallet_transfer_code_faq_works_question_1">"Co vegnan protegidas mias datas tar il transfer?"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 2 -->
-    <string name="wallet_transfer_code_faq_works_question_2">"Was kann ich tun, wenn das Zertifikat nicht ankommt?"</string>
+    <string name="wallet_transfer_code_faq_works_question_2">"Tge poss jau far, sch'il certificat n'arriva betg?"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 3 -->
-    <string name="wallet_transfer_code_faq_works_question_3">"Was passiert bei einem positiven Testresultat?"</string>
+    <string name="wallet_transfer_code_faq_works_question_3">"Tge capita en cas d'in test positiv?"</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 1 -->
-    <string name="wallet_transfer_code_faq_works_answer_1">"Text"</string>
+    <string name="wallet_transfer_code_faq_works_answer_1">"Per il transfer vegn Voss certificat COVID mess a disposiziun en moda codifitgada. Il code da transfer garantescha che mo Vossa app po retschaiver il certificat COVID. Las datas vegnan puspè stizzadas dal server immediatamain suenter il transfer."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 2 -->
-    <string name="wallet_transfer_code_faq_works_answer_2">"Text"</string>
+    <string name="wallet_transfer_code_faq_works_answer_2">"Uschespert ch'il certificat è vegnì generà dal labor u dal center da test, stat el a disposiziun per il transfer. Guardai che Voss smartphone saja collià cun l'internet per pudair retschaiver certificats.
+
+En cas che Voss certificat COVID n'arriva tuttina betg, As drizzai al post che ha fatg il test (center da test, apoteca, media u medi)."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 3 -->
-    <string name="wallet_transfer_code_faq_works_answer_3">"Text"</string>
+    <string name="wallet_transfer_code_faq_works_answer_3">"En cas d'in test svelt d'antigens positiv na survegnis Vus betg in certificat COVID dal labor.
+
+En cas d'in test da PCR positiv survegnis Vus in certificat COVID per persunas guaridas. El è valaivel a partir dal 11. di suenter la prelevaziun dal test."</string>
 
     <!-- Wallet: Transfer Code erstellt Titel -->
     <string name="wallet_transfer_code_code_created_title">"Voss code da transfer è vegnì creà"</string>
@@ -680,13 +690,13 @@ n’è betg valaivel"</string>
     <string name="wallet_homescreen_network_error">"La valaivladad n’ha betg pudì vegnir eruida"</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_1">"Die App prüft regelmässig, ob ein Covid-Zertifikat für Ihren Transfer-Code verfügbar ist."</string>
+    <string name="wallet_transfer_code_faq_works_intro_1">"L'app verifitgescha regularmain, schebain in certificat COVID è disponibel per Voss code da transfer."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 2 -->
-    <string name="wallet_transfer_code_faq_works_intro_2">"Sobald das Covid-Zertifikat verfügbar ist, erscheint es in der App. Wenn Sie Mitteilungen aktiviert haben, werden Sie von der App benachrichtigt."</string>
+    <string name="wallet_transfer_code_faq_works_intro_2">"Uschespert ch'il certificat COVID è disponibel, cumpara el en l'app. Sche Vus avais activà ils avis, vegnis Vus infurmada u infurmà da l'app."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"Nach 7 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor dieser abgebrochen wird."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"Suenter 7 dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Permetter avis"</string>
@@ -770,10 +780,10 @@ Per vesair en l'app «COVID Certificate», sche Voss certificat correspunda als 
 Per actualisar las glistas da verificaziun sto l'app esser colliada cun l'internet e vegnir averta. L'actualisaziun succeda immediatamain ed automaticamain."</string>
 
     <!-- Button zum QR Code Scannen öffnen -->
-    <string name="wallet_homescreen_qr_code_scannen">"QR-Code scannen"</string>
+    <string name="wallet_homescreen_qr_code_scannen">"Scannar il code QR"</string>
 
     <!-- Button zum PDF importieren -->
-    <string name="wallet_homescreen_pdf_import">"PDF importieren"</string>
+    <string name="wallet_homescreen_pdf_import">"Importar il PDF"</string>
 
     <!-- Wallet: Titel im Transfer Code screen bei deaktiveren Notifications -->
     <string name="wallet_notification_disabled_titel">"Activar avis"</string>
@@ -790,4 +800,6 @@ Per actualisar las glistas da verificaziun sto l'app esser colliada cun l'intern
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
     <string name="wallet_certificate_evidence_creation_date">"Cumprova emessa ils
 {DATE}"</string>
+    <string name="wallet_transfer_code_faq_linktext_2_1">"Ulteriuras infurmaziuns"</string>
+    <string name="wallet_transfer_code_faq_linkurl_2_1">"https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/"</string>
 </resources>

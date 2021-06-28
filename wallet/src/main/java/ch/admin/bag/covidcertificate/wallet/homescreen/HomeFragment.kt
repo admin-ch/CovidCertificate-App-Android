@@ -23,6 +23,7 @@ import androidx.core.view.isVisible
 import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
@@ -37,6 +38,7 @@ import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.rotate
 import ch.admin.bag.covidcertificate.common.views.showAnimated
+import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
@@ -101,6 +103,12 @@ class HomeFragment : Fragment() {
 		setupImportObservers()
 	}
 
+	override fun onStart() {
+		super.onStart()
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
+		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
+	}
+
 	override fun onResume() {
 		super.onResume()
 		reloadCertificates()
@@ -128,14 +136,14 @@ class HomeFragment : Fragment() {
 				.commit()
 		}
 		val impressumClickListener = View.OnClickListener {
-			val buildInfo =
-				BuildInfo(
-					getString(R.string.wallet_onboarding_app_title),
-					BuildConfig.VERSION_NAME,
-					BuildConfig.BUILD_TIME,
-					BuildConfig.FLAVOR,
-					getString(R.string.wallet_terms_privacy_link)
-				)
+			val buildInfo = BuildInfo(
+				getString(R.string.wallet_onboarding_app_title),
+				BuildConfig.VERSION_NAME,
+				BuildConfig.BUILD_TIME,
+				BuildConfig.FLAVOR,
+				getString(R.string.wallet_terms_privacy_link),
+				"covidCert",
+			)
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 				.replace(

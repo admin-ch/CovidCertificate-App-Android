@@ -1,1 +1,1114 @@
-{"forceUpdate":false,"infoBox":null,"questions":{"de":{"faqTitle":"Was sind Covid-Zertifikate?","faqSubTitle":"Das Covid-Zertifikat bietet die Möglichkeit, eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis fälschungssicher zu dokumentieren.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"Wann und wo kann ich ein Covid-Zertifikat erhalten?","text":"Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Wie erhalte ich nach einer durchgemachten Covid-19-Erkrankung ein Covid-Zertifikat?","text":"Von Covid-19 genesene Personen können das Covid-Zertifikat über ein Online-Formular auf der Webseite des Kantons beantragen. Das Covid-Zertifikat wird anschliessend per Post zugeschickt.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Wie kann ich ein Covid-Zertifikat vorweisen?","text":"Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. \n\nBeachten Sie, dass sie in jedem Fall auf Verlangen auch noch ein Ausweisdokument vorweisen müssen.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Wo sind meine Daten gespeichert?","text":"Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Wie werden Missbrauch und Fälschung verhindert?","text":"Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument gültig.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Was passiert, wenn ich mein Covid-Zertifikat verliere?","text":"Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]},"en":{"faqTitle":"What are COVID certificates?","faqSubTitle":"The COVID certificate makes it possible to document a COVID-19 vaccination, recovery from the virus or a negative test result in a forgery-proof manner.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"When and where can I get a COVID certificate?","text":"You can get a COVID-19 certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"How do I get a COVID-19 certificate after I have recovered from COVID-19?","text":"People who have recovered from COVID-19 can apply for the COVID-19 certificate via an online form on the canton's website. The COVID-19 certificate will then be sent by post.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"How can I present a COVID certificate?","text":"You can present your COVID certificate in hard copy or you can use the COVID Certificate app to save certificates in the app and present them directly from the app. You are free to choose whether you present your certificate in hard copy or in the app.\n\nPlease note that you will also need to show an identification document (passport or ID card) in either case.\n","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Where is my data stored?","text":"Your data is not stored in a central system, but only locally on your mobile device or in the QR code in the case of the paper COVID certificate.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"How are misuse and forgery prevented?","text":"The COVID certificate QR code contains an electronic signature. This is an important security feature and makes the COVID certificate forgery-proof. Moreover, the COVID certificate is valid only in combination with an identification document (passport or ID card).","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"What happens if I lose my COVID certificate?","text":"Your COVID certificate is not stored in any central system. It is solely in your possession. Therefore, keep your paper COVID certificate in a safe place. If you lose the COVID certificate, you will have to request it again from the issuing office","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]},"fr":{"faqTitle":"Le certificat COVID en bref","faqSubTitle":"Le certificat COVID atteste de manière infalsifiable une vaccination contre le COVID-19, une guérison ou un résultat de test négatif.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"Quand et où puis-je obtenir un certificat COVID?","text":"Vous pouvez obtenir le certificat COVID si vous êtes entièrement vacciné contre le COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Comment puis-je obtenir un certificat COVID après avoir guéri?","text":"Les personnes qui ont guéri du COVID-19 peuvent demander un certificat COVID en remplissant le formulaire en ligne disponible sur le site Internet de leur canton de domicile. Elles recevront ensuite le certificat COVID par la poste. ","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Par quel moyen puis-je présenter un certificat COVID?","text":"Vous pouvez présenter votre certificat COVID sur papier ou au moyen de l'app de stockage créée à cet effet. Vous êtes libre de choisir l'une ou l'autre solution.\n\nDans tous les cas, vous devez aussi présenter une pièce d'identité sur demande.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Où mes données sont-elles stockées?","text":"Vos données ne sont pas stockées dans un système central, mais elles sont sauvegardées localement, sur votre appareil mobile ou dans le code QR figurant sur le certificat papier.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Comment prévient-on les abus et les falsifications?","text":"Le code QR figurant sur le certificat COVID contient une signature électronique. Celle-ci est une caractéristique de sécurité importante qui rend le certificat infalsifiable. En outre, le certificat COVID n'est valable que sur présentation d'une pièce d'identité.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Et si je perds mon certificat COVID?","text":"Votre certificat COVID n'est pas stocké dans un système central. Vous en êtes le seul détenteur. Veuillez donc conserver soigneusement le document papier. En cas de perte, vous devrez demander au service émetteur de vous délivrer un nouveau certificat.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]},"it":{"faqTitle":"Cos'è il certificato COVID?","faqSubTitle":"Il certificato COVID offre la possibilità di provare in modo non falsificabile l'avvenuta vaccinazione, la guarigione o un risultato negativo al test.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"Quando e dove posso ottenere un certificato COVID?","text":"Può ricevere un certificato COVID in seguito alla completa vaccinazione anti-COVID-19, all'avvenuta guarigione o a un risultato negativo al test. Normalmente, il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Come posso ottenere un certificato COVID dopo essere guarito?","text":"Le persone guarite dalla COVID-19 possono richiedere il certificato COVID tramite un modulo online disponibile sul sito Internet del Cantone. Il certificato viene poi inviato per posta.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Come posso mostrare il certificato COVID?","text":"Può mostrare il Suo certificato COVID in formato cartaceo oppure salvarlo e presentarlo utilizzando l'app COVID Certificate. Può decidere liberamente se mostrare il certificato in formato cartaceo o elettronico.\n\nIn entrambi i casi, dovrà esibire su richiesta anche un documento di legittimazione.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Dove vengono salvati i miei dati?","text":"I Suoi dati non vengono salvati in un sistema centrale ma solo localmente sul Suo dispositivo mobile oppure nel codice QR indicato nel certificato COVID in formato cartaceo.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Come vengono impediti usi abusivi e falsificazioni?","text":"Il codice QR sul certificato COVID contiene una firma elettronica. Questa firma è un elemento di sicurezza importante e garantisce che il certificato non possa essere falsificato. Inoltre, il certificato COVID è valido solo con un documento di legittimazione.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Cosa succede se perdo il mio certificato COVID su carta?","text":"Il Suo certificato COVID non è salvato su un sistema centrale. Lei ne ha il possesso esclusivo. Conservi quindi con cura il certificato COVID su carta. In caso di smarrimento, dovrà richiedere un nuovo certificato presso l'ufficio emittente.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]},"rm":{"faqTitle":"Tge è il certificat COVID?","faqSubTitle":"Il certificat COVID permetta da documentar – en moda nunfalsifitgabla – ina vaccinaziun cunter COVID-19, ina infecziun u in resultat negativ dal test.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"Cura e co obtegn jau in certificat COVID?","text":"In certificat COVID obtegnais Vus suenter ina vaccinaziun cumpletta cunter COVID-19, suenter ina infecziun u suenter in resultat negativ dal test. Il certificat vegn per il solit emess – sin dumonda – dal persunal spezialisà da sanadad al lieu.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Co obtegn jau in certificat COVID suenter ina infecziun cun COVID-19?","text":"Cun agid d’in formular online sin la pagina d’internet dal chantun pon las persunas guaridas da COVID-19 far ina dumonda per in certificat COVID. Il certificat COVID vegn alura tramess per posta.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Co poss jau preschentar in certificat COVID?","text":"Vus pudais preschentar Voss certificat COVID u en furma da palpiri u cun utilisar l'app COVID Certificate. L'app permetta d'arcunar certificats e d'als preschentar directamain sin il telefonin. Vus pudais decider sezza u sez, sche Vus vulais mussar Voss certificat sin palpiri u en l'app.\n\nResguardai per plaschair che Vus stuais en mintga cas preschentar – sin dumonda – ultra dal certificat er in document da legitimaziun.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Nua vegnan arcunadas mias datas?","text":"Vossas datas na vegnan betg arcunadas en in sistem central, mabain mo localmain sin Voss telefonin resp. en il code QR sin il certificat COVID en furma da palpiri.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Co vegnan impedids abus e falsificaziuns?","text":"Il code QR sin Voss certificat COVID cuntegna ina signatura digitala. La signatura è ina impurtanta caracteristica da segirezza che impedescha da falsifitgar il certificat COVID. Il certificat COVID è ultra da quai valaivel mo en cumbinaziun cun in document da legitimaziun.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Tge capita, sche jau perd mes certificat COVID?","text":"Voss certificat COVID na vegn betg arcunà en in sistem central. El è unicamain en Voss agen possess. Tegnai perquai en salv cun quità il certificat COVIDsin palpiri. En cas da perdita, stuais Vus dumandar in nov certificat COVID tar il post che l'ha emess.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]}},"works":{"de":{"faqTitle":"Wie funktioniert \ndie App?","faqSubTitle":"Mit der COVID Certificate App können Sie Covid-Zertifikate einfach und sicher auf Ihrem Mobilgerät abspeichern und vorweisen.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"Wie kann ich ein Covid-Zertifikat zur App hinzufügen?","text":"Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App.","iconAndroid":null,"iconIos":null,"linkTitle":"mock link","linkUrl":"https://www.ubique.ch"},{"title":"Können auch mehrere Covid-Zertifikate hinzugefügt werden?","text":"Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument des Zertifikatsinhabers / der Zertifikatsinhaberin gültig.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Wie sehe ich, ob mein Covid-Zertifikat gültig ist?","text":"In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Wie sind meine Daten geschützt?","text":"Ihre persönlichen Daten werden in keinem zentralen System gespeichert, sondern befinden sich ausschliesslich bei Ihnen lokal auf dem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Welche Daten sind im QR-Code enthalten?","text":"Der QR-Code enthält alle Informationen, die Sie auf Ihrem Covid-Zertifikat in Papierform im Klartext finden. Weiter befindet sich im QR-Code eine elektronische Signatur, mit der sich die Echtheit des Covid-Zertifikats überprüfen lässt. Dadurch wird das Covid-Zertifikat fälschungssicher.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Was muss ich tun, wenn ich das Covid-Zertifikat oder die App lösche?","text":"Sie können Ihr Covid-Zertifikat einfach wieder auf Ihrem Mobilgerät speichern. Laden Sie dazu die App erneut herunter und scannen Sie anschliessend den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]},"en":{"faqTitle":"How the app works","faqSubTitle":"With the COVID Certificate app, you can easily and securely store and present COVID certificates on your mobile device.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"How can I add a COVID certificate to the app?","text":"To add a COVID-19 certificate to the app, you need the original certificate issued to you on paper or as a PDF document. You can use the COVID-19 certificate app to scan the QR code on the original and add it to the app. The COVID-19 certificate will then appear directly in the app.","iconAndroid":null,"iconIos":null,"linkTitle":"mock link","linkUrl":"https://www.ubique.ch"},{"title":"Can several COVID certificates be added?","text":"Yes, that is possible. For example, you can save the COVID certificates of all family members in your app. Also in this case, each COVID certificate is valid only in combination with an identification document (passport or ID card) of the certificate holder.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"How can I see if my COVID certificate is valid?","text":"The COVID Certificate app shows when your COVID certificate will expire in Switzerland. You can also use the details view to check at the touch of a button whether your COVID certificate is currently valid.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"How is my data protected?","text":"Your personal data is not stored in a central system; instead, it can be found solely locally on the mobile device or in the QR code in the case of the paper COVID certificate.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"What data is contained in the QR code?","text":"The QR code contains all the information that is found in plain text on your paper COVID certificate. The QR code also contains an electronic signature that can be used to check the authenticity of the COVID certificate. This makes the COVID certificate forgery-proof.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"What do I need to do if I delete the COVID certificate or the app?","text":"You can easily restore your COVID certificate on your mobile device. To do so, download the app again and then scan the QR code on your paper or PDF COVID certificate.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]},"fr":{"faqTitle":"Comment l'app \nfonctionne-t-elle?","faqSubTitle":"L'app vous permet de stocker des certificats COVID de manière simple et sûre sur votre appareil mobile et de les présenter au moyen de ce dernier.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"Comment ajouter un certificat COVID à l'app?","text":"Pour ajouter un certificat COVID à l'app, vous avez besoin du certificat original qui vous a été délivré sur papier ou par voie électronique, au format PDF. Au moyen de l'app, vous pouvez scanner le code QR figurant sur ce document. Ensuite, le certificat COVID apparaît directement dans l'app.","iconAndroid":null,"iconIos":null,"linkTitle":"mock link","linkUrl":"https://www.ubique.ch"},{"title":"Puis-je ajouter plusieurs certificats COVID?","text":"Oui. Vous pouvez par exemple stocker dans l'app les certificats COVID de tous les membres de votre famille. À noter également dans ce cas qu'un certificat COVID n'est valable que si son détenteur présente une pièce d'identité.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Comment savoir si mon certificat est valable?","text":"L'app contient la date d'expiration de votre certificat COVID en Suisse. En pressant le bouton prévu à cet effet, vous pouvez en outre vérifier dans la vue détaillée si votre certificat COVID est encore valable.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Comment mes données sont-elles protégées?","text":"Vos données personnelles ne sont pas stockées dans un système central, mais ne sont sauvegardées que localement, sur votre appareil mobile ou dans le code QR figurant sur le certificat papier.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Que contient le code QR?","text":"Le code QR contient toutes les informations qui apparaissent en clair sur le certificat papier. En outre, il renferme une signature électronique qui permet de vérifier l'authenticité du certificat COVID. Par conséquent, le certificat COVID est infalsifiable.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Et si je supprime le certificat COVID ou l'app?","text":"Vous pouvez réenregistrer facilement votre certificat COVID sur votre appareil mobile. Il vous suffit de télécharger de nouveau l'app, puis de scanner le code QR figurant sur le certificat original, établi sur papier ou au format PDF.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]},"it":{"faqTitle":"Come funziona \nl'app?","faqSubTitle":"Con l'app COVID Certificate può salvare e mostrare i certificati COVID in modo semplice e sicuro sul Suo dispositivo mobile.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"Come posso inserire un certificato COVID sulla app?","text":"Per inserire sull'app un certificato COVID serve il certificato originale rilasciatole su carta o in formato PDF. Utilizzando l'app COVID Certificate può scansionare e aggiungere il codice QR raffigurato sul certificato. In questo modo, il certificato COVID appare direttamente sull'app.","iconAndroid":null,"iconIos":null,"linkTitle":"mock link","linkUrl":"https://www.ubique.ch"},{"title":"È possibile aggiungere più certificati COVID?","text":"Sì, è possibile. Ad esempio, può salvare nella Sua app i certificati COVID dei suoi familiari. Anche in questo caso, il certificato COVID è valido solo con un documento di legittimazione del titolare.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Come posso verificare se il mio certificato COVID è valido?","text":"L'app COVID Certificate riporta la data di scadenza del Suo certificato in Svizzera. Può verificare se il Suo certificato COVID è attualmente valido cliccando sull’opzione che permette di visualizzare i dettagli.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Come sono protetti i miei dati?","text":"I Suoi dati personali non sono salvati in un sistema centrale ma unicamente sul Suo dispositivo mobile oppure nel codice QR indicato sul certificato COVID in formato cartaceo.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Quali dati contiene il codice QR?","text":"Il codice QR contiene tutte le informazioni che trova nel testo del Suo certificato COVID in formato cartaceo. Nel codice QR si trova anche una firma elettronica che consente di verificare la validità del certificato COVID. La firma elettronica impedisce la falsificazione del certificato COVID.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Cosa devo fare se elimino il file contenente il certificato COVID o l'app?","text":"Può semplicemente risalvare il certificato COVID sul Suo dispositivo mobile. Per farlo, scarichi nuovamente l'app e poi scansioni il codice QR che trova sul Suo certificato COVID in formato cartaceo o PDF.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]},"rm":{"faqTitle":"Co funcziuna \nl'app?","faqSubTitle":"Cun l'app COVID Certificate pudais Vus arcunar e preschentar en moda simpla e segira certificats COVID sin Voss telefonin.","faqIconIos":"ic-faq-image","faqIconAndroid":"ic_faq_image","faqEntries":[{"title":"Co poss jau agiuntar in certificat COVID a l'app?","text":"Per agiuntar in certificat COVID a l'app, duvrais Vus il certificat original ch'è vegnì emess per Vus sin palpiri u en furma da PDF. Cun l'app COVID Certificate pudais Vus alura scannar il code QR sin il certificat ed al agiuntar a l'app. Silsuenter cumpara il certificat COVID directamain en l'app.","iconAndroid":null,"iconIos":null,"linkTitle":"mock link","linkUrl":"https://www.ubique.ch"},{"title":"Pon vegnir agiuntads er plirs certificats COVID?","text":"Gea, quai è pussaivel. Vus pudais p.ex. arcunar en Vossa app ils certificats COVID da tut Vossas confamigliaras e da tut Voss confamigliars. Er en quest cas vala: Il certificat COVID è valaivel mo en cumbinaziun cun in document da legitimaziun  da la possessura u dal possessur dal certificat.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Co ves jau, sche mes certificat COVID è valaivel?","text":"En l'app COVID Certificate vegn inditgà cura che Voss certificat COVID spira en Svizra. Vus pudais ultra da quai verifitgar en la vista da detagls, sche Voss certificat COVID è actualmain valaivel.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Co vegnan protegidas mias datas?","text":"Vossas datas persunalas na vegnan betg arcunadas en in sistem central, mabain mo localmain sin Voss telefonin resp. en il code QR sin Voss certificat COVID en furma da palpiri.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Tge datas cuntegna il code QR?","text":"Il code QR cuntegna tut las infurmaziuns che Vus chattais sin Voss certificat COVID en furma da palpiri en text betg criptà. Plinavant sa chatta ina signatura digitala en il code QR. Cun quella po vegnir verifitgada l'autenticitad da Voss certificat COVID. Uschia na po il certificat COVID betg vegnir falsifitgà.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null},{"title":"Tge stoss jau far, sche jau stiz il certificat COVID u l'app?","text":"Vus pudais simplamain arcunar anc ina giada il certificat COVID sin Voss telefonin. Chargiai giu danovamain l’app e scannai alura il code QR sin Voss certificat COVID sin palpiri u en furma da PDF.","iconAndroid":null,"iconIos":null,"linkTitle":null,"linkUrl":null}]}}}
+{
+	"forceUpdate": false,
+	"infoBox": null,
+	"questions": {
+		"de": {
+			"faqTitle": "Was sind Covid-Zertifikate?",
+			"faqSubTitle": "Das Covid-Zertifikat bietet die Möglichkeit, eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis fälschungssicher zu dokumentieren.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "Wann und wo kann ich ein Covid-Zertifikat erhalten?",
+					"text": "Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Wie erhalte ich nach einer durchgemachten Covid-19-Erkrankung ein Covid-Zertifikat?",
+					"text": "Von Covid-19 genesene Personen können das Covid-Zertifikat über ein Online-Formular auf der Webseite des Kantons beantragen. Das Covid-Zertifikat wird anschliessend per Post zugeschickt.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Wie kann ich ein Covid-Zertifikat vorweisen?",
+					"text": "Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. \n\nBeachten Sie, dass Sie in jedem Fall auf Verlangen auch noch ein Ausweisdokument vorweisen müssen.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Wie lange ist das Covid-Zertifikat gültig?",
+					"text": "Die Gültigkeitsdauer unterscheidet sich je nachdem, ob Sie eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis haben. Aufgrund neuer wissenschaftlicher Erkenntnisse kann sich die Gültigkeitsdauer verändern. Die aktuell geltende Gültigkeitsdauer von Covid-Zertifikaten finden Sie hier:",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Weitere Informationen",
+					"linkUrl": "https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/#contents2"
+				},
+				{
+					"title": "Wo sind meine Daten gespeichert?",
+					"text": "Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Wie werden Missbrauch und Fälschung verhindert?",
+					"text": "Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument gültig.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Was passiert, wenn ich mein Covid-Zertifikat verliere?",
+					"text": "Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"en": {
+			"faqTitle": "What are COVID certificates?",
+			"faqSubTitle": "The COVID certificate makes it possible to document a COVID-19 vaccination, recovery from the virus or a negative test result in a forgery-proof manner.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "When and where can I get a COVID certificate?",
+					"text": "You can get a COVID certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "How do I get a COVID certificate after I have recovered from COVID-19?",
+					"text": "People who have recovered from COVID-19 can apply for the COVID certificate via an online form on the canton's website. The COVID certificate will then be sent by post.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "How can I present a COVID certificate?",
+					"text": "You can present your COVID certificate in hard copy or you can use the COVID Certificate app to save certificates in the app and present them directly from the app. You are free to choose whether you present your certificate in hard copy or in the app.\n\nPlease note that you will also need to show an identification document (passport or ID card) in either case.\n",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "How long is the COVID certificate valid?",
+					"text": "Just how long your certificate is valid depends on whether you have been vaccinated, have recovered from COVID or have tested negative. The duration of validity may change in line with the latest scientific findings. The current duration of validity for COVID certificates can be found here:",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Further information",
+					"linkUrl": "https://foph-coronavirus.ch/certificate/how-do-i-get-a-covid-certificate-and-how-do-i-use-it/#contents2"
+				},
+				{
+					"title": "Where is my data stored?",
+					"text": "Your data is not stored in a central system, but only locally on your mobile device or in the QR code in the case of the paper COVID certificate.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "How are misuse and forgery prevented?",
+					"text": "The COVID certificate QR code contains an electronic signature. This is an important security feature and makes the COVID certificate forgery-proof. Moreover, the COVID certificate is valid only in combination with an identification document (passport or ID card).",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "What happens if I lose my COVID certificate?",
+					"text": "Your COVID certificate is not stored in any central system. It is solely in your possession. Therefore, keep your paper COVID certificate in a safe place. If you lose the COVID certificate, you will have to request it again from the issuing office",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"fr": {
+			"faqTitle": "Le certificat COVID en bref",
+			"faqSubTitle": "Le certificat COVID atteste de manière infalsifiable une vaccination contre le COVID-19, une guérison ou un résultat de test négatif.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "Quand et où puis-je obtenir un certificat COVID?",
+					"text": "Vous pouvez obtenir le certificat COVID si vous êtes entièrement vacciné contre le COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Comment puis-je obtenir un certificat COVID après avoir guéri?",
+					"text": "Les personnes qui ont guéri du COVID-19 peuvent demander un certificat COVID en remplissant le formulaire en ligne disponible sur le site Internet de leur canton de domicile. Elles recevront ensuite le certificat COVID par la poste.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Par quel moyen puis-je présenter un certificat COVID?",
+					"text": "Vous pouvez présenter votre certificat COVID sur papier ou au moyen de l'app de stockage créée à cet effet. Vous êtes libre de choisir l'une ou l'autre solution.\n\nDans tous les cas, vous devez aussi présenter une pièce d'identité sur demande.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Quelle est la durée de validité du certificat COVID ?",
+					"text": "La durée de validité varie selon que votre certificat COVID consigne une vaccination, une guérison ou un résultat de test négatif. Elle peut changer en fonction de l’évolution des connaissances scientifiques. Vous trouverez des informations sur la durée de validité actuelle du certificat COVID à l’adresse suivante :",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Informations supplémentaires",
+					"linkUrl": "https://ofsp-coronavirus.ch/certificat/comment-obtenir-le-certificat-covid-et-comment-men-servir/#contents2"
+				},
+				{
+					"title": "Où mes données sont-elles stockées?",
+					"text": "Vos données ne sont pas stockées dans un système central, mais elles sont sauvegardées localement, sur votre appareil mobile ou dans le code QR figurant sur le certificat papier.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Comment prévient-on les abus et les falsifications?",
+					"text": "Le code QR figurant sur le certificat COVID contient une signature électronique. Celle-ci est une caractéristique de sécurité importante qui rend le certificat infalsifiable. En outre, le certificat COVID n'est valable que sur présentation d'une pièce d'identité.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Et si je perds mon certificat COVID?",
+					"text": "Votre certificat COVID n'est pas stocké dans un système central. Vous en êtes le seul détenteur. Veuillez donc conserver soigneusement le document papier. En cas de perte, vous devrez demander au service émetteur de vous délivrer un nouveau certificat.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"it": {
+			"faqTitle": "Cos'è il certificato COVID?",
+			"faqSubTitle": "Il certificato COVID offre la possibilità di provare in modo non falsificabile l'avvenuta vaccinazione, la guarigione o un risultato negativo al test.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "Quando e dove posso ottenere un certificato COVID?",
+					"text": "Può ricevere un certificato COVID in seguito alla completa vaccinazione anti-COVID-19, all'avvenuta guarigione o a un risultato negativo al test. Normalmente, il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Come posso ottenere un certificato COVID dopo essere guarito?",
+					"text": "Le persone guarite dalla COVID-19 possono richiedere il certificato COVID tramite un modulo online disponibile sul sito Internet del Cantone. Il certificato viene poi inviato per posta.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Come posso mostrare il certificato COVID?",
+					"text": "Può mostrare il Suo certificato COVID in formato cartaceo oppure salvarlo e presentarlo utilizzando l'app COVID Certificate. Può decidere liberamente se mostrare il certificato in formato cartaceo o elettronico.\n\nIn entrambi i casi, dovrà mostrare su richiesta anche un documento di legittimazione.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Fino a quando è valido il certificato COVID?",
+					"text": "La durata di validità cambia a seconda del fatto che il certificato COVID documenti la vaccinazione anti-COVID-19, la guarigione dalla malattia o un risultato negativo del test. Potrà inoltre cambiare in funzione delle conoscenze scientifiche più recenti. L’attuale durata di validità dei certificati COVID è consultabile qui:",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Ulteriori informazioni",
+					"linkUrl": "https://ufsp-coronavirus.ch/certificato/come-si-ottiene-il-certificato-covid-e-come-si-impiega/#contents2"
+				},
+				{
+					"title": "Dove vengono salvati i miei dati?",
+					"text": "I Suoi dati non vengono salvati in un sistema centrale ma solo localmente sul Suo dispositivo mobile, rispettivamente nel codice QR stampato sul certificato COVID in formato cartaceo.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Come vengono impediti l'uso improprio e le falsificazioni?",
+					"text": "Il codice QR sul certificato COVID contiene una firma elettronica. Questa firma è un elemento di sicurezza importante e garantisce che il certificato non possa essere falsificato. Inoltre, il certificato COVID è valido solo con un documento di legittimazione.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Cosa succede se perdo il mio certificato COVID su carta?",
+					"text": "Il Suo certificato COVID non è salvato su un sistema centrale. Lei ne ha il possesso esclusivo. Conservi quindi con cura il certificato COVID su carta. In caso di smarrimento, dovrà richiedere un nuovo certificato presso l'ufficio che lo ha emesso.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"rm": {
+			"faqTitle": "Tge è il certificat COVID?",
+			"faqSubTitle": "Il certificat COVID permetta da documentar – en moda nunfalsifitgabla – ina vaccinaziun cunter COVID-19, ina infecziun u in resultat negativ dal test.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "Cura e co obtegn jau in certificat COVID?",
+					"text": "In certificat COVID obtegnais Vus suenter ina vaccinaziun cumpletta cunter COVID-19, suenter ina infecziun u suenter in resultat negativ dal test. Il certificat vegn per il solit emess – sin dumonda – dal persunal spezialisà da sanadad al lieu.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Co obtegn jau in certificat COVID suenter ina infecziun cun COVID-19?",
+					"text": "Cun agid d’in formular online sin la pagina d’internet dal chantun pon las persunas guaridas da COVID-19 far ina dumonda per in certificat COVID. Il certificat COVID vegn alura tramess per posta.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Co poss jau preschentar in certificat COVID?",
+					"text": "Vus pudais preschentar Voss certificat COVID u en furma da palpiri u cun utilisar l'app COVID Certificate. L'app permetta d'arcunar certificats e d'als preschentar directamain sin il telefonin. Vus pudais decider sezza u sez, sche Vus vulais mussar Voss certificat sin palpiri u en l'app.\n\nResguardai per plaschair che Vus stuais en mintga cas preschentar – sin dumonda – ultra dal certificat er in document da legitimaziun.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Quant ditg è il certificat COVID valaivel?",
+					"text": "La durada da valaivladad variescha tut tenor, sche Vus avais ina vaccinaziun cunter COVID-19, sche Vus essas guarida u guarì d'ina infecziun u sche Vus avais in test negativ. A basa da novas enconuschientschas scientificas po la durada da valaivladad sa midar. La durada da valaivladad actuala dals certificats COVID chattais Vus qua:",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Ulteriuras infurmaziuns",
+					"linkUrl": "https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/#contents2"
+				},
+				{
+					"title": "Nua vegnan arcunadas mias datas?",
+					"text": "Vossas datas na vegnan betg arcunadas en in sistem central, mabain mo localmain sin Voss telefonin resp. en il code QR sin il certificat COVID en furma da palpiri.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Co vegnan impedids abus e falsificaziuns?",
+					"text": "Il code QR sin Voss certificat COVID cuntegna ina signatura digitala. La signatura è ina impurtanta caracteristica da segirezza che impedescha da falsifitgar il certificat COVID. Il certificat COVID è ultra da quai valaivel mo en cumbinaziun cun in document da legitimaziun.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Tge capita, sche jau perd mes certificat COVID?",
+					"text": "Voss certificat COVID na vegn betg arcunà en in sistem central. El è unicamain en Voss agen possess. Tegnai perquai en salv cun quità il certificat COVIDsin palpiri. En cas da perdita, stuais Vus dumandar in nov certificat COVID tar il post che l'ha emess.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		}
+	},
+	"works": {
+		"de": {
+			"faqTitle": "Wie funktioniert \ndie App?",
+			"faqSubTitle": "Mit der COVID Certificate App können Sie Covid-Zertifikate einfach und sicher auf Ihrem Mobilgerät abspeichern und vorweisen.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "Wie kann ich ein Covid-Zertifikat zur App hinzufügen?",
+					"text": "Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Können auch mehrere Covid-Zertifikate hinzugefügt werden?",
+					"text": "Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument des Zertifikatsinhabers / der Zertifikatsinhaberin gültig.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Wie sehe ich, ob mein Covid-Zertifikat gültig ist?",
+					"text": "In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Kann ich die App auch offline verwenden?",
+					"text": "Sie können die App ohne eine Internetverbindung verwenden. Auch im Offline-Modus können Zertifikate vorgewiesen und von den Prüfern gescannt und verifiziert werden.\n\nUm in der «COVID Certificate»-App anzeigen zu können, ob ihr Zertifikat den Gültigkeitskriterien der Schweiz entspricht und bis wann Ihr Zertifikat gültig ist, muss die App jedoch regelmässig online sein.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Wie sind meine Daten geschützt?",
+					"text": "Ihre persönlichen Daten werden in keinem zentralen System gespeichert, sondern befinden sich ausschliesslich bei Ihnen lokal auf dem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Welche Daten sind im QR-Code enthalten?",
+					"text": "Der QR-Code enthält alle Informationen, die Sie auf Ihrem Covid-Zertifikat in Papierform im Klartext finden. Weiter befindet sich im QR-Code eine elektronische Signatur, mit der sich die Echtheit des Covid-Zertifikats überprüfen lässt. Dadurch wird das Covid-Zertifikat fälschungssicher.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Was muss ich tun, wenn ich das Covid-Zertifikat oder die App lösche?",
+					"text": "Sie können Ihr Covid-Zertifikat einfach wieder auf Ihrem Mobilgerät speichern. Laden Sie dazu die App erneut herunter und scannen Sie anschliessend den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"en": {
+			"faqTitle": "How the app works",
+			"faqSubTitle": "With the COVID Certificate app, you can easily and securely store and present COVID certificates on your mobile device.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "How can I add a COVID certificate to the app?",
+					"text": "To add a COVID certificate to the app, you need the original certificate issued to you on paper or as a PDF document. You can use the COVID certificate app to scan the QR code on the original and add it to the app. The COVID certificate will then appear directly in the app.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Can several COVID certificates be added?",
+					"text": "Yes, that is possible. For example, you can save the COVID certificates of all family members in your app. Also in this case, each COVID certificate is valid only in combination with an identification document (passport or ID card) of the certificate holder.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "How can I see if my COVID certificate is valid?",
+					"text": "The COVID Certificate app shows when your COVID certificate will expire in Switzerland. You can also use the details view to check at the touch of a button whether your COVID certificate is currently valid.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Can I use the app offline?",
+					"text": "You can use the app without an internet connection, so you can still call up your certificates and present them for scanning and verification.\n\nHowever, in order to show whether your certificate meets Switzerland’s validity criteria and how long it is valid for, the COVID Certificate app has to be online at regular intervals.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "How is my data protected?",
+					"text": "Your personal data is not stored in a central system; instead, it can be found solely locally on the mobile device or in the QR code in the case of the paper COVID certificate.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "What data is contained in the QR code?",
+					"text": "The QR code contains all the information that is found in plain text on your paper COVID certificate. The QR code also contains an electronic signature that can be used to check the authenticity of the COVID certificate. This makes the COVID certificate forgery-proof.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "What do I need to do if I delete the COVID certificate or the app?",
+					"text": "You can easily restore your COVID certificate on your mobile device. To do so, download the app again and then scan the QR code on your paper or PDF COVID certificate.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"fr": {
+			"faqTitle": "Comment l'app \nfonctionne-t-elle?",
+			"faqSubTitle": "L'app vous permet de stocker des certificats COVID de manière simple et sûre sur votre appareil mobile et de les présenter au moyen de ce dernier.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "Comment ajouter un certificat COVID à l'app?",
+					"text": "Pour ajouter un certificat COVID à l'app, vous avez besoin du certificat original qui vous a été délivré sur papier ou par voie électronique, au format PDF. Au moyen de l'app, vous pouvez scanner le code QR figurant sur ce document. Ensuite, le certificat COVID apparaît directement dans l'app.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Puis-je ajouter plusieurs certificats COVID?",
+					"text": "Oui. Vous pouvez par exemple stocker dans l'app les certificats COVID de tous les membres de votre famille. À noter également dans ce cas qu'un certificat COVID n'est valable que si son détenteur présente une pièce d'identité.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Comment savoir si mon certificat est valable?",
+					"text": "L'app contient la date d'expiration de votre certificat COVID en Suisse. En pressant le bouton prévu à cet effet, vous pouvez en outre vérifier dans la vue détaillée si votre certificat COVID est encore valable.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Puis-je également utiliser l’application hors ligne ?",
+					"text": "Oui, vous pouvez utiliser l’application sans connexion Internet. Les certificats peuvent aussi être présentés, scannés et vérifiés en mode hors ligne.\n\nToutefois, pour pouvoir afficher dans l’application «COVID Certificate» si votre certificat répond aux critères de validité de la Suisse et pour présenter sa durée de validité, l’application requiert une connexion Internet régulière.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Comment mes données sont-elles protégées?",
+					"text": "Vos données personnelles ne sont pas stockées dans un système central, mais ne sont sauvegardées que localement, sur votre appareil mobile ou dans le code QR figurant sur le certificat papier.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Que contient le code QR?",
+					"text": "Le code QR contient toutes les informations qui apparaissent en clair sur le certificat papier. En outre, il renferme une signature électronique qui permet de vérifier l'authenticité du certificat COVID. Par conséquent, le certificat COVID est infalsifiable.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Et si je supprime le certificat COVID ou l'app?",
+					"text": "Vous pouvez réenregistrer facilement votre certificat COVID sur votre appareil mobile. Il vous suffit de télécharger de nouveau l'app, puis de scanner le code QR figurant sur le certificat original, établi sur papier ou au format PDF.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"it": {
+			"faqTitle": "Come funziona \nl'app?",
+			"faqSubTitle": "Con l'app COVID Certificate può salvare e mostrare i certificati COVID in modo semplice e sicuro sul Suo dispositivo mobile.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "Come posso inserire un certificato COVID sulla app?",
+					"text": "Per inserire sull'app un certificato COVID serve il certificato originale rilasciatole su carta o in formato PDF. Utilizzando l'app COVID Certificate può aggiungere il certificato inquadrando il codice QR raffigurato sul certificato. In questo modo, il certificato COVID appare direttamente sull'app.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "È possibile aggiungere più certificati COVID?",
+					"text": "Sì, è possibile. Ad esempio, può salvare nella Sua app i certificati COVID dei suoi familiari. Anche in questo caso, il certificato COVID è valido solo con un documento di legittimazione del titolare.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Come posso verificare se il mio certificato COVID è valido?",
+					"text": "L'app COVID Certificate riporta la data di scadenza del Suo certificato in Svizzera. Può verificare se il Suo certificato COVID è attualmente valido cliccando sull’opzione che permette di visualizzare i dettagli.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Posso utilizzare l’app anche offline?",
+					"text": "È possibile utilizzare l’app senza connessione Internet. I certificati possono essere presentati, nonché scansionati e verificati dagli addetti anche in modalità offline.\n\nTuttavia, per poter visualizzare nell’app «COVID Certificate» se il certificato soddisfa i criteri di validità della Svizzera e fino a quando è valido, l’app deve essere regolarmente online.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Come sono protetti i miei dati?",
+					"text": "I Suoi dati personali non sono salvati in un sistema centrale ma unicamente sul Suo dispositivo mobile oppure nel codice QR indicato sul certificato COVID in formato cartaceo.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Quali dati contiene il codice QR?",
+					"text": "Il codice QR contiene tutte le informazioni che trova nel testo del Suo certificato COVID in formato cartaceo. Nel codice QR si trova anche una firma elettronica che consente di verificare la validità del certificato COVID. La firma elettronica impedisce la falsificazione del certificato COVID.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Cosa devo fare se elimino il file contenente il certificato COVID o l'app?",
+					"text": "Può semplicemente risalvare il certificato COVID sul Suo dispositivo mobile. Per farlo, scarichi nuovamente l'app e poi scansioni il codice QR che trova sul Suo certificato COVID in formato cartaceo o PDF.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"rm": {
+			"faqTitle": "Co funcziuna \nl'app?",
+			"faqSubTitle": "Cun l'app COVID Certificate pudais Vus arcunar e preschentar en moda simpla e segira certificats COVID sin Voss telefonin.",
+			"faqIntroSections": null,
+			"faqIconIos": "ic-faq-image",
+			"faqIconAndroid": "ic_faq_image",
+			"faqEntries": [
+				{
+					"title": "Co poss jau agiuntar in certificat COVID a l'app?",
+					"text": "Per agiuntar in certificat COVID a l'app, duvrais Vus il certificat original ch'è vegnì emess per Vus sin palpiri u en furma da PDF. Cun l'app COVID Certificate pudais Vus alura scannar il code QR sin il certificat ed al agiuntar a l'app. Silsuenter cumpara il certificat COVID directamain en l'app.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Pon vegnir agiuntads er plirs certificats COVID?",
+					"text": "Gea, quai è pussaivel. Vus pudais p.ex. arcunar en Vossa app ils certificats COVID da tut Vossas confamigliaras e da tut Voss confamigliars. Er en quest cas vala: Il certificat COVID è valaivel mo en cumbinaziun cun in document da legitimaziun  da la possessura u dal possessur dal certificat.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Co ves jau, sche mes certificat COVID è valaivel?",
+					"text": "En l'app COVID Certificate vegn inditgà cura che Voss certificat COVID spira en Svizra. Vus pudais ultra da quai verifitgar en la vista da detagls, sche Voss certificat COVID è actualmain valaivel.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Poss jau er duvrar l'app offline?",
+					"text": "Vus pudais duvrar l'app senza ina colliaziun cun l'internet. Er en il modus offline pon ils certificats vegnir preschentads sco er scannads e verifitgads dals verifitgaders.\n\nPer vesair en l'app «COVID Certificate», sche Voss certificat correspunda als criteris da valaivladad da la Svizra e fin cura che Voss certificat è valaivel, sto l'app però esser regularmain online.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Co vegnan protegidas mias datas?",
+					"text": "Vossas datas persunalas na vegnan betg arcunadas en in sistem central, mabain mo localmain sin Voss telefonin resp. en il code QR sin Voss certificat COVID en furma da palpiri.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Tge datas cuntegna il code QR?",
+					"text": "Il code QR cuntegna tut las infurmaziuns che Vus chattais sin Voss certificat COVID en furma da palpiri en text betg criptà. Plinavant sa chatta ina signatura digitala en il code QR. Cun quella po vegnir verifitgada l'autenticitad da Voss certificat COVID. Uschia na po il certificat COVID betg vegnir falsifitgà.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Tge stoss jau far, sche jau stiz il certificat COVID u l'app?",
+					"text": "Vus pudais simplamain arcunar anc ina giada il certificat COVID sin Voss telefonin. Chargiai giu danovamain l’app e scannai alura il code QR sin Voss certificat COVID sin palpiri u en furma da PDF.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		}
+	},
+	"androidTransferCheckIntervalMs": 7200000,
+	"androidTransferCheckBackoffMs": 30000,
+	"transferQuestions": {
+		"de": {
+			"faqTitle": "Covid-Zertifikate direkt in die App geliefert",
+			"faqSubTitle": "Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat, z. B. nach einem Covid-Test, direkt in die App geliefert.",
+			"faqIntroSections": null,
+			"faqIconIos": "illu-faq-transfer-code",
+			"faqIconAndroid": "illu_faq_transfer_code",
+			"faqEntries": [
+				{
+					"title": "Wer bietet die Übermittlung per Transfer-Code an?",
+					"text": "Wenn Sie einen Covid-Test machen (PCR-Test oder Antigen-Schnelltest), kann der Transfer-Code zur schnellen Übermittlung von Covid-Zertifikaten zum Einsatz kommen.\n\nInformieren Sie sich bei Ihrem Testcenter, in der Apotheke oder bei Ihrem Arzt, ob die Übermittlung per Transfer-Code angeboten wird.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Können Transfer-Codes auch zur Übermittlung von Impfzertifikaten verwendet werden?",
+					"text": "Aktuell ist die Übermittlung per Transfer-Code auf Covid-Tests ausgelegt. Wie Sie ein Covid-Zertifikat nach einer Impfung erhalten erfahren Sie hier:",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Weitere Informationen",
+					"linkUrl": "https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/"
+				},
+				{
+					"title": "Wie funktioniert die Übermittlung per Transfer-Code?",
+					"text": "Falls die Stelle, die den Covid-Test durchführt, die Übermittlung per Transfer-Code anbietet, werden Sie bereits bei der Anmeldung oder der Testentnahme nach einem Transfer-Code gefragt.\n\nDen Transfer-Code können Sie in der «COVID Certificate»-App erstellen. Tippen Sie dazu auf dem Startbildschirm auf «Hinzufügen» resp. auf das «Plus»-Symbol unten rechts. Danach tippen Sie auf «Transfer-Code erstellen».\n\nDie App zeigt Ihnen einen 9-stelligen Code an. Diesen können Sie entweder bei der Anmeldung in ein Formular eintragen oder direkt bei der Testentnahme angeben.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Kann ich den Transfer-Code mehrmals benutzen?",
+					"text": "Nein, ein Transfer-Code kann nur einmal verwendet werden. Falls Sie mehrere Zertifikate z. B. von Familienangehörigen empfangen möchten, erstellen Sie bitte für jedes Zertifikat einen neuen Code.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"en": {
+			"faqTitle": "How to obtain the COVID certificate directly in the application?",
+			"faqSubTitle": "The transfer codes allow COVID certificates to be transmitted quickly and securely. In this way, you receive your certificate (e.g. after a test) directly in the application.",
+			"faqIntroSections": null,
+			"faqIconIos": "illu-faq-transfer-code",
+			"faqIconAndroid": "illu_faq_transfer_code",
+			"faqEntries": [
+				{
+					"title": "Who offers the transmission of the COVID certificate by transfer code?",
+					"text": "If you perform a COVID test (PCR test or rapid antigen test), the transfer code can be used to quickly transmit the COVID certificate.\n\nAsk your test centre, pharmacy or doctor if this option is available.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Can the transfer codes also be used for the transmission of vaccination certificates?",
+					"text": "Currently, the transmission of the certificate by transfer code is reserved for COVID tests. To find out how to obtain a COVID certificate after vaccination, click here:",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Further information",
+					"linkUrl": "https://foph-coronavirus.ch/certificate/how-do-i-get-a-covid-certificate-and-how-do-i-use-it/"
+				},
+				{
+					"title": "How does the transmission of the certificate by transfer code work?",
+					"text": "If the test centre offers to transmit the certificate by transfer code, you will be asked for a code at the time of registration or testing.\n\nYou can create the transfer code in the \"COVID Certificate\" application: press \"Add\" on the home screen or the \"More\" symbol at the bottom right, then \"Create a transfer code\".\n\nThe application will show you a 9-character code, which you can either enter in a form when you register or pass on directly during the test.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Can I use the same transfer code more than once?",
+					"text": "No, a transfer code can only be used once. If you wish to obtain several certificates (e.g. for your relatives), please create a new code for each certificate.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"fr": {
+			"faqTitle": "Comment obtenir le certificat COVID directement dans l’application ?",
+			"faqSubTitle": "Les codes de transfert permettent de transmettre les certificats COVID rapidement et en toute sécurité. De cette façon, vous recevez votre certificat (p. ex. après un test) directement dans l’application.",
+			"faqIntroSections": null,
+			"faqIconIos": "illu-faq-transfer-code",
+			"faqIconAndroid": "illu_faq_transfer_code",
+			"faqEntries": [
+				{
+					"title": "Qui propose la transmission du certificat COVID par code de transfert ?",
+					"text": "Si vous effectuez un test COVID (test PCR ou test rapide antigénique), le code de transfert peut être utilisé pour transmettre rapidement le certificat COVID.\n\nRenseignez-vous auprès de votre centre de test, de votre pharmacie ou de votre médecin pour savoir si cette option est proposée.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Les codes de transfert peuvent-ils aussi être utilisés pour la transmission de certificats de vaccination ?",
+					"text": "Actuellement, la transmission du certificat par code de transfert est réservée aux tests COVID. Pour savoir comment obtenir un certificat COVID après une vaccination, cliquez ici :",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Informations supplémentaires",
+					"linkUrl": "https://ofsp-coronavirus.ch/certificat/comment-obtenir-le-certificat-covid-et-comment-men-servir/"
+				},
+				{
+					"title": "Comment fonctionne la transmission du certificat par code de transfert ?",
+					"text": "Si le centre de test propose de transmettre le certificat par code de transfert, un code vous sera demandé au moment de l’inscription ou du test.\n\nVous pouvez créer le code de transfert dans l’application « COVID Certificate » : appuyez sur « Ajouter » sur l’écran d’accueil ou sur le symbole « Plus » en bas à droite, puis sur « Créer un code de transfert ».\n\nL’application vous montre un code à 9 caractères, que vous pouvez soit inscrire dans un formulaire lors de l’inscription, soit transmettre directement lors du test.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Puis-je utiliser plusieurs fois le même code de transfert ?",
+					"text": "Non, un code de transfert ne peut être utilisé qu’une seule fois. Si vous souhaitez obtenir plusieurs certificats (p. ex. pour vos proches), veuillez créer un nouveau code pour chaque certificat.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"it": {
+			"faqTitle": "Ricevere i certificati COVID direttamente nell’app",
+			"faqSubTitle": "Con i codici di trasferimento i certificati COVID possono essere trasmessi in modo rapido e sicuro. Tramite questo canale puoi ricevere il certificato COVID direttamente nell’app, ad esempio dopo aver fatto un test COVID.",
+			"faqIntroSections": null,
+			"faqIconIos": "illu-faq-transfer-code",
+			"faqIconAndroid": "illu_faq_transfer_code",
+			"faqEntries": [
+				{
+					"title": "Chi offre la trasmissione mediante codice di trasferimento?",
+					"text": "Quando fai un test COVID (test PCR o test antigenico rapido), è possibile impiegare il codice di trasferimento per la trasmissione rapida dei certificati COVID.\n\nChiedi al centro di test, alla farmacia o al medico se offrono la trasmissione mediante codice di trasferimento.\n\n",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "I codici di trasferimento possono essere impiegati anche per trasmettere i certificati di vaccinazione?",
+					"text": "Attualmente la trasmissione mediante codice di trasferimento funziona solo per i test COVID. Qui trovi maggiori informazioni su come ottenere un certificato COVID dopo una vaccinazione:",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Ulteriori informazioni",
+					"linkUrl": "https://ufsp-coronavirus.ch/certificato/come-si-ottiene-il-certificato-covid-e-come-si-impiega/"
+				},
+				{
+					"title": "Come funziona la trasmissione mediante codice di trasferimento?",
+					"text": "Se il servizio che effettua il test COVID offre la trasmissione mediante codice di trasferimento, te ne chiede uno già al momento della prenotazione o dell’esecuzione del test.\n\nPuoi creare il codice di trasferimento nell’app «COVID Certificate» toccando il pulsante «Aggiungi» nella schermata iniziale o il simbolo «Più» in basso a destra. Poi tocca «Crea codice di trasferimento».\n\nL’app visualizza un codice a 9 cifre, che puoi inserire nel modulo di prenotazione o fornire direttamente al momento dell’esecuzione del test.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Posso utilizzare lo stesso codice di trasferimento più volte?",
+					"text": "No, un codice di trasferimento può essere utilizzato una volta sola. Se desideri ricevere più di un certificato, per esempio i certificati dei tuoi familiari, crea un nuovo codice per ciascun certificato.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"rm": {
+			"faqTitle": "Certificats COVID furnids directamain en l'app",
+			"faqSubTitle": "Cun ils codes da transfer pon ils certificats COVID vegnir transmess en moda svelta e segira. Sin questa via vegn il certificat COVID furnì directamain en l'app, p.ex. suenter in test dal coronavirus.",
+			"faqIntroSections": null,
+			"faqIconIos": "illu-faq-transfer-code",
+			"faqIconAndroid": "illu_faq_transfer_code",
+			"faqEntries": [
+				{
+					"title": "Tgi porscha la transmissiun cun in code da transfer?",
+					"text": "Sche Vus faschais in test dal coronavirus (test da PCR u test svelt d'antigens), po il code da transfer vegnir en funcziun per transmetter sveltamain ils certificats COVID.\n\nAs infurmai tar Voss center da test, en l'apoteca u tar Vossa media u Voss medi, sche la transmissiun cun in code da transfer è pussaivla.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Pon ils codes da transfer vegnir duvrads er per transmetter certificats da vaccinaziun?",
+					"text": "Actualmain è la transmissiun cun in code da transfer concepì per tests dal coronavirus. Co che Vus survegnis in certificat COVID suenter ina vaccinaziun, vegnis Vus a savair qua:",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": "Ulteriuras infurmaziuns",
+					"linkUrl": "https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/"
+				},
+				{
+					"title": "Co funcziuna la transmissiun cun in code da transfer?",
+					"text": "En cas ch'il post che fa il test dal coronavirus porscha la transmissiun cun in code da transfer, vegnis Vus supplitgà d'inditgar Voss code da transfer gia tar l'annunzia u a chaschun da la prelevaziun dal test.\n\nIl code da transfer pudais Vus crear en l'app «COVID Certificate». Smatgai sin la pagina iniziala sin «Agiuntar» resp. sin il simbol «+» sutvart a dretga. Smatgai alura sin «Crear in code da transfer».\n\nL'app As mussa in code da 9 cifras. Quest code pudais Vus u endatar tar l'annunzia en in formular u inditgar directamain a chaschun da la prelevaziun dal test.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Poss jau duvrar pliras giadas il medem code da transfer?",
+					"text": "Na, in code da transfer po vegnir duvrà mo ina giada. En cas che Vus vulais retschaiver plirs certificats, per exempel da confamigliaras u confamigliars, creai per plaschair per mintga certificat in nov code.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		}
+	},
+	"transferWorks": {
+		"de": {
+			"faqTitle": "So funktioniert der Transfer",
+			"faqSubTitle": null,
+			"faqIntroSections": [
+				{
+					"iconAndroid": "ic_one",
+					"iconIos": "ic-one",
+					"text": "Die App prüft regelmässig, ob ein Covid-Zertifikat für Ihren Transfer-Code verfügbar ist."
+				},
+				{
+					"iconAndroid": "ic_two",
+					"iconIos": "ic-two",
+					"text": "Sobald das Covid-Zertifikat verfügbar ist, erscheint es in der App. Wenn Sie Mitteilungen aktiviert haben, werden Sie von der App benachrichtigt."
+				},
+				{
+					"iconAndroid": "ic_three",
+					"iconIos": "ic-three",
+					"text": "Nach 7 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor der Transfer-Code ungültig wird."
+				}
+			],
+			"faqIconIos": null,
+			"faqIconAndroid": null,
+			"faqEntries": [
+				{
+					"title": "Wie sind meine Daten beim Transfer geschützt?",
+					"text": "Für den Transfer wird Ihr Covid-Zertifikat verschlüsselt bereitgestellt. Der Transfer-Code stellt sicher, dass nur Ihre App das Covid-Zertifikat empfangen kann. Unmittelbar nach dem Transfer werden die Daten wieder vom Server gelöscht.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Was kann ich tun, wenn das Zertifikat nicht ankommt?",
+					"text": "Sobald das Zertifikat vom Labor oder Testcenter generiert wurde, steht es zum Transfer zur Verfügung. Stellen Sie sicher, dass Ihr Smartphone mit dem Internet verbunden ist, um Zertifikate empfangen zu können.\n\nSollte ihr Covid-Zertifikat dennoch nicht eintreffen, fragen Sie bei der Stelle nach, die den Test durchgeführt hat (Testcenter, Apotheke, Ärztin / Arzt).",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Was passiert bei einem positiven Testresultat?",
+					"text": "Bei einem positiven Antigen-Schnelltest erhalten Sie vom Labor kein Covid-Zertifikat. \n\nBei einem positiven PCR-Test erhalten Sie ein Covid-Zertifikat für Genesene. Es ist ab dem 11. Tag nach der Testentnahme gültig.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"en": {
+			"faqTitle": "How does the transfer work?",
+			"faqSubTitle": null,
+			"faqIntroSections": [
+				{
+					"iconAndroid": "ic_one",
+					"iconIos": "ic-one",
+					"text": "The application regularly checks whether a COVID certificate is available for your transfer code."
+				},
+				{
+					"iconAndroid": "ic_two",
+					"iconIos": "ic-two",
+					"text": "As soon as the COVID certificate is available, it appears in the application. If you have activated notifications, you will receive a message from the application."
+				},
+				{
+					"iconAndroid": "ic_three",
+					"iconIos": "ic-three",
+					"text": "The transfer code expires after 7 days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."
+				}
+			],
+			"faqIconIos": null,
+			"faqIconAndroid": null,
+			"faqEntries": [
+				{
+					"title": "How is my data secured during the transfer?",
+					"text": "For the transfer, your COVID certificate is delivered in encrypted form. The transfer code ensures that only your application can receive the certificate. The data is deleted from the server immediately after the transfer.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "What if my certificate does not arrive in the application?",
+					"text": "Once the certificate has been generated by the laboratory or test centre, it is available for transfer. Make sure that your smartphone is connected to the Internet to receive certificates.\n\nIf you still do not receive your certificate, contact the place where you performed the test (centre, pharmacy, doctor's practice).",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "What happens if I test positive?",
+					"text": "In case of a positive rapid antigen test, you will not receive a COVID certificate from the laboratory.\n\nIn case of a positive PCR test, you will receive a COVID certificate for cured persons, valid from the 11th day after the test.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"fr": {
+			"faqTitle": "Comment fonctionne le transfert ?",
+			"faqSubTitle": null,
+			"faqIntroSections": [
+				{
+					"iconAndroid": "ic_one",
+					"iconIos": "ic-one",
+					"text": "L’application vérifie régulièrement si un certificat COVID est disponible pour votre code de transfert."
+				},
+				{
+					"iconAndroid": "ic_two",
+					"iconIos": "ic-two",
+					"text": "Dès que le certificat COVID est disponible, il apparaît dans l’application. Si vous avez activé les notifications, vous recevrez un message de l’application."
+				},
+				{
+					"iconAndroid": "ic_three",
+					"iconIos": "ic-three",
+					"text": "Le code de transfert expire après 7 jours. Une fois ce délai passé, l’application attend tout autre transfert pendant 72 h. Ensuite, le code de transfert n’est plus valable."
+				}
+			],
+			"faqIconIos": null,
+			"faqIconAndroid": null,
+			"faqEntries": [
+				{
+					"title": "Comment mes données sont-elles sécurisées lors du transfert ?",
+					"text": "Pour le transfert, votre certificat COVID est fourni sous forme cryptée. Le code de transfert garantit que seule votre application peut recevoir le certificat. Les données sont supprimées du serveur immédiatement après le transfert.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Que faire si mon certificat n’arrive pas dans l’application ?",
+					"text": "Dès que le certificat a été généré par le laboratoire ou le centre de test, il est disponible pour le transfert. Vérifiez que votre smartphone est connecté à Internet pour recevoir des certificats.\n\nSi malgré tout vous ne recevez pas votre certificat, adressez-vous au lieu où vous avez effectué le test (centre, pharmacie, cabinet médical).",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Que se passe-t-il en cas de test positif ?",
+					"text": "En cas de test rapide antigénique positif, vous ne recevrez pas de certificat COVID du laboratoire.\n\nEn cas de test PCR positif, vous recevrez un certificat COVID pour personnes guéries, valable à partir du 11e jour suivant le test.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"it": {
+			"faqTitle": "Il trasferimento funziona così",
+			"faqSubTitle": null,
+			"faqIntroSections": [
+				{
+					"iconAndroid": "ic_one",
+					"iconIos": "ic-one",
+					"text": "L’app verifica periodicamente se è disponibile un certificato COVID per il tuo codice di trasferimento."
+				},
+				{
+					"iconAndroid": "ic_two",
+					"iconIos": "ic-two",
+					"text": "Non appena il certificato COVID è disponibile, viene visualizzato nell’app. Se hai attivato le notifiche, ne riceverai una dall’app."
+				},
+				{
+					"iconAndroid": "ic_three",
+					"iconIos": "ic-three",
+					"text": "Il codice di trasferimento scade dopo 7 giorni. Poi l’app attende un eventuale trasferimento per altre 72 ore prima di considerare scaduto il codice."
+				}
+			],
+			"faqIconIos": null,
+			"faqIconAndroid": null,
+			"faqEntries": [
+				{
+					"title": "Come sono protetti i miei dati durante il trasferimento?",
+					"text": "Il tuo certificato COVID è messo a disposizione per il trasferimento in forma criptata. Il codice di trasferimento assicura che soltanto la tua app sia in grado di riceverlo. I dati sono eliminati dal server immediatamente dopo il trasferimento.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Cosa posso fare se il certificato non arriva?",
+					"text": "Non appena il certificato è stato generato dal laboratorio o dal centro di test, è disponibile per il trasferimento. Accertati che il tuo smartphone sia connesso a Internet per poter ricevere i certificati.\n\nSe comunque non dovessi ricevere il tuo certificato COVID, rivolgiti al servizio che ha effettuato il test (centro di test, farmacia, medico).",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Cosa accade in caso di risultato positivo del test?",
+					"text": "In caso di test antigenico positivo, non ricevi alcun certificato di test dal laboratorio. \n\nIn caso di test PCR positivo, ricevi un certificato COVID per persone guarite, valido a partire dall’undicesimo giorno dopo l’esecuzione del test.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		},
+		"rm": {
+			"faqTitle": "Uschia funcziuna il transfer",
+			"faqSubTitle": null,
+			"faqIntroSections": [
+				{
+					"iconAndroid": "ic_one",
+					"iconIos": "ic-one",
+					"text": "L'app verifitgescha regularmain, schebain in certificat COVID è disponibel per Voss code da transfer."
+				},
+				{
+					"iconAndroid": "ic_two",
+					"iconIos": "ic-two",
+					"text": "Uschespert ch'il certificat COVID è disponibel, cumpara el en l'app. Sche Vus avais activà ils avis, vegnis Vus infurmada u infurmà da l'app."
+				},
+				{
+					"iconAndroid": "ic_three",
+					"iconIos": "ic-three",
+					"text": "Suenter 7 dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."
+				}
+			],
+			"faqIconIos": null,
+			"faqIconAndroid": null,
+			"faqEntries": [
+				{
+					"title": "Co vegnan protegidas mias datas tar il transfer?",
+					"text": "Per il transfer vegn Voss certificat COVID mess a disposiziun en moda codifitgada. Il code da transfer garantescha che mo Vossa app po retschaiver il certificat COVID. Las datas vegnan puspè stizzadas dal server immediatamain suenter il transfer.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Tge poss jau far, sch'il certificat n'arriva betg?",
+					"text": "Uschespert ch'il certificat è vegnì generà dal labor u dal center da test, stat el a disposiziun per il transfer. Guardai che Voss smartphone saja collià cun l'internet per pudair retschaiver certificats.\n\nEn cas che Voss certificat COVID n'arriva tuttina betg, As drizzai al post che ha fatg il test (center da test, apoteca, media u medi).",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Tge capita en cas d'in test positiv?",
+					"text": "En cas d'in test svelt d'antigens positiv na survegnis Vus betg in certificat COVID dal labor.\n\nEn cas d'in test da PCR positiv survegnis Vus in certificat COVID per persunas guaridas. El è valaivel a partir dal 11. di suenter la prelevaziun dal test.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				}
+			]
+		}
+	}
+}
