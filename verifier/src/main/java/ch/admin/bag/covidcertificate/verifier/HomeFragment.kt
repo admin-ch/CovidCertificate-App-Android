@@ -19,11 +19,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
+import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
-import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.verifier.faq.VerifierFaqFragment
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPageAdapter
@@ -37,7 +37,6 @@ class HomeFragment : Fragment() {
 		fun newInstance(): HomeFragment {
 			return HomeFragment()
 		}
-
 	}
 
 	private val configViewModel by activityViewModels<ConfigViewModel>()
@@ -71,7 +70,7 @@ class HomeFragment : Fragment() {
 				.commit()
 		}
 
-		TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+		TabLayoutMediator(binding.tabLayout, binding.viewPager) { _, _ ->
 			//Some implementation
 		}.attach()
 
@@ -121,12 +120,11 @@ class HomeFragment : Fragment() {
 					secureStorage.setLastShownInfoBoxId(infoBox.infoId)
 				}
 
-				return@let View.OnClickListener { view ->
+				return@let View.OnClickListener {
 					closeCurrentInfoDialog()
 					showInfoDialog(infoBox)
 					secureStorage.setLastShownInfoBoxId(infoBox.infoId)
 				}
-
 			}
 
 			notificationButton.isVisible = hasInfoBox

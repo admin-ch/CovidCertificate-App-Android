@@ -28,12 +28,10 @@ class HomescreenPagerFragment : Fragment() {
 			arguments = bundleOf(ARG_POSITION to position)
 		}
 
-		fun getDescriptions(): List<Int> {
-			val strings = mutableListOf<Int>()
-			strings.add(R.string.verifier_homescreen_pager_description_1)
-			strings.add(R.string.verifier_homescreen_pager_description_2)
-			return strings
-		}
+		fun getDescriptions() = listOf(
+			R.string.verifier_homescreen_pager_description_1,
+			R.string.verifier_homescreen_pager_description_2
+		)
 	}
 
 	private var _binding: FragmentHomeScreenPagerBinding? = null
@@ -51,6 +49,12 @@ class HomescreenPagerFragment : Fragment() {
 		with(binding) {
 			homescreenImage.setImageResource(homescreenImages[position])
 			homescreenDescription.setText(homescreenPagerDescriptions[position])
+
+			root.post {
+				// It seems that the viewpager has an issue with wrap_content and multiline text views. That's why we have to
+				// request a layout on the description again after the full view is laid out, to ensure the whole text is visible.
+				homescreenDescription.requestLayout()
+			}
 		}
 	}
 
@@ -59,10 +63,8 @@ class HomescreenPagerFragment : Fragment() {
 		_binding = null
 	}
 
-	private fun getImageAssets(): List<Int> {
-		val images = mutableListOf<Int>()
-		images.add(R.drawable.ic_illu_home_1)
-		images.add(R.drawable.ic_illu_home_2)
-		return images
-	}
+	private fun getImageAssets() = listOf(
+		R.drawable.ic_illu_home_1,
+		R.drawable.ic_illu_home_2
+	)
 }
