@@ -10,11 +10,13 @@
 
 package ch.admin.bag.covidcertificate.wallet.homescreen
 
+import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AlertDialog
@@ -297,7 +299,11 @@ class HomeFragment : Fragment() {
 		val intent = Intent(Intent.ACTION_GET_CONTENT).apply {
 			type = "application/pdf"
 		}
-		filePickerLauncher.launch(intent)
+		try {
+			filePickerLauncher.launch(intent)
+		} catch (e: ActivityNotFoundException) {
+			Toast.makeText(context, "No file picker found", Toast.LENGTH_LONG).show()
+		}
 	}
 
 	private fun showTransferCodeIntroFragment() {
