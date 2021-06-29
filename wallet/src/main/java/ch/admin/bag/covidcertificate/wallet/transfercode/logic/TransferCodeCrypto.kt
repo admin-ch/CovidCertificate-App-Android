@@ -15,8 +15,8 @@ import android.os.Build
 import android.security.keystore.KeyGenParameterSpec
 import android.security.keystore.KeyInfo
 import android.security.keystore.KeyProperties
-import ch.admin.bag.covidcertificate.eval.utils.fromBase64
-import ch.admin.bag.covidcertificate.eval.utils.toBase64
+import ch.admin.bag.covidcertificate.eval.extensions.fromBase64
+import ch.admin.bag.covidcertificate.eval.extensions.toBase64
 import java.security.KeyFactory
 import java.security.KeyPair
 import java.security.KeyPairGenerator

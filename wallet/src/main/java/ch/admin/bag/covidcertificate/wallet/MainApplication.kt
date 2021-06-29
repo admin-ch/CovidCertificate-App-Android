@@ -8,7 +8,7 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.eval.data.Config
-import ch.admin.bag.covidcertificate.eval.net.UserAgentInterceptor
+import ch.admin.bag.covidcertificate.eval.net.interceptor.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.wallet.data.CertificateStorage
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem

@@ -36,7 +36,10 @@ import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
-import ch.admin.bag.covidcertificate.eval.models.healthcert.eu.VaccinationEntry
+import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+import ch.admin.bag.covidcertificate.eval.extensions.isNotFullyProtected
+import ch.admin.bag.covidcertificate.eval.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*

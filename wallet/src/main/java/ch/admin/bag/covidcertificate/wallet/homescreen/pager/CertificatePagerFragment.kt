@@ -29,9 +29,9 @@ import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.eval.models.healthcert.eu.VaccinationEntry
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
-import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.eval.utils.isNotFullyProtected
-import ch.admin.bag.covidcertificate.eval.utils.prettyPrintIsoDateTime
+import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.extensions.isNotFullyProtected
+import ch.admin.bag.covidcertificate.eval.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding

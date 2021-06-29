@@ -14,8 +14,23 @@ import android.content.Context
 import ch.admin.bag.covidcertificate.common.util.LocaleUtil
 import ch.admin.bag.covidcertificate.eval.data.AcceptedTestProvider
 import ch.admin.bag.covidcertificate.eval.data.AcceptedVaccineProvider
+import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+import ch.admin.bag.covidcertificate.eval.extensions.getCertificateIdentifier
+import ch.admin.bag.covidcertificate.eval.extensions.getFormattedResultDate
+import ch.admin.bag.covidcertificate.eval.extensions.getFormattedSampleDate
+import ch.admin.bag.covidcertificate.eval.extensions.getIssuer
+import ch.admin.bag.covidcertificate.eval.extensions.getNumberOverTotalDose
+import ch.admin.bag.covidcertificate.eval.extensions.getRecoveryCountry
+import ch.admin.bag.covidcertificate.eval.extensions.getTestCenter
+import ch.admin.bag.covidcertificate.eval.extensions.getTestCountry
+import ch.admin.bag.covidcertificate.eval.extensions.getVaccinationCountry
+import ch.admin.bag.covidcertificate.eval.extensions.isNegative
+import ch.admin.bag.covidcertificate.eval.extensions.isNotFullyProtected
+import ch.admin.bag.covidcertificate.eval.extensions.isTargetDiseaseCorrect
+import ch.admin.bag.covidcertificate.eval.extensions.prettyPrint
+import ch.admin.bag.covidcertificate.eval.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
-import ch.admin.bag.covidcertificate.eval.utils.*
 import ch.admin.bag.covidcertificate.wallet.R
 
 class CertificateDetailItemListBuilder(val context: Context, val dccHolder: DccHolder, val showEnglishVersion: Boolean = true) {

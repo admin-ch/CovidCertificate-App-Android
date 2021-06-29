@@ -20,8 +20,8 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
-import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
-import ch.admin.bag.covidcertificate.eval.utils.prettyPrint
+import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+import ch.admin.bag.covidcertificate.eval.extensions.prettyPrint
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ViewTransferCodeBubbleBinding
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel

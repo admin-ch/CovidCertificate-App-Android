@@ -15,10 +15,10 @@ import ch.admin.bag.covidcertificate.common.BuildConfig
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.Config
 import ch.admin.bag.covidcertificate.eval.net.CertificatePinning
-import ch.admin.bag.covidcertificate.eval.net.JwsInterceptor
-import ch.admin.bag.covidcertificate.eval.net.UserAgentInterceptor
+import ch.admin.bag.covidcertificate.eval.net.interceptor.JwsInterceptor
+import ch.admin.bag.covidcertificate.eval.net.interceptor.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
-import ch.admin.bag.covidcertificate.eval.utils.toBase64
+import ch.admin.bag.covidcertificate.eval.extensions.toBase64
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.ConvertedCertificate
 import okhttp3.Cache
@@ -27,7 +27,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.security.KeyPair
-import java.security.KeyStore
 
 internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec) {
 

@@ -38,7 +38,6 @@ import kotlin.collections.set
 class CertificatesViewModel(application: Application) : AndroidViewModel(application) {
 
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-	private val verificationController = CovidCertificateSdk.getCertificateVerificationController()
 
 	private val walletDataStorage: WalletDataSecureStorage by lazy { WalletDataSecureStorage.getInstance(application.applicationContext) }
 
@@ -111,7 +110,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 			verifiedCertificatesMutableLiveData.value = verifiedCertificatesWithLoading
 
 			// If this is a force verification (from the detail page), frist refresh the trust list
-			verificationController.refreshTrustList(viewModelScope, onCompletionCallback = {
+			CovidCertificateSdk.refreshTrustList(viewModelScope, onCompletionCallback = {
 				val task = CertificateVerificationTask(dccHolder, connectivityManager)
 				enqueueVerificationTask(task, delayInMillis)
 			}, onErrorCallback = {
@@ -187,7 +186,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 		viewModelScope.launch {
 			if (delayInMillis > 0) delay(delayInMillis)
-			verificationController.enqueue(task, viewModelScope)
+			CovidCertificateSdk.verify(task, viewModelScope)
 		}
 	}
 
