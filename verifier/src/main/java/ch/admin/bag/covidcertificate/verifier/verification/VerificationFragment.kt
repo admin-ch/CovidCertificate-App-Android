@@ -89,13 +89,13 @@ class VerificationFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 
 		val dccHolder = dccHolder ?: return
+		val euDgc = dccHolder.euDGC ?: return
 
-		val eudgc = dccHolder.euDGC
-		binding.verificationFamilyName.text = eudgc.person.familyName
-		binding.verificationGivenName.text = eudgc.person.givenName
-		binding.verificationBirthdate.text = eudgc.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
+		binding.verificationFamilyName.text = euDgc.person.familyName
+		binding.verificationGivenName.text = euDgc.person.givenName
+		binding.verificationBirthdate.text = euDgc.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.verificationStandardizedNameLabel.text =
-			"${eudgc.person.standardizedFamilyName}<<${eudgc.person.standardizedGivenName}"
+			"${euDgc.person.standardizedFamilyName}<<${euDgc.person.standardizedGivenName}"
 
 		binding.verificationFooterButton.setOnClickListener {
 			isClosedByUser = true

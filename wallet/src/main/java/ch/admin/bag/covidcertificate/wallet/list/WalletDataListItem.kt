@@ -35,7 +35,7 @@ sealed class WalletDataListItem {
 			val certificate = verifiedCertificate.dccHolder
 			val certType = certificate?.certType
 
-			val name = certificate?.let { "${it.euDGC.person.familyName} ${it.euDGC.person.givenName}" }
+			val name = certificate?.euDGC?.let { "${it.person.familyName} ${it.person.givenName}" }
 			val qrAlpha = state.getQrAlpha()
 			binding.itemCertificateListName.text = name
 			binding.itemCertificateListName.alpha = qrAlpha

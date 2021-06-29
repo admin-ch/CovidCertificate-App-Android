@@ -27,7 +27,7 @@ import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
-import ch.admin.bag.covidcertificate.eval.euhealthcert.VaccinationEntry
+import ch.admin.bag.covidcertificate.eval.models.healthcert.eu.VaccinationEntry
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.eval.utils.isNotFullyProtected
@@ -75,7 +75,7 @@ class CertificatePagerFragment : Fragment() {
 		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
 		binding.certificatePageQrCode.setImageDrawable(qrCodeDrawable)
 
-		val name = dccHolder?.let { "${it.euDGC.person.familyName} ${it.euDGC.person.givenName}" }
+		val name = dccHolder?.euDGC?.let { "${it.person.familyName} ${it.person.givenName}" }
 		binding.certificatePageName.text = name
 		val dateOfBirth = dccHolder?.euDGC?.dateOfBirth?.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificatePageBirthdate.text = dateOfBirth
