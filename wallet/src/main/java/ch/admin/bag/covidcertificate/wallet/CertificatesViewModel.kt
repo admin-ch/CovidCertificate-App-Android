@@ -21,7 +21,6 @@ import ch.admin.bag.covidcertificate.common.util.SingleLiveEvent
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
-import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.verification.CertificateVerificationTask
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
@@ -74,7 +73,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 			val pagerHolders = walletDataStorage.getWalletData().map { dataItem ->
 				when (dataItem) {
 					is WalletDataItem.CertificateWalletData -> {
-						val decodeState = CertificateDecoder.decode(dataItem.qrCodeData)
+						val decodeState = CovidCertificateSdk.decode(dataItem.qrCodeData)
 						if (decodeState is DecodeState.ERROR) {
 							verifiedCertificatesMutableLiveData.postValue(
 								(verifiedCertificates.value?.toMutableList() ?: mutableListOf()).apply {

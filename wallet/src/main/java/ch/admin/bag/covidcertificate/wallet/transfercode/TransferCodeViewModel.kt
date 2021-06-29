@@ -17,10 +17,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.data.state.Error
-import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.utils.NetworkUtil
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
@@ -69,7 +69,7 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 							val pdfData = convertedCertificate.pdfData
 							if (index == 0) {
 								walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
-								val decodeState = CertificateDecoder.decode(qrCodeData)
+								val decodeState = CovidCertificateSdk.decode(qrCodeData)
 								if (decodeState is DecodeState.SUCCESS) {
 									conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(decodeState.dccHolder))
 								} else {

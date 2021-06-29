@@ -14,18 +14,16 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
-import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
-
 
 class DeeplinkViewModel(application: Application) : AndroidViewModel(application) {
 
 	private val deeplinkImportMutableLiveData: MutableLiveData<DecodeState> = MutableLiveData()
 	val deeplinkImportLiveData: LiveData<DecodeState> = deeplinkImportMutableLiveData
 
-
 	fun importDeeplink(path: String) {
-		deeplinkImportMutableLiveData.postValue(CertificateDecoder.decode(path))
+		deeplinkImportMutableLiveData.postValue(CovidCertificateSdk.decode(path))
 	}
 
 	fun clearDeeplink() {
