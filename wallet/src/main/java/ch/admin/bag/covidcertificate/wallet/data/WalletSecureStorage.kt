@@ -11,8 +11,8 @@
 package ch.admin.bag.covidcertificate.wallet.data
 
 import android.content.Context
-import ch.admin.bag.covidcertificate.eval.utils.EncryptedSharedPreferencesUtil
-import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
+import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
+import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 
 class WalletSecureStorage private constructor(context: Context) {
 

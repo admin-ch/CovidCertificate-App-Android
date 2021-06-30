@@ -13,7 +13,6 @@ package ch.admin.bag.covidcertificate.wallet.debug
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
 
 class DebugCertificatesListAdapter(
 	private val onShareClickListener: ((String) -> Unit),

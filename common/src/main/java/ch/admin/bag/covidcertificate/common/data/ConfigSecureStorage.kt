@@ -12,8 +12,8 @@ package ch.admin.bag.covidcertificate.common.data
 
 import android.content.Context
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.eval.utils.EncryptedSharedPreferencesUtil
-import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
+import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
+import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import com.squareup.moshi.Moshi
 
 class ConfigSecureStorage private constructor(context: Context) {

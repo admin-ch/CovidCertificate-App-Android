@@ -1,9 +1,9 @@
 package ch.admin.bag.covidcertificate.common.util
 
-import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
-import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 
 fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ", showNationalErrors: Boolean = false): String {
 	val errorCodes = mutableListOf<String>()

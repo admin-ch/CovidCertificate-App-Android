@@ -17,11 +17,11 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
-import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
-import ch.admin.bag.covidcertificate.eval.data.state.Error
-import ch.admin.bag.covidcertificate.eval.utils.NetworkUtil
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
@@ -88,13 +88,13 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 				} catch (e: IOException) {
 					// A request failed, check if the device has network connectivity or not
 					if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
-						conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(Error(ErrorCodes.GENERAL_NETWORK_FAILURE)))
+						conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_NETWORK_FAILURE)))
 					} else {
-						conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(Error(ErrorCodes.GENERAL_OFFLINE)))
+						conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_OFFLINE)))
 					}
 				}
 			} else {
-				conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(Error(ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
+				conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
 			}
 
 			downloadJob = null

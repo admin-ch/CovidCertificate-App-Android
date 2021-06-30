@@ -38,10 +38,10 @@ import androidx.fragment.app.Fragment
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
-import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
-import ch.admin.bag.covidcertificate.eval.data.state.Error
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import java.util.concurrent.Executor
 
 abstract class QrScanFragment : Fragment() {
@@ -292,7 +292,7 @@ abstract class QrScanFragment : Fragment() {
 		flashButton.setImageResource(drawableId)
 	}
 
-	private fun handleInvalidQRCodeExceptions(qrCodeData: String?, error: Error?) {
+	private fun handleInvalidQRCodeExceptions(qrCodeData: String?, error: StateError?) {
 		//TODO Show error code on screen
 		updateQrCodeScannerState(QrScannerState.INVALID_FORMAT)
 	}

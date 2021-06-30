@@ -18,9 +18,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.common.qr.QRCodeReaderHelper
-import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
-import ch.admin.bag.covidcertificate.eval.data.state.Error
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
@@ -34,7 +34,7 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 	fun importPdf(clipData: ClipData) {
 		if (clipData.itemCount != 1 || clipData.getItemAt(0) == null || clipData.getItemAt(0).uri == null) {
 			pdfImportMutableLiveData.postValue(
-				PdfImportState.DONE(DecodeState.ERROR(Error(PdfErrorCodes.FAILED_TO_READ, "The PDF was not be imported")))
+				PdfImportState.DONE(DecodeState.ERROR(StateError(PdfErrorCodes.FAILED_TO_READ, "The PDF was not be imported")))
 			)
 			return
 		}
@@ -65,7 +65,7 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 			}
 
 			pdfImportMutableLiveData.postValue(
-				PdfImportState.DONE(DecodeState.ERROR(Error(PdfErrorCodes.NO_QR_CODE_FOUND, "The PDF was not be imported")))
+				PdfImportState.DONE(DecodeState.ERROR(StateError(PdfErrorCodes.NO_QR_CODE_FOUND, "The PDF was not be imported")))
 			)
 		}
 	}

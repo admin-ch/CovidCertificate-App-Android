@@ -10,12 +10,12 @@
 
 package ch.admin.bag.covidcertificate.wallet.transfercode.model
 
-import ch.admin.bag.covidcertificate.eval.data.state.Error
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 
 sealed class TransferCodeConversionState {
 	object LOADING : TransferCodeConversionState()
 	data class CONVERTED(val dccHolder: DccHolder) : TransferCodeConversionState()
 	object NOT_CONVERTED : TransferCodeConversionState()
-	data class ERROR(val error: Error) : TransferCodeConversionState()
+	data class ERROR(val error: StateError) : TransferCodeConversionState()
 }

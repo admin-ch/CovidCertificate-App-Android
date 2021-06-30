@@ -28,10 +28,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.common.util.*
 import ch.admin.bag.covidcertificate.common.views.VerticalMarginItemDecoration
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
-import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.eval.extensions.prettyPrintIsoDateTime
+import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
 import kotlin.math.max

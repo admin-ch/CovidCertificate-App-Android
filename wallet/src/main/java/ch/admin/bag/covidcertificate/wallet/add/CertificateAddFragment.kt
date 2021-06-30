@@ -19,9 +19,9 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
-import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.eval.extensions.prettyPrintIsoDateTime
+import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateAddBinding

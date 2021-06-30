@@ -17,11 +17,10 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
-import ch.admin.bag.covidcertificate.eval.data.state.Error
-import ch.admin.bag.covidcertificate.eval.utils.NetworkUtil
+import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
-import ch.admin.bag.covidcertificate.wallet.MainApplication
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn
@@ -60,7 +59,7 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 			if (keyPair != null) {
 				registerTransferCode(transferCode, keyPair)
 			} else {
-				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(Error(ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
 			}
 
 			transferCodeCreationJob = null
@@ -76,13 +75,13 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 				walletDataStorage.saveWalletDataItem(WalletDataItem.TransferCodeWalletData(transferCodeModel))
 				creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCodeModel))
 			} else {
-				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(Error(ErrorCodes.INAPP_DELIVERY_REGISTRATION_FAILED)))
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_REGISTRATION_FAILED)))
 			}
 		} catch (e: IOException) {
 			if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
-				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(Error(ErrorCodes.GENERAL_NETWORK_FAILURE)))
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ErrorCodes.GENERAL_NETWORK_FAILURE)))
 			} else {
-				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(Error(ErrorCodes.GENERAL_OFFLINE)))
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ErrorCodes.GENERAL_OFFLINE)))
 			}
 		}
 	}

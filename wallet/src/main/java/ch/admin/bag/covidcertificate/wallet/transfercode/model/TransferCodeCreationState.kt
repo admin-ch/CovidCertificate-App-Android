@@ -10,10 +10,10 @@
 
 package ch.admin.bag.covidcertificate.wallet.transfercode.model
 
-import ch.admin.bag.covidcertificate.eval.data.state.Error
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 
 sealed class TransferCodeCreationState {
 	object LOADING : TransferCodeCreationState()
 	data class SUCCESS(val transferCode: TransferCodeModel) : TransferCodeCreationState()
-	data class ERROR(val error: Error) : TransferCodeCreationState()
+	data class ERROR(val error: StateError) : TransferCodeCreationState()
 }

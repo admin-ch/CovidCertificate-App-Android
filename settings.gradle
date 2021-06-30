@@ -8,6 +8,9 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
+include ':core'
+project(':core').projectDir = new File('./sdk/core')
+
 include ':sdk'
 project(':sdk').projectDir = new File('./sdk/sdk')
 
