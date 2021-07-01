@@ -47,6 +47,8 @@ import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
+import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeCreationFragment
 import ch.admin.bag.covidcertificate.wallet.util.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -176,7 +178,11 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun setupConversionButtons() {
 		binding.certificateDetailConvertLightButton.setOnClickListener {
-			// TODO Show certificate light fragment
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, CertificateLightConversionFragment.newInstance(dccHolder))
+				.addToBackStack(CertificateLightConversionFragment::class.java.canonicalName)
+				.commit()
 		}
 
 		binding.certificateDetailConvertPdfButton.setOnClickListener {
