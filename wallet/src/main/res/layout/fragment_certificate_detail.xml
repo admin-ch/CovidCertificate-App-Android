@@ -47,13 +47,13 @@
 					android:layout_height="wrap_content"
 					android:clipToPadding="false"
 					android:orientation="vertical"
-					android:padding="@dimen/spacing_very_large">
+					android:paddingTop="@dimen/spacing_very_large">
 
 					<FrameLayout
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_gravity="center"
-						android:layout_marginHorizontal="@dimen/spacing_small"
+						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
 						android:layout_marginTop="@dimen/spacing_medium_large">
 
 						<ImageView
@@ -105,6 +105,7 @@
 						style="@style/CovidCertificate.Text.Bold.Title"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
 						android:layout_marginTop="@dimen/spacing_very_large"
 						android:gravity="center_horizontal"
 						tools:text="Muster Marta" />
@@ -121,6 +122,7 @@
 					<androidx.constraintlayout.widget.ConstraintLayout
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
 						android:clipChildren="false"
 						android:clipToPadding="false"
 						android:paddingTop="@dimen/spacing_huger">
@@ -184,6 +186,7 @@
 						android:id="@+id/certificate_detail_info_description_group"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
 						android:layout_marginTop="@dimen/spacing_very_small"
 						android:background="@drawable/bg_certificate_bubble"
 						android:backgroundTint="@color/blueish"
@@ -206,6 +209,7 @@
 						android:id="@+id/certificate_detail_info_validity_group"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
 						android:layout_marginTop="@dimen/spacing_very_small"
 						android:background="@drawable/bg_certificate_bubble"
 						android:backgroundTint="@color/blueish"
@@ -266,6 +270,7 @@
 						android:id="@+id/certificate_detail_data_recycler_view"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
 						android:layout_marginTop="@dimen/spacing_large"
 						android:overScrollMode="never"
 						android:scrollbars="none"
@@ -276,20 +281,94 @@
 						style="@style/CovidCertificate.Text"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_marginHorizontal="-20dp"
+						android:layout_marginHorizontal="@dimen/spacing_medium_large"
 						android:layout_marginTop="@dimen/spacing_medium_large"
 						android:background="@drawable/bg_certificate_detail_note"
 						android:padding="@dimen/spacing_large"
 						android:text="@string/wallet_certificate_detail_note" />
 
-					<Button
-						android:id="@+id/certificate_detail_button_delete"
-						style="@style/CovidCertificate.Button.Red"
-						android:layout_width="wrap_content"
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:layout_marginTop="@dimen/spacing_very_large"
+						android:background="@color/blueish" />
+
+					<LinearLayout
+						android:id="@+id/certificate_detail_convert_light_button"
+						android:layout_width="match_parent"
+						android:layout_height="56dp"
+						android:background="?android:attr/selectableItemBackground"
+						android:orientation="horizontal"
+						android:paddingHorizontal="@dimen/spacing_large">
+
+						<TextView
+							style="@style/CovidCertificate.Text.Bold.Blue"
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:drawablePadding="@dimen/spacing_medium_small"
+							android:gravity="center|start"
+							android:text="@string/wallet_certificate_detail_certificate_light_button"
+							app:drawableStartCompat="@drawable/ic_certificate_light"
+							app:drawableTint="@color/blue" />
+
+						<ImageView
+							android:id="@+id/certificate_detail_convert_light_arrow"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center"
+							android:src="@drawable/ic_arrow_forward" />
+					</LinearLayout>
+
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/blueish" />
+
+					<LinearLayout
+						android:id="@+id/certificate_detail_convert_pdf_button"
+						android:layout_width="match_parent"
+						android:layout_height="56dp"
+						android:background="?android:attr/selectableItemBackground"
+						android:orientation="horizontal"
+						android:paddingHorizontal="@dimen/spacing_large">
+
+						<TextView
+							style="@style/CovidCertificate.Text.Bold.Blue"
+							android:layout_width="0dp"
+							android:layout_height="match_parent"
+							android:layout_weight="1"
+							android:drawablePadding="@dimen/spacing_medium_small"
+							android:gravity="center|start"
+							android:text="@string/wallet_certificate_detail_export_button"
+							app:drawableStartCompat="@drawable/ic_pdf"
+							app:drawableTint="@color/blue" />
+
+						<ImageView
+							android:id="@+id/certificate_detail_convert_pdf_arrow"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center"
+							android:src="@drawable/ic_arrow_forward" />
+					</LinearLayout>
+
+					<FrameLayout
+						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
-						android:layout_gravity="center_horizontal"
-						android:layout_marginTop="@dimen/spacing_huger"
-						android:text="@string/delete_button" />
+						android:background="@color/blueish"
+						android:paddingTop="@dimen/spacing_huger"
+						android:paddingBottom="@dimen/spacing_very_large">
+
+						<Button
+							android:id="@+id/certificate_detail_button_delete"
+							style="@style/CovidCertificate.Button.Red"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_horizontal"
+							android:layout_marginTop="@dimen/spacing_medium_small"
+							android:text="@string/delete_button" />
+
+					</FrameLayout>
 
 				</LinearLayout>
 

@@ -19,6 +19,7 @@
 	<dimen name="spacing_large">20dp</dimen>
 	<dimen name="spacing_larger">25dp</dimen>
 	<dimen name="spacing_very_large">30dp</dimen>
+	<dimen name="spacing_very_very_large">35dp</dimen>
 	<dimen name="spacing_huge">40dp</dimen>
 	<dimen name="spacing_huger">50dp</dimen>
 	<dimen name="spacing_enormous">100dp</dimen>

@@ -94,6 +94,7 @@ class CertificateDetailFragment : Fragment() {
 		updateToolbarTitle()
 		setupCertificateDetails()
 		setupStatusInfo()
+		setupConversionButtons()
 
 		binding.certificateDetailToolbar.setNavigationOnClickListener {
 			parentFragmentManager.popBackStack()
@@ -171,6 +172,16 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		certificatesViewModel.startVerification(dccHolder)
+	}
+
+	private fun setupConversionButtons() {
+		binding.certificateDetailConvertLightButton.setOnClickListener {
+			// TODO Show certificate light fragment
+		}
+
+		binding.certificateDetailConvertPdfButton.setOnClickListener {
+			// TODO Show PDF export fragment
+		}
 	}
 
 	private fun updateStatusInfo(verificationState: VerificationState?) {
