@@ -205,6 +205,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoValidityGroup.isVisible = false
 		binding.certificateDetailErrorCode.isVisible = false
 		setInfoBubbleBackgrounds(R.color.greyish, R.color.greyish)
+		updateConversionButtons(false)
 
 		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
 		if (isForceValidate) {
@@ -223,6 +224,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailErrorCode.isVisible = false
 		showValidityDate(state.validityRange.validUntil, dccHolder.certType, state)
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
+		updateConversionButtons(true)
 
 		val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
 		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
@@ -241,6 +243,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = true
 		showValidityDate(state.validityRange?.validUntil, dccHolder.certType, state)
+		updateConversionButtons(false)
 
 		val info = state.getValidationStatusString(context)
 		val infoBubbleColorId = when {
@@ -296,6 +299,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = true
 		binding.certificateDetailInfoValidityGroup.isVisible = false
 		setInfoBubbleBackgrounds(R.color.greyish, R.color.orangeish)
+		updateConversionButtons(false)
 
 		val info: SpannableString
 		val forceValidationInfo: SpannableString
@@ -330,6 +334,17 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailErrorCode.apply {
 			isVisible = true
 			text = state.error.code
+		}
+	}
+
+	private fun updateConversionButtons(enabled: Boolean) {
+		binding.apply {
+			certificateDetailConvertLightButton.isEnabled = enabled
+			certificateDetailConvertLightLabel.isEnabled = enabled
+			certificateDetailConvertLightArrow.isVisible = enabled
+			certificateDetailConvertPdfButton.isEnabled = enabled
+			certificateDetailConvertPdfLabel.isEnabled = enabled
+			certificateDetailConvertPdfArrow.isVisible = enabled
 		}
 	}
 

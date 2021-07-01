@@ -302,15 +302,17 @@
 						android:paddingHorizontal="@dimen/spacing_large">
 
 						<TextView
-							style="@style/CovidCertificate.Text.Bold.Blue"
+							android:id="@+id/certificate_detail_convert_light_label"
+							style="@style/CovidCertificate.Text.Bold"
 							android:layout_width="0dp"
 							android:layout_height="match_parent"
 							android:layout_weight="1"
 							android:drawablePadding="@dimen/spacing_medium_small"
 							android:gravity="center|start"
 							android:text="@string/wallet_certificate_detail_certificate_light_button"
+							android:textColor="@color/text_color_button"
 							app:drawableStartCompat="@drawable/ic_certificate_light"
-							app:drawableTint="@color/blue" />
+							app:drawableTint="@color/text_color_button" />
 
 						<ImageView
 							android:id="@+id/certificate_detail_convert_light_arrow"
@@ -334,15 +336,17 @@
 						android:paddingHorizontal="@dimen/spacing_large">
 
 						<TextView
-							style="@style/CovidCertificate.Text.Bold.Blue"
+							android:id="@+id/certificate_detail_convert_pdf_label"
+							style="@style/CovidCertificate.Text.Bold"
 							android:layout_width="0dp"
 							android:layout_height="match_parent"
 							android:layout_weight="1"
 							android:drawablePadding="@dimen/spacing_medium_small"
 							android:gravity="center|start"
 							android:text="@string/wallet_certificate_detail_export_button"
+							android:textColor="@color/text_color_button"
 							app:drawableStartCompat="@drawable/ic_pdf"
-							app:drawableTint="@color/blue" />
+							app:drawableTint="@color/text_color_button" />
 
 						<ImageView
 							android:id="@+id/certificate_detail_convert_pdf_arrow"
