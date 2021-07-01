@@ -33,7 +33,6 @@ import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
 import ch.admin.bag.covidcertificate.common.faq.model.Question
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
-import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.views.rotate
 import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
 import ch.admin.bag.covidcertificate.eval.data.state.Error
@@ -230,7 +229,6 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 			}
 			.setCancelable(true)
 			.create()
-			.apply { window?.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR) }
 			.show()
 	}
 

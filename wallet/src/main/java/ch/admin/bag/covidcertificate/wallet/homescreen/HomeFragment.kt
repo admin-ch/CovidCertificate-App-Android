@@ -36,7 +36,6 @@ import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
-import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.rotate
 import ch.admin.bag.covidcertificate.common.views.showAnimated
@@ -346,7 +345,6 @@ class HomeFragment : Fragment() {
 			}
 			.setCancelable(true)
 			.create()
-			.apply { window?.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR) }
 			.show()
 	}
 
