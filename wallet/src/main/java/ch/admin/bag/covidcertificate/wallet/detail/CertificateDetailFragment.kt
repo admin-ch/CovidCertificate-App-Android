@@ -228,7 +228,8 @@ class CertificateDetailFragment : Fragment() {
 		val context = context ?: return
 		showLoadingIndicator(false)
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
-		binding.certificateDetailInfoValidityGroup.isVisible = true
+
+		binding.certificateDetailInfoValidityGroup.isVisible = state.signatureState == CheckSignatureState.SUCCESS
 		showValidityDate(state.validityRange?.validUntil, dccHolder.certType, state)
 
 		val info = state.getValidationStatusString(context)
