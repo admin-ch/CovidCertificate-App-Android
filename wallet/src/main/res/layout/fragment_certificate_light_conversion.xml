@@ -68,8 +68,7 @@
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
 							android:orientation="vertical"
-							android:visibility="gone"
-							tools:visibility="gone">
+							tools:visibility="visible">
 
 							<TextView
 								android:id="@+id/certificate_light_conversion_title"
@@ -246,6 +245,16 @@
 							android:visibility="gone"
 							tools:visibility="visible">
 
+							<TextView
+								android:id="@+id/certificate_light_conversion_error_title"
+								style="@style/CovidCertificate.Text.Bold.Title"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginHorizontal="@dimen/spacing_very_large"
+								android:layout_marginTop="@dimen/spacing_large"
+								android:gravity="center_horizontal"
+								android:text="@string/wallet_certificate_light_detail_activation_error" />
+
 							<androidx.constraintlayout.widget.ConstraintLayout
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
@@ -260,7 +269,7 @@
 									android:layout_width="match_parent"
 									android:layout_height="0dp"
 									android:background="@drawable/bg_certificate_bubble"
-									android:backgroundTint="@color/blueish"
+									android:backgroundTint="@color/orangeish"
 									android:gravity="center"
 									android:minLines="2"
 									android:padding="@dimen/spacing_medium_large"
@@ -274,7 +283,7 @@
 									android:layout_gravity="center"
 									android:background="@drawable/circle_white"
 									android:padding="@dimen/info_buble_icon_padding"
-									android:src="@drawable/ic_info_blue"
+									android:src="@drawable/ic_no_connection"
 									app:layout_constraintBottom_toTopOf="@id/certificate_light_conversion_status_text"
 									app:layout_constraintEnd_toEndOf="parent"
 									app:layout_constraintStart_toStartOf="parent"

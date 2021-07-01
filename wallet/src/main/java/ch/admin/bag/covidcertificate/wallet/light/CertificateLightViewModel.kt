@@ -1,0 +1,89 @@
+/*
+ * Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
+package ch.admin.bag.covidcertificate.wallet.light
+
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
+import ch.admin.bag.covidcertificate.wallet.light.model.CertificateLightConversionState
+import ch.admin.bag.covidcertificate.wallet.light.net.CertificateLightRepository
+import ch.admin.bag.covidcertificate.wallet.light.net.CertificateLightSpec
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import java.io.IOException
+
+class CertificateLightViewModel(application: Application) : AndroidViewModel(application) {
+
+	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+	private val walletDataStorage = WalletDataSecureStorage.getInstance(application.applicationContext)
+	private val repository = CertificateLightRepository.getInstance(
+		CertificateLightSpec(
+			application.applicationContext,
+			BuildConfig.BASE_URL_TRANSFORMATION
+		)
+	)
+
+	private val conversionStateMutableLiveData = MutableLiveData<CertificateLightConversionState>()
+	val conversionState = conversionStateMutableLiveData as LiveData<CertificateLightConversionState>
+
+	private var conversionJob: Job? = null
+
+	fun convert(dccHolder: DccHolder) {
+		conversionJob?.cancel()
+
+		conversionStateMutableLiveData.value = CertificateLightConversionState.LOADING
+		conversionJob = viewModelScope.launch(Dispatchers.IO) {
+			try {
+				val response = repository.convert(dccHolder)
+
+				if (response != null) {
+					val decodeState = CovidCertificateSdk.decode(response.payload)
+					when (decodeState) {
+						is DecodeState.SUCCESS -> {
+							walletDataStorage.storeCertificateLight(dccHolder, decodeState.dccHolder.qrCodeData, response.qrcode)
+							conversionStateMutableLiveData.postValue(CertificateLightConversionState.SUCCESS(decodeState.dccHolder))
+						}
+						is DecodeState.ERROR -> {
+							conversionStateMutableLiveData.postValue(CertificateLightConversionState.ERROR(decodeState.error))
+						}
+					}
+				} else {
+					checkIfOffline()
+				}
+			} catch (e: IOException) {
+				checkIfOffline()
+			}
+		}
+	}
+
+	private fun checkIfOffline() {
+		val error = if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
+			StateError(ErrorCodes.GENERAL_NETWORK_FAILURE)
+		} else {
+			StateError(ErrorCodes.GENERAL_OFFLINE)
+		}
+		conversionStateMutableLiveData.postValue(CertificateLightConversionState.ERROR(error))
+	}
+
+}
