@@ -20,8 +20,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
-import ch.admin.bag.covidcertificate.eval.utils.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.eval.utils.prettyPrintIsoDateTime
+import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateAddBinding
@@ -111,9 +111,10 @@ class CertificateAddFragment : Fragment() {
 		val adapter = CertificateDetailAdapter()
 		recyclerView.adapter = adapter
 
-		val name = "${dccHolder.euDGC.person.familyName} ${dccHolder.euDGC.person.givenName}"
+		val euDgc = dccHolder.euDGC ?: return
+		val name = "${euDgc.person.familyName} ${euDgc.person.givenName}"
 		binding.certificateAddName.text = name
-		val dateOfBirth = dccHolder.euDGC.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = euDgc.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateAddBirthdate.text = dateOfBirth
 
 		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, dccHolder, showEnglishVersion = false).buildAll()

@@ -18,9 +18,9 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.common.qr.QRCodeReaderHelper
+import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.data.state.Error
-import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.io.File
@@ -55,7 +55,7 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 				for (bitmap in bitmaps) {
 					val decode = QRCodeReaderHelper.decodeQrCode(bitmap)
 					if (decode != null) {
-						pdfImportMutableLiveData.postValue(PdfImportState.DONE(CertificateDecoder.decode(decode)))
+						pdfImportMutableLiveData.postValue(PdfImportState.DONE(CovidCertificateSdk.decode(decode)))
 						// Stop as soon as we found the first QR code in the PDF
 						return@launch
 					}

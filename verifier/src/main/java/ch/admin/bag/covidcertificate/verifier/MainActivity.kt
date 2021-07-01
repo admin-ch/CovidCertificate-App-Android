@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 	override fun onStart() {
 		super.onStart()
 		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
-		CovidCertificateSdk.getCertificateVerificationController().refreshTrustList(lifecycleScope)
+		CovidCertificateSdk.refreshTrustList(lifecycleScope)
 	}
 
 	override fun onDestroy() {

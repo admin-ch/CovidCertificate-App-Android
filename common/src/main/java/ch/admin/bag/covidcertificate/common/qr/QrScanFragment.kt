@@ -38,9 +38,9 @@ import androidx.fragment.app.Fragment
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
+import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
 import ch.admin.bag.covidcertificate.eval.data.state.Error
-import ch.admin.bag.covidcertificate.eval.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import java.util.concurrent.Executor
 
@@ -160,7 +160,7 @@ abstract class QrScanFragment : Fragment() {
 							is DecodeCertificateState.SUCCESS -> {
 								val qrCodeData = decodeCertificateState.qrCode
 								qrCodeData?.let {
-									when (val decodeState = CertificateDecoder.decode(it)) {
+									when (val decodeState = CovidCertificateSdk.decode(it)) {
 										is DecodeState.SUCCESS -> {
 											// Once successfully decoded, clear the analyzer from stopping more frames being
 											// analyzed and possibly decoded successfully

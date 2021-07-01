@@ -33,7 +33,6 @@ class VerificationViewModel(application: Application) : AndroidViewModel(applica
 	}
 
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-	private val verificationController = CovidCertificateSdk.getCertificateVerificationController()
 	private val verificationStateMutableLiveData = MutableLiveData<VerificationState>()
 	val verificationLiveData = verificationStateMutableLiveData as LiveData<VerificationState>
 
@@ -46,7 +45,7 @@ class VerificationViewModel(application: Application) : AndroidViewModel(applica
 			}
 		}
 
-		verificationController.enqueue(task, viewModelScope)
+		CovidCertificateSdk.verify(task, viewModelScope)
 	}
 
 	fun retryVerification(dccHolder: DccHolder?) {

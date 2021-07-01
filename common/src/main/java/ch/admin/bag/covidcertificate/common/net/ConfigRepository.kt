@@ -19,8 +19,8 @@ import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.eval.data.Config
 import ch.admin.bag.covidcertificate.eval.net.CertificatePinning
-import ch.admin.bag.covidcertificate.eval.net.JwsInterceptor
-import ch.admin.bag.covidcertificate.eval.net.UserAgentInterceptor
+import ch.admin.bag.covidcertificate.eval.net.interceptor.JwsInterceptor
+import ch.admin.bag.covidcertificate.eval.net.interceptor.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext

@@ -36,7 +36,10 @@ import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
-import ch.admin.bag.covidcertificate.eval.euhealthcert.VaccinationEntry
+import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+import ch.admin.bag.covidcertificate.eval.extensions.isNotFullyProtected
+import ch.admin.bag.covidcertificate.eval.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.eval.models.CertType
 import ch.admin.bag.covidcertificate.eval.models.DccHolder
 import ch.admin.bag.covidcertificate.eval.utils.*
@@ -123,7 +126,7 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun updateToolbarTitle() {
-		val vaccinationEntry: VaccinationEntry? = dccHolder.euDGC.vaccinations?.firstOrNull()
+		val vaccinationEntry = dccHolder.euDGC?.vaccinations?.firstOrNull()
 		if (vaccinationEntry?.isNotFullyProtected() == true) {
 			binding.certificateDetailToolbar.setTitle(R.string.wallet_certificate_evidence_title)
 		} else {
@@ -147,9 +150,10 @@ class CertificateDetailFragment : Fragment() {
 		val adapter = CertificateDetailAdapter()
 		recyclerView.adapter = adapter
 
-		val name = "${dccHolder.euDGC.person.familyName} ${dccHolder.euDGC.person.givenName}"
+		val euDgc = dccHolder.euDGC ?: return
+		val name = "${euDgc.person.familyName} ${euDgc.person.givenName}"
 		binding.certificateDetailName.text = name
-		val dateOfBirth = dccHolder.euDGC.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = euDgc.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateDetailBirthdate.text = dateOfBirth
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)

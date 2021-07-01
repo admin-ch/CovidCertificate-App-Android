@@ -57,8 +57,9 @@ data class DebugCertificateItem(val verifiedCertificate: CertificatesViewModel.V
 		}
 
 		// Name
-		val name =
-			certificate?.let { "${it.euDGC.person.familyName} ${it.euDGC.person.givenName}" } ?: verifiedCertificate.qrCodeData
+		val name = certificate?.euDGC?.let {
+			"${it.person.familyName} ${it.person.givenName}"
+		} ?: verifiedCertificate.qrCodeData
 		val qrAlpha = state.getQrAlpha()
 		itemView.findViewById<TextView>(R.id.item_certificate_list_name).apply {
 			text = name
