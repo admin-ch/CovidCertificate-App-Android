@@ -51,7 +51,7 @@ fun VerificationState.INVALID.getValidationStatusString(context: Context) = when
 	nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
 		context.getString(R.string.wallet_error_valid_from).addBoldDate(
 			DATE_REPLACEMENT_STRING,
-			(nationalRulesState as CheckNationalRulesState.NOT_YET_VALID).validityRange.validFrom!!
+			(nationalRulesState as CheckNationalRulesState.NOT_YET_VALID).validityRange?.validFrom!!
 		)
 	}
 	nationalRulesState is CheckNationalRulesState.INVALID -> {

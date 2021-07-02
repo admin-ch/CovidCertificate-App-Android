@@ -26,11 +26,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import ch.admin.bag.covidcertificate.common.util.*
+import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.views.VerticalMarginItemDecoration
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
@@ -43,10 +42,10 @@ class VerificationFragment : Fragment() {
 		private val TAG = VerificationFragment::class.java.canonicalName
 		private const val ARG_DECODE_DGC = "ARG_DECODE_DGC"
 
-		fun newInstance(dccHolder: DccHolder): VerificationFragment {
+		fun newInstance(certificateHolder: VerifierCertificateHolder): VerificationFragment {
 			return VerificationFragment().apply {
 				arguments = Bundle().apply {
-					putSerializable(ARG_DECODE_DGC, dccHolder)
+					putSerializable(ARG_DECODE_DGC, certificateHolder)
 				}
 			}
 		}
@@ -55,7 +54,7 @@ class VerificationFragment : Fragment() {
 	private var _binding: FragmentVerificationBinding? = null
 	private val binding get() = _binding!!
 	private val verificationViewModel: VerificationViewModel by viewModels()
-	private var dccHolder: DccHolder? = null
+	private var certificateHolder: VerifierCertificateHolder? = null
 	private var isClosedByUser = false
 
 	private lateinit var verificationAdapter: VerificationAdapter
@@ -74,7 +73,7 @@ class VerificationFragment : Fragment() {
 			return
 		}
 
-		dccHolder = requireArguments().getSerializable(ARG_DECODE_DGC) as DccHolder
+		certificateHolder = requireArguments().getSerializable(ARG_DECODE_DGC) as VerifierCertificateHolder
 
 		requireActivity().onBackPressedDispatcher.addCallback(onBackPressedCallback)
 	}
@@ -88,14 +87,13 @@ class VerificationFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		val dccHolder = dccHolder ?: return
-		val euDgc = dccHolder.euDGC ?: return
+		val certificateHolder = certificateHolder ?: return
+		val personName = certificateHolder.getPersonName()
 
-		binding.verificationFamilyName.text = euDgc.person.familyName
-		binding.verificationGivenName.text = euDgc.person.givenName
-		binding.verificationBirthdate.text = euDgc.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
-		binding.verificationStandardizedNameLabel.text =
-			"${euDgc.person.standardizedFamilyName}<<${euDgc.person.standardizedGivenName}"
+		binding.verificationFamilyName.text = personName.familyName
+		binding.verificationGivenName.text = personName.givenName
+		binding.verificationBirthdate.text = certificateHolder.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
+		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
 
 		binding.verificationFooterButton.setOnClickListener {
 			isClosedByUser = true
@@ -105,14 +103,14 @@ class VerificationFragment : Fragment() {
 
 		view.doOnLayout { setupScrollBehavior() }
 
-		verificationViewModel.startVerification(dccHolder)
+		verificationViewModel.startVerification(certificateHolder)
 
 		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner, {
 			updateHeaderAndVerificationView(it)
 		})
 
 		verificationAdapter = VerificationAdapter {
-			verificationViewModel.retryVerification(dccHolder)
+			verificationViewModel.retryVerification(certificateHolder)
 		}
 
 		binding.verificationStatusRecyclerView.apply {

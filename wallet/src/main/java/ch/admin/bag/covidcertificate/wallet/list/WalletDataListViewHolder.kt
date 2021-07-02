@@ -16,7 +16,7 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 
@@ -45,7 +45,7 @@ sealed class WalletDataListViewHolder(itemView: View) : RecyclerView.ViewHolder(
 
 		fun bindItem(
 			item: WalletDataListItem.VerifiedCeritificateItem,
-			onCertificateClickListener: ((DccHolder) -> Unit)? = null
+			onCertificateClickListener: ((CertificateHolder) -> Unit)? = null
 		) = item.bindView(itemView, onCertificateClickListener)
 	}
 

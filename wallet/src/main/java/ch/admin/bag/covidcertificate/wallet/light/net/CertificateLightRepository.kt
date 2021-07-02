@@ -18,7 +18,7 @@ import ch.admin.bag.covidcertificate.sdk.android.net.CertificatePinning
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.JwsInterceptor
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -56,10 +56,10 @@ class CertificateLightRepository private constructor(spec: CertificateLightSpec)
 			.create(CertificateLightService::class.java)
 	}
 
-	suspend fun convert(dccHolder: DccHolder): CertificateLightResponse? {
-		if (dccHolder.isLightCertificate()) return null
+	suspend fun convert(certificateHolder: CertificateHolder): CertificateLightResponse? {
+		if (certificateHolder.containsChLightCert()) return null
 
-		val body = CertificateLightRequestBody(dccHolder.qrCodeData)
+		val body = CertificateLightRequestBody(certificateHolder.qrCodeData)
 
 		val response = certificateLightService.mockConvert("https://sa4sz7kf56.execute-api.eu-central-1.amazonaws.com/default/test-rust", body)
 //		val response = certificateLightService.convert(body)

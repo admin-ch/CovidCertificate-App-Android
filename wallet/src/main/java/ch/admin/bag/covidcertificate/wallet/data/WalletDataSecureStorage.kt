@@ -13,7 +13,7 @@ package ch.admin.bag.covidcertificate.wallet.data
 import android.content.Context
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.data.adapter.InstantJsonAdapter
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import com.squareup.moshi.Moshi
@@ -117,7 +117,7 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		return walletDataItemAdapter.fromJson(json) ?: emptyList()
 	}
 
-	fun storeCertificateLight(fullCertificate: DccHolder, certificateLightData: String, certificateLightQrCode: String) {
+	fun storeCertificateLight(fullCertificate: CertificateHolder, certificateLightData: String, certificateLightQrCode: String) {
 		val walletData = getWalletData().toMutableList()
 		val index = walletData.indexOfFirst {
 			it is WalletDataItem.CertificateWalletData && it.qrCodeData == fullCertificate.qrCodeData

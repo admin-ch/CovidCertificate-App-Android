@@ -33,21 +33,19 @@ import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
-import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.sdk.android.utils.*
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
-import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
-import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeCreationFragment
 import ch.admin.bag.covidcertificate.wallet.util.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -63,8 +61,8 @@ class CertificateDetailFragment : Fragment() {
 
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 
-		fun newInstance(certificate: DccHolder): CertificateDetailFragment = CertificateDetailFragment().apply {
-			arguments = bundleOf(ARG_CERTIFICATE to certificate)
+		fun newInstance(certificateHolder: CertificateHolder): CertificateDetailFragment = CertificateDetailFragment().apply {
+			arguments = bundleOf(ARG_CERTIFICATE to certificateHolder)
 		}
 	}
 
@@ -73,7 +71,7 @@ class CertificateDetailFragment : Fragment() {
 	private var _binding: FragmentCertificateDetailBinding? = null
 	private val binding get() = _binding!!
 
-	private lateinit var dccHolder: DccHolder
+	private lateinit var certificateHolder: CertificateHolder
 
 	private var hideDelayedJob: Job? = null
 
@@ -81,7 +79,7 @@ class CertificateDetailFragment : Fragment() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		dccHolder = (arguments?.getSerializable(ARG_CERTIFICATE) as? DccHolder)
+		certificateHolder = (arguments?.getSerializable(ARG_CERTIFICATE) as? CertificateHolder)
 			?: throw IllegalStateException("Certificate detail fragment created without Certificate!")
 	}
 
@@ -106,7 +104,7 @@ class CertificateDetailFragment : Fragment() {
 				.setTitle(R.string.delete_button)
 				.setMessage(R.string.wallet_certificate_delete_confirm_text)
 				.setPositiveButton(R.string.delete_button) { _, _ ->
-					certificatesViewModel.removeCertificate(dccHolder.qrCodeData)
+					certificatesViewModel.removeCertificate(certificateHolder.qrCodeData)
 					parentFragmentManager.popBackStack()
 				}
 				.setNegativeButton(R.string.cancel_button) { dialog, _ ->
@@ -122,12 +120,14 @@ class CertificateDetailFragment : Fragment() {
 			binding.scrollview.smoothScrollTo(0, 0)
 			isForceValidate = true
 			hideDelayedJob?.cancel()
-			certificatesViewModel.startVerification(dccHolder, delayInMillis = STATUS_LOAD_DELAY, isForceVerification = true)
+			certificatesViewModel.startVerification(certificateHolder, delayInMillis = STATUS_LOAD_DELAY, isForceVerification = true)
 		}
 	}
 
 	private fun updateToolbarTitle() {
-		val vaccinationEntry = dccHolder.euDGC?.vaccinations?.firstOrNull()
+		val dccCert = certificateHolder.certificate as? DccCert
+
+		val vaccinationEntry = dccCert?.vaccinations?.firstOrNull()
 		if (vaccinationEntry?.isNotFullyProtected() == true) {
 			binding.certificateDetailToolbar.setTitle(R.string.wallet_certificate_evidence_title)
 		} else {
@@ -141,7 +141,7 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun displayQrCode() {
-		val qrCodeBitmap = QrCode.renderToBitmap(dccHolder.qrCodeData)
+		val qrCodeBitmap = QrCode.renderToBitmap(certificateHolder.qrCodeData)
 		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
 		binding.certificateDetailQrCode.setImageDrawable(qrCodeDrawable)
 	}
@@ -151,34 +151,34 @@ class CertificateDetailFragment : Fragment() {
 		val adapter = CertificateDetailAdapter()
 		recyclerView.adapter = adapter
 
-		val euDgc = dccHolder.euDGC ?: return
-		val name = "${euDgc.person.familyName} ${euDgc.person.givenName}"
+		val personName = certificateHolder.certificate.getPersonName()
+		val name = "${personName.familyName} ${personName.givenName}"
 		binding.certificateDetailName.text = name
-		val dateOfBirth = euDgc.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = certificateHolder.certificate.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateDetailBirthdate.text = dateOfBirth
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)
 
-		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, dccHolder).buildAll()
+		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, certificateHolder).buildAll()
 		adapter.setItems(detailItems)
 	}
 
 	private fun setupStatusInfo() {
 		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { certificates ->
-			certificates.find { it.dccHolder?.qrCodeData == dccHolder.qrCodeData }?.let {
+			certificates.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
 				binding.certificateDetailButtonReverify.showAnimated()
 				updateStatusInfo(it.state)
 			}
 		}
 
-		certificatesViewModel.startVerification(dccHolder)
+		certificatesViewModel.startVerification(certificateHolder)
 	}
 
 	private fun setupConversionButtons() {
 		binding.certificateDetailConvertLightButton.setOnClickListener {
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, CertificateLightConversionFragment.newInstance(dccHolder))
+				.replace(R.id.fragment_container, CertificateLightConversionFragment.newInstance(certificateHolder))
 				.addToBackStack(CertificateLightConversionFragment::class.java.canonicalName)
 				.commit()
 		}
@@ -226,7 +226,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = true
 		binding.certificateDetailErrorCode.isVisible = false
-		showValidityDate(state.validityRange.validUntil, dccHolder.certType, state)
+		showValidityDate(state.validityRange?.validUntil, certificateHolder.certType, state)
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
 		updateConversionButtons(true)
 
@@ -247,7 +247,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 
 		binding.certificateDetailInfoValidityGroup.isVisible = state.signatureState == CheckSignatureState.SUCCESS
-		showValidityDate(state.validityRange?.validUntil, dccHolder.certType, state)
+		showValidityDate(state.validityRange?.validUntil, certificateHolder.certType, state)
 		updateConversionButtons(false)
 
 		val info = state.getValidationStatusString(context)

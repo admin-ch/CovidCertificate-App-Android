@@ -29,7 +29,8 @@ import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.light.ChLightCert
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -44,12 +45,12 @@ import kotlin.concurrent.fixedRateTimer
 class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_light_detail) {
 
 	companion object {
-		private const val ARG_DCC_HOLDER = "ARG_DCC_HOLDER"
+		private const val ARG_CERTIFICATE_HOLDER = "ARG_CERTIFICATE_HOLDER"
 		private const val ARG_QR_CODE_IMAGE = "ARG_QR_CODE_IMAGE"
 
-		fun newInstance(dccHolder: DccHolder, qrCodeImage: String) = CertificateLightDetailFragment().apply {
+		fun newInstance(certificateHolder: CertificateHolder, qrCodeImage: String) = CertificateLightDetailFragment().apply {
 			arguments = bundleOf(
-				ARG_DCC_HOLDER to dccHolder,
+				ARG_CERTIFICATE_HOLDER to certificateHolder,
 				ARG_QR_CODE_IMAGE to qrCodeImage
 			)
 		}
@@ -60,14 +61,14 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	private var _binding: FragmentCertificateLightDetailBinding? = null
 	private val binding get() = _binding!!
 
-	private lateinit var dccHolder: DccHolder
+	private lateinit var certificateHolder: CertificateHolder
 	private lateinit var qrCodeImage: String
 
 	private var validityTimer: Timer? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		dccHolder = (arguments?.getSerializable(ARG_DCC_HOLDER) as? DccHolder)
+		certificateHolder = (arguments?.getSerializable(ARG_CERTIFICATE_HOLDER) as? CertificateHolder)
 			?: throw IllegalArgumentException("Certificate light detail fragment created without a DccHolder!")
 		qrCodeImage = arguments?.getString(ARG_QR_CODE_IMAGE, null)
 			?: throw IllegalArgumentException("Certificate light detail fragment created without a qr code image!")
@@ -88,7 +89,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		setupStatusInfo()
 
 		binding.certificateLightDetailDeactivateButton.setOnClickListener {
-			certificateLightViewModel.deleteCertificateLight(dccHolder)
+			certificateLightViewModel.deleteCertificateLight(certificateHolder)
 			parentFragmentManager.popBackStack()
 		}
 	}
@@ -109,7 +110,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 
 	@SuppressLint("SetTextI18n")
 	private fun displayValidity() {
-		val expirationTime = dccHolder.expirationTime ?: return
+		val expirationTime = certificateHolder.expirationTime ?: return
 
 		validityTimer?.cancel()
 		validityTimer = fixedRateTimer(period = TimeUnit.SECONDS.toMillis(1L)) {
@@ -131,22 +132,22 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	}
 
 	private fun displayCertificateDetails() {
-		val dccLight = dccHolder.dccLight ?: return
+		val chLightCert = certificateHolder.certificate as? ChLightCert ?: return
 
-		val name = "${dccLight.person.familyName} ${dccLight.person.givenName}"
+		val name = "${chLightCert.person.familyName} ${chLightCert.person.givenName}"
 		binding.certificateLightDetailName.text = name
-		val dateOfBirth = dccLight.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = chLightCert.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateLightDetailBirthdate.text = dateOfBirth
 	}
 
 	private fun setupStatusInfo() {
 		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { certificates ->
-			certificates.find { it.dccHolder?.qrCodeData == dccHolder.qrCodeData }?.let {
+			certificates.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
 				updateStatusInfo(it.state)
 			}
 		}
 
-		certificatesViewModel.startVerification(dccHolder)
+		certificatesViewModel.startVerification(certificateHolder)
 	}
 
 	private fun updateStatusInfo(verificationState: VerificationState?) {

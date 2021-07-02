@@ -180,12 +180,11 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				binding.transferCodeContent.isVisible = false
 			}
 			is TransferCodeConversionState.CONVERTED -> {
-				val dccHolder = state.dccHolder
 				parentFragmentManager.popBackStack()
 
 				// If the transfer code was converted to a certificate, open the certificate detail without an animation
 				parentFragmentManager.beginTransaction()
-					.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(dccHolder))
+					.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(state.certificateHolder))
 					.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
 					.commit()
 			}

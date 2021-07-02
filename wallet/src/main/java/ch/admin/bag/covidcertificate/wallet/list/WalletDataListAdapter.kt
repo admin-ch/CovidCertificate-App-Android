@@ -13,11 +13,11 @@ package ch.admin.bag.covidcertificate.wallet.list
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 
 class WalletDataListAdapter(
-	private val onCertificateClicked: ((DccHolder) -> Unit)? = null,
+	private val onCertificateClicked: ((CertificateHolder) -> Unit)? = null,
 	private val onTransferCodeClicked: ((TransferCodeModel) -> Unit)? = null,
 	private val onWalletItemMovedListener: ((from: Int, to: Int) -> Unit)? = null,
 	private val onDragStartListener: ((RecyclerView.ViewHolder) -> Unit)? = null

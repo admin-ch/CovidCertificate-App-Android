@@ -15,7 +15,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ch.admin.bag.covidcertificate.common.qr.QrScanFragment
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.add.CertificateAddFragment
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentQrScanBinding
@@ -66,17 +69,25 @@ class WalletQrScanFragment : QrScanFragment() {
 		binding.qrCodeScannerButtonHow.setOnClickListener { showHowToScanFragment() }
 	}
 
-	override fun onDecodeSuccess(dccHolder: DccHolder) = showCertificationAddFragment(dccHolder)
+	override fun decodeQrCodeData(qrCodeData: String, onDecodeSuccess: () -> Unit, onDecodeError: (StateError) -> Unit) {
+		when (val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)) {
+			is DecodeState.SUCCESS -> {
+				onDecodeSuccess.invoke()
+				showCertificationAddFragment(decodeState.certificateHolder)
+			}
+			is DecodeState.ERROR -> onDecodeError.invoke(decodeState.error)
+		}
+	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
 	}
 
-	private fun showCertificationAddFragment(dccHolder: DccHolder) {
+	private fun showCertificationAddFragment(certificateHolder: CertificateHolder) {
 		parentFragmentManager.beginTransaction()
 			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-			.replace(R.id.fragment_container, CertificateAddFragment.newInstance(dccHolder, true))
+			.replace(R.id.fragment_container, CertificateAddFragment.newInstance(certificateHolder, true))
 			.addToBackStack(CertificateAddFragment::class.java.canonicalName)
 			.commit()
 	}

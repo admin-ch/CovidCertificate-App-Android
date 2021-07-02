@@ -21,7 +21,7 @@ fun VerificationState.getInvalidErrorCode(errorDelimiter: String = ", ", showNat
 
 	val nationalRulesState = nationalRulesState
 	if (showNationalErrors && nationalRulesState is CheckNationalRulesState.INVALID) {
-		errorCodes.add(nationalRulesState.nationalRulesError.errorCode)
+		nationalRulesState.nationalRulesError?.errorCode?.let { errorCodes.add(it) }
 	}
 	return errorCodes.joinToString(errorDelimiter)
 }

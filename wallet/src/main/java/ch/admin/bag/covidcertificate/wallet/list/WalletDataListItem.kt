@@ -15,7 +15,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
@@ -29,13 +29,13 @@ import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 sealed class WalletDataListItem {
 	data class VerifiedCeritificateItem(val verifiedCertificate: CertificatesViewModel.VerifiedCertificate) : WalletDataListItem() {
 
-		fun bindView(itemView: View, onCertificateClickListener: ((DccHolder) -> Unit)? = null) {
+		fun bindView(itemView: View, onCertificateClickListener: ((CertificateHolder) -> Unit)? = null) {
 			val binding = ItemCertificateListBinding.bind(itemView)
 			val state = verifiedCertificate.state
-			val certificate = verifiedCertificate.dccHolder
+			val certificate = verifiedCertificate.certificateHolder
 			val certType = certificate?.certType
 
-			val name = certificate?.euDGC?.let { "${it.person.familyName} ${it.person.givenName}" }
+			val name = certificate?.certificate?.getPersonName()?.let { "${it.familyName} ${it.givenName}" }
 			val qrAlpha = state.getQrAlpha()
 			binding.itemCertificateListName.text = name
 			binding.itemCertificateListName.alpha = qrAlpha
