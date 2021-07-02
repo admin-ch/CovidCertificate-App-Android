@@ -12,13 +12,13 @@ package ch.admin.bag.covidcertificate.wallet.transfercode.net
 
 import android.content.Context
 import ch.admin.bag.covidcertificate.common.BuildConfig
-import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.eval.data.Config
-import ch.admin.bag.covidcertificate.eval.net.CertificatePinning
-import ch.admin.bag.covidcertificate.eval.net.interceptor.JwsInterceptor
-import ch.admin.bag.covidcertificate.eval.net.interceptor.UserAgentInterceptor
-import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
-import ch.admin.bag.covidcertificate.eval.extensions.toBase64
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.data.Config
+import ch.admin.bag.covidcertificate.sdk.android.net.CertificatePinning
+import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.JwsInterceptor
+import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
+import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
+import ch.admin.bag.covidcertificate.sdk.core.extensions.toBase64
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.ConvertedCertificate
 import okhttp3.Cache

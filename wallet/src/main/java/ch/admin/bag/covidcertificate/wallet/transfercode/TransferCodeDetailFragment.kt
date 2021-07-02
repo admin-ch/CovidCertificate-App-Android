@@ -35,10 +35,10 @@ import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.views.rotate
-import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
-import ch.admin.bag.covidcertificate.eval.data.state.Error
-import ch.admin.bag.covidcertificate.eval.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
-import ch.admin.bag.covidcertificate.eval.extensions.prettyPrint
+import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrint
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -110,7 +110,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 		_binding = null
 	}
 
-	private fun setTransferCodeViewState(isRefreshing: Boolean, error: Error? = null) {
+	private fun setTransferCodeViewState(isRefreshing: Boolean, error: StateError? = null) {
 		val transferCode = transferCode ?: return
 		TransitionManager.beginDelayedTransition(binding.root)
 		when {
@@ -148,7 +148,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	}
 
 	@SuppressLint("SetTextI18n")
-	private fun showErrorOrLastUpdated(error: Error?) {
+	private fun showErrorOrLastUpdated(error: StateError?) {
 		val transferCode = transferCode ?: return
 		if (error != null) {
 			binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.orangeish))

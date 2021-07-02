@@ -14,10 +14,10 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
-import ch.admin.bag.covidcertificate.eval.models.CertType
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemCertificateListBinding

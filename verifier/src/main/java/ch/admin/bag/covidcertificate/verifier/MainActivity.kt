@@ -20,7 +20,7 @@ import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
-import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.verifier.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

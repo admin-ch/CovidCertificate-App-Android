@@ -14,8 +14,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 
 class DeeplinkViewModel(application: Application) : AndroidViewModel(application) {
 

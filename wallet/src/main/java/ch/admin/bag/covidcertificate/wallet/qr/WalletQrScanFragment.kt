@@ -15,7 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ch.admin.bag.covidcertificate.common.qr.QrScanFragment
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.add.CertificateAddFragment
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentQrScanBinding

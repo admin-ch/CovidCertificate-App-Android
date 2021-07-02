@@ -18,11 +18,11 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.common.util.SingleLiveEvent
-import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
-import ch.admin.bag.covidcertificate.eval.verification.CertificateVerificationTask
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.verification.CertificateVerificationTask
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem

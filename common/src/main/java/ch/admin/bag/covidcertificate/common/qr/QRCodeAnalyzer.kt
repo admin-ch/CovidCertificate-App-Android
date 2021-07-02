@@ -13,7 +13,7 @@ package ch.admin.bag.covidcertificate.common.qr
 import android.graphics.ImageFormat
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
-import ch.admin.bag.covidcertificate.eval.data.state.Error
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.BinaryBitmap
 import com.google.zxing.ChecksumException
@@ -74,7 +74,7 @@ class QRCodeAnalyzer(
 					e.printStackTrace()
 				}
 			} else {
-				onDecodeCertificate(DecodeCertificateState.ERROR(Error(QR_CODE_ERROR_WRONG_FORMAT)))
+				onDecodeCertificate(DecodeCertificateState.ERROR(StateError(QR_CODE_ERROR_WRONG_FORMAT)))
 			}
 		} catch (e: IllegalStateException) {
 			e.printStackTrace()
@@ -94,5 +94,5 @@ class QRCodeAnalyzer(
 sealed class DecodeCertificateState {
 	data class SUCCESS(val qrCode: String?) : DecodeCertificateState()
 	object SCANNING : DecodeCertificateState()
-	data class ERROR(val error: Error) : DecodeCertificateState()
+	data class ERROR(val error: StateError) : DecodeCertificateState()
 }
