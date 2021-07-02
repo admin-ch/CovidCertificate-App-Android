@@ -5,7 +5,6 @@ import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.databinding.ItemVerificationStatusBinding
 import ch.admin.bag.covidcertificate.verifier.databinding.ItemVerificationStatusInfoBinding
 

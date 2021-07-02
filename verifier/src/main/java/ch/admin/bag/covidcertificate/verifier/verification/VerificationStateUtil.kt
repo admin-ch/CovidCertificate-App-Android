@@ -17,11 +17,11 @@ import androidx.annotation.DrawableRes
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
-import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
-import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
-import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 
 /**
  * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
@@ -47,7 +47,7 @@ fun VerificationState.getVerificationStateItems(context: Context) : List<Verific
 		items.add(InfoItem(getStatusInformationString(context), getInfoIconColor(), getStatusInformationBubbleColor(), showRetry))
 	}
 
-	return items;
+	return items
 }
 
 fun VerificationState.getValidationStatusStrings(context: Context): List<SpannableString> {

@@ -10,7 +10,7 @@
 
 package ch.admin.bag.covidcertificate.wallet.homescreen.pager
 
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 
 sealed class WalletItem(open val id: Int) {

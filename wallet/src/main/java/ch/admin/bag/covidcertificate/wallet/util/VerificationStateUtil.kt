@@ -15,11 +15,11 @@ import android.text.SpannableString
 import androidx.annotation.ColorRes
 import ch.admin.bag.covidcertificate.common.util.addBoldDate
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
-import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
-import ch.admin.bag.covidcertificate.eval.data.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.eval.data.state.CheckRevocationState
-import ch.admin.bag.covidcertificate.eval.data.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.eval.data.state.VerificationState
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.R
 
 const val DATE_REPLACEMENT_STRING = "{DATE}"

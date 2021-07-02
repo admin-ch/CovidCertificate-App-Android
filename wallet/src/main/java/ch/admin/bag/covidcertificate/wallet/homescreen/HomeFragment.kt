@@ -39,9 +39,9 @@ import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.rotate
 import ch.admin.bag.covidcertificate.common.views.showAnimated
-import ch.admin.bag.covidcertificate.eval.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.eval.data.state.DecodeState
-import ch.admin.bag.covidcertificate.eval.models.DccHolder
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.DeeplinkViewModel

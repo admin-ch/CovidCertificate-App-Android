@@ -18,7 +18,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.transition.TransitionManager
-import ch.admin.bag.covidcertificate.eval.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeCreationBinding
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationState

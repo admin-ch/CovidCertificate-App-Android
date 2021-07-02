@@ -11,8 +11,8 @@
 package ch.admin.bag.covidcertificate.wallet.data
 
 import android.content.Context
-import ch.admin.bag.covidcertificate.eval.utils.EncryptedSharedPreferencesUtil
-import ch.admin.bag.covidcertificate.eval.utils.SingletonHolder
+import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
+import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.wallet.data.adapter.InstantJsonAdapter
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
