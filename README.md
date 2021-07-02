@@ -17,6 +17,9 @@ The certificates are kept and checked locally on the user's phone.
 <a href='https://play.google.com/store/apps/details?id=ch.admin.bag.covidcertificate.wallet'>
 <img alt='Get it on Google Play' src='badges/googleplay.png' width="30%"/>
 </a>
+<a href='https://f-droid.org/packages/ch.admin.bag.covidcertificate.wallet'>
+<img alt='Get it on F-Droid' src='badges/fdroid.png' width="30%"/>
+</a>
 <a href='https://appgallery.huawei.com/#/app/C104434571'>
 <img alt='Explore it on AppGallery' src='badges/appgallery.png' width="30%"/>
 </a>
@@ -38,6 +41,9 @@ The validation is executed locally on the phone and no information of the scanne
 <p align="verticalcenter">
 <a href='https://play.google.com/store/apps/details?id=ch.admin.bag.covidcertificate.verifier'>
 <img alt='Get it on Google Play' src='badges/googleplay.png' width="30%"/>
+</a>
+<a href='https://f-droid.org/packages/ch.admin.bag.covidcertificate.verifier'>
+<img alt='Get it on F-Droid' src='badges/fdroid.png' width="30%"/>
 </a>
 <a href='https://appgallery.huawei.com/#/app/C104435637'>
 <img alt='Explore it on AppGallery' src='badges/appgallery.png' width="30%"/>
