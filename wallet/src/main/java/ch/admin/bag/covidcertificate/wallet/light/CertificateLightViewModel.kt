@@ -62,7 +62,12 @@ class CertificateLightViewModel(application: Application) : AndroidViewModel(app
 					when (decodeState) {
 						is DecodeState.SUCCESS -> {
 							walletDataStorage.storeCertificateLight(dccHolder, decodeState.dccHolder.qrCodeData, response.qrcode)
-							conversionStateMutableLiveData.postValue(CertificateLightConversionState.SUCCESS(decodeState.dccHolder))
+							conversionStateMutableLiveData.postValue(
+								CertificateLightConversionState.SUCCESS(
+									decodeState.dccHolder,
+									response.qrcode
+								)
+							)
 						}
 						is DecodeState.ERROR -> {
 							conversionStateMutableLiveData.postValue(CertificateLightConversionState.ERROR(decodeState.error))
@@ -75,6 +80,10 @@ class CertificateLightViewModel(application: Application) : AndroidViewModel(app
 				checkIfOffline()
 			}
 		}
+	}
+
+	fun deleteCertificateLight(dccHolder: DccHolder) {
+		walletDataStorage.deleteCertificateLight(dccHolder.qrCodeData)
 	}
 
 	private fun checkIfOffline() {

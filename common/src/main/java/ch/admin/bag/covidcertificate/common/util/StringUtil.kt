@@ -38,6 +38,24 @@ fun String.makeSubStringBold(
 		}
 	}
 
+fun String.makeSubStringsBold(
+	subStrings: List<String>,
+	startIndex: Int = 0,
+	ignoreCase: Boolean = true
+): SpannableString = SpannableString(this).apply {
+	subStrings.forEach {
+		val indexSubString = this@makeSubStringsBold.indexOf(it, startIndex, ignoreCase)
+		if (indexSubString >= 0) {
+			setSpan(
+				StyleSpan(Typeface.BOLD),
+				indexSubString,
+				indexSubString + it.length,
+				SpannableString.SPAN_INCLUSIVE_EXCLUSIVE
+			)
+		}
+	}
+}
+
 fun String.addBoldDate(dateReplacementString: String, date: LocalDateTime): SpannableString {
 	val dateString = date.format(DEFAULT_DISPLAY_DATE_FORMATTER)
 	return SpannableString(this.replace(dateReplacementString, dateString)).apply {

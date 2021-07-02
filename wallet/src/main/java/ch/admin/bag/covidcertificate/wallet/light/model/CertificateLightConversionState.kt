@@ -15,6 +15,6 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 
 sealed class CertificateLightConversionState {
 	object LOADING : CertificateLightConversionState()
-	data class SUCCESS(val dccHolder: DccHolder) : CertificateLightConversionState()
+	data class SUCCESS(val dccHolder: DccHolder, val qrCodeImage: String) : CertificateLightConversionState()
 	data class ERROR(val error: StateError) : CertificateLightConversionState()
 }

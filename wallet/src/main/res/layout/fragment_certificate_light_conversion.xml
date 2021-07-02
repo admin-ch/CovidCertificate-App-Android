@@ -81,13 +81,21 @@
 								android:text="@string/wallet_certificate_light_detail_title" />
 
 							<TextView
-								android:id="@+id/certificate_light_conversion_info"
 								style="@style/CovidCertificate.Text"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
 								android:layout_marginHorizontal="@dimen/spacing_very_large"
 								android:layout_marginTop="@dimen/spacing_huge"
-								android:text="@string/wallet_certificate_light_detail_text" />
+								android:text="@string/wallet_certificate_light_detail_text_1" />
+
+							<TextView
+								android:id="@+id/certificate_light_conversion_info"
+								style="@style/CovidCertificate.Text"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginHorizontal="@dimen/spacing_very_large"
+								android:layout_marginTop="@dimen/spacing_large"
+								android:text="@string/wallet_certificate_light_detail_text_2" />
 
 							<LinearLayout
 								android:layout_width="match_parent"

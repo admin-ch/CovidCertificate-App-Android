@@ -18,8 +18,10 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
+import ch.admin.bag.covidcertificate.common.util.makeSubStringsBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
 import ch.admin.bag.covidcertificate.wallet.R
@@ -45,7 +47,7 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		dccHolder = (arguments?.getSerializable(ARG_DCC_HOLDER) as? DccHolder)
-			?: throw IllegalStateException("Certificate light fragment created without a DccHolder!")
+			?: throw IllegalArgumentException("Certificate light fragment created without a DccHolder!")
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -55,6 +57,9 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+
+		setConversionInfo()
 
 		viewModel.conversionState.observe(viewLifecycleOwner) { onConversionStateChanged(it) }
 
@@ -67,6 +72,12 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 		_binding = null
 	}
 
+	private fun setConversionInfo() {
+		val text = getString(R.string.wallet_certificate_light_detail_text_2)
+		val boldParts = getString(R.string.wallet_certificate_light_detail_text_2_bold)
+		binding.certificateLightConversionInfo.text = text.makeSubStringsBold(boldParts.split(" "))
+	}
+
 	@SuppressLint("SetTextI18n")
 	private fun onConversionStateChanged(state: CertificateLightConversionState) {
 		when (state) {
@@ -75,12 +86,17 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 				binding.certificateLightConversionContent.isVisible = false
 			}
 			is CertificateLightConversionState.SUCCESS -> {
-				binding.certificateLightConversionLoadingIndicator.isVisible = false
-				binding.certificateLightConversionContent.isVisible = true
-				binding.certificateLightConversionIntroLayout.isVisible = true
-				binding.certificateLightConversionErrorLayout.isVisible = false
-
-				// TODO Forward to certificate light detail fragment and pop back to home
+				// When the certificate is converted successfully, pop the backstack back to the home screen and open the
+				// certificate light detail fragment without an animation
+				parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+				parentFragmentManager.beginTransaction()
+					.setCustomAnimations(0, R.anim.slide_exit, 0, R.anim.slide_pop_exit)
+					.replace(
+						R.id.fragment_container,
+						CertificateLightDetailFragment.newInstance(state.dccHolder, state.qrCodeImage)
+					)
+					.addToBackStack(CertificateLightDetailFragment::class.java.canonicalName)
+					.commit()
 			}
 			is CertificateLightConversionState.ERROR -> {
 				binding.certificateLightConversionLoadingIndicator.isVisible = false

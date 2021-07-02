@@ -825,11 +825,6 @@ Per poter aggiornare gli elenchi di verifica, l’app deve essere aperta e colle
     <string name="wallet_certificate_light_detail_title">"Was ist ein 
 Zertifikat Light?"</string>
 
-    <!-- Wallet: Zertifikat Light Erklärungstext -->
-    <string name="wallet_certificate_light_detail_text">"Wenn Sie das Zertifikat Light aktivieren, wird aus den Daten Ihres Covid-Zertifikats ein neuer QR-Code erstellt, der keine Gesundheitsdaten enthält.
-
-Während das normale Covid-Zertifikat im Rahmen seiner Gültigkeit ohne Einschränkungen sowohl in der Schweiz als auch in der EU/EFTA verwendet werden kann, ist der Einsatz des Zertifikats Light nur in der Schweiz möglich. Aus Datenschutzgründen muss das Zertifikat Light nach 48 Stunden erneut aktiviert werden. Es bringt keine zusätzlichen Rechte gegenüber dem normalen Covid-Zertifikat."</string>
-
     <!-- Wallet: Zertifikat Light Summary Titel -->
     <string name="wallet_certificate_light_detail_summary_title">"Zertifikat Light"</string>
 
@@ -878,11 +873,11 @@ konnte nicht aktiviert werden"</string>
     <string name="wallet_certificate_export_button">"Exportieren"</string>
 
     <!-- Wallet: Zertifikat Export Error Title -->
-    <string name="wallet_certificate_export_error_title">"PDF konnte nicht
+    <string name="wallet_certificate_export_detail_error_title">"PDF konnte nicht
 erstellt werden"</string>
 
     <!-- Wallet: Zertifikat Export Netzwerk Error -->
-    <string name="wallet_certificate_export_network_error">"Um das PDF erstellen zu können, muss die App online sein."</string>
+    <string name="wallet_certificate_export_detail_network_error_text">"Um das PDF erstellen zu können, muss die App online sein."</string>
     <string name="accessibility_qr_code">"codice QR"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation Netzwerk Fehler Title -->
@@ -896,4 +891,34 @@ erstellt werden"</string>
 
     <!-- Wallet: Zertifikat Light Titel -->
     <string name="wallet_certificate_light_title">"Zertifikat Light"</string>
+
+    <!-- Wallet: Zertifikat Exportieren Detail Title -->
+    <string name="wallet_certificate_export_detail_title">"Covid-Zertifikat exportieren"</string>
+
+    <!-- Wallet: Zertifikat Exportieren Summary 1 -->
+    <string name="wallet_certificate_export_detail_summary_1">"Aus den Daten Ihres Covid-Zertifikats wird ein PDF erstellt, das Sie drucken oder teilen können."</string>
+
+    <!-- Wallet: Zertifikat Exportieren Summary 2 -->
+    <string name="wallet_certificate_export_detail_summary_2">"Die Erstellung des PDF-Dokuments erfolgt online."</string>
+
+    <!-- Wallet: Zertifikat Exportieren Datail Export Button -->
+    <string name="wallet_certificate_export_detail_export_button">"Exportieren"</string>
+
+    <!-- Wallet: Zertifikat Exportieren Datail Netzwerk Fehler -->
+    <string name="wallet_certificate_export_detail_network_error_title">"Keine Verbindung zum Internet"</string>
+
+    <!-- Wallet: Zertifikat Exportieren Datail General Fehler -->
+    <string name="wallet_certificate_export_detail_general_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
+
+    <!-- Wallet: Zertifikat Exportieren Datail General Fehler Text -->
+    <string name="wallet_certificate_export_detail_general_error_text">"Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut."</string>
+
+    <!-- Wallet: Zertifikat Light Erklärungstext 1 -->
+    <string name="wallet_certificate_light_detail_text_1">"Wenn Sie das Zertifikat Light aktivieren, wird aus den Daten Ihres Covid-Zertifikats ein neuer QR-Code erstellt, der keine Gesundheitsdaten enthält."</string>
+
+    <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
+    <string name="wallet_certificate_light_detail_text_2">"Während das normale Covid-Zertifikat im Rahmen seiner Gültigkeit ohne Einschränkungen sowohl in der Schweiz als auch in der EU/EFTA verwendet werden kann, ist der Einsatz des Zertifikats Light nur in der Schweiz möglich. Aus Datenschutzgründen muss das Zertifikat Light nach 48 Stunden erneut aktiviert werden. Es bringt keine zusätzlichen Rechte gegenüber dem normalen Covid-Zertifikat."</string>
+
+    <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
+    <string name="wallet_certificate_light_detail_text_2_bold">"nur muss keine"</string>
 </resources>

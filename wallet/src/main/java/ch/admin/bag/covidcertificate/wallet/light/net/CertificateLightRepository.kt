@@ -60,7 +60,9 @@ class CertificateLightRepository private constructor(spec: CertificateLightSpec)
 		if (dccHolder.isLightCertificate()) return null
 
 		val body = CertificateLightRequestBody(dccHolder.qrCodeData)
-		val response = certificateLightService.convert(body)
+
+		val response = certificateLightService.mockConvert("https://sa4sz7kf56.execute-api.eu-central-1.amazonaws.com/default/test-rust", body)
+//		val response = certificateLightService.convert(body)
 
 		return if (response.isSuccessful) response.body() else null
 	}

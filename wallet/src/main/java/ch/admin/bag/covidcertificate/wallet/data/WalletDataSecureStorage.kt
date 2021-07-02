@@ -119,12 +119,28 @@ class WalletDataSecureStorage private constructor(context: Context) {
 
 	fun storeCertificateLight(fullCertificate: DccHolder, certificateLightData: String, certificateLightQrCode: String) {
 		val walletData = getWalletData().toMutableList()
-		val index =
-			walletData.indexOfFirst { it is WalletDataItem.CertificateWalletData && it.qrCodeData == fullCertificate.qrCodeData }
+		val index = walletData.indexOfFirst {
+			it is WalletDataItem.CertificateWalletData && it.qrCodeData == fullCertificate.qrCodeData
+		}
+
 		if (index >= 0) {
 			val item = walletData.removeAt(index) as WalletDataItem.CertificateWalletData
 			val updatedItem =
 				item.copy(certificateLightData = certificateLightData, certificateLightQrCode = certificateLightQrCode)
+			walletData.add(index, updatedItem)
+			updateWalletData(walletData)
+		}
+	}
+
+	fun deleteCertificateLight(qrCodeData: String) {
+		val walletData = getWalletData().toMutableList()
+		val index = walletData.indexOfFirst {
+			it is WalletDataItem.CertificateWalletData && (it.qrCodeData == qrCodeData || it.certificateLightData == qrCodeData)
+		}
+
+		if (index >= 0) {
+			val item = walletData.removeAt(index) as WalletDataItem.CertificateWalletData
+			val updatedItem = item.copy(certificateLightData = null, certificateLightQrCode = null)
 			walletData.add(index, updatedItem)
 			updateWalletData(walletData)
 		}
