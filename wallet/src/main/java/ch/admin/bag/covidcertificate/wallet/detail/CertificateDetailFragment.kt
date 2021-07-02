@@ -28,7 +28,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.util.makeBold
-import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
@@ -112,7 +111,6 @@ class CertificateDetailFragment : Fragment() {
 				}
 				.setCancelable(true)
 				.create()
-				.apply { window?.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR) }
 				.show()
 		}
 

@@ -18,11 +18,9 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
-import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityMainBinding
@@ -62,8 +60,6 @@ class MainActivity : AppCompatActivity() {
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		val view = binding.root
 		setContentView(view)
-
-		window.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR)
 
 		if (savedInstanceState == null) {
 			val onboardingCompleted: Boolean = secureStorage.getOnboardingCompleted()
@@ -118,7 +114,6 @@ class MainActivity : AppCompatActivity() {
 				.setPositiveButton(R.string.force_update_button, null)
 				.setCancelable(false)
 				.create()
-				.apply { window?.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR) }
 			forceUpdateDialog.setOnShowListener {
 				forceUpdateDialog.getButton(DialogInterface.BUTTON_POSITIVE)
 					.setOnClickListener {
