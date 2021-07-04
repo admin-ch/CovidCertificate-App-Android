@@ -23,18 +23,16 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
+import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.light.ChLightCert
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
-import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightDetailBinding
+import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightPagerBinding
 import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
 import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 import java.time.Instant
@@ -42,55 +40,66 @@ import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.concurrent.fixedRateTimer
 
-class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_light_detail) {
+class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_light_pager) {
 
 	companion object {
-		private const val ARG_CERTIFICATE_HOLDER = "ARG_CERTIFICATE_HOLDER"
+		private const val ARG_QR_CODE_DATA = "ARG_QR_CODE_DATA"
 		private const val ARG_QR_CODE_IMAGE = "ARG_QR_CODE_IMAGE"
+		private const val ARG_CERTIFICATE_HOLDER = "ARG_CERTIFICATE_HOLDER"
 
-		fun newInstance(certificateHolder: CertificateHolder, qrCodeImage: String) = CertificateLightDetailFragment().apply {
-			arguments = bundleOf(
-				ARG_CERTIFICATE_HOLDER to certificateHolder,
-				ARG_QR_CODE_IMAGE to qrCodeImage
-			)
-		}
+		fun newInstance(qrCodeData: String, qrCodeImage: String, certificateHolder: CertificateHolder) =
+			CertificateLightPagerFragment().apply {
+				arguments = bundleOf(
+					ARG_QR_CODE_DATA to qrCodeData,
+					ARG_QR_CODE_IMAGE to qrCodeImage,
+					ARG_CERTIFICATE_HOLDER to certificateHolder
+				)
+			}
 	}
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
-	private val certificateLightViewModel by viewModels<CertificateLightViewModel>()
-	private var _binding: FragmentCertificateLightDetailBinding? = null
+
+	private var _binding: FragmentCertificateLightPagerBinding? = null
 	private val binding get() = _binding!!
 
-	private lateinit var certificateHolder: CertificateHolder
+	private lateinit var qrCodeData: String
 	private lateinit var qrCodeImage: String
+	private lateinit var certificateHolder: CertificateHolder
 
 	private var validityTimer: Timer? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		certificateHolder = (arguments?.getSerializable(ARG_CERTIFICATE_HOLDER) as? CertificateHolder)
-			?: throw IllegalArgumentException("Certificate light detail fragment created without a DccHolder!")
-		qrCodeImage = arguments?.getString(ARG_QR_CODE_IMAGE, null)
-			?: throw IllegalArgumentException("Certificate light detail fragment created without a qr code image!")
+
+		qrCodeData = arguments?.getString(ARG_QR_CODE_DATA)
+			?: throw IllegalArgumentException("CertificateLightPagerFragment called without QR code data")
+		qrCodeImage = arguments?.getString(ARG_QR_CODE_IMAGE)
+			?: throw IllegalArgumentException("CertificateLightPagerFragment called without QR code image")
+		certificateHolder = arguments?.getSerializable(ARG_CERTIFICATE_HOLDER) as? CertificateHolder
+			?: throw IllegalArgumentException("CertificateLightPagerFragment called without certificate holder")
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		_binding = FragmentCertificateLightDetailBinding.inflate(inflater, container, false)
+		_binding = FragmentCertificateLightPagerBinding.inflate(inflater, container, false)
 		return binding.root
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+		binding.certificatePageCard.setCutOutCardBackground()
+
+		val name = certificateHolder.certificate.getPersonName().let { "${it.familyName} ${it.givenName}" }
+		binding.certificatePageName.text = name
+		val dateOfBirth = certificateHolder.certificate.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
+		binding.certificatePageBirthdate.text = dateOfBirth
 
 		displayQrCode()
 		displayValidity()
-		displayCertificateDetails()
+
 		setupStatusInfo()
 
-		binding.certificateLightDetailDeactivateButton.setOnClickListener {
-			certificateLightViewModel.deleteCertificateLight(certificateHolder)
-			parentFragmentManager.popBackStack()
+		binding.certificatePageCard.setOnClickListener {
+			certificatesViewModel.onCertificateLightClicked(qrCodeImage, certificateHolder)
 		}
 	}
 
@@ -105,7 +114,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		val decoded = qrCodeImage.fromBase64()
 		val qrCodeBitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
 		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
-		binding.certificateLightDetailQrCode.setImageDrawable(qrCodeDrawable)
+		binding.certificatePageQrCode.setImageDrawable(qrCodeDrawable)
 	}
 
 	@SuppressLint("SetTextI18n")
@@ -121,7 +130,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 			val seconds = remainingTimeInSeconds % 60
 
 			view?.post {
-				binding.certificateLightDetailValidity.text = "%02d:%02d:%02d".format(hours, minutes, seconds)
+				binding.certificateLightPageValidity.text = "%02d:%02d:%02d".format(hours, minutes, seconds)
 			}
 
 			if (remainingTimeInSeconds <= 0) {
@@ -129,15 +138,6 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 				validityTimer = null
 			}
 		}
-	}
-
-	private fun displayCertificateDetails() {
-		val chLightCert = certificateHolder.certificate as? ChLightCert ?: return
-
-		val name = "${chLightCert.person.familyName} ${chLightCert.person.givenName}"
-		binding.certificateLightDetailName.text = name
-		val dateOfBirth = chLightCert.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
-		binding.certificateLightDetailBirthdate.text = dateOfBirth
 	}
 
 	private fun setupStatusInfo() {
@@ -163,20 +163,20 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	private fun displayLoadingState() {
 		showLoadingIndicator(true)
 		setVerificationStateBubbleColor(R.color.greyish)
-		binding.certificateLightDetailVerificationStatus.setText(R.string.wallet_certificate_verifying)
+		binding.certificatePageStatusInfo.setText(R.string.wallet_certificate_verifying)
 
 	}
 
 	private fun displaySuccessState() {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.blueish)
-		binding.certificateLightDetailVerificationStatus.setText(R.string.verifier_verify_success_certificate_light_info)
+		binding.certificatePageStatusInfo.setText(R.string.verifier_verify_success_certificate_light_info)
 	}
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.greyish)
-		binding.certificateLightDetailVerificationStatus.text = state.getValidationStatusString(requireContext())
+		binding.certificatePageStatusInfo.text = state.getValidationStatusString(requireContext())
 
 	}
 
@@ -184,20 +184,20 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.greyish)
 		if (state.isOfflineMode()) {
-			binding.certificateLightDetailVerificationStatus.text = getString(R.string.wallet_homescreen_offline).makeBold()
+			binding.certificatePageStatusInfo.text = getString(R.string.wallet_homescreen_offline).makeBold()
 		} else {
-			binding.certificateLightDetailVerificationStatus.text = getString(R.string.wallet_homescreen_network_error).makeBold()
+			binding.certificatePageStatusInfo.text = getString(R.string.wallet_homescreen_network_error).makeBold()
 		}
 	}
 
 	private fun showLoadingIndicator(isLoading: Boolean) {
-		binding.certificateLightDetailStatusLoading.isVisible = isLoading
-		binding.certificateLightDetailStatusIcon.isVisible = !isLoading
+		binding.certificatePageStatusLoading.isVisible = isLoading
+		binding.certificatePageStatusIcon.isVisible = !isLoading
 	}
 
 	private fun setVerificationStateBubbleColor(@ColorRes colorId: Int) {
 		val color = ContextCompat.getColor(requireContext(), colorId)
-		binding.certificateLightDetailVerificationStatus.animateBackgroundTintColor(color)
+		binding.certificatePageStatusInfo.animateBackgroundTintColor(color)
 	}
 
 }

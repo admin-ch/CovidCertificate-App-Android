@@ -81,7 +81,7 @@ class CertificatesListFragment : Fragment() {
 
 			val adapterItems = walletItems.map {
 				when (it) {
-					is WalletItem.DccHolderItem -> WalletDataListItem.VerifiedCeritificateItem(
+					is WalletItem.CertificateHolderItem -> WalletDataListItem.VerifiedCeritificateItem(
 						CertificatesViewModel.VerifiedCertificate(
 							it.qrCodeData,
 							it.certificateHolder,
