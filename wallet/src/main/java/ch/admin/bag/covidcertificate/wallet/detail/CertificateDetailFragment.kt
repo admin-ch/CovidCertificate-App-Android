@@ -29,6 +29,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
@@ -367,13 +368,22 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun updateConversionButtons(enabled: Boolean) {
-		binding.apply {
-			certificateDetailConvertLightButton.isEnabled = enabled
-			certificateDetailConvertLightLabel.isEnabled = enabled
-			certificateDetailConvertLightArrow.isVisible = enabled
-			certificateDetailConvertPdfButton.isEnabled = enabled
-			certificateDetailConvertPdfLabel.isEnabled = enabled
-			certificateDetailConvertPdfArrow.isVisible = enabled
+		val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
+
+		if (currentConfig?.lightCertificateActive == true) {
+			binding.certificateDetailConvertLightButton.isVisible = true
+			binding.certificateDetailConvertLightButton.isEnabled = enabled
+			binding.certificateDetailConvertLightArrow.isVisible = enabled
+		} else {
+			binding.certificateDetailConvertLightButton.isVisible = false
+		}
+
+		if (currentConfig?.pdfGenerationActive == true) {
+			binding.certificateDetailConvertPdfButton.isVisible = true
+			binding.certificateDetailConvertPdfButton.isEnabled = enabled
+			binding.certificateDetailConvertPdfArrow.isVisible = enabled
+		} else {
+			binding.certificateDetailConvertPdfButton.isVisible = false
 		}
 	}
 
