@@ -116,7 +116,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		validityTimer = fixedRateTimer(period = TimeUnit.SECONDS.toMillis(1L)) {
 			val now = Instant.now()
 			val remainingTimeInSeconds = expirationTime.epochSecond - now.epochSecond
-			val hours = remainingTimeInSeconds / 3600 % 24
+			val hours = remainingTimeInSeconds / 3600
 			val minutes = remainingTimeInSeconds / 60 % 60
 			val seconds = remainingTimeInSeconds % 60
 

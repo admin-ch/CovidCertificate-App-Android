@@ -25,6 +25,7 @@ import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatesListBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
+import ch.admin.bag.covidcertificate.wallet.light.CertificateLightDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 
@@ -63,7 +64,7 @@ class CertificatesListFragment : Fragment() {
 		itemTouchHelper.attachToRecyclerView(recyclerView)
 
 		val adapter = WalletDataListAdapter(
-			onCertificateClicked = { openCertificateDetails(it) },
+			onCertificateClicked = { openCertificateDetails(it.first, it.second) },
 			onTransferCodeClicked = { openTransferCodeDetails(it) },
 			onWalletItemMovedListener = { from, to -> certificatesViewModel.moveWalletDataItem(from, to) },
 			onDragStartListener = { itemTouchHelper.startDrag(it) }
@@ -82,11 +83,8 @@ class CertificatesListFragment : Fragment() {
 			val adapterItems = walletItems.map {
 				when (it) {
 					is WalletItem.CertificateHolderItem -> WalletDataListItem.VerifiedCeritificateItem(
-						CertificatesViewModel.VerifiedCertificate(
-							it.qrCodeData,
-							it.certificateHolder,
-							VerificationState.LOADING
-						)
+						CertificatesViewModel.VerifiedCertificate(it.qrCodeData, it.certificateHolder, VerificationState.LOADING),
+						it.qrCodeImage
 					)
 					is WalletItem.TransferCodeHolderItem -> WalletDataListItem.TransferCodeItem(it.transferCode)
 				}
@@ -114,12 +112,20 @@ class CertificatesListFragment : Fragment() {
 		certificatesViewModel.loadWalletData()
 	}
 
-	private fun openCertificateDetails(certificateHolder: CertificateHolder) {
-		parentFragmentManager.beginTransaction()
-			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-			.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(certificateHolder))
-			.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
-			.commit()
+	private fun openCertificateDetails(certificateHolder: CertificateHolder, qrCodeImage: String?) {
+		if (certificateHolder.containsChLightCert() && qrCodeImage != null) {
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, CertificateLightDetailFragment.newInstance(certificateHolder, qrCodeImage))
+				.addToBackStack(CertificateLightDetailFragment::class.java.canonicalName)
+				.commit()
+		} else {
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(certificateHolder))
+				.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
+				.commit()
+		}
 	}
 
 	private fun openTransferCodeDetails(transferCode: TransferCodeModel) {

@@ -17,7 +17,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolde
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 
 class WalletDataListAdapter(
-	private val onCertificateClicked: ((CertificateHolder) -> Unit)? = null,
+	private val onCertificateClicked: ((Pair<CertificateHolder, String?>) -> Unit)? = null,
 	private val onTransferCodeClicked: ((TransferCodeModel) -> Unit)? = null,
 	private val onWalletItemMovedListener: ((from: Int, to: Int) -> Unit)? = null,
 	private val onDragStartListener: ((RecyclerView.ViewHolder) -> Unit)? = null
