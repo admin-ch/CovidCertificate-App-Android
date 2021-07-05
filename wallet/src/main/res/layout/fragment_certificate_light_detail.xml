@@ -59,6 +59,7 @@
 					android:layout_gravity="center"
 					android:layout_marginTop="@dimen/spacing_large"
 					android:background="@drawable/bg_certificate_bubble"
+					android:fontFeatureSettings="tnum"
 					android:paddingHorizontal="@dimen/spacing_small"
 					android:paddingVertical="3dp"
 					tools:text="47:59:59" />

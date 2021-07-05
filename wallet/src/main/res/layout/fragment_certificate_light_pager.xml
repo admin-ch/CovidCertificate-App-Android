@@ -60,6 +60,7 @@
 			android:layout_marginTop="@dimen/spacing_small"
 			android:background="@drawable/bg_certificate_bubble"
 			android:paddingHorizontal="@dimen/spacing_small"
+			android:fontFeatureSettings="tnum"
 			android:paddingVertical="3dp"
 			app:layout_constraintBottom_toTopOf="@+id/certificate_page_name"
 			app:layout_constraintEnd_toEndOf="parent"
