@@ -10,8 +10,10 @@
 
 package ch.admin.bag.covidcertificate.wallet.detail
 
+import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.drawable.BitmapDrawable
+import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
 import android.view.LayoutInflater
@@ -25,6 +27,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.util.makeBold
@@ -46,11 +49,13 @@ import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
+import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.util.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import okhttp3.MediaType
 import java.time.LocalDateTime
 
 class CertificateDetailFragment : Fragment() {
@@ -81,6 +86,17 @@ class CertificateDetailFragment : Fragment() {
 		super.onCreate(savedInstanceState)
 		certificateHolder = (arguments?.getSerializable(ARG_CERTIFICATE) as? CertificateHolder)
 			?: throw IllegalStateException("Certificate detail fragment created without Certificate!")
+
+		setFragmentResultListener(PdfExportFragment.REQUEST_KEY_PDF_EXPORT) { _, bundle ->
+			bundle.getParcelable<Uri>(PdfExportFragment.RESULT_KEY_PDF_URI)?.let { uri ->
+				val shareIntent = Intent(Intent.ACTION_SEND).apply {
+					type = "application/pdf"
+					putExtra(Intent.EXTRA_SUBJECT, getString(R.string.wallet_certificate))
+					putExtra(Intent.EXTRA_STREAM, uri)
+				}
+				startActivity(shareIntent)
+			}
+		}
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -120,7 +136,11 @@ class CertificateDetailFragment : Fragment() {
 			binding.scrollview.smoothScrollTo(0, 0)
 			isForceValidate = true
 			hideDelayedJob?.cancel()
-			certificatesViewModel.startVerification(certificateHolder, delayInMillis = STATUS_LOAD_DELAY, isForceVerification = true)
+			certificatesViewModel.startVerification(
+				certificateHolder,
+				delayInMillis = STATUS_LOAD_DELAY,
+				isForceVerification = true
+			)
 		}
 	}
 
@@ -184,7 +204,11 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		binding.certificateDetailConvertPdfButton.setOnClickListener {
-			// TODO Show PDF export fragment
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, PdfExportFragment.newInstance(certificateHolder))
+				.addToBackStack(PdfExportFragment::class.java.canonicalName)
+				.commit()
 		}
 	}
 
