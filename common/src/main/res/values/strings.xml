@@ -547,65 +547,66 @@ Before travelling, please check the applicable public health measures and relate
     <!-- Wallet: Transfer Code Onboarding So funktioniert's -->
     <string name="wallet_transfer_code_onboarding_howto">"This is how it works"</string>
 
+    <!-- prüfen -->
     <!-- Wallet: Transfer Code: FAQ Titel -->
-    <string name="wallet_transfer_code_faq_questions_title">"COVID certificates delivered directly to the app"</string>
+    <string name="wallet_transfer_code_faq_questions_title">"Receive COVID certificates directly in the app"</string>
 
     <!-- Wallet: Transfer Code FAQ Text -->
-    <string name="wallet_transfer_code_faq_questions_subtitle">"With transfer codes, COVID certificates can be transmitted quickly and securely. This way you get the COVID certificate delivered directly to the app after a negative COVID test.
-"</string>
+    <string name="wallet_transfer_code_faq_questions_subtitle">"The transfer codes allow COVID certificates to be transmitted quickly and securely. In this way, you receive your certificate (e.g. after a test) directly in the application."</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 1 -->
-    <string name="wallet_transfer_code_faq_questions_question_1">"Who provides the transmission by transfer code?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_1">"Who offers the transmission of the COVID certificate by transfer code?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 2 -->
-    <string name="wallet_transfer_code_faq_questions_question_2">"Can transfer codes also be used to transmit vaccination certificates?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_2">"Can the transfer codes also be used for the transmission of vaccination certificates?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 3 -->
-    <string name="wallet_transfer_code_faq_questions_question_3">"How does the transmission by transfer code work?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_3">"How does the transmission of the certificate by transfer code work?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 4 -->
-    <string name="wallet_transfer_code_faq_questions_question_4">"Can I use the transfer code more than once?"</string>
+    <string name="wallet_transfer_code_faq_questions_question_4">"Can I use the same transfer code more than once?"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 1 -->
-    <string name="wallet_transfer_code_faq_questions_answer_1">"If you are doing a COVID test (PCR test or rapid antigen test), the transfer code can be used for rapid transmission of COVID certificates.
+    <string name="wallet_transfer_code_faq_questions_answer_1">"If you perform a COVID test (PCR test or rapid antigen test), the transfer code can be used to quickly transmit the COVID certificate.
 
-Check with your test centre, pharmacy or doctor to see if transfer code transmission is offered."</string>
+Ask your test centre, pharmacy or doctor if this option is available."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 2 -->
-    <string name="wallet_transfer_code_faq_questions_answer_2">"Currently, the transmission by transfer code is designed for COVID tests. You can find out how to obtain a COVID certificate after a vaccination here:"</string>
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_answer_2">"Currently, the transmission of the certificate by transfer code is reserved for COVID tests. To find out how to obtain a COVID certificate after vaccination, click here:"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 3 -->
-    <string name="wallet_transfer_code_faq_questions_answer_3">"If the authority conducting the COVID test offers transmission by transfer code, you will already be asked for a transfer code when registering or taking the test.
+    <string name="wallet_transfer_code_faq_questions_answer_3">"If the test centre offers to transmit the certificate by transfer code, you will be asked for a code at the time of registration or testing.
 
-You can create the transfer code in the \"COVID Certificate\" app. To do this, tap on \"Add\" on the home screen or on the \"Plus\" symbol at the bottom right. Then tap on \"Generate transfer code\".
+You can create the transfer code in the \"COVID Certificate\" application: press \"Add\" on the home screen or the \"More\" symbol at the bottom right, then \"Create a transfer code\".
 
-The app displays a 9-digit code. You can either enter this code in a form when you register or enter it directly when you take the test."</string>
+The application will show you a 9-character code, which you can either enter in a form when you register or pass on directly during the test."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 4 -->
-    <string name="wallet_transfer_code_faq_questions_answer_4">"No, a transfer code can only be used once. If you want to receive several certificates, e.g. from family members, please create a new code for each certificate."</string>
-    <string name="wallet_transfer_code_faq_works_title">"This is how the transfer works"</string>
+    <string name="wallet_transfer_code_faq_questions_answer_4">"No, a transfer code can only be used once. If you wish to obtain several certificates (e.g. for your relatives), please create a new code for each certificate."</string>
+    <string name="wallet_transfer_code_faq_works_title">"How does the transfer work?"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 1 -->
-    <string name="wallet_transfer_code_faq_works_question_1">"How is my data protected during transfer?"</string>
+    <string name="wallet_transfer_code_faq_works_question_1">"How is my data secured during the transfer?"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 2 -->
-    <string name="wallet_transfer_code_faq_works_question_2">"What can I do if the certificate does not arrive?"</string>
+    <string name="wallet_transfer_code_faq_works_question_2">"What if my certificate does not arrive in the application?"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 3 -->
-    <string name="wallet_transfer_code_faq_works_question_3">"What happens in the event of a positive test result?"</string>
+    <string name="wallet_transfer_code_faq_works_question_3">"What happens if I test positive?"</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 1 -->
-    <string name="wallet_transfer_code_faq_works_answer_1">"For the transfer, your COVID certificate is provided in encrypted form. The transfer code ensures that only your app can receive the COVID certificate. Immediately after the transfer, the data is deleted again from the server."</string>
+    <string name="wallet_transfer_code_faq_works_answer_1">"For the transfer, your COVID certificate is delivered in encrypted form. The transfer code ensures that only your application can receive the certificate. The data is deleted from the server immediately after the transfer."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 2 -->
-    <string name="wallet_transfer_code_faq_works_answer_2">"Once the certificate has been generated by the lab or test centre, it is available for transmission. Make sure your smartphone is connected to the internet to receive certificates.
+    <string name="wallet_transfer_code_faq_works_answer_2">"Once the certificate has been generated by the laboratory or test centre, it is available for transfer. Make sure that your smartphone is connected to the Internet to receive certificates.
 
-If your COVID certificate still does not arrive, ask the authority that performed the test (test centre, pharmacy, doctor)."</string>
+If you still do not receive your certificate, contact the place where you performed the test (centre, pharmacy, doctor's practice)."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 3 -->
-    <string name="wallet_transfer_code_faq_works_answer_3">"If you have a positive rapid antigen test, you will not receive a COVID certificate from the laboratory. 
+    <string name="wallet_transfer_code_faq_works_answer_3">"In case of a positive rapid antigen test, you will not receive a COVID certificate from the laboratory.
 
-If you have a positive PCR test, you will receive a COVID certificate for recovered. It is valid from the 11th day after the test was taken."</string>
+In case of a positive PCR test, you will receive a COVID certificate for cured persons, valid from the 11th day after the test."</string>
 
     <!-- Wallet: Transfer Code erstellt Titel -->
     <string name="wallet_transfer_code_code_created_title">"Your transfer code has been generated"</string>
@@ -694,13 +695,13 @@ invalid"</string>
     <string name="wallet_homescreen_network_error">"Validity could not be determined"</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_1">"The app regularly checks whether a COVID certificate is available for your transfer code."</string>
+    <string name="wallet_transfer_code_faq_works_intro_1">"The application regularly checks whether a COVID certificate is available for your transfer code."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 2 -->
-    <string name="wallet_transfer_code_faq_works_intro_2">"As soon as the COVID certificate is available, it appears in the app. If you have activated notifications, you will be notified by the app."</string>
+    <string name="wallet_transfer_code_faq_works_intro_2">"As soon as the COVID certificate is available, it appears in the application. If you have activated notifications, you will receive a message from the application."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"The transfer code expires after 7 days. After that, the app waits for another 72 hours for a possible transmission before the transfer code becomes invalid."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"The transfer code expires after 7 days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Allow notifications"</string>
@@ -804,6 +805,117 @@ In order to update the checklists, the app must be open and connected to the Int
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
     <string name="wallet_certificate_evidence_creation_date">"Evidence created on
 {DATE}"</string>
-    <string name="wallet_transfer_code_faq_linktext_2_1">"Further information"</string>
-    <string name="wallet_transfer_code_faq_linkurl_2_1">"https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_linktext_2">"Further information"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_transfer_code_faq_questions_linkurl_2">"https://foph-coronavirus.ch/certificate/how-do-i-get-a-covid-certificate-and-how-do-i-use-it/"</string>
+
+    <!-- Wallet: Zertifikat Light Button im Zertifikat Detail -->
+    <string name="wallet_certificate_detail_certificate_light_button">"Zertifikat Light"</string>
+
+    <!-- Wallet: Export Button im Zertifikat Detail -->
+    <string name="wallet_certificate_detail_export_button">"Exportieren"</string>
+
+    <!-- Wallet: Zertifikat Light Title -->
+    <string name="wallet_certificate_light_detail_title">"Was ist ein 
+Zertifikat Light?"</string>
+
+    <!-- Wallet: Zertifikat Light Summary Titel -->
+    <string name="wallet_certificate_light_detail_summary_title">"Zertifikat Light"</string>
+
+    <!-- Wallet: Zertifikat Light Summary Punkt 1 -->
+    <string name="wallet_certificate_light_detail_summary_1">"Kann nur innerhalb der Schweiz verwendet werden"</string>
+
+    <!-- Wallet: Zertifikat Light Summary Punkt 2 -->
+    <string name="wallet_certificate_light_detail_summary_2">"Enthält nur Namen, Vornamen, Geburtsdatum und eine elektronische Signatur"</string>
+
+    <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
+    <string name="wallet_certificate_light_detail_summary_3">"Gültig für max. 48 Stunden"</string>
+
+    <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
+    <string name="wallet_certificate_light_detail_summary_4">"Die Konvertierung des Covid-Zertifikats in ein Zertifikat Light erfolgt online."</string>
+
+    <!-- Wallet: Zertifikat Light Summary Punkt 5 -->
+    <string name="wallet_certificate_light_detail_summary_5">"Sie können das Zertifikat Light jederzeit deaktivieren, um wieder zum normalen Covid-Zertifikat zu wechseln."</string>
+
+    <!-- Wallet: Zertifikat Light Aktivieren Button -->
+    <string name="wallet_certificate_light_detail_deactivate_button">"Deaktivieren"</string>
+
+    <!-- Wallet: Zertifikat Light Deaktivieren Button -->
+    <string name="wallet_certificate_light_detail_activate_button">"Aktivieren"</string>
+
+    <!-- Wallet: Zertifikat Light Aktivation Error -->
+    <string name="wallet_certificate_light_detail_activation_error">"Zertifikat Light
+konnte nicht aktiviert werden"</string>
+
+    <!-- Wallet: Zertifikat Light Aktivation Netzwerk Fehler Titel -->
+    <string name="wallet_certificate_light_detail_activation_network_error_text">"Um das Zertifikat Light aktivieren zu können, muss die App online sein."</string>
+
+    <!-- Info Text bei erfolgreicher Prüfung einers Zertifikate Light -->
+    <string name="verifier_verify_success_certificate_light_info">"Nur mit einem Ausweisdokument 
+&amp; innerhalb der Schweiz gültig"</string>
+
+    <!-- Wallet: Zertifikat Export Title -->
+    <string name="wallet_certificate_export_title">"Covid-Zertifikat exportieren"</string>
+
+    <!-- Wallet: Zertifikat Export Erklärung Punkt 1 -->
+    <string name="wallet_certificate_export_summary_1">"Aus den Daten Ihres Covid-Zertifikats wird ein PDF erstellt, das Sie drucken oder teilen können."</string>
+
+    <!-- Wallet: Zertifikat Export Erklärung Punkt 2 -->
+    <string name="wallet_certificate_export_summary_2">"Die Erstellung des PDF-Dokuments erfolgt online."</string>
+
+    <!-- Wallet: Zertifikat Export Button -->
+    <string name="wallet_certificate_export_button">"Exportieren"</string>
+
+    <!-- Wallet: Zertifikat Export Error Title -->
+    <string name="wallet_certificate_export_detail_error_title">"PDF konnte nicht
+erstellt werden"</string>
+
+    <!-- Wallet: Zertifikat Export Netzwerk Error -->
+    <string name="wallet_certificate_export_detail_network_error_text">"Um das PDF erstellen zu können, muss die App online sein."</string>
+    <string name="accessibility_qr_code">"QR code"</string>
+
+    <!-- Wallet: Zertifikat Light Aktivation Netzwerk Fehler Title -->
+    <string name="wallet_certificate_light_detail_activation_network_error_title">"Keine Verbindung zum Internet"</string>
+
+    <!-- Wallet: Zertifikat Light Aktivation General Fehler Text -->
+    <string name="wallet_certificate_light_detail_activation_general_error_text">"Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut."</string>
+
+    <!-- Wallet: Zertifikat Light Aktivation General Fehler Titel -->
+    <string name="wallet_certificate_light_detail_activation_general_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
+
+    <!-- Wallet: Zertifikat Light Titel -->
+    <string name="wallet_certificate_light_title">"Zertifikat Light"</string>
+
+    <!-- Wallet: Zertifikat Exportieren Detail Title -->
+    <string name="wallet_certificate_export_detail_title">"Covid-Zertifikat exportieren"</string>
+
+    <!-- Wallet: Zertifikat Exportieren Summary 1 -->
+    <string name="wallet_certificate_export_detail_summary_1">"Aus den Daten Ihres Covid-Zertifikats wird ein PDF erstellt, das Sie drucken oder teilen können."</string>
+
+    <!-- Wallet: Zertifikat Exportieren Summary 2 -->
+    <string name="wallet_certificate_export_detail_summary_2">"Die Erstellung des PDF-Dokuments erfolgt online."</string>
+
+    <!-- Wallet: Zertifikat Exportieren Datail Export Button -->
+    <string name="wallet_certificate_export_detail_export_button">"Exportieren"</string>
+
+    <!-- Wallet: Zertifikat Exportieren Datail Netzwerk Fehler -->
+    <string name="wallet_certificate_export_detail_network_error_title">"Keine Verbindung zum Internet"</string>
+
+    <!-- Wallet: Zertifikat Exportieren Datail General Fehler -->
+    <string name="wallet_certificate_export_detail_general_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
+
+    <!-- Wallet: Zertifikat Exportieren Datail General Fehler Text -->
+    <string name="wallet_certificate_export_detail_general_error_text">"Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut."</string>
+
+    <!-- Wallet: Zertifikat Light Erklärungstext 1 -->
+    <string name="wallet_certificate_light_detail_text_1">"Wenn Sie das Zertifikat Light aktivieren, wird aus den Daten Ihres Covid-Zertifikats ein neuer QR-Code erstellt, der keine Gesundheitsdaten enthält."</string>
+
+    <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
+    <string name="wallet_certificate_light_detail_text_2">"Während das normale Covid-Zertifikat im Rahmen seiner Gültigkeit ohne Einschränkungen sowohl in der Schweiz als auch in der EU/EFTA verwendet werden kann, ist der Einsatz des Zertifikats Light nur in der Schweiz möglich. Aus Datenschutzgründen muss das Zertifikat Light nach 48 Stunden erneut aktiviert werden. Es bringt keine zusätzlichen Rechte gegenüber dem normalen Covid-Zertifikat."</string>
+
+    <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
+    <string name="wallet_certificate_light_detail_text_2_bold">"nur muss keine"</string>
 </resources>

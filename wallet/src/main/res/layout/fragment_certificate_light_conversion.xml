@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white"
+	app:applyWindowInsets="all">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			android:elevation="@dimen/toolbar_elevation"
+			app:navigationIcon="@drawable/ic_close_red"
+			app:title="@string/covid_certificate_title"
+			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
+			app:titleTextColor="@color/grey" />
+
+		<FrameLayout
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<ProgressBar
+				android:id="@+id/certificate_light_conversion_loading_indicator"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center"
+				android:layout_margin="@dimen/spacing_large"
+				android:visibility="gone"
+				tools:visibility="visible" />
+
+			<LinearLayout
+				android:id="@+id/certificate_light_conversion_content"
+				android:layout_width="match_parent"
+				android:layout_height="match_parent"
+				android:orientation="vertical">
+
+				<ScrollView
+					android:layout_width="match_parent"
+					android:layout_height="0dp"
+					android:layout_weight="1"
+					android:clipToPadding="false"
+					android:paddingBottom="@dimen/spacing_medium_large">
+
+					<LinearLayout
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:orientation="vertical">
+
+						<LinearLayout
+							android:id="@+id/certificate_light_conversion_intro_layout"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:orientation="vertical"
+							tools:visibility="visible">
+
+							<TextView
+								android:id="@+id/certificate_light_conversion_title"
+								style="@style/CovidCertificate.Text.Bold.Title"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginHorizontal="@dimen/spacing_very_large"
+								android:layout_marginTop="@dimen/spacing_large"
+								android:gravity="center_horizontal"
+								android:text="@string/wallet_certificate_light_detail_title" />
+
+							<TextView
+								style="@style/CovidCertificate.Text"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginHorizontal="@dimen/spacing_very_large"
+								android:layout_marginTop="@dimen/spacing_huge"
+								android:text="@string/wallet_certificate_light_detail_text_1" />
+
+							<TextView
+								android:id="@+id/certificate_light_conversion_info"
+								style="@style/CovidCertificate.Text"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginHorizontal="@dimen/spacing_very_large"
+								android:layout_marginTop="@dimen/spacing_large"
+								android:text="@string/wallet_certificate_light_detail_text_2" />
+
+							<LinearLayout
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginHorizontal="@dimen/spacing_medium_large"
+								android:layout_marginTop="@dimen/spacing_huge"
+								android:background="@drawable/bg_certificate_bubble"
+								android:orientation="vertical">
+
+								<TextView
+									style="@style/CovidCertificate.Text.Bold.Emphasized"
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_marginHorizontal="@dimen/spacing_medium_large"
+									android:layout_marginTop="@dimen/spacing_large"
+									android:gravity="center"
+									android:text="@string/wallet_certificate_light_detail_summary_title" />
+
+								<LinearLayout
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_marginHorizontal="@dimen/spacing_medium_large"
+									android:layout_marginTop="@dimen/spacing_large"
+									android:orientation="horizontal"
+									tools:ignore="UseCompoundDrawables">
+
+									<ImageView
+										android:layout_width="@dimen/icon_size_small"
+										android:layout_height="@dimen/icon_size_small"
+										android:src="@drawable/ic_bundwappen_big" />
+
+									<TextView
+										style="@style/CovidCertificate.Text"
+										android:layout_width="match_parent"
+										android:layout_height="wrap_content"
+										android:layout_marginStart="@dimen/spacing_large"
+										android:breakStrategy="high_quality"
+										android:hyphenationFrequency="full"
+										android:text="@string/wallet_certificate_light_detail_summary_1" />
+								</LinearLayout>
+
+								<LinearLayout
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_marginHorizontal="@dimen/spacing_medium_large"
+									android:layout_marginTop="@dimen/spacing_large"
+									android:orientation="horizontal"
+									tools:ignore="UseCompoundDrawables">
+
+									<ImageView
+										android:layout_width="@dimen/icon_size_small"
+										android:layout_height="@dimen/icon_size_small"
+										android:src="@drawable/ic_privacy"
+										app:tint="@color/blue" />
+
+									<TextView
+										style="@style/CovidCertificate.Text"
+										android:layout_width="match_parent"
+										android:layout_height="wrap_content"
+										android:layout_marginStart="@dimen/spacing_large"
+										android:breakStrategy="high_quality"
+										android:hyphenationFrequency="full"
+										android:text="@string/wallet_certificate_light_detail_summary_2" />
+								</LinearLayout>
+
+								<LinearLayout
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_marginHorizontal="@dimen/spacing_medium_large"
+									android:layout_marginTop="@dimen/spacing_large"
+									android:orientation="horizontal"
+									tools:ignore="UseCompoundDrawables">
+
+									<ImageView
+										android:layout_width="@dimen/icon_size_small"
+										android:layout_height="@dimen/icon_size_small"
+										android:src="@drawable/ic_timelapse"
+										app:tint="@color/blue" />
+
+									<TextView
+										style="@style/CovidCertificate.Text"
+										android:layout_width="match_parent"
+										android:layout_height="wrap_content"
+										android:layout_marginStart="@dimen/spacing_large"
+										android:breakStrategy="high_quality"
+										android:hyphenationFrequency="full"
+										android:text="@string/wallet_certificate_light_detail_summary_3" />
+								</LinearLayout>
+
+								<LinearLayout
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_marginHorizontal="@dimen/spacing_medium_large"
+									android:layout_marginTop="@dimen/spacing_large"
+									android:orientation="horizontal"
+									tools:ignore="UseCompoundDrawables">
+
+									<ImageView
+										android:layout_width="@dimen/icon_size_small"
+										android:layout_height="@dimen/icon_size_small"
+										android:src="@drawable/ic_cloud"
+										app:tint="@color/blue" />
+
+									<TextView
+										style="@style/CovidCertificate.Text"
+										android:layout_width="match_parent"
+										android:layout_height="wrap_content"
+										android:layout_marginStart="@dimen/spacing_large"
+										android:breakStrategy="high_quality"
+										android:hyphenationFrequency="full"
+										android:text="@string/wallet_certificate_light_detail_summary_4" />
+								</LinearLayout>
+
+								<LinearLayout
+									android:layout_width="match_parent"
+									android:layout_height="wrap_content"
+									android:layout_marginHorizontal="@dimen/spacing_medium_large"
+									android:layout_marginTop="@dimen/spacing_large"
+									android:orientation="horizontal"
+									tools:ignore="UseCompoundDrawables">
+
+									<ImageView
+										android:layout_width="@dimen/icon_size_small"
+										android:layout_height="@dimen/icon_size_small"
+										android:src="@drawable/ic_exchange"
+										app:tint="@color/blue" />
+
+									<TextView
+										style="@style/CovidCertificate.Text"
+										android:layout_width="match_parent"
+										android:layout_height="wrap_content"
+										android:layout_marginStart="@dimen/spacing_large"
+										android:breakStrategy="high_quality"
+										android:hyphenationFrequency="full"
+										android:text="@string/wallet_certificate_light_detail_summary_5" />
+								</LinearLayout>
+
+								<Button
+									android:id="@+id/certificate_light_conversion_activate_button"
+									style="@style/CovidCertificate.Button"
+									android:layout_width="wrap_content"
+									android:layout_height="wrap_content"
+									android:layout_gravity="center_horizontal"
+									android:layout_marginTop="@dimen/spacing_very_large"
+									android:layout_marginBottom="@dimen/spacing_huge"
+									android:text="@string/wallet_certificate_light_detail_activate_button" />
+							</LinearLayout>
+						</LinearLayout>
+
+						<LinearLayout
+							android:id="@+id/certificate_light_conversion_error_layout"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:orientation="vertical"
+							android:visibility="gone"
+							tools:visibility="visible">
+
+							<TextView
+								android:id="@+id/certificate_light_conversion_error_title"
+								style="@style/CovidCertificate.Text.Bold.Title"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginHorizontal="@dimen/spacing_very_large"
+								android:layout_marginTop="@dimen/spacing_large"
+								android:gravity="center_horizontal"
+								android:text="@string/wallet_certificate_light_detail_activation_error" />
+
+							<androidx.constraintlayout.widget.ConstraintLayout
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:layout_marginHorizontal="@dimen/spacing_very_very_large"
+								android:clipChildren="false"
+								android:clipToPadding="false"
+								android:paddingTop="@dimen/spacing_huger">
+
+								<TextView
+									android:id="@+id/certificate_light_conversion_status_text"
+									style="@style/CovidCertificate.Text"
+									android:layout_width="match_parent"
+									android:layout_height="0dp"
+									android:background="@drawable/bg_certificate_bubble"
+									android:backgroundTint="@color/orangeish"
+									android:gravity="center"
+									android:minLines="2"
+									android:padding="@dimen/spacing_medium_large"
+									app:layout_constraintTop_toTopOf="parent"
+									tools:text="@string/wallet_certificate_light_detail_activation_network_error_title" />
+
+								<ImageView
+									android:id="@+id/certificate_light_conversion_status_icon"
+									android:layout_width="32dp"
+									android:layout_height="32dp"
+									android:layout_gravity="center"
+									android:background="@drawable/circle_white"
+									android:padding="@dimen/info_buble_icon_padding"
+									android:src="@drawable/ic_no_connection"
+									app:layout_constraintBottom_toTopOf="@id/certificate_light_conversion_status_text"
+									app:layout_constraintEnd_toEndOf="parent"
+									app:layout_constraintStart_toStartOf="parent"
+									app:layout_constraintTop_toTopOf="@id/certificate_light_conversion_status_text" />
+
+							</androidx.constraintlayout.widget.ConstraintLayout>
+
+							<TextView
+								android:id="@+id/certificate_light_conversion_error_code"
+								style="@style/CovidCertificate.Text.Grey"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_gravity="center"
+								android:layout_marginVertical="@dimen/spacing_medium_small"
+								android:textAllCaps="true"
+								android:textSize="@dimen/text_size_small"
+								tools:text="Error-Code" />
+
+							<Button
+								android:id="@+id/certificate_light_conversion_retry_button"
+								style="@style/CovidCertificate.Button"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_gravity="center_horizontal"
+								android:layout_marginTop="@dimen/spacing_huge"
+								android:text="@string/error_action_retry" />
+						</LinearLayout>
+					</LinearLayout>
+				</ScrollView>
+
+			</LinearLayout>
+		</FrameLayout>
+	</LinearLayout>
+</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>

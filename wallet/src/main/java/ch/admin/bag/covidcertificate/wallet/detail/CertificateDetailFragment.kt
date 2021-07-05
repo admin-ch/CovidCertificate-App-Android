@@ -46,6 +46,8 @@ import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
+import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeCreationFragment
 import ch.admin.bag.covidcertificate.wallet.util.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -93,6 +95,7 @@ class CertificateDetailFragment : Fragment() {
 		updateToolbarTitle()
 		setupCertificateDetails()
 		setupStatusInfo()
+		setupConversionButtons()
 
 		binding.certificateDetailToolbar.setNavigationOnClickListener {
 			parentFragmentManager.popBackStack()
@@ -171,6 +174,20 @@ class CertificateDetailFragment : Fragment() {
 		certificatesViewModel.startVerification(dccHolder)
 	}
 
+	private fun setupConversionButtons() {
+		binding.certificateDetailConvertLightButton.setOnClickListener {
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, CertificateLightConversionFragment.newInstance(dccHolder))
+				.addToBackStack(CertificateLightConversionFragment::class.java.canonicalName)
+				.commit()
+		}
+
+		binding.certificateDetailConvertPdfButton.setOnClickListener {
+			// TODO Show PDF export fragment
+		}
+	}
+
 	private fun updateStatusInfo(verificationState: VerificationState?) {
 		val state = verificationState ?: return
 
@@ -192,6 +209,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoValidityGroup.isVisible = false
 		binding.certificateDetailErrorCode.isVisible = false
 		setInfoBubbleBackgrounds(R.color.greyish, R.color.greyish)
+		updateConversionButtons(false)
 
 		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
 		if (isForceValidate) {
@@ -210,6 +228,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailErrorCode.isVisible = false
 		showValidityDate(state.validityRange.validUntil, dccHolder.certType, state)
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
+		updateConversionButtons(true)
 
 		val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
 		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
@@ -229,6 +248,7 @@ class CertificateDetailFragment : Fragment() {
 
 		binding.certificateDetailInfoValidityGroup.isVisible = state.signatureState == CheckSignatureState.SUCCESS
 		showValidityDate(state.validityRange?.validUntil, dccHolder.certType, state)
+		updateConversionButtons(false)
 
 		val info = state.getValidationStatusString(context)
 		val infoBubbleColorId = when {
@@ -284,6 +304,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = true
 		binding.certificateDetailInfoValidityGroup.isVisible = false
 		setInfoBubbleBackgrounds(R.color.greyish, R.color.orangeish)
+		updateConversionButtons(false)
 
 		val info: SpannableString
 		val forceValidationInfo: SpannableString
@@ -318,6 +339,17 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailErrorCode.apply {
 			isVisible = true
 			text = state.error.code
+		}
+	}
+
+	private fun updateConversionButtons(enabled: Boolean) {
+		binding.apply {
+			certificateDetailConvertLightButton.isEnabled = enabled
+			certificateDetailConvertLightLabel.isEnabled = enabled
+			certificateDetailConvertLightArrow.isVisible = enabled
+			certificateDetailConvertPdfButton.isEnabled = enabled
+			certificateDetailConvertPdfLabel.isEnabled = enabled
+			certificateDetailConvertPdfArrow.isVisible = enabled
 		}
 	}
 
