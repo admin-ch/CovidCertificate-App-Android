@@ -20,7 +20,7 @@ import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
@@ -49,22 +49,27 @@ class CertificateLightViewModel(application: Application) : AndroidViewModel(app
 
 	private var conversionJob: Job? = null
 
-	fun convert(dccHolder: DccHolder) {
+	fun convert(certificateHolder: CertificateHolder) {
 		conversionJob?.cancel()
 
 		conversionStateMutableLiveData.value = CertificateLightConversionState.LOADING
 		conversionJob = viewModelScope.launch(Dispatchers.IO) {
 			try {
-				val response = repository.convert(dccHolder)
+				val response = repository.convert(certificateHolder)
 
 				if (response != null) {
-					val decodeState = CovidCertificateSdk.decode(response.payload)
+					val decodeState = CovidCertificateSdk.Wallet.decode(response.payload)
 					when (decodeState) {
 						is DecodeState.SUCCESS -> {
-							walletDataStorage.storeCertificateLight(dccHolder, decodeState.dccHolder.qrCodeData, response.qrcode)
+							walletDataStorage.storeCertificateLight(
+								certificateHolder,
+								decodeState.certificateHolder.qrCodeData,
+								response.qrcode
+							)
+
 							conversionStateMutableLiveData.postValue(
 								CertificateLightConversionState.SUCCESS(
-									decodeState.dccHolder,
+									decodeState.certificateHolder,
 									response.qrcode
 								)
 							)
@@ -82,8 +87,8 @@ class CertificateLightViewModel(application: Application) : AndroidViewModel(app
 		}
 	}
 
-	fun deleteCertificateLight(dccHolder: DccHolder) {
-		walletDataStorage.deleteCertificateLight(dccHolder.qrCodeData)
+	fun deleteCertificateLight(certificateHolder: CertificateHolder) {
+		walletDataStorage.deleteCertificateLight(certificateHolder.qrCodeData)
 	}
 
 	private fun checkIfOffline() {

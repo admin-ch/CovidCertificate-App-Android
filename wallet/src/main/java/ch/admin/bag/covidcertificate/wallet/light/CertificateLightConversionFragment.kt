@@ -23,7 +23,7 @@ import androidx.fragment.app.viewModels
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.common.util.makeSubStringsBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightConversionBinding
 import ch.admin.bag.covidcertificate.wallet.light.model.CertificateLightConversionState
@@ -33,8 +33,8 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 	companion object {
 		private const val ARG_DCC_HOLDER = "ARG_DCC_HOLDER"
 
-		fun newInstance(dccHolder: DccHolder) = CertificateLightConversionFragment().apply {
-			arguments = bundleOf(ARG_DCC_HOLDER to dccHolder)
+		fun newInstance(certificateHolder: CertificateHolder) = CertificateLightConversionFragment().apply {
+			arguments = bundleOf(ARG_DCC_HOLDER to certificateHolder)
 		}
 	}
 
@@ -42,11 +42,11 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 	private var _binding: FragmentCertificateLightConversionBinding? = null
 	private val binding get() = _binding!!
 
-	private lateinit var dccHolder: DccHolder
+	private lateinit var certificateHolder: CertificateHolder
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		dccHolder = (arguments?.getSerializable(ARG_DCC_HOLDER) as? DccHolder)
+		certificateHolder = (arguments?.getSerializable(ARG_DCC_HOLDER) as? CertificateHolder)
 			?: throw IllegalArgumentException("Certificate light fragment created without a DccHolder!")
 	}
 
@@ -63,8 +63,8 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 
 		viewModel.conversionState.observe(viewLifecycleOwner) { onConversionStateChanged(it) }
 
-		binding.certificateLightConversionActivateButton.setOnClickListener { viewModel.convert(dccHolder) }
-		binding.certificateLightConversionRetryButton.setOnClickListener { viewModel.convert(dccHolder) }
+		binding.certificateLightConversionActivateButton.setOnClickListener { viewModel.convert(certificateHolder) }
+		binding.certificateLightConversionRetryButton.setOnClickListener { viewModel.convert(certificateHolder) }
 	}
 
 	override fun onDestroyView() {
@@ -93,7 +93,7 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 					.setCustomAnimations(0, R.anim.slide_exit, 0, R.anim.slide_pop_exit)
 					.replace(
 						R.id.fragment_container,
-						CertificateLightDetailFragment.newInstance(state.dccHolder, state.qrCodeImage)
+						CertificateLightDetailFragment.newInstance(state.certificateHolder, state.qrCodeImage)
 					)
 					.addToBackStack(CertificateLightDetailFragment::class.java.canonicalName)
 					.commit()

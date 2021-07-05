@@ -15,7 +15,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import ch.admin.bag.covidcertificate.common.qr.QrScanFragment
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
+import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentQrScanBinding
 import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment
@@ -65,12 +68,20 @@ class VerifierQrScanFragment : QrScanFragment() {
 		_binding = null
 	}
 
-	override fun onDecodeSuccess(dccHolder: DccHolder) = showVerificationFragment(dccHolder)
+	override fun decodeQrCodeData(qrCodeData: String, onDecodeSuccess: () -> Unit, onDecodeError: (StateError) -> Unit) {
+		when (val decodeState = CovidCertificateSdk.Verifier.decode(qrCodeData)) {
+			is VerifierDecodeState.SUCCESS -> {
+				onDecodeSuccess.invoke()
+				showVerificationFragment(decodeState.certificateHolder)
+			}
+			is VerifierDecodeState.ERROR -> onDecodeError.invoke(decodeState.error)
+		}
+	}
 
-	private fun showVerificationFragment(dccHolder: DccHolder) {
+	private fun showVerificationFragment(certificateHolder: VerifierCertificateHolder) {
 		parentFragmentManager.beginTransaction()
 			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-			.replace(R.id.fragment_container, VerificationFragment.newInstance(dccHolder))
+			.replace(R.id.fragment_container, VerificationFragment.newInstance(certificateHolder))
 			.addToBackStack(VerificationFragment::class.java.canonicalName)
 			.commit()
 	}

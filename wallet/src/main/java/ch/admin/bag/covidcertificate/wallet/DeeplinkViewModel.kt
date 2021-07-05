@@ -23,7 +23,7 @@ class DeeplinkViewModel(application: Application) : AndroidViewModel(application
 	val deeplinkImportLiveData: LiveData<DecodeState> = deeplinkImportMutableLiveData
 
 	fun importDeeplink(path: String) {
-		deeplinkImportMutableLiveData.postValue(CovidCertificateSdk.decode(path))
+		deeplinkImportMutableLiveData.postValue(CovidCertificateSdk.Wallet.decode(path))
 	}
 
 	fun clearDeeplink() {

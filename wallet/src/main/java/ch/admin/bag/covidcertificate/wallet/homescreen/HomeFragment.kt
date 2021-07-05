@@ -40,7 +40,7 @@ import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.rotate
 import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
@@ -219,7 +219,7 @@ class HomeFragment : Fragment() {
 		deeplinkViewModel.deeplinkImportLiveData.observe(viewLifecycleOwner) { decodeState ->
 			when (decodeState) {
 				is DecodeState.SUCCESS -> {
-					showCertificationAddFragment(decodeState.dccHolder)
+					showCertificationAddFragment(decodeState.certificateHolder)
 					deeplinkViewModel.clearDeeplink()
 				}
 				is DecodeState.ERROR -> {
@@ -246,7 +246,7 @@ class HomeFragment : Fragment() {
 					when (importState.decodeState) {
 						is DecodeState.SUCCESS -> {
 							isAddOptionsShowing = false
-							showCertificationAddFragment(importState.decodeState.dccHolder)
+							showCertificationAddFragment(importState.decodeState.certificateHolder)
 						}
 						is DecodeState.ERROR -> {
 							showImportError(importState.decodeState.error.code)
@@ -327,10 +327,10 @@ class HomeFragment : Fragment() {
 		isAddOptionsShowing = show
 	}
 
-	private fun showCertificationAddFragment(dccHolder: DccHolder) {
+	private fun showCertificationAddFragment(certificateHolder: CertificateHolder) {
 		parentFragmentManager.beginTransaction()
 			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-			.replace(R.id.fragment_container, CertificateAddFragment.newInstance(dccHolder, false))
+			.replace(R.id.fragment_container, CertificateAddFragment.newInstance(certificateHolder, false))
 			.addToBackStack(CertificateAddFragment::class.java.canonicalName)
 			.commit()
 	}

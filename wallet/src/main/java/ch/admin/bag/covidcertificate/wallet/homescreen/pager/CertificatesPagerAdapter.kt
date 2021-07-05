@@ -21,7 +21,7 @@ class CertificatesPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
 	override fun getItemCount(): Int = items.size
 
 	override fun createFragment(position: Int): Fragment = when (val item = items[position]) {
-		is WalletItem.DccHolderItem -> CertificatePagerFragment.newInstance(item.qrCodeData, item.dccHolder)
+		is WalletItem.DccHolderItem -> CertificatePagerFragment.newInstance(item.qrCodeData, item.certificateHolder)
 		is WalletItem.TransferCodeHolderItem -> TransferCodePagerFragment.newInstance(item.transferCode)
 	}
 

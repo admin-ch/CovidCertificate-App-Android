@@ -11,15 +11,12 @@
 package ch.admin.bag.covidcertificate.verifier.verification
 
 import android.app.Application
-import android.content.Context
-import android.net.ConnectivityManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.sdk.android.verification.CertificateVerificationTask
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
@@ -32,29 +29,25 @@ class VerificationViewModel(application: Application) : AndroidViewModel(applica
 		private const val STATUS_LOAD_DELAY = 1000L
 	}
 
-	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val verificationStateMutableLiveData = MutableLiveData<VerificationState>()
 	val verificationLiveData = verificationStateMutableLiveData as LiveData<VerificationState>
 
-	fun startVerification(dccHolder: DccHolder) {
-		val task = CertificateVerificationTask(dccHolder, connectivityManager)
-
+	fun startVerification(certificateHolder: VerifierCertificateHolder) {
 		viewModelScope.launch {
-			task.verificationStateFlow.collect {
+			val verificationStateFlow = CovidCertificateSdk.Verifier.verify(certificateHolder, viewModelScope)
+			verificationStateFlow.collect {
 				verificationStateMutableLiveData.postValue(it)
 			}
 		}
-
-		CovidCertificateSdk.verify(task, viewModelScope)
 	}
 
-	fun retryVerification(dccHolder: DccHolder?) {
+	fun retryVerification(certificateHolder: VerifierCertificateHolder) {
 		verificationStateMutableLiveData.value = VerificationState.LOADING
 		viewModelScope.launch {
 			delay(STATUS_LOAD_DELAY)
 			if (!isActive) return@launch
 
-			dccHolder?.let { startVerification(it) }
+			startVerification(certificateHolder)
 		}
 	}
 

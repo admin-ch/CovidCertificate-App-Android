@@ -33,7 +33,7 @@ class PagerDiffUtil(private val oldList: List<WalletItem>, private val newList: 
 		val isSameDccContent = oldItem is WalletItem.DccHolderItem
 				&& newItem is WalletItem.DccHolderItem
 				&& oldItem.qrCodeData == newItem.qrCodeData
-				&& oldItem.dccHolder?.qrCodeData == newItem.dccHolder?.qrCodeData
+				&& oldItem.certificateHolder?.qrCodeData == newItem.certificateHolder?.qrCodeData
 
 		val isSameTransferCodeContent = oldItem is WalletItem.TransferCodeHolderItem
 				&& newItem is WalletItem.TransferCodeHolderItem

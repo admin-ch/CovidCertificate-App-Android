@@ -10,11 +10,11 @@
 
 package ch.admin.bag.covidcertificate.wallet.light.model
 
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 
 sealed class CertificateLightConversionState {
 	object LOADING : CertificateLightConversionState()
-	data class SUCCESS(val dccHolder: DccHolder, val qrCodeImage: String) : CertificateLightConversionState()
+	data class SUCCESS(val certificateHolder: CertificateHolder, val qrCodeImage: String) : CertificateLightConversionState()
 	data class ERROR(val error: StateError) : CertificateLightConversionState()
 }

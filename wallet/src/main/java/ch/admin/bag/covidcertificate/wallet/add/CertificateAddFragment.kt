@@ -21,7 +21,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateAddBinding
@@ -34,9 +34,9 @@ class CertificateAddFragment : Fragment() {
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 		private const val ARG_FROM_CAMERA = "ARG_FROM_CAMERA"
 
-		fun newInstance(certificate: DccHolder, fromCamera: Boolean): CertificateAddFragment = CertificateAddFragment().apply {
+		fun newInstance(certificateHolder: CertificateHolder, fromCamera: Boolean): CertificateAddFragment = CertificateAddFragment().apply {
 			arguments = bundleOf(
-				ARG_CERTIFICATE to certificate,
+				ARG_CERTIFICATE to certificateHolder,
 				ARG_FROM_CAMERA to fromCamera,
 			)
 		}
@@ -47,17 +47,17 @@ class CertificateAddFragment : Fragment() {
 	private var _binding: FragmentCertificateAddBinding? = null
 	private val binding get() = _binding!!
 
-	private lateinit var dccHolder: DccHolder
+	private lateinit var certificateHolder: CertificateHolder
 	private var openedFragmentFromCamera: Boolean = false
 	private var isAlreadyAdded = false
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		dccHolder = (arguments?.getSerializable(ARG_CERTIFICATE) as? DccHolder)
+		certificateHolder = (arguments?.getSerializable(ARG_CERTIFICATE) as? CertificateHolder)
 			?: throw IllegalStateException("CertificateAddFragment created without Certificate!")
 		openedFragmentFromCamera = arguments?.getBoolean(ARG_FROM_CAMERA) ?: throw IllegalStateException("Missing fromCamera!")
-		isAlreadyAdded = certificatesViewModel.containsCertificate(dccHolder.qrCodeData)
+		isAlreadyAdded = certificatesViewModel.containsCertificate(certificateHolder.qrCodeData)
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -82,7 +82,7 @@ class CertificateAddFragment : Fragment() {
 			} else {
 				text = context.getString(R.string.wallet_add_certificate)
 				setOnClickListener {
-					certificatesViewModel.addCertificate(dccHolder.qrCodeData)
+					certificatesViewModel.addCertificate(certificateHolder.qrCodeData)
 					parentFragmentManager.popBackStack()
 					parentFragmentManager.popBackStack()
 				}
@@ -111,13 +111,13 @@ class CertificateAddFragment : Fragment() {
 		val adapter = CertificateDetailAdapter()
 		recyclerView.adapter = adapter
 
-		val euDgc = dccHolder.euDGC ?: return
-		val name = "${euDgc.person.familyName} ${euDgc.person.givenName}"
+		val personName = certificateHolder.certificate.getPersonName()
+		val name = "${personName.familyName} ${personName.givenName}"
 		binding.certificateAddName.text = name
-		val dateOfBirth = euDgc.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = certificateHolder.certificate.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateAddBirthdate.text = dateOfBirth
 
-		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, dccHolder, showEnglishVersion = false).buildAll()
+		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, certificateHolder, showEnglishVersion = false).buildAll()
 		adapter.setItems(detailItems)
 	}
 

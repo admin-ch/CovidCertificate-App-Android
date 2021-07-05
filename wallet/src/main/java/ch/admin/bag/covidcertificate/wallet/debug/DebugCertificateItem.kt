@@ -28,7 +28,7 @@ data class DebugCertificateItem(val verifiedCertificate: CertificatesViewModel.V
 		onShareClickListener: ((String) -> Unit),
 	) {
 		val context = itemView.context
-		val certificate = verifiedCertificate.dccHolder
+		val certificate = verifiedCertificate.certificateHolder
 		val state = verifiedCertificate.state
 		val certType = certificate?.certType
 
@@ -56,8 +56,8 @@ data class DebugCertificateItem(val verifiedCertificate: CertificatesViewModel.V
 		}
 
 		// Name
-		val name = certificate?.euDGC?.let {
-			"${it.person.familyName} ${it.person.givenName}"
+		val name = certificate?.certificate?.getPersonName()?.let {
+			"${it.familyName} ${it.givenName}"
 		} ?: verifiedCertificate.qrCodeData
 		val qrAlpha = state.getQrAlpha()
 		itemView.findViewById<TextView>(R.id.item_certificate_list_name).apply {

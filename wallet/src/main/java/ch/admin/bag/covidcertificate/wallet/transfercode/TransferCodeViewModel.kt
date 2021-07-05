@@ -69,9 +69,9 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 							val pdfData = convertedCertificate.pdfData
 							if (index == 0) {
 								walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
-								val decodeState = CovidCertificateSdk.decode(qrCodeData)
+								val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
 								if (decodeState is DecodeState.SUCCESS) {
-									conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(decodeState.dccHolder))
+									conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(decodeState.certificateHolder))
 								} else {
 									// The certificate returned from the server could not be decoded
 									conversionStateMutableLiveData.postValue(TransferCodeConversionState.NOT_CONVERTED)

@@ -39,7 +39,7 @@ import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import java.util.concurrent.Executor
@@ -112,7 +112,7 @@ abstract class QrScanFragment : Fragment() {
 		outState.putBoolean(STATE_IS_TORCH_ON, isTorchOn)
 	}
 
-	abstract fun onDecodeSuccess(dccHolder: DccHolder)
+	abstract fun decodeQrCodeData(qrCodeData: String, onDecodeSuccess: () -> Unit, onDecodeError: (StateError) -> Unit)
 
 	override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String?>, grantResults: IntArray) {
 		if (requestCode == PERMISSION_REQUEST_CAMERA) {
@@ -160,19 +160,19 @@ abstract class QrScanFragment : Fragment() {
 							is DecodeCertificateState.SUCCESS -> {
 								val qrCodeData = decodeCertificateState.qrCode
 								qrCodeData?.let {
-									when (val decodeState = CovidCertificateSdk.decode(it)) {
-										is DecodeState.SUCCESS -> {
+									decodeQrCodeData(
+										it,
+										onDecodeSuccess = {
 											// Once successfully decoded, clear the analyzer from stopping more frames being
 											// analyzed and possibly decoded successfully
 											imageAnalysis.clearAnalyzer()
 
-											onDecodeSuccess(decodeState.dccHolder)
 											view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
+										},
+										onDecodeError = { error ->
+											view?.post { handleInvalidQRCodeExceptions(it, error) }
 										}
-										is DecodeState.ERROR -> {
-											view?.post { handleInvalidQRCodeExceptions(qrCodeData, decodeState.error) }
-										}
-									}
+									)
 								}
 							}
 						}

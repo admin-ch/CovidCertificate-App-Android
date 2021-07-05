@@ -27,15 +27,19 @@ import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
-import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.DccHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.VaccinationEntry
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding
-import ch.admin.bag.covidcertificate.wallet.util.*
+import ch.admin.bag.covidcertificate.wallet.util.QrCode
+import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
+import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
+import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
+import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 
 class CertificatePagerFragment : Fragment() {
 
@@ -43,8 +47,8 @@ class CertificatePagerFragment : Fragment() {
 		private const val ARG_QR_CODE_DATA = "ARG_QR_CODE_DATA"
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 
-		fun newInstance(qrCodeData: String, certificate: DccHolder?) = CertificatePagerFragment().apply {
-			arguments = bundleOf(ARG_QR_CODE_DATA to qrCodeData, ARG_CERTIFICATE to certificate)
+		fun newInstance(qrCodeData: String, certificateHolder: CertificateHolder?) = CertificatePagerFragment().apply {
+			arguments = bundleOf(ARG_QR_CODE_DATA to qrCodeData, ARG_CERTIFICATE to certificateHolder)
 		}
 	}
 
@@ -54,14 +58,14 @@ class CertificatePagerFragment : Fragment() {
 	private val binding get() = _binding!!
 
 	private lateinit var qrCodeData: String
-	private var dccHolder: DccHolder? = null
+	private var certificateHolder: CertificateHolder? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		arguments?.let { args ->
 			qrCodeData = args.getString(ARG_QR_CODE_DATA)
 				?: throw IllegalStateException("Certificate pager fragment created without QrCode!")
-			dccHolder = args.getSerializable(ARG_CERTIFICATE) as? DccHolder?
+			certificateHolder = args.getSerializable(ARG_CERTIFICATE) as? CertificateHolder?
 		}
 	}
 
@@ -75,15 +79,15 @@ class CertificatePagerFragment : Fragment() {
 		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
 		binding.certificatePageQrCode.setImageDrawable(qrCodeDrawable)
 
-		val name = dccHolder?.euDGC?.let { "${it.person.familyName} ${it.person.givenName}" }
+		val name = certificateHolder?.certificate?.getPersonName()?.let { "${it.familyName} ${it.givenName}" }
 		binding.certificatePageName.text = name
-		val dateOfBirth = dccHolder?.euDGC?.dateOfBirth?.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
+		val dateOfBirth = certificateHolder?.certificate?.getDateOfBirth()?.format(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificatePageBirthdate.text = dateOfBirth
 		binding.certificatePageCard.setCutOutCardBackground()
 		updateTitle()
 		setupStatusInfo()
 
-		dccHolder?.let { certificate ->
+		certificateHolder?.let { certificate ->
 			binding.certificatePageCard.setOnClickListener { certificatesViewModel.onQrCodeClicked(certificate) }
 		}
 	}
@@ -94,7 +98,9 @@ class CertificatePagerFragment : Fragment() {
 	}
 
 	private fun updateTitle() {
-		val vaccinationEntry: VaccinationEntry? = dccHolder?.euDGC?.vaccinations?.firstOrNull()
+		val dccCert = certificateHolder?.certificate as? DccCert
+
+		val vaccinationEntry: VaccinationEntry? = dccCert?.vaccinations?.firstOrNull()
 		if (vaccinationEntry?.isNotFullyProtected() == true) {
 			binding.certificatePageTitle.setText(R.string.wallet_certificate_evidence_title)
 		} else {
@@ -109,7 +115,7 @@ class CertificatePagerFragment : Fragment() {
 			}
 		}
 
-		dccHolder?.let { certificatesViewModel.startVerification(it) }
+		certificateHolder?.let { certificatesViewModel.startVerification(it) }
 	}
 
 	private fun updateStatusInfo(verificationState: VerificationState?) {
