@@ -35,6 +35,8 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightDetailBinding
+import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
+import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
 import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
 import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 import java.time.Instant
@@ -158,6 +160,9 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 			is VerificationState.INVALID -> displayInvalidState(state)
 			is VerificationState.ERROR -> displayErrorState(state)
 		}
+
+		changeAlpha(state.getQrAlpha())
+		setCertificateDetailTextColor(state.getNameDobColor())
 	}
 
 	private fun displayLoadingState() {
@@ -198,6 +203,17 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	private fun setVerificationStateBubbleColor(@ColorRes colorId: Int) {
 		val color = ContextCompat.getColor(requireContext(), colorId)
 		binding.certificateLightDetailVerificationStatus.animateBackgroundTintColor(color)
+	}
+
+	private fun changeAlpha(alpha: Float) {
+		binding.certificateLightDetailQrCode.alpha = alpha
+		binding.certificateLightDetailValidity.alpha = alpha
+	}
+
+	private fun setCertificateDetailTextColor(@ColorRes colorId: Int) {
+		val textColor = ContextCompat.getColor(requireContext(), colorId)
+		binding.certificateLightDetailName.setTextColor(textColor)
+		binding.certificateLightDetailBirthdate.setTextColor(textColor)
 	}
 
 }
