@@ -24,7 +24,7 @@ class CertificatesPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
 	override fun createFragment(position: Int): Fragment = when (val item = items[position]) {
 		is WalletItem.CertificateHolderItem -> {
 			if (item.qrCodeImage != null && item.certificateHolder?.containsChLightCert() == true) {
-				CertificateLightPagerFragment.newInstance(item.qrCodeData, item.qrCodeImage, item.certificateHolder)
+				CertificateLightPagerFragment.newInstance(item.qrCodeImage, item.certificateHolder)
 			} else  {
 				CertificatePagerFragment.newInstance(item.qrCodeData, item.certificateHolder)
 			}

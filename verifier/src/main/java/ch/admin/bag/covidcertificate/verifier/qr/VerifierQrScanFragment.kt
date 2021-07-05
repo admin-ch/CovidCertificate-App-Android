@@ -53,6 +53,7 @@ class VerifierQrScanFragment : QrScanFragment() {
 		cutOut = binding.cameraPreviewContainer
 		flashButton = binding.fragmentQrScannerFlashButton
 		errorView = binding.fragmentQrScannerErrorView
+		errorCodeView = binding.qrCodeScannerErrorCode
 
 		invalidCodeText = binding.qrCodeScannerInvalidCodeText
 		viewFinderTopLeftIndicator = binding.qrCodeScannerTopLeftIndicator

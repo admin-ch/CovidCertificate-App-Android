@@ -43,14 +43,12 @@ import kotlin.concurrent.fixedRateTimer
 class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_light_pager) {
 
 	companion object {
-		private const val ARG_QR_CODE_DATA = "ARG_QR_CODE_DATA"
 		private const val ARG_QR_CODE_IMAGE = "ARG_QR_CODE_IMAGE"
 		private const val ARG_CERTIFICATE_HOLDER = "ARG_CERTIFICATE_HOLDER"
 
-		fun newInstance(qrCodeData: String, qrCodeImage: String, certificateHolder: CertificateHolder) =
+		fun newInstance(qrCodeImage: String, certificateHolder: CertificateHolder) =
 			CertificateLightPagerFragment().apply {
 				arguments = bundleOf(
-					ARG_QR_CODE_DATA to qrCodeData,
 					ARG_QR_CODE_IMAGE to qrCodeImage,
 					ARG_CERTIFICATE_HOLDER to certificateHolder
 				)
@@ -62,7 +60,6 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 	private var _binding: FragmentCertificateLightPagerBinding? = null
 	private val binding get() = _binding!!
 
-	private lateinit var qrCodeData: String
 	private lateinit var qrCodeImage: String
 	private lateinit var certificateHolder: CertificateHolder
 
@@ -71,8 +68,6 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		qrCodeData = arguments?.getString(ARG_QR_CODE_DATA)
-			?: throw IllegalArgumentException("CertificateLightPagerFragment called without QR code data")
 		qrCodeImage = arguments?.getString(ARG_QR_CODE_IMAGE)
 			?: throw IllegalArgumentException("CertificateLightPagerFragment called without QR code image")
 		certificateHolder = arguments?.getSerializable(ARG_CERTIFICATE_HOLDER) as? CertificateHolder
@@ -88,12 +83,8 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 		super.onViewCreated(view, savedInstanceState)
 		binding.certificatePageCard.setCutOutCardBackground()
 
-		val name = certificateHolder.certificate.getPersonName().let { "${it.familyName} ${it.givenName}" }
-		binding.certificatePageName.text = name
-		val dateOfBirth = certificateHolder.certificate.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
-		binding.certificatePageBirthdate.text = dateOfBirth
-
 		displayQrCode()
+		displayCertificateDetails()
 		displayValidity()
 
 		setupStatusInfo()
@@ -115,6 +106,13 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 		val qrCodeBitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
 		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
 		binding.certificatePageQrCode.setImageDrawable(qrCodeDrawable)
+	}
+
+	private fun displayCertificateDetails() {
+		val name = certificateHolder.certificate.getPersonName().let { "${it.familyName} ${it.givenName}" }
+		binding.certificatePageName.text = name
+		val dateOfBirth = certificateHolder.certificate.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
+		binding.certificatePageBirthdate.text = dateOfBirth
 	}
 
 	@SuppressLint("SetTextI18n")

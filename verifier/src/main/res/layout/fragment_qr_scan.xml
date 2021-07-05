@@ -94,7 +94,8 @@
 				app:layout_constraintBottom_toTopOf="@id/camera_preview_container"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:layout_constraintTop_toBottomOf="@id/toolbar_place_holder" />
+				app:layout_constraintTop_toBottomOf="@id/toolbar_place_holder"
+				tools:visibility="visible" />
 
 			<View
 				android:id="@+id/qr_code_scanner_camera_hole"
@@ -148,6 +149,18 @@
 					app:layout_constraintEnd_toEndOf="parent" />
 
 			</androidx.constraintlayout.widget.ConstraintLayout>
+
+			<TextView
+				android:id="@+id/qr_code_scanner_error_code"
+				style="@style/CovidCertificate.Text.Bold.Error.Bundesrot"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textSize="@dimen/text_size_small"
+				app:layout_constraintBottom_toTopOf="@id/camera_preview_container"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toTopOf="@id/camera_preview_container"
+				tools:text="ER-14" />
 
 			<TextView
 				android:id="@+id/qr_code_scanner_explanation"

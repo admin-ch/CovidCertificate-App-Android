@@ -16,6 +16,7 @@ import android.view.View
 import android.view.ViewGroup
 import ch.admin.bag.covidcertificate.common.qr.QrScanFragment
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
@@ -52,6 +53,7 @@ class WalletQrScanFragment : QrScanFragment() {
 		qrCodeScanner = binding.qrCodeScanner
 		flashButton = binding.fragmentQrScannerFlashButton
 		errorView = binding.fragmentQrScannerErrorView
+		errorCodeView = binding.qrCodeScannerErrorCode
 
 		invalidCodeText = binding.qrCodeScannerInvalidCodeText
 		cutOut = binding.cameraPreviewContainer
@@ -72,8 +74,15 @@ class WalletQrScanFragment : QrScanFragment() {
 	override fun decodeQrCodeData(qrCodeData: String, onDecodeSuccess: () -> Unit, onDecodeError: (StateError) -> Unit) {
 		when (val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)) {
 			is DecodeState.SUCCESS -> {
-				onDecodeSuccess.invoke()
-				showCertificationAddFragment(decodeState.certificateHolder)
+				val certificateHolder = decodeState.certificateHolder
+
+				// If a certificate light was decoded, treat it as a prefix decode error to prevent a certificate light being added
+				if (certificateHolder.containsChLightCert()) {
+					onDecodeError.invoke(StateError(ErrorCodes.DECODE_PREFIX))
+				} else {
+					onDecodeSuccess.invoke()
+					showCertificationAddFragment(decodeState.certificateHolder)
+				}
 			}
 			is DecodeState.ERROR -> onDecodeError.invoke(decodeState.error)
 		}

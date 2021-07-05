@@ -38,9 +38,6 @@ import androidx.fragment.app.Fragment
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
-import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
-import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import java.util.concurrent.Executor
 
@@ -53,17 +50,18 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	// These need to be set by implementing classes during onCreateView. That's why they are not private.
-	lateinit var toolbar: Toolbar
-	lateinit var flashButton: ImageButton
-	lateinit var errorView: View
+	protected lateinit var toolbar: Toolbar
+	protected lateinit var flashButton: ImageButton
+	protected lateinit var errorView: View
+	protected lateinit var errorCodeView: TextView
 
-	lateinit var invalidCodeText: TextView
-	lateinit var viewFinderTopLeftIndicator: View
-	lateinit var viewFinderTopRightIndicator: View
-	lateinit var viewFinderBottomLeftIndicator: View
-	lateinit var viewFinderBottomRightIndicator: View
-	lateinit var qrCodeScanner: PreviewView
-	lateinit var cutOut: View
+	protected lateinit var invalidCodeText: TextView
+	protected lateinit var viewFinderTopLeftIndicator: View
+	protected lateinit var viewFinderTopRightIndicator: View
+	protected lateinit var viewFinderBottomLeftIndicator: View
+	protected lateinit var viewFinderBottomRightIndicator: View
+	protected lateinit var qrCodeScanner: PreviewView
+	protected lateinit var cutOut: View
 	private var preview: Preview? = null
 	private var imageCapture: ImageCapture? = null
 	private var imageAnalyzer: ImageAnalysis? = null
@@ -152,7 +150,7 @@ abstract class QrScanFragment : Fragment() {
 					imageAnalysis.setAnalyzer(mainExecutor, QRCodeAnalyzer { decodeCertificateState: DecodeCertificateState ->
 						when (decodeCertificateState) {
 							is DecodeCertificateState.ERROR -> {
-								handleInvalidQRCodeExceptions(null, decodeCertificateState.error)
+								handleInvalidQRCodeExceptions(decodeCertificateState.error)
 							}
 							DecodeCertificateState.SCANNING -> {
 								view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
@@ -170,7 +168,7 @@ abstract class QrScanFragment : Fragment() {
 											view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
 										},
 										onDecodeError = { error ->
-											view?.post { handleInvalidQRCodeExceptions(it, error) }
+											view?.post { handleInvalidQRCodeExceptions(error) }
 										}
 									)
 								}
@@ -292,12 +290,11 @@ abstract class QrScanFragment : Fragment() {
 		flashButton.setImageResource(drawableId)
 	}
 
-	private fun handleInvalidQRCodeExceptions(qrCodeData: String?, error: StateError?) {
-		//TODO Show error code on screen
-		updateQrCodeScannerState(QrScannerState.INVALID_FORMAT)
+	private fun handleInvalidQRCodeExceptions(error: StateError?) {
+		updateQrCodeScannerState(QrScannerState.INVALID_FORMAT, error?.code)
 	}
 
-	private fun updateQrCodeScannerState(qrScannerState: QrScannerState) {
+	private fun updateQrCodeScannerState(qrScannerState: QrScannerState, errorCode: String? = null) {
 		val currentTime = System.currentTimeMillis()
 		if (lastUIErrorUpdate > currentTime - MIN_ERROR_VISIBILITY && qrScannerState == QrScannerState.NO_CODE_FOUND) {
 			return
@@ -307,10 +304,13 @@ abstract class QrScanFragment : Fragment() {
 		var color: Int = viewFinderColor
 		when (qrScannerState) {
 			QrScannerState.VALID, QrScannerState.NO_CODE_FOUND -> {
-				invalidCodeText.visibility = View.INVISIBLE
+				invalidCodeText.isVisible = false
+				errorCodeView.isVisible = false
 			}
 			QrScannerState.INVALID_FORMAT -> {
-				invalidCodeText.visibility = View.VISIBLE
+				invalidCodeText.isVisible = true
+				errorCodeView.isVisible = errorCode != null
+				errorCodeView.text = errorCode
 				color = viewFinderErrorColor
 			}
 		}
