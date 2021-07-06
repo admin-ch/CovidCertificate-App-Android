@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.wallet.light.net
+package ch.admin.bag.covidcertificate.wallet.pdf.net
 
 import android.content.Context
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -25,11 +25,11 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class CertificateLightRepository private constructor(context: Context) {
+class PdfExportRepository private constructor(context: Context) {
 
-	companion object : SingletonHolder<CertificateLightRepository, Context>(::CertificateLightRepository)
+	companion object : SingletonHolder<PdfExportRepository, Context>(::PdfExportRepository)
 
-	private val certificateLightService: CertificateLightService
+	private val pdfExportService: PdfExportService
 
 	init {
 		val rootCa = CovidCertificateSdk.getRootCa(context)
@@ -48,19 +48,19 @@ class CertificateLightRepository private constructor(context: Context) {
 			okHttpBuilder.addInterceptor(httpInterceptor)
 		}
 
-		certificateLightService = Retrofit.Builder()
+		pdfExportService = Retrofit.Builder()
 			.baseUrl(BuildConfig.BASE_URL_TRANSFORMATION)
 			.client(okHttpBuilder.build())
 			.addConverterFactory(MoshiConverterFactory.create())
 			.build()
-			.create(CertificateLightService::class.java)
+			.create(PdfExportService::class.java)
 	}
 
-	suspend fun convert(certificateHolder: CertificateHolder): CertificateLightResponse? {
+	suspend fun convert(certificateHolder: CertificateHolder): PdfExportResponse? {
 		if (certificateHolder.containsChLightCert()) return null
 
-		val body = CertificateLightRequestBody(certificateHolder.qrCodeData)
-		val response = certificateLightService.convert(body)
+		val body = PdfExportRequestBody(certificateHolder.qrCodeData)
+		val response = pdfExportService.convert(body)
 
 		return if (response.isSuccessful) response.body() else null
 	}

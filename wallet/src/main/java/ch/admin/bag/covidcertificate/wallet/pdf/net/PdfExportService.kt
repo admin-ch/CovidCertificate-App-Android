@@ -8,18 +8,17 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.wallet.light.net
+package ch.admin.bag.covidcertificate.wallet.pdf.net
 
 import retrofit2.Response
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
-import retrofit2.http.Url
 
-interface CertificateLightService {
+interface PdfExportService {
 
 	@Headers("Accept: application/json")
-	@POST("certificateLight")
-	suspend fun convert(@Body body: CertificateLightRequestBody): Response<CertificateLightResponse>
+	@POST("pdf")
+	suspend fun convert(@Body body: PdfExportRequestBody): Response<PdfExportResponse>
 
 }

@@ -146,6 +146,27 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		}
 	}
 
+	fun getPdfForCertificate(certificateHolder: CertificateHolder): String? {
+		val walletData = getWalletData()
+		return walletData.filterIsInstance(WalletDataItem.CertificateWalletData::class.java)
+			.firstOrNull { it.qrCodeData == certificateHolder.qrCodeData }
+			?.pdfData
+	}
+
+	fun storePdfForCertificate(certificateHolder: CertificateHolder, pdfData: String) {
+		val walletData = getWalletData().toMutableList()
+		val index = walletData.indexOfFirst {
+			it is WalletDataItem.CertificateWalletData && (it.qrCodeData == certificateHolder.qrCodeData)
+		}
+
+		if (index >= 0) {
+			val item = walletData.removeAt(index) as WalletDataItem.CertificateWalletData
+			val updatedItem = item.copy(pdfData = pdfData)
+			walletData.add(index, updatedItem)
+			updateWalletData(walletData)
+		}
+	}
+
 	private fun updateWalletData(walletData: List<WalletDataItem>) {
 		val json = walletDataItemAdapter.toJson(walletData)
 		prefs.edit().putString(KEY_WALLET_DATA_ITEMS, json).apply()

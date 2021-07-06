@@ -14,6 +14,7 @@ import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -123,7 +124,9 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 			val seconds = remainingTimeInSeconds % 60
 
 			view?.post {
-				binding.certificateLightDetailValidity.text = "%02d:%02d:%02d".format(hours, minutes, seconds)
+				if (isAdded) {
+					binding.certificateLightDetailValidity.text = "%02d:%02d:%02d".format(hours, minutes, seconds)
+				}
 			}
 
 			if (remainingTimeInSeconds <= 0) {

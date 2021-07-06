@@ -251,7 +251,7 @@ class HomeFragment : Fragment() {
 			}
 		}
 
-		pdfViewModel.pdfImportLiveData.observe(viewLifecycleOwner) { importState ->
+		pdfViewModel.pdfImportState.observe(viewLifecycleOwner) { importState ->
 			when (importState) {
 				is PdfImportState.LOADING -> {
 					binding.loadingSpinner.showAnimated()
@@ -267,7 +267,7 @@ class HomeFragment : Fragment() {
 							showImportError(importState.decodeState.error.code)
 						}
 					}
-					pdfViewModel.clearPdf()
+					pdfViewModel.clearPdfImport()
 				}
 			}
 		}
