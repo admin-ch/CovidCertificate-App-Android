@@ -942,4 +942,8 @@ erstellt werden"</string>
 
     <!-- Text im Zertifikat Light-Screen -->
     <string name="verifier_update_boarding_certificate_light_text">"Mit diesem Update können Sie in der App auch die Zertifikatskopie ohne Gesundheitsdaten prüfen. Dazu wurden die Nutzungsbedingungen sowie die Datenschutzerklärung aktualisiert, welche bei Weiternutzung der App als genehmigt gelten."</string>
+
+    <!-- Verifier: Die Gültigkeit eines Certificate Light ist abgelaufen -->
+    <string name="verifier_certificate_light_error_expired">"Certificate validity 
+expired"</string>
 </resources>

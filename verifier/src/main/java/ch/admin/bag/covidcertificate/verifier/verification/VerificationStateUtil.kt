@@ -18,6 +18,7 @@ import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
@@ -64,7 +65,8 @@ fun VerificationState.getValidationStatusStrings(context: Context): List<Spannab
 		}
 		is VerificationState.INVALID -> {
 			val stateStrings = mutableListOf<SpannableString>()
-			if (this.signatureState is CheckSignatureState.SUCCESS) {
+			val signatureState = this.signatureState
+			if (signatureState is CheckSignatureState.SUCCESS) {
 				stateStrings.add(SpannableString(context.getString(R.string.verifier_verify_success_info_for_certificate_valid)))
 
 				if (this.revocationState is CheckRevocationState.SUCCESS) {
@@ -85,7 +87,13 @@ fun VerificationState.getValidationStatusStrings(context: Context): List<Spannab
 					stateStrings.add(context.getString(R.string.verifier_verify_error_info_for_blacklist).makeBold())
 				}
 			} else {
-				stateStrings.add(context.getString(R.string.verifier_verify_error_info_for_certificate_invalid).makeBold())
+				if (signatureState is CheckSignatureState.INVALID
+					&& signatureState.signatureErrorCode == ErrorCodes.SIGNATURE_TIMESTAMP_EXPIRED
+				) {
+					stateStrings.add(context.getString(R.string.verifier_certificate_light_error_expired).makeBold())
+				} else {
+					stateStrings.add(context.getString(R.string.verifier_verify_error_info_for_certificate_invalid).makeBold())
+				}
 			}
 
 			stateStrings
@@ -105,7 +113,11 @@ fun VerificationState.getStatusInformationString(context: Context): String {
 		}
 		is VerificationState.INVALID -> ""
 		VerificationState.LOADING -> context.getString(R.string.wallet_certificate_verifying)
-		is VerificationState.SUCCESS -> context.getString(R.string.verifier_verify_success_info)
+		is VerificationState.SUCCESS -> if (this.certType == CertType.LIGHT) {
+			context.getString(R.string.verifier_verify_success_certificate_light_info)
+		} else {
+			context.getString(R.string.verifier_verify_success_info)
+		}
 	}
 }
 
