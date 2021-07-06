@@ -132,7 +132,7 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		}
 	}
 
-	fun deleteCertificateLight(qrCodeData: String) {
+	fun deleteCertificateLight(qrCodeData: String): WalletDataItem.CertificateWalletData? {
 		val walletData = getWalletData().toMutableList()
 		val index = walletData.indexOfFirst {
 			it is WalletDataItem.CertificateWalletData && (it.qrCodeData == qrCodeData || it.certificateLightData == qrCodeData)
@@ -143,7 +143,9 @@ class WalletDataSecureStorage private constructor(context: Context) {
 			val updatedItem = item.copy(certificateLightData = null, certificateLightQrCode = null)
 			walletData.add(index, updatedItem)
 			updateWalletData(walletData)
+			return updatedItem
 		}
+		return null
 	}
 
 	fun getPdfForCertificate(certificateHolder: CertificateHolder): String? {

@@ -14,7 +14,6 @@ import android.annotation.SuppressLint
 import android.graphics.BitmapFactory
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -36,6 +35,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightDetailBinding
+import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
 import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
 import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
@@ -61,6 +61,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 	private val certificateLightViewModel by viewModels<CertificateLightViewModel>()
+
 	private var _binding: FragmentCertificateLightDetailBinding? = null
 	private val binding get() = _binding!!
 
@@ -91,10 +92,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		displayCertificateDetails()
 		setupStatusInfo()
 
-		binding.certificateLightDetailDeactivateButton.setOnClickListener {
-			certificateLightViewModel.deleteCertificateLight(certificateHolder)
-			parentFragmentManager.popBackStack()
-		}
+		binding.certificateLightDetailDeactivateButton.setOnClickListener { deleteCertificateLightAndShowOriginal() }
 	}
 
 	override fun onDestroyView() {
@@ -132,6 +130,8 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 			if (remainingTimeInSeconds <= 0) {
 				validityTimer?.cancel()
 				validityTimer = null
+
+				deleteCertificateLightAndShowOriginal()
 			}
 		}
 	}
@@ -217,6 +217,18 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		val textColor = ContextCompat.getColor(requireContext(), colorId)
 		binding.certificateLightDetailName.setTextColor(textColor)
 		binding.certificateLightDetailBirthdate.setTextColor(textColor)
+	}
+
+	private fun deleteCertificateLightAndShowOriginal() {
+		parentFragmentManager.popBackStack()
+		val originalCertificateHolder = certificateLightViewModel.deleteCertificateLight(certificateHolder)
+		if (originalCertificateHolder != null) {
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(0, R.anim.slide_exit, 0, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(originalCertificateHolder))
+				.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
+				.commit()
+		}
 	}
 
 }

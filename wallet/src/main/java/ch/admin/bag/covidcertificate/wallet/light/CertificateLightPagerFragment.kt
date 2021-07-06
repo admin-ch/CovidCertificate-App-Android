@@ -23,6 +23,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
@@ -58,6 +59,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 	}
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificateLightViewModel by viewModels<CertificateLightViewModel>()
 
 	private var _binding: FragmentCertificateLightPagerBinding? = null
 	private val binding get() = _binding!!
@@ -136,6 +138,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 			if (remainingTimeInSeconds <= 0) {
 				validityTimer?.cancel()
 				validityTimer = null
+				deleteCertificateLightAndShowOriginal()
 			}
 		}
 	}
@@ -212,6 +215,11 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 		val textColor = ContextCompat.getColor(requireContext(), colorId)
 		binding.certificatePageName.setTextColor(textColor)
 		binding.certificatePageBirthdate.setTextColor(textColor)
+	}
+
+	private fun deleteCertificateLightAndShowOriginal() {
+		certificateLightViewModel.deleteCertificateLight(certificateHolder)
+		certificatesViewModel.loadWalletData()
 	}
 
 }
