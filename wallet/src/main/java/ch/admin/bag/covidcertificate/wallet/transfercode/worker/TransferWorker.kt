@@ -105,6 +105,7 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 						} catch (e: IOException) {
 							// Best effort only
 						}
+						TransferCodeCrypto.deleteKeyEntry(transferCode.code)
 					}
 					TransferState.SUCCESS
 				} else {

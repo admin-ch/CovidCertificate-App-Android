@@ -78,6 +78,16 @@ object TransferCodeCrypto {
 		return KeyPair(entry.certificate.publicKey, entry.privateKey)
 	}
 
+	fun deleteKeyEntry(keyAlias: String) {
+		val keystore = KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
+			load(null)
+		}
+
+		if (keystore.containsAlias(keyAlias)) {
+			keystore.deleteEntry(keyAlias)
+		}
+	}
+
 	fun decrypt(keyPair: KeyPair, ciphertextBase64: String): String? {
 		/*
 		 * This is somewhat like a KEM:
