@@ -18,15 +18,10 @@ class VerifierSecureStorage private constructor(context: Context) {
 
 	companion object : SingletonHolder<VerifierSecureStorage, Context>(::VerifierSecureStorage) {
 		private const val PREFERENCES = "SecureStorage"
-		private const val KEY_IS_FRESH_INSTALL = "KEY_IS_FRESH_INSTALL"
 		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
 	}
 
 	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, PREFERENCES)
-
-	fun isFreshInstall() = prefs.getBoolean(KEY_IS_FRESH_INSTALL, true)
-
-	fun setIsFreshInstall(isFreshInstall: Boolean) = prefs.edit().putBoolean(KEY_IS_FRESH_INSTALL, isFreshInstall).apply()
 
 	fun getCertificateLightUpdateboardingCompleted() = prefs.getBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, false)
 

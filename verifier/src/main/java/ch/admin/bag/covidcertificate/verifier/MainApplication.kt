@@ -3,10 +3,9 @@ package ch.admin.bag.covidcertificate.verifier
 import android.app.Application
 import android.os.Build
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
-import ch.admin.bag.covidcertificate.common.net.ConfigRepository
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
-import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 
 class MainApplication : Application() {

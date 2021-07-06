@@ -37,14 +37,15 @@ class MainActivity : AppCompatActivity() {
 
 	private var forceUpdateDialog: AlertDialog? = null
 
-	private val updateboardingLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult: ActivityResult ->
-		if (activityResult.resultCode == RESULT_OK) {
-			secureStorage.setCertificateLightUpdateboardingCompleted(true)
-			showHomeFragment()
-		} else {
-			finish()
+	private val updateboardingLauncher =
+		registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult: ActivityResult ->
+			if (activityResult.resultCode == RESULT_OK) {
+				secureStorage.setCertificateLightUpdateboardingCompleted(true)
+				showHomeFragment()
+			} else {
+				finish()
+			}
 		}
-	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -66,7 +67,6 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		configViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
-		secureStorage.setIsFreshInstall(false)
 	}
 
 	override fun onStart() {
