@@ -44,15 +44,15 @@ class MainActivity : AppCompatActivity() {
 	private var forceUpdateDialog: AlertDialog? = null
 	private var isIntentConsumed = false
 
-	private val onboardingLauncher =
-		registerForActivityResult(StartActivityForResult()) { activityResult: ActivityResult ->
-			if (activityResult.resultCode == RESULT_OK) {
-				secureStorage.setOnboardingCompleted(true)
-				showHomeFragment()
-			} else {
-				finish()
-			}
+	private val onboardingLauncher = registerForActivityResult(StartActivityForResult()) { activityResult: ActivityResult ->
+		if (activityResult.resultCode == RESULT_OK) {
+			secureStorage.setOnboardingCompleted(true)
+			secureStorage.setCertificateLightUpdateboardingCompleted(true)
+			showHomeFragment()
+		} else {
+			finish()
 		}
+	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -62,9 +62,18 @@ class MainActivity : AppCompatActivity() {
 		setContentView(view)
 
 		if (savedInstanceState == null) {
-			val onboardingCompleted: Boolean = secureStorage.getOnboardingCompleted()
+			val onboardingCompleted = secureStorage.getOnboardingCompleted()
+			val certificateLightUpdateboardingCompleted = secureStorage.getCertificateLightUpdateboardingCompleted()
 			if (!onboardingCompleted) {
-				onboardingLauncher.launch(Intent(this, OnboardingActivity::class.java))
+				val intent = Intent(this, OnboardingActivity::class.java).apply {
+					putExtra(OnboardingActivity.EXTRA_ONBOARDING_TYPE, OnboardingActivity.OnboardingType.FRESH_INSTALL.name)
+				}
+				onboardingLauncher.launch(intent)
+			} else if (!certificateLightUpdateboardingCompleted) {
+				val intent = Intent(this, OnboardingActivity::class.java).apply {
+					putExtra(OnboardingActivity.EXTRA_ONBOARDING_TYPE, OnboardingActivity.OnboardingType.CERTIFICATE_LIGHT.name)
+				}
+				onboardingLauncher.launch(intent)
 			} else {
 				showHomeFragment()
 			}
