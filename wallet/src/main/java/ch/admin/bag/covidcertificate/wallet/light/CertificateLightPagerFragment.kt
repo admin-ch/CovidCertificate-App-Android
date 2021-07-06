@@ -138,7 +138,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 			if (remainingTimeInSeconds <= 0) {
 				validityTimer?.cancel()
 				validityTimer = null
-				deleteCertificateLightAndShowOriginal()
+				deleteCertificateLightAndReloadWalletData()
 			}
 		}
 	}
@@ -217,7 +217,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 		binding.certificatePageBirthdate.setTextColor(textColor)
 	}
 
-	private fun deleteCertificateLightAndShowOriginal() {
+	private fun deleteCertificateLightAndReloadWalletData() {
 		certificateLightViewModel.deleteCertificateLight(certificateHolder)
 		certificatesViewModel.loadWalletData()
 	}
