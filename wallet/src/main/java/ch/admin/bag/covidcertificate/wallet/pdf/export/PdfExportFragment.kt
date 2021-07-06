@@ -23,6 +23,7 @@ import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentPdfExportBinding
@@ -108,7 +109,7 @@ class PdfExportFragment : Fragment(R.layout.fragment_pdf_export) {
 				if (!folder.exists()) folder.mkdirs()
 
 				val pdfFile = File.createTempFile("${System.currentTimeMillis()}-certificate", ".pdf", folder)
-				pdfFile.writeText(state.pdfData)
+				pdfFile.writeBytes(state.pdfData.fromBase64())
 				val uri = FileProvider.getUriForFile(requireContext(), "ch.admin.bag.covidcertificate.wallet.fileprovider", pdfFile)
 
 				setFragmentResult(REQUEST_KEY_PDF_EXPORT, bundleOf(RESULT_KEY_PDF_URI to uri))

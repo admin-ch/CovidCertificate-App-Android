@@ -111,9 +111,8 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 					val response = pdfExportRepository.convert(certificateHolder)
 
 					if (response != null) {
-						val decodedPdfData = response.pdf.fromBase64().decodeToString()
-						walletDataStorage.storePdfForCertificate(certificateHolder, decodedPdfData)
-						pdfExportMutableLiveData.postValue(PdfExportState.SUCCESS(decodedPdfData))
+						walletDataStorage.storePdfForCertificate(certificateHolder, response.pdf)
+						pdfExportMutableLiveData.postValue(PdfExportState.SUCCESS(response.pdf))
 					} else {
 						val error = checkIfOffline()
 						pdfExportMutableLiveData.postValue(PdfExportState.ERROR(error))
