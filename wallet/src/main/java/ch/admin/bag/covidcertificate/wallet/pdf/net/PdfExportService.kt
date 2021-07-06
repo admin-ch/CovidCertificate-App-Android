@@ -17,7 +17,7 @@ import retrofit2.http.POST
 
 interface PdfExportService {
 
-	@Headers("Accept: application/json+jws")
+	@Headers("Accept: application/json")
 	@POST("pdf")
 	suspend fun convert(@Body body: PdfExportRequestBody): Response<PdfExportResponse>
 

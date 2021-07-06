@@ -18,11 +18,8 @@ import retrofit2.http.Url
 
 interface CertificateLightService {
 
-	@Headers("Accept: application/json+jws")
+	@Headers("Accept: application/json")
 	@POST("certificateLight")
 	suspend fun convert(@Body body: CertificateLightRequestBody): Response<CertificateLightResponse>
-
-	@POST
-	suspend fun mockConvert(@Url url: String, @Body body: CertificateLightRequestBody): Response<CertificateLightResponse>
 
 }

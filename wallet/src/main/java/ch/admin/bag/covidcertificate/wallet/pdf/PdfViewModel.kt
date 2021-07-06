@@ -24,6 +24,7 @@ import ch.admin.bag.covidcertificate.common.qr.QRCodeReaderHelper
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
@@ -110,8 +111,9 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 					val response = pdfExportRepository.convert(certificateHolder)
 
 					if (response != null) {
-						walletDataStorage.storePdfForCertificate(certificateHolder, response.pdf)
-						pdfExportMutableLiveData.postValue(PdfExportState.SUCCESS(response.pdf))
+						val decodedPdfData = response.pdf.fromBase64().decodeToString()
+						walletDataStorage.storePdfForCertificate(certificateHolder, decodedPdfData)
+						pdfExportMutableLiveData.postValue(PdfExportState.SUCCESS(decodedPdfData))
 					} else {
 						val error = checkIfOffline()
 						pdfExportMutableLiveData.postValue(PdfExportState.ERROR(error))
