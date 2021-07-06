@@ -11,7 +11,6 @@
 package ch.admin.bag.covidcertificate.wallet.pdf.net
 
 import android.content.Context
-import ch.admin.bag.covidcertificate.common.BuildConfig
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.CertificatePinning
@@ -19,20 +18,21 @@ import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.JwsInterceptor
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
-class PdfExportRepository private constructor(spec: PdfExportSpec) {
+class PdfExportRepository private constructor(context: Context) {
 
-	companion object : SingletonHolder<PdfExportRepository, PdfExportSpec>(::PdfExportRepository)
+	companion object : SingletonHolder<PdfExportRepository, Context>(::PdfExportRepository)
 
 	private val pdfExportService: PdfExportService
 
 	init {
-		val rootCa = CovidCertificateSdk.getRootCa(spec.context)
+		val rootCa = CovidCertificateSdk.getRootCa(context)
 		val expectedCommonName = CovidCertificateSdk.getExpectedCommonName()
 		val okHttpBuilder = OkHttpClient.Builder()
 			.certificatePinner(CertificatePinning.pinner)
@@ -40,7 +40,7 @@ class PdfExportRepository private constructor(spec: PdfExportSpec) {
 			.addInterceptor(UserAgentInterceptor(Config.userAgent))
 
 		val cacheSize = 5 * 1024 * 1024 // 5 MB
-		val cache = Cache(spec.context.cacheDir, cacheSize.toLong())
+		val cache = Cache(context.cacheDir, cacheSize.toLong())
 		okHttpBuilder.cache(cache)
 
 		if (BuildConfig.DEBUG) {
@@ -49,7 +49,7 @@ class PdfExportRepository private constructor(spec: PdfExportSpec) {
 		}
 
 		pdfExportService = Retrofit.Builder()
-			.baseUrl(spec.baseUrl)
+			.baseUrl(BuildConfig.BASE_URL_TRANSFORMATION)
 			.client(okHttpBuilder.build())
 			.addConverterFactory(MoshiConverterFactory.create())
 			.build()
@@ -66,5 +66,3 @@ class PdfExportRepository private constructor(spec: PdfExportSpec) {
 	}
 
 }
-
-class PdfExportSpec(val context: Context, val baseUrl: String)

@@ -15,7 +15,6 @@ import android.content.ClipData
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Uri
-import androidx.core.net.toUri
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -24,16 +23,12 @@ import ch.admin.bag.covidcertificate.common.qr.QRCodeReaderHelper
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
-import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
-import ch.admin.bag.covidcertificate.wallet.BuildConfig
-import ch.admin.bag.covidcertificate.wallet.MainApplication
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportState
 import ch.admin.bag.covidcertificate.wallet.pdf.net.PdfExportRepository
-import ch.admin.bag.covidcertificate.wallet.pdf.net.PdfExportSpec
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -45,8 +40,7 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val walletDataStorage = WalletDataSecureStorage.getInstance(application.applicationContext)
-	private val pdfExportRepository =
-		PdfExportRepository.getInstance(PdfExportSpec(application.applicationContext, BuildConfig.BASE_URL_TRANSFORMATION))
+	private val pdfExportRepository = PdfExportRepository.getInstance(application.applicationContext)
 
 	private val pdfImportMutableLiveData: MutableLiveData<PdfImportState> = MutableLiveData()
 	val pdfImportState: LiveData<PdfImportState> = pdfImportMutableLiveData

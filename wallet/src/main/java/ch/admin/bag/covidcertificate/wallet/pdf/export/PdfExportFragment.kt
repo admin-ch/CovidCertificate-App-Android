@@ -36,6 +36,10 @@ class PdfExportFragment : Fragment(R.layout.fragment_pdf_export) {
 		const val REQUEST_KEY_PDF_EXPORT = "REQUEST_KEY_PDF_EXPORT"
 		const val RESULT_KEY_PDF_URI = "RESULT_KEY_PDF_URI"
 		private const val ARG_CERTIFICATE_HOLDER = "ARG_CERTIFICATE_HOLDER"
+		private const val PDF_EXPORT_PATH = "certificate-pdfs"
+		private const val PDF_EXPORT_FILE_SUFFIX = "certificate"
+		private const val PDF_EXPORT_FILE_EXTENSION = ".pdf"
+		private const val FILE_PROVIDER_AUTHORITY = "ch.admin.bag.covidcertificate.wallet.fileprovider"
 
 		fun newInstance(certificateHolder: CertificateHolder) = PdfExportFragment().apply {
 			arguments = bundleOf(
@@ -105,12 +109,12 @@ class PdfExportFragment : Fragment(R.layout.fragment_pdf_export) {
 				}
 			}
 			is PdfExportState.SUCCESS -> {
-				val folder = File(requireContext().cacheDir, "certificate-pdfs")
+				val folder = File(requireContext().cacheDir, PDF_EXPORT_PATH)
 				if (!folder.exists()) folder.mkdirs()
 
-				val pdfFile = File.createTempFile("${System.currentTimeMillis()}-certificate", ".pdf", folder)
+				val pdfFile = File.createTempFile("${System.currentTimeMillis()}-$PDF_EXPORT_FILE_SUFFIX", PDF_EXPORT_FILE_EXTENSION, folder)
 				pdfFile.writeBytes(state.pdfData.fromBase64())
-				val uri = FileProvider.getUriForFile(requireContext(), "ch.admin.bag.covidcertificate.wallet.fileprovider", pdfFile)
+				val uri = FileProvider.getUriForFile(requireContext(), FILE_PROVIDER_AUTHORITY, pdfFile)
 
 				setFragmentResult(REQUEST_KEY_PDF_EXPORT, bundleOf(RESULT_KEY_PDF_URI to uri))
 				parentFragmentManager.popBackStack()

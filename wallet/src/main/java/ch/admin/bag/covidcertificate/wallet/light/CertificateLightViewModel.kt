@@ -23,11 +23,9 @@ import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
-import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.light.model.CertificateLightConversionState
 import ch.admin.bag.covidcertificate.wallet.light.net.CertificateLightRepository
-import ch.admin.bag.covidcertificate.wallet.light.net.CertificateLightSpec
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -37,12 +35,7 @@ class CertificateLightViewModel(application: Application) : AndroidViewModel(app
 
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val walletDataStorage = WalletDataSecureStorage.getInstance(application.applicationContext)
-	private val repository = CertificateLightRepository.getInstance(
-		CertificateLightSpec(
-			application.applicationContext,
-			BuildConfig.BASE_URL_TRANSFORMATION
-		)
-	)
+	private val repository = CertificateLightRepository.getInstance(application.applicationContext)
 
 	private val conversionStateMutableLiveData = MutableLiveData<CertificateLightConversionState>()
 	val conversionState = conversionStateMutableLiveData as LiveData<CertificateLightConversionState>
