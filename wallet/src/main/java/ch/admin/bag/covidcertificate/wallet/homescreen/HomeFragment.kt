@@ -53,6 +53,7 @@ import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.faq.WalletFaqFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.CertificatesPagerAdapter
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
+import ch.admin.bag.covidcertificate.wallet.light.CertificateLightDetailFragment
 import ch.admin.bag.covidcertificate.wallet.list.CertificatesListFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.PdfImportState
 import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
@@ -101,6 +102,7 @@ class HomeFragment : Fragment() {
 		setupButtons()
 		setupPager()
 		setupInfoBox()
+		setupPagerClickListeners()
 		setupImportObservers()
 	}
 
@@ -205,12 +207,33 @@ class HomeFragment : Fragment() {
 			binding.homescreenLoadingIndicator.isVisible = false
 			updateHomescreen(it)
 		}
+	}
 
+	private fun setupPagerClickListeners() {
 		certificatesViewModel.onQrCodeClickedSingleLiveEvent.observe(viewLifecycleOwner) { certificate ->
+			val fragment = CertificateDetailFragment.newInstance(certificate)
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, CertificateDetailFragment.newInstance(certificate))
+				.replace(R.id.fragment_container, fragment)
 				.addToBackStack(CertificateDetailFragment::class.java.canonicalName)
+				.commit()
+		}
+
+		certificatesViewModel.onCertificateLightClickedSingleLiveEvent.observe(viewLifecycleOwner) { certificateLight ->
+			val fragment = CertificateLightDetailFragment.newInstance(certificateLight.second, certificateLight.first)
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, fragment)
+				.addToBackStack(CertificateLightDetailFragment::class.java.canonicalName)
+				.commit()
+		}
+
+		certificatesViewModel.onTransferCodeClickedSingleLiveEvent.observe(viewLifecycleOwner) { transferCode ->
+			val fragment = TransferCodeDetailFragment.newInstance(transferCode)
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, fragment)
+				.addToBackStack(TransferCodeDetailFragment::class.java.canonicalName)
 				.commit()
 		}
 	}
@@ -226,14 +249,6 @@ class HomeFragment : Fragment() {
 					showImportError(decodeState.error.code)
 				}
 			}
-		}
-
-		certificatesViewModel.onTransferCodeClickedSingleLiveEvent.observe(viewLifecycleOwner) { transferCode ->
-			parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, TransferCodeDetailFragment.newInstance(transferCode))
-				.addToBackStack(TransferCodeDetailFragment::class.java.canonicalName)
-				.commit()
 		}
 
 		pdfViewModel.pdfImportLiveData.observe(viewLifecycleOwner) { importState ->

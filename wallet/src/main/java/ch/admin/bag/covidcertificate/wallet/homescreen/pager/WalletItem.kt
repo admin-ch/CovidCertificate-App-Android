@@ -14,6 +14,12 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolde
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 
 sealed class WalletItem(open val id: Int) {
-	data class DccHolderItem(override val id: Int, val qrCodeData: String, val certificateHolder: CertificateHolder?) : WalletItem(id)
+	data class CertificateHolderItem(
+		override val id: Int,
+		val qrCodeData: String,
+		val qrCodeImage: String?,
+		val certificateHolder: CertificateHolder?
+	) : WalletItem(id)
+
 	data class TransferCodeHolderItem(override val id: Int, val transferCode: TransferCodeModel) : WalletItem(id)
 }

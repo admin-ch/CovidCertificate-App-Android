@@ -45,7 +45,7 @@ sealed class WalletDataListViewHolder(itemView: View) : RecyclerView.ViewHolder(
 
 		fun bindItem(
 			item: WalletDataListItem.VerifiedCeritificateItem,
-			onCertificateClickListener: ((CertificateHolder) -> Unit)? = null
+			onCertificateClickListener: ((Pair<CertificateHolder, String?>) -> Unit)? = null
 		) = item.bindView(itemView, onCertificateClickListener)
 	}
 

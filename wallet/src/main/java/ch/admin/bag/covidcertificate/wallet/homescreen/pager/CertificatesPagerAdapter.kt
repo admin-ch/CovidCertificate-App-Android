@@ -13,6 +13,7 @@ package ch.admin.bag.covidcertificate.wallet.homescreen.pager
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DiffUtil
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import ch.admin.bag.covidcertificate.wallet.light.CertificateLightPagerFragment
 
 class CertificatesPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
 
@@ -21,7 +22,13 @@ class CertificatesPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragme
 	override fun getItemCount(): Int = items.size
 
 	override fun createFragment(position: Int): Fragment = when (val item = items[position]) {
-		is WalletItem.DccHolderItem -> CertificatePagerFragment.newInstance(item.qrCodeData, item.certificateHolder)
+		is WalletItem.CertificateHolderItem -> {
+			if (item.qrCodeImage != null && item.certificateHolder?.containsChLightCert() == true) {
+				CertificateLightPagerFragment.newInstance(item.qrCodeImage, item.certificateHolder)
+			} else  {
+				CertificatePagerFragment.newInstance(item.qrCodeData, item.certificateHolder)
+			}
+		}
 		is WalletItem.TransferCodeHolderItem -> TransferCodePagerFragment.newInstance(item.transferCode)
 	}
 

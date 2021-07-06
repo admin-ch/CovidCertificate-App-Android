@@ -27,9 +27,12 @@ import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
 import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 
 sealed class WalletDataListItem {
-	data class VerifiedCeritificateItem(val verifiedCertificate: CertificatesViewModel.VerifiedCertificate) : WalletDataListItem() {
+	data class VerifiedCeritificateItem(
+		val verifiedCertificate: CertificatesViewModel.VerifiedCertificate,
+		val qrCodeImage: String?
+	) : WalletDataListItem() {
 
-		fun bindView(itemView: View, onCertificateClickListener: ((CertificateHolder) -> Unit)? = null) {
+		fun bindView(itemView: View, onCertificateClickListener: ((Pair<CertificateHolder, String?>) -> Unit)? = null) {
 			val binding = ItemCertificateListBinding.bind(itemView)
 			val state = verifiedCertificate.state
 			val certificate = verifiedCertificate.certificateHolder
@@ -82,7 +85,7 @@ sealed class WalletDataListItem {
 
 			if (certificate != null) {
 				binding.root.setOnClickListener {
-					onCertificateClickListener?.invoke(certificate)
+					onCertificateClickListener?.invoke(certificate to qrCodeImage)
 				}
 				binding.root.isClickable = true
 			} else {

@@ -11,8 +11,6 @@
 package ch.admin.bag.covidcertificate.wallet
 
 import android.app.Application
-import android.content.Context
-import android.net.ConnectivityManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -32,6 +30,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.time.Instant
 import kotlin.collections.set
 
 class CertificatesViewModel(application: Application) : AndroidViewModel(application) {
@@ -46,12 +45,13 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	private val verificationJobs = mutableMapOf<CertificateHolder, Job>()
 
 	val onQrCodeClickedSingleLiveEvent = SingleLiveEvent<CertificateHolder>()
+	val onCertificateLightClickedSingleLiveEvent = SingleLiveEvent<Pair<String, CertificateHolder>>()
 	val onTransferCodeClickedSingleLiveEvent = SingleLiveEvent<TransferCodeModel>()
 
 	init {
 		walletItems.observeForever { items ->
 			// When the wallet items change, map the certificates with the existing verification state or LOADING
-			val certificateItems = items.filterIsInstance<WalletItem.DccHolderItem>()
+			val certificateItems = items.filterIsInstance<WalletItem.CertificateHolderItem>()
 			val currentVerifiedCertificates = verifiedCertificates.value ?: emptyList()
 			verifiedCertificatesMutableLiveData.value = certificateItems.map { item ->
 				currentVerifiedCertificates.find {
@@ -69,24 +69,52 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 			val pagerHolders = walletDataStorage.getWalletData().map { dataItem ->
 				when (dataItem) {
 					is WalletDataItem.CertificateWalletData -> {
-						val decodeState = CovidCertificateSdk.Wallet.decode(dataItem.qrCodeData)
-						if (decodeState is DecodeState.ERROR) {
-							verifiedCertificatesMutableLiveData.postValue(
-								(verifiedCertificates.value?.toMutableList() ?: mutableListOf()).apply {
-									add(
-										VerifiedCertificate(
-											dataItem.qrCodeData,
-											null,
-											VerificationState.ERROR(decodeState.error, null)
-										)
-									)
-								})
+						var holderItem: WalletItem.CertificateHolderItem? = null
+						if (dataItem.certificateLightData != null && dataItem.certificateLightQrCode != null) {
+							// If the wallet data item contains a certificate light, decode it to check it's expiration timestamp
+							val certificateLightDecodeState = CovidCertificateSdk.Wallet.decode(dataItem.certificateLightData)
+							if (
+								certificateLightDecodeState is DecodeState.SUCCESS
+								&& certificateLightDecodeState.certificateHolder.expirationTime?.isAfter(Instant.now()) == true
+							) {
+								holderItem = WalletItem.CertificateHolderItem(
+									dataItem.certificateLightData.hashCode(),
+									dataItem.certificateLightData,
+									dataItem.certificateLightQrCode,
+									certificateLightDecodeState.certificateHolder
+								)
+							} else {
+								// Remove the certificate light data if it expired or could not be decoded
+								walletDataStorage.deleteCertificateLight(dataItem.qrCodeData)
+							}
 						}
-						WalletItem.DccHolderItem(
-							dataItem.qrCodeData.hashCode(),
-							dataItem.qrCodeData,
-							(decodeState as? DecodeState.SUCCESS?)?.certificateHolder
-						)
+
+						if (holderItem == null) {
+							// If the wallet data item didn't contain a certificate light or it already expired, decode the regular
+							// certificate and map it to a pager holder item
+							val decodeState = CovidCertificateSdk.Wallet.decode(dataItem.qrCodeData)
+							if (decodeState is DecodeState.ERROR) {
+								verifiedCertificatesMutableLiveData.postValue(
+									(verifiedCertificates.value?.toMutableList() ?: mutableListOf()).apply {
+										add(
+											VerifiedCertificate(
+												dataItem.qrCodeData,
+												null,
+												VerificationState.ERROR(decodeState.error, null)
+											)
+										)
+									})
+							}
+
+							holderItem = WalletItem.CertificateHolderItem(
+								dataItem.qrCodeData.hashCode(),
+								dataItem.qrCodeData,
+								null,
+								(decodeState as? DecodeState.SUCCESS?)?.certificateHolder
+							)
+						}
+
+						holderItem
 					}
 					is WalletDataItem.TransferCodeWalletData -> WalletItem.TransferCodeHolderItem(
 						dataItem.transferCode.hashCode(),
@@ -121,6 +149,10 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 	fun onQrCodeClicked(certificateHolder: CertificateHolder) {
 		onQrCodeClickedSingleLiveEvent.postValue(certificateHolder)
+	}
+
+	fun onCertificateLightClicked(qrCodeImage: String, certificateHolder: CertificateHolder) {
+		onCertificateLightClickedSingleLiveEvent.postValue(qrCodeImage to certificateHolder)
 	}
 
 	fun onTransferCodeClicked(transferCode: TransferCodeModel) {
