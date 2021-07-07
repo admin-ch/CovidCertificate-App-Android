@@ -132,7 +132,9 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 			val seconds = remainingTimeInSeconds % 60
 
 			view?.post {
-				binding.certificateLightPageValidity.text = "%02d:%02d:%02d".format(hours, minutes, seconds)
+				if (isAdded) {
+					binding.certificateLightPageValidity.text = "%02d:%02d:%02d".format(hours, minutes, seconds)
+				}
 			}
 
 			if (remainingTimeInSeconds <= 0) {
