@@ -120,6 +120,7 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 			// This request is best-effort, if it fails, ignore it and let the backend delete the transfer code and certificate
 			// automatically after it expires
 		}
+		TransferCodeCrypto.deleteKeyEntry(transferCode.code)
 	}
 
 }
