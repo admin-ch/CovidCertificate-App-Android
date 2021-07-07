@@ -27,7 +27,7 @@ import java.io.IOException
 import java.util.concurrent.TimeUnit
 import kotlin.math.max
 
-class TransferWorker(private val context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
+class TransferWorker(context: Context, workerParams: WorkerParameters) : CoroutineWorker(context, workerParams) {
 
 	companion object {
 		val WORKER_NAME = TransferWorker::class.java.canonicalName
@@ -84,7 +84,7 @@ class TransferWorker(private val context: Context, workerParams: WorkerParameter
 	}
 
 	private suspend fun downloadTransferCertificate(transferCode: TransferCodeModel): TransferState {
-		val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, context)
+		val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, applicationContext)
 
 		if (keyPair != null) {
 			try {
@@ -105,7 +105,7 @@ class TransferWorker(private val context: Context, workerParams: WorkerParameter
 						} catch (e: IOException) {
 							// Best effort only
 						}
-						TransferCodeCrypto.deleteKeyEntry(transferCode.code, context)
+						TransferCodeCrypto.deleteKeyEntry(transferCode.code, applicationContext)
 					}
 					TransferState.SUCCESS
 				} else {

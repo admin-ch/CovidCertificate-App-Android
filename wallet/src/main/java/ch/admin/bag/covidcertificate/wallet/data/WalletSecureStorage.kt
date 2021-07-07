@@ -41,6 +41,12 @@ class WalletSecureStorage private constructor(context: Context) {
 		KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, completed
 	).apply()
 
+
+	/*
+	 * The following methods are only used on Android 6 as a workaround to the AndroidKeyStore not properly working with the
+	 * signing and decrypting functionality of the In-App Delivery feature. On later Android versions, the key pairs are directly
+	 * stored in the AndroidKeyStore.
+	 */
 	fun getTransferCodePublicKey(keyAlias: String) = prefs.getString(KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX + keyAlias, null)
 
 	fun setTransferCodePublicKey(keyAlias: String, encodedKey: String?) =
