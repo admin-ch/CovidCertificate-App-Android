@@ -16,7 +16,7 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:background="@drawable/bg_rect_rounded_small"
-	android:backgroundTint="@color/greyish"
+	app:backgroundTint="@color/greyish"
 	android:padding="@dimen/spacing_small">
 
 	<ImageView

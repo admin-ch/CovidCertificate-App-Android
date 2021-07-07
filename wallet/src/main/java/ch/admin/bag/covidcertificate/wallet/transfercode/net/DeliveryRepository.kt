@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.wallet.transfercode.net
 
 import android.content.Context
+import android.util.Base64
 import ch.admin.bag.covidcertificate.common.BuildConfig
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config

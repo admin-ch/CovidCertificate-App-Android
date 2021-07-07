@@ -21,6 +21,8 @@ class WalletSecureStorage private constructor(context: Context) {
 		private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
 		private const val KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA = "KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA"
 		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
+		private const val KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX = "TRANSFER_CODE_PUBLIC_KEY_"
+		private const val KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX = "TRANSFER_CODE_PRIVATE_KEY_"
 	}
 
 	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, PREFERENCES)
@@ -38,5 +40,15 @@ class WalletSecureStorage private constructor(context: Context) {
 	fun setCertificateLightUpdateboardingCompleted(completed: Boolean) = prefs.edit().putBoolean(
 		KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, completed
 	).apply()
+
+	fun getTransferCodePublicKey(keyAlias: String) = prefs.getString(KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX + keyAlias, null)
+
+	fun setTransferCodePublicKey(keyAlias: String, encodedKey: String) =
+		prefs.edit().putString(KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX + keyAlias, encodedKey).apply()
+
+	fun getTransferCodePrivateKey(keyAlias: String) = prefs.getString(KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX + keyAlias, null)
+
+	fun setTransferCodePrivateKey(keyAlias: String, encodedKey: String) =
+		prefs.edit().putString(KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX + keyAlias, encodedKey).apply()
 
 }

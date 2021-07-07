@@ -59,7 +59,7 @@
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="@dimen/spacing_medium_small"
 						android:background="@drawable/bg_certificate_bubble"
-						android:backgroundTint="@color/white"
+						app:backgroundTint="@color/white"
 						android:clipToPadding="false"
 						android:elevation="@dimen/default_elevation"
 						android:gravity="center"
