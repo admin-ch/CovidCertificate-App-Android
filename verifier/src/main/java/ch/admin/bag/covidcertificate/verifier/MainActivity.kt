@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
@@ -66,6 +67,15 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		configViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
+	}
+
+	override fun onStart() {
+		super.onStart()
+
+		if (secureStorage.getCertificateLightUpdateboardingCompleted()) {
+			configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
+			CovidCertificateSdk.refreshTrustList(lifecycleScope)
+		}
 	}
 
 	override fun onDestroy() {
