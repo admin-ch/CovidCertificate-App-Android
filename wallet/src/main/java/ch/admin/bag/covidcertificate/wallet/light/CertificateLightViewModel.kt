@@ -80,8 +80,21 @@ class CertificateLightViewModel(application: Application) : AndroidViewModel(app
 		}
 	}
 
-	fun deleteCertificateLight(certificateHolder: CertificateHolder) {
-		walletDataStorage.deleteCertificateLight(certificateHolder.qrCodeData)
+	/**
+	 * Delete the certificate light in the storage and return the original certificate
+	 * @return The original certificate to which this certificate light belonged, or null if it didn't exist in the storage or
+	 * 			could not be decoded (both should never be the case)
+	 */
+	fun deleteCertificateLight(certificateHolder: CertificateHolder): CertificateHolder? {
+		val regularCertificate = walletDataStorage.deleteCertificateLight(certificateHolder.qrCodeData)
+		return regularCertificate?.let {
+			val decodeState = CovidCertificateSdk.Wallet.decode(it.qrCodeData)
+			if (decodeState is DecodeState.SUCCESS) {
+				decodeState.certificateHolder
+			} else {
+				null
+			}
+		}
 	}
 
 	private fun checkIfOffline() {
