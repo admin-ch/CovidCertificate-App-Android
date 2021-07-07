@@ -57,13 +57,13 @@ class CertificateLightViewModel(application: Application) : AndroidViewModel(app
 							walletDataStorage.storeCertificateLight(
 								certificateHolder,
 								decodeState.certificateHolder.qrCodeData,
-								response.qrcode
+								response.qrCode
 							)
 
 							conversionStateMutableLiveData.postValue(
 								CertificateLightConversionState.SUCCESS(
 									decodeState.certificateHolder,
-									response.qrcode
+									response.qrCode
 								)
 							)
 						}
