@@ -8,39 +8,28 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.wallet.onboarding
+package ch.admin.bag.covidcertificate.verifier.updateboarding
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import ch.admin.bag.covidcertificate.wallet.R
-import ch.admin.bag.covidcertificate.wallet.databinding.ActivityOnboardingBinding
-import ch.admin.bag.covidcertificate.wallet.onboarding.update.UpdateboardingCertificateLightSlidePageAdapter
+import ch.admin.bag.covidcertificate.verifier.R
+import ch.admin.bag.covidcertificate.verifier.databinding.ActivityUpdateboardingBinding
 
-class OnboardingActivity : AppCompatActivity() {
+class UpdateboardingActivity : AppCompatActivity() {
 
-	companion object {
-		const val EXTRA_ONBOARDING_TYPE = "EXTRA_ONBOARDING_TYPE"
-	}
-
-	private lateinit var binding: ActivityOnboardingBinding
+	private lateinit var binding: ActivityUpdateboardingBinding
 	private lateinit var pagerAdapter: FragmentStateAdapter
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		val onboardingType =
-			OnboardingType.valueOf(intent.getStringExtra(EXTRA_ONBOARDING_TYPE) ?: OnboardingType.FRESH_INSTALL.name)
-
-		binding = ActivityOnboardingBinding.inflate(layoutInflater)
+		binding = ActivityUpdateboardingBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
 		binding.viewPager.isUserInputEnabled = false
 
-		pagerAdapter = when (onboardingType) {
-			OnboardingType.FRESH_INSTALL -> OnboardingSlidePageAdapter(this)
-			OnboardingType.CERTIFICATE_LIGHT -> UpdateboardingCertificateLightSlidePageAdapter(this)
-		}
+		pagerAdapter = UpdateboardingPagerAdapter(this)
 		binding.viewPager.adapter = pagerAdapter
 	}
 
@@ -54,9 +43,4 @@ class OnboardingActivity : AppCompatActivity() {
 			overridePendingTransition(R.anim.fragment_open_enter, R.anim.fragment_open_exit)
 		}
 	}
-
-	enum class OnboardingType {
-		FRESH_INSTALL, CERTIFICATE_LIGHT
-	}
-
 }

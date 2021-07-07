@@ -11,7 +11,10 @@
 package ch.admin.bag.covidcertificate.verifier
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -21,15 +24,28 @@ import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.ActivityMainBinding
+import ch.admin.bag.covidcertificate.verifier.updateboarding.UpdateboardingActivity
 
 class MainActivity : AppCompatActivity() {
 
 	private lateinit var binding: ActivityMainBinding
 
 	private val configViewModel by viewModels<ConfigViewModel>()
+	private val secureStorage by lazy { VerifierSecureStorage.getInstance(this) }
 
 	private var forceUpdateDialog: AlertDialog? = null
+
+	private val updateboardingLauncher =
+		registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult: ActivityResult ->
+			if (activityResult.resultCode == RESULT_OK) {
+				secureStorage.setCertificateLightUpdateboardingCompleted(true)
+				showHomeFragment()
+			} else {
+				finish()
+			}
+		}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -41,14 +57,16 @@ class MainActivity : AppCompatActivity() {
 		window.setSecureFlagToBlockScreenshots(BuildConfig.FLAVOR)
 
 		if (savedInstanceState == null) {
-			supportFragmentManager.beginTransaction()
-				.add(R.id.fragment_container, HomeFragment.newInstance())
-				.commit()
+			val certificateLightUpdateboardingCompleted = secureStorage.getCertificateLightUpdateboardingCompleted()
+			if (!certificateLightUpdateboardingCompleted) {
+				val intent = Intent(this, UpdateboardingActivity::class.java)
+				updateboardingLauncher.launch(intent)
+			} else {
+				showHomeFragment()
+			}
 		}
 
 		configViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
-
-		CovidCertificateSdk.registerWithLifecycle(lifecycle)
 	}
 
 	override fun onStart() {
@@ -60,6 +78,14 @@ class MainActivity : AppCompatActivity() {
 	override fun onDestroy() {
 		super.onDestroy()
 		CovidCertificateSdk.unregisterWithLifecycle(lifecycle)
+	}
+
+	private fun showHomeFragment() {
+		CovidCertificateSdk.registerWithLifecycle(lifecycle)
+
+		supportFragmentManager.beginTransaction()
+			.add(R.id.fragment_container, HomeFragment.newInstance())
+			.commit()
 	}
 
 	private fun handleConfig(config: ConfigModel) {

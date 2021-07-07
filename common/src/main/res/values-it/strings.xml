@@ -921,4 +921,28 @@ erstellt werden"</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"nur muss keine"</string>
+
+    <!-- VoiceOver reads this when the expandable box is reduced -->
+    <string name="accessibility_expandable_box_reduced_state">"reduziert"</string>
+
+    <!-- VoiceOver reads this when the expandable box is expanded -->
+    <string name="accessibility_expandable_box_expanded_state">"erweitert"</string>
+
+    <!-- Header im Update Boarding-Screen -->
+    <string name="wallet_update_boarding_header">"Update"</string>
+
+    <!-- Titel im Zertifikat Light-Screen -->
+    <string name="wallet_update_boarding_certificate_light_title">"Zertifikat Light"</string>
+
+    <!-- Text im Zertifikat Light-Screen -->
+    <string name="wallet_update_boarding_certificate_light_text">"Mit diesem Update können Sie in der App eine Zertifikatskopie ohne Gesundheitsdaten für die Verwendung in der Schweiz generieren lassen. Dazu wurden die Nutzungsbedingungen sowie die Datenschutzerklärung aktualisiert, welche bei Weiternutzung der App als genehmigt gelten."</string>
+
+    <!-- Header im Update Boarding-Screen -->
+    <string name="verifier_update_boarding_header">"Update"</string>
+
+    <!-- Titel im Zertifikat Light-Screen -->
+    <string name="verifier_update_boarding_certificate_light_title">"Zertifikat Light"</string>
+
+    <!-- Text im Zertifikat Light-Screen -->
+    <string name="verifier_update_boarding_certificate_light_text">"Mit diesem Update können Sie in der App auch die Zertifikatskopie ohne Gesundheitsdaten prüfen. Dazu wurden die Nutzungsbedingungen sowie die Datenschutzerklärung aktualisiert, welche bei Weiternutzung der App als genehmigt gelten."</string>
 </resources>

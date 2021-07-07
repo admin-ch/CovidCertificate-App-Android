@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ch.admin.bag.covidcertificate.wallet.R
 
-class OnboardingSlidePageAdapter(fragmentActivity: FragmentActivity?) : FragmentStateAdapter(fragmentActivity!!) {
+class OnboardingSlidePageAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 	override fun createFragment(position: Int): Fragment {
 		when (position) {
 			0 -> return OnboardingIntroFragment.newInstance()
@@ -42,7 +42,5 @@ class OnboardingSlidePageAdapter(fragmentActivity: FragmentActivity?) : Fragment
 		throw IllegalArgumentException("There is no fragment for view pager position $position")
 	}
 
-	override fun getItemCount(): Int {
-		return 4
-	}
+	override fun getItemCount() = 4
 }
