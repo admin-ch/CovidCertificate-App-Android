@@ -172,28 +172,30 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		showLoadingIndicator(true)
 		setVerificationStateBubbleColor(R.color.greyish)
 		binding.certificateLightDetailVerificationStatus.setText(R.string.wallet_certificate_verifying)
-
 	}
 
 	private fun displaySuccessState() {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.blueish)
+		binding.certificateLightDetailStatusIcon.setImageResource(R.drawable.ic_info_blue)
 		binding.certificateLightDetailVerificationStatus.setText(R.string.verifier_verify_success_certificate_light_info)
 	}
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.greyish)
+		binding.certificateLightDetailStatusIcon.setImageResource(R.drawable.ic_error_grey)
 		binding.certificateLightDetailVerificationStatus.text = state.getValidationStatusString(requireContext())
-
 	}
 
 	private fun displayErrorState(state: VerificationState.ERROR) {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.greyish)
 		if (state.isOfflineMode()) {
+			binding.certificateLightDetailStatusIcon.setImageResource(R.drawable.ic_offline)
 			binding.certificateLightDetailVerificationStatus.text = getString(R.string.wallet_homescreen_offline).makeBold()
 		} else {
+			binding.certificateLightDetailStatusIcon.setImageResource(R.drawable.ic_process_error_grey)
 			binding.certificateLightDetailVerificationStatus.text = getString(R.string.wallet_homescreen_network_error).makeBold()
 		}
 	}
