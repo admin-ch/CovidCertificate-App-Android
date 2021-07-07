@@ -89,7 +89,7 @@
 			android:layout_marginTop="@dimen/spacing_huge"
 			android:layout_marginBottom="@dimen/spacing_medium"
 			android:background="@drawable/bg_certificate_bubble"
-			android:backgroundTint="@color/blueish"
+			app:backgroundTint="@color/blueish"
 			android:breakStrategy="high_quality"
 			android:gravity="center"
 			android:hyphenationFrequency="full"

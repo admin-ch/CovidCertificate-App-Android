@@ -58,7 +58,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:background="@drawable/bg_type_bubble_small"
-			android:backgroundTint="@color/blueish"
+			app:backgroundTint="@color/blueish"
 			android:paddingHorizontal="@dimen/spacing_very_small"
 			android:paddingVertical="1dp"
 			android:visibility="gone"

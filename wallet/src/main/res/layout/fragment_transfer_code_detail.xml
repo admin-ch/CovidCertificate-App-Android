@@ -115,7 +115,7 @@
 						android:layout_marginHorizontal="@dimen/spacing_very_large"
 						android:layout_marginTop="@dimen/spacing_very_small"
 						android:background="@drawable/bg_certificate_bubble"
-						android:backgroundTint="@color/blueish"
+						app:backgroundTint="@color/blueish"
 						android:clickable="true"
 						android:focusable="true"
 						app:layout_constraintTop_toBottomOf="@+id/transfer_code_detail_bubble">
@@ -142,7 +142,7 @@
 							android:layout_marginVertical="@dimen/spacing_medium"
 							android:elevation="@dimen/floating_button_elevation"
 							android:src="@drawable/ic_load"
-							android:tint="@color/white"
+							app:tint="@color/white"
 							app:layout_constraintBottom_toBottomOf="parent"
 							app:layout_constraintEnd_toEndOf="parent"
 							app:layout_constraintTop_toTopOf="parent" />
