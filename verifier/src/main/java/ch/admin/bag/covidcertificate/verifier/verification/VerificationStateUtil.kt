@@ -113,7 +113,7 @@ fun VerificationState.getStatusInformationString(context: Context): String {
 		}
 		is VerificationState.INVALID -> ""
 		VerificationState.LOADING -> context.getString(R.string.wallet_certificate_verifying)
-		is VerificationState.SUCCESS -> if (this.certType == CertType.LIGHT) {
+		is VerificationState.SUCCESS -> if (this.isLightCertificate) {
 			context.getString(R.string.verifier_verify_success_certificate_light_info)
 		} else {
 			context.getString(R.string.verifier_verify_success_info)
