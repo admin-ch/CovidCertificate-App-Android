@@ -17,6 +17,7 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
@@ -24,6 +25,7 @@ import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.HtmlFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.verifier.faq.VerifierFaqFragment
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPageAdapter
@@ -99,6 +101,12 @@ class HomeFragment : Fragment() {
 		}
 
 		setupInfoBox()
+	}
+
+	override fun onStart() {
+		super.onStart()
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
+		CovidCertificateSdk.refreshTrustList(lifecycleScope)
 	}
 
 	override fun onDestroyView() {
