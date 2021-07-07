@@ -103,12 +103,6 @@ class HomeFragment : Fragment() {
 		setupInfoBox()
 	}
 
-	override fun onStart() {
-		super.onStart()
-		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
-		CovidCertificateSdk.refreshTrustList(lifecycleScope)
-	}
-
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
