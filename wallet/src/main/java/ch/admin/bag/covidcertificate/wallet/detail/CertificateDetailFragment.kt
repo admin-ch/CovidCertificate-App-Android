@@ -56,8 +56,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
-import okhttp3.MediaType
-import java.time.LocalDate
 import java.time.LocalDateTime
 
 class CertificateDetailFragment : Fragment() {
@@ -413,7 +411,6 @@ class CertificateDetailFragment : Fragment() {
 	 * Display the formatted validity date of the vaccine or test
 	 */
 	private fun showValidityDate(validUntil: LocalDateTime?, certificateType: CertType?, verificationState: VerificationState) {
-		val now = LocalDateTime.now()
 		val formatter = when (certificateType) {
 			null -> null
 			CertType.TEST -> DEFAULT_DISPLAY_DATE_TIME_FORMATTER

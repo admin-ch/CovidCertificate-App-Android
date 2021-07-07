@@ -43,12 +43,12 @@ class WalletSecureStorage private constructor(context: Context) {
 
 	fun getTransferCodePublicKey(keyAlias: String) = prefs.getString(KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX + keyAlias, null)
 
-	fun setTransferCodePublicKey(keyAlias: String, encodedKey: String) =
+	fun setTransferCodePublicKey(keyAlias: String, encodedKey: String?) =
 		prefs.edit().putString(KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX + keyAlias, encodedKey).apply()
 
 	fun getTransferCodePrivateKey(keyAlias: String) = prefs.getString(KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX + keyAlias, null)
 
-	fun setTransferCodePrivateKey(keyAlias: String, encodedKey: String) =
+	fun setTransferCodePrivateKey(keyAlias: String, encodedKey: String?) =
 		prefs.edit().putString(KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX + keyAlias, encodedKey).apply()
 
 }

@@ -39,16 +39,16 @@ import javax.crypto.spec.SecretKeySpec
 
 object TransferCodeCrypto {
 
+	const val ANDROID_KEYSTORE_NAME = "AndroidKeyStore"
+	const val BOUNCY_CASTLE_PROVIDER = "BC"
+
 	init {
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
 			// Remove platform provided bouncy castle provider and add updated one from library on Android 23 and lower
-			Security.removeProvider("BC")
+			Security.removeProvider(BOUNCY_CASTLE_PROVIDER)
 			Security.addProvider(BouncyCastleProvider())
 		}
 	}
-
-	const val ANDROID_KEYSTORE_NAME = "AndroidKeyStore"
-	const val BOUNCY_CASTLE_PROVIDER = "BC"
 
 	fun createKeyPair(keyAlias: String, context: Context): KeyPair? {
 		val keyPurpose =
@@ -92,13 +92,6 @@ object TransferCodeCrypto {
 
 				kpg.generateKeyPair()
 			}
-
-
-//			val kpg = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, ANDROID_KEYSTORE_NAME).apply {
-//				initialize(keyGenParameterSpec)
-//			}
-//
-//			return kpg.generateKeyPair()
 		} catch (e: Throwable) {
 			e.printStackTrace()
 			return null
@@ -106,27 +99,12 @@ object TransferCodeCrypto {
 	}
 
 	fun loadKeyPair(keyAlias: String, context: Context): KeyPair? {
-//		val keystore = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
-//			val file = File(context.filesDir, "keystore.bks")
-//			KeyStore.getInstance("BKS").apply {
-//				if (file.exists()) {
-//					load(FileInputStream(file), "test".toCharArray())
-//				} else {
-//					load(null)
-//				}
-//			}
-//		} else {
-//			KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
-//				load(null)
-//			}
-//		}
-
 		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
 			val storage = WalletSecureStorage.getInstance(context)
 			val encodedPublicKey = storage.getTransferCodePublicKey(keyAlias)?.fromBase64()
 			val encodedPrivateKey = storage.getTransferCodePrivateKey(keyAlias)?.fromBase64()
 
-			if (encodedPublicKey != null && encodedPrivateKey != null) {
+			return if (encodedPublicKey != null && encodedPrivateKey != null) {
 				val kf = KeyFactory.getInstance("RSA", BOUNCY_CASTLE_PROVIDER)
 
 				val publicKeySpec = X509EncodedKeySpec(encodedPublicKey)
@@ -135,9 +113,9 @@ object TransferCodeCrypto {
 				val privateKeySpec = PKCS8EncodedKeySpec(encodedPrivateKey)
 				val privateKey = kf.generatePrivate(privateKeySpec)
 
-				return KeyPair(publicKey, privateKey)
+				KeyPair(publicKey, privateKey)
 			} else {
-				return null
+				null
 			}
 		} else {
 			val keystore = KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
@@ -152,13 +130,19 @@ object TransferCodeCrypto {
 		}
 	}
 
-	fun deleteKeyEntry(keyAlias: String) {
-		val keystore = KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
-			load(null)
-		}
+	fun deleteKeyEntry(keyAlias: String, context: Context) {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+			val storage = WalletSecureStorage.getInstance(context)
+			storage.setTransferCodePublicKey(keyAlias, null)
+			storage.setTransferCodePrivateKey(keyAlias, null)
+		} else {
+			val keystore = KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
+				load(null)
+			}
 
-		if (keystore.containsAlias(keyAlias)) {
-			keystore.deleteEntry(keyAlias)
+			if (keystore.containsAlias(keyAlias)) {
+				keystore.deleteEntry(keyAlias)
+			}
 		}
 	}
 

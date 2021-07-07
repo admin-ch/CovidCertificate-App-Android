@@ -105,7 +105,7 @@ class TransferWorker(private val context: Context, workerParams: WorkerParameter
 						} catch (e: IOException) {
 							// Best effort only
 						}
-						TransferCodeCrypto.deleteKeyEntry(transferCode.code)
+						TransferCodeCrypto.deleteKeyEntry(transferCode.code, context)
 					}
 					TransferState.SUCCESS
 				} else {
