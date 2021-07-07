@@ -71,8 +71,11 @@ class MainActivity : AppCompatActivity() {
 
 	override fun onStart() {
 		super.onStart()
-		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
-		CovidCertificateSdk.refreshTrustList(lifecycleScope)
+
+		if (secureStorage.getCertificateLightUpdateboardingCompleted()) {
+			configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
+			CovidCertificateSdk.refreshTrustList(lifecycleScope)
+		}
 	}
 
 	override fun onDestroy() {

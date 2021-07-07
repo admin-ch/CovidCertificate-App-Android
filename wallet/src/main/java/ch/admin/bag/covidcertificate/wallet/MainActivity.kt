@@ -18,6 +18,7 @@ import androidx.activity.result.contract.ActivityResultContracts.StartActivityFo
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
@@ -90,6 +91,15 @@ class MainActivity : AppCompatActivity() {
 		super.onNewIntent(intent)
 		setIntent(intent)
 		isIntentConsumed = false
+	}
+
+	override fun onStart() {
+		super.onStart()
+
+		if (secureStorage.getOnboardingCompleted() && secureStorage.getCertificateLightUpdateboardingCompleted()) {
+			configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
+			CovidCertificateSdk.refreshTrustList(lifecycleScope)
+		}
 	}
 
 	override fun onResume() {
