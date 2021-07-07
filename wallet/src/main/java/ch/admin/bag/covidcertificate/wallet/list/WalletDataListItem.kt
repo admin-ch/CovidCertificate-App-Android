@@ -59,7 +59,6 @@ sealed class WalletDataListItem {
 					binding.itemCertificateListIconStatusGroup.isVisible = false
 					binding.itemCertificateListIconStatus.isVisible = true
 					binding.itemCertificateListIconStatus.setImageResource(R.drawable.ic_info_blue)
-
 				}
 				is VerificationState.INVALID -> {
 					binding.itemCertificateListIconLoadingView.isVisible = false
@@ -125,6 +124,7 @@ sealed class WalletDataListItem {
 			view.setTextColor(ContextCompat.getColor(context, textColorId))
 
 			val typeLabelRes: Int = when (certType) {
+				CertType.LIGHT -> R.string.wallet_certificate_list_light_certificate_badge
 				CertType.RECOVERY -> R.string.certificate_reason_recovered
 				CertType.TEST -> R.string.certificate_reason_tested
 				else -> R.string.certificate_reason_vaccinated

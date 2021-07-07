@@ -41,7 +41,7 @@
     <string name="error_camera_permission_text">"The app requires access to the camera to be able to scan the QR code."</string>
     <string name="error_action_change_settings">"Change settings"</string>
     <string name="error_title">"Error"</string>
-    <string name="qr_scanner_error">"No valid code"</string>
+    <string name="qr_scanner_error">"Invalid code"</string>
     <string name="ok_button">"OK"</string>
     <string name="camera_permission_dialog_text">"The app requires access to the camera to be able to scan the QR code."</string>
     <string name="camera_permission_dialog_action">"Allow access to camera"</string>
@@ -73,7 +73,7 @@ to verify"</string>
     <string name="verifier_verify_success_title">"Verification successful"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
-    <string name="verifier_verify_success_info">"Valid only with 
+    <string name="verifier_verify_success_info">"Only valid in combination with 
 an identity document"</string>
 
     <!-- Prüfung loading text -->
@@ -131,7 +131,7 @@ an identity document"</string>
     <string name="continue_button">"Next"</string>
 
     <!-- Header im Onboarding-Screen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_header">"Data privacy"</string>
+    <string name="wallet_onboarding_privacy_header">"Data protection"</string>
 
     <!-- Titel im Onboardingscreen "Datenschutz" -->
     <string name="wallet_onboarding_privacy_title">"Your data remains 
@@ -226,7 +226,7 @@ in the app"</string>
     <string name="wallet_faq_questions_answer_1">"You can get a COVID certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site."</string>
 
     <!-- Antwort 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_2">"You can present your COVID certificate in hard copy or you can use the COVID Certificate app to save certificates in the app and present them directly from the app. You are free to choose whether you present your certificate in hard copy or in the app.
+    <string name="wallet_faq_questions_answer_2">"You can present your COVID certificate in paper form, or you can use the COVID Certificate app to save certificates in the dedicated app. You are free to choose whether to present your certificate in paper form or in the app.
 
 Please note that you will also need to show an identification document (passport or ID card) in either case.
 "</string>
@@ -271,10 +271,10 @@ Please note that you will also need to show an identification document (passport
     <string name="verifier_covid_certificate_prename">"First name"</string>
 
     <!-- Config: Titel wenn App muss geupdatet werden -->
-    <string name="force_update_title">"Update needed"</string>
+    <string name="force_update_title">"Update required"</string>
 
     <!-- Config: Text der angezeigt wird falls App muss geupdatet werden -->
-    <string name="force_update_text">"Load the latest version of the app."</string>
+    <string name="force_update_text">"Download the latest version of the app."</string>
 
     <!-- Config: Update Button Aktualisieren -->
     <string name="force_update_button">"Update"</string>
@@ -287,7 +287,7 @@ Please note that you will also need to show an identification document (passport
     <string name="certificate_reason_vaccinated">"Vaccination"</string>
 
     <!-- Wallet: Zertifikat Detail Genesen -->
-    <string name="certificate_reason_recovered">"Recovery"</string>
+    <string name="certificate_reason_recovered">"Recovered"</string>
 
     <!-- Wallet: Zertifikat Detail Getestet -->
     <string name="certificate_reason_tested">"Test"</string>
@@ -308,28 +308,28 @@ Please note that you will also need to show an identification document (passport
     <string name="wallet_onboarding_show_header">"Advantages"</string>
 
     <!-- Accessibility: Information -->
-    <string name="accessibility_info_button">"Imprint"</string>
+    <string name="accessibility_info_button">"Publication details"</string>
 
     <!-- Accessibility: FAQ Button Titel -->
     <string name="accessibility_faq_button">"FAQs"</string>
 
     <!-- Accessibility: Button zur Liste der Zertifikate -->
-    <string name="accessibility_list_button">"Certificates list"</string>
+    <string name="accessibility_list_button">"List of certificates"</string>
 
     <!-- Accessibility: Zertifikate hinzufügen -->
-    <string name="accessibility_add_button">"Add certificate"</string>
+    <string name="accessibility_add_button">"Add a certificate"</string>
 
     <!-- Accessibility: Schliessen Button -->
     <string name="accessibility_close_button">"Close"</string>
 
     <!-- Accessibility: Taschenlampe anschalten Button -->
-    <string name="accessibility_lamp_on_button">"Switch on flashlight"</string>
+    <string name="accessibility_lamp_on_button">"Turn on torch"</string>
 
     <!-- Accessibility: Lampe abschalten -->
-    <string name="accessibility_lamp_off_button">"Switch off flashlight"</string>
+    <string name="accessibility_lamp_off_button">"Turn off torch"</string>
 
     <!-- Titel des Impressum-Screens -->
-    <string name="impressum_title">"Imprint"</string>
+    <string name="impressum_title">"Publication details"</string>
 
     <!-- Unbekannter Fehler -->
     <string name="unknown_error">"An unknown error has occurred"</string>
@@ -411,7 +411,7 @@ Switzerland"</string>
     <string name="wallet_certificate_recovery_first_positiv_result">"Date of first positive test result"</string>
     <string name="wallet_certificate_recovery_from">"Valid from"</string>
     <string name="wallet_certificate_recovery_until">"Valid until"</string>
-    <string name="wallet_certificate_test_land">"Country of Test"</string>
+    <string name="wallet_certificate_test_land">"Country of test"</string>
     <string name="covid_certificate_test_title">"Test"</string>
     <string name="wallet_certificate_test_result_title">"Result"</string>
     <string name="wallet_certificate_test_result_negativ">"Not detected (Negative)"</string>
@@ -474,7 +474,7 @@ Switzerland"</string>
     <!-- Antwort 2 im FAQ der Verifier App -->
     <string name="verifier_faq_works_answer_2">"Three aspects are checked when scanning:
 – Does the certificate contain a valid electronic signature?
-– Is the certificate non-revoked?
+– Is the certificate unrevoked?
 – Does the certificate meet Switzerland's validity criteria?
 
 If the answer to all three questions is affirmative, the COVID certificate is shown as valid."</string>
@@ -507,7 +507,7 @@ If the answer to all three questions is affirmative, the COVID certificate is sh
     <string name="ios_settings_open">"Settings"</string>
 
     <!-- Wallet: Onboarding externer Link zu Datenschutz -->
-    <string name="wallet_onboarding_external_privacy_button">"Data Protection Statement &amp; Conditions of Use"</string>
+    <string name="wallet_onboarding_external_privacy_button">"Privacy policy &amp; Terms of use"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
     <string name="wallet_certificate_detail_note">"This certificate is not a travel document. 
@@ -813,111 +813,108 @@ In order to update the checklists, the app must be open and connected to the Int
     <string name="wallet_transfer_code_faq_questions_linkurl_2">"https://foph-coronavirus.ch/certificate/how-do-i-get-a-covid-certificate-and-how-do-i-use-it/"</string>
 
     <!-- Wallet: Zertifikat Light Button im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_certificate_light_button">"Zertifikat Light"</string>
+    <string name="wallet_certificate_detail_certificate_light_button">"Certificate light"</string>
 
     <!-- Wallet: Export Button im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_export_button">"Exportieren"</string>
+    <string name="wallet_certificate_detail_export_button">"Export"</string>
 
     <!-- Wallet: Zertifikat Light Title -->
-    <string name="wallet_certificate_light_detail_title">"Was ist ein 
-Zertifikat Light?"</string>
+    <string name="wallet_certificate_light_detail_title">"What is the 'certificate light'?"</string>
 
     <!-- Wallet: Zertifikat Light Summary Titel -->
-    <string name="wallet_certificate_light_detail_summary_title">"Zertifikat Light"</string>
+    <string name="wallet_certificate_light_detail_summary_title">"Certificate light"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 1 -->
-    <string name="wallet_certificate_light_detail_summary_1">"Kann nur innerhalb der Schweiz verwendet werden"</string>
+    <string name="wallet_certificate_light_detail_summary_1">"Can only be used within Switzerland"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 2 -->
-    <string name="wallet_certificate_light_detail_summary_2">"Enthält nur Namen, Vornamen, Geburtsdatum und eine elektronische Signatur"</string>
+    <string name="wallet_certificate_light_detail_summary_2">"Only contains last name, first name, date of birth and electronic signature"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Gültig für max. 48 Stunden"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Only valid for 48 hours"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
-    <string name="wallet_certificate_light_detail_summary_4">"Die Konvertierung des Covid-Zertifikats in ein Zertifikat Light erfolgt online."</string>
+    <string name="wallet_certificate_light_detail_summary_4">"Your COVID certificate is converted to the 'light' version online."</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 5 -->
-    <string name="wallet_certificate_light_detail_summary_5">"Sie können das Zertifikat Light jederzeit deaktivieren, um wieder zum normalen Covid-Zertifikat zu wechseln."</string>
+    <string name="wallet_certificate_light_detail_summary_5">"You can deactivate the 'light' version of the certificate and revert to the normal COVID certificate at any time."</string>
 
     <!-- Wallet: Zertifikat Light Aktivieren Button -->
-    <string name="wallet_certificate_light_detail_deactivate_button">"Deaktivieren"</string>
+    <string name="wallet_certificate_light_detail_deactivate_button">"Deactivate"</string>
 
     <!-- Wallet: Zertifikat Light Deaktivieren Button -->
-    <string name="wallet_certificate_light_detail_activate_button">"Aktivieren"</string>
+    <string name="wallet_certificate_light_detail_activate_button">"Activate"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation Error -->
-    <string name="wallet_certificate_light_detail_activation_error">"Zertifikat Light
-konnte nicht aktiviert werden"</string>
+    <string name="wallet_certificate_light_detail_activation_error">"'Certificate light' could not be activated"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation Netzwerk Fehler Titel -->
-    <string name="wallet_certificate_light_detail_activation_network_error_text">"Um das Zertifikat Light aktivieren zu können, muss die App online sein."</string>
+    <string name="wallet_certificate_light_detail_activation_network_error_text">"The app must be online to activate the 'certificate light'."</string>
 
     <!-- Info Text bei erfolgreicher Prüfung einers Zertifikate Light -->
-    <string name="verifier_verify_success_certificate_light_info">"Nur mit einem Ausweisdokument 
-&amp; innerhalb der Schweiz gültig"</string>
+    <string name="verifier_verify_success_certificate_light_info">"Only valid within Switzerland
+and in combination with an identity document"</string>
 
     <!-- Wallet: Zertifikat Export Title -->
-    <string name="wallet_certificate_export_title">"Covid-Zertifikat exportieren"</string>
+    <string name="wallet_certificate_export_title">"Export COVID certificate"</string>
 
     <!-- Wallet: Zertifikat Export Erklärung Punkt 1 -->
-    <string name="wallet_certificate_export_summary_1">"Aus den Daten Ihres Covid-Zertifikats wird ein PDF erstellt, das Sie drucken oder teilen können."</string>
+    <string name="wallet_certificate_export_summary_1">"A PDF is generated using the data from your COVID certificate that you can print or share."</string>
 
     <!-- Wallet: Zertifikat Export Erklärung Punkt 2 -->
-    <string name="wallet_certificate_export_summary_2">"Die Erstellung des PDF-Dokuments erfolgt online."</string>
+    <string name="wallet_certificate_export_summary_2">"The PDF document is generated online."</string>
 
     <!-- Wallet: Zertifikat Export Button -->
-    <string name="wallet_certificate_export_button">"Exportieren"</string>
+    <string name="wallet_certificate_export_button">"Export"</string>
 
     <!-- Wallet: Zertifikat Export Error Title -->
-    <string name="wallet_certificate_export_detail_error_title">"PDF konnte nicht
-erstellt werden"</string>
+    <string name="wallet_certificate_export_detail_error_title">"PDF could not be generated"</string>
 
     <!-- Wallet: Zertifikat Export Netzwerk Error -->
-    <string name="wallet_certificate_export_detail_network_error_text">"Um das PDF erstellen zu können, muss die App online sein."</string>
+    <string name="wallet_certificate_export_detail_network_error_text">"The app must be online to generate a PDF."</string>
     <string name="accessibility_qr_code">"QR code"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation Netzwerk Fehler Title -->
-    <string name="wallet_certificate_light_detail_activation_network_error_title">"Keine Verbindung zum Internet"</string>
+    <string name="wallet_certificate_light_detail_activation_network_error_title">"No Internet connection"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation General Fehler Text -->
-    <string name="wallet_certificate_light_detail_activation_general_error_text">"Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut."</string>
+    <string name="wallet_certificate_light_detail_activation_general_error_text">"Please try again later."</string>
 
     <!-- Wallet: Zertifikat Light Aktivation General Fehler Titel -->
-    <string name="wallet_certificate_light_detail_activation_general_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
+    <string name="wallet_certificate_light_detail_activation_general_error_title">"An unexpected error has occurred."</string>
 
     <!-- Wallet: Zertifikat Light Titel -->
-    <string name="wallet_certificate_light_title">"Zertifikat Light"</string>
+    <string name="wallet_certificate_light_title">"Certificate light"</string>
 
     <!-- Wallet: Zertifikat Exportieren Detail Title -->
-    <string name="wallet_certificate_export_detail_title">"Covid-Zertifikat exportieren"</string>
+    <string name="wallet_certificate_export_detail_title">"Export"</string>
 
     <!-- Wallet: Zertifikat Exportieren Summary 1 -->
-    <string name="wallet_certificate_export_detail_summary_1">"Aus den Daten Ihres Covid-Zertifikats wird ein PDF erstellt, das Sie drucken oder teilen können."</string>
+    <string name="wallet_certificate_export_detail_summary_1">"A PDF is generated using the data from your COVID certificate that you can print or share."</string>
 
     <!-- Wallet: Zertifikat Exportieren Summary 2 -->
-    <string name="wallet_certificate_export_detail_summary_2">"Die Erstellung des PDF-Dokuments erfolgt online."</string>
+    <string name="wallet_certificate_export_detail_summary_2">"The PDF document is generated online."</string>
 
     <!-- Wallet: Zertifikat Exportieren Datail Export Button -->
-    <string name="wallet_certificate_export_detail_export_button">"Exportieren"</string>
+    <string name="wallet_certificate_export_detail_export_button">"Export"</string>
 
     <!-- Wallet: Zertifikat Exportieren Datail Netzwerk Fehler -->
-    <string name="wallet_certificate_export_detail_network_error_title">"Keine Verbindung zum Internet"</string>
+    <string name="wallet_certificate_export_detail_network_error_title">"No Internet connection"</string>
 
     <!-- Wallet: Zertifikat Exportieren Datail General Fehler -->
-    <string name="wallet_certificate_export_detail_general_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
+    <string name="wallet_certificate_export_detail_general_error_title">"An unexpected error has occurred"</string>
 
     <!-- Wallet: Zertifikat Exportieren Datail General Fehler Text -->
-    <string name="wallet_certificate_export_detail_general_error_text">"Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut."</string>
+    <string name="wallet_certificate_export_detail_general_error_text">"An unexpected error has occurred. Please try again later."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 1 -->
-    <string name="wallet_certificate_light_detail_text_1">"Wenn Sie das Zertifikat Light aktivieren, wird aus den Daten Ihres Covid-Zertifikats ein neuer QR-Code erstellt, der keine Gesundheitsdaten enthält."</string>
+    <string name="wallet_certificate_light_detail_text_1">"When you activate the 'light' version of the certificate, a new QR code is generated using data from your COVID certificate that does not contain any health-related information."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"Während das normale Covid-Zertifikat im Rahmen seiner Gültigkeit ohne Einschränkungen sowohl in der Schweiz als auch in der EU/EFTA verwendet werden kann, ist der Einsatz des Zertifikats Light nur in der Schweiz möglich. Aus Datenschutzgründen muss das Zertifikat Light nach 48 Stunden erneut aktiviert werden. Es bringt keine zusätzlichen Rechte gegenüber dem normalen Covid-Zertifikat."</string>
+    <string name="wallet_certificate_light_detail_text_2">"While the regular COVID certificate can be used without restriction both in Switzerland and in the EU/EFTA during its period of validity, the 'light' version can only be used in Switzerland. For data protection reasons, the 'light' version has to be reactivated after 48 hours. It does not afford any additional rights to the normal COVID certificate."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
-    <string name="wallet_certificate_light_detail_text_2_bold">"nur muss keine"</string>
+    <string name="wallet_certificate_light_detail_text_2_bold">"only has to does not"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
     <string name="accessibility_expandable_box_reduced_state">"reduziert"</string>
@@ -929,21 +926,36 @@ erstellt werden"</string>
     <string name="wallet_update_boarding_header">"Update"</string>
 
     <!-- Titel im Zertifikat Light-Screen -->
-    <string name="wallet_update_boarding_certificate_light_title">"Zertifikat Light"</string>
+    <string name="wallet_update_boarding_certificate_light_title">"Certificate light"</string>
 
     <!-- Text im Zertifikat Light-Screen -->
-    <string name="wallet_update_boarding_certificate_light_text">"Mit diesem Update können Sie in der App eine Zertifikatskopie ohne Gesundheitsdaten für die Verwendung in der Schweiz generieren lassen. Dazu wurden die Nutzungsbedingungen sowie die Datenschutzerklärung aktualisiert, welche bei Weiternutzung der App als genehmigt gelten."</string>
+    <string name="wallet_update_boarding_certificate_light_text">"This update allows you to generate a copy of the certificate without health-related data for use in Switzerland. The privacy policy and terms of use have been updated accordingly. These are deemed to have been accepted if you continue to use the app."</string>
 
     <!-- Header im Update Boarding-Screen -->
     <string name="verifier_update_boarding_header">"Update"</string>
 
     <!-- Titel im Zertifikat Light-Screen -->
-    <string name="verifier_update_boarding_certificate_light_title">"Zertifikat Light"</string>
+    <string name="verifier_update_boarding_certificate_light_title">"Certificate light"</string>
 
     <!-- Text im Zertifikat Light-Screen -->
-    <string name="verifier_update_boarding_certificate_light_text">"Mit diesem Update können Sie in der App auch die Zertifikatskopie ohne Gesundheitsdaten prüfen. Dazu wurden die Nutzungsbedingungen sowie die Datenschutzerklärung aktualisiert, welche bei Weiternutzung der App als genehmigt gelten."</string>
+    <string name="verifier_update_boarding_certificate_light_text">"This update allows you to check certificate copies without health-related data in the app. The privacy policy and terms of use have been updated accordingly. These are deemed to have been accepted if you continue to use the app."</string>
 
     <!-- Verifier: Die Gültigkeit eines Certificate Light ist abgelaufen -->
     <string name="verifier_certificate_light_error_expired">"Certificate validity 
 expired"</string>
+
+    <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
+    <string name="wallet_certificate_list_light_certificate_badge">"Light"</string>
+    <string name="wallet_faq_questions_question_6">"What is the 'certificate light'"</string>
+    <string name="wallet_faq_questions_answer_6">"The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. 
+
+The alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.
+
+The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'."</string>
+    <string name="verifier_faq_works_question_8">"What is the 'certificate light'"</string>
+    <string name="verifier_faq_works_answer_8">"The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. 
+
+The alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.
+
+The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'."</string>
 </resources>
