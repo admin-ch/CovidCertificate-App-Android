@@ -627,7 +627,7 @@ In caso di test PCR positivo, ricevi un certificato COVID per persone guarite, v
     <string name="wallet_transfer_code_next_steps1">"Al momento dell'esecuzione del test comunica il codice alla farmacia, al centro di test o al medico."</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte 2 -->
-    <string name="wallet_transfer_code_next_steps2">"Al momento dell'esecuzione del test comunica il codice alla farmacia, al centro di test o al medico."</string>
+    <string name="wallet_transfer_code_next_steps2">"Se desideri ricevere più di un certificato, per esempio i certificati dei tuoi familiari, crea un nuovo codice per ciascun certificato."</string>
 
     <!-- Wallet: Transfer Code Fertig Button -->
     <string name="wallet_transfer_code_done_button">"Fatto"</string>

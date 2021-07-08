@@ -65,6 +65,14 @@
 					"iconIos": null,
 					"linkTitle": null,
 					"linkUrl": null
+				},
+				{
+					"title": "Was ist das Zertifikat Light?",
+					"text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 48 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 48 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
 				}
 			]
 		},
@@ -85,7 +93,7 @@
 				},
 				{
 					"title": "What exactly is checked?",
-					"text": "Three aspects are checked when scanning:\n– Does the certificate contain a valid electronic signature?\n– Is the certificate non-revoked?\n– Does the certificate meet Switzerland's validity criteria?\n\nIf the answer to all three questions is affirmative, the COVID certificate is shown as valid.",
+					"text": "Three aspects are checked when scanning:\n– Does the certificate contain a valid electronic signature?\n– Is the certificate unrevoked?\n– Does the certificate meet Switzerland's validity criteria?\n\nIf the answer to all three questions is affirmative, the COVID certificate is shown as valid.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -126,6 +134,14 @@
 				{
 					"title": "Is it possible to verify the certificates offline?",
 					"text": "In principle, COVID certificates can also be verified without an Internet connection. For this purpose, regularly updated checklists are downloaded from a central server. These locally stored checklists must not be older than 48 hours. \n\nIn order to update the checklists, the app must be open and connected to the Internet. Updating occurs immediately and automatically.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "What is the 'certificate light'",
+					"text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -195,6 +211,14 @@
 					"iconIos": null,
 					"linkTitle": null,
 					"linkUrl": null
+				},
+				{
+					"title": "Qu’est-ce que le certificat light ?",
+					"text": "L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Ce certificat « light » indique uniquement si le certificat présenté est valide, sans fournir de données sur la santé.\n\nL’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.\n\nLe certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 48 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
 				}
 			]
 		},
@@ -260,6 +284,14 @@
 					"iconIos": null,
 					"linkTitle": null,
 					"linkUrl": null
+				},
+				{
+					"title": "Che cos'è il certificato light?",
+					"text": "L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.\n\nIl certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».\n\nIl «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 48 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 48 ore, il certificato light può essere disattivato semplicemente.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
 				}
 			]
 		},
@@ -321,6 +353,14 @@
 				{
 					"title": "Pon ils certificats er vegnir verifitgads offline?",
 					"text": "Da princip pon ils certificats COVID er vegnir verifitgads senza ina colliaziun cun l'internet. Per far quai vegnan chargiadas giu regularmain d'in server central glistas da verificaziun actualisadas. Questas glistas da verificaziun arcunadas localmain na dastgan betg esser pli veglias che 48 uras.\n\nPer actualisar las glistas da verificaziun sto l'app esser colliada cun l'internet e vegnir averta. L'actualisaziun succeda immediatamain ed automaticamain.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Tge è in certificat light?",
+					"text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.\n\nL'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 48 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
