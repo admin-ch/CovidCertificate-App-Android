@@ -62,17 +62,18 @@ This project is truly open-source and we welcome any feedback on the code regard
 
 Bugs or potential problems should be reported using Github issues.
 We welcome all pull requests that improve the quality of the source code.
-Please note that the app will be available with approved translations in English, German, French, Italian.
+Please note that the app will be available with approved translations in English, German, French, Italian, Rumantsch.
 
 ## Repositories
 
 * Android App: [CovidCertificate-App-Android](https://github.com/admin-ch/CovidCertificate-App-Android)
 * Android SDK: [CovidCertificate-SDK-Android](https://github.com/admin-ch/CovidCertificate-SDK-Android)
 * iOS App: [CovidCertificate-App-iOS](https://github.com/admin-ch/CovidCertificate-App-iOS)
-* iOS SDK: [CovidCertificate-SDK-iOS](https://github.com/admin-ch/CovidCertificate-SDK-iOS)
-* Config Service: [CovidCertificate-App-Config-Service](https://github.com/admin-ch/CovidCertificate-App-Config-Service)
+* For all others, see the [Github organisation](https://github.com/admin-ch/)
 
 ## Installation and Building
+
+The apps require at least Android 6 (Marshmallow).
 
 Make sure to properly check out the submodule: `git submodule update --init`.
 
