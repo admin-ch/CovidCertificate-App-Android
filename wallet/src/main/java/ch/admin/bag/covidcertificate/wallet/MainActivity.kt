@@ -49,6 +49,10 @@ class MainActivity : AppCompatActivity() {
 		if (activityResult.resultCode == RESULT_OK) {
 			secureStorage.setOnboardingCompleted(true)
 			secureStorage.setCertificateLightUpdateboardingCompleted(true)
+
+			// Load the config and trust list here because onStart ist called before the activity result and the onboarding
+			// completion flags are therefore not yet set to true
+			loadConfigAndTrustList()
 			showHomeFragment()
 		} else {
 			finish()
@@ -96,9 +100,9 @@ class MainActivity : AppCompatActivity() {
 	override fun onStart() {
 		super.onStart()
 
+		// Every time the app comes into the foreground and the onboarding was completed, reload the config and trust list
 		if (secureStorage.getOnboardingCompleted() && secureStorage.getCertificateLightUpdateboardingCompleted()) {
-			configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
-			CovidCertificateSdk.refreshTrustList(lifecycleScope)
+			loadConfigAndTrustList()
 		}
 	}
 
@@ -115,6 +119,11 @@ class MainActivity : AppCompatActivity() {
 	override fun onDestroy() {
 		super.onDestroy()
 		CovidCertificateSdk.unregisterWithLifecycle(lifecycle)
+	}
+
+	private fun loadConfigAndTrustList() {
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
+		CovidCertificateSdk.refreshTrustList(lifecycleScope)
 	}
 
 	private fun showHomeFragment() {
