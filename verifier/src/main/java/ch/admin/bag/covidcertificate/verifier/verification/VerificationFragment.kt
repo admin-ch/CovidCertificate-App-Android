@@ -92,7 +92,7 @@ class VerificationFragment : Fragment() {
 
 		binding.verificationFamilyName.text = personName.familyName
 		binding.verificationGivenName.text = personName.givenName
-		binding.verificationBirthdate.text = certificateHolder.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
+		binding.verificationBirthdate.text = certificateHolder.getFormattedDateOfBirth()
 		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
 
 		binding.verificationFooterButton.setOnClickListener {

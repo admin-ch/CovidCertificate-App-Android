@@ -174,8 +174,7 @@ class CertificateDetailFragment : Fragment() {
 		val personName = certificateHolder.certificate.getPersonName()
 		val name = "${personName.familyName} ${personName.givenName}"
 		binding.certificateDetailName.text = name
-		val dateOfBirth = certificateHolder.certificate.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
-		binding.certificateDetailBirthdate.text = dateOfBirth
+		binding.certificateDetailBirthdate.text = certificateHolder.certificate.getFormattedDateOfBirth()
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)
 
