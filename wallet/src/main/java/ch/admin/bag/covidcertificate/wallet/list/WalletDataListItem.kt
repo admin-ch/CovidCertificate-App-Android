@@ -108,7 +108,7 @@ sealed class WalletDataListItem {
 					backgroundColorId = R.color.greyish
 					textColorId = R.color.grey
 				}
-				certType == CertType.TEST -> {
+				certType == CertType.TEST || certType == CertType.LIGHT -> {
 					backgroundColorId = R.color.blueish
 					textColorId = R.color.blue
 				}
