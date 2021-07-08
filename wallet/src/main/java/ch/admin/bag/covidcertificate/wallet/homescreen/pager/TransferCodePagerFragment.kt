@@ -110,7 +110,8 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 				setTransferCodeViewState(true)
 			}
 			is TransferCodeConversionState.CONVERTED -> {
-				// do nothing - will be removed
+				// Reload the wallet data to make sure the homescreen gets updated
+				certificatesViewModel.loadWalletData()
 			}
 			is TransferCodeConversionState.NOT_CONVERTED -> {
 				transferCode = transferCode?.let {
