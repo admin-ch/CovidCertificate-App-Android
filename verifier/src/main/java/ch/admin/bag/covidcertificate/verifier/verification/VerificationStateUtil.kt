@@ -73,14 +73,10 @@ fun VerificationState.getValidationStatusStrings(context: Context): List<Spannab
 					stateStrings.add(SpannableString(context.getString(R.string.verifier_verify_success_info_for_blacklist)))
 
 					when (this.nationalRulesState) {
-						is CheckNationalRulesState.INVALID -> {
-							stateStrings.add(context.getString(R.string.verifier_verify_error_info_for_national_rules).makeBold())
-						}
-						is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
-							stateStrings.add(context.getString(R.string.verifier_verifiy_error_expired).makeSubStringBold(context.getString(R.string.verifier_verify_error_validity_range_bold)))
-						}
+						is CheckNationalRulesState.INVALID,
+						is CheckNationalRulesState.NOT_VALID_ANYMORE,
 						is CheckNationalRulesState.NOT_YET_VALID -> {
-							stateStrings.add(context.getString(R.string.verifier_verifiy_error_notyetvalid).makeSubStringBold(context.getString(R.string.verifier_verify_error_validity_range_bold)))
+							stateStrings.add(context.getString(R.string.verifier_verify_error_info_for_national_rules).makeBold())
 						}
 					}
 				} else {
