@@ -115,8 +115,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 	private fun displayCertificateDetails() {
 		val name = certificateHolder.certificate.getPersonName().let { "${it.familyName} ${it.givenName}" }
 		binding.certificatePageName.text = name
-		val dateOfBirth = certificateHolder.certificate.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
-		binding.certificatePageBirthdate.text = dateOfBirth
+		binding.certificatePageBirthdate.text = certificateHolder.certificate.getFormattedDateOfBirth()
 	}
 
 	@SuppressLint("SetTextI18n")

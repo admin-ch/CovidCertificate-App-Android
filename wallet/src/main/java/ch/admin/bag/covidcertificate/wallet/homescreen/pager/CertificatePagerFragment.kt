@@ -81,8 +81,7 @@ class CertificatePagerFragment : Fragment() {
 
 		val name = certificateHolder?.certificate?.getPersonName()?.let { "${it.familyName} ${it.givenName}" }
 		binding.certificatePageName.text = name
-		val dateOfBirth = certificateHolder?.certificate?.getDateOfBirth()?.format(DEFAULT_DISPLAY_DATE_FORMATTER)
-		binding.certificatePageBirthdate.text = dateOfBirth
+		binding.certificatePageBirthdate.text = certificateHolder?.certificate?.getFormattedDateOfBirth()
 		binding.certificatePageCard.setCutOutCardBackground()
 		updateTitle()
 		setupStatusInfo()
