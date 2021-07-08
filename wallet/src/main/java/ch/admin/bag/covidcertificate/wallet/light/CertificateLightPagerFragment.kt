@@ -108,7 +108,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 	private fun displayQrCode() {
 		val decoded = qrCodeImage.fromBase64()
 		val qrCodeBitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
-		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
+		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap)
 		binding.certificatePageQrCode.setImageDrawable(qrCodeDrawable)
 	}
 
