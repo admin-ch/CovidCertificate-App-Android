@@ -1,3 +1,2 @@
 - Certificate light: QR code without health-related data for use in Switzerland
-- Export COVID certificate as PDF
 - Further improvements and bug fixes
