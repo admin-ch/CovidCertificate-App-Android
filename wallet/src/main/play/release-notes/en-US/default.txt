@@ -1,3 +1,2 @@
-- Details expanded in the event of an error
-- Performance of QR code scanner optimised
+- Certificate light: QR code without health-related data for use in Switzerland
 - Further improvements and bug fixes
