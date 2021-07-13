@@ -106,12 +106,6 @@ class HomeFragment : Fragment() {
 		setupImportObservers()
 	}
 
-	override fun onStart() {
-		super.onStart()
-		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
-		CovidCertificateSdk.refreshTrustList(lifecycleScope)
-	}
-
 	override fun onResume() {
 		super.onResume()
 		reloadCertificates()

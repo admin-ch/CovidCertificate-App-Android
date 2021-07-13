@@ -84,7 +84,7 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 	}
 
 	private suspend fun downloadTransferCertificate(transferCode: TransferCodeModel): TransferState {
-		val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code)
+		val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, applicationContext)
 
 		if (keyPair != null) {
 			try {
@@ -105,7 +105,7 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 						} catch (e: IOException) {
 							// Best effort only
 						}
-						TransferCodeCrypto.deleteKeyEntry(transferCode.code)
+						TransferCodeCrypto.deleteKeyEntry(transferCode.code, applicationContext)
 					}
 					TransferState.SUCCESS
 				} else {

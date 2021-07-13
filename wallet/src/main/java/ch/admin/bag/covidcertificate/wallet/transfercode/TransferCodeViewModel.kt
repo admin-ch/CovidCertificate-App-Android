@@ -55,7 +55,7 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 
 		conversionStateMutableLiveData.value = TransferCodeConversionState.LOADING
 		downloadJob = viewModelScope.launch(Dispatchers.IO) {
-			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code)
+			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
 
 			if (keyPair != null) {
 				try {
@@ -106,7 +106,7 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 		// In that case, the viewModelScope wouldn't make sense because it is cleared when the fragment is popped.
 		// For this kind of fire-and-forget coroutine, the GlobalScope is therefore fine.
 		GlobalScope.launch(Dispatchers.IO) {
-			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code)
+			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
 			if (keyPair != null) {
 				deleteTransferCodeOnServer(transferCode, keyPair)
 			}
@@ -120,7 +120,7 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 			// This request is best-effort, if it fails, ignore it and let the backend delete the transfer code and certificate
 			// automatically after it expires
 		}
-		TransferCodeCrypto.deleteKeyEntry(transferCode.code)
+		TransferCodeCrypto.deleteKeyEntry(transferCode.code, getApplication())
 	}
 
 }

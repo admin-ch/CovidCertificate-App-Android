@@ -17,21 +17,38 @@ import android.security.keystore.KeyInfo
 import android.security.keystore.KeyProperties
 import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
 import ch.admin.bag.covidcertificate.sdk.core.extensions.toBase64
+import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
+import org.bouncycastle.jce.provider.BouncyCastleProvider
 import java.security.KeyFactory
 import java.security.KeyPair
 import java.security.KeyPairGenerator
 import java.security.KeyStore
+import java.security.Security
 import java.security.Signature
+import java.security.spec.MGF1ParameterSpec
+import java.security.spec.PKCS8EncodedKeySpec
 import java.security.spec.RSAKeyGenParameterSpec
+import java.security.spec.X509EncodedKeySpec
 import java.time.Instant
 import javax.crypto.Cipher
 import javax.crypto.spec.GCMParameterSpec
+import javax.crypto.spec.OAEPParameterSpec
+import javax.crypto.spec.PSource.PSpecified
 import javax.crypto.spec.SecretKeySpec
 
 
 object TransferCodeCrypto {
 
 	const val ANDROID_KEYSTORE_NAME = "AndroidKeyStore"
+	const val BOUNCY_CASTLE_PROVIDER = "BC"
+
+	init {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+			// Remove platform provided bouncy castle provider and add updated one from library on Android 23 and lower
+			Security.removeProvider(BOUNCY_CASTLE_PROVIDER)
+			Security.addProvider(BouncyCastleProvider())
+		}
+	}
 
 	fun createKeyPair(keyAlias: String, context: Context): KeyPair? {
 		val keyPurpose =
@@ -56,9 +73,24 @@ object TransferCodeCrypto {
 			}.build()
 
 		try {
-			KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, ANDROID_KEYSTORE_NAME).apply {
-				initialize(keyGenParameterSpec)
-				return generateKeyPair()
+			return if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+				val kpg = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, BOUNCY_CASTLE_PROVIDER).apply {
+					initialize(RSAKeyGenParameterSpec(2048, RSAKeyGenParameterSpec.F4))
+				}
+
+				val kp = kpg.generateKeyPair()
+
+				val storage = WalletSecureStorage.getInstance(context)
+				storage.setTransferCodePublicKey(keyAlias, kp.public.encoded.toBase64())
+				storage.setTransferCodePrivateKey(keyAlias, kp.private.encoded.toBase64())
+
+				kp
+			} else {
+				val kpg = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA, ANDROID_KEYSTORE_NAME).apply {
+					initialize(keyGenParameterSpec)
+				}
+
+				kpg.generateKeyPair()
 			}
 		} catch (e: Throwable) {
 			e.printStackTrace()
@@ -66,25 +98,51 @@ object TransferCodeCrypto {
 		}
 	}
 
-	fun loadKeyPair(keyAlias: String): KeyPair? {
-		val keystore = KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
-			load(null)
-		}
-		if (!keystore.containsAlias(keyAlias)) {
-			return null
-		}
-		val entry = keystore.getEntry(keyAlias, null) as? KeyStore.PrivateKeyEntry ?: return null
+	fun loadKeyPair(keyAlias: String, context: Context): KeyPair? {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+			val storage = WalletSecureStorage.getInstance(context)
+			val encodedPublicKey = storage.getTransferCodePublicKey(keyAlias)?.fromBase64()
+			val encodedPrivateKey = storage.getTransferCodePrivateKey(keyAlias)?.fromBase64()
 
-		return KeyPair(entry.certificate.publicKey, entry.privateKey)
+			return if (encodedPublicKey != null && encodedPrivateKey != null) {
+				val kf = KeyFactory.getInstance("RSA", BOUNCY_CASTLE_PROVIDER)
+
+				val publicKeySpec = X509EncodedKeySpec(encodedPublicKey)
+				val publicKey = kf.generatePublic(publicKeySpec)
+
+				val privateKeySpec = PKCS8EncodedKeySpec(encodedPrivateKey)
+				val privateKey = kf.generatePrivate(privateKeySpec)
+
+				KeyPair(publicKey, privateKey)
+			} else {
+				null
+			}
+		} else {
+			val keystore = KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
+				load(null)
+			}
+			if (!keystore.containsAlias(keyAlias)) {
+				return null
+			}
+			val entry = keystore.getEntry(keyAlias, null) as? KeyStore.PrivateKeyEntry ?: return null
+
+			return KeyPair(entry.certificate.publicKey, entry.privateKey)
+		}
 	}
 
-	fun deleteKeyEntry(keyAlias: String) {
-		val keystore = KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
-			load(null)
-		}
+	fun deleteKeyEntry(keyAlias: String, context: Context) {
+		if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+			val storage = WalletSecureStorage.getInstance(context)
+			storage.setTransferCodePublicKey(keyAlias, null)
+			storage.setTransferCodePrivateKey(keyAlias, null)
+		} else {
+			val keystore = KeyStore.getInstance(ANDROID_KEYSTORE_NAME).apply {
+				load(null)
+			}
 
-		if (keystore.containsAlias(keyAlias)) {
-			keystore.deleteEntry(keyAlias)
+			if (keystore.containsAlias(keyAlias)) {
+				keystore.deleteEntry(keyAlias)
+			}
 		}
 	}
 
@@ -102,9 +160,15 @@ object TransferCodeCrypto {
 
 		try {
 			// Decrypt the symmetric AES that was encapsulated under RSA-OAEP
-			val rsaPlaintext = Cipher.getInstance("RSA/ECB/OAEPWithSHA-256AndMGF1Padding").run {
-				init(Cipher.DECRYPT_MODE, keyPair.private)
-				doFinal(ciphertextWrappedAesKeyAndIv)
+			val rsaPlaintext = if (Build.VERSION.SDK_INT < Build.VERSION_CODES.N) {
+				val oaepParams = OAEPParameterSpec("SHA-256", "MGF1", MGF1ParameterSpec("SHA-1"), PSpecified.DEFAULT)
+				val cipher = Cipher.getInstance("RSA/ECB/OAEPPadding", BOUNCY_CASTLE_PROVIDER)
+				cipher.init(Cipher.DECRYPT_MODE, keyPair.private, oaepParams)
+				cipher.doFinal(ciphertextWrappedAesKeyAndIv)
+			} else {
+				val cipher = Cipher.getInstance("RSA/ECB/OAEPWithSHA-256AndMGF1Padding")
+				cipher.init(Cipher.DECRYPT_MODE, keyPair.private)
+				cipher.doFinal(ciphertextWrappedAesKeyAndIv)
 			}
 
 			val aesIv = rsaPlaintext.sliceArray(0..11) // 12 byte IV
@@ -119,7 +183,7 @@ object TransferCodeCrypto {
 				init(Cipher.DECRYPT_MODE, secretKeySpec, gcmSpec)
 				doFinal(ciphertextCertificate)
 			}
-			return String(aesPlaintext)
+			return aesPlaintext.decodeToString()
 		} catch (e: Throwable) {
 			e.printStackTrace()
 			return null

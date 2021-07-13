@@ -15,5 +15,5 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class CertificateLightResponse(
 	val payload: String,
-	val qrcode: String
+	val qrCode: String
 )

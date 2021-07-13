@@ -908,7 +908,7 @@ erstellt werden"</string>
     <string name="wallet_certificate_light_detail_activation_network_error_title">"Keine Verbindung zum Internet"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation General Fehler Text -->
-    <string name="wallet_certificate_light_detail_activation_general_error_text">"Es ist ein unerwarteter Fehler aufgetreten. Versuchen Sie es später erneut."</string>
+    <string name="wallet_certificate_light_detail_activation_general_error_text">"Versuchen Sie es später erneut."</string>
 
     <!-- Wallet: Zertifikat Light Aktivation General Fehler Titel -->
     <string name="wallet_certificate_light_detail_activation_general_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
@@ -917,7 +917,7 @@ erstellt werden"</string>
     <string name="wallet_certificate_light_title">"Zertifikat Light"</string>
 
     <!-- Wallet: Zertifikat Exportieren Detail Title -->
-    <string name="wallet_certificate_export_detail_title">"Covid-Zertifikat exportieren"</string>
+    <string name="wallet_certificate_export_detail_title">"Exportieren"</string>
 
     <!-- Wallet: Zertifikat Exportieren Summary 1 -->
     <string name="wallet_certificate_export_detail_summary_1">"Aus den Daten Ihres Covid-Zertifikats wird ein PDF erstellt, das Sie drucken oder teilen können."</string>
@@ -974,4 +974,20 @@ erstellt werden"</string>
     <!-- Verifier: Die Gültigkeit eines Certificate Light ist abgelaufen -->
     <string name="verifier_certificate_light_error_expired">"Gültigkeit des Zertifikats
 abgelaufen"</string>
+
+    <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
+    <!-- Fuzzy -->
+    <string name="wallet_certificate_list_light_certificate_badge">"Light"</string>
+    <string name="wallet_faq_questions_question_6">"Was ist das Zertifikat Light?"</string>
+    <string name="wallet_faq_questions_answer_6">"Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. 
+
+Die datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.
+
+Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 48 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 48 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden."</string>
+    <string name="verifier_faq_works_question_8">"Was ist das Zertifikat Light?"</string>
+    <string name="verifier_faq_works_answer_8">"Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. 
+
+Die datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.
+
+Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 48 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 48 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden."</string>
 </resources>

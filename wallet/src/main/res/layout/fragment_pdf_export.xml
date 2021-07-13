@@ -160,7 +160,7 @@
 									android:layout_width="match_parent"
 									android:layout_height="0dp"
 									android:background="@drawable/bg_certificate_bubble"
-									android:backgroundTint="@color/orangeish"
+									app:backgroundTint="@color/orangeish"
 									android:gravity="center"
 									android:minLines="2"
 									android:padding="@dimen/spacing_medium_large"

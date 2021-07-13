@@ -108,15 +108,14 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 	private fun displayQrCode() {
 		val decoded = qrCodeImage.fromBase64()
 		val qrCodeBitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
-		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
+		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap)
 		binding.certificatePageQrCode.setImageDrawable(qrCodeDrawable)
 	}
 
 	private fun displayCertificateDetails() {
 		val name = certificateHolder.certificate.getPersonName().let { "${it.familyName} ${it.givenName}" }
 		binding.certificatePageName.text = name
-		val dateOfBirth = certificateHolder.certificate.getDateOfBirth().format(DEFAULT_DISPLAY_DATE_FORMATTER)
-		binding.certificatePageBirthdate.text = dateOfBirth
+		binding.certificatePageBirthdate.text = certificateHolder.certificate.getFormattedDateOfBirth()
 	}
 
 	@SuppressLint("SetTextI18n")
@@ -132,7 +131,9 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 			val seconds = remainingTimeInSeconds % 60
 
 			view?.post {
-				binding.certificateLightPageValidity.text = "%02d:%02d:%02d".format(hours, minutes, seconds)
+				if (isAdded) {
+					binding.certificateLightPageValidity.text = "%02d:%02d:%02d".format(hours, minutes, seconds)
+				}
 			}
 
 			if (remainingTimeInSeconds <= 0) {
@@ -176,22 +177,25 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 	private fun displaySuccessState() {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.blueish)
+		binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_info_blue)
 		binding.certificatePageStatusInfo.setText(R.string.verifier_verify_success_certificate_light_info)
 	}
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.greyish)
+		binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_error_grey)
 		binding.certificatePageStatusInfo.text = state.getValidationStatusString(requireContext())
-
 	}
 
 	private fun displayErrorState(state: VerificationState.ERROR) {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.greyish)
 		if (state.isOfflineMode()) {
+			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_offline)
 			binding.certificatePageStatusInfo.text = getString(R.string.wallet_homescreen_offline).makeBold()
 		} else {
+			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_process_error_grey)
 			binding.certificatePageStatusInfo.text = getString(R.string.wallet_homescreen_network_error).makeBold()
 		}
 	}

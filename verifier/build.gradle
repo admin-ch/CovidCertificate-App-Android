@@ -34,14 +34,13 @@ ext.readPropertyWithDefault = { paramName, defaultValue ->
 
 android {
 	compileSdkVersion 30
-	buildToolsVersion "30.0.1"
 
 	defaultConfig {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
-		minSdkVersion 24
+		minSdkVersion 23
 		targetSdkVersion 30
-		versionCode 2000
-		versionName "2.0.0"
+		versionCode 2100
+		versionName "2.1.0"
 
 		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
 
