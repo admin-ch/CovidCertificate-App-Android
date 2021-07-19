@@ -39,8 +39,8 @@ android {
 		applicationId "ch.admin.bag.covidcertificate.wallet"
 		minSdkVersion 23
 		targetSdkVersion 30
-		versionCode 2100
-		versionName "2.1.0"
+		versionCode 2110
+		versionName "2.1.1"
 
 		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
 
@@ -129,8 +129,6 @@ dependencies {
 	implementation 'androidx.viewpager2:viewpager2:1.0.0'
 	implementation 'androidx.security:security-crypto:1.0.0'
 	implementation 'androidx.work:work-runtime-ktx:2.5.0'
-
-	implementation 'org.bouncycastle:bcprov-jdk15on:1.65'
 
 	implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 	implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
