@@ -66,6 +66,8 @@ class CertificateDetailFragment : Fragment() {
 
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 
+		private val ISSUER_SWITZERLAND = listOf("CH", "CH BAG")
+
 		fun newInstance(certificateHolder: CertificateHolder): CertificateDetailFragment = CertificateDetailFragment().apply {
 			arguments = bundleOf(ARG_CERTIFICATE to certificateHolder)
 		}
@@ -232,7 +234,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoValidityGroup.isVisible = false
 		binding.certificateDetailErrorCode.isVisible = false
 		setInfoBubbleBackgrounds(R.color.greyish, R.color.greyish)
-		updateConversionButtons(false)
+		updateConversionButtons(isLightCertificateEnabled = false, isPdfExportEnabled = false)
 
 		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
 		if (isForceValidate) {
@@ -251,7 +253,10 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailErrorCode.isVisible = false
 		showValidityDate(state.validityRange?.validUntil, certificateHolder.certType, state)
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
-		updateConversionButtons(true)
+
+		// Certificate Light and PDF export is enabled for a valid certificate that was issued in Switzerland
+		val isIssuedInSwitzerland = ISSUER_SWITZERLAND.contains(certificateHolder.issuer)
+		updateConversionButtons(isLightCertificateEnabled = isIssuedInSwitzerland, isPdfExportEnabled = isIssuedInSwitzerland)
 
 		val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
 		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
@@ -271,7 +276,11 @@ class CertificateDetailFragment : Fragment() {
 
 		binding.certificateDetailInfoValidityGroup.isVisible = state.signatureState == CheckSignatureState.SUCCESS
 		showValidityDate(state.validityRange?.validUntil, certificateHolder.certType, state)
-		updateConversionButtons(false)
+
+		// Certificate Light is disabled for invalid certificates, PDF export is enabled if the signature is valid and the certificate was issued in Switzerland
+		val isSignatureValid = state.signatureState is CheckSignatureState.SUCCESS
+		val isIssuedInSwitzerland = ISSUER_SWITZERLAND.contains(certificateHolder.issuer)
+		updateConversionButtons(isLightCertificateEnabled = false, isPdfExportEnabled = isSignatureValid && isIssuedInSwitzerland)
 
 		val info = state.getValidationStatusString(context)
 		val infoBubbleColorId = when {
@@ -327,7 +336,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = true
 		binding.certificateDetailInfoValidityGroup.isVisible = false
 		setInfoBubbleBackgrounds(R.color.greyish, R.color.orangeish)
-		updateConversionButtons(false)
+		updateConversionButtons(isLightCertificateEnabled = false, isPdfExportEnabled = false)
 
 		val info: SpannableString
 		val forceValidationInfo: SpannableString
@@ -365,21 +374,21 @@ class CertificateDetailFragment : Fragment() {
 		}
 	}
 
-	private fun updateConversionButtons(enabled: Boolean) {
+	private fun updateConversionButtons(isLightCertificateEnabled: Boolean, isPdfExportEnabled: Boolean) {
 		val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
 
 		if (currentConfig?.lightCertificateActive == true) {
 			binding.certificateDetailConvertLightButton.isVisible = true
-			binding.certificateDetailConvertLightButton.isEnabled = enabled
-			binding.certificateDetailConvertLightArrow.isVisible = enabled
+			binding.certificateDetailConvertLightButton.isEnabled = isLightCertificateEnabled
+			binding.certificateDetailConvertLightArrow.isVisible = isLightCertificateEnabled
 		} else {
 			binding.certificateDetailConvertLightButton.isVisible = false
 		}
 
 		if (currentConfig?.pdfGenerationActive == true) {
 			binding.certificateDetailConvertPdfButton.isVisible = true
-			binding.certificateDetailConvertPdfButton.isEnabled = enabled
-			binding.certificateDetailConvertPdfArrow.isVisible = enabled
+			binding.certificateDetailConvertPdfButton.isEnabled = isPdfExportEnabled
+			binding.certificateDetailConvertPdfArrow.isVisible = isPdfExportEnabled
 		} else {
 			binding.certificateDetailConvertPdfButton.isVisible = false
 		}
