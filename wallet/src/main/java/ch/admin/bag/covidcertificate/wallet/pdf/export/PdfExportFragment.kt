@@ -25,6 +25,7 @@ import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentPdfExportBinding
 import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
@@ -39,7 +40,7 @@ class PdfExportFragment : Fragment(R.layout.fragment_pdf_export) {
 		private const val PDF_EXPORT_PATH = "certificate-pdfs"
 		private const val PDF_EXPORT_FILE_SUFFIX = "certificate"
 		private const val PDF_EXPORT_FILE_EXTENSION = ".pdf"
-		private const val FILE_PROVIDER_AUTHORITY = "ch.admin.bag.covidcertificate.wallet.fileprovider"
+		private const val FILE_PROVIDER_AUTHORITY = BuildConfig.APPLICATION_ID + ".fileprovider"
 
 		fun newInstance(certificateHolder: CertificateHolder) = PdfExportFragment().apply {
 			arguments = bundleOf(
