@@ -8,13 +8,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-include ':core'
-project(':core').projectDir = new File('./sdk/core')
-
-include ':sdk'
-project(':sdk').projectDir = new File('./sdk/sdk')
-
 include ':common'
 include ':verifier'
 include ':wallet'
-rootProject.name = "Verifier"
+rootProject.name = "CovidCertificate"
