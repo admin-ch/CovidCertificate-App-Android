@@ -7,6 +7,7 @@ import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
+import ch.admin.bag.covidcertificate.common.util.EnvironmentUtil
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -25,7 +26,7 @@ class MainApplication : Application() {
 		Config.userAgent =
 			UserAgentInterceptor.UserAgentGenerator { "${this.packageName};${BuildConfig.VERSION_NAME};${BuildConfig.BUILD_TIME};Android;${Build.VERSION.SDK_INT}" }
 
-		CovidCertificateSdk.init(this)
+		CovidCertificateSdk.init(this, EnvironmentUtil.getSdkEnvironment())
 
 		migrateCertificatesToWalletData()
 
