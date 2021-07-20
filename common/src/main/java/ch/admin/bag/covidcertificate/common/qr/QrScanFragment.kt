@@ -295,6 +295,8 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	private fun updateQrCodeScannerState(qrScannerState: QrScannerState, errorCode: String? = null) {
+		if (!isAdded) return
+
 		val currentTime = System.currentTimeMillis()
 		if (lastUIErrorUpdate > currentTime - MIN_ERROR_VISIBILITY && qrScannerState == QrScannerState.NO_CODE_FOUND) {
 			return
