@@ -3,6 +3,7 @@ package ch.admin.bag.covidcertificate.verifier
 import android.app.Application
 import android.os.Build
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
+import ch.admin.bag.covidcertificate.common.util.EnvironmentUtil
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
@@ -22,6 +23,6 @@ class MainApplication : Application() {
 		Config.userAgent =
 			UserAgentInterceptor.UserAgentGenerator { "${this.packageName};${BuildConfig.VERSION_NAME};${BuildConfig.BUILD_TIME};Android;${Build.VERSION.SDK_INT}" }
 
-		CovidCertificateSdk.init(this)
+		CovidCertificateSdk.init(this, EnvironmentUtil.getSdkEnvironment())
 	}
 }
