@@ -20,6 +20,7 @@ import android.os.ParcelFileDescriptor
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import java.io.File
+import java.lang.Integer.min
 import java.util.*
 
 object QRCodeReaderHelper {
@@ -58,7 +59,7 @@ object QRCodeReaderHelper {
 			var bitmap: Bitmap?
 			val pageCount = renderer.pageCount
 
-			for (i in 0 until pageCount) {
+			for (i in 0 until min(pageCount, 5)) {
 				val page: PdfRenderer.Page = renderer.openPage(i)
 				val width = context.resources.displayMetrics.densityDpi / 72 * page.width
 				val height = context.resources.displayMetrics.densityDpi / 72 * page.height
