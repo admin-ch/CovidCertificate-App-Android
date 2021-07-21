@@ -19,6 +19,8 @@ import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterc
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.R
+import ch.admin.bag.covidcertificate.wallet.networking.interceptor.AcceptLanguageHeaderInterceptor
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,6 +40,7 @@ class PdfExportRepository private constructor(context: Context) {
 			.certificatePinner(CertificatePinning.pinner)
 			.addInterceptor(JwsInterceptor(rootCa, expectedCommonName))
 			.addInterceptor(UserAgentInterceptor(Config.userAgent))
+			.addInterceptor(AcceptLanguageHeaderInterceptor(context.getString(R.string.language_key)))
 
 		val cacheSize = 5 * 1024 * 1024 // 5 MB
 		val cache = Cache(context.cacheDir, cacheSize.toLong())
