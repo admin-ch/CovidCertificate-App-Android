@@ -95,12 +95,13 @@
 						android:id="@+id/certificate_light_detail_verification_status"
 						style="@style/CovidCertificate.Text"
 						android:layout_width="match_parent"
-						android:layout_height="0dp"
+						android:layout_height="wrap_content"
 						android:background="@drawable/bg_certificate_bubble"
-						app:backgroundTint="@color/blueish"
 						android:gravity="center"
 						android:minLines="2"
 						android:padding="@dimen/spacing_medium_large"
+						app:backgroundTint="@color/blueish"
+						app:layout_constraintBottom_toBottomOf="parent"
 						app:layout_constraintTop_toTopOf="parent"
 						tools:text="@string/verifier_verify_success_certificate_light_info" />
 
