@@ -917,10 +917,10 @@ and in combination with an identity document"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"only has to does not"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
-    <string name="accessibility_expandable_box_reduced_state">"reduziert"</string>
+    <string name="accessibility_expandable_box_reduced_state">"reduced"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
-    <string name="accessibility_expandable_box_expanded_state">"erweitert"</string>
+    <string name="accessibility_expandable_box_expanded_state">"expanded"</string>
 
     <!-- Header im Update Boarding-Screen -->
     <string name="wallet_update_boarding_header">"Update"</string>
@@ -958,4 +958,14 @@ The 'Certificate light' is only available electronically in the app and is only 
 The alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.
 
 The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'."</string>
+    <string name="verifier_faq_works_question_9">"How can a 'certificate light' be converted back into an EU/EFTA-compliant COVID certificate?"</string>
+    <string name="verifier_faq_works_answer_9">"The holder can deactivate a 'certificate light' any time in their COVID Certificate app. After that their normal COVID certificate is available again."</string>
+
+    <!-- Wallet: Light Zertifikat Accessibility Gültigkeits Label {TIMESPAN} wird ersetzt durch zB. 5 Stunden 3 Minuten -->
+    <string name="wallet_accessibility_light_certificate_expiration_timer">"Valid for {TIMESPAN}"</string>
+
+    <!-- Toast Text wenn ein Transfer Code durch Klicken kopiert wurde -->
+    <string name="wallet_transfer_code_copied">"Transfer code copied"</string>
+    <string name="wallet_faq_works_question_2_1">"What is a transfer code?"</string>
+    <string name="wallet_faq_works_answer_2_1">"The transfer codes allow COVID certificates to be transmitted quickly and securely. In this way, you receive your certificate (e.g. after a test) directly in the application."</string>
 </resources>

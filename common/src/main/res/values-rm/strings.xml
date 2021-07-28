@@ -914,10 +914,10 @@ e mo en Svizra"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"mo danovamain nagins"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
-    <string name="accessibility_expandable_box_reduced_state">"reduziert"</string>
+    <string name="accessibility_expandable_box_reduced_state">"reducì"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
-    <string name="accessibility_expandable_box_expanded_state">"erweitert"</string>
+    <string name="accessibility_expandable_box_expanded_state">"extendì"</string>
 
     <!-- Header im Update Boarding-Screen -->
     <string name="wallet_update_boarding_header">"Update"</string>
@@ -955,4 +955,14 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
 L'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.
 
 Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 48 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
+    <string name="verifier_faq_works_question_9">"Co po in certificat light puspè vegnir transfurmà en in certificat COVID confurm a la UE/AECL?"</string>
+    <string name="verifier_faq_works_answer_9">"La possessura u il possessur po deactivar da tut temp il certificat light en l'app «COVID Certificate». Alura stat puspè a disposiziun il certificat COVID normal. "</string>
+
+    <!-- Wallet: Light Zertifikat Accessibility Gültigkeits Label {TIMESPAN} wird ersetzt durch zB. 5 Stunden 3 Minuten -->
+    <string name="wallet_accessibility_light_certificate_expiration_timer">"Anc valaivel {TIMESPAN}"</string>
+
+    <!-- Toast Text wenn ein Transfer Code durch Klicken kopiert wurde -->
+    <string name="wallet_transfer_code_copied">"Copià il code da transfer"</string>
+    <string name="wallet_faq_works_question_2_1">"Tge è in code da transfer?"</string>
+    <string name="wallet_faq_works_answer_2_1">"Cun ils codes da transfer pon ils certificats COVID vegnir transmess en moda svelta e segira. Sin questa via vegn il certificat COVID furnì directamain en l'app, p.ex. suenter in test dal coronavirus."</string>
 </resources>

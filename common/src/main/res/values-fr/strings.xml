@@ -915,10 +915,10 @@ et avec un document d’identité"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"n’est utilisable qu’en doit être aucun"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
-    <string name="accessibility_expandable_box_reduced_state">"reduziert"</string>
+    <string name="accessibility_expandable_box_reduced_state">"réduit"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
-    <string name="accessibility_expandable_box_expanded_state">"erweitert"</string>
+    <string name="accessibility_expandable_box_expanded_state">"étendu"</string>
 
     <!-- Header im Update Boarding-Screen -->
     <string name="wallet_update_boarding_header">"Mise à jour"</string>
@@ -956,4 +956,14 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
 L’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.
 
 Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 48 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light."</string>
+    <string name="verifier_faq_works_question_9">"Comment reconvertir un certificat light en certificat COVID conforme aux normes UE/AELE ?"</string>
+    <string name="verifier_faq_works_answer_9">"Le détenteur peut en tout temps désactiver le certificat light dans l’application «COVID Certificate». Le certificat COVID standard est alors à nouveau disponible."</string>
+
+    <!-- Wallet: Light Zertifikat Accessibility Gültigkeits Label {TIMESPAN} wird ersetzt durch zB. 5 Stunden 3 Minuten -->
+    <string name="wallet_accessibility_light_certificate_expiration_timer">"Valable encore {TIMESPAN}"</string>
+
+    <!-- Toast Text wenn ein Transfer Code durch Klicken kopiert wurde -->
+    <string name="wallet_transfer_code_copied">"Code de transfert copié"</string>
+    <string name="wallet_faq_works_question_2_1">"Qu'est-ce qu'un code de transfert ?"</string>
+    <string name="wallet_faq_works_answer_2_1">"Les codes de transfert permettent de transmettre les certificats COVID rapidement et en toute sécurité. De cette façon, vous recevez votre certificat (p. ex. après un test) directement dans l’application."</string>
 </resources>
