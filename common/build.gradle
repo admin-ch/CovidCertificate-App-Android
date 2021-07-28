@@ -71,7 +71,7 @@ dependencies {
 	api 'androidx.camera:camera-lifecycle:1.0.0'
 
 	api "com.augustcellars.cose:cose-java:1.1.0"
-	api 'org.bouncycastle:bcprov-jdk15on:1.65'
+	api 'org.bouncycastle:bcprov-jdk15on:1.69'
 
 	// QR code scanning
 	api 'com.google.zxing:core:3.4.1'
