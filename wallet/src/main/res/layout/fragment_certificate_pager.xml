@@ -31,11 +31,18 @@
 		<TextView
 			android:id="@+id/certificate_page_title"
 			style="@style/CovidCertificate.Text.Bold.Lead.Grey"
-			android:layout_width="match_parent"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginHorizontal="@dimen/spacing_huger"
+			android:layout_marginHorizontal="@dimen/spacing_medium"
 			android:layout_marginTop="@dimen/spacing_larger"
+			android:lines="1"
 			android:text="@string/covid_certificate_title"
+			app:autoSizeMaxTextSize="@dimen/text_size_normal"
+			app:autoSizeMinTextSize="@dimen/text_size_small"
+			app:autoSizeTextType="uniform"
+			app:layout_constrainedWidth="true"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 
 		<ImageView
@@ -89,12 +96,12 @@
 			android:layout_marginTop="@dimen/spacing_huge"
 			android:layout_marginBottom="@dimen/spacing_medium"
 			android:background="@drawable/bg_certificate_bubble"
-			app:backgroundTint="@color/blueish"
 			android:breakStrategy="high_quality"
 			android:gravity="center"
 			android:hyphenationFrequency="full"
 			android:minLines="2"
 			android:padding="@dimen/spacing_medium_large"
+			app:backgroundTint="@color/blueish"
 			app:layout_constraintBottom_toBottomOf="parent"
 			tools:text="@string/verifier_verify_success_info" />
 

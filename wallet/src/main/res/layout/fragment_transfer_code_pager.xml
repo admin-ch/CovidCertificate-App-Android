@@ -30,11 +30,14 @@
 		<TextView
 			android:id="@+id/transfer_code_page_title"
 			style="@style/CovidCertificate.Text.Bold.Lead.Grey"
-			android:layout_width="match_parent"
+			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_marginHorizontal="@dimen/spacing_huger"
+			android:layout_marginHorizontal="@dimen/spacing_medium"
 			android:layout_marginTop="@dimen/spacing_larger"
 			android:text="@string/wallet_transfer_code_card_title"
+			app:layout_constrainedWidth="true"
+			app:layout_constraintEnd_toEndOf="parent"
+			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toTopOf="parent" />
 
 		<ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeWaitingView
@@ -43,13 +46,13 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_large"
 			android:visibility="gone"
-			app:layout_constraintDimensionRatio="h3:2"
-			app:layout_constraintWidth_percent="0.33"
 			app:layout_constrainedHeight="true"
 			app:layout_constraintBottom_toTopOf="@+id/transfer_code_page_status_label"
+			app:layout_constraintDimensionRatio="h3:2"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
 			app:layout_constraintTop_toBottomOf="@id/transfer_code_page_title"
+			app:layout_constraintWidth_percent="0.33"
 			tools:visibility="visible" />
 
 		<ImageView
