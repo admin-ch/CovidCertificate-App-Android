@@ -80,10 +80,14 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 					val decode = QRCodeReaderHelper.decodeQrCode(bitmap)
 					if (decode != null) {
 						pdfImportMutableLiveData.postValue(PdfImportState.DONE(CovidCertificateSdk.Wallet.decode(decode)))
+						outputFile.delete()
+
 						// Stop as soon as we found the first QR code in the PDF
 						return@launch
 					}
 				}
+				
+				outputFile.delete()
 			} catch (e: Exception) {
 				e.printStackTrace()
 			}
