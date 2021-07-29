@@ -85,6 +85,7 @@ class MainActivity : AppCompatActivity() {
 		}
 
 		configViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
+		pdfViewModel.clearPdfFiles()
 
 		if (savedInstanceState != null) {
 			isIntentConsumed = savedInstanceState.getBoolean(KEY_IS_INTENT_CONSUMED)
