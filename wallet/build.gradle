@@ -39,8 +39,8 @@ android {
 		applicationId "ch.admin.bag.covidcertificate.wallet"
 		minSdkVersion 23
 		targetSdkVersion 30
-		versionCode 2200
-		versionName "2.2.0"
+		versionCode 2300
+		versionName "2.3.0"
 
 		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
 
