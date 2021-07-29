@@ -10,7 +10,6 @@
 
 package ch.admin.bag.covidcertificate.wallet.detail
 
-import android.content.Intent
 import android.content.res.ColorStateList
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
@@ -51,6 +50,7 @@ import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
+import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
 import ch.admin.bag.covidcertificate.wallet.util.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -83,6 +83,12 @@ class CertificateDetailFragment : Fragment() {
 	private var hideDelayedJob: Job? = null
 
 	private var isForceValidate = false
+	private val pdfExportShareLauncher = registerForActivityResult(PdfExportShareContract()) { uri ->
+		// Delete the cached pdf file when returning from the share intent
+		uri?.let {
+			requireContext().contentResolver.delete(it, null, null)
+		}
+	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -91,12 +97,7 @@ class CertificateDetailFragment : Fragment() {
 
 		setFragmentResultListener(PdfExportFragment.REQUEST_KEY_PDF_EXPORT) { _, bundle ->
 			bundle.getParcelable<Uri>(PdfExportFragment.RESULT_KEY_PDF_URI)?.let { uri ->
-				val shareIntent = Intent(Intent.ACTION_SEND).apply {
-					type = "application/pdf"
-					putExtra(Intent.EXTRA_SUBJECT, getString(R.string.wallet_certificate))
-					putExtra(Intent.EXTRA_STREAM, uri)
-				}
-				startActivity(shareIntent)
+				pdfExportShareLauncher.launch(uri)
 			}
 		}
 	}
