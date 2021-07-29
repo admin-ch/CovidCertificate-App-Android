@@ -13,8 +13,10 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
+	tools:background="@color/blueish"
 	tools:gravity="center"
 	tools:orientation="horizontal"
+	tools:padding="@dimen/spacing_large"
 	tools:parentTag="android.widget.LinearLayout">
 
 	<TextView
@@ -22,7 +24,7 @@
 		style="@style/CovidCertificate.Text.Transfer"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginHorizontal="@dimen/spacing_tiny_small"
+		android:layout_marginEnd="@dimen/spacing_tiny_small"
 		android:background="@color/white"
 		android:includeFontPadding="false"
 		android:lines="1"
@@ -56,7 +58,7 @@
 		style="@style/CovidCertificate.Text.Transfer"
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
-		android:layout_marginHorizontal="@dimen/spacing_tiny_small"
+		android:layout_marginStart="@dimen/spacing_tiny_small"
 		android:background="@color/white"
 		android:includeFontPadding="false"
 		android:lines="1"
