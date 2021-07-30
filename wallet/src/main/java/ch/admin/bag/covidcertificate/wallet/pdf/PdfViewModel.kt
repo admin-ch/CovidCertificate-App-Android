@@ -38,6 +38,11 @@ import java.io.InputStream
 
 class PdfViewModel(application: Application) : AndroidViewModel(application) {
 
+	companion object {
+		const val PDF_EXPORT_FILE_PATH = "certificate-pdfs"
+		const val PDF_FILE_EXTENSION = ".pdf"
+	}
+
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val walletDataStorage = WalletDataSecureStorage.getInstance(application.applicationContext)
 	private val pdfExportRepository = PdfExportRepository.getInstance(application.applicationContext)
@@ -66,7 +71,7 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 		viewModelScope.launch(Dispatchers.IO) {
 			try {
 				val inputStream: InputStream? = getApplication<Application>().contentResolver.openInputStream(uri)
-				val outputFile: File = File.createTempFile("certificate", ".pdf", getApplication<Application>().cacheDir)
+				val outputFile: File = File.createTempFile("certificate", PDF_FILE_EXTENSION, getApplication<Application>().cacheDir)
 				inputStream?.copyTo(outputFile.outputStream())
 
 				val bitmaps = QRCodeReaderHelper.pdfToBitmap(getApplication<Application>(), outputFile)
@@ -75,10 +80,14 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 					val decode = QRCodeReaderHelper.decodeQrCode(bitmap)
 					if (decode != null) {
 						pdfImportMutableLiveData.postValue(PdfImportState.DONE(CovidCertificateSdk.Wallet.decode(decode)))
+						outputFile.delete()
+
 						// Stop as soon as we found the first QR code in the PDF
 						return@launch
 					}
 				}
+				
+				outputFile.delete()
 			} catch (e: Exception) {
 				e.printStackTrace()
 			}
@@ -121,6 +130,21 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 
 	fun clearPdfImport() {
 		pdfImportMutableLiveData.value = null
+	}
+
+	/**
+	 * Delete all temporary/cached PDF files from imports or exports
+	 */
+	fun clearPdfFiles() {
+		// Delete all imported pdfs
+		val cacheDirectory = getApplication<Application>().cacheDir
+		val importedPdfs = cacheDirectory.listFiles { _, name -> name.endsWith(PDF_FILE_EXTENSION) }
+		importedPdfs?.forEach { it.delete() }
+
+		// Delete all exported pdfs
+		val exportedPdfDirectory = File(cacheDirectory, PDF_EXPORT_FILE_PATH)
+		val exportedPdfs = exportedPdfDirectory.listFiles { _, name -> name.endsWith(PDF_FILE_EXTENSION) }
+		exportedPdfs?.forEach { it.delete() }
 	}
 
 	private fun checkIfOffline(): StateError {
