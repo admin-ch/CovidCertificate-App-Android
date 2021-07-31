@@ -74,7 +74,7 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 				val outputFile: File = File.createTempFile("certificate", PDF_FILE_EXTENSION, getApplication<Application>().cacheDir)
 				inputStream?.copyTo(outputFile.outputStream())
 
-				val bitmaps = QRCodeReaderHelper.pdfToBitmap(getApplication<Application>(), outputFile)
+				val bitmaps = QRCodeReaderHelper.pdfToBitmaps(getApplication<Application>(), outputFile)
 
 				for (bitmap in bitmaps) {
 					val decode = QRCodeReaderHelper.decodeQrCode(bitmap)
@@ -86,14 +86,14 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 						return@launch
 					}
 				}
-				
+
 				outputFile.delete()
 			} catch (e: Exception) {
 				e.printStackTrace()
 			}
 
 			pdfImportMutableLiveData.postValue(
-				PdfImportState.DONE(DecodeState.ERROR(StateError(PdfErrorCodes.NO_QR_CODE_FOUND, "The PDF was not be imported")))
+				PdfImportState.DONE(DecodeState.ERROR(StateError(PdfErrorCodes.NO_QR_CODE_FOUND, "No QR found in the PDF")))
 			)
 		}
 	}

@@ -14,7 +14,6 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.Color
-import android.graphics.Rect
 import android.graphics.pdf.PdfRenderer
 import android.os.ParcelFileDescriptor
 import com.google.zxing.*
@@ -22,6 +21,10 @@ import com.google.zxing.common.HybridBinarizer
 import java.io.File
 import java.lang.Integer.min
 import java.util.*
+import kotlin.math.roundToInt
+
+
+private const val PDF_PAGE_LIMIT = 5
 
 object QRCodeReaderHelper {
 
@@ -52,26 +55,28 @@ object QRCodeReaderHelper {
 		return decoded
 	}
 
-	fun pdfToBitmap(context: Context, pdfFile: File): ArrayList<Bitmap> {
+	fun pdfToBitmaps(context: Context, pdfFile: File): ArrayList<Bitmap> {
 		val bitmaps = arrayListOf<Bitmap>()
 		try {
 			val renderer = PdfRenderer(ParcelFileDescriptor.open(pdfFile, ParcelFileDescriptor.MODE_READ_ONLY))
-			var bitmap: Bitmap?
 			val pageCount = renderer.pageCount
 
-			for (i in 0 until min(pageCount, 5)) {
+			for (i in 0 until min(pageCount, PDF_PAGE_LIMIT)) {
 				val page: PdfRenderer.Page = renderer.openPage(i)
-				val width = context.resources.displayMetrics.densityDpi / 72 * page.width
-				val height = context.resources.displayMetrics.densityDpi / 72 * page.height
 
-				bitmap = createBitmapForWidthAndHeight(width, height, page)
-				bitmaps.add(bitmap)
-				bitmap = createBitmapForWidthAndHeight(page.width, page.height, page)
-				bitmaps.add(bitmap)
+				// PDF width/height are given in "points pt" such that 1 pt = 1/72 inch
+				// => 72 "dots-per-inch dpi" <==> scale = 1
+				val scale: Float = context.resources.displayMetrics.densityDpi / 72f
+				val pixelWidth = (scale * page.width).roundToInt()
+				val pixelHeight = (scale * page.height).roundToInt()
+
+				// Try both the scaled and the unscaled version
+				bitmaps.add(page.renderToBitmap(pixelWidth, pixelHeight))
+				bitmaps.add(page.renderToBitmap(page.width, page.height))
+
 				page.close()
 			}
 			renderer.close()
-
 		} catch (ex: Exception) {
 			ex.printStackTrace()
 		}
@@ -79,14 +84,15 @@ object QRCodeReaderHelper {
 		return bitmaps
 	}
 
-	fun createBitmapForWidthAndHeight(width: Int, height: Int, page: PdfRenderer.Page): Bitmap {
-		val bitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-		val canvas = Canvas(bitmap)
-		canvas.drawColor(Color.WHITE)
-		canvas.drawBitmap(bitmap, 0.0f, 0.0f, null)
+	private fun PdfRenderer.Page.renderToBitmap(pixelWidth: Int, pixelHeight: Int): Bitmap {
+		val bitmap = Bitmap.createBitmap(pixelWidth, pixelHeight, Bitmap.Config.ARGB_8888)
 
-		val r = Rect(0, 0, width, height)
-		page.render(bitmap, r, null, PdfRenderer.Page.RENDER_MODE_FOR_PRINT)
+		// Make sure the bitmap's background is not transparent (which can cause issues for QR code detection)
+		Canvas(bitmap).drawColor(Color.WHITE)
+
+		// Draw the page onto the bitmap. Internally, this will scale the page to fit the bitmap (unless transform != null).
+		this.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_PRINT)
+
 		return bitmap
 	}
 }
