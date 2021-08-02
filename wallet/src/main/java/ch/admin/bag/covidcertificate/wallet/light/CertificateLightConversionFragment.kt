@@ -11,10 +11,15 @@
 package ch.admin.bag.covidcertificate.wallet.light
 
 import android.annotation.SuppressLint
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorRes
+import androidx.annotation.DrawableRes
+import androidx.annotation.StringRes
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -78,7 +83,6 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 		binding.certificateLightConversionInfo.text = text.makeSubStringsBold(boldParts.split(" "))
 	}
 
-	@SuppressLint("SetTextI18n")
 	private fun onConversionStateChanged(state: CertificateLightConversionState) {
 		when (state) {
 			is CertificateLightConversionState.LOADING -> {
@@ -98,6 +102,16 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 					.addToBackStack(CertificateLightDetailFragment::class.java.canonicalName)
 					.commit()
 			}
+			is CertificateLightConversionState.RATE_LIMIT_EXCEEDED -> {
+				binding.certificateLightConversionLoadingIndicator.isVisible = false
+				binding.certificateLightConversionContent.isVisible = true
+				binding.certificateLightConversionIntroLayout.isVisible = false
+				binding.certificateLightConversionErrorLayout.isVisible = true
+				binding.certificateLightConversionErrorCode.text = null
+
+				setStatusIconAndTint(R.drawable.ic_error)
+				setStatusText(R.string.wallet_certificate_light_rate_limit_title, R.string.wallet_certificate_light_rate_limit_text)
+			}
 			is CertificateLightConversionState.ERROR -> {
 				binding.certificateLightConversionLoadingIndicator.isVisible = false
 				binding.certificateLightConversionContent.isVisible = true
@@ -106,18 +120,33 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 				binding.certificateLightConversionErrorCode.text = state.error.code
 
 				if (state.error.code == ErrorCodes.GENERAL_OFFLINE) {
-					binding.certificateLightConversionStatusIcon.setImageResource(R.drawable.ic_no_connection)
-					val title = getString(R.string.wallet_certificate_light_detail_activation_network_error_title)
-					val text = getString(R.string.wallet_certificate_light_detail_activation_network_error_text)
-					binding.certificateLightConversionStatusText.text = "$title\n$text".makeSubStringBold(title)
+					setStatusIconAndTint(R.drawable.ic_no_connection)
+					setStatusText(
+						R.string.wallet_certificate_light_detail_activation_network_error_title,
+						R.string.wallet_certificate_light_detail_activation_network_error_text
+					)
 				} else {
-					binding.certificateLightConversionStatusIcon.setImageResource(R.drawable.ic_process_error)
-					val title = getString(R.string.wallet_certificate_light_detail_activation_general_error_title)
-					val text = getString(R.string.wallet_certificate_light_detail_activation_general_error_text)
-					binding.certificateLightConversionStatusText.text = "$title\n$text".makeSubStringBold(title)
+					setStatusIconAndTint(R.drawable.ic_process_error)
+					setStatusText(
+						R.string.wallet_certificate_light_detail_activation_general_error_title,
+						R.string.wallet_certificate_light_detail_activation_general_error_text
+					)
 				}
 			}
 		}
+	}
+
+	private fun setStatusIconAndTint(@DrawableRes iconId: Int, @ColorRes colorId: Int = R.color.orange) {
+		val color = ContextCompat.getColor(requireContext(), colorId)
+		binding.certificateLightConversionStatusIcon.setImageResource(iconId)
+		binding.certificateLightConversionStatusIcon.imageTintList = ColorStateList.valueOf(color)
+	}
+
+	@SuppressLint("SetTextI18n")
+	private fun setStatusText(@StringRes titleId: Int, @StringRes textId: Int) {
+		val title = getString(titleId)
+		val text = getString(textId)
+		binding.certificateLightConversionStatusText.text = "$title\n$text".makeSubStringBold(title)
 	}
 
 }

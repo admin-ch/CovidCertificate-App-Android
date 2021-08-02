@@ -1000,4 +1000,18 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
     <string name="wallet_transfer_code_copied">"Transfer Code kopiert"</string>
     <string name="wallet_faq_works_question_2_1">"Was ist ein Transfer-Code?"</string>
     <string name="wallet_faq_works_answer_2_1">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat, z. B. nach einem Covid-Test, direkt in die App geliefert."</string>
+    <string name="wallet_faq_works_question_5_1">"Ich habe das Covid-Zertifikat ausschliesslich elektronisch in der App. Wie komme ich zum Zertifikat als PDF oder auf Papier?"</string>
+    <string name="wallet_faq_works_answer_5_1">"In der «COVID Certificate»-App finden Sie in der Detailansicht des elektronische Covid-Zertifikats die Funktion «Exportieren». Damit können Sie ein PDF erstellen, dieses speichern und ausdrucken."</string>
+
+    <!-- wallet android app google play store deep link -->
+    <string name="wallet_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.wallet"</string>
+
+    <!-- verifer android app google play store deep link -->
+    <string name="verifier_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.verifier"</string>
+
+    <!-- Wallet: Titel Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
+    <string name="wallet_certificate_light_rate_limit_title">"24h-Limite erreicht"</string>
+
+    <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
+    <string name="wallet_certificate_light_rate_limit_text">"Das Zertifikat Light wurde in den letzten 24h bereits zu oft aktiviert."</string>
 </resources>
