@@ -60,7 +60,7 @@ class InfoDialogFragment : DialogFragment() {
 
 	private fun setupInfo() {
 		binding.infoDialogTitle.text = infoBoxModel.title
-		binding.infoDialogText.text = infoBoxModel.title
+		binding.infoDialogText.text = infoBoxModel.msg
 		val hasCustomButton = !infoBoxModel.urlTitle.isNullOrEmpty()
 		binding.infoDialogUrlButton.apply {
 			text = infoBoxModel.urlTitle
