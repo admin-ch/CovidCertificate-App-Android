@@ -24,14 +24,13 @@ import java.util.*
 import kotlin.math.roundToInt
 
 
-private const val PDF_PAGE_LIMIT = 5
-
 object QRCodeReaderHelper {
-
 	private val hints = mapOf(
 		DecodeHintType.POSSIBLE_FORMATS to arrayListOf(BarcodeFormat.QR_CODE),
 		DecodeHintType.TRY_HARDER to true,
 	)
+
+	private const val PDF_PAGE_LIMIT = 5
 	private val reader = MultiFormatReader().apply { setHints(hints) }
 
 	fun decodeQrCode(bitmap: Bitmap): String? {
@@ -88,7 +87,7 @@ object QRCodeReaderHelper {
 		val bitmap = Bitmap.createBitmap(pixelWidth, pixelHeight, Bitmap.Config.ARGB_8888)
 
 		// Make sure the bitmap's background is not transparent (which can cause issues for QR code detection)
-		Canvas(bitmap).drawColor(Color.WHITE)
+		bitmap.eraseColor(Color.WHITE)
 
 		// Draw the page onto the bitmap. Internally, this will scale the page to fit the bitmap (unless transform != null).
 		this.render(bitmap, null, null, PdfRenderer.Page.RENDER_MODE_FOR_PRINT)
