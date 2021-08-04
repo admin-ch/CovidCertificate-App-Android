@@ -24,8 +24,10 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolde
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
+import ch.admin.bag.covidcertificate.wallet.light.model.CertificateLightConversionResponse
 import ch.admin.bag.covidcertificate.wallet.light.model.CertificateLightConversionState
 import ch.admin.bag.covidcertificate.wallet.light.net.CertificateLightRepository
+import ch.admin.bag.covidcertificate.wallet.light.net.CertificateLightResponse
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
@@ -49,30 +51,14 @@ class CertificateLightViewModel(application: Application) : AndroidViewModel(app
 		conversionJob = viewModelScope.launch(Dispatchers.IO) {
 			try {
 				val response = repository.convert(certificateHolder)
-
-				if (response != null) {
-					val decodeState = CovidCertificateSdk.Wallet.decode(response.payload)
-					when (decodeState) {
-						is DecodeState.SUCCESS -> {
-							walletDataStorage.storeCertificateLight(
-								certificateHolder,
-								decodeState.certificateHolder.qrCodeData,
-								response.qrCode
-							)
-
-							conversionStateMutableLiveData.postValue(
-								CertificateLightConversionState.SUCCESS(
-									decodeState.certificateHolder,
-									response.qrCode
-								)
-							)
-						}
-						is DecodeState.ERROR -> {
-							conversionStateMutableLiveData.postValue(CertificateLightConversionState.ERROR(decodeState.error))
-						}
+				when (response) {
+					is CertificateLightConversionResponse.SUCCESS -> {
+						decodeAndStoreCertificateLight(certificateHolder, response.content)
 					}
-				} else {
-					checkIfOffline()
+					is CertificateLightConversionResponse.RATE_LIMIT_EXCEEDED -> {
+						conversionStateMutableLiveData.postValue(CertificateLightConversionState.RATE_LIMIT_EXCEEDED)
+					}
+					is CertificateLightConversionResponse.FAILED -> checkIfOffline()
 				}
 			} catch (e: IOException) {
 				checkIfOffline()
@@ -93,6 +79,29 @@ class CertificateLightViewModel(application: Application) : AndroidViewModel(app
 				decodeState.certificateHolder
 			} else {
 				null
+			}
+		}
+	}
+
+	private fun decodeAndStoreCertificateLight(certificateHolder: CertificateHolder, response: CertificateLightResponse) {
+		val decodeState = CovidCertificateSdk.Wallet.decode(response.payload)
+		when (decodeState) {
+			is DecodeState.SUCCESS -> {
+				walletDataStorage.storeCertificateLight(
+					certificateHolder,
+					decodeState.certificateHolder.qrCodeData,
+					response.qrCode
+				)
+
+				conversionStateMutableLiveData.postValue(
+					CertificateLightConversionState.SUCCESS(
+						decodeState.certificateHolder,
+						response.qrCode
+					)
+				)
+			}
+			is DecodeState.ERROR -> {
+				conversionStateMutableLiveData.postValue(CertificateLightConversionState.ERROR(decodeState.error))
 			}
 		}
 	}
