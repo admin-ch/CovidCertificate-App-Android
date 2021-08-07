@@ -42,6 +42,9 @@ android {
 		versionCode 2300
 		versionName "2.3.0"
 
+		// Stops the Gradle plugin’s automatic rasterization of vectors
+		generatedDensities = []
+
 		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
 
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
