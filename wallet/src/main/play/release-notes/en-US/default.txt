@@ -1,2 +1,4 @@
-- Certificate light: QR code without health-related data for use in Switzerland
+- Improve reliability of PDF import
+- Show error message when hitting rate limit (certificate light, PDF export)
+- Clear PDF from app-local cache after import/export
 - Further improvements and bug fixes

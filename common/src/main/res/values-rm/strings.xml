@@ -965,4 +965,18 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
     <string name="wallet_transfer_code_copied">"Copià il code da transfer"</string>
     <string name="wallet_faq_works_question_2_1">"Tge è in code da transfer?"</string>
     <string name="wallet_faq_works_answer_2_1">"Cun ils codes da transfer pon ils certificats COVID vegnir transmess en moda svelta e segira. Sin questa via vegn il certificat COVID furnì directamain en l'app, p.ex. suenter in test dal coronavirus."</string>
+    <string name="wallet_faq_works_question_5_1">"Jau hai il certificat COVID mo en moda digitala en l'app. Co survegn jau il certificat sco PDF u sin palpiri?"</string>
+    <string name="wallet_faq_works_answer_5_1">"En la vista detagliada dal certificat COVID digital en l'app «COVID Certificate» chattais Vus la funcziun «Exportar». Uschia pudais Vus generar in PDF, l'arcunar ed al stampar."</string>
+
+    <!-- wallet android app google play store deep link -->
+    <string name="wallet_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.wallet"</string>
+
+    <!-- verifer android app google play store deep link -->
+    <string name="verifier_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.verifier"</string>
+
+    <!-- Wallet: Titel Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
+    <string name="wallet_certificate_light_rate_limit_title">"24h-Limite erreicht"</string>
+
+    <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
+    <string name="wallet_certificate_light_rate_limit_text">"Das Zertifikat Light wurde in den letzten 24h bereits zu oft aktiviert."</string>
 </resources>

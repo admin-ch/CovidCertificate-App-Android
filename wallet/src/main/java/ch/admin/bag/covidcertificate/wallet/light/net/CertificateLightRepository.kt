@@ -19,6 +19,7 @@ import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterc
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.light.model.CertificateLightConversionResponse
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -27,7 +28,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 class CertificateLightRepository private constructor(context: Context) {
 
-	companion object : SingletonHolder<CertificateLightRepository, Context>(::CertificateLightRepository)
+	companion object : SingletonHolder<CertificateLightRepository, Context>(::CertificateLightRepository) {
+		private const val STATUS_CODE_TOO_MANY_REQUESTS = 429
+	}
 
 	private val certificateLightService: CertificateLightService
 
@@ -56,13 +59,19 @@ class CertificateLightRepository private constructor(context: Context) {
 			.create(CertificateLightService::class.java)
 	}
 
-	suspend fun convert(certificateHolder: CertificateHolder): CertificateLightResponse? {
-		if (certificateHolder.containsChLightCert()) return null
+	suspend fun convert(certificateHolder: CertificateHolder): CertificateLightConversionResponse {
+		if (certificateHolder.containsChLightCert()) return CertificateLightConversionResponse.FAILED
 
 		val body = CertificateLightRequestBody(certificateHolder.qrCodeData)
 		val response = certificateLightService.convert(body)
 
-		return if (response.isSuccessful) response.body() else null
+		return when {
+			response.isSuccessful -> response.body()?.let {
+				CertificateLightConversionResponse.SUCCESS(it)
+			} ?: CertificateLightConversionResponse.FAILED
+			response.code() == STATUS_CODE_TOO_MANY_REQUESTS -> CertificateLightConversionResponse.RATE_LIMIT_EXCEEDED
+			else -> CertificateLightConversionResponse.FAILED
+		}
 	}
 
 }

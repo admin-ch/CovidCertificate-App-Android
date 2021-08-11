@@ -1,2 +1,2 @@
-- Checks new certificate light
+- Fix infobox showing wrong text body
 - Further improvements and bug fixes

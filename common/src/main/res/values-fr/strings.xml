@@ -966,4 +966,18 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
     <string name="wallet_transfer_code_copied">"Code de transfert copié"</string>
     <string name="wallet_faq_works_question_2_1">"Qu'est-ce qu'un code de transfert ?"</string>
     <string name="wallet_faq_works_answer_2_1">"Les codes de transfert permettent de transmettre les certificats COVID rapidement et en toute sécurité. De cette façon, vous recevez votre certificat (p. ex. après un test) directement dans l’application."</string>
+    <string name="wallet_faq_works_question_5_1">"Mon certificat COVID n’est disponible qu’au format électronique dans l’application. Comment puis-je obtenir mon certificat en PDF ou sur papier ?"</string>
+    <string name="wallet_faq_works_answer_5_1">"Dans l’application « COVID Certificate », vous trouvez la fonction « Exporter » dans la vue détaillée du certificat. Vous pouvez ainsi générer un PDF afin de le sauvegarder et de l’imprimer."</string>
+
+    <!-- wallet android app google play store deep link -->
+    <string name="wallet_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.wallet"</string>
+
+    <!-- verifer android app google play store deep link -->
+    <string name="verifier_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.verifier"</string>
+
+    <!-- Wallet: Titel Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
+    <string name="wallet_certificate_light_rate_limit_title">"24h-Limite erreicht"</string>
+
+    <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
+    <string name="wallet_certificate_light_rate_limit_text">"Das Zertifikat Light wurde in den letzten 24h bereits zu oft aktiviert."</string>
 </resources>
