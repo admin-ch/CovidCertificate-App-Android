@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android" android:exitFadeDuration="@android:integer/config_shortAnimTime">
+	<item android:state_checked="true">
+		<shape android:shape="rectangle">
+			<solid android:color="@color/blueish" />
+			<corners android:radius="@dimen/corner_radius_small" />
+		</shape>
+	</item>
+	<item android:state_pressed="true">
+		<shape android:shape="rectangle">
+			<solid android:color="@color/blueish" />
+			<corners android:radius="@dimen/corner_radius_small" />
+		</shape>
+	</item>
+	<item>
+		<shape android:shape="rectangle">
+			<solid android:color="@color/white" />
+			<corners android:radius="@dimen/corner_radius_small" />
+		</shape>
+	</item>
+</selector>

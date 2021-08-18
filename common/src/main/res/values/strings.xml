@@ -977,8 +977,7 @@ The 'Certificate light' is only available electronically in the app and is only 
     <!-- verifer android app google play store deep link -->
     <string name="verifier_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.verifier"</string>
 
-
-    <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
+    <!-- Wallet: Titel Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
     <string name="wallet_certificate_light_rate_limit_title">"24h-limit reached"</string>
 
     <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
