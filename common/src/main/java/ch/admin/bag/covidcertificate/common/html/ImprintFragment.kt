@@ -16,17 +16,18 @@ import android.view.View
 import android.view.ViewGroup
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import androidx.annotation.IdRes
-import androidx.annotation.LayoutRes
 import androidx.annotation.StringRes
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.commit
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.databinding.FragmentHtmlBinding
+import ch.admin.bag.covidcertificate.common.settings.SettingsFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil.loadImpressumHtmlFile
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
+import java.util.*
 
-class HtmlFragment : Fragment() {
+class ImprintFragment : Fragment() {
 
 	companion object {
 		private const val COVID_CERT_IMPRESSUM_PREFIX = "ccert://"
@@ -35,16 +36,17 @@ class HtmlFragment : Fragment() {
 		private const val ARG_BUILD_INFO = "ARG_BUILD_INFO"
 		private const val ARG_DATA = "ARG_DATA"
 		private const val ARG_TITLE = "ARG_TITLE"
-		private const val ARG_FRAGMENT_LAYOUT_ID = "ARG_FRAGMENT_LAYOUT_ID"
-		fun newInstance(titleRes: Int, buildInfo: BuildInfo, baseUrl: String, data: String?, fragmentLayoutId: Int): HtmlFragment {
-			val args = Bundle()
-			args.putString(ARG_BASE_URL, baseUrl)
-			args.putSerializable(ARG_BUILD_INFO, buildInfo)
-			args.putString(ARG_DATA, data)
-			args.putInt(ARG_TITLE, titleRes)
-			args.putInt(ARG_FRAGMENT_LAYOUT_ID, fragmentLayoutId)
-			val fragment = HtmlFragment()
-			fragment.arguments = args
+		private const val ARG_SETTINGS = "ARG_SETTINGS"
+
+		fun newInstance(titleRes: Int, buildInfo: BuildInfo, baseUrl: String, data: String?, showSettings: Boolean = true): ImprintFragment {
+			val fragment = ImprintFragment()
+			fragment.arguments = Bundle().apply {
+				putString(ARG_BASE_URL, baseUrl)
+				putSerializable(ARG_BUILD_INFO, buildInfo)
+				putString(ARG_DATA, data)
+				putInt(ARG_TITLE, titleRes)
+				putBoolean(ARG_SETTINGS, showSettings)
+			}
 			return fragment
 		}
 	}
@@ -59,8 +61,7 @@ class HtmlFragment : Fragment() {
 	@StringRes
 	private var titleRes = 0
 
-	@IdRes
-	private var fragmentLayoutId = 0
+	private var showSettings = false
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -69,9 +70,8 @@ class HtmlFragment : Fragment() {
 			buildInfo = getSerializable(ARG_BUILD_INFO) as? BuildInfo?
 			data = getString(ARG_DATA)
 			titleRes = getInt(ARG_TITLE)
-			fragmentLayoutId = getInt(ARG_FRAGMENT_LAYOUT_ID)
+			showSettings = getBoolean(ARG_SETTINGS)
 		}
-
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -86,6 +86,21 @@ class HtmlFragment : Fragment() {
 		toolbar.setTitle(titleRes)
 		toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 
+		if (showSettings) {
+			toolbar.inflateMenu(R.menu.imprint)
+			toolbar.setOnMenuItemClickListener { item ->
+				when (item.itemId) {
+					R.id.menu_settings -> parentFragmentManager.commit {
+						setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+						replace(id, SettingsFragment.newInstance())
+						addToBackStack(SettingsFragment::class.java.canonicalName)
+					}
+					else -> throw UnsupportedOperationException()
+				}
+				true
+			}
+		}
+
 		val web = binding.htmlWebview
 		val loadingSpinner = binding.loadingSpinner
 
@@ -97,7 +112,7 @@ class HtmlFragment : Fragment() {
 
 			override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
 				if (baseUrl == url) return true
-				if (url.toLowerCase().startsWith(COVID_CERT_IMPRESSUM_PREFIX)) {
+				if (url.toLowerCase(Locale.ENGLISH).startsWith(COVID_CERT_IMPRESSUM_PREFIX)) {
 					val buildInfo = buildInfo ?: throw IllegalStateException("No BuildInfo supplied for imprint")
 					val strippedUrl = url.substring(COVID_CERT_IMPRESSUM_PREFIX.length)
 					val htmlFragment = newInstance(
@@ -105,15 +120,15 @@ class HtmlFragment : Fragment() {
 						buildInfo,
 						baseUrl,
 						loadImpressumHtmlFile(view.context, strippedUrl, buildInfo),
-						fragmentLayoutId
+						false
 					)
 					parentFragmentManager.beginTransaction()
 						.setCustomAnimations(
 							R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter,
 							R.anim.slide_pop_exit
 						)
-						.replace(fragmentLayoutId, htmlFragment)
-						.addToBackStack(HtmlFragment::class.java.canonicalName)
+						.replace(id, htmlFragment)
+						.addToBackStack(ImprintFragment::class.java.canonicalName)
 						.commit()
 					return true
 				}

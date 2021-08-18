@@ -13,11 +13,12 @@ package ch.admin.bag.covidcertificate.wallet.onboarding
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityOnboardingBinding
 import ch.admin.bag.covidcertificate.wallet.onboarding.update.UpdateboardingCertificateLightSlidePageAdapter
 
-class OnboardingActivity : AppCompatActivity() {
+class OnboardingActivity : BaseActivity() {
 
 	companion object {
 		const val EXTRA_ONBOARDING_TYPE = "EXTRA_ONBOARDING_TYPE"

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<RadioButton xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:id="@+id/radiobutton"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginHorizontal="@dimen/spacing_medium_large"
+	android:layout_marginVertical="2dp"
+	android:background="@drawable/bg_rect_rounded_small_checkable"
+	android:button="@null"
+	android:drawableEnd="@drawable/btn_radio_checkable"
+	android:drawablePadding="40dp"
+	android:padding="@dimen/spacing_medium_large"
+	android:saveEnabled="false"
+	android:textAppearance="@style/CovidCertificate.Text"
+	android:textColor="@color/text_radio_checkable"
+	tools:checked="true"
+	tools:text="English" />

@@ -19,6 +19,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
@@ -29,7 +30,7 @@ import ch.admin.bag.covidcertificate.wallet.homescreen.HomeFragment
 import ch.admin.bag.covidcertificate.wallet.onboarding.OnboardingActivity
 import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
 	companion object {
 		private const val KEY_IS_INTENT_CONSUMED = "KEY_IS_INTENT_CONSUMED"

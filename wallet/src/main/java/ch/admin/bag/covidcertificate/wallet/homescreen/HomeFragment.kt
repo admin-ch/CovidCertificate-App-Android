@@ -25,7 +25,6 @@ import androidx.core.view.isVisible
 import androidx.core.view.postDelayed
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
@@ -33,13 +32,12 @@ import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
-import ch.admin.bag.covidcertificate.common.html.HtmlFragment
+import ch.admin.bag.covidcertificate.common.html.ImprintFragment
 import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.rotate
 import ch.admin.bag.covidcertificate.common.views.showAnimated
-import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
@@ -144,15 +142,14 @@ class HomeFragment : Fragment() {
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 				.replace(
-					R.id.fragment_container, HtmlFragment.newInstance(
+					R.id.fragment_container, ImprintFragment.newInstance(
 						R.string.impressum_title,
 						buildInfo,
 						AssetUtil.getImpressumBaseUrl(it.context),
-						AssetUtil.getImpressumHtml(it.context, buildInfo),
-						R.id.fragment_container
+						AssetUtil.getImpressumHtml(it.context, buildInfo)
 					)
 				)
-				.addToBackStack(HtmlFragment::class.java.canonicalName)
+				.addToBackStack(ImprintFragment::class.java.canonicalName)
 				.commit()
 		}
 		binding.homescreenHeaderEmpty.headerImpressum.setOnClickListener(impressumClickListener)

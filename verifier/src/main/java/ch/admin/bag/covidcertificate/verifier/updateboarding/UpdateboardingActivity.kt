@@ -13,10 +13,11 @@ package ch.admin.bag.covidcertificate.verifier.updateboarding
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.ActivityUpdateboardingBinding
 
-class UpdateboardingActivity : AppCompatActivity() {
+class UpdateboardingActivity : BaseActivity() {
 
 	private lateinit var binding: ActivityUpdateboardingBinding
 	private lateinit var pagerAdapter: FragmentStateAdapter
