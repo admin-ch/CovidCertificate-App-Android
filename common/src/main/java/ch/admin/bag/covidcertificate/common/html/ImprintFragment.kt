@@ -22,7 +22,7 @@ import androidx.fragment.app.commit
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.databinding.FragmentHtmlBinding
 import ch.admin.bag.covidcertificate.common.settings.SettingsFragment
-import ch.admin.bag.covidcertificate.common.util.AssetUtil.loadImpressumHtmlFile
+import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import java.util.*
@@ -38,7 +38,13 @@ class ImprintFragment : Fragment() {
 		private const val ARG_TITLE = "ARG_TITLE"
 		private const val ARG_SETTINGS = "ARG_SETTINGS"
 
-		fun newInstance(titleRes: Int, buildInfo: BuildInfo, baseUrl: String, data: String?, showSettings: Boolean = true): ImprintFragment {
+		fun newInstance(
+			titleRes: Int,
+			buildInfo: BuildInfo,
+			baseUrl: String? = null,
+			data: String? = null,
+			showSettings: Boolean = true
+		): ImprintFragment {
 			val fragment = ImprintFragment()
 			fragment.arguments = Bundle().apply {
 				putString(ARG_BASE_URL, baseUrl)
@@ -66,9 +72,9 @@ class ImprintFragment : Fragment() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 		requireArguments().apply {
-			baseUrl = getString(ARG_BASE_URL) ?: throw IllegalStateException("No baseUrl specified for HtmlFragment")
+			baseUrl = getString(ARG_BASE_URL) ?: AssetUtil.getImpressumBaseUrl(requireContext())
 			buildInfo = getSerializable(ARG_BUILD_INFO) as? BuildInfo?
-			data = getString(ARG_DATA)
+			data = getString(ARG_DATA) ?: buildInfo?.let { AssetUtil.getImpressumHtml(requireContext(), it) }
 			titleRes = getInt(ARG_TITLE)
 			showSettings = getBoolean(ARG_SETTINGS)
 		}
@@ -119,7 +125,7 @@ class ImprintFragment : Fragment() {
 						R.string.impressum_title,
 						buildInfo,
 						baseUrl,
-						loadImpressumHtmlFile(view.context, strippedUrl, buildInfo),
+						AssetUtil.loadImpressumHtmlFile(view.context, strippedUrl, buildInfo),
 						false
 					)
 					parentFragmentManager.beginTransaction()

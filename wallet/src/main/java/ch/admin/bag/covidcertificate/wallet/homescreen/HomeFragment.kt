@@ -144,9 +144,7 @@ class HomeFragment : Fragment() {
 				.replace(
 					R.id.fragment_container, ImprintFragment.newInstance(
 						R.string.impressum_title,
-						buildInfo,
-						AssetUtil.getImpressumBaseUrl(it.context),
-						AssetUtil.getImpressumHtml(it.context, buildInfo)
+						buildInfo
 					)
 				)
 				.addToBackStack(ImprintFragment::class.java.canonicalName)
