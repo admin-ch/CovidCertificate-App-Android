@@ -26,6 +26,7 @@
 		<item name="android:fontFamily">@font/inter_light</item>
 		<item name="android:statusBarColor">@color/white</item>
 		<item name="android:windowLightStatusBar">true</item>
+		<item name="alertDialogTheme">@style/CovidCertificate.AlertDialogStyle</item>
 	</style>
 
 	<style name="CovidCertificate.Text" parent="TextAppearance.AppCompat">
@@ -252,6 +253,7 @@
 		<item name="fontFamily">@font/inter</item>
 		<item name="android:textStyle">bold</item>
 		<item name="android:textAllCaps">false</item>
+		<item name="rippleColor">@color/rippleColorBlue</item>
 	</style>
 
 	<style name="CovidCertificate.InfoDialog" parent="Theme.MaterialComponents.Light.Dialog">

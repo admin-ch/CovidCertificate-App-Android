@@ -21,6 +21,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
+import ch.admin.bag.covidcertificate.common.util.RestartUtil
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -54,6 +55,12 @@ class MainActivity : AppCompatActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
+		val failedSharedPrefs = (application as MainApplication).failedSharedPrefs
+		if (failedSharedPrefs.isNotEmpty()) {
+			RestartUtil.showRestartDialogForSharedPrefCrash(this, failedSharedPrefs)
+			return
+		}
+
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		val view = binding.root
 		setContentView(view)
@@ -75,6 +82,8 @@ class MainActivity : AppCompatActivity() {
 
 	override fun onStart() {
 		super.onStart()
+
+		if ((application as MainApplication).failedSharedPrefs.isNotEmpty()) return
 
 		// Every time the app comes into the foreground and the updateboarding was completed, reload the config and trust list
 		if (secureStorage.getCertificateLightUpdateboardingCompleted()) {

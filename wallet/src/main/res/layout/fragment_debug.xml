@@ -32,6 +32,14 @@
 			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
 			app:titleTextColor="@color/grey" />
 
+		<Button
+			android:id="@+id/button_corrupt_sharedprefs"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/spacing_medium_large"
+			android:text="Corrupt EncryptedSharedPrefs"
+			tools:ignore="HardcodedText" />
+
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/certificates_recycler_view"
 			android:layout_width="match_parent"

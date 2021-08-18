@@ -9,6 +9,7 @@ package ch.admin.bag.covidcertificate.wallet.debug
  * SPDX-License-Identifier: MPL-2.0
  */
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -25,7 +26,7 @@ class DebugFragment : Fragment() {
 	companion object {
 		fun newInstance(): DebugFragment = DebugFragment()
 
-		const val EXISTS = BuildConfig.FLAVOR == "abn" || BuildConfig.FLAVOR == "dev"
+		const val EXISTS = BuildConfig.FLAVOR == "dev"
 	}
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
@@ -47,12 +48,33 @@ class DebugFragment : Fragment() {
 		binding.toolbar.setNavigationOnClickListener {
 			parentFragmentManager.popBackStack()
 		}
+		binding.buttonCorruptSharedprefs.setOnClickListener {
+			corruptSharedPrefs(it.context)
+		}
 		setupRecyclerView()
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	private fun corruptSharedPrefs(context: Context) {
+		listOf(
+			// Manually maintained list - note the difference between the class name and the pref name!
+			"TrustListSecureStorage",
+			"ConfigSecureStorage",
+			"SecureStorage",
+			"CertificateStorageName",
+			"WalletDataSecureStorageName",
+		).forEach { preferencesName ->
+			val pref = context.getSharedPreferences(preferencesName, Context.MODE_PRIVATE)
+
+			pref.all.forEach {
+				pref.edit().putString(it.key, "Corrupt").apply()
+			}
+		}
+		requireActivity().finish() // exit app
 	}
 
 	private fun setupRecyclerView() {
