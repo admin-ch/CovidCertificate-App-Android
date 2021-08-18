@@ -977,9 +977,29 @@ The 'Certificate light' is only available electronically in the app and is only 
     <!-- verifer android app google play store deep link -->
     <string name="verifier_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.verifier"</string>
 
-    <!-- Wallet: Titel Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
-    <string name="wallet_certificate_light_rate_limit_title">"24h-Limite erreicht"</string>
 
     <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
-    <string name="wallet_certificate_light_rate_limit_text">"Das Zertifikat Light wurde in den letzten 24h bereits zu oft aktiviert."</string>
+    <string name="wallet_certificate_light_rate_limit_title">"24h-limit reached"</string>
+
+    <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
+    <string name="wallet_certificate_light_rate_limit_text">"The 'certificate light' has been activated too often within the last 24 hours."</string>
+    <string name="error_file_import_title">"Import unsuccessful"</string>
+    <string name="error_file_import_text">"The file contains either an invalid QR code or the QR code was not able to be recognised."</string>
+
+    <!-- Wallet: Transfercode ein unerwartet Fehler ist aufgetreten titel -->
+    <string name="wallet_transfer_code_unexpected_error_title">"Unexpected error"</string>
+
+    <!-- Wallet: Transfercode ein unerwartet Fehler ist aufgetreten text -->
+    <string name="wallet_transfer_code_unexpected_error_text">"Please contact support"</string>
+
+    <!-- Wallet: Transfercode ein unerwartet Fehler ist aufgetreten telefon nummer -->
+    <string name="wallet_transfer_code_unexpected_error_phone_number">"+41 58 466 07 99"</string>
+    <string name="error_corrupt_sharedprefs_title">"Entschlüsselungsfehler"</string>
+    <string name="error_corrupt_sharedprefs_text">"Ein Speicher der App konnte nicht entschlüsselt werden. Um die App weiter zu benutzen muss der Speicher gelöscht und neu erstellt werden. Dabei gehen Daten verloren."</string>
+
+    <!-- Einstellungen: Titel -->
+    <string name="settings_title">"Settings"</string>
+
+    <!-- Einstellungen: Titel Sprachauswahl -->
+    <string name="language_title">"Language"</string>
 </resources>
