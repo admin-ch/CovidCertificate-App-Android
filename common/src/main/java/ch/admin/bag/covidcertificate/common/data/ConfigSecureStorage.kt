@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.common.data
 
 import android.content.Context
+import androidx.core.content.edit
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
@@ -25,6 +26,8 @@ class ConfigSecureStorage private constructor(context: Context) {
 		private const val KEY_CONFIG_LAST_SUCCESS = "LastSuccessTimestampKey"
 		private const val KEY_CONFIG_LAST_SUCCESS_APP_AND_OS_VERSION = "LastSuccessVersionKey"
 		private const val KEY_CONFIG_SHOWN_INFO_BOX_ID = "LastShownInfoBoxId"
+
+		private const val KEY_USER_LANGUAGE = "UserLanguage"
 
 		private val moshi = Moshi.Builder().build()
 		private val configModelAdapter = moshi.adapter(ConfigModel::class.java)
@@ -53,4 +56,8 @@ class ConfigSecureStorage private constructor(context: Context) {
 	fun setLastShownInfoBoxId(infoBoxId: Long) = prefs.edit().putLong(KEY_CONFIG_SHOWN_INFO_BOX_ID, infoBoxId).apply()
 
 	fun getLastShownInfoBoxId(): Long = prefs.getLong(KEY_CONFIG_SHOWN_INFO_BOX_ID, 0L)
+
+	fun setUserLanguage(language: String?) = prefs.edit { putString(KEY_USER_LANGUAGE, language) }
+
+	fun getUserLanguage(): String? = prefs.getString(KEY_USER_LANGUAGE, null)
 }

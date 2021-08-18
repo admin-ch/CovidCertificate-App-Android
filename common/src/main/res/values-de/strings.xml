@@ -1014,4 +1014,10 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
 
     <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
     <string name="wallet_certificate_light_rate_limit_text">"Das Zertifikat Light wurde in den letzten 24h bereits zu oft aktiviert."</string>
+
+    <!-- Einstellungen: Titel -->
+    <string name="settings_title">"Einstellungen"</string>
+
+    <!-- Einstellungen: Titel Sprachauswahl -->
+    <string name="language_title">"Sprache"</string>
 </resources>
