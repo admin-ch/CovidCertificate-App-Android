@@ -80,8 +80,7 @@ class TransferCodeCreationFragment : Fragment(R.layout.fragment_transfer_code_cr
 				binding.transferCodeCreationDoneLayout.isVisible = false
 
 				binding.transferCodeCreationTitle.setText(R.string.wallet_transfer_code_error_title)
-				val isOfflineError = state.error.code == ErrorCodes.GENERAL_OFFLINE
-				binding.transferCodeBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Error(isOfflineError))
+				binding.transferCodeBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Error(state.error))
 				binding.transferCodeErrorCode.text = state.error.code
 				binding.transferCodeCreationRetryButton.setOnClickListener {
 					viewModel.createAndRegisterTransferCode()
