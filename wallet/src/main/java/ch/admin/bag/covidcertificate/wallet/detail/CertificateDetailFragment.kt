@@ -18,6 +18,7 @@ import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
@@ -145,6 +146,24 @@ class CertificateDetailFragment : Fragment() {
 				isForceVerification = true
 			)
 		}
+	}
+
+	override fun onResume() {
+		super.onResume()
+		val window = requireActivity().window
+		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+		val layoutParams: WindowManager.LayoutParams = window.attributes
+		layoutParams.screenBrightness = 1f
+		window.attributes = layoutParams
+	}
+
+	override fun onPause() {
+		super.onPause()
+		val window = requireActivity().window
+		window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+		val layoutParams: WindowManager.LayoutParams = window.attributes
+		layoutParams.screenBrightness = -1f
+		window.attributes = layoutParams
 	}
 
 	private fun updateToolbarTitle() {
