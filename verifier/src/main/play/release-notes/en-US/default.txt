@@ -1,2 +1,3 @@
-- Fix infobox showing wrong text body
+- Language selection in the app
+- allow multiple entries for v, t and r
 - Further improvements and bug fixes

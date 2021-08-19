@@ -134,16 +134,21 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				showErrorOrLastUpdated(error)
 			}
 			else -> {
-				binding.transferCodeDetailWaitingImage.isVisible = true
-				binding.transferCodeDetailImage.isVisible = false
-				binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_waiting)
+
 				if (error == null || error.code == ErrorCodes.GENERAL_OFFLINE) {
+					binding.transferCodeDetailWaitingImage.isVisible = true
+					binding.transferCodeDetailImage.isVisible = false
+					binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_waiting)
 					binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing,
 						error))
 					binding.transferCodeRefreshButton.isVisible = false
 					binding.transferCodeErrorCode.isVisible = error != null
 					binding.transferCodeErrorCode.text = error?.code
 				} else {
+					binding.transferCodeDetailWaitingImage.isVisible = false
+					binding.transferCodeDetailImage.isVisible = true
+					binding.transferCodeDetailImage.setImageResource(R.drawable.illu_transfer_code_failed)
+					binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_expired)
 					binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Error(error))
 					binding.transferCodeErrorCode.isVisible = false
 				}

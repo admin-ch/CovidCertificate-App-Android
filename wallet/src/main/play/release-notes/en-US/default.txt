@@ -1,4 +1,5 @@
 - Improve reliability of PDF import
-- Show error message when hitting rate limit (certificate light, PDF export)
-- Clear PDF from app-local cache after import/export
+- Language selection in the app
+- Show error message when transfer code fails
+- allow multiple entries for v, t and r
 - Further improvements and bug fixes
