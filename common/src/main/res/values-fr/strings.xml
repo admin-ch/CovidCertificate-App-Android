@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-  ~
-  ~ This Source Code Form is subject to the terms of the Mozilla Public
-  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-  ~
-  ~ SPDX-License-Identifier: MPL-2.0
-  -->
 <resources>
 
     <!-- Android App Name -->
@@ -975,6 +966,7 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
     <!-- verifer android app google play store deep link -->
     <string name="verifier_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.verifier"</string>
 
+    <!-- Wallet: Titel Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
     <string name="wallet_certificate_light_rate_limit_title">"Limite des 24 heures atteinte"</string>
 
     <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
@@ -990,12 +982,12 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
 
     <!-- Wallet: Transfercode ein unerwartet Fehler ist aufgetreten telefon nummer -->
     <string name="wallet_transfer_code_unexpected_error_phone_number">"+41 58 466 07 99"</string>
-    <string name="error_corrupt_sharedprefs_title">"Entschlüsselungsfehler"</string>
-    <string name="error_corrupt_sharedprefs_text">"Ein Speicher der App konnte nicht entschlüsselt werden. Um die App weiter zu benutzen muss der Speicher gelöscht und neu erstellt werden. Dabei gehen Daten verloren."</string>
+    <string name="error_corrupt_sharedprefs_title">"Erreur de déchiffrement"</string>
+    <string name="error_corrupt_sharedprefs_text">"Un espace de stockage de l'application n'a pas pu être déchiffré. Il doit être effacé et recréé pour que vous puissiez continuer à utiliser l'application. Des données seront perdues."</string>
 
     <!-- Einstellungen: Titel -->
-    <string name="settings_title">"Einstellungen"</string>
+    <string name="settings_title">"Réglages"</string>
 
     <!-- Einstellungen: Titel Sprachauswahl -->
-    <string name="language_title">"Sprache"</string>
+    <string name="language_title">"Langue"</string>
 </resources>
