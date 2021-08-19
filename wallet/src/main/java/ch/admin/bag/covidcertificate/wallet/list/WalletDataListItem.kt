@@ -14,9 +14,11 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -29,7 +31,7 @@ import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 sealed class WalletDataListItem {
 	data class VerifiedCeritificateItem(
 		val verifiedCertificate: CertificatesViewModel.VerifiedCertificate,
-		val qrCodeImage: String?
+		val qrCodeImage: String?,
 	) : WalletDataListItem() {
 
 		fun bindView(itemView: View, onCertificateClickListener: ((Pair<CertificateHolder, String?>) -> Unit)? = null) {
@@ -99,7 +101,7 @@ sealed class WalletDataListItem {
 		private fun setCertificateType(
 			view: TextView,
 			state: VerificationState,
-			certType: CertType?
+			certType: CertType?,
 		) {
 			val backgroundColorId: Int
 			val textColorId: Int
@@ -133,7 +135,7 @@ sealed class WalletDataListItem {
 		}
 	}
 
-	data class TransferCodeItem(val transferCode: TransferCodeModel) : WalletDataListItem() {
+	data class TransferCodeItem(val transferCode: TransferCodeModel, val error: StateError? = null) : WalletDataListItem() {
 		fun bindView(itemView: View, onTransferCodeClickListener: ((TransferCodeModel) -> Unit)? = null) {
 			val binding = ItemTransferCodeListBinding.bind(itemView)
 
@@ -151,6 +153,14 @@ sealed class WalletDataListItem {
 					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_waiting)
 					binding.itemTransferCodeListInfo.setText(R.string.wallet_transfer_code_old_code)
 					binding.itemTransferCodeListInfo.setTextColor(ContextCompat.getColor(itemView.context, R.color.blue))
+					binding.itemTransferCodeListInfo.isVisible = true
+					binding.itemTransferCodeListCode.isVisible = false
+				}
+				error != null && error.code != ErrorCodes.GENERAL_OFFLINE -> {
+					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_scanner_alert)
+					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_expired)
+					binding.itemTransferCodeListInfo.setText(R.string.wallet_transfer_code_unexpected_error_title)
+					binding.itemTransferCodeListInfo.setTextColor(ContextCompat.getColor(itemView.context, R.color.red))
 					binding.itemTransferCodeListInfo.isVisible = true
 					binding.itemTransferCodeListCode.isVisible = false
 				}
