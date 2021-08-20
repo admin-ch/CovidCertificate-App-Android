@@ -30,10 +30,10 @@ import androidx.viewpager2.widget.ViewPager2
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
+import ch.admin.bag.covidcertificate.common.debug.DebugFragment
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.ImprintFragment
-import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.rotate
@@ -46,7 +46,7 @@ import ch.admin.bag.covidcertificate.wallet.DeeplinkViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.add.CertificateAddFragment
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
-import ch.admin.bag.covidcertificate.wallet.debug.DebugFragment
+import ch.admin.bag.covidcertificate.wallet.debug.WalletDebugFragment
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.faq.WalletFaqFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.CertificatesPagerAdapter
@@ -161,10 +161,8 @@ class HomeFragment : Fragment() {
 					lastClick.set(0)
 					parentFragmentManager.beginTransaction()
 						.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-						.replace(
-							R.id.fragment_container, DebugFragment.newInstance()
-						)
-						.addToBackStack(DebugFragment::class.java.canonicalName)
+						.replace(R.id.fragment_container, WalletDebugFragment.newInstance())
+						.addToBackStack(WalletDebugFragment::class.java.canonicalName)
 						.commit()
 				} else {
 					lastClick.set(now)

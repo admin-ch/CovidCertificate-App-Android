@@ -20,16 +20,17 @@ import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
+import ch.admin.bag.covidcertificate.common.debug.DebugFragment
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.ImprintFragment
-import ch.admin.bag.covidcertificate.common.util.AssetUtil
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.verifier.faq.VerifierFaqFragment
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPageAdapter
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPagerFragment
 import ch.admin.bag.covidcertificate.verifier.qr.VerifierQrScanFragment
 import com.google.android.material.tabs.TabLayoutMediator
+import java.util.concurrent.atomic.AtomicLong
 
 class HomeFragment : Fragment() {
 
@@ -74,6 +75,10 @@ class HomeFragment : Fragment() {
 			//Some implementation
 		}.attach()
 
+		if (DebugFragment.EXISTS) {
+			setupDebugFragment()
+		}
+
 		binding.homescreenHeader.headerImpressum.setOnClickListener {
 			val buildInfo = BuildInfo(
 				getString(R.string.verifier_app_title),
@@ -101,6 +106,24 @@ class HomeFragment : Fragment() {
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	private fun setupDebugFragment() {
+		val lastClick = AtomicLong(0)
+		val debugButtonClickListener = View.OnClickListener {
+			val now = System.currentTimeMillis()
+			if (lastClick.get() > now - 1000L) {
+				lastClick.set(0)
+				parentFragmentManager.beginTransaction()
+					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+					.replace(R.id.fragment_container, DebugFragment.newInstance())
+					.addToBackStack(DebugFragment::class.java.canonicalName)
+					.commit()
+			} else {
+				lastClick.set(now)
+			}
+		}
+		binding.homescreenHeader.schwiizerchruez.setOnClickListener(debugButtonClickListener)
 	}
 
 	private fun setupInfoBox() {

@@ -32,6 +32,13 @@
 			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
 			app:titleTextColor="@color/grey" />
 
+		<CheckBox
+			android:id="@+id/button_toggle_certificate_pinning"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_margin="@dimen/spacing_small"
+			android:text="Certificate Pinning enabled (needs a restart)" />
+
 		<androidx.recyclerview.widget.RecyclerView
 			android:id="@+id/certificates_recycler_view"
 			android:layout_width="match_parent"
