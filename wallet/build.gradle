@@ -13,6 +13,7 @@ plugins {
 	id 'kotlin-android'
 	id 'kotlin-kapt'
 	id 'org.sonarqube' version '3.0'
+	id 'ch.ubique.gradle.ubdiag'
 }
 
 ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
@@ -90,15 +91,18 @@ android {
 			signingConfig signingConfigs.release
 		}
 	}
+
 	compileOptions {
 		coreLibraryDesugaringEnabled true
 
 		sourceCompatibility JavaVersion.VERSION_1_8
 		targetCompatibility JavaVersion.VERSION_1_8
 	}
+
 	kotlinOptions {
 		jvmTarget = '1.8'
 	}
+
 	buildFeatures {
 		viewBinding true
 	}
