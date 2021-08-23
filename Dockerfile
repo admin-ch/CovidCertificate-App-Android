@@ -1,4 +1,4 @@
-FROM gradle:6.9.0-jdk8
+FROM gradle:7.0.2-jdk11
 
 ENV ANDROID_SDK_URL https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip
 ENV ANDROID_BUILD_TOOLS_VERSION 30.0.1
