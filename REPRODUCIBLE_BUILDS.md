@@ -1,15 +1,14 @@
-
 # Reproducible Builds
 
 ## Install Docker
 
 Download and install [Docker](https://www.docker.com/).
 
-## Download the App open-source code
+## Download the app's source code
 
 1. Make sure you have `git` installed
 2. Clone the Github repository
-3. Checkout the Tag that corresponds to the version of your app (e.g., 1.0.0)
+3. Checkout the tag that corresponds to the version of your app (e.g., 1.0.0)
 
 ```shell
 git clone https://github.com/admin-ch/CovidCertificate-App-Android.git ~/CovidCertificate-App-Android
@@ -118,7 +117,9 @@ python ../apkdiff.py verifier-built.apk verifier-store.apk
 
 ## Building and checking with script
 
-As an alternative you can also start the build and comparison process with the buildAndCompare.sh script. The script will ask you for the relevant input:
+As an alternative you can also run the build and comparison process with the buildAndCompare.sh script.
+The script expects the path to the APK to compare with and will ask you for all other inputs:
+
 ```shell
-./buildAndCompare.sh path/to/store/apk
+./buildAndCompare.sh path/to/store.apk
 ```

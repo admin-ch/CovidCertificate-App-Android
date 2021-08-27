@@ -38,7 +38,6 @@ import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE
 import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrint
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
-import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeDetailBinding
@@ -65,7 +64,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	private val configViewModel by activityViewModels<ConfigViewModel>()
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 	private val transferCodeViewModel by viewModels<TransferCodeViewModel>()
-	private val faqAdapter = FaqAdapter { url: String  -> context?.let { UrlUtil.openUrl(it, url) }}
+	private val faqAdapter = FaqAdapter { url: String -> context?.let { UrlUtil.openUrl(it, url) } }
 	private var transferCode: TransferCodeModel? = null
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -119,7 +118,8 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				binding.transferCodeDetailImage.setImageResource(R.drawable.illu_transfer_code_failed)
 				binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_expired)
 				binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(true, error))
-				binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.redish))
+				binding.transferCodeDetailRefreshLayout.backgroundTintList =
+					ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.redish))
 				binding.transferCodeRefreshButton.isVisible = false
 				binding.transferCodeErrorCode.isVisible = false
 				binding.transferCodeLastUpdate.setText(R.string.wallet_transfer_code_state_no_certificate)
@@ -134,13 +134,24 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				showErrorOrLastUpdated(error)
 			}
 			else -> {
-				binding.transferCodeDetailWaitingImage.isVisible = true
-				binding.transferCodeDetailImage.isVisible = false
-				binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_waiting)
-				binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing, error))
-				binding.transferCodeRefreshButton.isVisible = true
-				binding.transferCodeErrorCode.isVisible = error != null
-				binding.transferCodeErrorCode.text = error?.code
+
+				if (error == null || error.code == ErrorCodes.GENERAL_OFFLINE) {
+					binding.transferCodeDetailWaitingImage.isVisible = true
+					binding.transferCodeDetailImage.isVisible = false
+					binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_waiting)
+					binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing,
+						error))
+					binding.transferCodeRefreshButton.isVisible = false
+					binding.transferCodeErrorCode.isVisible = error != null
+					binding.transferCodeErrorCode.text = error?.code
+				} else {
+					binding.transferCodeDetailWaitingImage.isVisible = false
+					binding.transferCodeDetailImage.isVisible = true
+					binding.transferCodeDetailImage.setImageResource(R.drawable.illu_transfer_code_failed)
+					binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_expired)
+					binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Error(error))
+					binding.transferCodeErrorCode.isVisible = false
+				}
 				showErrorOrLastUpdated(error)
 			}
 		}
@@ -150,8 +161,10 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	private fun showErrorOrLastUpdated(error: StateError?) {
 		val transferCode = transferCode ?: return
 		if (error != null) {
-			binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.orangeish))
-			binding.transferCodeRefreshButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.orange))
+			binding.transferCodeDetailRefreshLayout.backgroundTintList =
+				ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.orangeish))
+			binding.transferCodeRefreshButton.backgroundTintList =
+				ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.orange))
 			binding.transferCodeRefreshButton.setImageResource(R.drawable.ic_retry)
 
 			if (error.code == ErrorCodes.GENERAL_OFFLINE) {
@@ -159,13 +172,13 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				val offlineText = getString(R.string.wallet_transfer_code_update_no_internet_error_text)
 				binding.transferCodeLastUpdate.text = "$offlineTitle\n$offlineText".makeSubStringBold(offlineTitle)
 			} else {
-				val errorTitle = getString(R.string.wallet_transfer_code_update_error_title)
-				val errorText = getString(R.string.wallet_transfer_code_update_general_error_text)
-				binding.transferCodeLastUpdate.text = "$errorTitle\n$errorText".makeSubStringBold(errorTitle)
+				binding.transferCodeDetailRefreshLayout.isVisible = false
 			}
 		} else {
-			binding.transferCodeDetailRefreshLayout.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blueish))
-			binding.transferCodeRefreshButton.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
+			binding.transferCodeDetailRefreshLayout.backgroundTintList =
+				ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blueish))
+			binding.transferCodeRefreshButton.backgroundTintList =
+				ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
 			binding.transferCodeRefreshButton.setImageResource(R.drawable.ic_load)
 			val lastUpdated = transferCode.lastUpdatedTimestamp.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
 			binding.transferCodeLastUpdate.text = getString(R.string.wallet_transfer_code_state_updated)

@@ -1,2 +1,5 @@
-- Certificate light: QR code without health-related data for use in Switzerland
+- Improve reliability of PDF import
+- Language selection in the app
+- Show error message when transfer code fails
+- allow multiple entries for v, t and r
 - Further improvements and bug fixes

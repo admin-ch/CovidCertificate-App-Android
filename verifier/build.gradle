@@ -13,6 +13,7 @@ plugins {
 	id 'kotlin-android'
 	id 'kotlin-kapt'
 	id 'org.sonarqube' version '3.0'
+	id 'ch.ubique.gradle.ubdiag'
 }
 
 ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
@@ -39,8 +40,8 @@ android {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
 		minSdkVersion 23
 		targetSdkVersion 30
-		versionCode 2300
-		versionName "2.3.0"
+		versionCode 2400
+		versionName "2.4.0"
 
 		// Stops the Gradle plugin’s automatic rasterization of vectors
 		generatedDensities = []
@@ -87,15 +88,18 @@ android {
 			signingConfig signingConfigs.release
 		}
 	}
+
 	compileOptions {
 		coreLibraryDesugaringEnabled true
 
 		sourceCompatibility JavaVersion.VERSION_1_8
 		targetCompatibility JavaVersion.VERSION_1_8
 	}
+
 	kotlinOptions {
 		jvmTarget = '1.8'
 	}
+
 	buildFeatures {
 		viewBinding true
 	}
@@ -130,8 +134,8 @@ dependencies {
 	implementation 'com.squareup.retrofit2:retrofit:2.9.0'
 	implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
 	implementation 'com.squareup.okhttp3:logging-interceptor:4.7.2'
-	implementation 'com.squareup.moshi:moshi:1.11.0'
-	kapt "com.squareup.moshi:moshi-kotlin-codegen:1.11.0"
+	implementation 'com.squareup.moshi:moshi:1.12.0'
+	kapt "com.squareup.moshi:moshi-kotlin-codegen:1.12.0"
 
 	testImplementation 'junit:junit:4.+'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.2'

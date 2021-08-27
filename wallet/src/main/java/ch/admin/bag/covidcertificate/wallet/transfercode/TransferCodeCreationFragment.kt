@@ -27,6 +27,8 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeBubble
 class TransferCodeCreationFragment : Fragment(R.layout.fragment_transfer_code_creation) {
 
 	companion object {
+		private const val MAX_DURATION_IN_BACKGROUND_FOR_AUTO_CLOSE_ON_SUCCESS = 2 * 60 * 1000L // 2 min
+
 		fun newInstance() = TransferCodeCreationFragment()
 	}
 
@@ -34,6 +36,9 @@ class TransferCodeCreationFragment : Fragment(R.layout.fragment_transfer_code_cr
 	private val binding get() = _binding!!
 
 	private val viewModel by viewModels<TransferCodeCreationViewModel>()
+
+	private var lastOpened = 0L
+	private var transferCodeCreated = false
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentTransferCodeCreationBinding.inflate(inflater, container, false)
@@ -54,6 +59,19 @@ class TransferCodeCreationFragment : Fragment(R.layout.fragment_transfer_code_cr
 		_binding = null
 	}
 
+	override fun onResume() {
+		super.onResume()
+
+		if (transferCodeCreated && System.currentTimeMillis() - lastOpened > MAX_DURATION_IN_BACKGROUND_FOR_AUTO_CLOSE_ON_SUCCESS) {
+			parentFragmentManager.popBackStack()
+		}
+	}
+
+	override fun onPause() {
+		super.onPause()
+		lastOpened = System.currentTimeMillis()
+	}
+
 	private fun onViewStateChanged(state: TransferCodeCreationState) {
 		TransitionManager.beginDelayedTransition(binding.root)
 		when (state) {
@@ -71,6 +89,8 @@ class TransferCodeCreationFragment : Fragment(R.layout.fragment_transfer_code_cr
 				binding.transferCodeCreationTitle.setText(R.string.wallet_transfer_code_code_created_title)
 				binding.transferCodeBubble.setTransferCode(state.transferCode)
 				binding.transferCodeBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Created)
+
+				transferCodeCreated = true
 			}
 			is TransferCodeCreationState.ERROR -> {
 				binding.transferCodeLoadingIndicator.isVisible = false
@@ -80,8 +100,7 @@ class TransferCodeCreationFragment : Fragment(R.layout.fragment_transfer_code_cr
 				binding.transferCodeCreationDoneLayout.isVisible = false
 
 				binding.transferCodeCreationTitle.setText(R.string.wallet_transfer_code_error_title)
-				val isOfflineError = state.error.code == ErrorCodes.GENERAL_OFFLINE
-				binding.transferCodeBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Error(isOfflineError))
+				binding.transferCodeBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Error(state.error))
 				binding.transferCodeErrorCode.text = state.error.code
 				binding.transferCodeCreationRetryButton.setOnClickListener {
 					viewModel.createAndRegisterTransferCode()

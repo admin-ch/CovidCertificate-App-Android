@@ -19,6 +19,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
@@ -28,7 +29,7 @@ import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.ActivityMainBinding
 import ch.admin.bag.covidcertificate.verifier.updateboarding.UpdateboardingActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
 	private lateinit var binding: ActivityMainBinding
 

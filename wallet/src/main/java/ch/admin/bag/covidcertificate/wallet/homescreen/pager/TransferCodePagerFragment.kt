@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -21,6 +22,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.transition.TransitionManager
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -96,10 +98,22 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(false, error))
 			}
 			else -> {
-				binding.transferCodePageWaitingImage.isVisible = true
-				binding.transferCodePageImage.isVisible = false
-				binding.transferCodePageStatusLabel.text = requireContext().getString(R.string.wallet_transfer_code_state_waiting)
-				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing, error))
+
+				if (error == null || error.code == ErrorCodes.GENERAL_OFFLINE) {
+					binding.transferCodePageWaitingImage.isVisible = true
+					binding.transferCodePageImage.isVisible = false
+					binding.transferCodePageStatusLabel.text =
+						requireContext().getString(R.string.wallet_transfer_code_state_waiting)
+					binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing,
+						error))
+				} else {
+					binding.transferCodePageWaitingImage.isVisible = false
+					binding.transferCodePageImage.isVisible = true
+					binding.transferCodePageImage.setImageResource(R.drawable.illu_transfer_code_failed)
+					binding.transferCodePageStatusLabel.text =
+						requireContext().getString(R.string.wallet_transfer_code_state_expired)
+					binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Error(error))
+				}
 			}
 		}
 	}
