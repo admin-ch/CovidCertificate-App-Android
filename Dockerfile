@@ -18,3 +18,6 @@ RUN $ANDROID_HOME/cmdline-tools/bin/sdkmanager --sdk_root=$ANDROID_HOME "build-t
     "platforms;android-${ANDROID_VERSION}" \
     "platform-tools" 
 
+RUN apt-get update
+RUN apt-get install -y imagemagick
+RUN convert -version
