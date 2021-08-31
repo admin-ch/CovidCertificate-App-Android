@@ -35,4 +35,4 @@ currentPath=`pwd`
 docker run --rm -v $currentPath:/home/covidcertificate/external -w /home/covidcertificate covidcertificate-builder /bin/bash -c "git clone https://github.com/admin-ch/CovidCertificate-App-Android.git; cd CovidCertificate-App-Android; cp /home/covidcertificate/external/$appName/$keystoreFile $appName/$keystoreFile; git checkout $branch; gradle $appName:assembleProdRelease -PkeystorePassword='$keystorePassword' -PkeyAlias=$keyAlias -PkeyAliasPassword='$keyAliasPassword' -PkeystoreFile=$keystoreFile -PbuildTimestamp=$buildTimestamp; cp $appName/build/outputs/apk/prod/release/$appName-prod-release.apk /home/covidcertificate/external/$appName-built.apk"
 
 echo "Comparing the APK built from source with the reference APK..."
-python apkdiff.py $appName-built.apk $1 >> diffoutput.txt
+python apkdiff.py $appName-built.apk $1
