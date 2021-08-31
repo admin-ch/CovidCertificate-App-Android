@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-  ~
-  ~ This Source Code Form is subject to the terms of the Mozilla Public
-  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-  ~
-  ~ SPDX-License-Identifier: MPL-2.0
-  -->
 <resources>
 
     <!-- Android App Name -->
@@ -990,12 +981,12 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
 
     <!-- Wallet: Transfercode ein unerwartet Fehler ist aufgetreten telefon nummer -->
     <string name="wallet_transfer_code_unexpected_error_phone_number">"+41 58 466 07 99"</string>
-    <string name="error_corrupt_sharedprefs_title">"Entschlüsselungsfehler"</string>
-    <string name="error_corrupt_sharedprefs_text">"Ein Speicher der App konnte nicht entschlüsselt werden. Um die App weiter zu benutzen muss der Speicher gelöscht und neu erstellt werden. Dabei gehen Daten verloren."</string>
+    <string name="error_corrupt_sharedprefs_title">"Sbagl da decodaziun"</string>
+    <string name="error_corrupt_sharedprefs_text">"In arcun da l'app n'ha betg pudì vegnir decodà. Per pudair utilisar vinavant l'app, sto l'arcun vegnir stizzà e creà da nov. Cun far quai van a perder datas."</string>
 
     <!-- Einstellungen: Titel -->
-    <string name="settings_title">"Einstellungen"</string>
+    <string name="settings_title">"Parameters"</string>
 
     <!-- Einstellungen: Titel Sprachauswahl -->
-    <string name="language_title">"Sprache"</string>
+    <string name="language_title">"Lingua"</string>
 </resources>
