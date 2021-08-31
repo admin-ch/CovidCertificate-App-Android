@@ -24,16 +24,15 @@ read -s keyAliasPassword
 echo "Please enter the build timestamp:"
 read buildTimestamp
 
-# Make sure we have a full clean build
-rm -rf $appName/build
-rm -rf .gradle
+echo Branch:
+read branch
 
 echo "Building apk from source..."
+
+docker images -a | grep "covidcertificate-builder" | awk '{print $3}' | xargs docker rmi
 docker build -t covidcertificate-builder .
 currentPath=`pwd`
-docker run --rm -v $currentPath:/home/covidcertificate -w /home/covidcertificate covidcertificate-builder gradle $appName:assembleProdRelease -PkeystorePassword=$keystorePassword -PkeyAlias=$keyAlias -PkeyAliasPassword=$keyAliasPassword -PkeystoreFile=$keystoreFile -PbuildTimestamp=$buildTimestamp
-
-cp $appName/build/outputs/apk/prod/release/$appName-prod-release.apk $appName-built.apk
+docker run --rm -v $currentPath:/home/covidcertificate/external -w /home/covidcertificate covidcertificate-builder /bin/bash -c "git clone https://github.com/admin-ch/CovidCertificate-App-Android.git; cd CovidCertificate-App-Android; cp /home/covidcertificate/external/$appName/$keystoreFile $appName/$keystoreFile; git checkout $branch; gradle $appName:assembleProdRelease -PkeystorePassword='$keystorePassword' -PkeyAlias=$keyAlias -PkeyAliasPassword='$keyAliasPassword' -PkeystoreFile=$keystoreFile -PbuildTimestamp=$buildTimestamp; cp $appName/build/outputs/apk/prod/release/$appName-prod-release.apk /home/covidcertificate/external/$appName-built.apk"
 
 echo "Comparing the APK built from source with the reference APK..."
 python apkdiff.py $appName-built.apk $1

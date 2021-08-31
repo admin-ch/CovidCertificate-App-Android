@@ -21,6 +21,9 @@ android {
 		minSdkVersion 23
 		targetSdkVersion 30
 
+		// Stops the Gradle plugin’s automatic rasterization of vectors
+		generatedDensities = []
+
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 		consumerProguardFiles "consumer-rules.pro"
 	}
