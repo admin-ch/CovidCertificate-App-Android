@@ -938,6 +938,7 @@ erstellt werden"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"nur muss keine"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
+    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_reduced_state">"reduziert"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
@@ -1024,4 +1025,8 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
 
     <!-- Einstellungen: Titel Sprachauswahl -->
     <string name="language_title">"Sprache"</string>
+
+    <!-- Information about the date format (always english) -->
+    <!-- Fuzzy -->
+    <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
 </resources>

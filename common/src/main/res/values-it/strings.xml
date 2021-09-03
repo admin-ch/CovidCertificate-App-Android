@@ -911,9 +911,11 @@ con un documento di legittimazione"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"solamente deve alcun"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
+    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_reduced_state">"compressa"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
+    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_expanded_state">"espansa"</string>
 
     <!-- Header im Update Boarding-Screen -->
@@ -995,4 +997,8 @@ Il «certificato light» è disponibile unicamente in versione elettronica nell'
 
     <!-- Einstellungen: Titel Sprachauswahl -->
     <string name="language_title">"Lingua"</string>
+
+    <!-- Information about the date format (always english) -->
+    <!-- Fuzzy -->
+    <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
 </resources>

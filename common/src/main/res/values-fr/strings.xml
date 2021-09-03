@@ -906,9 +906,11 @@ et avec un document d’identité"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"n’est utilisable qu’en doit être aucun"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
+    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_reduced_state">"réduit"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
+    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_expanded_state">"étendu"</string>
 
     <!-- Header im Update Boarding-Screen -->
@@ -990,4 +992,8 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
 
     <!-- Einstellungen: Titel Sprachauswahl -->
     <string name="language_title">"Langue"</string>
+
+    <!-- Information about the date format (always english) -->
+    <!-- Fuzzy -->
+    <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
 </resources>
