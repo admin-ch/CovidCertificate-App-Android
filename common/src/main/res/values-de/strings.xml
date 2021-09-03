@@ -409,7 +409,7 @@ Schweiz"</string>
     <string name="wallet_certificate_test_result_positiv">"Positiv"</string>
     <string name="wallet_certificate_test_type">"Typ"</string>
     <string name="wallet_certificate_test_name">"Name"</string>
-    <string name="wallet_certificate_test_holder">"Hersteller/ Name"</string>
+    <string name="wallet_certificate_test_holder">"Hersteller"</string>
     <string name="wallet_certificate_test_sample_date_title">"Datum der Probenentnahme"</string>
     <string name="wallet_certificate_test_result_date_title">"Datum Resultat"</string>
 
@@ -1029,4 +1029,5 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
     <!-- Information about the date format (always english) -->
     <!-- Fuzzy -->
     <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
+    <string name="wallet_certificate_test_holder_and_name">"Hersteller/ Name"</string>
 </resources>

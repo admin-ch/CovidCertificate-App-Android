@@ -409,7 +409,7 @@ Svizzera"</string>
     <string name="wallet_certificate_test_result_positiv">"Positivo"</string>
     <string name="wallet_certificate_test_type">"Tipo"</string>
     <string name="wallet_certificate_test_name">"Nome"</string>
-    <string name="wallet_certificate_test_holder">"Fabbricante/ Nome"</string>
+    <string name="wallet_certificate_test_holder">"Fabbricante"</string>
     <string name="wallet_certificate_test_sample_date_title">"Data del prelievo del campione"</string>
     <string name="wallet_certificate_test_result_date_title">"Data del risultato"</string>
 
@@ -1001,4 +1001,5 @@ Il «certificato light» è disponibile unicamente in versione elettronica nell'
     <!-- Information about the date format (always english) -->
     <!-- Fuzzy -->
     <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
+    <string name="wallet_certificate_test_holder_and_name">"Fabbricante/ Nome"</string>
 </resources>

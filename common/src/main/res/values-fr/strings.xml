@@ -407,7 +407,7 @@ Suisse"</string>
     <string name="wallet_certificate_test_result_positiv">"Positif"</string>
     <string name="wallet_certificate_test_type">"Type"</string>
     <string name="wallet_certificate_test_name">"Nom"</string>
-    <string name="wallet_certificate_test_holder">"Fabricant/ Nom"</string>
+    <string name="wallet_certificate_test_holder">"Fabricant"</string>
     <string name="wallet_certificate_test_sample_date_title">"Date du prélèvement de l'échantillon"</string>
     <string name="wallet_certificate_test_result_date_title">"Date du résultat"</string>
 
@@ -996,4 +996,5 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
     <!-- Information about the date format (always english) -->
     <!-- Fuzzy -->
     <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
+    <string name="wallet_certificate_test_holder_and_name">"Fabricant/ Nom"</string>
 </resources>

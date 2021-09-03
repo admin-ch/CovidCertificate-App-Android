@@ -405,7 +405,7 @@ signatura nunvalaivla"</string>
     <string name="wallet_certificate_test_result_positiv">"Positiv"</string>
     <string name="wallet_certificate_test_type">"Tip"</string>
     <string name="wallet_certificate_test_name">"Num"</string>
-    <string name="wallet_certificate_test_holder">"Producent/ Num"</string>
+    <string name="wallet_certificate_test_holder">"Producent"</string>
     <string name="wallet_certificate_test_sample_date_title">"Data da l'emprova"</string>
     <string name="wallet_certificate_test_result_date_title">"Data da resultat"</string>
 
@@ -995,4 +995,5 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
     <!-- Information about the date format (always english) -->
     <!-- Fuzzy -->
     <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
+    <string name="wallet_certificate_test_holder_and_name">"Producent/ Num"</string>
 </resources>

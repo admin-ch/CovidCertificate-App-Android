@@ -408,7 +408,7 @@ Switzerland"</string>
     <string name="wallet_certificate_test_result_positiv">"Positive"</string>
     <string name="wallet_certificate_test_type">"Type"</string>
     <string name="wallet_certificate_test_name">"Name"</string>
-    <string name="wallet_certificate_test_holder">"Manufacturer/ Name"</string>
+    <string name="wallet_certificate_test_holder">"Manufacturer"</string>
     <string name="wallet_certificate_test_sample_date_title">"Date of sample collection"</string>
     <string name="wallet_certificate_test_result_date_title">"Result date"</string>
 
@@ -997,4 +997,5 @@ The 'Certificate light' is only available electronically in the app and is only 
     <!-- Information about the date format (always english) -->
     <!-- Fuzzy -->
     <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
+    <string name="wallet_certificate_test_holder_and_name">"Manufacturer/ Name"</string>
 </resources>
