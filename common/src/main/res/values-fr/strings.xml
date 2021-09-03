@@ -407,7 +407,7 @@ Suisse"</string>
     <string name="wallet_certificate_test_result_positiv">"Positif"</string>
     <string name="wallet_certificate_test_type">"Type"</string>
     <string name="wallet_certificate_test_name">"Nom"</string>
-    <string name="wallet_certificate_test_holder">"Fabricant"</string>
+    <string name="wallet_certificate_test_holder">"Fabricant/ Nom"</string>
     <string name="wallet_certificate_test_sample_date_title">"Date du prélèvement de l'échantillon"</string>
     <string name="wallet_certificate_test_result_date_title">"Date du résultat"</string>
 
