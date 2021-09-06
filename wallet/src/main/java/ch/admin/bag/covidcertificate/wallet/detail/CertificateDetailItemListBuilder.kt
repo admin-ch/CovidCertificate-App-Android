@@ -243,11 +243,9 @@ class CertificateDetailItemListBuilder(
 					showEnglishVersionForLabels
 				)
 			)
-			acceptedTestProvider.getTestName(testEntry)?.let {
-				detailItems.add(ValueItem(R.string.wallet_certificate_test_name, it, showEnglishVersionForLabels))
-			}
-			acceptedTestProvider.getManufacturesIfExists(testEntry)?.let {
-				detailItems.add(ValueItem(R.string.wallet_certificate_test_holder, it, showEnglishVersionForLabels))
+
+			acceptedTestProvider.getManufacturesAndNameLabelIfExists(testEntry)?.let {
+				detailItems.add(ValueItem(R.string.wallet_certificate_test_holder_and_name, it, showEnglishVersionForLabels))
 			}
 
 			// Test dates + country
