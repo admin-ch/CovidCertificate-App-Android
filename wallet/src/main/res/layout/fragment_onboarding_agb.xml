@@ -48,7 +48,7 @@
 					android:layout_width="match_parent"
 					android:layout_height="@dimen/onboarding_illustration_height"
 					android:scaleType="fitCenter"
-					android:src="@drawable/illu_onboarding_data_protection" />
+					app:srcCompat="@drawable/illu_onboarding_data_protection" />
 
 				<TextView
 					style="@style/CovidCertificate.Text.Bold.Title"
@@ -67,7 +67,7 @@
 						android:layout_width="@dimen/icon_size_small"
 						android:layout_height="@dimen/icon_size_small"
 						android:layout_marginRight="@dimen/spacing_medium_large"
-						android:src="@drawable/ic_data_protection"
+						app:srcCompat="@drawable/ic_data_protection"
 						app:tint="@color/blue" />
 
 					<LinearLayout
@@ -97,7 +97,7 @@
 								android:layout_marginTop="@dimen/spacing_tiny_small"
 								android:layout_width="@dimen/icon_size_small"
 								android:layout_height="@dimen/icon_size_small"
-								android:src="@drawable/ic_link_external"/>
+								app:srcCompat="@drawable/ic_link_external"/>
 
 							<TextView
 								android:id="@+id/item_agb_link_label"

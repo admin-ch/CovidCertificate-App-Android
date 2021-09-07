@@ -51,7 +51,7 @@
 				android:layout_marginHorizontal="@dimen/spacing_very_large"
 				android:adjustViewBounds="true"
 				android:scaleType="fitCenter"
-				android:src="@drawable/illu_how_it_works" />
+				app:srcCompat="@drawable/illu_how_it_works" />
 
 			<TextView
 				style="@style/CovidCertificate.Text.Bold.Title"
@@ -71,7 +71,7 @@
 				<ImageView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:src="@drawable/ic_bund_small" />
+					app:srcCompat="@drawable/ic_bund_small" />
 
 				<TextView
 					style="@style/CovidCertificate.Text"
@@ -92,7 +92,7 @@
 				<ImageView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:src="@drawable/ic_one" />
+					app:srcCompat="@drawable/ic_one" />
 
 				<TextView
 					style="@style/CovidCertificate.Text"
@@ -113,7 +113,7 @@
 				<ImageView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:src="@drawable/ic_two" />
+					app:srcCompat="@drawable/ic_two" />
 
 				<TextView
 					style="@style/CovidCertificate.Text"
@@ -134,7 +134,7 @@
 				<ImageView
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:src="@drawable/ic_three" />
+					app:srcCompat="@drawable/ic_three" />
 
 				<TextView
 					style="@style/CovidCertificate.Text"

@@ -30,7 +30,7 @@
 			android:id="@+id/item_certificate_list_icon_qr"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:src="@drawable/ic_qrcode" />
+			app:srcCompat="@drawable/ic_qrcode" />
 
 		<FrameLayout
 			android:id="@+id/item_certificate_list_icon_status_group"
@@ -44,7 +44,7 @@
 				android:id="@+id/item_certificate_list_icon_status"
 				android:layout_width="@dimen/icon_size_small"
 				android:layout_height="@dimen/icon_size_small"
-				android:src="@drawable/ic_process_error"
+				app:srcCompat="@drawable/ic_process_error"
 				android:visibility="gone"
 				tools:visibility="visible" />
 
@@ -93,7 +93,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="@dimen/spacing_medium_large"
-		android:src="@drawable/ic_drag"
+		app:srcCompat="@drawable/ic_drag"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />

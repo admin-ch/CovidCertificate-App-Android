@@ -171,7 +171,7 @@
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:layout_gravity="center"
-								android:src="@drawable/ic_info_blue" />
+								app:srcCompat="@drawable/ic_info_blue" />
 
 							<ProgressBar
 								android:id="@+id/certificate_detail_status_loading"
@@ -328,7 +328,7 @@
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:layout_gravity="center"
-								android:src="@drawable/ic_arrow_forward" />
+								app:srcCompat="@drawable/ic_arrow_forward" />
 						</LinearLayout>
 					</LinearLayout>
 
@@ -372,7 +372,7 @@
 								android:layout_width="wrap_content"
 								android:layout_height="wrap_content"
 								android:layout_gravity="center"
-								android:src="@drawable/ic_arrow_forward" />
+								app:srcCompat="@drawable/ic_arrow_forward" />
 						</LinearLayout>
 					</LinearLayout>
 
@@ -407,7 +407,7 @@
 				android:layout_marginEnd="@dimen/spacing_very_large"
 				android:layout_marginBottom="@dimen/spacing_very_large"
 				android:elevation="@dimen/floating_button_elevation"
-				android:src="@drawable/ic_load" />
+				app:srcCompat="@drawable/ic_load" />
 
 		</FrameLayout>
 

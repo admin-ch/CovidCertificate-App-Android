@@ -125,7 +125,7 @@
 									<ImageView
 										android:layout_width="@dimen/icon_size_small"
 										android:layout_height="@dimen/icon_size_small"
-										android:src="@drawable/ic_bundwappen_big" />
+										app:srcCompat="@drawable/ic_bundwappen_big" />
 
 									<TextView
 										style="@style/CovidCertificate.Text"
@@ -148,7 +148,7 @@
 									<ImageView
 										android:layout_width="@dimen/icon_size_small"
 										android:layout_height="@dimen/icon_size_small"
-										android:src="@drawable/ic_privacy"
+										app:srcCompat="@drawable/ic_privacy"
 										app:tint="@color/blue" />
 
 									<TextView
@@ -172,7 +172,7 @@
 									<ImageView
 										android:layout_width="@dimen/icon_size_small"
 										android:layout_height="@dimen/icon_size_small"
-										android:src="@drawable/ic_timelapse"
+										app:srcCompat="@drawable/ic_timelapse"
 										app:tint="@color/blue" />
 
 									<TextView
@@ -196,7 +196,7 @@
 									<ImageView
 										android:layout_width="@dimen/icon_size_small"
 										android:layout_height="@dimen/icon_size_small"
-										android:src="@drawable/ic_cloud"
+										app:srcCompat="@drawable/ic_cloud"
 										app:tint="@color/blue" />
 
 									<TextView
@@ -220,7 +220,7 @@
 									<ImageView
 										android:layout_width="@dimen/icon_size_small"
 										android:layout_height="@dimen/icon_size_small"
-										android:src="@drawable/ic_exchange"
+										app:srcCompat="@drawable/ic_exchange"
 										app:tint="@color/blue" />
 
 									<TextView
@@ -291,7 +291,7 @@
 									android:layout_gravity="center"
 									android:background="@drawable/circle_white"
 									android:padding="@dimen/info_buble_icon_padding"
-									android:src="@drawable/ic_no_connection"
+									app:srcCompat="@drawable/ic_no_connection"
 									app:layout_constraintBottom_toTopOf="@id/certificate_light_conversion_status_text"
 									app:layout_constraintEnd_toEndOf="parent"
 									app:layout_constraintStart_toStartOf="parent"

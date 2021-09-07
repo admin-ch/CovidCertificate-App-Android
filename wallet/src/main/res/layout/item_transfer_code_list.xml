@@ -22,7 +22,7 @@
 		android:layout_width="48dp"
 		android:layout_height="48dp"
 		android:layout_margin="@dimen/spacing_medium_small"
-		android:src="@drawable/ic_transfer_code_list_valid"
+		app:srcCompat="@drawable/ic_transfer_code_list_valid"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
@@ -83,7 +83,7 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:padding="@dimen/spacing_medium_large"
-		android:src="@drawable/ic_drag"
+		app:srcCompat="@drawable/ic_drag"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />

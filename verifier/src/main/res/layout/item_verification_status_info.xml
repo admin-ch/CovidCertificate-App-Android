@@ -24,7 +24,7 @@
 		android:layout_width="@dimen/icon_size_small"
 		android:layout_height="@dimen/icon_size_small"
 		android:layout_gravity="top|center_horizontal"
-		android:src="@drawable/ic_info_outline"
+		app:srcCompat="@drawable/ic_info_outline"
 		android:visibility="visible"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toTopOf="parent" />
