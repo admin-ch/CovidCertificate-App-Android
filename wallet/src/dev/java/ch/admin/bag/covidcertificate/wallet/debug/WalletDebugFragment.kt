@@ -11,48 +11,23 @@ package ch.admin.bag.covidcertificate.wallet.debug
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.common.debug.DebugFragment
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
-import ch.admin.bag.covidcertificate.wallet.databinding.FragmentDebugBinding
 
-class DebugFragment : Fragment() {
+class WalletDebugFragment : DebugFragment() {
 
 	companion object {
 		fun newInstance(): DebugFragment = DebugFragment()
-
-		const val EXISTS = BuildConfig.FLAVOR == "abn" || BuildConfig.FLAVOR == "dev"
 	}
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 
-	private var _binding: FragmentDebugBinding? = null
-	private val binding get() = _binding!!
-
-	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-		_binding = FragmentDebugBinding.inflate(inflater, container, false)
-		return binding.root
-	}
-
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-		// Have additional self-control to not be shown in PROD
-		if (!EXISTS) {
-			parentFragmentManager.popBackStack()
-		}
+		super.onViewCreated(view, savedInstanceState)
 
-		binding.toolbar.setNavigationOnClickListener {
-			parentFragmentManager.popBackStack()
-		}
 		setupRecyclerView()
-	}
-
-	override fun onDestroyView() {
-		super.onDestroyView()
-		_binding = null
 	}
 
 	private fun setupRecyclerView() {
