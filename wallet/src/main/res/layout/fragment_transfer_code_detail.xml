@@ -141,7 +141,7 @@
 							android:layout_marginHorizontal="@dimen/spacing_medium_large"
 							android:layout_marginVertical="@dimen/spacing_medium"
 							android:elevation="@dimen/floating_button_elevation"
-							android:src="@drawable/ic_load"
+							app:srcCompat="@drawable/ic_load"
 							app:tint="@color/white"
 							app:layout_constraintBottom_toBottomOf="parent"
 							app:layout_constraintEnd_toEndOf="parent"

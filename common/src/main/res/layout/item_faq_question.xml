@@ -37,7 +37,7 @@
 			android:id="@+id/item_faq_question_chevron"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:src="@drawable/ic_arrow_expand"
+			app:srcCompat="@drawable/ic_arrow_expand"
 			tools:src="@drawable/ic_arrow_contract" />
 
 	</LinearLayout>
@@ -67,7 +67,7 @@
 			android:layout_width="@dimen/icon_size_small"
 			android:layout_height="@dimen/icon_size_small"
 			android:layout_marginTop="@dimen/spacing_tiny_small"
-			android:src="@drawable/ic_link_external" />
+			app:srcCompat="@drawable/ic_link_external" />
 
 		<TextView
 			android:id="@+id/item_faq_question_link_label"

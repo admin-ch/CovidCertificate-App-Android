@@ -51,7 +51,7 @@
 			android:layout_height="26dp"
 			android:layout_gravity="center"
 			android:scaleType="centerInside"
-			android:src="@drawable/ic_info_outline"
+			app:srcCompat="@drawable/ic_info_outline"
 			app:tint="@color/blue" />
 
 		<ProgressBar
@@ -201,12 +201,12 @@
 		android:layout_width="wrap_content"
 		android:layout_height="wrap_content"
 		android:layout_gravity="end"
+		android:layout_marginHorizontal="@dimen/spacing_medium_large"
 		android:layout_marginTop="@dimen/spacing_very_small"
+		android:layout_marginBottom="@dimen/spacing_medium_large"
 		android:textColor="@color/grey"
 		android:textSize="@dimen/text_size_small"
-		android:layout_marginHorizontal="@dimen/spacing_medium_large"
 		android:visibility="invisible"
-		android:layout_marginBottom="@dimen/spacing_medium_large"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"

@@ -10,6 +10,7 @@
   -->
 
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
 	style="@style/CovidCertificate.Card"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
@@ -33,8 +34,8 @@
 			android:clickable="true"
 			android:focusable="true"
 			android:padding="@dimen/spacing_medium_large"
-			android:tint="@color/black"
-			android:src="@drawable/ic_close" />
+			app:srcCompat="@drawable/ic_close"
+			app:tint="@color/black" />
 
 		<TextView
 			android:id="@+id/camera_permission_dialog_text"

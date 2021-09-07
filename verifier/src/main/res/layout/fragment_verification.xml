@@ -172,7 +172,7 @@
 					android:id="@+id/verification_header_icon"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
-					android:src="@drawable/ic_check_large"
+					app:srcCompat="@drawable/ic_check_large"
 					android:visibility="visible" />
 
 				<ProgressBar
@@ -190,7 +190,7 @@
 			android:layout_width="match_parent"
 			android:layout_height="@dimen/header_shadow_height"
 			android:alpha="0"
-			android:src="@drawable/header_collapsed_shadow"
+			app:srcCompat="@drawable/header_collapsed_shadow"
 			app:layout_constraintTop_toBottomOf="@id/verification_header_group"
 			tools:alpha="1" />
 

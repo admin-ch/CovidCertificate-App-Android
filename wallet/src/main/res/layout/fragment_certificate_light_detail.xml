@@ -121,7 +121,7 @@
 							android:layout_height="26dp"
 							android:layout_gravity="center"
 							android:scaleType="centerInside"
-							android:src="@drawable/ic_info_blue" />
+							app:srcCompat="@drawable/ic_info_blue" />
 
 						<ProgressBar
 							android:id="@+id/certificate_light_detail_status_loading"
@@ -161,7 +161,7 @@
 						<ImageView
 							android:layout_width="@dimen/icon_size_small"
 							android:layout_height="@dimen/icon_size_small"
-							android:src="@drawable/ic_bundwappen_big" />
+							app:srcCompat="@drawable/ic_bundwappen_big" />
 
 						<TextView
 							style="@style/CovidCertificate.Text"
@@ -184,7 +184,7 @@
 						<ImageView
 							android:layout_width="@dimen/icon_size_small"
 							android:layout_height="@dimen/icon_size_small"
-							android:src="@drawable/ic_privacy"
+							app:srcCompat="@drawable/ic_privacy"
 							app:tint="@color/blue" />
 
 						<TextView
@@ -208,7 +208,7 @@
 						<ImageView
 							android:layout_width="@dimen/icon_size_small"
 							android:layout_height="@dimen/icon_size_small"
-							android:src="@drawable/ic_timelapse"
+							app:srcCompat="@drawable/ic_timelapse"
 							app:tint="@color/blue" />
 
 						<TextView
@@ -232,7 +232,7 @@
 						<ImageView
 							android:layout_width="@dimen/icon_size_small"
 							android:layout_height="@dimen/icon_size_small"
-							android:src="@drawable/ic_cloud"
+							app:srcCompat="@drawable/ic_cloud"
 							app:tint="@color/blue" />
 
 						<TextView
@@ -256,7 +256,7 @@
 						<ImageView
 							android:layout_width="@dimen/icon_size_small"
 							android:layout_height="@dimen/icon_size_small"
-							android:src="@drawable/ic_exchange"
+							app:srcCompat="@drawable/ic_exchange"
 							app:tint="@color/blue" />
 
 						<TextView

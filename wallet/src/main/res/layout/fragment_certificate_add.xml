@@ -85,7 +85,7 @@
 							android:layout_width="wrap_content"
 							android:layout_height="wrap_content"
 							android:layout_gravity="center"
-							android:src="@drawable/ic_info_blue" />
+							app:srcCompat="@drawable/ic_info_blue" />
 					</FrameLayout>
 
 				</androidx.constraintlayout.widget.ConstraintLayout>
@@ -97,7 +97,7 @@
 					android:layout_marginHorizontal="@dimen/spacing_small"
 					android:layout_marginTop="@dimen/spacing_medium_small"
 					android:adjustViewBounds="true"
-					android:src="@drawable/ic_qrcode_add" />
+					app:srcCompat="@drawable/ic_qrcode_add" />
 
 				<TextView
 					android:id="@+id/certificate_add_name"

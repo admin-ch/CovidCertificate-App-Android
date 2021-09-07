@@ -107,7 +107,7 @@
 								<ImageView
 									android:layout_width="@dimen/icon_size_small"
 									android:layout_height="@dimen/icon_size_small"
-									android:src="@drawable/ic_pen_write"
+									app:srcCompat="@drawable/ic_pen_write"
 									app:tint="@color/blue" />
 
 								<TextView
@@ -131,7 +131,7 @@
 								<ImageView
 									android:layout_width="@dimen/icon_size_small"
 									android:layout_height="@dimen/icon_size_small"
-									android:src="@drawable/ic_info_outline"
+									app:srcCompat="@drawable/ic_info_outline"
 									app:tint="@color/blue" />
 
 								<TextView
