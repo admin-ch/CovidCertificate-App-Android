@@ -766,7 +766,7 @@ invalid"</string>
 
 However, in order to show whether your certificate meets Switzerland’s validity criteria and how long it is valid for, the COVID Certificate app has to be online at regular intervals."</string>
     <string name="verifier_faq_works_question_2_1">"What are the current validity criteria in Switzerland?"</string>
-    <string name="verifier_faq_works_answer_2_1">"The current validity period of Covid certificates can be found here:"</string>
+    <string name="verifier_faq_works_answer_2_1">"The current validity period of COVID certificates can be found here:"</string>
     <string name="verifier_faq_works_linktext_2_1">"Further information"</string>
     <string name="verifier_faq_works_linkurl_2_1">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"</string>
     <string name="verifier_faq_works_question_7">"Is it possible to verify the certificates offline?"</string>
@@ -907,9 +907,11 @@ and in combination with an identity document"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"only has to does not"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
+    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_reduced_state">"reduced"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
+    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_expanded_state">"expanded"</string>
 
     <!-- Header im Update Boarding-Screen -->
@@ -991,4 +993,9 @@ The 'Certificate light' is only available electronically in the app and is only 
 
     <!-- Einstellungen: Titel Sprachauswahl -->
     <string name="language_title">"Language"</string>
+
+    <!-- Information about the date format (always english) -->
+    <!-- Fuzzy -->
+    <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
+    <string name="wallet_certificate_test_holder_and_name">"Manufacturer/ Name"</string>
 </resources>

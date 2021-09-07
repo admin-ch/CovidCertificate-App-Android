@@ -50,7 +50,7 @@
     <string name="wallet_add_certificate">"Agiuntar"</string>
 
     <!-- Wallet: Homescreen Covid-Zertifikat -->
-    <string name="wallet_certificate">"Certificat covid"</string>
+    <string name="wallet_certificate">"Certificat COVID"</string>
 
     <!-- Wallet: Homescreen Erklärung -->
     <string name="wallet_homescreen_explanation">"Scannai il code QR sin il certificat COVID per al agiuntar a l'app."</string>
@@ -905,9 +905,11 @@ e mo en Svizra"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"mo danovamain nagins"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
+    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_reduced_state">"reducì"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
+    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_expanded_state">"extendì"</string>
 
     <!-- Header im Update Boarding-Screen -->
@@ -989,4 +991,9 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
 
     <!-- Einstellungen: Titel Sprachauswahl -->
     <string name="language_title">"Lingua"</string>
+
+    <!-- Information about the date format (always english) -->
+    <!-- Fuzzy -->
+    <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
+    <string name="wallet_certificate_test_holder_and_name">"Producent/ Num"</string>
 </resources>

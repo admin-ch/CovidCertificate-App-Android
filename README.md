@@ -75,10 +75,9 @@ Please note that the app will be available with approved translations in English
 
 The apps require at least Android 6 (Marshmallow).
 
-Make sure to properly check out the submodule: `git submodule update --init`.
+To build the project you need at least Java 11 and Android Studio 2020.3.1.
 
-The project can be opened with Android Studio 4.1.2 or later.
-Alternatively, you can build the respective apps using Gradle:
+You can also build the apps directly:
 ```sh
 $ ./gradlew verifier:assembleProdRelease
 $ ./gradlew wallet:assembleProdRelease

@@ -18,23 +18,16 @@ import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrint
 import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
-import ch.admin.bag.covidcertificate.sdk.core.extensions.getCertificateIdentifier
-import ch.admin.bag.covidcertificate.sdk.core.extensions.getFormattedResultDate
-import ch.admin.bag.covidcertificate.sdk.core.extensions.getFormattedSampleDate
-import ch.admin.bag.covidcertificate.sdk.core.extensions.getIssuer
-import ch.admin.bag.covidcertificate.sdk.core.extensions.getNumberOverTotalDose
-import ch.admin.bag.covidcertificate.sdk.core.extensions.getRecoveryCountry
-import ch.admin.bag.covidcertificate.sdk.core.extensions.getTestCenter
-import ch.admin.bag.covidcertificate.sdk.core.extensions.getTestCountry
-import ch.admin.bag.covidcertificate.sdk.core.extensions.getVaccinationCountry
-import ch.admin.bag.covidcertificate.sdk.core.extensions.isNegative
-import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
-import ch.admin.bag.covidcertificate.sdk.core.extensions.isTargetDiseaseCorrect
+import ch.admin.bag.covidcertificate.sdk.core.extensions.*
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.wallet.R
 
-class CertificateDetailItemListBuilder(val context: Context, val certificateHolder: CertificateHolder, val showEnglishVersion: Boolean = true) {
+class CertificateDetailItemListBuilder(
+	val context: Context,
+	val certificateHolder: CertificateHolder,
+	val showEnglishVersion: Boolean = true
+) {
 	private val showEnglishVersionForLabels = showEnglishVersion && LocaleUtil.isSystemLangNotEnglish(context)
 
 	fun buildAll(): List<CertificateDetailItem> {
@@ -66,24 +59,42 @@ class CertificateDetailItemListBuilder(val context: Context, val certificateHold
 		for (vaccinationEntry in vaccinations) {
 			detailItems.add(DividerItem)
 
-			detailItems.add(ValueItem(R.string.wallet_certificate_impfdosis_title, vaccinationEntry.getNumberOverTotalDose(),
-				showEnglishVersionForLabels))
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_impfdosis_title, vaccinationEntry.getNumberOverTotalDose(),
+					showEnglishVersionForLabels
+				)
+			)
 
 			// Vaccine data
 			if (vaccinationEntry.isTargetDiseaseCorrect()) {
 				detailItems.add(
-					ValueItem(R.string.wallet_certificate_target_disease_title,
+					ValueItem(
+						R.string.wallet_certificate_target_disease_title,
 						context.getString(R.string.target_disease_name),
-						showEnglishVersionForLabels)
+						showEnglishVersionForLabels
+					)
 				)
 			}
 			val acceptedTestProvider = AcceptedVaccineProvider.getInstance(context)
-			detailItems.add(ValueItem(R.string.wallet_certificate_vaccine_prophylaxis,
-				acceptedTestProvider.getProphylaxis(vaccinationEntry), showEnglishVersionForLabels))
-			detailItems.add(ValueItem(R.string.wallet_certificate_impfstoff_product_name_title,
-				acceptedTestProvider.getVaccineName(vaccinationEntry), showEnglishVersionForLabels))
-			detailItems.add(ValueItem(R.string.wallet_certificate_impfstoff_holder,
-				acceptedTestProvider.getAuthHolder(vaccinationEntry), showEnglishVersionForLabels))
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_vaccine_prophylaxis,
+					acceptedTestProvider.getProphylaxis(vaccinationEntry), showEnglishVersionForLabels
+				)
+			)
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_impfstoff_product_name_title,
+					acceptedTestProvider.getVaccineName(vaccinationEntry), showEnglishVersionForLabels
+				)
+			)
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_impfstoff_holder,
+					acceptedTestProvider.getAuthHolder(vaccinationEntry), showEnglishVersionForLabels
+				)
+			)
 
 			// Vaccination date + country
 			detailItems.add(DividerItem)
@@ -96,31 +107,34 @@ class CertificateDetailItemListBuilder(val context: Context, val certificateHold
 			)
 
 			detailItems.add(
-				ValueItem(R.string.wallet_certificate_vaccination_country_title,
+				ValueItem(
+					R.string.wallet_certificate_vaccination_country_title,
 					vaccinationEntry.getVaccinationCountry(showEnglishVersionForLabels),
 					showEnglishVersionForLabels
-				))
+				)
+			)
 
 			// Issuer
 			detailItems.add(DividerItem)
-			detailItems.add(ValueItem(R.string.wallet_certificate_vaccination_issuer_title,
-				vaccinationEntry.getIssuer(), showEnglishVersionForLabels))
-			detailItems.add(ValueItem(R.string.wallet_certificate_identifier,
-				vaccinationEntry.getCertificateIdentifier(),
-				false))
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_vaccination_issuer_title,
+					vaccinationEntry.getIssuer(), showEnglishVersionForLabels
+				)
+			)
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_identifier,
+					vaccinationEntry.getCertificateIdentifier(),
+					false
+				)
+			)
 			var issuerText: Int = R.string.wallet_certificate_date
 			if (vaccinationEntry.isNotFullyProtected()) {
 				issuerText = R.string.wallet_certificate_evidence_creation_date
 			}
 			certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-				val dateText = context.getString(issuerText).replace("{DATE}", dateString)
-				detailItems.add(ValueItemWithoutLabel(dateText))
-				if (showEnglishVersionForLabels) {
-					val dateTextEnglish =
-						getEnglishTranslation(context, issuerText).replace("{DATE}", dateString)
-					detailItems.add(ValueItemWithoutLabel(dateTextEnglish, true))
-				}
-
+				detailItems.addAll(getIssuedAtLabbels(issuerText, dateString))
 			}
 		}
 		return detailItems
@@ -143,9 +157,11 @@ class CertificateDetailItemListBuilder(val context: Context, val certificateHold
 			detailItems.add(DividerItem)
 			if (recoveryEntry.isTargetDiseaseCorrect()) {
 				detailItems.add(
-					ValueItem(R.string.wallet_certificate_target_disease_title,
+					ValueItem(
+						R.string.wallet_certificate_target_disease_title,
 						context.getString(R.string.target_disease_name),
-						showEnglishVersionForLabels)
+						showEnglishVersionForLabels
+					)
 				)
 			}
 
@@ -158,24 +174,26 @@ class CertificateDetailItemListBuilder(val context: Context, val certificateHold
 				)
 			)
 
-			detailItems.add(ValueItem(R.string.wallet_certificate_test_land,
-				recoveryEntry.getRecoveryCountry(showEnglishVersionForLabels), showEnglishVersionForLabels))
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_test_land,
+					recoveryEntry.getRecoveryCountry(showEnglishVersionForLabels), showEnglishVersionForLabels
+				)
+			)
 
 			// Issuer
 			detailItems.add(DividerItem)
-			detailItems.add(ValueItem(R.string.wallet_certificate_vaccination_issuer_title,
-				recoveryEntry.getIssuer(),
-				showEnglishVersionForLabels))
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_vaccination_issuer_title,
+					recoveryEntry.getIssuer(),
+					showEnglishVersionForLabels
+				)
+			)
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, recoveryEntry.getCertificateIdentifier(), false))
 
 			certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
-				detailItems.add(ValueItemWithoutLabel(dateText))
-				if (showEnglishVersionForLabels) {
-					val dateTextEnglish =
-						getEnglishTranslation(context, R.string.wallet_certificate_date).replace("{DATE}", dateString)
-					detailItems.add(ValueItemWithoutLabel(dateTextEnglish, true))
-				}
+				detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
 			}
 		}
 		return detailItems
@@ -200,9 +218,11 @@ class CertificateDetailItemListBuilder(val context: Context, val certificateHold
 			// Test result
 			if (testEntry.isTargetDiseaseCorrect()) {
 				detailItems.add(
-					ValueItem(R.string.wallet_certificate_target_disease_title,
+					ValueItem(
+						R.string.wallet_certificate_target_disease_title,
 						context.getString(R.string.target_disease_name),
-						showEnglishVersionForLabels)
+						showEnglishVersionForLabels
+					)
 				)
 			}
 
@@ -216,14 +236,16 @@ class CertificateDetailItemListBuilder(val context: Context, val certificateHold
 
 			// Test details
 			val acceptedTestProvider = AcceptedTestProvider.getInstance(context)
-			detailItems.add(ValueItem(R.string.wallet_certificate_test_type,
-				acceptedTestProvider.getTestType(testEntry),
-				showEnglishVersionForLabels))
-			acceptedTestProvider.getTestName(testEntry)?.let {
-				detailItems.add(ValueItem(R.string.wallet_certificate_test_name, it, showEnglishVersionForLabels))
-			}
-			acceptedTestProvider.getManufacturesIfExists(testEntry)?.let {
-				detailItems.add(ValueItem(R.string.wallet_certificate_test_holder, it, showEnglishVersionForLabels))
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_test_type,
+					acceptedTestProvider.getTestType(testEntry),
+					showEnglishVersionForLabels
+				)
+			)
+
+			acceptedTestProvider.getManufacturesAndNameLabelIfExists(testEntry)?.let {
+				detailItems.add(ValueItem(R.string.wallet_certificate_test_holder_and_name, it, showEnglishVersionForLabels))
 			}
 
 			// Test dates + country
@@ -250,27 +272,47 @@ class CertificateDetailItemListBuilder(val context: Context, val certificateHold
 			testEntry.getTestCenter()?.let { testCenter ->
 				detailItems.add(ValueItem(R.string.wallet_certificate_test_done_by, testCenter, showEnglishVersionForLabels))
 			}
-			detailItems.add(ValueItem(R.string.wallet_certificate_test_land,
-				testEntry.getTestCountry(showEnglishVersionForLabels), showEnglishVersionForLabels))
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_test_land,
+					testEntry.getTestCountry(showEnglishVersionForLabels), showEnglishVersionForLabels
+				)
+			)
 
 			// Issuer
 			detailItems.add(DividerItem)
-			detailItems.add(ValueItem(R.string.wallet_certificate_vaccination_issuer_title,
-				testEntry.getIssuer(),
-				showEnglishVersionForLabels))
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_vaccination_issuer_title,
+					testEntry.getIssuer(),
+					showEnglishVersionForLabels
+				)
+			)
 			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, testEntry.getCertificateIdentifier(), false))
 
 			certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-				val dateText = context.getString(R.string.wallet_certificate_date).replace("{DATE}", dateString)
-				detailItems.add(ValueItemWithoutLabel(dateText))
-				if (showEnglishVersionForLabels) {
-					val dateTextEnglish =
-						getEnglishTranslation(context, R.string.wallet_certificate_date).replace("{DATE}", dateString)
-					detailItems.add(ValueItemWithoutLabel(dateTextEnglish, true))
-				}
+				detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
 			}
 		}
 		return detailItems
+	}
+
+	private fun getIssuedAtLabbels(issuerText: Int, dateString: String): List<ValueItemWithoutLabel> {
+		val items = arrayListOf<ValueItemWithoutLabel>()
+		val dateText = context.getString(issuerText).replace("{DATE}", dateString)
+		items.add(ValueItemWithoutLabel(dateText))
+		if (showEnglishVersionForLabels) {
+			val dateTextEnglish =
+				getEnglishTranslation(context, issuerText).replace("{DATE}", dateString)
+			items.add(ValueItemWithoutLabel(dateTextEnglish, true))
+		}
+		items.add(
+			ValueItemWithoutLabel(
+				context.getString(R.string.wallet_certificate_detail_date_format_info),
+				showEnglishVersionForLabels
+			)
+		)
+		return items
 	}
 
 }
