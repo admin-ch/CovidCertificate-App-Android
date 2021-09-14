@@ -182,7 +182,7 @@
 				android:layout_height="@dimen/floating_button_height"
 				android:layout_margin="@dimen/spacing_large"
 				android:elevation="@dimen/floating_button_elevation"
-				android:src="@drawable/ic_light_off"
+				app:srcCompat="@drawable/ic_light_off"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent" />
 

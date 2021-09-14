@@ -143,7 +143,7 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:adjustViewBounds="true"
-			android:src="@drawable/bg_bubble_bottom_left"
+			app:srcCompat="@drawable/bg_bubble_bottom_left"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintStart_toStartOf="parent" />
 
@@ -156,7 +156,7 @@
 			android:layout_marginBottom="@dimen/spacing_larger"
 			android:foreground="@drawable/ripple_rounded"
 			android:padding="@dimen/spacing_medium"
-			android:src="@drawable/ic_faq"
+			app:srcCompat="@drawable/ic_faq"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintStart_toStartOf="parent" />
 
@@ -168,7 +168,7 @@
 			android:layout_marginBottom="@dimen/spacing_larger"
 			android:foreground="@drawable/ripple_rounded"
 			android:padding="@dimen/spacing_medium"
-			android:src="@drawable/ic_list"
+			app:srcCompat="@drawable/ic_list"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent" />
@@ -214,7 +214,7 @@
 			android:layout_marginBottom="@dimen/spacing_larger"
 			android:foreground="@drawable/ripple_rounded"
 			android:padding="@dimen/spacing_medium"
-			android:src="@drawable/ic_add_certificate"
+			app:srcCompat="@drawable/ic_add_certificate"
 			app:layout_constraintBottom_toBottomOf="parent"
 			app:layout_constraintEnd_toEndOf="parent" />
 

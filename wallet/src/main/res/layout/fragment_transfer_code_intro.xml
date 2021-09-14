@@ -48,7 +48,7 @@
 					android:layout_marginHorizontal="@dimen/spacing_very_large"
 					android:adjustViewBounds="true"
 					android:scaleType="fitCenter"
-					android:src="@drawable/illu_transfer_code_intro" />
+					app:srcCompat="@drawable/illu_transfer_code_intro" />
 
 				<TextView
 					style="@style/CovidCertificate.Text.Bold.Title"

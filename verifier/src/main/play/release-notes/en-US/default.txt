@@ -1,3 +1,2 @@
-- Language selection in the app
-- allow multiple entries for v, t and r
+- Update Certlogic and use v2 endpoint for national rules
 - Further improvements and bug fixes

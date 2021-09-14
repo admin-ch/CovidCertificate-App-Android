@@ -1,5 +1,2 @@
-- Improve reliability of PDF import
-- Language selection in the app
-- Show error message when transfer code fails
-- allow multiple entries for v, t and r
+- Update Certlogic and use v2 endpoint for national rules
 - Further improvements and bug fixes
