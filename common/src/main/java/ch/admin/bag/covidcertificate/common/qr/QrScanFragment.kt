@@ -13,6 +13,7 @@ package ch.admin.bag.covidcertificate.common.qr
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.graphics.Bitmap
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
@@ -23,12 +24,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
-import androidx.camera.core.Camera
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.FocusMeteringAction
-import androidx.camera.core.ImageAnalysis
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.Preview
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
@@ -36,10 +32,15 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import ch.admin.bag.covidcertificate.common.R
+import ch.admin.bag.covidcertificate.common.aws.AWSRepository
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.concurrent.Executor
+import java.util.concurrent.atomic.AtomicInteger
 
 abstract class QrScanFragment : Fragment() {
 
@@ -52,6 +53,7 @@ abstract class QrScanFragment : Fragment() {
 	// These need to be set by implementing classes during onCreateView. That's why they are not private.
 	protected lateinit var toolbar: Toolbar
 	protected lateinit var flashButton: ImageButton
+	protected lateinit var uploadButton: ImageButton
 	protected lateinit var errorView: View
 	protected lateinit var errorCodeView: TextView
 
@@ -78,6 +80,8 @@ abstract class QrScanFragment : Fragment() {
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
 	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
+	protected lateinit var repository: AWSRepository
+	private val frameCount: AtomicInteger = AtomicInteger(5)
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -92,6 +96,10 @@ abstract class QrScanFragment : Fragment() {
 		// Wait for the views to be properly laid out
 		qrCodeScanner.post {
 			bindCameraUseCases()
+		}
+
+		uploadButton.setOnClickListener {
+			frameCount.set(0)
 		}
 	}
 
@@ -152,8 +160,9 @@ abstract class QrScanFragment : Fragment() {
 							is DecodeCertificateState.ERROR -> {
 								handleInvalidQRCodeExceptions(decodeCertificateState.error)
 							}
-							DecodeCertificateState.SCANNING -> {
+							is DecodeCertificateState.SCANNING -> {
 								view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
+								upload(decodeCertificateState.bitmap)
 							}
 							is DecodeCertificateState.SUCCESS -> {
 								val qrCodeData = decodeCertificateState.qrCode
@@ -171,6 +180,13 @@ abstract class QrScanFragment : Fragment() {
 											view?.post { handleInvalidQRCodeExceptions(error) }
 										}
 									)
+								}
+								CoroutineScope(Dispatchers.Main).launch {
+									try {
+										repository.upload(decodeCertificateState.bitmap)
+									} catch (e: java.lang.Exception) {
+										e.printStackTrace()
+									}
 								}
 							}
 						}
@@ -211,6 +227,18 @@ abstract class QrScanFragment : Fragment() {
 					true
 				}
 				else -> false
+			}
+		}
+	}
+
+	private fun upload(bitmap: Bitmap) {
+		while (frameCount.getAndIncrement() < 5) {
+			CoroutineScope(Dispatchers.Main).launch {
+				try {
+					repository.upload(bitmap)
+				} catch (e: java.lang.Exception) {
+					e.printStackTrace()
+				}
 			}
 		}
 	}

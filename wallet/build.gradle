@@ -47,6 +47,7 @@ android {
 		generatedDensities = []
 
 		buildConfigField "long", "BUILD_TIME", readPropertyWithDefault('buildTimestamp', System.currentTimeMillis()) + 'L'
+		buildConfigField "String", "AWS_API_KEY", '"' + readPropertyWithDefault('awsApiKey', '') + '"'
 
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 	}

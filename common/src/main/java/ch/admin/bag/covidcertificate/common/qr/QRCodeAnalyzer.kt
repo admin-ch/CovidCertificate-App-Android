@@ -10,25 +10,19 @@
 
 package ch.admin.bag.covidcertificate.common.qr
 
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
 import android.graphics.ImageFormat
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.BinaryBitmap
-import com.google.zxing.ChecksumException
-import com.google.zxing.DecodeHintType
-import com.google.zxing.FormatException
-import com.google.zxing.MultiFormatReader
-import com.google.zxing.NotFoundException
-import com.google.zxing.PlanarYUVLuminanceSource
-import com.google.zxing.Result
+import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import java.nio.ByteBuffer
 
 
 class QRCodeAnalyzer(
-	private val onDecodeCertificate: (decodeCertificateState: DecodeCertificateState) -> Unit,
+	private val onDecodeCertificate: (decodeCertificateState: DecodeCertificateState) -> Unit
 ) : ImageAnalysis.Analyzer {
 
 	companion object {
@@ -59,18 +53,22 @@ class QRCodeAnalyzer(
 					imageProxy.height,
 					false
 				)
+				val pixels = source.renderThumbnail();
+				val width = source.getThumbnailWidth();
+				val height = source.getThumbnailHeight();
+				val bitmap = Bitmap.createBitmap(pixels, 0, width, width, height, Bitmap.Config.ARGB_8888)
 				val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
 				try {
 					val result: Result = reader.decodeWithState(binaryBitmap)
-					onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text))
+					onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text, bitmap))
 				} catch (e: NotFoundException) {
-					onDecodeCertificate(DecodeCertificateState.SCANNING)
+					onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
 					e.printStackTrace()
 				} catch (e: ChecksumException) {
-					onDecodeCertificate(DecodeCertificateState.SCANNING)
+					onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
 					e.printStackTrace()
 				} catch (e: FormatException) {
-					onDecodeCertificate(DecodeCertificateState.SCANNING)
+					onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
 					e.printStackTrace()
 				}
 			} else {
@@ -92,7 +90,7 @@ class QRCodeAnalyzer(
 }
 
 sealed class DecodeCertificateState {
-	data class SUCCESS(val qrCode: String?) : DecodeCertificateState()
-	object SCANNING : DecodeCertificateState()
+	data class SUCCESS(val qrCode: String?, val bitmap: Bitmap) : DecodeCertificateState()
+	data class SCANNING(val bitmap: Bitmap) : DecodeCertificateState()
 	data class ERROR(val error: StateError) : DecodeCertificateState()
 }
