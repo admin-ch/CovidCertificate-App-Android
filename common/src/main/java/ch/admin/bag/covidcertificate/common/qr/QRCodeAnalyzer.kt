@@ -11,14 +11,15 @@
 package ch.admin.bag.covidcertificate.common.qr
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.graphics.ImageFormat
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
+import androidx.core.graphics.scale
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import java.nio.ByteBuffer
+import kotlin.math.floor
 
 
 class QRCodeAnalyzer(
@@ -57,20 +58,29 @@ class QRCodeAnalyzer(
 				val width = source.getThumbnailWidth();
 				val height = source.getThumbnailHeight();
 				val bitmap = Bitmap.createBitmap(pixels, 0, width, width, height, Bitmap.Config.ARGB_8888)
-				val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
-				try {
-					val result: Result = reader.decodeWithState(binaryBitmap)
-					onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text, bitmap))
-				} catch (e: NotFoundException) {
-					onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
-					e.printStackTrace()
-				} catch (e: ChecksumException) {
-					onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
-					e.printStackTrace()
-				} catch (e: FormatException) {
-					onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
-					e.printStackTrace()
+				var i = 1.0
+				while (i < 2.5) {
+					val scaledBitmap = bitmap.scale(floor(bitmap.width * i).toInt(), floor(bitmap.height * i).toInt())
+					i+=0.1f
+					val intArray = IntArray(scaledBitmap.width * scaledBitmap.height)
+					scaledBitmap.getPixels(intArray, 0, scaledBitmap.width, 0, 0, scaledBitmap.width, scaledBitmap.height)
+					val source2: LuminanceSource = RGBLuminanceSource(scaledBitmap.width, scaledBitmap.height, intArray)
+					val binaryBitmap = BinaryBitmap(HybridBinarizer(source2))
+					try {
+						val result: Result = reader.decodeWithState(binaryBitmap)
+						onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text, scaledBitmap))
+					} catch (e: NotFoundException) {
+						onDecodeCertificate(DecodeCertificateState.SCANNING(scaledBitmap))
+						e.printStackTrace()
+					} catch (e: ChecksumException) {
+						onDecodeCertificate(DecodeCertificateState.SCANNING(scaledBitmap))
+						e.printStackTrace()
+					} catch (e: FormatException) {
+						onDecodeCertificate(DecodeCertificateState.SCANNING(scaledBitmap))
+						e.printStackTrace()
+					}
 				}
+
 			} else {
 				onDecodeCertificate(DecodeCertificateState.ERROR(StateError(QR_CODE_ERROR_WRONG_FORMAT)))
 			}
