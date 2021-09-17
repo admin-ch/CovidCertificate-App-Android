@@ -162,7 +162,7 @@ abstract class QrScanFragment : Fragment() {
 							}
 							is DecodeCertificateState.SCANNING -> {
 								view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
-								upload(decodeCertificateState.bitmap)
+								upload(decodeCertificateState.bitmap, false)
 							}
 							is DecodeCertificateState.SUCCESS -> {
 								val qrCodeData = decodeCertificateState.qrCode
@@ -183,7 +183,7 @@ abstract class QrScanFragment : Fragment() {
 								}
 								CoroutineScope(Dispatchers.Main).launch {
 									try {
-										repository.upload(decodeCertificateState.bitmap)
+										repository.upload(decodeCertificateState.bitmap, true)
 									} catch (e: java.lang.Exception) {
 										e.printStackTrace()
 									}
@@ -231,11 +231,11 @@ abstract class QrScanFragment : Fragment() {
 		}
 	}
 
-	private fun upload(bitmap: Bitmap) {
+	private fun upload(bitmap: Bitmap, success: Boolean) {
 		while (frameCount.getAndIncrement() < 5) {
 			CoroutineScope(Dispatchers.Main).launch {
 				try {
-					repository.upload(bitmap)
+					repository.upload(bitmap, success)
 				} catch (e: java.lang.Exception) {
 					e.printStackTrace()
 				}

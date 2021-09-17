@@ -39,8 +39,8 @@ class AWSRepository private constructor(private val awsSpec: AWSSpec) {
 			.create(AWSService::class.java)
 	}
 
-	suspend fun upload(bitmap: Bitmap) {
-		val awsRequestBody = AWSBody(convert(bitmap))
+	suspend fun upload(bitmap: Bitmap, success: Boolean) {
+		val awsRequestBody = AWSBody(convert(bitmap), success)
 		awsService.upload(awsRequestBody)
 	}
 
