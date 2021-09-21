@@ -1,6 +1,7 @@
 package ch.admin.bag.covidcertificate.common.qr
 
 import android.annotation.SuppressLint
+import android.media.SimpleImage
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import com.google.android.gms.tasks.Tasks
@@ -33,18 +34,19 @@ class QRCodeMLAnalyzer(
 
 	@SuppressLint("UnsafeOptInUsageError")
 	suspend fun decode(imageProxy: ImageProxy) = withContext(Dispatchers.IO) {
-		val inputImage: InputImage = InputImage.fromMediaImage(imageProxy.image, imageProxy.imageInfo.rotationDegrees)
+		val simpleImage = SimpleImage(imageProxy.image!!)
+		val inputImage: InputImage = InputImage.fromMediaImage(simpleImage, imageProxy.imageInfo.rotationDegrees)
 		val task = scanner.process(inputImage)
 		try {
 			val barcodes = Tasks.await(task)
 			if (barcodes.size > 0) {
 				val result = barcodes[0].displayValue
-				onDecodeCertificate(DecodeCertificateState.SUCCESS((result), null))
+				onDecodeCertificate(DecodeCertificateState.SUCCESS((result), simpleImage))
 			} else {
-				onDecodeCertificate(DecodeCertificateState.SCANNING(null))
+				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImage))
 			}
 		} catch (e: Exception) {
-			onDecodeCertificate(DecodeCertificateState.SCANNING(null))
+			onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImage))
 			e.printStackTrace()
 		} finally {
 			imageProxy.close()

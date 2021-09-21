@@ -45,8 +45,6 @@ class QRCodeAnalyzer(
 		if (imageProxy.format in yuvFormats && imageProxy.image != null && imageProxy.image!!.planes.size == 3) {
 			val simpleImage = SimpleImage(imageProxy.image!!)
 
-			val simpleImageAsJson = Gson().toJson(simpleImage)
-
 			val yBuffer = simpleImage.planes[0].buffer
 			val data = yBuffer.toByteArray()
 			val source = PlanarYUVLuminanceSource(
@@ -63,15 +61,15 @@ class QRCodeAnalyzer(
 
 			try {
 				val result: Result = reader.decodeWithState(binaryBitmap)
-				onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text, simpleImageAsJson))
+				onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text, simpleImage))
 			} catch (e: NotFoundException) {
-				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImageAsJson))
+				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImage))
 				e.printStackTrace()
 			} catch (e: ChecksumException) {
-				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImageAsJson))
+				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImage))
 				e.printStackTrace()
 			} catch (e: FormatException) {
-				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImageAsJson))
+				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImage))
 				e.printStackTrace()
 			}
 
@@ -93,7 +91,7 @@ class QRCodeAnalyzer(
 }
 
 sealed class DecodeCertificateState {
-	data class SUCCESS(val qrCode: String?, val bitmap: String?) : DecodeCertificateState()
-	data class SCANNING(val bitmap: String?) : DecodeCertificateState()
+	data class SUCCESS(val qrCode: String?, val simpleImage: SimpleImage) : DecodeCertificateState()
+	data class SCANNING(val simpleImage: SimpleImage) : DecodeCertificateState()
 	data class ERROR(val error: StateError) : DecodeCertificateState()
 }

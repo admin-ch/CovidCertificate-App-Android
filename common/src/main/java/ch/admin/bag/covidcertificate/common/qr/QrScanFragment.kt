@@ -13,7 +13,6 @@ package ch.admin.bag.covidcertificate.common.qr
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
-import android.graphics.Bitmap
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
@@ -31,12 +30,12 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.aws.AWSRepository
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import com.google.gson.Gson
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import kotlinx.coroutines.CoroutineScope
@@ -172,7 +171,10 @@ abstract class QrScanFragment : Fragment() {
 								}
 								is DecodeCertificateState.SCANNING -> {
 									view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
-									decodeCertificateState.bitmap?.let { upload(decodeCertificateState.bitmap, false) }
+									decodeCertificateState.simpleImage.let { simpleImage ->
+										val simpleImageAsJson = Gson().toJson(simpleImage)
+										upload(simpleImageAsJson, false)
+									}
 								}
 								is DecodeCertificateState.SUCCESS -> {
 									val qrCodeData = decodeCertificateState.qrCode
@@ -193,9 +195,10 @@ abstract class QrScanFragment : Fragment() {
 									}
 									CoroutineScope(Dispatchers.Main).launch {
 										try {
-											decodeCertificateState.bitmap?.let {
+											decodeCertificateState.simpleImage.let { simpleImage ->
+												val simpleImageAsJson = Gson().toJson(simpleImage)
 												repository.upload(
-													decodeCertificateState.bitmap,
+													simpleImageAsJson,
 													true
 												)
 											}
