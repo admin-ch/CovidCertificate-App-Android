@@ -31,11 +31,14 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.aws.AWSRepository
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import com.google.mlkit.vision.barcode.Barcode
+import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -82,6 +85,11 @@ abstract class QrScanFragment : Fragment() {
 	private var isTorchOn: Boolean = false
 	protected lateinit var repository: AWSRepository
 	private val frameCount: AtomicInteger = AtomicInteger(5)
+	val options = BarcodeScannerOptions.Builder()
+		.setBarcodeFormats(
+			Barcode.FORMAT_QR_CODE,
+		)
+		.build()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -155,42 +163,49 @@ abstract class QrScanFragment : Fragment() {
 				.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
 				.build()
 				.also { imageAnalysis ->
-					imageAnalysis.setAnalyzer(mainExecutor, QRCodeAnalyzer { decodeCertificateState: DecodeCertificateState ->
-						when (decodeCertificateState) {
-							is DecodeCertificateState.ERROR -> {
-								handleInvalidQRCodeExceptions(decodeCertificateState.error)
-							}
-							is DecodeCertificateState.SCANNING -> {
-								view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
-								upload(decodeCertificateState.bitmap, false)
-							}
-							is DecodeCertificateState.SUCCESS -> {
-								val qrCodeData = decodeCertificateState.qrCode
-								qrCodeData?.let {
-									decodeQrCodeData(
-										it,
-										onDecodeSuccess = {
-											// Once successfully decoded, clear the analyzer from stopping more frames being
-											// analyzed and possibly decoded successfully
-											imageAnalysis.clearAnalyzer()
-
-											view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
-										},
-										onDecodeError = { error ->
-											view?.post { handleInvalidQRCodeExceptions(error) }
-										}
-									)
+					imageAnalysis.setAnalyzer(
+						mainExecutor,
+						QRCodeAnalyzer() { decodeCertificateState: DecodeCertificateState ->
+							when (decodeCertificateState) {
+								is DecodeCertificateState.ERROR -> {
+									handleInvalidQRCodeExceptions(decodeCertificateState.error)
 								}
-								CoroutineScope(Dispatchers.Main).launch {
-									try {
-										repository.upload(decodeCertificateState.bitmap, true)
-									} catch (e: java.lang.Exception) {
-										e.printStackTrace()
+								is DecodeCertificateState.SCANNING -> {
+									view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
+									decodeCertificateState.bitmap?.let { upload(decodeCertificateState.bitmap, false) }
+								}
+								is DecodeCertificateState.SUCCESS -> {
+									val qrCodeData = decodeCertificateState.qrCode
+									qrCodeData?.let {
+										decodeQrCodeData(
+											it,
+											onDecodeSuccess = {
+												// Once successfully decoded, clear the analyzer from stopping more frames being
+												// analyzed and possibly decoded successfully
+												imageAnalysis.clearAnalyzer()
+
+												view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
+											},
+											onDecodeError = { error ->
+												view?.post { handleInvalidQRCodeExceptions(error) }
+											}
+										)
+									}
+									CoroutineScope(Dispatchers.Main).launch {
+										try {
+											decodeCertificateState.bitmap?.let {
+												repository.upload(
+													decodeCertificateState.bitmap,
+													true
+												)
+											}
+										} catch (e: java.lang.Exception) {
+											e.printStackTrace()
+										}
 									}
 								}
 							}
-						}
-					})
+						})
 				}
 
 			cameraProvider.unbindAll()

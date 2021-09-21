@@ -1,12 +1,18 @@
 package ch.admin.bag.covidcertificate.wallet.transfercode
 
+import android.graphics.BitmapFactory
+import android.util.Base64
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn.TRANSFER_CODE_LEN
+import com.google.zxing.*
+import com.google.zxing.common.HybridBinarizer
 import org.junit.Assert.assertEquals
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
 import org.junit.runners.Parameterized.Parameters
+import org.robolectric.ParameterizedRobolectricTestRunner
+import java.io.File
 
 
 @RunWith(Parameterized::class)

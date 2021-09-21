@@ -51,7 +51,6 @@ android {
 
 		testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 	}
-
 	productFlavors {
 		// These app tokens are reserved for the official COVID Certificate app.
 		// If you intend to integrate the CovidCertificate-SDK into your app, please get in touch with BIT/BAG to get a token assigned.
@@ -147,4 +146,10 @@ dependencies {
 	testImplementation 'junit:junit:4.13.2'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.3'
 	androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+	testApi 'junit:junit:4.13.2'
+	testApi 'androidx.test:core:1.4.0'
+	testApi 'org.robolectric:robolectric:4.4'
+	testApi 'androidx.test.ext:junit-ktx:1.1.3'
+
 }
