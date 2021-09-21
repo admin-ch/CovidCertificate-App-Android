@@ -1,24 +1,23 @@
 package ch.admin.bag.covidcertificate.common.qr
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
+import android.media.SimpleImage
 import android.util.Log
-import androidx.core.graphics.scale
 import androidx.test.platform.app.InstrumentationRegistry
 import com.google.android.gms.tasks.Tasks
+import com.google.gson.Gson
 import com.google.mlkit.vision.barcode.Barcode
 import com.google.mlkit.vision.barcode.BarcodeScannerOptions
 import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.common.InputImage
-import com.google.zxing.*
-import com.google.zxing.common.HybridBinarizer
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
+import java.io.InputStreamReader
+import java.util.zip.GZIPInputStream
 
 
 @RunWith(Parameterized::class)
-class QrMLCodeTests(val bitmap: Bitmap, val path: String) {
+class QrMLCodeTests(val simpleImage: SimpleImage, val path: String) {
 
 	companion object {
 		@JvmStatic
@@ -27,8 +26,8 @@ class QrMLCodeTests(val bitmap: Bitmap, val path: String) {
 			val context = InstrumentationRegistry.getInstrumentation().context
 			val directory = context.assets.list("bitmaps")!!.asList()
 			return directory.map { path ->
-				val inputStream = context.assets.open("bitmaps/$path")
-				arrayOf(BitmapFactory.decodeStream(inputStream), path)
+				val inputStream = GZIPInputStream(context.assets.open("bitmaps/$path"))
+				arrayOf(Gson().fromJson(InputStreamReader(inputStream), SimpleImage::class.java), path)
 			}
 		}
 	}
@@ -37,7 +36,7 @@ class QrMLCodeTests(val bitmap: Bitmap, val path: String) {
 	fun checkCertWithMLKit() {
 
 		var success: Boolean = false
-		val image = InputImage.fromBitmap(bitmap, 0)
+		val image = InputImage.fromMediaImage(simpleImage, 0)
 		val options = BarcodeScannerOptions.Builder()
 			.setBarcodeFormats(
 				Barcode.FORMAT_QR_CODE

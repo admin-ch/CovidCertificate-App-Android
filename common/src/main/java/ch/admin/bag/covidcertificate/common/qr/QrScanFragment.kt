@@ -246,7 +246,7 @@ abstract class QrScanFragment : Fragment() {
 		}
 	}
 
-	private fun upload(bitmap: Bitmap, success: Boolean) {
+	private fun upload(bitmap: String, success: Boolean) {
 		while (frameCount.getAndIncrement() < 5) {
 			CoroutineScope(Dispatchers.Main).launch {
 				try {

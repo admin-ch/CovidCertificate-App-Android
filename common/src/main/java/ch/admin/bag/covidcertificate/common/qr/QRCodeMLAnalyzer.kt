@@ -34,18 +34,17 @@ class QRCodeMLAnalyzer(
 	@SuppressLint("UnsafeOptInUsageError")
 	suspend fun decode(imageProxy: ImageProxy) = withContext(Dispatchers.IO) {
 		val inputImage: InputImage = InputImage.fromMediaImage(imageProxy.image, imageProxy.imageInfo.rotationDegrees)
-		val bitmap = inputImage.bitmapInternal //null
 		val task = scanner.process(inputImage)
 		try {
 			val barcodes = Tasks.await(task)
 			if (barcodes.size > 0) {
 				val result = barcodes[0].displayValue
-				onDecodeCertificate(DecodeCertificateState.SUCCESS((result), bitmap))
+				onDecodeCertificate(DecodeCertificateState.SUCCESS((result), null))
 			} else {
-				onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
+				onDecodeCertificate(DecodeCertificateState.SCANNING(null))
 			}
 		} catch (e: Exception) {
-			onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
+			onDecodeCertificate(DecodeCertificateState.SCANNING(null))
 			e.printStackTrace()
 		} finally {
 			imageProxy.close()

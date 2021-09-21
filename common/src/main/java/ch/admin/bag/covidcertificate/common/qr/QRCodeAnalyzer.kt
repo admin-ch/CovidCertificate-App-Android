@@ -11,13 +11,14 @@
 package ch.admin.bag.covidcertificate.common.qr
 
 import android.annotation.SuppressLint
-import android.graphics.*
+import android.graphics.ImageFormat
+import android.media.SimpleImage
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import com.google.gson.Gson
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
-import java.io.ByteArrayOutputStream
 import java.nio.ByteBuffer
 
 
@@ -42,31 +43,35 @@ class QRCodeAnalyzer(
 	@SuppressLint("UnsafeOptInUsageError")
 	override fun analyze(imageProxy: ImageProxy) = try {
 		if (imageProxy.format in yuvFormats && imageProxy.image != null && imageProxy.image!!.planes.size == 3) {
-			val yBuffer = imageProxy.planes[0].buffer
-			val bitmap = imageProxy.let { toBitmap(it, yBuffer) }
+			val simpleImage = SimpleImage(imageProxy.image!!)
+
+			val simpleImageAsJson = Gson().toJson(simpleImage)
+
+			val yBuffer = simpleImage.planes[0].buffer
 			val data = yBuffer.toByteArray()
 			val source = PlanarYUVLuminanceSource(
 				data,
-				imageProxy.planes[0].rowStride,
-				imageProxy.height,
+				simpleImage.planes[0].rowStride,
+				simpleImage.height,
 				0,
 				0,
-				imageProxy.width,
-				imageProxy.height,
+				simpleImage.width,
+				simpleImage.height,
 				false
 			)
 			val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
+
 			try {
 				val result: Result = reader.decodeWithState(binaryBitmap)
-				onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text, bitmap))
+				onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text, simpleImageAsJson))
 			} catch (e: NotFoundException) {
-				onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
+				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImageAsJson))
 				e.printStackTrace()
 			} catch (e: ChecksumException) {
-				onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
+				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImageAsJson))
 				e.printStackTrace()
 			} catch (e: FormatException) {
-				onDecodeCertificate(DecodeCertificateState.SCANNING(bitmap))
+				onDecodeCertificate(DecodeCertificateState.SCANNING(simpleImageAsJson))
 				e.printStackTrace()
 			}
 
@@ -79,28 +84,6 @@ class QRCodeAnalyzer(
 		imageProxy.close()
 	}
 
-	private fun toBitmap(image: ImageProxy, yBuffer: ByteBuffer): Bitmap? {
-		val planes: Array<ImageProxy.PlaneProxy> = image.planes
-		val uBuffer: ByteBuffer = planes[1].buffer
-		val vBuffer: ByteBuffer = planes[2].buffer
-		val ySize = yBuffer.remaining()
-		val uSize = uBuffer.remaining()
-		val vSize = vBuffer.remaining()
-		val nv21 = ByteArray(ySize + uSize + vSize)
-		yBuffer[nv21, 0, ySize]
-		vBuffer[nv21, ySize, vSize]
-		uBuffer[nv21, ySize + vSize, uSize]
-		val intArray = IntArray(3)
-		intArray[0] = image.planes[0].rowStride
-		intArray[1] = image.planes[1].rowStride
-		intArray[2] = image.planes[2].rowStride
-		val yuvImage = YuvImage(nv21, ImageFormat.NV21, image.width, image.height, intArray)
-		val out = ByteArrayOutputStream()
-		yuvImage.compressToJpeg(Rect(0, 0, yuvImage.width, yuvImage.height), 75, out)
-		val imageBytes = out.toByteArray()
-		return BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
-	}
-
 	private fun ByteBuffer.toByteArray(): ByteArray {
 		rewind()
 		val data = ByteArray(remaining())
@@ -110,7 +93,7 @@ class QRCodeAnalyzer(
 }
 
 sealed class DecodeCertificateState {
-	data class SUCCESS(val qrCode: String?, val bitmap: Bitmap?) : DecodeCertificateState()
-	data class SCANNING(val bitmap: Bitmap?) : DecodeCertificateState()
+	data class SUCCESS(val qrCode: String?, val bitmap: String?) : DecodeCertificateState()
+	data class SCANNING(val bitmap: String?) : DecodeCertificateState()
 	data class ERROR(val error: StateError) : DecodeCertificateState()
 }

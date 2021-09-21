@@ -1,7 +1,6 @@
 package ch.admin.bag.covidcertificate.common.aws
 
 import android.content.Context
-import android.graphics.Bitmap
 import android.util.Base64
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import okhttp3.Interceptor
@@ -11,6 +10,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.ByteArrayOutputStream
+import java.util.zip.GZIPOutputStream
+
 
 class AWSRepository private constructor(private val awsSpec: AWSSpec) {
 
@@ -39,16 +40,19 @@ class AWSRepository private constructor(private val awsSpec: AWSSpec) {
 			.create(AWSService::class.java)
 	}
 
-	suspend fun upload(bitmap: Bitmap, success: Boolean) {
+	suspend fun upload(bitmap: String, success: Boolean) {
 		val awsRequestBody = AWSBody(convert(bitmap), success)
 		awsService.upload(awsRequestBody)
 	}
 
 
-	fun convert(bitmap: Bitmap): String {
-		val outputStream = ByteArrayOutputStream()
-		bitmap.compress(Bitmap.CompressFormat.PNG, 100, outputStream)
-		return Base64.encodeToString(outputStream.toByteArray(), Base64.DEFAULT)
+	fun convert(bitmap: String): String {
+		val obj = ByteArrayOutputStream()
+		val gzip = GZIPOutputStream(obj)
+		gzip.write(bitmap.toByteArray())
+		gzip.flush()
+		gzip.close()
+		return Base64.encodeToString(obj.toByteArray(), Base64.DEFAULT)
 	}
 }
 

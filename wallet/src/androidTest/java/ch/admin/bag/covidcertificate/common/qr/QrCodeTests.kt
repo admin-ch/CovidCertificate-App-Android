@@ -1,24 +1,20 @@
 package ch.admin.bag.covidcertificate.common.qr
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.util.Log
-import androidx.core.graphics.scale
+import android.media.SimpleImage
 import androidx.test.platform.app.InstrumentationRegistry
-import com.google.android.gms.tasks.Tasks
-import com.google.mlkit.vision.barcode.Barcode
-import com.google.mlkit.vision.barcode.BarcodeScannerOptions
-import com.google.mlkit.vision.barcode.BarcodeScanning
-import com.google.mlkit.vision.common.InputImage
+import com.google.gson.Gson
 import com.google.zxing.*
 import com.google.zxing.common.HybridBinarizer
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.Parameterized
+import java.io.InputStreamReader
+import java.nio.ByteBuffer
+import java.util.zip.GZIPInputStream
 
 
 @RunWith(Parameterized::class)
-class QrCodeTests(val bitmap: Bitmap, val path: String) {
+class QrCodeTests(val simpleImage: SimpleImage, val path: String) {
 
 	companion object {
 		@JvmStatic
@@ -27,12 +23,11 @@ class QrCodeTests(val bitmap: Bitmap, val path: String) {
 			val context = InstrumentationRegistry.getInstrumentation().context
 			val directory = context.assets.list("bitmaps")!!.asList()
 			return directory.map { path ->
-				val inputStream = context.assets.open("bitmaps/$path")
-				arrayOf(BitmapFactory.decodeStream(inputStream), path)
+				val inputStream = GZIPInputStream(context.assets.open("bitmaps/$path"))
+				arrayOf(Gson().fromJson(InputStreamReader(inputStream), SimpleImage::class.java), path)
 			}
 		}
 	}
-
 
 	@Test
 	fun checkCert() {
@@ -43,9 +38,18 @@ class QrCodeTests(val bitmap: Bitmap, val path: String) {
 		val reader = MultiFormatReader().apply { setHints(hints) }
 		var success = false
 
-		val intArray = IntArray(bitmap.width * bitmap.height)
-		bitmap.getPixels(intArray, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
-		val source: LuminanceSource = RGBLuminanceSource(bitmap.width, bitmap.height, intArray)
+		val yBuffer = simpleImage.planes[0].buffer
+		val data = yBuffer.toByteArray()
+		val source = PlanarYUVLuminanceSource(
+			data,
+			simpleImage.planes[0].rowStride,
+			simpleImage.height,
+			0,
+			0,
+			simpleImage.width,
+			simpleImage.height,
+			false
+		)
 		val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
 		try {
 			val result = reader.decodeWithState(binaryBitmap)
@@ -60,4 +64,10 @@ class QrCodeTests(val bitmap: Bitmap, val path: String) {
 		assert(success) { path }
 	}
 
+	private fun ByteBuffer.toByteArray(): ByteArray {
+		rewind()
+		val data = ByteArray(remaining())
+		get(data)
+		return data
+	}
 }
