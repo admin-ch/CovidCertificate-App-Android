@@ -17,6 +17,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -93,6 +94,24 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		setupStatusInfo()
 
 		binding.certificateLightDetailDeactivateButton.setOnClickListener { deleteCertificateLightAndShowOriginal() }
+	}
+
+	override fun onResume() {
+		super.onResume()
+		val window = requireActivity().window
+		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+		val layoutParams: WindowManager.LayoutParams = window.attributes
+		layoutParams.screenBrightness = 1f
+		window.attributes = layoutParams
+	}
+
+	override fun onPause() {
+		super.onPause()
+		val window = requireActivity().window
+		window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
+		val layoutParams: WindowManager.LayoutParams = window.attributes
+		layoutParams.screenBrightness = -1f
+		window.attributes = layoutParams
 	}
 
 	override fun onDestroyView() {
