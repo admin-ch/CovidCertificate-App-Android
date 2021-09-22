@@ -40,16 +40,16 @@ class AWSRepository private constructor(private val awsSpec: AWSSpec) {
 			.create(AWSService::class.java)
 	}
 
-	suspend fun upload(bitmap: String, success: Boolean) {
-		val awsRequestBody = AWSBody(convert(bitmap), success)
+	suspend fun upload(simpleImageAsJson: String, success: Boolean) {
+		val awsRequestBody = AWSBody(convert(simpleImageAsJson), success)
 		awsService.upload(awsRequestBody)
 	}
 
 
-	fun convert(bitmap: String): String {
+	fun convert(simpleImageAsJson: String): String {
 		val obj = ByteArrayOutputStream()
 		val gzip = GZIPOutputStream(obj)
-		gzip.write(bitmap.toByteArray())
+		gzip.write(simpleImageAsJson.toByteArray())
 		gzip.flush()
 		gzip.close()
 		return Base64.encodeToString(obj.toByteArray(), Base64.DEFAULT)

@@ -15,6 +15,7 @@ import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
+import android.media.SimpleImage
 import android.os.Bundle
 import android.util.Size
 import android.view.MotionEvent
@@ -172,8 +173,7 @@ abstract class QrScanFragment : Fragment() {
 								is DecodeCertificateState.SCANNING -> {
 									view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
 									decodeCertificateState.simpleImage.let { simpleImage ->
-										val simpleImageAsJson = Gson().toJson(simpleImage)
-										upload(simpleImageAsJson, false)
+										upload(simpleImage, false)
 									}
 								}
 								is DecodeCertificateState.SUCCESS -> {
@@ -249,11 +249,12 @@ abstract class QrScanFragment : Fragment() {
 		}
 	}
 
-	private fun upload(bitmap: String, success: Boolean) {
+	private fun upload(simpleImage: SimpleImage, success: Boolean) {
 		while (frameCount.getAndIncrement() < 5) {
+			val simpleImageAsJson = Gson().toJson(simpleImage)
 			CoroutineScope(Dispatchers.Main).launch {
 				try {
-					repository.upload(bitmap, success)
+					repository.upload(simpleImageAsJson, success)
 				} catch (e: java.lang.Exception) {
 					e.printStackTrace()
 				}
