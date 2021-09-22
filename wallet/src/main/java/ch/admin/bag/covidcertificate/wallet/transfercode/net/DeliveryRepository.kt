@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.wallet.transfercode.net
 
 import android.content.Context
+import android.util.Log
 import ch.admin.bag.covidcertificate.common.BuildConfig
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
@@ -21,6 +22,7 @@ import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.sdk.core.extensions.toBase64
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.ConvertedCertificate
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationResponse
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -61,9 +63,9 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 			.create(DeliveryService::class.java)
 	}
 
-	suspend fun register(transferCode: String, keyPair: KeyPair): Boolean {
+	suspend fun register(transferCode: String, keyPair: KeyPair): TransferCodeCreationResponse {
 		val signaturePayload = TransferCodeCrypto.buildMessage("register", transferCode)
-		val signature = TransferCodeCrypto.sign(keyPair, signaturePayload) ?: return false
+		val signature = TransferCodeCrypto.sign(keyPair, signaturePayload) ?: return TransferCodeCreationResponse.SIGNING_FAILED
 		val deliveryRegistration = DeliveryRegistration(
 			transferCode,
 			keyPair.public.encoded.toBase64(),
@@ -73,7 +75,12 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 		)
 
 		val response = deliveryService.register(deliveryRegistration)
-		return response.isSuccessful
+
+		return when {
+			response.isSuccessful -> TransferCodeCreationResponse.SUCCESSFUL
+			response.code() == 425 -> TransferCodeCreationResponse.INVALID_TIME
+			else -> TransferCodeCreationResponse.FAILED
+		}
 	}
 
 	suspend fun download(transferCode: String, keyPair: KeyPair): List<ConvertedCertificate> {

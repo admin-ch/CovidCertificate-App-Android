@@ -25,6 +25,7 @@ import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationResponse
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
@@ -38,6 +39,10 @@ import java.security.KeyPair
 import java.time.Instant
 
 class TransferCodeCreationViewModel(application: Application) : AndroidViewModel(application) {
+
+	companion object {
+		const val ERROR_CODE_INVALID_TIME = "I|TIME425"
+	}
 
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val deliveryRepository = DeliveryRepository.getInstance(DeliverySpec(application.applicationContext, BuildConfig.BASE_URL_DELIVERY))
@@ -68,14 +73,20 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 
 	private suspend fun registerTransferCode(transferCode: String, keyPair: KeyPair) = withContext(Dispatchers.IO) {
 		try {
-			val isRegisterSuccessful = deliveryRepository.register(transferCode, keyPair)
-			if (isRegisterSuccessful) {
-				val now = Instant.now()
-				val transferCodeModel = TransferCodeModel(transferCode, now, now)
-				walletDataStorage.saveWalletDataItem(WalletDataItem.TransferCodeWalletData(transferCodeModel))
-				creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCodeModel))
-			} else {
-				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_REGISTRATION_FAILED)))
+			val registrationResponse = deliveryRepository.register(transferCode, keyPair)
+			when (registrationResponse) {
+				TransferCodeCreationResponse.SUCCESSFUL -> {
+					val now = Instant.now()
+					val transferCodeModel = TransferCodeModel(transferCode, now, now)
+					walletDataStorage.saveWalletDataItem(WalletDataItem.TransferCodeWalletData(transferCodeModel))
+					creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCodeModel))
+				}
+				TransferCodeCreationResponse.INVALID_TIME -> {
+					creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ERROR_CODE_INVALID_TIME)))
+				}
+				else -> {
+					creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_REGISTRATION_FAILED)))
+				}
 			}
 		} catch (e: IOException) {
 			if (NetworkUtil.isNetworkAvailable(connectivityManager)) {

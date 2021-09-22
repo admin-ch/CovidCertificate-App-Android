@@ -1004,5 +1004,14 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
     <!-- Information about the date format (always english) -->
     <!-- Fuzzy -->
     <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
-    <string name="wallet_certificate_test_holder_and_name">"Producent/ Num"</string>
+    <string name="wallet_certificate_test_holder_and_name">"Producent e Num"</string>
+
+    <!-- Wallet: Fehler-Titel falls Uhrzeit falsch eingestellt bei Transfer-Code -->
+    <string name="wallet_transfer_code_time_inconsistency_title">"Uhrzeit Fehler"</string>
+
+    <!-- Wallet: Transfer-Code Fehler-Text, falls Zeit falsch eingestellt -->
+    <string name="wallet_transfer_code_time_inconsistency_text">"Die Uhrzeit muss richtig eingestellt sein, damit Transfer-Codes funktionieren. Passen Sie Ihre Uhrzeit an und versuchen sie es erneut."</string>
+
+    <!-- Toast Text wenn ein UVCI durch Klicken kopiert wurde -->
+    <string name="wallet_uvci_copied">"Copià il UVCI"</string>
 </resources>
