@@ -33,6 +33,7 @@ import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolde
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
+import ch.admin.bag.covidcertificate.verifier.qr.VerifierQrScanFragment
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -122,11 +123,11 @@ class VerificationFragment : Fragment() {
 
 	override fun onPause() {
 		super.onPause()
-		// Pop the entire backstack back to the home screen when the verification fragment is put into the background, unless
+		// Pop the backstack back to the QR scanner screen when the verification fragment is put into the background, unless
 		// it was closed by the user (e.g. with the back or OK button)
 		if (!isClosedByUser) {
 			onBackPressedCallback.remove()
-			parentFragmentManager.popBackStack(null, FragmentManager.POP_BACK_STACK_INCLUSIVE)
+			parentFragmentManager.popBackStack(VerifierQrScanFragment.TAG, 0)
 		}
 	}
 
