@@ -25,6 +25,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
@@ -98,20 +99,12 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 
 	override fun onResume() {
 		super.onResume()
-		val window = requireActivity().window
-		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-		val layoutParams: WindowManager.LayoutParams = window.attributes
-		layoutParams.screenBrightness = 1f
-		window.attributes = layoutParams
+		requireActivity().window.overrideScreenBrightness(true)
 	}
 
 	override fun onPause() {
 		super.onPause()
-		val window = requireActivity().window
-		window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-		val layoutParams: WindowManager.LayoutParams = window.attributes
-		layoutParams.screenBrightness = -1f
-		window.attributes = layoutParams
+		requireActivity().window.overrideScreenBrightness(false)
 	}
 
 	override fun onDestroyView() {
