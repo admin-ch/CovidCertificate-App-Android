@@ -15,6 +15,7 @@ import android.view.View
 import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.debug.DebugFragment
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 
 class WalletDebugFragment : DebugFragment() {
 
@@ -36,8 +37,11 @@ class WalletDebugFragment : DebugFragment() {
 		val adapter = DebugCertificatesListAdapter(::onShareClickListener)
 		recyclerView.adapter = adapter
 
-		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { verifiedCertificates ->
-			adapter.setItems(verifiedCertificates.map { DebugCertificateItem(it) })
+		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
+			val adapterItems = items
+				.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
+				.map { DebugCertificateItem(it) }
+			adapter.setItems(adapterItems)
 		}
 
 		certificatesViewModel.loadWalletData()

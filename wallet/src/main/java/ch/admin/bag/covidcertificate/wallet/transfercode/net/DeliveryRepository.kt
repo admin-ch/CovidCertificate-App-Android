@@ -12,6 +12,7 @@ package ch.admin.bag.covidcertificate.wallet.transfercode.net
 
 import android.content.Context
 import ch.admin.bag.covidcertificate.common.BuildConfig
+import ch.admin.bag.covidcertificate.common.util.HttpIOException
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.CertificatePinning
@@ -24,6 +25,7 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.ConvertedCertific
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.security.KeyPair
@@ -76,15 +78,21 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 		return response.isSuccessful
 	}
 
+	@Throws(HttpIOException::class)
 	suspend fun download(transferCode: String, keyPair: KeyPair): List<ConvertedCertificate> {
 		val signaturePayload = TransferCodeCrypto.buildMessage("get", transferCode)
 		val signature = TransferCodeCrypto.sign(keyPair, signaturePayload) ?: return emptyList()
 		val requestDeliveryPayload = RequestDeliveryPayload(transferCode, signaturePayload, signature)
 
 		val response = deliveryService.get(requestDeliveryPayload)
-		if (!response.isSuccessful) {
+		if (response.code() == 404) {
+			// A 404 indicates that the transfer code was not found on the server, so it was either already delivered or is expired
 			return emptyList()
+		} else if (!response.isSuccessful) {
+			// Any other non-successful status code is considered an error and should be handled by the caller in a try-catch
+			throw HttpIOException(response)
 		}
+
 		val covidCertDelivery = response.body() ?: return emptyList()
 		if (covidCertDelivery.covidCerts.isEmpty()) {
 			return emptyList()

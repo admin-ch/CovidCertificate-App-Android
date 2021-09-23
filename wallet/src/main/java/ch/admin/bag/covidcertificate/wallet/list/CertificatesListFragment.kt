@@ -24,9 +24,11 @@ import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatesListBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeDetailFragment
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 
 class CertificatesListFragment : Fragment() {
@@ -83,27 +85,37 @@ class CertificatesListFragment : Fragment() {
 			val adapterItems = walletItems.map {
 				when (it) {
 					is WalletItem.CertificateHolderItem -> WalletDataListItem.VerifiedCeritificateItem(
-						CertificatesViewModel.VerifiedCertificate(it.qrCodeData, it.certificateHolder, VerificationState.LOADING),
+						StatefulWalletItem.VerifiedCertificate(it.qrCodeData, it.certificateHolder, VerificationState.LOADING),
 						it.qrCodeImage
 					)
-					is WalletItem.TransferCodeHolderItem -> WalletDataListItem.TransferCodeItem(it.transferCode)
+					is WalletItem.TransferCodeHolderItem -> WalletDataListItem.TransferCodeItem(
+						StatefulWalletItem.TransferCodeConversionItem(it.transferCode, TransferCodeConversionState.LOADING)
+					)
 				}
 			}
 			adapter.setItems(adapterItems)
 		}
 
-		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { verifiedCertificates ->
+		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { statefulWalletItems ->
 			val adapterItems = adapter.getItems()
 			val updatedAdapterItems = adapterItems.map { item ->
-				// Update the certificate verification state if it is a certificate item, otherwise just return the same item
-				if (item is WalletDataListItem.VerifiedCeritificateItem) {
-					verifiedCertificates.find {
-						it.qrCodeData == item.verifiedCertificate.qrCodeData
-					}?.let {
-						item.copy(verifiedCertificate = it)
-					} ?: item
-				} else {
-					item
+				when (item) {
+					is WalletDataListItem.VerifiedCeritificateItem -> {
+						statefulWalletItems.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
+							.find {
+								it.qrCodeData == item.verifiedCertificate.qrCodeData
+							}?.let {
+								item.copy(verifiedCertificate = it)
+							} ?: item
+					}
+					is WalletDataListItem.TransferCodeItem -> {
+						statefulWalletItems.filterIsInstance(StatefulWalletItem.TransferCodeConversionItem::class.java)
+							.find {
+								it.transferCode == item.conversionItem.transferCode
+							}?.let {
+								item.copy(conversionItem = it)
+							} ?: item
+					}
 				}
 			}
 			adapter.setItems(updatedAdapterItems)
