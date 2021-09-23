@@ -12,9 +12,12 @@ package ch.admin.bag.covidcertificate.common.qr
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
+import android.hardware.camera2.CameraCharacteristics
+import android.hardware.camera2.CameraManager
 import android.media.SimpleImage
 import android.os.Bundle
 import android.util.Size
@@ -24,6 +27,7 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
+import androidx.camera.camera2.interop.Camera2CameraInfo
 import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
@@ -31,6 +35,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.aws.AWSRepository
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
@@ -165,7 +170,7 @@ abstract class QrScanFragment : Fragment() {
 				.also { imageAnalysis ->
 					imageAnalysis.setAnalyzer(
 						mainExecutor,
-						QRCodeAnalyzer() { decodeCertificateState: DecodeCertificateState ->
+						QRCodeMLAnalyzer(viewLifecycleOwner.lifecycleScope) { decodeCertificateState: DecodeCertificateState ->
 							when (decodeCertificateState) {
 								is DecodeCertificateState.ERROR -> {
 									handleInvalidQRCodeExceptions(decodeCertificateState.error)
@@ -215,7 +220,6 @@ abstract class QrScanFragment : Fragment() {
 
 			try {
 				camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
-
 				// Set focus to the center of the viewfinder to help the auto focus
 				val metricPointFactory = qrCodeScanner.meteringPointFactory
 				val centerX = cutOut.left + cutOut.width / 2.0f
@@ -261,7 +265,7 @@ abstract class QrScanFragment : Fragment() {
 			}
 		}
 	}
-
+	
 	private fun checkCameraPermission() {
 		val isGranted =
 			ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED

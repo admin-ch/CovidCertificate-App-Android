@@ -3,6 +3,7 @@ package ch.admin.bag.covidcertificate.common.qr
 import android.media.SimpleImage
 import android.util.Log
 import androidx.test.platform.app.InstrumentationRegistry
+import com.google.android.gms.tasks.OnFailureListener
 import com.google.android.gms.tasks.Tasks
 import com.google.gson.Gson
 import com.google.mlkit.vision.barcode.Barcode
@@ -36,7 +37,9 @@ class QrMLCodeTests(val simpleImage: SimpleImage, val path: String) {
 	fun checkCertWithMLKit() {
 
 		var success: Boolean = false
+
 		val image = InputImage.fromMediaImage(simpleImage, 0)
+
 		val options = BarcodeScannerOptions.Builder()
 			.setBarcodeFormats(
 				Barcode.FORMAT_QR_CODE
@@ -51,12 +54,10 @@ class QrMLCodeTests(val simpleImage: SimpleImage, val path: String) {
 			if (barcodes.size > 0 && barcodes[0].displayValue.contains("HC1:")) {
 				Log.d("path ", path)
 				success = true
-			} else {
-				success = false
 			}
 
 		} catch (e: Exception) {
-			success = false
+
 		}
 
 		assert(success) { path }
