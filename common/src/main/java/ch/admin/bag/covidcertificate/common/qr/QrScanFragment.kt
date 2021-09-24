@@ -16,7 +16,6 @@ import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
-import android.util.Log
 import android.util.Size
 import android.view.MotionEvent
 import android.view.View
@@ -37,8 +36,8 @@ import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
-import java.util.*
 import java.util.concurrent.Executor
 
 abstract class QrScanFragment : Fragment() {
@@ -78,10 +77,10 @@ abstract class QrScanFragment : Fragment() {
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
 	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
-	private val autoFocusClockLiveData = liveData<Unit> {
+	private val autoFocusClockLiveData = liveData(Dispatchers.IO) {
 		while (true) {
-			delay(3 * 1000L)
 			emit(Unit)
+			delay(3 * 1000L)
 		}
 	}
 
