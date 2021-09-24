@@ -16,6 +16,7 @@ import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
+import android.util.Log
 import android.util.Size
 import android.view.MotionEvent
 import android.view.View
@@ -23,22 +24,21 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
-import androidx.camera.core.Camera
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.FocusMeteringAction
-import androidx.camera.core.ImageAnalysis
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.Preview
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.coroutineScope
+import androidx.lifecycle.liveData
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import kotlinx.coroutines.delay
+import java.util.*
 import java.util.concurrent.Executor
 
 abstract class QrScanFragment : Fragment() {
@@ -78,6 +78,12 @@ abstract class QrScanFragment : Fragment() {
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
 	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
+	private val autoFocusClockLiveData = liveData<Unit> {
+		while (true) {
+			delay(3 * 1000L)
+			emit(Unit)
+		}
+	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -147,34 +153,36 @@ abstract class QrScanFragment : Fragment() {
 				.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
 				.build()
 				.also { imageAnalysis ->
-					imageAnalysis.setAnalyzer(mainExecutor, QRCodeAnalyzer { decodeCertificateState: DecodeCertificateState ->
-						when (decodeCertificateState) {
-							is DecodeCertificateState.ERROR -> {
-								handleInvalidQRCodeExceptions(decodeCertificateState.error)
-							}
-							DecodeCertificateState.SCANNING -> {
-								view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
-							}
-							is DecodeCertificateState.SUCCESS -> {
-								val qrCodeData = decodeCertificateState.qrCode
-								qrCodeData?.let {
-									decodeQrCodeData(
-										it,
-										onDecodeSuccess = {
-											// Once successfully decoded, clear the analyzer from stopping more frames being
-											// analyzed and possibly decoded successfully
-											imageAnalysis.clearAnalyzer()
+					imageAnalysis.setAnalyzer(
+						mainExecutor,
+						QRCodeMLKitAndXingAnalyzer(lifecycle.coroutineScope) { decodeCertificateState: DecodeCertificateState ->
+							when (decodeCertificateState) {
+								is DecodeCertificateState.ERROR -> {
+									handleInvalidQRCodeExceptions(decodeCertificateState.error)
+								}
+								DecodeCertificateState.SCANNING -> {
+									view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
+								}
+								is DecodeCertificateState.SUCCESS -> {
+									val qrCodeData = decodeCertificateState.qrCode
+									qrCodeData?.let {
+										decodeQrCodeData(
+											it,
+											onDecodeSuccess = {
+												// Once successfully decoded, clear the analyzer from stopping more frames being
+												// analyzed and possibly decoded successfully
+												imageAnalysis.clearAnalyzer()
 
-											view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
-										},
-										onDecodeError = { error ->
-											view?.post { handleInvalidQRCodeExceptions(error) }
-										}
-									)
+												view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
+											},
+											onDecodeError = { error ->
+												view?.post { handleInvalidQRCodeExceptions(error) }
+											}
+										)
+									}
 								}
 							}
-						}
-					})
+						})
 				}
 
 			cameraProvider.unbindAll()
@@ -183,12 +191,9 @@ abstract class QrScanFragment : Fragment() {
 				camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
 
 				// Set focus to the center of the viewfinder to help the auto focus
-				val metricPointFactory = qrCodeScanner.meteringPointFactory
-				val centerX = cutOut.left + cutOut.width / 2.0f
-				val centerY = cutOut.top + cutOut.height / 2.0f
-				val point = metricPointFactory.createPoint(centerX, centerY)
-				val action = FocusMeteringAction.Builder(point).build()
-				camera?.cameraControl?.startFocusAndMetering(action)
+				autoFocusClockLiveData.observe(viewLifecycleOwner) {
+					autoFocus()
+				}
 				setupFlashButton()
 			} catch (e: Exception) {
 				e.printStackTrace()
@@ -214,6 +219,17 @@ abstract class QrScanFragment : Fragment() {
 			}
 		}
 	}
+
+	private fun autoFocus() {
+		// Set focus to the center of the viewfinder to help the auto focus
+		val metricPointFactory = qrCodeScanner.meteringPointFactory
+		val centerX = cutOut.left + cutOut.width / 2.0f
+		val centerY = cutOut.top + cutOut.height / 2.0f
+		val point = metricPointFactory.createPoint(centerX, centerY)
+		val action = FocusMeteringAction.Builder(point).build()
+		camera?.cameraControl?.startFocusAndMetering(action)
+	}
+
 
 	private fun checkCameraPermission() {
 		val isGranted =

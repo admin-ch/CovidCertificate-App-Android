@@ -27,7 +27,7 @@ import com.google.zxing.common.HybridBinarizer
 import java.nio.ByteBuffer
 
 
-class QRCodeAnalyzer(
+class QRCodeXingAnalyzer(
 	private val onDecodeCertificate: (decodeCertificateState: DecodeCertificateState) -> Unit,
 ) : ImageAnalysis.Analyzer {
 
