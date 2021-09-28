@@ -82,7 +82,6 @@ dependencies {
 
 	// QR code scanning
 	api 'com.google.zxing:core:3.4.1'
-	api 'com.google.android.gms:play-services-mlkit-barcode-scanning:16.2.1'
 
 	testImplementation 'junit:junit:4.+'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.2'
