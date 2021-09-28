@@ -123,8 +123,7 @@ class CertificateDetailItemListBuilder(
 				)
 			)
 			detailItems.add(
-				ValueItem(
-					R.string.wallet_certificate_identifier,
+				UvciItem(
 					vaccinationEntry.getCertificateIdentifier(),
 					false
 				)
