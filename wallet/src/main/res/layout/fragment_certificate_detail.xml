@@ -376,6 +376,50 @@
 						</LinearLayout>
 					</LinearLayout>
 
+					<LinearLayout
+						android:id="@+id/certificate_detail_vaccination_appointment_button"
+						android:layout_width="match_parent"
+						android:layout_height="56dp"
+						android:background="?android:attr/selectableItemBackground"
+						android:orientation="vertical"
+						android:visibility="gone"
+						tools:visibility="visible">
+
+						<View
+							android:layout_width="match_parent"
+							android:layout_height="1dp"
+							android:background="@color/blueish" />
+
+						<LinearLayout
+							android:layout_width="match_parent"
+							android:layout_height="match_parent"
+							android:duplicateParentState="true"
+							android:orientation="horizontal"
+							android:paddingHorizontal="@dimen/spacing_large">
+
+							<TextView
+								android:id="@+id/certificate_detail_vaccination_appointment_label"
+								style="@style/CovidCertificate.Text.Bold"
+								android:layout_width="0dp"
+								android:layout_height="match_parent"
+								android:layout_weight="1"
+								android:drawablePadding="@dimen/spacing_medium_small"
+								android:duplicateParentState="true"
+								android:gravity="center|start"
+								android:text="@string/vaccination_information_button_in_certificate"
+								android:textColor="@color/text_color_button"
+								app:drawableStartCompat="@drawable/ic_info_outline"
+								app:drawableTint="@color/text_color_button" />
+
+							<ImageView
+								android:id="@+id/certificate_detail_vaccination_appointment_arrow"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_gravity="center"
+								app:srcCompat="@drawable/ic_arrow_forward" />
+						</LinearLayout>
+					</LinearLayout>
+
 					<FrameLayout
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"

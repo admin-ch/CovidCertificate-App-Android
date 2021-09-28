@@ -55,6 +55,7 @@ import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFrag
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
 import ch.admin.bag.covidcertificate.wallet.util.*
+import ch.admin.bag.covidcertificate.wallet.vaccinationappointment.VaccinationAppointmentFragment
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
@@ -116,6 +117,7 @@ class CertificateDetailFragment : Fragment() {
 		setupCertificateDetails()
 		setupStatusInfo()
 		setupConversionButtons()
+		setupVaccinationAppointmentButton()
 
 		binding.certificateDetailToolbar.setNavigationOnClickListener {
 			parentFragmentManager.popBackStack()
@@ -224,6 +226,20 @@ class CertificateDetailFragment : Fragment() {
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 				.replace(R.id.fragment_container, PdfExportFragment.newInstance(certificateHolder))
 				.addToBackStack(PdfExportFragment::class.java.canonicalName)
+				.commit()
+		}
+	}
+
+	private fun setupVaccinationAppointmentButton() {
+		val showVaccinationAppointmentButton =
+			ConfigRepository.getCurrentConfig(requireContext())?.showVaccinationHintDetail ?: false
+		binding.certificateDetailVaccinationAppointmentButton.isVisible = showVaccinationAppointmentButton
+
+		binding.certificateDetailVaccinationAppointmentButton.setOnClickListener {
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, VaccinationAppointmentFragment.newInstance())
+				.addToBackStack(VaccinationAppointmentFragment::class.java.canonicalName)
 				.commit()
 		}
 	}
