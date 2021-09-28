@@ -29,6 +29,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
+import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.util.makeBold
@@ -49,6 +50,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
@@ -150,20 +152,12 @@ class CertificateDetailFragment : Fragment() {
 
 	override fun onResume() {
 		super.onResume()
-		val window = requireActivity().window
-		window.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-		val layoutParams: WindowManager.LayoutParams = window.attributes
-		layoutParams.screenBrightness = 1f
-		window.attributes = layoutParams
+		requireActivity().window.overrideScreenBrightness(true)
 	}
 
 	override fun onPause() {
 		super.onPause()
-		val window = requireActivity().window
-		window.clearFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON)
-		val layoutParams: WindowManager.LayoutParams = window.attributes
-		layoutParams.screenBrightness = -1f
-		window.attributes = layoutParams
+		requireActivity().window.overrideScreenBrightness(false)
 	}
 
 	private fun updateToolbarTitle() {
@@ -205,11 +199,12 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun setupStatusInfo() {
-		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { certificates ->
-			certificates.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
-				binding.certificateDetailButtonReverify.showAnimated()
-				updateStatusInfo(it.state)
-			}
+		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
+			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
+				.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
+					binding.certificateDetailButtonReverify.showAnimated()
+					updateStatusInfo(it.state)
+				}
 		}
 
 		certificatesViewModel.startVerification(certificateHolder)

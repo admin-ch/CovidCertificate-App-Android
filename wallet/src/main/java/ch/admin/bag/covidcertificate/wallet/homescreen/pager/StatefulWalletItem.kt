@@ -11,18 +11,19 @@
 package ch.admin.bag.covidcertificate.wallet.homescreen.pager
 
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 
-sealed class WalletItem(open val id: Int) {
-	data class CertificateHolderItem(
-		override val id: Int,
+sealed class StatefulWalletItem {
+	data class VerifiedCertificate(
 		val qrCodeData: String,
-		val qrCodeImage: String?,
-		val certificateHolder: CertificateHolder?
-	) : WalletItem(id)
+		val certificateHolder: CertificateHolder?,
+		val state: VerificationState
+	) : StatefulWalletItem()
 
-	data class TransferCodeHolderItem(
-		override val id: Int,
-		val transferCode: TransferCodeModel
-	) : WalletItem(id)
+	data class TransferCodeConversionItem(
+		val transferCode: TransferCodeModel,
+		val conversionState: TransferCodeConversionState
+	) : StatefulWalletItem()
 }

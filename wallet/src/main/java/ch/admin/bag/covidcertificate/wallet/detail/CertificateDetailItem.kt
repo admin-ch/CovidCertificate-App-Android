@@ -10,17 +10,20 @@
 
 package ch.admin.bag.covidcertificate.wallet.detail
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.Context
 import android.content.res.Configuration
 import android.view.View
 import android.widget.TextView
+import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.common.util.LocaleUtil
 import ch.admin.bag.covidcertificate.wallet.R
 import java.util.*
 
-sealed class CertificateDetailItem() {
+sealed class CertificateDetailItem {
 	abstract fun bindView(view: View)
 }
 
@@ -49,6 +52,29 @@ data class ValueItem(@StringRes val labelResource: Int, val value: String, val s
 		val englishLabel = view.findViewById<TextView>(R.id.item_value_label_english)
 		englishLabel.isVisible = showEnglishVersionForLabels
 		englishLabel.text = getEnglishTranslation(view.context, labelResource)
+	}
+}
+
+data class UvciItem(val uvci: String, val showEnglishVersionForLabels: Boolean) : CertificateDetailItem() {
+	companion object {
+		const val layoutResource = R.layout.item_detail_value
+	}
+
+	override fun bindView(view: View) {
+		val labelResource = R.string.wallet_certificate_identifier
+		view.findViewById<TextView>(R.id.item_value_label).setText(labelResource)
+		view.findViewById<TextView>(R.id.item_value_value).text = uvci
+		val englishLabel = view.findViewById<TextView>(R.id.item_value_label_english)
+		englishLabel.isVisible = showEnglishVersionForLabels
+		englishLabel.text = getEnglishTranslation(view.context, labelResource)
+
+		view.setOnClickListener {
+			val context = view.context
+			val clipboardManager = context.getSystemService(Context.CLIPBOARD_SERVICE) as ClipboardManager
+			val clip = ClipData.newPlainText(context.getString(R.string.wallet_certificate_identifier), uvci)
+			clipboardManager.setPrimaryClip(clip)
+			Toast.makeText(context, R.string.wallet_uvci_copied, Toast.LENGTH_SHORT).show()
+		}
 	}
 }
 

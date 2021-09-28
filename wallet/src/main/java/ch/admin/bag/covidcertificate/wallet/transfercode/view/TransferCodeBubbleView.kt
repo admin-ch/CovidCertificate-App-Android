@@ -26,6 +26,7 @@ import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ViewTransferCodeBubbleBinding
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeCreationViewModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import java.time.Instant
 
@@ -197,35 +198,46 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 		binding.transferCodeTransferCode.isVisible = false
 		binding.transferBubbleCodeErrorCode.isVisible = false
 
-		if (state.error.code == ErrorCodes.GENERAL_OFFLINE) {
-			binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_no_connection)
-			binding.transferCodeErrorTitle.setText(R.string.wallet_transfer_code_no_internet_title)
-			binding.transferCodeErrorDescription.setText(R.string.wallet_transfer_code_generate_no_internet_error_text)
-			setIconAndTextColor(R.color.orange)
-			setBubbleBackgroundColor(R.color.orangeish)
-		} else if (state.error.code == ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED) {
-			binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_scanner_alert)
-			binding.transferCodeErrorTitle.setText(R.string.wallet_transfer_code_unexpected_error_text)
-			binding.transferCodeErrorDescription.setText(R.string.wallet_transfer_code_unexpected_error_phone_number)
-			binding.transferCodeErrorDescription.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_call, 0, 0, 0)
-			binding.transferCodeErrorDescription.setTypeface(binding.transferCodeErrorDescription.typeface,Typeface.BOLD)
-			binding.transferCodeErrorDescription.setTextColor(context.getColor(R.color.red))
-			transferCode?.let { code ->
-				val text = context.getString(R.string.wallet_transfer_code_title) + ": ${code.code}"
-				binding.transferCodeTransferCode.text = text
-				binding.transferCodeTransferCode.isVisible = true
+		when (state.error.code) {
+			ErrorCodes.GENERAL_OFFLINE -> {
+				binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_no_connection)
+				binding.transferCodeErrorTitle.setText(R.string.wallet_transfer_code_no_internet_title)
+				binding.transferCodeErrorDescription.setText(R.string.wallet_transfer_code_generate_no_internet_error_text)
+				setIconAndTextColor(R.color.orange)
+				setBubbleBackgroundColor(R.color.orangeish)
 			}
-			binding.transferBubbleCodeErrorCode.text = state.error.code
-			binding.transferBubbleCodeErrorCode.isVisible = true
-			setIconAndTextColor(R.color.red)
-			setBubbleBackgroundColor(R.color.redish)
+			ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED -> {
+				binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_scanner_alert)
+				binding.transferCodeErrorTitle.setText(R.string.wallet_transfer_code_unexpected_error_text)
+				binding.transferCodeErrorDescription.setText(R.string.wallet_transfer_code_unexpected_error_phone_number)
+				binding.transferCodeErrorDescription.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_call, 0, 0, 0)
+				binding.transferCodeErrorDescription.setTypeface(binding.transferCodeErrorDescription.typeface,Typeface.BOLD)
+				binding.transferCodeErrorDescription.setTextColor(context.getColor(R.color.red))
+				transferCode?.let { code ->
+					val text = context.getString(R.string.wallet_transfer_code_title) + ": ${code.code}"
+					binding.transferCodeTransferCode.text = text
+					binding.transferCodeTransferCode.isVisible = true
+				}
+				binding.transferBubbleCodeErrorCode.text = state.error.code
+				binding.transferBubbleCodeErrorCode.isVisible = true
+				setIconAndTextColor(R.color.red)
+				setBubbleBackgroundColor(R.color.redish)
 
-		} else {
-			binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_process_error)
-			binding.transferCodeErrorTitle.setText(R.string.verifier_network_error_text)
-			binding.transferCodeErrorDescription.setText(R.string.wallet_detail_network_error_text)
-			setIconAndTextColor(R.color.orange)
-			setBubbleBackgroundColor(R.color.orangeish)
+			}
+			TransferCodeCreationViewModel.ERROR_CODE_INVALID_TIME -> {
+				binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_no_connection)
+				binding.transferCodeErrorTitle.setText(R.string.wallet_transfer_code_time_inconsistency_title)
+				binding.transferCodeErrorDescription.setText(R.string.wallet_transfer_code_time_inconsistency_text)
+				setIconAndTextColor(R.color.orange)
+				setBubbleBackgroundColor(R.color.orangeish)
+			}
+			else -> {
+				binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_process_error)
+				binding.transferCodeErrorTitle.setText(R.string.verifier_network_error_text)
+				binding.transferCodeErrorDescription.setText(R.string.wallet_detail_network_error_text)
+				setIconAndTextColor(R.color.orange)
+				setBubbleBackgroundColor(R.color.orangeish)
+			}
 		}
 
 

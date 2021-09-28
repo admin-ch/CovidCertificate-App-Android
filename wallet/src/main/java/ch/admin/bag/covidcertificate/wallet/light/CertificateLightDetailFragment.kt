@@ -17,6 +17,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -24,6 +25,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
@@ -36,6 +38,7 @@ import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightDetailBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
 import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
 import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
@@ -95,6 +98,16 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		binding.certificateLightDetailDeactivateButton.setOnClickListener { deleteCertificateLightAndShowOriginal() }
 	}
 
+	override fun onResume() {
+		super.onResume()
+		requireActivity().window.overrideScreenBrightness(true)
+	}
+
+	override fun onPause() {
+		super.onPause()
+		requireActivity().window.overrideScreenBrightness(false)
+	}
+
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
@@ -146,10 +159,11 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	}
 
 	private fun setupStatusInfo() {
-		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { certificates ->
-			certificates.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
-				updateStatusInfo(it.state)
-			}
+		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
+			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
+				.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
+					updateStatusInfo(it.state)
+				}
 		}
 
 		certificatesViewModel.startVerification(certificateHolder)

@@ -25,7 +25,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
-import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
@@ -108,10 +107,11 @@ class CertificatePagerFragment : Fragment() {
 	}
 
 	private fun setupStatusInfo() {
-		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { certificates ->
-			certificates.find { it.qrCodeData == qrCodeData }?.let {
-				updateStatusInfo(it.state)
-			}
+		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
+			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
+				.find { it.qrCodeData == qrCodeData }?.let {
+					updateStatusInfo(it.state)
+				}
 		}
 
 		certificateHolder?.let { certificatesViewModel.startVerification(it) }
