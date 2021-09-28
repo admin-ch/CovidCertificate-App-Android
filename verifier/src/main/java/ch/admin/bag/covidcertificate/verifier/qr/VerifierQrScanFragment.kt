@@ -42,6 +42,8 @@ class VerifierQrScanFragment : QrScanFragment() {
 	override val viewFinderColor: Int = R.color.white
 	override val torchOnDrawable: Int = R.drawable.ic_light_on_black
 	override val torchOffDrawable: Int = R.drawable.ic_light_off
+	override val zoomOnDrawable: Int = R.drawable.ic_zoom_on_black
+	override val zoomOffDrawable: Int = R.drawable.ic_zoom_off_white
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		super.onCreateView(inflater, container, savedInstanceState)
@@ -54,6 +56,7 @@ class VerifierQrScanFragment : QrScanFragment() {
 		flashButton = binding.fragmentQrScannerFlashButton
 		errorView = binding.fragmentQrScannerErrorView
 		errorCodeView = binding.qrCodeScannerErrorCode
+		zoomButton = binding.fragmentQrZoom
 
 		invalidCodeText = binding.qrCodeScannerInvalidCodeText
 		viewFinderTopLeftIndicator = binding.qrCodeScannerTopLeftIndicator

@@ -30,10 +30,10 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.coroutineScope
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.liveData
 import ch.admin.bag.covidcertificate.common.R
+import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
@@ -54,6 +54,7 @@ abstract class QrScanFragment : Fragment() {
 	protected lateinit var flashButton: ImageButton
 	protected lateinit var errorView: View
 	protected lateinit var errorCodeView: TextView
+	protected lateinit var zoomButton: ImageButton
 
 	protected lateinit var invalidCodeText: TextView
 	protected lateinit var viewFinderTopLeftIndicator: View
@@ -67,17 +68,20 @@ abstract class QrScanFragment : Fragment() {
 	private var imageAnalyzer: ImageAnalysis? = null
 	private lateinit var mainExecutor: Executor
 	private var camera: Camera? = null
-
 	abstract val viewFinderColor: Int
+
 	abstract val viewFinderErrorColor: Int
 	abstract val torchOnDrawable: Int
 	abstract val torchOffDrawable: Int
-
+	abstract val zoomOnDrawable: Int
+	abstract val zoomOffDrawable: Int
 	private var lastUIErrorUpdate = 0L
 
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
+	val secureStorage by lazy { ConfigSecureStorage.getInstance(requireContext()) }
 	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
+
 	private val autoFocusClockLiveData = liveData(Dispatchers.IO) {
 		while (true) {
 			emit(Unit)
@@ -194,6 +198,7 @@ abstract class QrScanFragment : Fragment() {
 				autoFocusClockLiveData.observe(viewLifecycleOwner) {
 					autoFocus()
 				}
+				setupZoomButton()
 				setupFlashButton()
 			} catch (e: Exception) {
 				e.printStackTrace()
@@ -217,6 +222,17 @@ abstract class QrScanFragment : Fragment() {
 				}
 				else -> false
 			}
+		}
+	}
+
+	open fun setZoom() {
+		val zoomRatio = if (secureStorage.getZoomOn()) {
+			camera?.cameraInfo?.zoomState?.value?.maxZoomRatio
+		} else {
+			camera?.cameraInfo?.zoomState?.value?.minZoomRatio
+		}
+		zoomRatio?.let {
+			camera?.cameraControl?.setZoomRatio(zoomRatio)
 		}
 	}
 
@@ -297,6 +313,10 @@ abstract class QrScanFragment : Fragment() {
 			isTorchOn = !flashButton.isSelected
 			setFlashAndButtonStyle()
 		}
+		zoomButton.setOnClickListener {
+			secureStorage.setZoomOn(!secureStorage.getZoomOn())
+			setupZoomButton()
+		}
 	}
 
 	private fun setFlashAndButtonStyle() {
@@ -305,6 +325,20 @@ abstract class QrScanFragment : Fragment() {
 		flashButton.isSelected = isTorchOn
 		flashButton.setImageResource(drawableId)
 	}
+
+	private fun setupZoomButton() {
+		if (requireContext().packageManager.hasSystemFeature(PackageManager.FEATURE_CAMERA_AUTOFOCUS)) {
+			zoomButton.isVisible = false
+		} else {
+			val isZoomOn = secureStorage.getZoomOn()
+			zoomButton.isVisible = true
+			val drawableId = if (isZoomOn) zoomOnDrawable else zoomOffDrawable
+			zoomButton.isSelected = isZoomOn
+			zoomButton.setImageResource(drawableId)
+			setZoom()
+		}
+	}
+
 
 	private fun handleInvalidQRCodeExceptions(error: StateError?) {
 		updateQrCodeScannerState(QrScannerState.INVALID_FORMAT, error?.code)

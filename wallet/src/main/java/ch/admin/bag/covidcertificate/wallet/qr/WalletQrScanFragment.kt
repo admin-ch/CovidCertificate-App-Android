@@ -22,6 +22,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.add.CertificateAddFragment
+import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentQrScanBinding
 import ch.admin.bag.covidcertificate.wallet.howto.HowToScanFragment
 
@@ -43,6 +44,8 @@ class WalletQrScanFragment : QrScanFragment() {
 	override val viewFinderColor: Int = R.color.blue
 	override val torchOnDrawable: Int = R.drawable.ic_light_on
 	override val torchOffDrawable: Int = R.drawable.ic_light_off_blue
+	override val zoomOnDrawable: Int = R.drawable.ic_zoom_on
+	override val zoomOffDrawable: Int = R.drawable.ic_zoom_off
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		super.onCreateView(inflater, container, savedInstanceState)
@@ -54,6 +57,7 @@ class WalletQrScanFragment : QrScanFragment() {
 		flashButton = binding.fragmentQrScannerFlashButton
 		errorView = binding.fragmentQrScannerErrorView
 		errorCodeView = binding.qrCodeScannerErrorCode
+		zoomButton = binding.fragmentQrZoom
 
 		invalidCodeText = binding.qrCodeScannerInvalidCodeText
 		cutOut = binding.cameraPreviewContainer
