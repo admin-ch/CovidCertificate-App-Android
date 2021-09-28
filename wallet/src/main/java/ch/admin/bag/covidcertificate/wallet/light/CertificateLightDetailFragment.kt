@@ -17,6 +17,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -24,6 +25,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
@@ -93,6 +95,16 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		setupStatusInfo()
 
 		binding.certificateLightDetailDeactivateButton.setOnClickListener { deleteCertificateLightAndShowOriginal() }
+	}
+
+	override fun onResume() {
+		super.onResume()
+		requireActivity().window.overrideScreenBrightness(true)
+	}
+
+	override fun onPause() {
+		super.onPause()
+		requireActivity().window.overrideScreenBrightness(false)
 	}
 
 	override fun onDestroyView() {
