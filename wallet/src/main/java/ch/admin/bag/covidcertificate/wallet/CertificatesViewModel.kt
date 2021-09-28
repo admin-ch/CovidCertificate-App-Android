@@ -11,37 +11,51 @@
 package ch.admin.bag.covidcertificate.wallet
 
 import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.common.util.SingleLiveEvent
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
+import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
+import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
+import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.io.IOException
 import java.time.Instant
 import kotlin.collections.set
 
 class CertificatesViewModel(application: Application) : AndroidViewModel(application) {
 
+	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val walletDataStorage: WalletDataSecureStorage by lazy { WalletDataSecureStorage.getInstance(application.applicationContext) }
+	private val deliveryRepository =
+		DeliveryRepository.getInstance(DeliverySpec(application.applicationContext, BuildConfig.BASE_URL_DELIVERY))
 
 	private val walletItemsMutableLiveData = MutableLiveData<List<WalletItem>>()
 	val walletItems = walletItemsMutableLiveData as LiveData<List<WalletItem>>
 
-	private val verifiedCertificatesMutableLiveData = MutableLiveData<List<VerifiedCertificate>>()
-	val verifiedCertificates: LiveData<List<VerifiedCertificate>> = verifiedCertificatesMutableLiveData
+	private val statefulWalletItemsMutableLiveData = MutableLiveData<List<StatefulWalletItem>>()
+	val statefulWalletItems: LiveData<List<StatefulWalletItem>> = statefulWalletItemsMutableLiveData
 	private val verificationJobs = mutableMapOf<CertificateHolder, Job>()
 
 	val onQrCodeClickedSingleLiveEvent = SingleLiveEvent<CertificateHolder>()
@@ -50,17 +64,34 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 	init {
 		walletItems.observeForever { items ->
-			// When the wallet items change, map the certificates with the existing verification state or LOADING
-			val certificateItems = items.filterIsInstance<WalletItem.CertificateHolderItem>()
-			val currentVerifiedCertificates = verifiedCertificates.value ?: emptyList()
-			verifiedCertificatesMutableLiveData.value = certificateItems.map { item ->
-				currentVerifiedCertificates.find {
-					it.qrCodeData == item.qrCodeData
-				} ?: VerifiedCertificate(item.qrCodeData, item.certificateHolder, VerificationState.LOADING)
+			// When the wallet items change, map the certificates and transfer codes with the existing verification/conversion state or LOADING
+			val currentStatefulWalletItems = statefulWalletItems.value ?: emptyList()
+			statefulWalletItemsMutableLiveData.value = items.map { item ->
+				when (item) {
+					is WalletItem.CertificateHolderItem -> {
+						currentStatefulWalletItems.find {
+							it is StatefulWalletItem.VerifiedCertificate && it.qrCodeData == item.qrCodeData
+						} ?: StatefulWalletItem.VerifiedCertificate(
+							item.qrCodeData,
+							item.certificateHolder,
+							VerificationState.LOADING
+						)
+					}
+					is WalletItem.TransferCodeHolderItem -> {
+						currentStatefulWalletItems.find {
+							it is StatefulWalletItem.TransferCodeConversionItem && it.transferCode.code == item.transferCode.code
+						} ?: StatefulWalletItem.TransferCodeConversionItem(item.transferCode, TransferCodeConversionState.LOADING)
+					}
+				}
 			}
 
-			// (Re-)Verify all certificates
-			certificateItems.forEach { item -> item.certificateHolder?.let { startVerification(it) } }
+			// (Re-)Verify certificates and try to convert transfer codes
+			items.forEach { item ->
+				when (item) {
+					is WalletItem.CertificateHolderItem -> item.certificateHolder?.let { startVerification(it) }
+					is WalletItem.TransferCodeHolderItem -> convertTransferCode(item.transferCode)
+				}
+			}
 		}
 	}
 
@@ -94,10 +125,10 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 							// certificate and map it to a pager holder item
 							val decodeState = CovidCertificateSdk.Wallet.decode(dataItem.qrCodeData)
 							if (decodeState is DecodeState.ERROR) {
-								verifiedCertificatesMutableLiveData.postValue(
-									(verifiedCertificates.value?.toMutableList() ?: mutableListOf()).apply {
+								statefulWalletItemsMutableLiveData.postValue(
+									(statefulWalletItems.value?.toMutableList() ?: mutableListOf()).apply {
 										add(
-											VerifiedCertificate(
+											StatefulWalletItem.VerifiedCertificate(
 												dataItem.qrCodeData,
 												null,
 												VerificationState.ERROR(decodeState.error, null)
@@ -131,8 +162,8 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 		if (isForceVerification) {
 			// Manually show the loading state for this certificate. This would be done by the verification task,
 			// but since we first load the trust list, that happens too late in the UI
-			val verifiedCertificatesWithLoading = updateVerificationStateForDccHolder(certificateHolder, VerificationState.LOADING)
-			verifiedCertificatesMutableLiveData.value = verifiedCertificatesWithLoading
+			val updatedStatefulWalletItems = updateVerificationStateForDccHolder(certificateHolder, VerificationState.LOADING)
+			statefulWalletItemsMutableLiveData.value = updatedStatefulWalletItems
 
 			// If this is a force verification (from the detail page), frist refresh the trust list
 			CovidCertificateSdk.refreshTrustList(viewModelScope, onCompletionCallback = {
@@ -200,11 +231,11 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 			val job = viewModelScope.launch {
 				verificationStateFlow.collect { state ->
 					// Replace the verified certificate in the live data
-					val updatedVerifiedCertificates = updateVerificationStateForDccHolder(certificateHolder, state)
+					val updatedStatefulWalletItems = updateVerificationStateForDccHolder(certificateHolder, state)
 
 					// Set the livedata value on the main dispatcher to prevent multiple posts overriding each other
 					withContext(Dispatchers.Main.immediate) {
-						verifiedCertificatesMutableLiveData.value = updatedVerifiedCertificates
+						statefulWalletItemsMutableLiveData.value = updatedStatefulWalletItems
 					}
 
 					// Once the verification state is not loading anymore, cancel the flow collection job (otherwise the flow stays active without emitting anything)
@@ -218,21 +249,104 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 		}
 	}
 
+	private fun convertTransferCode(transferCode: TransferCodeModel) {
+		viewModelScope.launch(Dispatchers.IO) {
+			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
+
+			var conversionState: TransferCodeConversionState = TransferCodeConversionState.LOADING
+			if (keyPair != null) {
+				try {
+					val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
+
+					if (decryptedCertificates.isNotEmpty()) {
+						decryptedCertificates.forEachIndexed { index, convertedCertificate ->
+							val qrCodeData = convertedCertificate.qrCodeData
+							val pdfData = convertedCertificate.pdfData
+							if (index == 0) {
+								walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
+								val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
+								conversionState = if (decodeState is DecodeState.SUCCESS) {
+									TransferCodeConversionState.CONVERTED(decodeState.certificateHolder)
+								} else {
+									// The certificate returned from the server could not be decoded
+									TransferCodeConversionState.NOT_CONVERTED
+								}
+							} else {
+								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
+							}
+
+							try {
+								deliveryRepository.complete(transferCode.code, keyPair)
+							} catch (e: IOException) {
+								// This request is best-effort, if it fails, ignore it and let the backend delete the transfer code and certificate
+								// automatically after it expires
+							}
+							TransferCodeCrypto.deleteKeyEntry(transferCode.code, getApplication())
+						}
+					} else {
+						conversionState = TransferCodeConversionState.NOT_CONVERTED
+					}
+				} catch (e: IOException) {
+					conversionState = if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
+						TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_NETWORK_FAILURE))
+					} else {
+						TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_OFFLINE))
+					}
+				}
+			} else {
+				conversionState = TransferCodeConversionState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED))
+			}
+
+			val updatedStatefulWalletItems = updateConversionStateForTransferCode(transferCode, conversionState)
+
+			// Set the livedata value on the main dispatcher to prevent multiple posts overriding each other
+			withContext(Dispatchers.Main.immediate) {
+				statefulWalletItemsMutableLiveData.value = updatedStatefulWalletItems
+			}
+		}
+	}
+
 	private fun updateVerificationStateForDccHolder(
 		certificateHolder: CertificateHolder,
 		newVerificationState: VerificationState
-	): List<VerifiedCertificate> {
-		val newVerifiedCertificates = verifiedCertificates.value?.toMutableList() ?: mutableListOf()
-		val index = newVerifiedCertificates.indexOfFirst { it.certificateHolder == certificateHolder }
-		if (index >= 0) {
-			newVerifiedCertificates[index] =
-				VerifiedCertificate(certificateHolder.qrCodeData, certificateHolder, newVerificationState)
-		} else {
-			newVerifiedCertificates.add(VerifiedCertificate(certificateHolder.qrCodeData, certificateHolder, newVerificationState))
+	): List<StatefulWalletItem> {
+		val newStatefulWalletItems = statefulWalletItems.value?.toMutableList() ?: mutableListOf()
+		val index = newStatefulWalletItems.indexOfFirst {
+			it is StatefulWalletItem.VerifiedCertificate && it.certificateHolder == certificateHolder
 		}
 
-		return newVerifiedCertificates
+		if (index >= 0) {
+			newStatefulWalletItems[index] =
+				StatefulWalletItem.VerifiedCertificate(certificateHolder.qrCodeData, certificateHolder, newVerificationState)
+		} else {
+			newStatefulWalletItems.add(
+				StatefulWalletItem.VerifiedCertificate(
+					certificateHolder.qrCodeData,
+					certificateHolder,
+					newVerificationState
+				)
+			)
+		}
+
+		return newStatefulWalletItems
 	}
 
-	data class VerifiedCertificate(val qrCodeData: String, val certificateHolder: CertificateHolder?, val state: VerificationState)
+	private fun updateConversionStateForTransferCode(
+		transferCode: TransferCodeModel,
+		newConversionState: TransferCodeConversionState
+	): List<StatefulWalletItem> {
+		val newStatefulWalletItems = statefulWalletItems.value?.toMutableList() ?: mutableListOf()
+		val index = newStatefulWalletItems.indexOfFirst {
+			it is StatefulWalletItem.TransferCodeConversionItem && it.transferCode.code == transferCode.code
+		}
+
+		if (index >= 0) {
+			newStatefulWalletItems[index] = StatefulWalletItem.TransferCodeConversionItem(transferCode, newConversionState)
+		} else {
+			newStatefulWalletItems.add(StatefulWalletItem.TransferCodeConversionItem(transferCode, newConversionState))
+		}
+
+		return newStatefulWalletItems
+	}
+
 }

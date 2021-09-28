@@ -17,11 +17,11 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
 
-data class DebugCertificateItem(val verifiedCertificate: CertificatesViewModel.VerifiedCertificate) {
+data class DebugCertificateItem(val verifiedCertificate: StatefulWalletItem.VerifiedCertificate) {
 
 	fun bindView(
 		itemView: View,

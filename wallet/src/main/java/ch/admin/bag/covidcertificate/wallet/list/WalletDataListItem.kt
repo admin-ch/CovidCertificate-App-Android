@@ -18,19 +18,19 @@ import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemCertificateListBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemTransferCodeListBinding
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
 import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 
 sealed class WalletDataListItem {
 	data class VerifiedCeritificateItem(
-		val verifiedCertificate: CertificatesViewModel.VerifiedCertificate,
+		val verifiedCertificate: StatefulWalletItem.VerifiedCertificate,
 		val qrCodeImage: String?,
 	) : WalletDataListItem() {
 
@@ -135,12 +135,14 @@ sealed class WalletDataListItem {
 		}
 	}
 
-	data class TransferCodeItem(val transferCode: TransferCodeModel, val error: StateError? = null) : WalletDataListItem() {
+	data class TransferCodeItem(
+		val conversionItem: StatefulWalletItem.TransferCodeConversionItem
+	) : WalletDataListItem() {
 		fun bindView(itemView: View, onTransferCodeClickListener: ((TransferCodeModel) -> Unit)? = null) {
 			val binding = ItemTransferCodeListBinding.bind(itemView)
 
 			when {
-				transferCode.isFailed() -> {
+				conversionItem.transferCode.isFailed() -> {
 					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_transfer_code_list_failed)
 					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_expired)
 					binding.itemTransferCodeListInfo.setText(R.string.wallet_transfer_code_old_code)
@@ -148,7 +150,7 @@ sealed class WalletDataListItem {
 					binding.itemTransferCodeListInfo.isVisible = true
 					binding.itemTransferCodeListCode.isVisible = false
 				}
-				transferCode.isExpired() -> {
+				conversionItem.transferCode.isExpired() -> {
 					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_transfer_code_list_valid)
 					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_waiting)
 					binding.itemTransferCodeListInfo.setText(R.string.wallet_transfer_code_old_code)
@@ -156,7 +158,8 @@ sealed class WalletDataListItem {
 					binding.itemTransferCodeListInfo.isVisible = true
 					binding.itemTransferCodeListCode.isVisible = false
 				}
-				error != null && error.code != ErrorCodes.GENERAL_OFFLINE -> {
+				conversionItem.conversionState is TransferCodeConversionState.ERROR
+						&& conversionItem.conversionState.error.code != ErrorCodes.GENERAL_OFFLINE -> {
 					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_scanner_alert)
 					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_expired)
 					binding.itemTransferCodeListInfo.setText(R.string.wallet_transfer_code_unexpected_error_title)
@@ -167,14 +170,14 @@ sealed class WalletDataListItem {
 				else -> {
 					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_transfer_code_list_valid)
 					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_waiting)
-					binding.itemTransferCodeListCode.text = formatTransferCode(transferCode.code)
+					binding.itemTransferCodeListCode.text = formatTransferCode(conversionItem.transferCode.code)
 					binding.itemTransferCodeListInfo.isVisible = false
 					binding.itemTransferCodeListCode.isVisible = true
 				}
 			}
 
 			binding.root.setOnClickListener {
-				onTransferCodeClickListener?.invoke(transferCode)
+				onTransferCodeClickListener?.invoke(conversionItem.transferCode)
 			}
 		}
 

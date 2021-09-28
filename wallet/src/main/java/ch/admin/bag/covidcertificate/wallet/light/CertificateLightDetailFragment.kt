@@ -38,6 +38,7 @@ import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightDetailBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
+import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
 import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
 import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
@@ -158,10 +159,11 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	}
 
 	private fun setupStatusInfo() {
-		certificatesViewModel.verifiedCertificates.observe(viewLifecycleOwner) { certificates ->
-			certificates.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
-				updateStatusInfo(it.state)
-			}
+		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
+			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
+				.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
+					updateStatusInfo(it.state)
+				}
 		}
 
 		certificatesViewModel.startVerification(certificateHolder)
