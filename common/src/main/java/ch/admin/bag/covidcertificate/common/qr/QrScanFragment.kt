@@ -159,7 +159,7 @@ abstract class QrScanFragment : Fragment() {
 				.also { imageAnalysis ->
 					imageAnalysis.setAnalyzer(
 						mainExecutor,
-						QRCodeMixedXingAnalyzer(viewLifecycleOwner.lifecycleScope) { decodeCertificateState: DecodeCertificateState ->
+						QRCodeMixedXingAnalyzer() { decodeCertificateState: DecodeCertificateState ->
 							when (decodeCertificateState) {
 								is DecodeCertificateState.ERROR -> {
 									handleInvalidQRCodeExceptions(decodeCertificateState.error)

@@ -1,6 +1,6 @@
 package ch.admin.bag.covidcertificate.common.qr
 
-import android.graphics.*
+import android.graphics.ImageFormat
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
@@ -8,14 +8,10 @@ import com.google.zxing.*
 import com.google.zxing.common.GlobalHistogramBinarizer
 import com.google.zxing.common.HybridBinarizer
 import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import java.nio.ByteBuffer
 import java.util.concurrent.atomic.AtomicBoolean
 
 class QRCodeMixedXingAnalyzer(
-	val coroutineScope: CoroutineScope,
 	private val onDecodeCertificate: (decodeCertificateState: DecodeCertificateState) -> Unit
 ) : ImageAnalysis.Analyzer {
 	companion object {
@@ -35,14 +31,14 @@ class QRCodeMixedXingAnalyzer(
 
 	override fun analyze(imageProxy: ImageProxy) {
 		if (isGlobalHistogramBinarizer.getAndSet(!isGlobalHistogramBinarizer.get())) {
-			coroutineScope.launch { decodeWithGlobalHistogramBinarizer(imageProxy) }
+			decodeWithGlobalHistogramBinarizer(imageProxy)
 		} else {
 			decodeWithHybridBinarizer(imageProxy)
 		}
 	}
 
 
-	suspend fun decodeWithGlobalHistogramBinarizer(imageProxy: ImageProxy) = withContext(Dispatchers.IO) {
+	fun decodeWithGlobalHistogramBinarizer(imageProxy: ImageProxy) {
 		try {
 			if (imageProxy.format in yuvFormats && imageProxy.planes.size == 3) {
 				val data = imageProxy.planes[0].buffer.toByteArray()
