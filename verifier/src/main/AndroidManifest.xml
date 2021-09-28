@@ -40,4 +40,10 @@
 			android:screenOrientation="portrait" />
 	</application>
 
+	<queries>
+		<intent>
+			<action android:name="com.symbol.datawedge.api.ACTION" />
+		</intent>
+	</queries>
+
 </manifest>
