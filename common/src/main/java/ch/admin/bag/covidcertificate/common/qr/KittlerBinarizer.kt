@@ -1,11 +1,24 @@
+/*
+ * Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *
+ * SPDX-License-Identifier: MPL-2.0
+ */
 package ch.admin.bag.covidcertificate.common.qr
 
-import android.util.Log
 import com.google.zxing.LuminanceSource
 import com.google.zxing.common.BitMatrix
 import com.google.zxing.common.GlobalHistogramBinarizer
 import okhttp3.internal.and
 import kotlin.math.abs
+
+/*
+ *Use a Kittler Binarizer described here //http://www.iztok-jr-fister.eu/static/publications/39.pdf
+ *
+ *  */
 
 class KittlerBinarizer(luminanceSource: LuminanceSource) : GlobalHistogramBinarizer(luminanceSource) {
 

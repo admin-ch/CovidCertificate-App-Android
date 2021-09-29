@@ -30,7 +30,6 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.liveData
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
@@ -159,7 +158,7 @@ abstract class QrScanFragment : Fragment() {
 				.also { imageAnalysis ->
 					imageAnalysis.setAnalyzer(
 						mainExecutor,
-						QRCodeMixedXingAnalyzer() { decodeCertificateState: DecodeCertificateState ->
+						QRCodeMixedZXingAnalyzer() { decodeCertificateState: DecodeCertificateState ->
 							when (decodeCertificateState) {
 								is DecodeCertificateState.ERROR -> {
 									handleInvalidQRCodeExceptions(decodeCertificateState.error)

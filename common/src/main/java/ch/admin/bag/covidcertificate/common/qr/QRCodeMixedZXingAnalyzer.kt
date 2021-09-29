@@ -1,3 +1,13 @@
+/*
+ * Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 package ch.admin.bag.covidcertificate.common.qr
 
 import android.graphics.ImageFormat
@@ -7,11 +17,15 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import com.google.zxing.*
 import com.google.zxing.common.GlobalHistogramBinarizer
 import com.google.zxing.common.HybridBinarizer
-import kotlinx.coroutines.CoroutineScope
 import java.nio.ByteBuffer
 import java.util.concurrent.atomic.AtomicBoolean
 
-class QRCodeMixedXingAnalyzer(
+
+/**
+ * Mix approach for QR Code Analyzer.
+ * Every first frame decoded with GlobalHistogramBinarizer, each second with the HybridBinarizer
+ * */
+class QRCodeMixedZXingAnalyzer(
 	private val onDecodeCertificate: (decodeCertificateState: DecodeCertificateState) -> Unit
 ) : ImageAnalysis.Analyzer {
 	companion object {
