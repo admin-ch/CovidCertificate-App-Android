@@ -55,7 +55,7 @@ import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFrag
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
 import ch.admin.bag.covidcertificate.wallet.util.*
-import ch.admin.bag.covidcertificate.wallet.vaccinationappointment.VaccinationAppointmentFragment
+import ch.admin.bag.covidcertificate.wallet.vaccination.appointment.VaccinationAppointmentFragment
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive

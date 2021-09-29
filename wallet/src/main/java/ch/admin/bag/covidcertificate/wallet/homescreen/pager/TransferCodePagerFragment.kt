@@ -14,13 +14,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.transition.TransitionManager
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
@@ -31,6 +31,8 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeViewModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeBubbleView
+import ch.admin.bag.covidcertificate.wallet.vaccination.appointment.VaccinationAppointmentFragment
+import ch.admin.bag.covidcertificate.wallet.vaccination.hint.VaccinationHintViewModel
 
 class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager) {
 
@@ -46,6 +48,7 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 	private val binding get() = _binding!!
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val vaccinationHintViewModel by activityViewModels<VaccinationHintViewModel>()
 	private val transferCodeViewModel by viewModels<TransferCodeViewModel>()
 	private var transferCode: TransferCodeModel? = null
 
@@ -73,6 +76,10 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 		transferCodeViewModel.conversionState.observe(viewLifecycleOwner) { onConversionStateChanged(it) }
 
 		transferCodeViewModel.downloadCertificateForTransferCode(transferCode)
+
+		vaccinationHintViewModel.displayVaccinationHint.observe(viewLifecycleOwner) { shouldDisplayVaccinationHint ->
+			displayVaccinationHint(shouldDisplayVaccinationHint)
+		}
 	}
 
 	override fun onDestroyView() {
@@ -138,4 +145,29 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 			}
 		}
 	}
+
+	private fun displayVaccinationHint(display: Boolean) {
+		val vaccinationHint = ConfigRepository.getCurrentConfig(requireContext())
+			?.getVaccinationHints(getString(R.string.language_key))
+			?.randomOrNull()
+
+		// TODO Measure the card and decide if the graphic and/or vaccination hint should be hidden because the phone screen is too small
+		TransitionManager.beginDelayedTransition(binding.root)
+		binding.transferCodePageVaccinationHint.isVisible = display && vaccinationHint != null
+		binding.vaccinationHintTitle.text = vaccinationHint?.title
+		binding.vaccinationHintText.text = vaccinationHint?.text
+
+		binding.vaccinationHintDismiss.setOnClickListener {
+			vaccinationHintViewModel.dismissVaccinationHint()
+		}
+
+		binding.vaccinationHintBookNow.setOnClickListener {
+			requireParentFragment().parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, VaccinationAppointmentFragment.newInstance())
+				.addToBackStack(VaccinationAppointmentFragment::class.java.canonicalName)
+				.commit()
+		}
+	}
+
 }

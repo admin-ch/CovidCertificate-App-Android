@@ -59,7 +59,7 @@ import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 import ch.admin.bag.covidcertificate.wallet.qr.WalletQrScanFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeIntroFragment
-import ch.admin.bag.covidcertificate.wallet.vaccinationappointment.VaccinationAppointmentFragment
+import ch.admin.bag.covidcertificate.wallet.vaccination.appointment.VaccinationAppointmentFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.concurrent.atomic.AtomicLong
 
