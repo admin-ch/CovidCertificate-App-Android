@@ -30,8 +30,3 @@ jobs:
           token: ${{secrets.APPCENTER_API_TOKEN}}
           group: public
           file: wallet/build/outputs/apk/prod/release/wallet-prod-release.apk
-      - name: Upload APK
-        uses: actions/upload-artifact@v1.0.0
-        with:
-          name: wallet.apk
-          path: wallet/build/outputs/apk/prod/release/wallet-prod-release.apk

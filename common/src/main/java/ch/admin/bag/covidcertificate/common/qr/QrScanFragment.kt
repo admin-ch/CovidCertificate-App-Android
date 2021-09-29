@@ -12,9 +12,13 @@ package ch.admin.bag.covidcertificate.common.qr
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
+import android.hardware.camera2.CameraCharacteristics
+import android.hardware.camera2.CameraManager
+import android.media.SimpleImage
 import android.os.Bundle
 import android.util.Size
 import android.view.MotionEvent
@@ -23,23 +27,28 @@ import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
-import androidx.camera.core.Camera
-import androidx.camera.core.CameraSelector
-import androidx.camera.core.FocusMeteringAction
-import androidx.camera.core.ImageAnalysis
-import androidx.camera.core.ImageCapture
-import androidx.camera.core.Preview
+import androidx.camera.camera2.interop.Camera2CameraInfo
+import androidx.camera.core.*
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.R
+import ch.admin.bag.covidcertificate.common.aws.AWSRepository
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import com.google.gson.Gson
+import com.google.mlkit.vision.barcode.Barcode
+import com.google.mlkit.vision.barcode.BarcodeScannerOptions
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import java.util.concurrent.Executor
+import java.util.concurrent.atomic.AtomicInteger
 
 abstract class QrScanFragment : Fragment() {
 
@@ -52,6 +61,7 @@ abstract class QrScanFragment : Fragment() {
 	// These need to be set by implementing classes during onCreateView. That's why they are not private.
 	protected lateinit var toolbar: Toolbar
 	protected lateinit var flashButton: ImageButton
+	protected lateinit var uploadButton: ImageButton
 	protected lateinit var errorView: View
 	protected lateinit var errorCodeView: TextView
 
@@ -78,6 +88,13 @@ abstract class QrScanFragment : Fragment() {
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
 	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
+	protected lateinit var repository: AWSRepository
+	private val frameCount: AtomicInteger = AtomicInteger(5)
+	val options = BarcodeScannerOptions.Builder()
+		.setBarcodeFormats(
+			Barcode.FORMAT_QR_CODE,
+		)
+		.build()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -92,6 +109,10 @@ abstract class QrScanFragment : Fragment() {
 		// Wait for the views to be properly laid out
 		qrCodeScanner.post {
 			bindCameraUseCases()
+		}
+
+		uploadButton.setOnClickListener {
+			frameCount.set(0)
 		}
 	}
 
@@ -147,41 +168,58 @@ abstract class QrScanFragment : Fragment() {
 				.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
 				.build()
 				.also { imageAnalysis ->
-					imageAnalysis.setAnalyzer(mainExecutor, QRCodeAnalyzer { decodeCertificateState: DecodeCertificateState ->
-						when (decodeCertificateState) {
-							is DecodeCertificateState.ERROR -> {
-								handleInvalidQRCodeExceptions(decodeCertificateState.error)
-							}
-							DecodeCertificateState.SCANNING -> {
-								view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
-							}
-							is DecodeCertificateState.SUCCESS -> {
-								val qrCodeData = decodeCertificateState.qrCode
-								qrCodeData?.let {
-									decodeQrCodeData(
-										it,
-										onDecodeSuccess = {
-											// Once successfully decoded, clear the analyzer from stopping more frames being
-											// analyzed and possibly decoded successfully
-											imageAnalysis.clearAnalyzer()
+					imageAnalysis.setAnalyzer(
+						mainExecutor,
+						QRCodeMLAnalyzer(viewLifecycleOwner.lifecycleScope) { decodeCertificateState: DecodeCertificateState ->
+							when (decodeCertificateState) {
+								is DecodeCertificateState.ERROR -> {
+									handleInvalidQRCodeExceptions(decodeCertificateState.error)
+								}
+								is DecodeCertificateState.SCANNING -> {
+									view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
+									decodeCertificateState.simpleImage.let { simpleImage ->
+										upload(simpleImage, false)
+									}
+								}
+								is DecodeCertificateState.SUCCESS -> {
+									val qrCodeData = decodeCertificateState.qrCode
+									qrCodeData?.let {
+										decodeQrCodeData(
+											it,
+											onDecodeSuccess = {
+												// Once successfully decoded, clear the analyzer from stopping more frames being
+												// analyzed and possibly decoded successfully
+												imageAnalysis.clearAnalyzer()
 
-											view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
-										},
-										onDecodeError = { error ->
-											view?.post { handleInvalidQRCodeExceptions(error) }
+												view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
+											},
+											onDecodeError = { error ->
+												view?.post { handleInvalidQRCodeExceptions(error) }
+											}
+										)
+									}
+									CoroutineScope(Dispatchers.Main).launch {
+										try {
+											decodeCertificateState.simpleImage.let { simpleImage ->
+												val simpleImageAsJson = Gson().toJson(simpleImage)
+												repository.upload(
+													simpleImageAsJson,
+													true
+												)
+											}
+										} catch (e: java.lang.Exception) {
+											e.printStackTrace()
 										}
-									)
+									}
 								}
 							}
-						}
-					})
+						})
 				}
 
 			cameraProvider.unbindAll()
 
 			try {
 				camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
-
 				// Set focus to the center of the viewfinder to help the auto focus
 				val metricPointFactory = qrCodeScanner.meteringPointFactory
 				val centerX = cutOut.left + cutOut.width / 2.0f
@@ -215,6 +253,19 @@ abstract class QrScanFragment : Fragment() {
 		}
 	}
 
+	private fun upload(simpleImage: SimpleImage, success: Boolean) {
+		while (frameCount.getAndIncrement() < 5) {
+			val simpleImageAsJson = Gson().toJson(simpleImage)
+			CoroutineScope(Dispatchers.Main).launch {
+				try {
+					repository.upload(simpleImageAsJson, success)
+				} catch (e: java.lang.Exception) {
+					e.printStackTrace()
+				}
+			}
+		}
+	}
+	
 	private fun checkCameraPermission() {
 		val isGranted =
 			ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED

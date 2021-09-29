@@ -14,11 +14,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import ch.admin.bag.covidcertificate.common.aws.AWSRepository
+import ch.admin.bag.covidcertificate.common.aws.AWSSpec
 import ch.admin.bag.covidcertificate.common.qr.QrScanFragment
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
 import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import ch.admin.bag.covidcertificate.verifier.BuildConfig
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentQrScanBinding
 import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment
@@ -48,10 +51,14 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 		_binding = FragmentQrScanBinding.inflate(inflater, container, false)
 
+		repository = AWSRepository.getInstance(AWSSpec(requireContext().applicationContext, BuildConfig.AWS_API_KEY))
+
 		toolbar = binding.fragmentQrScannerToolbar
 		qrCodeScanner = binding.qrCodeScanner
 		cutOut = binding.cameraPreviewContainer
 		flashButton = binding.fragmentQrScannerFlashButton
+		uploadButton = binding.fragmentUploadButton
+
 		errorView = binding.fragmentQrScannerErrorView
 		errorCodeView = binding.qrCodeScannerErrorCode
 

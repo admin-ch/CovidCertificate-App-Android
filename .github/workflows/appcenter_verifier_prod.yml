@@ -30,8 +30,3 @@ jobs:
           token: ${{secrets.APPCENTER_API_TOKEN}}
           group: public
           file: verifier/build/outputs/apk/prod/release/verifier-prod-release.apk
-      - name: Upload APK
-        uses: actions/upload-artifact@v1.0.0
-        with:
-          name: verifier.apk
-          path: verifier/build/outputs/apk/prod/release/verifier-prod-release.apk
