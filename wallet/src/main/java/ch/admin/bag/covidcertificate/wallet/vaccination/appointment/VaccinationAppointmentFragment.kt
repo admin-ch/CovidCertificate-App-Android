@@ -70,7 +70,7 @@ class VaccinationAppointmentFragment : Fragment() {
 
 	private fun setupMoreInformationButton() {
 		binding.vaccinationMoreInfoButton.setOnClickListener {
-			val url = "" // TODO Set correct url
+			val url = getString(R.string.vaccination_booking_info_url)
 			UrlUtil.openUrl(requireContext(), url)
 		}
 	}

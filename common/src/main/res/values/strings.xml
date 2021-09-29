@@ -1261,4 +1261,7 @@ Viele Orte bieten auch Walk-in-Impfungen ohne Termine an."</string>
 
     <!-- Button text for information about the vaccine at the bottom of the certificate -->
     <string name="vaccination_information_button_in_certificate">"Informationen zur Impfung"</string>
+
+    <!-- Vaccination Booking Info URL Link -->
+    <string name="vaccination_booking_info_url">"https://foph-coronavirus.ch/vaccination/"</string>
 </resources>
