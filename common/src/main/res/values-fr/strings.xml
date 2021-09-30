@@ -1177,89 +1177,89 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
     <string name="vaccination_booking_zh_url">"http://www.zh.ch/coronaimpfung"</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_1">"Jetzt impfen lassen!"</string>
+    <string name="vaccination_hint_title_1">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_1">"Mit der Covid-19-Impfung können Sie auf das wiederholte Testen verzichten."</string>
+    <string name="vaccination_hint_text_1">"La vaccination contre le COVID-19 vous permet d’éviter les tests répétés."</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_2">"Jetzt impfen lassen!"</string>
+    <string name="vaccination_hint_title_2">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_2">"Mit der Covid-19-Impfung können Sie unbeschwert in die meisten Länder reisen."</string>
+    <string name="vaccination_hint_text_2">"La vaccination contre le COVID-19 vous permet de voyager sereinement dans la plupart des pays."</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_3">"Jetzt impfen lassen!"</string>
+    <string name="vaccination_hint_title_3">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_3">"Mit der Covid-19-Impfung können Sie sich vor Erkrankung und einem allfälligen schweren Verlauf schützen."</string>
+    <string name="vaccination_hint_text_3">"La vaccination vous protège contre le COVID-19 et, le cas échéant, contre une évolution grave de la maladie."</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_4">"Jetzt impfen lassen!"</string>
+    <string name="vaccination_hint_title_4">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_4">"Mit der Covid-19-Impfung können Sie auf sichere Art immun werden."</string>
+    <string name="vaccination_hint_text_4">"La vaccination contre le COVID-19 vous permet de vous immuniser en toute sécurité."</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_5">"Jetzt impfen lassen!"</string>
+    <string name="vaccination_hint_title_5">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_5">"Mit der Covid-19-Impfung können Sie mithelfen, die Krankheitslast zu reduzieren."</string>
+    <string name="vaccination_hint_text_5">"Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à réduire la charge de morbidité."</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_6">"Jetzt impfen lassen!"</string>
+    <string name="vaccination_hint_title_6">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_6">"Mit der Covid-19-Impfung können Sie helfen, die Auswirkungen der Pandemie zu bekämpfen."</string>
+    <string name="vaccination_hint_text_6">"Grâce à la vaccination contre le COVID-19, vous contribuez à la lutte contre les conséquences de la pandémie."</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_7">"Jetzt impfen lassen!"</string>
+    <string name="vaccination_hint_title_7">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_7">"Mit der Covid-19-Impfung können Sie die Langzeitfolgen einer Covid-19-Erkrankung vermeiden."</string>
+    <string name="vaccination_hint_text_7">"La vaccination contre le COVID-19 vous permet d’éviter les effets à long terme de la maladie."</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_8">"Jetzt impfen lassen!"</string>
+    <string name="vaccination_hint_title_8">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_8">"Mit der Covid-19-Impfung können Sie dazu beitragen, das Gesundheitswesen zu entlasten."</string>
+    <string name="vaccination_hint_text_8">"Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à décharger le système de santé."</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_9">"Jetzt impfen lassen!"</string>
+    <string name="vaccination_hint_title_9">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_9">"Mit der Covid-19-Impfung können Sie dazu beitragen, die Freiheiten des Alltags zurückzubringen."</string>
+    <string name="vaccination_hint_text_9">"Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à rétablir les libertés de la vie quotidienne."</string>
 
     <!-- vaccination booking info screen title -->
-    <string name="vaccination_booking_info_title">"Impftermin in Ihrer Nähe buchen"</string>
+    <string name="vaccination_booking_info_title">"Prendre un rendez-vous de vaccination près de chez vous"</string>
 
     <!-- vaccination booking info screen text -->
-    <string name="vaccination_booking_info_text">"Eine Impfung könnte zum Beispiel an diesen Orten in Ihrer Nähe stattfinden:
+    <string name="vaccination_booking_info_text">"La vaccination pourrait, par exemple, être proposée dans les lieux suivants situés à proximité de chez vous :
 
-- in spezifischen Impfzentren
-- in Spitälern
-- bei Ihrem Hausarzt oder Ihrer Hausärztin
-- in Impfapotheken
+- dans des centres de vaccination désignés
+- dans les hôpitaux
+- chez votre médecin de famille
+- dans les pharmacies
 
-Viele Orte bieten auch Walk-in-Impfungen ohne Termine an."</string>
+Il est aussi possible de se faire vacciner sans rendez-vous dans de nombreux endroits."</string>
 
     <!-- vaccination booking info screen info box at bottom -->
-    <string name="vaccination_booking_info_info">"Die Covid-19-Impfung ist für Personen ab 12 Jahren empfohlen. Die Impfung ist gratis."</string>
+    <string name="vaccination_booking_info_info">"Gratuite, la vaccination contre le COVID-19 est recommandée pour les personnes dès 12 ans."</string>
 
     <!-- Header on vaccination appointment screen -->
-    <string name="vaccination_appointment_header">"Impftermin"</string>
+    <string name="vaccination_appointment_header">"Rendez-vous de vaccination"</string>
 
     <!-- Book vaccination appointment button title on homescreen -->
-    <string name="vaccination_homescreen_button_title">"Impftermin buchen"</string>
+    <string name="vaccination_homescreen_button_title">"Prendre un rendez-vous de vaccination"</string>
 
     <!-- Choose your canton title in vaccination appointment screen -->
-    <string name="vaccination_choose_your_canton">"Wählen Sie Ihren Kanton"</string>
+    <string name="vaccination_choose_your_canton">"Sélectionnez votre canton"</string>
 
     <!-- Link title for more information about the vaccine -->
-    <string name="vaccination_more_information_title">"Weitere Informationen rund um die Covid-19-Impfung"</string>
+    <string name="vaccination_more_information_title">"Plus d’informations sur la vaccination contre le COVID-19"</string>
 
     <!-- Button text for information about the vaccine at the bottom of the certificate -->
-    <string name="vaccination_information_button_in_certificate">"Informationen zur Impfung"</string>
+    <string name="vaccination_information_button_in_certificate">"Informations sur la vaccination"</string>
 
     <!-- Vaccination Booking Info URL Link -->
     <string name="vaccination_booking_info_url">"https://ofsp-coronavirus.ch/vaccination/"</string>

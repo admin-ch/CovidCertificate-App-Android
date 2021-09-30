@@ -1,6 +1,47 @@
 {
 	"forceUpdate": false,
-	"infoBox": null,
+	"infoBox": {
+		"de": {
+			"title": "Update benötigt",
+			"msg": "Laden Sie die neue Version der App.",
+			"url": "market://details?id=ch.admin.bag.covidcertificate.wallet",
+			"urlTitle": "Aktualisieren",
+			"isDismissible": false,
+			"infoId": "-1203297206"
+		},
+		"en": {
+			"title": "Update required",
+			"msg": "Download the latest version of the app.",
+			"url": "market://details?id=ch.admin.bag.covidcertificate.wallet",
+			"urlTitle": "Update",
+			"isDismissible": false,
+			"infoId": "468313165"
+		},
+		"fr": {
+			"title": "Mise à jour nécessaire",
+			"msg": "Téléchargez la nouvelle version de l'application.",
+			"url": "market://details?id=ch.admin.bag.covidcertificate.wallet",
+			"urlTitle": "Mettre à jour",
+			"isDismissible": false,
+			"infoId": "1070458479"
+		},
+		"it": {
+			"title": "Aggiornamento necessario",
+			"msg": "Caricare la nuova versione dellʼapp.",
+			"url": "market://details?id=ch.admin.bag.covidcertificate.wallet",
+			"urlTitle": "Aggiorna",
+			"isDismissible": false,
+			"infoId": "1523094097"
+		},
+		"rm": {
+			"title": "Update necessari",
+			"msg": "Chargiai giu la nova versiun da l'app.",
+			"url": "market://details?id=ch.admin.bag.covidcertificate.wallet",
+			"urlTitle": "Actualisar",
+			"isDismissible": false,
+			"infoId": "-1166413125"
+		}
+	},
 	"questions": {
 		"de": {
 			"faqTitle": "Was sind Covid-Zertifikate?",
@@ -373,8 +414,8 @@
 			"faqTitle": "Wie funktioniert \ndie App?",
 			"faqSubTitle": "Mit der COVID Certificate App können Sie Covid-Zertifikate einfach und sicher auf Ihrem Mobilgerät abspeichern und vorweisen.",
 			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
+			"faqIconIos": "ic-how-it-works-image",
+			"faqIconAndroid": "illu_how_it_works",
 			"faqEntries": [
 				{
 					"title": "Wie kann ich ein Covid-Zertifikat zur App hinzufügen?",
@@ -387,6 +428,14 @@
 				{
 					"title": "Können auch mehrere Covid-Zertifikate hinzugefügt werden?",
 					"text": "Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument des Zertifikatsinhabers / der Zertifikatsinhaberin gültig.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Was ist ein Transfer-Code?",
+					"text": "Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat, z. B. nach einem Covid-Test, direkt in die App geliefert.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -425,6 +474,14 @@
 					"linkUrl": null
 				},
 				{
+					"title": "Ich habe das Covid-Zertifikat ausschliesslich elektronisch in der App. Wie komme ich zum Zertifikat als PDF oder auf Papier?",
+					"text": "In der «COVID Certificate»-App finden Sie in der Detailansicht des elektronische Covid-Zertifikats die Funktion «Exportieren». Damit können Sie ein PDF erstellen, dieses speichern und ausdrucken.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
 					"title": "Was muss ich tun, wenn ich das Covid-Zertifikat oder die App lösche?",
 					"text": "Sie können Ihr Covid-Zertifikat einfach wieder auf Ihrem Mobilgerät speichern. Laden Sie dazu die App erneut herunter und scannen Sie anschliessend den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF.",
 					"iconAndroid": null,
@@ -438,8 +495,8 @@
 			"faqTitle": "How the app works",
 			"faqSubTitle": "With the COVID Certificate app, you can easily and securely store and present COVID certificates on your mobile device.",
 			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
+			"faqIconIos": "ic-how-it-works-image",
+			"faqIconAndroid": "illu_how_it_works",
 			"faqEntries": [
 				{
 					"title": "How can I add a COVID certificate to the app?",
@@ -452,6 +509,14 @@
 				{
 					"title": "Can several COVID certificates be added?",
 					"text": "Yes, that is possible. For example, you can save the COVID certificates of all family members in your app. Also in this case, each COVID certificate is valid only in combination with an identification document (passport or ID card) of the certificate holder.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "What is a transfer code?",
+					"text": "The transfer codes allow COVID certificates to be transmitted quickly and securely. In this way, you receive your certificate (e.g. after a test) directly in the application.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -490,6 +555,14 @@
 					"linkUrl": null
 				},
 				{
+					"title": "I only have my COVID certificate electronically in the app. How can I get the certificate as a PDF or on paper?",
+					"text": "In the detailed view of the electronic COVID certificate in the COVID Certificate app you’ll find the Export function. You can use this to generate, save and print a PDF",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
 					"title": "What do I need to do if I delete the COVID certificate or the app?",
 					"text": "You can easily restore your COVID certificate on your mobile device. To do so, download the app again and then scan the QR code on your paper or PDF COVID certificate.",
 					"iconAndroid": null,
@@ -503,8 +576,8 @@
 			"faqTitle": "Comment l'app \nfonctionne-t-elle?",
 			"faqSubTitle": "L'app vous permet de stocker des certificats COVID de manière simple et sûre sur votre appareil mobile et de les présenter au moyen de ce dernier.",
 			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
+			"faqIconIos": "ic-how-it-works-image",
+			"faqIconAndroid": "illu_how_it_works",
 			"faqEntries": [
 				{
 					"title": "Comment ajouter un certificat COVID à l'app?",
@@ -517,6 +590,14 @@
 				{
 					"title": "Puis-je ajouter plusieurs certificats COVID?",
 					"text": "Oui. Vous pouvez par exemple stocker dans l'app les certificats COVID de tous les membres de votre famille. À noter également dans ce cas qu'un certificat COVID n'est valable que si son détenteur présente une pièce d'identité.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Qu'est-ce qu'un code de transfert ?",
+					"text": "Les codes de transfert permettent de transmettre les certificats COVID rapidement et en toute sécurité. De cette façon, vous recevez votre certificat (p. ex. après un test) directement dans l’application.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -555,6 +636,14 @@
 					"linkUrl": null
 				},
 				{
+					"title": "Mon certificat COVID n’est disponible qu’au format électronique dans l’application. Comment puis-je obtenir mon certificat en PDF ou sur papier ?",
+					"text": "Dans l’application « COVID Certificate », vous trouvez la fonction « Exporter » dans la vue détaillée du certificat. Vous pouvez ainsi générer un PDF afin de le sauvegarder et de l’imprimer.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
 					"title": "Et si je supprime le certificat COVID ou l'app?",
 					"text": "Vous pouvez réenregistrer facilement votre certificat COVID sur votre appareil mobile. Il vous suffit de télécharger de nouveau l'app, puis de scanner le code QR figurant sur le certificat original, établi sur papier ou au format PDF.",
 					"iconAndroid": null,
@@ -568,8 +657,8 @@
 			"faqTitle": "Come funziona \nl'app?",
 			"faqSubTitle": "Con l'app COVID Certificate può salvare e mostrare i certificati COVID in modo semplice e sicuro sul Suo dispositivo mobile.",
 			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
+			"faqIconIos": "ic-how-it-works-image",
+			"faqIconAndroid": "illu_how_it_works",
 			"faqEntries": [
 				{
 					"title": "Come posso inserire un certificato COVID sulla app?",
@@ -582,6 +671,14 @@
 				{
 					"title": "È possibile aggiungere più certificati COVID?",
 					"text": "Sì, è possibile. Ad esempio, può salvare nella Sua app i certificati COVID dei suoi familiari. Anche in questo caso, il certificato COVID è valido solo con un documento di legittimazione del titolare.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Cos'è un codice di trasferimento?",
+					"text": "Con i codici di trasferimento i certificati COVID possono essere trasmessi in modo rapido e sicuro. Tramite questo canale puoi ricevere il certificato COVID direttamente nell’app, ad esempio dopo aver fatto un test COVID.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -620,6 +717,14 @@
 					"linkUrl": null
 				},
 				{
+					"title": "Ho il certificato COVID esclusivamente in formato elettronico nell’app. Come posso ottenerne uno in formato PDF o cartaceo?",
+					"text": "Nella vista di dettaglio del certificato COVID elettronico dell’app «COVID Certificate» è disponibile la funzione «Esporta», con la quale è possibile creare un PDF, salvarlo e stamparlo.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
 					"title": "Cosa devo fare se elimino il file contenente il certificato COVID o l'app?",
 					"text": "Può semplicemente risalvare il certificato COVID sul Suo dispositivo mobile. Per farlo, scarichi nuovamente l'app e poi scansioni il codice QR che trova sul Suo certificato COVID in formato cartaceo o PDF.",
 					"iconAndroid": null,
@@ -633,8 +738,8 @@
 			"faqTitle": "Co funcziuna \nl'app?",
 			"faqSubTitle": "Cun l'app COVID Certificate pudais Vus arcunar e preschentar en moda simpla e segira certificats COVID sin Voss telefonin.",
 			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
+			"faqIconIos": "ic-how-it-works-image",
+			"faqIconAndroid": "illu_how_it_works",
 			"faqEntries": [
 				{
 					"title": "Co poss jau agiuntar in certificat COVID a l'app?",
@@ -647,6 +752,14 @@
 				{
 					"title": "Pon vegnir agiuntads er plirs certificats COVID?",
 					"text": "Gea, quai è pussaivel. Vus pudais p.ex. arcunar en Vossa app ils certificats COVID da tut Vossas confamigliaras e da tut Voss confamigliars. Er en quest cas vala: Il certificat COVID è valaivel mo en cumbinaziun cun in document da legitimaziun  da la possessura u dal possessur dal certificat.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Tge è in code da transfer?",
+					"text": "Cun ils codes da transfer pon ils certificats COVID vegnir transmess en moda svelta e segira. Sin questa via vegn il certificat COVID furnì directamain en l'app, p.ex. suenter in test dal coronavirus.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -679,6 +792,14 @@
 				{
 					"title": "Tge datas cuntegna il code QR?",
 					"text": "Il code QR cuntegna tut las infurmaziuns che Vus chattais sin Voss certificat COVID en furma da palpiri en text betg criptà. Plinavant sa chatta ina signatura digitala en il code QR. Cun quella po vegnir verifitgada l'autenticitad da Voss certificat COVID. Uschia na po il certificat COVID betg vegnir falsifitgà.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Jau hai il certificat COVID mo en moda digitala en l'app. Co survegn jau il certificat sco PDF u sin palpiri?",
+					"text": "En la vista detagliada dal certificat COVID digital en l'app «COVID Certificate» chattais Vus la funcziun «Exportar». Uschia pudais Vus generar in PDF, l'arcunar ed al stampar.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -1152,5 +1273,1019 @@
 		}
 	},
 	"lightCertificateActive": true,
-	"pdfGenerationActive": true
+	"pdfGenerationActive": false,
+	"vaccinationHints": {
+		"de": [
+			{
+				"title": "Jetzt impfen lassen!",
+				"text": "Mit der Covid-19-Impfung können Sie auf das wiederholte Testen verzichten."
+			},
+			{
+				"title": "Jetzt impfen lassen!",
+				"text": "Mit der Covid-19-Impfung können Sie unbeschwert in die meisten Länder reisen."
+			},
+			{
+				"title": "Jetzt impfen lassen!",
+				"text": "Mit der Covid-19-Impfung können Sie sich vor Erkrankung und einem allfälligen schweren Verlauf schützen."
+			},
+			{
+				"title": "Jetzt impfen lassen!",
+				"text": "Mit der Covid-19-Impfung können Sie auf sichere Art immun werden."
+			},
+			{
+				"title": "Jetzt impfen lassen!",
+				"text": "Mit der Covid-19-Impfung können Sie mithelfen, die Krankheitslast zu reduzieren."
+			},
+			{
+				"title": "Jetzt impfen lassen!",
+				"text": "Mit der Covid-19-Impfung können Sie helfen, die Auswirkungen der Pandemie zu bekämpfen."
+			},
+			{
+				"title": "Jetzt impfen lassen!",
+				"text": "Mit der Covid-19-Impfung können Sie die Langzeitfolgen einer Covid-19-Erkrankung vermeiden."
+			},
+			{
+				"title": "Jetzt impfen lassen!",
+				"text": "Mit der Covid-19-Impfung können Sie dazu beitragen, das Gesundheitswesen zu entlasten."
+			},
+			{
+				"title": "Jetzt impfen lassen!",
+				"text": "Mit der Covid-19-Impfung können Sie dazu beitragen, die Freiheiten des Alltags zurückzubringen."
+			}
+		],
+		"en": [
+			{
+				"title": "Get vaccinated today!",
+				"text": "Being vaccinated against COVID-19 means no more repeat testing. "
+			},
+			{
+				"title": "Get vaccinated today!",
+				"text": "Being vaccinated against COVID-19 means hassle-free travel to most countries. "
+			},
+			{
+				"title": "Get vaccinated today!",
+				"text": "Being vaccinated against COVID-19 means protection from infection and severe disease. "
+			},
+			{
+				"title": "Get vaccinated today!",
+				"text": "Being vaccinated against COVID-19 means immunity the safe way."
+			},
+			{
+				"title": "Get vaccinated today!",
+				"text": "Being vaccinated against COVID-19 means helping to reduce the disease burden. "
+			},
+			{
+				"title": "Get vaccinated today!",
+				"text": "Being vaccinated against COVID-19 means helping to control the impact of the pandemic. "
+			},
+			{
+				"title": "Get vaccinated today!",
+				"text": "Being vaccinated against COVID-19 means preventing long COVID."
+			},
+			{
+				"title": "Get vaccinated today!",
+				"text": "Being vaccinated against COVID-19 means helping to relieve the pressure on the health system."
+			},
+			{
+				"title": "Get vaccinated today!",
+				"text": "Being vaccinated against COVID-19 means helping us get our everyday freedoms back."
+			}
+		],
+		"fr": [
+			{
+				"title": "Faites-vous vacciner sans plus attendre !",
+				"text": "La vaccination contre le COVID-19 vous permet d’éviter les tests répétés."
+			},
+			{
+				"title": "Faites-vous vacciner sans plus attendre !",
+				"text": "La vaccination contre le COVID-19 vous permet de voyager sereinement dans la plupart des pays."
+			},
+			{
+				"title": "Faites-vous vacciner sans plus attendre !",
+				"text": "La vaccination vous protège contre le COVID-19 et, le cas échéant, contre une évolution grave de la maladie."
+			},
+			{
+				"title": "Faites-vous vacciner sans plus attendre !",
+				"text": "La vaccination contre le COVID-19 vous permet de vous immuniser en toute sécurité."
+			},
+			{
+				"title": "Faites-vous vacciner sans plus attendre !",
+				"text": "Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à réduire la charge de morbidité."
+			},
+			{
+				"title": "Faites-vous vacciner sans plus attendre !",
+				"text": "Grâce à la vaccination contre le COVID-19, vous contribuez à la lutte contre les conséquences de la pandémie."
+			},
+			{
+				"title": "Faites-vous vacciner sans plus attendre !",
+				"text": "La vaccination contre le COVID-19 vous permet d’éviter les effets à long terme de la maladie."
+			},
+			{
+				"title": "Faites-vous vacciner sans plus attendre !",
+				"text": "Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à décharger le système de santé."
+			},
+			{
+				"title": "Faites-vous vacciner sans plus attendre !",
+				"text": "Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à rétablir les libertés de la vie quotidienne."
+			}
+		],
+		"it": [
+			{
+				"title": "Fatti vaccinare ora!",
+				"text": "Con la vaccinazione anti-COVID-19 puoi rinunciare ai test ripetuti."
+			},
+			{
+				"title": "Fatti vaccinare ora!",
+				"text": "Con la vaccinazione anti-COVID-19 puoi viaggiare senza preoccupazioni nella maggior parte dei Paesi."
+			},
+			{
+				"title": "Fatti vaccinare ora!",
+				"text": "Con la vaccinazione anti-COVID-19 puoi proteggerti dalla malattia e da un eventuale decorso grave."
+			},
+			{
+				"title": "Fatti vaccinare ora!",
+				"text": "Con la vaccinazione anti-COVID-19 puoi immunizzarti in modo sicuro."
+			},
+			{
+				"title": "Fatti vaccinare ora!",
+				"text": "Con la vaccinazione anti-COVID-19 puoi contribuire a ridurre il carico di malattia."
+			},
+			{
+				"title": "Fatti vaccinare ora!",
+				"text": "Con la vaccinazione anti-COVID-19 puoi contribuire a combattere le ripercussioni della pandemia."
+			},
+			{
+				"title": "Fatti vaccinare ora!",
+				"text": "Con la vaccinazione anti-COVID-19 puoi evitare le conseguenze a lungo termine di una malattia COVID-19."
+			},
+			{
+				"title": "Fatti vaccinare ora!",
+				"text": "Con la vaccinazione anti-COVID-19 puoi contribuire a sgravare il sistema sanitario."
+			},
+			{
+				"title": "Fatti vaccinare ora!",
+				"text": "Con la vaccinazione anti-COVID-19 puoi contribuire a fare in modo che tornino le libertà della vita quotidiana."
+			}
+		],
+		"rm": [
+			{
+				"title": "Sa laschar vaccinar ussa!",
+				"text": "Cun la vaccinaziun cunter COVID-19 pudais Vus desister da far tests repetitivs."
+			},
+			{
+				"title": "Sa laschar vaccinar ussa!",
+				"text": "Cun la vaccinaziun cunter COVID-19 pudais Vus viagiar libramain en la gronda part dals pajais."
+			},
+			{
+				"title": "Sa laschar vaccinar ussa!",
+				"text": "Cun la vaccinaziun cunter COVID-19 pudais Vus As proteger cunter ina infecziun e cunter in eventual grev decurs da la malsogna."
+			},
+			{
+				"title": "Sa laschar vaccinar ussa!",
+				"text": "Cun la vaccinaziun cunter COVID-19 pudais Vus As immunisar en moda segira."
+			},
+			{
+				"title": "Sa laschar vaccinar ussa!",
+				"text": "Cun la vaccinaziun cunter COVID-19 pudais Vus gidar a reducir la chargia da la malsogna."
+			},
+			{
+				"title": "Sa laschar vaccinar ussa!",
+				"text": "Cun la vaccinaziun cunter COVID-19 pudais Vus gidar a cumbatter cunter las consequenzas da la pandemia."
+			},
+			{
+				"title": "Sa laschar vaccinar ussa!",
+				"text": "Cun la vaccinaziun cunter COVID-19 pudais Vus evitar las consequenzas da lunga durada d'ina infecziun cun COVID-19."
+			},
+			{
+				"title": "Sa laschar vaccinar ussa!",
+				"text": "Cun la vaccinaziun cunter COVID-19 pudais Vus gidar a distgargiar il sistem da sanadad."
+			},
+			{
+				"title": "Sa laschar vaccinar ussa!",
+				"text": "Cun la vaccinaziun cunter COVID-19 pudais Vus gidar a purtar enavos las libertads dal mintgadi."
+			}
+		]
+	},
+	"vaccinationBookingCantons": {
+		"de": [
+			{
+				"name": "Aargau",
+				"iconAndroid": "icon_ag",
+				"iconIos": "icon-ag",
+				"linkUrl": "https://www.ag.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Appenzell Ausserrhoden",
+				"iconAndroid": "icon_ar",
+				"iconIos": "icon-ar",
+				"linkUrl": "https://www.ar.ch/verwaltung/departement-gesundheit-und-soziales/amt-fuer-gesundheit/informationsseite-coronavirus/coronaimpfung/"
+			},
+			{
+				"name": "Appenzell Innerrhoden",
+				"iconAndroid": "icon_ai",
+				"iconIos": "icon-ai",
+				"linkUrl": "https://www.ai.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Basel-Landschaft",
+				"iconAndroid": "icon_bl",
+				"iconIos": "icon-bl",
+				"linkUrl": "https://www.bl.ch/impfen"
+			},
+			{
+				"name": "Basel-Stadt",
+				"iconAndroid": "icon_bs",
+				"iconIos": "icon-bs",
+				"linkUrl": "http://www.coronaimpfzentrumbasel.ch"
+			},
+			{
+				"name": "Bern",
+				"iconAndroid": "icon_be",
+				"iconIos": "icon-be",
+				"linkUrl": "http://www.be.ch/corona-impfung"
+			},
+			{
+				"name": "Freiburg",
+				"iconAndroid": "icon_fr",
+				"iconIos": "icon-fr",
+				"linkUrl": "https://www.fr.ch/de/gesundheit/covid-19/covid-19-impfung-in-ihrer-naehe-durch-impfteams-in-den-impfzentren-in-der-apotheke-oder-bei-ihrem-arzt"
+			},
+			{
+				"name": "Genf",
+				"iconAndroid": "icon_ge",
+				"iconIos": "icon-ge",
+				"linkUrl": "https://www.ge.ch/se-faire-vacciner-contre-covid-19"
+			},
+			{
+				"name": "Glarus",
+				"iconAndroid": "icon_gl",
+				"iconIos": "icon-gl",
+				"linkUrl": "https://www.gl.ch/verwaltung/finanzen-und-gesundheit/gesundheit/coronavirus.html/4817#Impfung"
+			},
+			{
+				"name": "Graubünden",
+				"iconAndroid": "icon_gr",
+				"iconIos": "icon-gr",
+				"linkUrl": "https://www.gr.ch/DE/institutionen/verwaltung/djsg/ga/coronavirus/info/impfen/Seiten/impfen.aspx"
+			},
+			{
+				"name": "Jura",
+				"iconAndroid": "icon_ju",
+				"iconIos": "icon-ju",
+				"linkUrl": "https://www.jura.ch/fr/Autorites/Coronavirus/Vaccination.html"
+			},
+			{
+				"name": "Luzern",
+				"iconAndroid": "icon_lu",
+				"iconIos": "icon-lu",
+				"linkUrl": "http://www.lu.ch/covid_impfung"
+			},
+			{
+				"name": "Neuenburg",
+				"iconAndroid": "icon_ne",
+				"iconIos": "icon-ne",
+				"linkUrl": "https://www.ne.ch/autorites/DFS/SCSP/medecin-cantonal/maladies-vaccinations/covid-19-vaccination/Pages/accueil.aspx"
+			},
+			{
+				"name": "Nidwalden",
+				"iconAndroid": "icon_nw",
+				"iconIos": "icon-nw",
+				"linkUrl": "https://www.nw.ch/gesundheitsamtdienste/6044#Impfung"
+			},
+			{
+				"name": "Obwalden",
+				"iconAndroid": "icon_ow",
+				"iconIos": "icon-ow",
+				"linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+			},
+			{
+				"name": "St. Gallen",
+				"iconAndroid": "icon_sg",
+				"iconIos": "icon-sg",
+				"linkUrl": "https://www.sg.ch/coronavirus/impfen"
+			},
+			{
+				"name": "Schaffhausen",
+				"iconAndroid": "icon_sh",
+				"iconIos": "icon-sh",
+				"linkUrl": "https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Departement-des-Innern/Gesundheitsamt-7126057-DE.html"
+			},
+			{
+				"name": "Schwyz",
+				"iconAndroid": "icon_sz",
+				"iconIos": "icon-sz",
+				"linkUrl": "https://www.sz.ch/corona-impfen"
+			},
+			{
+				"name": "Solothurn",
+				"iconAndroid": "icon_so",
+				"iconIos": "icon-so",
+				"linkUrl": "https://so.ch/coronaimpfung"
+			},
+			{
+				"name": "Thurgau",
+				"iconAndroid": "icon_tg",
+				"iconIos": "icon-tg",
+				"linkUrl": "https://gesundheit.tg.ch/aktuelles/impfung-fuer-covid-19.html/11590"
+			},
+			{
+				"name": "Tessin",
+				"iconAndroid": "icon_ti",
+				"iconIos": "icon-ti",
+				"linkUrl": "http://www.ti.ch/vaccinazione"
+			},
+			{
+				"name": "Uri",
+				"iconAndroid": "icon_ur",
+				"iconIos": "icon-ur",
+				"linkUrl": "https://www.ur.ch/themen/3673"
+			},
+			{
+				"name": "Wallis",
+				"iconAndroid": "icon_vs",
+				"iconIos": "icon-vs",
+				"linkUrl": "https://www.vs.ch/de/web/coronavirus#ancre_vaccination"
+			},
+			{
+				"name": "Waadt",
+				"iconAndroid": "icon_vd",
+				"iconIos": "icon-vd",
+				"linkUrl": "https://vd.ch/coronavirus-vaccins"
+			},
+			{
+				"name": "Zug",
+				"iconAndroid": "icon_zg",
+				"iconIos": "icon-zg",
+				"linkUrl": "https://www.corona-impfung-zug.ch/"
+			},
+			{
+				"name": "Zürich",
+				"iconAndroid": "icon_zh",
+				"iconIos": "icon-zh",
+				"linkUrl": "http://www.zh.ch/coronaimpfung"
+			}
+		],
+		"en": [
+			{
+				"name": "Aargau",
+				"iconAndroid": "icon_ag",
+				"iconIos": "icon-ag",
+				"linkUrl": "https://www.ag.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Appenzell Ausserrhoden",
+				"iconAndroid": "icon_ar",
+				"iconIos": "icon-ar",
+				"linkUrl": "https://www.ar.ch/verwaltung/departement-gesundheit-und-soziales/amt-fuer-gesundheit/informationsseite-coronavirus/coronaimpfung/"
+			},
+			{
+				"name": "Appenzell Innerrhoden",
+				"iconAndroid": "icon_ai",
+				"iconIos": "icon-ai",
+				"linkUrl": "https://www.ai.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Basel-Country",
+				"iconAndroid": "icon_bl",
+				"iconIos": "icon-bl",
+				"linkUrl": "https://www.baselland.ch/politik-und-behorden/direktionen/volkswirtschafts-und-gesundheitsdirektion/amt-fur-gesundheit/medizinische-dienste/kantonsarztlicher-dienst/aktuelles/corona-impfung/englisch-english"
+			},
+			{
+				"name": "Basel-City",
+				"iconAndroid": "icon_bs",
+				"iconIos": "icon-bs",
+				"linkUrl": "http://www.coronaimpfzentrumbasel.ch"
+			},
+			{
+				"name": "Berne",
+				"iconAndroid": "icon_be",
+				"iconIos": "icon-be",
+				"linkUrl": "http://www.be.ch/corona-impfung"
+			},
+			{
+				"name": "Fribourg",
+				"iconAndroid": "icon_fr",
+				"iconIos": "icon-fr",
+				"linkUrl": "https://www.fr.ch/sante/covid-19/covid-19-vaccination"
+			},
+			{
+				"name": "Geneva",
+				"iconAndroid": "icon_ge",
+				"iconIos": "icon-ge",
+				"linkUrl": "https://www.ge.ch/en/getting-vaccinated-against-covid-19"
+			},
+			{
+				"name": "Glarus",
+				"iconAndroid": "icon_gl",
+				"iconIos": "icon-gl",
+				"linkUrl": "https://www.gl.ch/verwaltung/finanzen-und-gesundheit/gesundheit/coronavirus.html/4817#Impfung"
+			},
+			{
+				"name": "Graubünden",
+				"iconAndroid": "icon_gr",
+				"iconIos": "icon-gr",
+				"linkUrl": "https://www.gr.ch/DE/institutionen/verwaltung/djsg/ga/coronavirus/info/impfen/Seiten/impfen.aspx"
+			},
+			{
+				"name": "Jura",
+				"iconAndroid": "icon_ju",
+				"iconIos": "icon-ju",
+				"linkUrl": "https://www.jura.ch/fr/Autorites/Coronavirus/Vaccination.html"
+			},
+			{
+				"name": "Lucerne",
+				"iconAndroid": "icon_lu",
+				"iconIos": "icon-lu",
+				"linkUrl": "http://www.lu.ch/covid_impfung"
+			},
+			{
+				"name": "Neuchâtel",
+				"iconAndroid": "icon_ne",
+				"iconIos": "icon-ne",
+				"linkUrl": "https://www.ne.ch/autorites/DFS/SCSP/medecin-cantonal/maladies-vaccinations/covid-19-vaccination/Pages/accueil.aspx"
+			},
+			{
+				"name": "Nidwalden",
+				"iconAndroid": "icon_nw",
+				"iconIos": "icon-nw",
+				"linkUrl": "https://www.nw.ch/gesundheitsamtdienste/6044#Impfung"
+			},
+			{
+				"name": "Obwalden",
+				"iconAndroid": "icon_ow",
+				"iconIos": "icon-ow",
+				"linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+			},
+			{
+				"name": "St. Gallen",
+				"iconAndroid": "icon_sg",
+				"iconIos": "icon-sg",
+				"linkUrl": "https://www.sg.ch/coronavirus/impfen"
+			},
+			{
+				"name": "Schaffhausen",
+				"iconAndroid": "icon_sh",
+				"iconIos": "icon-sh",
+				"linkUrl": "https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Departement-des-Innern/Gesundheitsamt-7126057-DE.html"
+			},
+			{
+				"name": "Schwyz",
+				"iconAndroid": "icon_sz",
+				"iconIos": "icon-sz",
+				"linkUrl": "https://www.sz.ch/corona-impfen"
+			},
+			{
+				"name": "Solothurn",
+				"iconAndroid": "icon_so",
+				"iconIos": "icon-so",
+				"linkUrl": "https://so.ch/coronaimpfung"
+			},
+			{
+				"name": "Thurgovia",
+				"iconAndroid": "icon_tg",
+				"iconIos": "icon-tg",
+				"linkUrl": "https://gesundheit.tg.ch/aktuelles/impfung-fuer-covid-19.html/11590"
+			},
+			{
+				"name": "Ticino",
+				"iconAndroid": "icon_ti",
+				"iconIos": "icon-ti",
+				"linkUrl": "http://www.ti.ch/vaccinazione"
+			},
+			{
+				"name": "Uri",
+				"iconAndroid": "icon_ur",
+				"iconIos": "icon-ur",
+				"linkUrl": "https://www.ur.ch/themen/3673"
+			},
+			{
+				"name": "Valais",
+				"iconAndroid": "icon_vs",
+				"iconIos": "icon-vs",
+				"linkUrl": "https://www.vs.ch/de/web/coronavirus#ancre_vaccination"
+			},
+			{
+				"name": "Vaud",
+				"iconAndroid": "icon_vd",
+				"iconIos": "icon-vd",
+				"linkUrl": "https://vd.ch/coronavirus-vaccins"
+			},
+			{
+				"name": "Zug",
+				"iconAndroid": "icon_zg",
+				"iconIos": "icon-zg",
+				"linkUrl": "https://www.corona-impfung-zug.ch/en/"
+			},
+			{
+				"name": "Zürich",
+				"iconAndroid": "icon_zh",
+				"iconIos": "icon-zh",
+				"linkUrl": "http://www.zh.ch/coronaimpfung"
+			}
+		],
+		"fr": [
+			{
+				"name": "Argovie",
+				"iconAndroid": "icon_ag",
+				"iconIos": "icon-ag",
+				"linkUrl": "https://www.ag.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Appenzell Rhodes-Extérieures",
+				"iconAndroid": "icon_ar",
+				"iconIos": "icon-ar",
+				"linkUrl": "https://www.ar.ch/verwaltung/departement-gesundheit-und-soziales/amt-fuer-gesundheit/informationsseite-coronavirus/coronaimpfung/"
+			},
+			{
+				"name": "Appenzell Rhodes-Intérieures",
+				"iconAndroid": "icon_ai",
+				"iconIos": "icon-ai",
+				"linkUrl": "https://www.ai.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Bâle-Campagne",
+				"iconAndroid": "icon_bl",
+				"iconIos": "icon-bl",
+				"linkUrl": "https://www.baselland.ch/politik-und-behorden/direktionen/volkswirtschafts-und-gesundheitsdirektion/amt-fur-gesundheit/medizinische-dienste/kantonsarztlicher-dienst/aktuelles/corona-impfung/franzoesisch-francais"
+			},
+			{
+				"name": "Bâle-Ville",
+				"iconAndroid": "icon_bs",
+				"iconIos": "icon-bs",
+				"linkUrl": "http://www.coronaimpfzentrumbasel.ch"
+			},
+			{
+				"name": "Berne",
+				"iconAndroid": "icon_be",
+				"iconIos": "icon-be",
+				"linkUrl": "https://www.gsi.be.ch/fr/start/themen/coronavirus/impfen.html"
+			},
+			{
+				"name": "Fribourg",
+				"iconAndroid": "icon_fr",
+				"iconIos": "icon-fr",
+				"linkUrl": "https://www.fr.ch/sante/covid-19/covid-19-vaccination"
+			},
+			{
+				"name": "Genève",
+				"iconAndroid": "icon_ge",
+				"iconIos": "icon-ge",
+				"linkUrl": "https://www.ge.ch/se-faire-vacciner-contre-covid-19"
+			},
+			{
+				"name": "Glaris",
+				"iconAndroid": "icon_gl",
+				"iconIos": "icon-gl",
+				"linkUrl": "https://www.gl.ch/verwaltung/finanzen-und-gesundheit/gesundheit/coronavirus.html/4817#Impfung"
+			},
+			{
+				"name": "Grisons",
+				"iconAndroid": "icon_gr",
+				"iconIos": "icon-gr",
+				"linkUrl": "https://www.gr.ch/DE/institutionen/verwaltung/djsg/ga/coronavirus/info/impfen/Seiten/impfen.aspx"
+			},
+			{
+				"name": "Jura",
+				"iconAndroid": "icon_ju",
+				"iconIos": "icon-ju",
+				"linkUrl": "https://www.jura.ch/fr/Autorites/Coronavirus/Vaccination.html"
+			},
+			{
+				"name": "Lucerne",
+				"iconAndroid": "icon_lu",
+				"iconIos": "icon-lu",
+				"linkUrl": "http://www.lu.ch/covid_impfung"
+			},
+			{
+				"name": "Neuchâtel",
+				"iconAndroid": "icon_ne",
+				"iconIos": "icon-ne",
+				"linkUrl": "https://www.ne.ch/autorites/DFS/SCSP/medecin-cantonal/maladies-vaccinations/covid-19-vaccination/Pages/accueil.aspx"
+			},
+			{
+				"name": "Nidwald",
+				"iconAndroid": "icon_nw",
+				"iconIos": "icon-nw",
+				"linkUrl": "https://www.nw.ch/gesundheitsamtdienste/6044#Impfung"
+			},
+			{
+				"name": "Obwald",
+				"iconAndroid": "icon_ow",
+				"iconIos": "icon-ow",
+				"linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+			},
+			{
+				"name": "Saint-Gall",
+				"iconAndroid": "icon_sg",
+				"iconIos": "icon-sg",
+				"linkUrl": "https://www.sg.ch/coronavirus/impfen"
+			},
+			{
+				"name": "Schaffhouse",
+				"iconAndroid": "icon_sh",
+				"iconIos": "icon-sh",
+				"linkUrl": "https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Departement-des-Innern/Gesundheitsamt-7126057-DE.html"
+			},
+			{
+				"name": "Schwyz",
+				"iconAndroid": "icon_sz",
+				"iconIos": "icon-sz",
+				"linkUrl": "https://www.sz.ch/corona-impfen"
+			},
+			{
+				"name": "Soleure",
+				"iconAndroid": "icon_so",
+				"iconIos": "icon-so",
+				"linkUrl": "https://so.ch/coronaimpfung"
+			},
+			{
+				"name": "Thurgovie",
+				"iconAndroid": "icon_tg",
+				"iconIos": "icon-tg",
+				"linkUrl": "https://gesundheit.tg.ch/aktuelles/impfung-fuer-covid-19.html/11590"
+			},
+			{
+				"name": "Tessin",
+				"iconAndroid": "icon_ti",
+				"iconIos": "icon-ti",
+				"linkUrl": "http://www.ti.ch/vaccinazione"
+			},
+			{
+				"name": "Uri",
+				"iconAndroid": "icon_ur",
+				"iconIos": "icon-ur",
+				"linkUrl": "https://www.ur.ch/themen/3673"
+			},
+			{
+				"name": "Valais",
+				"iconAndroid": "icon_vs",
+				"iconIos": "icon-vs",
+				"linkUrl": "https://www.vs.ch/web/coronavirus/#ancre_vaccination"
+			},
+			{
+				"name": "Vaud",
+				"iconAndroid": "icon_vd",
+				"iconIos": "icon-vd",
+				"linkUrl": "https://vd.ch/coronavirus-vaccins"
+			},
+			{
+				"name": "Zoug",
+				"iconAndroid": "icon_zg",
+				"iconIos": "icon-zg",
+				"linkUrl": "https://www.corona-impfung-zug.ch/"
+			},
+			{
+				"name": "Zurich",
+				"iconAndroid": "icon_zh",
+				"iconIos": "icon-zh",
+				"linkUrl": "http://www.zh.ch/coronaimpfung"
+			}
+		],
+		"it": [
+			{
+				"name": "Argovia",
+				"iconAndroid": "icon_ag",
+				"iconIos": "icon-ag",
+				"linkUrl": "https://www.ag.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Appenzello Esterno",
+				"iconAndroid": "icon_ar",
+				"iconIos": "icon-ar",
+				"linkUrl": "https://www.ar.ch/verwaltung/departement-gesundheit-und-soziales/amt-fuer-gesundheit/informationsseite-coronavirus/coronaimpfung/"
+			},
+			{
+				"name": "Appenzello Interno",
+				"iconAndroid": "icon_ai",
+				"iconIos": "icon-ai",
+				"linkUrl": "https://www.ai.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Basilea Campagna",
+				"iconAndroid": "icon_bl",
+				"iconIos": "icon-bl",
+				"linkUrl": "https://www.baselland.ch/politik-und-behorden/direktionen/volkswirtschafts-und-gesundheitsdirektion/amt-fur-gesundheit/medizinische-dienste/kantonsarztlicher-dienst/aktuelles/corona-impfung/italienisch-italiano"
+			},
+			{
+				"name": "Basilea Città",
+				"iconAndroid": "icon_bs",
+				"iconIos": "icon-bs",
+				"linkUrl": "http://www.coronaimpfzentrumbasel.ch"
+			},
+			{
+				"name": "Berna",
+				"iconAndroid": "icon_be",
+				"iconIos": "icon-be",
+				"linkUrl": "http://www.be.ch/corona-impfung"
+			},
+			{
+				"name": "Friburgo",
+				"iconAndroid": "icon_fr",
+				"iconIos": "icon-fr",
+				"linkUrl": "https://www.fr.ch/sante/covid-19/covid-19-vaccination"
+			},
+			{
+				"name": "Ginevra",
+				"iconAndroid": "icon_ge",
+				"iconIos": "icon-ge",
+				"linkUrl": "https://www.ge.ch/se-faire-vacciner-contre-covid-19"
+			},
+			{
+				"name": "Glarona",
+				"iconAndroid": "icon_gl",
+				"iconIos": "icon-gl",
+				"linkUrl": "https://www.gl.ch/verwaltung/finanzen-und-gesundheit/gesundheit/coronavirus.html/4817#Impfung"
+			},
+			{
+				"name": "Grigioni",
+				"iconAndroid": "icon_gr",
+				"iconIos": "icon-gr",
+				"linkUrl": "https://www.gr.ch/IT/istituzioni/amministrazione/djsg/ga/coronavirus/info/impfen/Seiten/impfen.aspx"
+			},
+			{
+				"name": "Giura",
+				"iconAndroid": "icon_ju",
+				"iconIos": "icon-ju",
+				"linkUrl": "https://www.jura.ch/fr/Autorites/Coronavirus/Vaccination.html"
+			},
+			{
+				"name": "Lucerna",
+				"iconAndroid": "icon_lu",
+				"iconIos": "icon-lu",
+				"linkUrl": "http://www.lu.ch/covid_impfung"
+			},
+			{
+				"name": "Neuchâtel",
+				"iconAndroid": "icon_ne",
+				"iconIos": "icon-ne",
+				"linkUrl": "https://www.ne.ch/autorites/DFS/SCSP/medecin-cantonal/maladies-vaccinations/covid-19-vaccination/Pages/accueil.aspx"
+			},
+			{
+				"name": "Nidvaldo",
+				"iconAndroid": "icon_nw",
+				"iconIos": "icon-nw",
+				"linkUrl": "https://www.nw.ch/gesundheitsamtdienste/6044#Impfung"
+			},
+			{
+				"name": "Obvaldo",
+				"iconAndroid": "icon_ow",
+				"iconIos": "icon-ow",
+				"linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+			},
+			{
+				"name": "San Gallo",
+				"iconAndroid": "icon_sg",
+				"iconIos": "icon-sg",
+				"linkUrl": "https://www.sg.ch/coronavirus/impfen"
+			},
+			{
+				"name": "Sciaffusa",
+				"iconAndroid": "icon_sh",
+				"iconIos": "icon-sh",
+				"linkUrl": "https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Departement-des-Innern/Gesundheitsamt-7126057-DE.html"
+			},
+			{
+				"name": "Svitto",
+				"iconAndroid": "icon_sz",
+				"iconIos": "icon-sz",
+				"linkUrl": "https://www.sz.ch/corona-impfen"
+			},
+			{
+				"name": "Soletta",
+				"iconAndroid": "icon_so",
+				"iconIos": "icon-so",
+				"linkUrl": "https://so.ch/coronaimpfung"
+			},
+			{
+				"name": "Turgovia",
+				"iconAndroid": "icon_tg",
+				"iconIos": "icon-tg",
+				"linkUrl": "https://gesundheit.tg.ch/aktuelles/impfung-fuer-covid-19.html/11590"
+			},
+			{
+				"name": "Ticino",
+				"iconAndroid": "icon_ti",
+				"iconIos": "icon-ti",
+				"linkUrl": "http://www.ti.ch/vaccinazione"
+			},
+			{
+				"name": "Uri",
+				"iconAndroid": "icon_ur",
+				"iconIos": "icon-ur",
+				"linkUrl": "https://www.ur.ch/themen/3673"
+			},
+			{
+				"name": "Vallese",
+				"iconAndroid": "icon_vs",
+				"iconIos": "icon-vs",
+				"linkUrl": "https://www.vs.ch/de/web/coronavirus#ancre_vaccination"
+			},
+			{
+				"name": "Vaud",
+				"iconAndroid": "icon_vd",
+				"iconIos": "icon-vd",
+				"linkUrl": "https://vd.ch/coronavirus-vaccins"
+			},
+			{
+				"name": "Zugo",
+				"iconAndroid": "icon_zg",
+				"iconIos": "icon-zg",
+				"linkUrl": "https://www.corona-impfung-zug.ch/"
+			},
+			{
+				"name": "Zurigo",
+				"iconAndroid": "icon_zh",
+				"iconIos": "icon-zh",
+				"linkUrl": "http://www.zh.ch/coronaimpfung"
+			}
+		],
+		"rm": [
+			{
+				"name": "Argovia",
+				"iconAndroid": "icon_ag",
+				"iconIos": "icon-ag",
+				"linkUrl": "https://www.ag.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Appenzell Dadora",
+				"iconAndroid": "icon_ar",
+				"iconIos": "icon-ar",
+				"linkUrl": "https://www.ar.ch/verwaltung/departement-gesundheit-und-soziales/amt-fuer-gesundheit/informationsseite-coronavirus/coronaimpfung/"
+			},
+			{
+				"name": "Appenzell Dadens",
+				"iconAndroid": "icon_ai",
+				"iconIos": "icon-ai",
+				"linkUrl": "https://www.ai.ch/coronavirus-impfung"
+			},
+			{
+				"name": "Basilea-Champagna",
+				"iconAndroid": "icon_bl",
+				"iconIos": "icon-bl",
+				"linkUrl": "https://www.bl.ch/impfen"
+			},
+			{
+				"name": "Basilea-Citad",
+				"iconAndroid": "icon_bs",
+				"iconIos": "icon-bs",
+				"linkUrl": "http://www.coronaimpfzentrumbasel.ch"
+			},
+			{
+				"name": "Berna",
+				"iconAndroid": "icon_be",
+				"iconIos": "icon-be",
+				"linkUrl": "http://www.be.ch/corona-impfung"
+			},
+			{
+				"name": "Friburg",
+				"iconAndroid": "icon_fr",
+				"iconIos": "icon-fr",
+				"linkUrl": "https://www.fr.ch/sante/covid-19/covid-19-vaccination"
+			},
+			{
+				"name": "Genevra",
+				"iconAndroid": "icon_ge",
+				"iconIos": "icon-ge",
+				"linkUrl": "https://www.ge.ch/se-faire-vacciner-contre-covid-19"
+			},
+			{
+				"name": "Glaruna",
+				"iconAndroid": "icon_gl",
+				"iconIos": "icon-gl",
+				"linkUrl": "https://www.gl.ch/verwaltung/finanzen-und-gesundheit/gesundheit/coronavirus.html/4817#Impfung"
+			},
+			{
+				"name": "Grischun",
+				"iconAndroid": "icon_gr",
+				"iconIos": "icon-gr",
+				"linkUrl": "https://www.gr.ch/RM/instituziuns/administraziun/djsg/ga/coronavirus/info/impfen/Seiten/impfen.aspx"
+			},
+			{
+				"name": "Giura",
+				"iconAndroid": "icon_ju",
+				"iconIos": "icon-ju",
+				"linkUrl": "https://www.jura.ch/fr/Autorites/Coronavirus/Vaccination.html"
+			},
+			{
+				"name": "Lucerna",
+				"iconAndroid": "icon_lu",
+				"iconIos": "icon-lu",
+				"linkUrl": "http://www.lu.ch/covid_impfung"
+			},
+			{
+				"name": "Neuchâtel",
+				"iconAndroid": "icon_ne",
+				"iconIos": "icon-ne",
+				"linkUrl": "https://www.ne.ch/autorites/DFS/SCSP/medecin-cantonal/maladies-vaccinations/covid-19-vaccination/Pages/accueil.aspx"
+			},
+			{
+				"name": "Sutsilvania",
+				"iconAndroid": "icon_nw",
+				"iconIos": "icon-nw",
+				"linkUrl": "https://www.nw.ch/gesundheitsamtdienste/6044#Impfung"
+			},
+			{
+				"name": "Sursilvania",
+				"iconAndroid": "icon_ow",
+				"iconIos": "icon-ow",
+				"linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+			},
+			{
+				"name": "Son Gagl",
+				"iconAndroid": "icon_sg",
+				"iconIos": "icon-sg",
+				"linkUrl": "https://www.sg.ch/coronavirus/impfen"
+			},
+			{
+				"name": "Schaffusa",
+				"iconAndroid": "icon_sh",
+				"iconIos": "icon-sh",
+				"linkUrl": "https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Departement-des-Innern/Gesundheitsamt-7126057-DE.html"
+			},
+			{
+				"name": "Sviz",
+				"iconAndroid": "icon_sz",
+				"iconIos": "icon-sz",
+				"linkUrl": "https://www.sz.ch/corona-impfen"
+			},
+			{
+				"name": "Soloturn",
+				"iconAndroid": "icon_so",
+				"iconIos": "icon-so",
+				"linkUrl": "https://so.ch/coronaimpfung"
+			},
+			{
+				"name": "Turgovia",
+				"iconAndroid": "icon_tg",
+				"iconIos": "icon-tg",
+				"linkUrl": "https://gesundheit.tg.ch/aktuelles/impfung-fuer-covid-19.html/11590"
+			},
+			{
+				"name": "Tessin",
+				"iconAndroid": "icon_ti",
+				"iconIos": "icon-ti",
+				"linkUrl": "http://www.ti.ch/vaccinazione"
+			},
+			{
+				"name": "Uri",
+				"iconAndroid": "icon_ur",
+				"iconIos": "icon-ur",
+				"linkUrl": "https://www.ur.ch/themen/3673"
+			},
+			{
+				"name": "Vallais",
+				"iconAndroid": "icon_vs",
+				"iconIos": "icon-vs",
+				"linkUrl": "https://www.vs.ch/de/web/coronavirus#ancre_vaccination"
+			},
+			{
+				"name": "Vad",
+				"iconAndroid": "icon_vd",
+				"iconIos": "icon-vd",
+				"linkUrl": "https://vd.ch/coronavirus-vaccins"
+			},
+			{
+				"name": "Zug",
+				"iconAndroid": "icon_zg",
+				"iconIos": "icon-zg",
+				"linkUrl": "https://www.corona-impfung-zug.ch/"
+			},
+			{
+				"name": "Turitg",
+				"iconAndroid": "icon_zh",
+				"iconIos": "icon-zh",
+				"linkUrl": "http://www.zh.ch/coronaimpfung"
+			}
+		]
+	},
+	"vaccinationBookingInfo": {
+		"de": {
+			"title": "Impftermin in Ihrer Nähe buchen",
+			"text": "Eine Impfung könnte zum Beispiel an diesen Orten in Ihrer Nähe stattfinden:\n\n- in spezifischen Impfzentren\n- in Spitälern\n- bei Ihrem Hausarzt oder Ihrer Hausärztin\n- in Impfapotheken\n\nViele Orte bieten auch Walk-in-Impfungen ohne Termine an.",
+			"info": "Die Covid-19-Impfung ist für Personen ab 12 Jahren empfohlen. Die Impfung ist gratis."
+		},
+		"en": {
+			"title": "Book a vaccination appointment near you",
+			"text": "Vaccination may be performed at the following locations near you:\n\n- at specific vaccination centres\n- in hospitals\n- at your general practitioner's surgery\n- at a vaccination pharmacy\n\nMany places also offer walk-in vaccinations without an appointment.",
+			"info": "The COVID-19 vaccination is recommended for those over 12. It's free of charge."
+		},
+		"fr": {
+			"title": "Prendre un rendez-vous de vaccination près de chez vous",
+			"text": "La vaccination pourrait, par exemple, être proposée dans les lieux suivants situés à proximité de chez vous :\n\n- dans des centres de vaccination désignés\n- dans les hôpitaux\n- chez votre médecin de famille\n- dans les pharmacies\n\nIl est aussi possible de se faire vacciner sans rendez-vous dans de nombreux endroits.",
+			"info": "Gratuite, la vaccination contre le COVID-19 est recommandée pour les personnes dès 12 ans."
+		},
+		"it": {
+			"title": "Prendi appuntamento per la vaccinazione nelle tue vicinanze",
+			"text": "Per esempio potresti farti vaccinare in uno di questi luoghi nelle tue vicinanze:\n\n- in centri di vaccinazione specifici\n- negli ospedali\n- dal tuo medico di famiglia\n- nelle farmacie che vaccinano\n\nMolti di essi offrono anche vaccinazioni libere senza appuntamento.",
+			"info": "La vaccinazione anti-COVID-19 è raccomandata per le persone a partire dai 12 anni ed è gratuita."
+		},
+		"rm": {
+			"title": "Reservar in termin da vaccinaziun en Vossa vischinanza",
+			"text": "Ina vaccinaziun pudess per exempel vegnir fatga en quests lieus en Vossa vischinanza:\n\n- en centers da vaccinaziun specifics\n- en ospitals\n- tar Vossa media u tar Voss medi da chasa\n- en apotecas da vaccinaziun\n\nBlers lieus porschan er vaccinaziuns «walk-in» senza termin.",
+			"info": "La vaccinaziun cunter COVID-19 è recumandada per persunas a partir da 12 onns. La vaccinaziun è gratuita."
+		}
+	},
+	"showVaccinationHintHomescreen": true,
+	"showVaccinationHintDetail": true,
+	"showVaccinationHintTransfer": true
 }
