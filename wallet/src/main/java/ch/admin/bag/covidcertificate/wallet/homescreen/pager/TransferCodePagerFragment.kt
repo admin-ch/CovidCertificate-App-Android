@@ -16,6 +16,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
+import androidx.core.view.marginBottom
+import androidx.core.view.marginTop
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
@@ -147,26 +149,44 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 	}
 
 	private fun displayVaccinationHint(display: Boolean) {
-		val vaccinationHint = ConfigRepository.getCurrentConfig(requireContext())
-			?.getVaccinationHints(getString(R.string.language_key))
-			?.randomOrNull()
+		binding.root.post {
+			val shouldShowHintAndImage = isAvailableSpaceEnoughForHintAndImage()
 
-		// TODO Measure the card and decide if the graphic and/or vaccination hint should be hidden because the phone screen is too small
-		TransitionManager.beginDelayedTransition(binding.root)
-		binding.transferCodePageVaccinationHint.isVisible = display && vaccinationHint != null
-		binding.vaccinationHintTitle.text = vaccinationHint?.title
-		binding.vaccinationHintText.text = vaccinationHint?.text
+			val vaccinationHint = ConfigRepository.getCurrentConfig(requireContext())
+				?.getVaccinationHints(getString(R.string.language_key))
+				?.randomOrNull()
 
-		binding.vaccinationHintDismiss.setOnClickListener {
-			vaccinationHintViewModel.dismissVaccinationHint()
+			TransitionManager.beginDelayedTransition(binding.root)
+			binding.transferCodePageVaccinationHint.isVisible = display && vaccinationHint != null
+			binding.transferCodePageWaitingImage.isVisible = display.not() || shouldShowHintAndImage
+			binding.vaccinationHintTitle.text = vaccinationHint?.title
+			binding.vaccinationHintText.text = vaccinationHint?.text
+
+			binding.vaccinationHintDismiss.setOnClickListener {
+				vaccinationHintViewModel.dismissVaccinationHint()
+			}
+
+			binding.vaccinationHintBookNow.setOnClickListener {
+				requireParentFragment().parentFragmentManager.beginTransaction()
+					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+					.replace(R.id.fragment_container, VaccinationAppointmentFragment.newInstance())
+					.addToBackStack(VaccinationAppointmentFragment::class.java.canonicalName)
+					.commit()
+			}
 		}
+	}
 
-		binding.vaccinationHintBookNow.setOnClickListener {
-			requireParentFragment().parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, VaccinationAppointmentFragment.newInstance())
-				.addToBackStack(VaccinationAppointmentFragment::class.java.canonicalName)
-				.commit()
+	private fun isAvailableSpaceEnoughForHintAndImage(): Boolean {
+		binding.apply {
+			val fullHeight = root.height - root.paddingTop - root.paddingBottom
+			val statusLabelHeight = transferCodePageStatusLabel.height + transferCodePageStatusLabel.marginTop + transferCodePageStatusLabel.marginBottom
+			val statusBubbleHeight = transferCodePageBubble.height + transferCodePageBubble.marginTop + transferCodePageBubble.marginBottom
+
+			val availableHeight = fullHeight - statusLabelHeight - statusBubbleHeight
+
+			// In order to show both the vaccination hint and the waiting image, the available space should be at least half of the
+			// entire height and also more than twice the status bubble
+			return availableHeight >= fullHeight / 2 && availableHeight >= statusBubbleHeight * 2
 		}
 	}
 
