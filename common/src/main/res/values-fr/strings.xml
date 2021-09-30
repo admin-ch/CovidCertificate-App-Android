@@ -1263,4 +1263,7 @@ Il est aussi possible de se faire vacciner sans rendez-vous dans de nombreux end
 
     <!-- Vaccination Booking Info URL Link -->
     <string name="vaccination_booking_info_url">"https://ofsp-coronavirus.ch/vaccination/"</string>
+
+    <!-- Show information if special hardware detected  -->
+    <string name="verifier_qr_scanner_external_hardware_detected">"Scanner matériel externe détecté"</string>
 </resources>

@@ -1268,4 +1268,7 @@ Molti di essi offrono anche vaccinazioni libere senza appuntamento."</string>
 
     <!-- Vaccination Booking Info URL Link -->
     <string name="vaccination_booking_info_url">"https://ufsp-coronavirus.ch/vaccinazione/"</string>
+
+    <!-- Show information if special hardware detected  -->
+    <string name="verifier_qr_scanner_external_hardware_detected">"Rilevato uno scanner hardware esterno"</string>
 </resources>

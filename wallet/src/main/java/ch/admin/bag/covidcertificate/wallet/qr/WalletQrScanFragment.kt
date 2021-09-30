@@ -22,7 +22,6 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.add.CertificateAddFragment
-import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentQrScanBinding
 import ch.admin.bag.covidcertificate.wallet.howto.HowToScanFragment
 
@@ -71,6 +70,10 @@ class WalletQrScanFragment : QrScanFragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+
+		qrCodeScanner.post {
+			activateCamera()
+		}
 
 		binding.qrCodeScannerButtonHow.setOnClickListener { showHowToScanFragment() }
 	}

@@ -82,6 +82,7 @@ abstract class QrScanFragment : Fragment() {
 	private val secureStorage by lazy { ConfigSecureStorage.getInstance(requireContext()) }
 	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
+	protected var isCameraActivated = false
 
 	private val autoFocusClockLiveData = liveData(Dispatchers.IO) {
 		while (currentCoroutineContext().isActive) {
@@ -102,7 +103,7 @@ abstract class QrScanFragment : Fragment() {
 
 		// Wait for the views to be properly laid out
 		qrCodeScanner.post {
-			bindCameraUseCases()
+			initializeCamera()
 		}
 	}
 
@@ -132,68 +133,21 @@ abstract class QrScanFragment : Fragment() {
 		}
 	}
 
-	@SuppressLint("ClickableViewAccessibility")
-	private fun bindCameraUseCases() {
-		val rotation = qrCodeScanner.display.rotation
-		val cameraSelector = CameraSelector.Builder().requireLensFacing(CameraSelector.LENS_FACING_BACK).build()
+	protected fun activateCamera() {
+		deactivateCamera()
+
 		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 		cameraProviderFuture.addListener({
-			val cameraProvider: ProcessCameraProvider = cameraProviderFuture.get()
-			preview = Preview.Builder()
-				.setTargetResolution(Size(720, 1280))
-				.setTargetRotation(rotation)
+			val cameraProvider = cameraProviderFuture.get()
+
+			val cameraSelector = CameraSelector.Builder()
+				.requireLensFacing(CameraSelector.LENS_FACING_BACK)
 				.build()
-
-			preview?.setSurfaceProvider(qrCodeScanner.surfaceProvider)
-
-			imageCapture = ImageCapture.Builder()
-				.setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
-				.setTargetResolution(Size(720, 1280))
-				.setTargetRotation(rotation)
-				.build()
-
-			imageAnalyzer = ImageAnalysis.Builder()
-				.setTargetResolution(Size(720, 1280))
-				.setTargetRotation(rotation)
-				.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-				.build()
-				.also { imageAnalysis ->
-					imageAnalysis.setAnalyzer(
-						mainExecutor,
-						QRCodeMixedZXingAnalyzer() { decodeCertificateState: DecodeCertificateState ->
-							when (decodeCertificateState) {
-								is DecodeCertificateState.ERROR -> {
-									handleInvalidQRCodeExceptions(decodeCertificateState.error)
-								}
-								DecodeCertificateState.SCANNING -> {
-									view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
-								}
-								is DecodeCertificateState.SUCCESS -> {
-									val qrCodeData = decodeCertificateState.qrCode
-									qrCodeData?.let {
-										decodeQrCodeData(
-											it,
-											onDecodeSuccess = {
-												// Once successfully decoded, clear the analyzer from stopping more frames being
-												// analyzed and possibly decoded successfully
-												imageAnalysis.clearAnalyzer()
-
-												view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
-											},
-											onDecodeError = { error ->
-												view?.post { handleInvalidQRCodeExceptions(error) }
-											}
-										)
-									}
-								}
-							}
-						})
-				}
-
-			cameraProvider.unbindAll()
 
 			try {
+				qrCodeScanner.isVisible = true
 				camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
+				isCameraActivated = true
 
 				// Set focus to the center of the viewfinder to help the auto focus
 				autoFocusClockLiveData.observe(viewLifecycleOwner) {
@@ -205,6 +159,71 @@ abstract class QrScanFragment : Fragment() {
 				e.printStackTrace()
 			}
 		}, mainExecutor)
+	}
+
+	protected fun deactivateCamera() {
+		autoFocusClockLiveData.removeObservers(viewLifecycleOwner)
+		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
+		cameraProviderFuture.addListener({
+			val cameraProvider = cameraProviderFuture.get()
+			cameraProvider.unbindAll()
+			qrCodeScanner.isVisible = false
+			isCameraActivated = false
+		}, mainExecutor)
+	}
+
+	@SuppressLint("ClickableViewAccessibility")
+	private fun initializeCamera() {
+		val rotation = qrCodeScanner.display.rotation
+		preview = Preview.Builder()
+			.setTargetResolution(Size(720, 1280))
+			.setTargetRotation(rotation)
+			.build()
+			.also { it.setSurfaceProvider(qrCodeScanner.surfaceProvider) }
+
+		imageCapture = ImageCapture.Builder()
+			.setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
+			.setTargetResolution(Size(720, 1280))
+			.setTargetRotation(rotation)
+			.build()
+
+		imageAnalyzer = ImageAnalysis.Builder()
+			.setTargetResolution(Size(720, 1280))
+			.setTargetRotation(rotation)
+			.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
+			.build()
+			.also { imageAnalysis ->
+				imageAnalysis.setAnalyzer(
+					mainExecutor,
+					QRCodeMixedZXingAnalyzer { decodeCertificateState: DecodeCertificateState ->
+						when (decodeCertificateState) {
+							is DecodeCertificateState.ERROR -> {
+								handleInvalidQRCodeExceptions(decodeCertificateState.error)
+							}
+							DecodeCertificateState.SCANNING -> {
+								view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
+							}
+							is DecodeCertificateState.SUCCESS -> {
+								val qrCodeData = decodeCertificateState.qrCode
+								qrCodeData?.let {
+									decodeQrCodeData(
+										it,
+										onDecodeSuccess = {
+											// Once successfully decoded, clear the analyzer from stopping more frames being
+											// analyzed and possibly decoded successfully
+											imageAnalysis.clearAnalyzer()
+
+											view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
+										},
+										onDecodeError = { error ->
+											view?.post { handleInvalidQRCodeExceptions(error) }
+										}
+									)
+								}
+							}
+						}
+					})
+			}
 
 		cutOut.setOnTouchListener { _: View, motionEvent: MotionEvent ->
 			when (motionEvent.action) {
@@ -246,7 +265,6 @@ abstract class QrScanFragment : Fragment() {
 		val action = FocusMeteringAction.Builder(point).build()
 		camera?.cameraControl?.startFocusAndMetering(action)
 	}
-
 
 	private fun checkCameraPermission() {
 		val isGranted =
@@ -339,7 +357,6 @@ abstract class QrScanFragment : Fragment() {
 			setZoom()
 		}
 	}
-
 
 	private fun handleInvalidQRCodeExceptions(error: StateError?) {
 		updateQrCodeScannerState(QrScannerState.INVALID_FORMAT, error?.code)
