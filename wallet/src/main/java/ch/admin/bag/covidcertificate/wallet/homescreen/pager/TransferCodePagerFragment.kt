@@ -15,6 +15,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.core.view.marginBottom
 import androidx.core.view.marginTop
@@ -53,6 +54,7 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 	private val vaccinationHintViewModel by activityViewModels<VaccinationHintViewModel>()
 	private val transferCodeViewModel by viewModels<TransferCodeViewModel>()
 	private var transferCode: TransferCodeModel? = null
+	private var displayWaitingImage = true
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -101,15 +103,14 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(true, error))
 			}
 			transferCode.isExpired() -> {
-				binding.transferCodePageWaitingImage.isVisible = true
+				binding.transferCodePageWaitingImage.isVisible = displayWaitingImage
 				binding.transferCodePageImage.isVisible = false
 				binding.transferCodePageStatusLabel.text = requireContext().getString(R.string.wallet_transfer_code_state_waiting)
 				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(false, error))
 			}
 			else -> {
-
 				if (error == null || error.code == ErrorCodes.GENERAL_OFFLINE) {
-					binding.transferCodePageWaitingImage.isVisible = true
+					binding.transferCodePageWaitingImage.isVisible = displayWaitingImage
 					binding.transferCodePageImage.isVisible = false
 					binding.transferCodePageStatusLabel.text =
 						requireContext().getString(R.string.wallet_transfer_code_state_waiting)
@@ -149,18 +150,19 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 	}
 
 	private fun displayVaccinationHint(display: Boolean) {
-		binding.root.post {
-			val shouldShowHintAndImage = isAvailableSpaceEnoughForHintAndImage()
-
+		binding.root.doOnLayout {
 			val vaccinationHint = ConfigRepository.getCurrentConfig(requireContext())
 				?.getVaccinationHints(getString(R.string.language_key))
 				?.randomOrNull()
 
 			TransitionManager.beginDelayedTransition(binding.root)
-			binding.transferCodePageVaccinationHint.isVisible = display && vaccinationHint != null
-			binding.transferCodePageWaitingImage.isVisible = display.not() || shouldShowHintAndImage
 			binding.vaccinationHintTitle.text = vaccinationHint?.title
 			binding.vaccinationHintText.text = vaccinationHint?.text
+
+			val (shouldShowHint, shouldShowImage) = isAvailableSpaceEnoughForHintAndImage()
+			displayWaitingImage = display.not() || shouldShowImage
+			binding.transferCodePageVaccinationHint.isVisible = display && shouldShowHint && vaccinationHint != null
+			binding.transferCodePageWaitingImage.isVisible = displayWaitingImage
 
 			binding.vaccinationHintDismiss.setOnClickListener {
 				vaccinationHintViewModel.dismissVaccinationHint()
@@ -176,17 +178,25 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 		}
 	}
 
-	private fun isAvailableSpaceEnoughForHintAndImage(): Boolean {
+	private fun isAvailableSpaceEnoughForHintAndImage(): Pair<Boolean, Boolean> {
 		binding.apply {
 			val fullHeight = root.height - root.paddingTop - root.paddingBottom
 			val statusLabelHeight = transferCodePageStatusLabel.height + transferCodePageStatusLabel.marginTop + transferCodePageStatusLabel.marginBottom
 			val statusBubbleHeight = transferCodePageBubble.height + transferCodePageBubble.marginTop + transferCodePageBubble.marginBottom
-
 			val availableHeight = fullHeight - statusLabelHeight - statusBubbleHeight
 
-			// In order to show both the vaccination hint and the waiting image, the available space should be at least half of the
-			// entire height and also more than twice the status bubble
-			return availableHeight >= fullHeight / 2 && availableHeight >= statusBubbleHeight * 2
+			// Measure the vaccination hint (which is still hidden) and check if it fits in the available height
+			transferCodePageVaccinationHint.measure(
+				View.MeasureSpec.makeMeasureSpec(binding.root.width, View.MeasureSpec.EXACTLY),
+				View.MeasureSpec.makeMeasureSpec(binding.root.height, View.MeasureSpec.AT_MOST)
+			)
+			val measuredHintHeight = transferCodePageVaccinationHint.measuredHeight
+			val hasEnoughSpaceForHint = measuredHintHeight < availableHeight
+
+			// The waiting image resizes itself in the height, but it should be at least as tall as the status bubble
+			val hasEnoughSpaceForHintAndImage = (availableHeight - measuredHintHeight) >= statusBubbleHeight
+
+			return hasEnoughSpaceForHint to hasEnoughSpaceForHintAndImage
 		}
 	}
 
