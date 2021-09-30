@@ -22,7 +22,7 @@ class QrCode private constructor(val data: String, val size: Int) {
 
 	companion object {
 		const val DEFAULT_BITMAP_SIZE = 1024
-		private val DEFAULT_ECC = ErrorCorrectionLevel.Q
+		private val DEFAULT_ECC = ErrorCorrectionLevel.M
 		private val DEFAULT_CHARSET = "ISO-8859-1"
 
 		fun create(value: String): QrCode {

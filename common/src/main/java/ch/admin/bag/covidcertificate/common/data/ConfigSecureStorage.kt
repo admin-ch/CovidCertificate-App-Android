@@ -29,6 +29,8 @@ class ConfigSecureStorage private constructor(context: Context) {
 
 		private const val KEY_USER_LANGUAGE = "UserLanguage"
 
+		private const val KEY_ZOOM_ACTIVE = "KEY_ZOOM_ACTIVE"
+
 		private val moshi = Moshi.Builder().build()
 		private val configModelAdapter = moshi.adapter(ConfigModel::class.java)
 	}
@@ -60,4 +62,7 @@ class ConfigSecureStorage private constructor(context: Context) {
 	fun setUserLanguage(language: String?) = prefs.edit { putString(KEY_USER_LANGUAGE, language) }
 
 	fun getUserLanguage(): String? = prefs.getString(KEY_USER_LANGUAGE, null)
+
+	fun getZoomOn(): Boolean = prefs.getBoolean(KEY_ZOOM_ACTIVE, false)
+	fun setZoomOn(isZoomActive: Boolean) = prefs.edit().putBoolean(KEY_ZOOM_ACTIVE, isZoomActive).apply()
 }

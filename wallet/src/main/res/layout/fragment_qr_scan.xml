@@ -257,6 +257,18 @@
 	</LinearLayout>
 
 	<ImageButton
+		android:id="@+id/fragment_qr_zoom"
+		style="@style/CovidCertificate.FloatingImageButton.WhiteBlue"
+		android:layout_width="@dimen/floating_button_height"
+		android:layout_height="@dimen/floating_button_height"
+		android:layout_margin="@dimen/spacing_large"
+		android:elevation="@dimen/floating_button_elevation"
+		app:srcCompat="@drawable/ic_zoom_off"
+		app:layout_constraintBottom_toTopOf="@id/qr_code_scanner_footer_group"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="@id/qr_code_scanner_footer_group" />
+
+	<ImageButton
 		android:id="@+id/fragment_qr_scanner_flash_button"
 		style="@style/CovidCertificate.FloatingImageButton.WhiteBlue"
 		android:layout_width="@dimen/floating_button_height"

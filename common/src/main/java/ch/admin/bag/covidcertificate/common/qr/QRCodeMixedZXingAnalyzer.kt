@@ -14,29 +14,27 @@ import android.graphics.ImageFormat
 import androidx.camera.core.ImageAnalysis
 import androidx.camera.core.ImageProxy
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
-import com.google.zxing.BarcodeFormat
-import com.google.zxing.BinaryBitmap
-import com.google.zxing.ChecksumException
-import com.google.zxing.DecodeHintType
-import com.google.zxing.FormatException
-import com.google.zxing.MultiFormatReader
-import com.google.zxing.NotFoundException
-import com.google.zxing.PlanarYUVLuminanceSource
-import com.google.zxing.Result
+import com.google.zxing.*
+import com.google.zxing.common.GlobalHistogramBinarizer
 import com.google.zxing.common.HybridBinarizer
 import java.nio.ByteBuffer
+import java.util.concurrent.atomic.AtomicBoolean
 
 
-class QRCodeAnalyzer(
-	private val onDecodeCertificate: (decodeCertificateState: DecodeCertificateState) -> Unit,
+/**
+ * Mix approach for QR Code Analyzer.
+ * Every first frame decoded with GlobalHistogramBinarizer, each second with the HybridBinarizer
+ * */
+class QRCodeMixedZXingAnalyzer(
+	private val onDecodeCertificate: (decodeCertificateState: DecodeCertificateState) -> Unit
 ) : ImageAnalysis.Analyzer {
-
 	companion object {
 		private const val QR_CODE_ERROR_WRONG_FORMAT = "Q|YWF"
 	}
 
-	private val yuvFormats = listOf(ImageFormat.YUV_420_888, ImageFormat.YUV_422_888, ImageFormat.YUV_444_888)
+	private val isGlobalHistogramBinarizer: AtomicBoolean = AtomicBoolean(true)
 
+	private val yuvFormats = listOf(ImageFormat.YUV_420_888, ImageFormat.YUV_422_888, ImageFormat.YUV_444_888)
 	private val reader = MultiFormatReader().apply {
 		val map = mapOf(
 			DecodeHintType.POSSIBLE_FORMATS to arrayListOf(BarcodeFormat.QR_CODE),
@@ -46,6 +44,19 @@ class QRCodeAnalyzer(
 	}
 
 	override fun analyze(imageProxy: ImageProxy) {
+		decodeFrame(
+			imageProxy,
+			binarizerFactory = { luminanceSource ->
+				if (isGlobalHistogramBinarizer.getAndSet(!isGlobalHistogramBinarizer.get())) {
+					GlobalHistogramBinarizer(luminanceSource)
+				} else {
+					HybridBinarizer(luminanceSource)
+				}
+			})
+	}
+
+
+	private fun decodeFrame(imageProxy: ImageProxy, binarizerFactory: (LuminanceSource) -> Binarizer) {
 		try {
 			if (imageProxy.format in yuvFormats && imageProxy.planes.size == 3) {
 				val data = imageProxy.planes[0].buffer.toByteArray()
@@ -59,7 +70,7 @@ class QRCodeAnalyzer(
 					imageProxy.height,
 					false
 				)
-				val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
+				val binaryBitmap = BinaryBitmap(binarizerFactory.invoke(source))
 				try {
 					val result: Result = reader.decodeWithState(binaryBitmap)
 					onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text))
@@ -89,10 +100,4 @@ class QRCodeAnalyzer(
 		get(data)
 		return data
 	}
-}
-
-sealed class DecodeCertificateState {
-	data class SUCCESS(val qrCode: String?) : DecodeCertificateState()
-	object SCANNING : DecodeCertificateState()
-	data class ERROR(val error: StateError) : DecodeCertificateState()
 }
