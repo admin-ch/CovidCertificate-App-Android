@@ -10,6 +10,7 @@
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:orientation="vertical"
@@ -83,5 +84,18 @@
 		android:paddingHorizontal="@dimen/spacing_large"
 		android:paddingVertical="@dimen/spacing_medium_large"
 		android:text="@string/wallet_homescreen_add_transfer_code" />
+
+	<TextView
+		android:id="@+id/option_vaccination_appointment"
+		style="@style/CovidCertificate.Text.Bold.Emphasized"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginTop="@dimen/spacing_medium_small"
+		android:background="@drawable/bg_add_certificate_option"
+		android:paddingHorizontal="@dimen/spacing_large"
+		android:paddingVertical="@dimen/spacing_medium_large"
+		android:text="@string/vaccination_homescreen_button_title"
+		android:visibility="gone"
+		tools:visibility="visible" />
 
 </LinearLayout>

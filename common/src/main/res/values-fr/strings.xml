@@ -1008,11 +1008,259 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
     <string name="wallet_certificate_test_holder_and_name">"Fabricant et Nom"</string>
 
     <!-- Wallet: Fehler-Titel falls Uhrzeit falsch eingestellt bei Transfer-Code -->
-    <string name="wallet_transfer_code_time_inconsistency_title">"Uhrzeit Fehler"</string>
+    <string name="wallet_transfer_code_time_inconsistency_title">"Heure incorrecte"</string>
 
     <!-- Wallet: Transfer-Code Fehler-Text, falls Zeit falsch eingestellt -->
-    <string name="wallet_transfer_code_time_inconsistency_text">"Die Uhrzeit muss richtig eingestellt sein, damit Transfer-Codes funktionieren. Passen Sie Ihre Uhrzeit an und versuchen sie es erneut."</string>
+    <string name="wallet_transfer_code_time_inconsistency_text">"L’heure doit être réglée correctement pour que les codes de transfert fonctionnent. Adaptez votre heure et essayez de nouveau."</string>
 
     <!-- Toast Text wenn ein UVCI durch Klicken kopiert wurde -->
     <string name="wallet_uvci_copied">"UVCI copié"</string>
+
+    <!-- canton name ag -->
+    <string name="vaccination_booking_ag_name">"Argovie"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ag -->
+    <string name="vaccination_booking_ag_url">"https://www.ag.ch/coronavirus-impfung"</string>
+
+    <!-- canton name ar -->
+    <string name="vaccination_booking_ar_name">"Appenzell Rhodes-Extérieures"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ar -->
+    <string name="vaccination_booking_ar_url">"https://www.ar.ch/verwaltung/departement-gesundheit-und-soziales/amt-fuer-gesundheit/informationsseite-coronavirus/coronaimpfung/"</string>
+
+    <!-- canton name ai -->
+    <string name="vaccination_booking_ai_name">"Appenzell Rhodes-Intérieures"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ai -->
+    <!-- Fuzzy -->
+    <string name="vaccination_booking_ai_url">"https://www.ai.ch/coronavirus-impfung"</string>
+
+    <!-- canton name bl -->
+    <string name="vaccination_booking_bl_name">"Bâle-Campagne"</string>
+
+    <!-- url for booking an appointment for vaccination for canton bl -->
+    <!-- Fuzzy -->
+    <string name="vaccination_booking_bl_url">"https://www.baselland.ch/politik-und-behorden/direktionen/volkswirtschafts-und-gesundheitsdirektion/amt-fur-gesundheit/medizinische-dienste/kantonsarztlicher-dienst/aktuelles/corona-impfung/franzoesisch-francais"</string>
+
+    <!-- canton name bs -->
+    <string name="vaccination_booking_bs_name">"Bâle-Ville"</string>
+
+    <!-- url for booking an appointment for vaccination for canton bs -->
+    <!-- Fuzzy -->
+    <string name="vaccination_booking_bs_url">"http://www.coronaimpfzentrumbasel.ch"</string>
+
+    <!-- canton name be -->
+    <string name="vaccination_booking_be_name">"Berne"</string>
+
+    <!-- url for booking an appointment for vaccination for canton be -->
+    <!-- Fuzzy -->
+    <string name="vaccination_booking_be_url">"https://www.gsi.be.ch/fr/start/themen/coronavirus/impfen.html"</string>
+
+    <!-- canton name fr -->
+    <string name="vaccination_booking_fr_name">"Fribourg"</string>
+
+    <!-- url for booking an appointment for vaccination for canton fr -->
+    <string name="vaccination_booking_fr_url">"https://www.fr.ch/sante/covid-19/covid-19-vaccination"</string>
+
+    <!-- canton name ge -->
+    <string name="vaccination_booking_ge_name">"Genève"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ge -->
+    <string name="vaccination_booking_ge_url">"https://www.ge.ch/se-faire-vacciner-contre-covid-19"</string>
+
+    <!-- canton name gl -->
+    <string name="vaccination_booking_gl_name">"Glaris"</string>
+
+    <!-- url for booking an appointment for vaccination for canton gl -->
+    <string name="vaccination_booking_gl_url">"https://www.gl.ch/verwaltung/finanzen-und-gesundheit/gesundheit/coronavirus.html/4817#Impfung"</string>
+
+    <!-- canton name gr -->
+    <string name="vaccination_booking_gr_name">"Grisons"</string>
+
+    <!-- url for booking an appointment for vaccination for canton gr -->
+    <string name="vaccination_booking_gr_url">"https://www.gr.ch/DE/institutionen/verwaltung/djsg/ga/coronavirus/info/impfen/Seiten/impfen.aspx"</string>
+
+    <!-- canton name ju -->
+    <string name="vaccination_booking_ju_name">"Jura"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ju -->
+    <string name="vaccination_booking_ju_url">"https://www.jura.ch/fr/Autorites/Coronavirus/Vaccination.html"</string>
+
+    <!-- canton name lu -->
+    <string name="vaccination_booking_lu_name">"Lucerne"</string>
+
+    <!-- url for booking an appointment for vaccination for canton lu -->
+    <string name="vaccination_booking_lu_url">"http://www.lu.ch/covid_impfung"</string>
+
+    <!-- canton name ne -->
+    <string name="vaccination_booking_ne_name">"Neuchâtel"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ne -->
+    <string name="vaccination_booking_ne_url">"https://www.ne.ch/autorites/DFS/SCSP/medecin-cantonal/maladies-vaccinations/covid-19-vaccination/Pages/accueil.aspx"</string>
+
+    <!-- canton name nw -->
+    <string name="vaccination_booking_nw_name">"Nidwald"</string>
+
+    <!-- url for booking an appointment for vaccination for canton nw -->
+    <string name="vaccination_booking_nw_url">"https://www.nw.ch/gesundheitsamtdienste/6044#Impfung"</string>
+
+    <!-- canton name ow -->
+    <string name="vaccination_booking_ow_name">"Obwald"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ow -->
+    <string name="vaccination_booking_ow_url">"https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"</string>
+
+    <!-- canton name sg -->
+    <string name="vaccination_booking_sg_name">"Saint-Gall"</string>
+
+    <!-- url for booking an appointment for vaccination for canton sg -->
+    <string name="vaccination_booking_sg_url">"https://www.sg.ch/coronavirus/impfen"</string>
+
+    <!-- canton name sh -->
+    <string name="vaccination_booking_sh_name">"Schaffhouse"</string>
+
+    <!-- url for booking an appointment for vaccination for canton sh -->
+    <string name="vaccination_booking_sh_url">"https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Departement-des-Innern/Gesundheitsamt-7126057-DE.html"</string>
+
+    <!-- canton name sz -->
+    <string name="vaccination_booking_sz_name">"Schwyz"</string>
+
+    <!-- url for booking an appointment for vaccination for canton sz -->
+    <string name="vaccination_booking_sz_url">"https://www.sz.ch/corona-impfen"</string>
+
+    <!-- canton name so -->
+    <string name="vaccination_booking_so_name">"Soleure"</string>
+
+    <!-- url for booking an appointment for vaccination for canton so -->
+    <string name="vaccination_booking_so_url">"https://so.ch/coronaimpfung"</string>
+
+    <!-- canton name tg -->
+    <string name="vaccination_booking_tg_name">"Thurgovie"</string>
+
+    <!-- url for booking an appointment for vaccination for canton tg -->
+    <string name="vaccination_booking_tg_url">"https://gesundheit.tg.ch/aktuelles/impfung-fuer-covid-19.html/11590"</string>
+
+    <!-- canton name ti -->
+    <string name="vaccination_booking_ti_name">"Tessin"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ti -->
+    <string name="vaccination_booking_ti_url">"http://www.ti.ch/vaccinazione"</string>
+
+    <!-- canton name ur -->
+    <string name="vaccination_booking_ur_name">"Uri"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ur -->
+    <string name="vaccination_booking_ur_url">"https://www.ur.ch/themen/3673"</string>
+
+    <!-- canton name vs -->
+    <string name="vaccination_booking_vs_name">"Valais"</string>
+
+    <!-- url for booking an appointment for vaccination for canton vs -->
+    <string name="vaccination_booking_vs_url">"https://www.vs.ch/web/coronavirus/#ancre_vaccination"</string>
+
+    <!-- canton name vd -->
+    <string name="vaccination_booking_vd_name">"Vaud"</string>
+
+    <!-- url for booking an appointment for vaccination for canton vd -->
+    <string name="vaccination_booking_vd_url">"https://vd.ch/coronavirus-vaccins"</string>
+
+    <!-- canton name zg -->
+    <string name="vaccination_booking_zg_name">"Zoug"</string>
+
+    <!-- url for booking an appointment for vaccination for canton zg -->
+    <string name="vaccination_booking_zg_url">"https://www.corona-impfung-zug.ch/"</string>
+
+    <!-- canton name zh -->
+    <string name="vaccination_booking_zh_name">"Zurich"</string>
+
+    <!-- url for booking an appointment for vaccination for canton zh -->
+    <string name="vaccination_booking_zh_url">"http://www.zh.ch/coronaimpfung"</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_1">"Faites-vous vacciner sans plus attendre !"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_1">"La vaccination contre le COVID-19 vous permet d’éviter les tests répétés."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_2">"Faites-vous vacciner sans plus attendre !"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_2">"La vaccination contre le COVID-19 vous permet de voyager sereinement dans la plupart des pays."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_3">"Faites-vous vacciner sans plus attendre !"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_3">"La vaccination vous protège contre le COVID-19 et, le cas échéant, contre une évolution grave de la maladie."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_4">"Faites-vous vacciner sans plus attendre !"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_4">"La vaccination contre le COVID-19 vous permet de vous immuniser en toute sécurité."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_5">"Faites-vous vacciner sans plus attendre !"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_5">"Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à réduire la charge de morbidité."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_6">"Faites-vous vacciner sans plus attendre !"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_6">"Grâce à la vaccination contre le COVID-19, vous contribuez à la lutte contre les conséquences de la pandémie."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_7">"Faites-vous vacciner sans plus attendre !"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_7">"La vaccination contre le COVID-19 vous permet d’éviter les effets à long terme de la maladie."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_8">"Faites-vous vacciner sans plus attendre !"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_8">"Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à décharger le système de santé."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_9">"Faites-vous vacciner sans plus attendre !"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_9">"Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à rétablir les libertés de la vie quotidienne."</string>
+
+    <!-- vaccination booking info screen title -->
+    <string name="vaccination_booking_info_title">"Prendre un rendez-vous de vaccination près de chez vous"</string>
+
+    <!-- vaccination booking info screen text -->
+    <string name="vaccination_booking_info_text">"La vaccination pourrait, par exemple, être proposée dans les lieux suivants situés à proximité de chez vous :
+
+- dans des centres de vaccination désignés
+- dans les hôpitaux
+- chez votre médecin de famille
+- dans les pharmacies
+
+Il est aussi possible de se faire vacciner sans rendez-vous dans de nombreux endroits."</string>
+
+    <!-- vaccination booking info screen info box at bottom -->
+    <string name="vaccination_booking_info_info">"Gratuite, la vaccination contre le COVID-19 est recommandée pour les personnes dès 12 ans."</string>
+
+    <!-- Header on vaccination appointment screen -->
+    <string name="vaccination_appointment_header">"Rendez-vous de vaccination"</string>
+
+    <!-- Book vaccination appointment button title on homescreen -->
+    <string name="vaccination_homescreen_button_title">"Prendre un rendez-vous de vaccination"</string>
+
+    <!-- Choose your canton title in vaccination appointment screen -->
+    <string name="vaccination_choose_your_canton">"Sélectionnez votre canton"</string>
+
+    <!-- Link title for more information about the vaccine -->
+    <string name="vaccination_more_information_title">"Plus d’informations sur la vaccination contre le COVID-19"</string>
+
+    <!-- Button text for information about the vaccine at the bottom of the certificate -->
+    <string name="vaccination_information_button_in_certificate">"Informations sur la vaccination"</string>
+
+    <!-- Vaccination Booking Info URL Link -->
+    <string name="vaccination_booking_info_url">"https://ofsp-coronavirus.ch/vaccination/"</string>
 </resources>

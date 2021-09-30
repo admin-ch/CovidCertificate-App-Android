@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.wallet.data
 
 import android.content.Context
+import androidx.core.content.edit
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 
@@ -23,24 +24,34 @@ class WalletSecureStorage private constructor(context: Context) {
 		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
 		private const val KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX = "TRANSFER_CODE_PUBLIC_KEY_"
 		private const val KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX = "TRANSFER_CODE_PRIVATE_KEY_"
+		private const val KEY_VACCINATION_HINT_DISMISS_TIMESTAMP = "KEY_VACCINATION_HINT_DISMISS_TIMESTAMP"
 	}
 
 	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, PREFERENCES)
 
 	fun getOnboardingCompleted(): Boolean = prefs.getBoolean(KEY_ONBOARDING_COMPLETED, false)
 
-	fun setOnboardingCompleted(completed: Boolean) = prefs.edit().putBoolean(KEY_ONBOARDING_COMPLETED, completed).apply()
+	fun setOnboardingCompleted(completed: Boolean) = prefs.edit {
+		putBoolean(KEY_ONBOARDING_COMPLETED, completed)
+	}
 
 	fun getMigratedCertificatesToWalletData() = prefs.getBoolean(KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA, false)
 
-	fun setMigratedCertificatesToWalletData(migrated: Boolean) = prefs.edit().putBoolean(KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA, migrated).apply()
+	fun setMigratedCertificatesToWalletData(migrated: Boolean) = prefs.edit {
+		putBoolean(KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA, migrated)
+	}
 
 	fun getCertificateLightUpdateboardingCompleted() = prefs.getBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, false)
 
-	fun setCertificateLightUpdateboardingCompleted(completed: Boolean) = prefs.edit().putBoolean(
-		KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, completed
-	).apply()
+	fun setCertificateLightUpdateboardingCompleted(completed: Boolean) = prefs.edit {
+		putBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, completed)
+	}
 
+	fun getVaccinationHintDismissTimestamp() = prefs.getLong(KEY_VACCINATION_HINT_DISMISS_TIMESTAMP, 0L)
+
+	fun setVaccinationHintDismissTimestamp(timestamp: Long) = prefs.edit {
+		putLong(KEY_VACCINATION_HINT_DISMISS_TIMESTAMP, timestamp)
+	}
 
 	/*
 	 * The following methods are only used on Android 6 as a workaround to the AndroidKeyStore not properly working with the
@@ -49,12 +60,14 @@ class WalletSecureStorage private constructor(context: Context) {
 	 */
 	fun getTransferCodePublicKey(keyAlias: String) = prefs.getString(KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX + keyAlias, null)
 
-	fun setTransferCodePublicKey(keyAlias: String, encodedKey: String?) =
-		prefs.edit().putString(KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX + keyAlias, encodedKey).apply()
+	fun setTransferCodePublicKey(keyAlias: String, encodedKey: String?) = prefs.edit {
+		putString(KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX + keyAlias, encodedKey)
+	}
 
 	fun getTransferCodePrivateKey(keyAlias: String) = prefs.getString(KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX + keyAlias, null)
 
-	fun setTransferCodePrivateKey(keyAlias: String, encodedKey: String?) =
-		prefs.edit().putString(KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX + keyAlias, encodedKey).apply()
+	fun setTransferCodePrivateKey(keyAlias: String, encodedKey: String?) = prefs.edit {
+		putString(KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX + keyAlias, encodedKey)
+	}
 
 }

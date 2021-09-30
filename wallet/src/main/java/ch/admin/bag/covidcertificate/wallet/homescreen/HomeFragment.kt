@@ -34,6 +34,7 @@ import ch.admin.bag.covidcertificate.common.debug.DebugFragment
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.ImprintFragment
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.HorizontalMarginItemDecoration
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.rotate
@@ -58,6 +59,7 @@ import ch.admin.bag.covidcertificate.wallet.pdf.PdfViewModel
 import ch.admin.bag.covidcertificate.wallet.qr.WalletQrScanFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeIntroFragment
+import ch.admin.bag.covidcertificate.wallet.vaccination.appointment.VaccinationAppointmentFragment
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.concurrent.atomic.AtomicLong
 
@@ -286,6 +288,13 @@ class HomeFragment : Fragment() {
 			isAddOptionsShowing = false
 			showTransferCodeIntroFragment()
 		}
+
+		val showVaccinationAppointmentButton =
+			ConfigRepository.getCurrentConfig(requireContext())?.showVaccinationHintHomescreen ?: false
+		binding.homescreenAddCertificateOptionsEmpty.optionVaccinationAppointment.isVisible = showVaccinationAppointmentButton
+		binding.homescreenAddCertificateOptionsNotEmpty.optionVaccinationAppointment.isVisible = showVaccinationAppointmentButton
+		binding.homescreenAddCertificateOptionsEmpty.optionVaccinationAppointment.setOnClickListener { showVaccinationAppointmentDetails() }
+		binding.homescreenAddCertificateOptionsNotEmpty.optionVaccinationAppointment.setOnClickListener { showVaccinationAppointmentDetails() }
 	}
 
 	private fun showQrScanFragment() {
@@ -312,6 +321,14 @@ class HomeFragment : Fragment() {
 			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 			.replace(R.id.fragment_container, TransferCodeIntroFragment.newInstance())
 			.addToBackStack(TransferCodeIntroFragment::class.java.canonicalName)
+			.commit()
+	}
+
+	private fun showVaccinationAppointmentDetails() {
+		parentFragmentManager.beginTransaction()
+			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+			.replace(R.id.fragment_container, VaccinationAppointmentFragment.newInstance())
+			.addToBackStack(VaccinationAppointmentFragment::class.java.canonicalName)
 			.commit()
 	}
 

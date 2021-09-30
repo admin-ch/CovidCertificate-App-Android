@@ -1048,4 +1048,252 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
 
     <!-- Toast Text wenn ein UVCI durch Klicken kopiert wurde -->
     <string name="wallet_uvci_copied">"UVCI kopiert"</string>
+
+    <!-- canton name ag -->
+    <string name="vaccination_booking_ag_name">"Aargau"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ag -->
+    <string name="vaccination_booking_ag_url">"https://www.ag.ch/coronavirus-impfung"</string>
+
+    <!-- canton name ar -->
+    <string name="vaccination_booking_ar_name">"Appenzell Ausserrhoden"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ar -->
+    <string name="vaccination_booking_ar_url">"https://www.ar.ch/verwaltung/departement-gesundheit-und-soziales/amt-fuer-gesundheit/informationsseite-coronavirus/coronaimpfung/"</string>
+
+    <!-- canton name ai -->
+    <string name="vaccination_booking_ai_name">"Appenzell Innerrhoden"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ai -->
+    <!-- Fuzzy -->
+    <string name="vaccination_booking_ai_url">"https://www.ai.ch/coronavirus-impfung"</string>
+
+    <!-- canton name bl -->
+    <string name="vaccination_booking_bl_name">"Basel-Landschaft"</string>
+
+    <!-- url for booking an appointment for vaccination for canton bl -->
+    <!-- Fuzzy -->
+    <string name="vaccination_booking_bl_url">"https://www.bl.ch/impfen"</string>
+
+    <!-- canton name bs -->
+    <string name="vaccination_booking_bs_name">"Basel-Stadt"</string>
+
+    <!-- url for booking an appointment for vaccination for canton bs -->
+    <!-- Fuzzy -->
+    <string name="vaccination_booking_bs_url">"http://www.coronaimpfzentrumbasel.ch"</string>
+
+    <!-- canton name be -->
+    <string name="vaccination_booking_be_name">"Bern"</string>
+
+    <!-- url for booking an appointment for vaccination for canton be -->
+    <!-- Fuzzy -->
+    <string name="vaccination_booking_be_url">"http://www.be.ch/corona-impfung"</string>
+
+    <!-- canton name fr -->
+    <string name="vaccination_booking_fr_name">"Freiburg"</string>
+
+    <!-- url for booking an appointment for vaccination for canton fr -->
+    <string name="vaccination_booking_fr_url">"https://www.fr.ch/de/gesundheit/covid-19/covid-19-impfung-in-ihrer-naehe-durch-impfteams-in-den-impfzentren-in-der-apotheke-oder-bei-ihrem-arzt"</string>
+
+    <!-- canton name ge -->
+    <string name="vaccination_booking_ge_name">"Genf"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ge -->
+    <string name="vaccination_booking_ge_url">"https://www.ge.ch/se-faire-vacciner-contre-covid-19"</string>
+
+    <!-- canton name gl -->
+    <string name="vaccination_booking_gl_name">"Glarus"</string>
+
+    <!-- url for booking an appointment for vaccination for canton gl -->
+    <string name="vaccination_booking_gl_url">"https://www.gl.ch/verwaltung/finanzen-und-gesundheit/gesundheit/coronavirus.html/4817#Impfung"</string>
+
+    <!-- canton name gr -->
+    <string name="vaccination_booking_gr_name">"Graubünden"</string>
+
+    <!-- url for booking an appointment for vaccination for canton gr -->
+    <string name="vaccination_booking_gr_url">"https://www.gr.ch/DE/institutionen/verwaltung/djsg/ga/coronavirus/info/impfen/Seiten/impfen.aspx"</string>
+
+    <!-- canton name ju -->
+    <string name="vaccination_booking_ju_name">"Jura"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ju -->
+    <string name="vaccination_booking_ju_url">"https://www.jura.ch/fr/Autorites/Coronavirus/Vaccination.html"</string>
+
+    <!-- canton name lu -->
+    <string name="vaccination_booking_lu_name">"Luzern"</string>
+
+    <!-- url for booking an appointment for vaccination for canton lu -->
+    <string name="vaccination_booking_lu_url">"http://www.lu.ch/covid_impfung"</string>
+
+    <!-- canton name ne -->
+    <string name="vaccination_booking_ne_name">"Neuenburg"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ne -->
+    <string name="vaccination_booking_ne_url">"https://www.ne.ch/autorites/DFS/SCSP/medecin-cantonal/maladies-vaccinations/covid-19-vaccination/Pages/accueil.aspx"</string>
+
+    <!-- canton name nw -->
+    <string name="vaccination_booking_nw_name">"Nidwalden"</string>
+
+    <!-- url for booking an appointment for vaccination for canton nw -->
+    <string name="vaccination_booking_nw_url">"https://www.nw.ch/gesundheitsamtdienste/6044#Impfung"</string>
+
+    <!-- canton name ow -->
+    <string name="vaccination_booking_ow_name">"Obwalden"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ow -->
+    <string name="vaccination_booking_ow_url">"https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"</string>
+
+    <!-- canton name sg -->
+    <string name="vaccination_booking_sg_name">"St. Gallen"</string>
+
+    <!-- url for booking an appointment for vaccination for canton sg -->
+    <string name="vaccination_booking_sg_url">"https://www.sg.ch/coronavirus/impfen"</string>
+
+    <!-- canton name sh -->
+    <string name="vaccination_booking_sh_name">"Schaffhausen"</string>
+
+    <!-- url for booking an appointment for vaccination for canton sh -->
+    <string name="vaccination_booking_sh_url">"https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Departement-des-Innern/Gesundheitsamt-7126057-DE.html"</string>
+
+    <!-- canton name sz -->
+    <string name="vaccination_booking_sz_name">"Schwyz"</string>
+
+    <!-- url for booking an appointment for vaccination for canton sz -->
+    <string name="vaccination_booking_sz_url">"https://www.sz.ch/corona-impfen"</string>
+
+    <!-- canton name so -->
+    <string name="vaccination_booking_so_name">"Solothurn"</string>
+
+    <!-- url for booking an appointment for vaccination for canton so -->
+    <string name="vaccination_booking_so_url">"https://so.ch/coronaimpfung"</string>
+
+    <!-- canton name tg -->
+    <string name="vaccination_booking_tg_name">"Thurgau"</string>
+
+    <!-- url for booking an appointment for vaccination for canton tg -->
+    <string name="vaccination_booking_tg_url">"https://gesundheit.tg.ch/aktuelles/impfung-fuer-covid-19.html/11590"</string>
+
+    <!-- canton name ti -->
+    <string name="vaccination_booking_ti_name">"Tessin"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ti -->
+    <string name="vaccination_booking_ti_url">"http://www.ti.ch/vaccinazione"</string>
+
+    <!-- canton name ur -->
+    <string name="vaccination_booking_ur_name">"Uri"</string>
+
+    <!-- url for booking an appointment for vaccination for canton ur -->
+    <string name="vaccination_booking_ur_url">"https://www.ur.ch/themen/3673"</string>
+
+    <!-- canton name vs -->
+    <string name="vaccination_booking_vs_name">"Wallis"</string>
+
+    <!-- url for booking an appointment for vaccination for canton vs -->
+    <string name="vaccination_booking_vs_url">"https://www.vs.ch/de/web/coronavirus#ancre_vaccination"</string>
+
+    <!-- canton name vd -->
+    <string name="vaccination_booking_vd_name">"Waadt"</string>
+
+    <!-- url for booking an appointment for vaccination for canton vd -->
+    <string name="vaccination_booking_vd_url">"https://vd.ch/coronavirus-vaccins"</string>
+
+    <!-- canton name zg -->
+    <string name="vaccination_booking_zg_name">"Zug"</string>
+
+    <!-- url for booking an appointment for vaccination for canton zg -->
+    <string name="vaccination_booking_zg_url">"https://www.corona-impfung-zug.ch/"</string>
+
+    <!-- canton name zh -->
+    <string name="vaccination_booking_zh_name">"Zürich"</string>
+
+    <!-- url for booking an appointment for vaccination for canton zh -->
+    <string name="vaccination_booking_zh_url">"http://www.zh.ch/coronaimpfung"</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_1">"Jetzt impfen lassen!"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_1">"Mit der Covid-19-Impfung können Sie auf das wiederholte Testen verzichten."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_2">"Jetzt impfen lassen!"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_2">"Mit der Covid-19-Impfung können Sie unbeschwert in die meisten Länder reisen."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_3">"Jetzt impfen lassen!"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_3">"Mit der Covid-19-Impfung können Sie sich vor Erkrankung und einem allfälligen schweren Verlauf schützen."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_4">"Jetzt impfen lassen!"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_4">"Mit der Covid-19-Impfung können Sie auf sichere Art immun werden."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_5">"Jetzt impfen lassen!"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_5">"Mit der Covid-19-Impfung können Sie mithelfen, die Krankheitslast zu reduzieren."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_6">"Jetzt impfen lassen!"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_6">"Mit der Covid-19-Impfung können Sie helfen, die Auswirkungen der Pandemie zu bekämpfen."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_7">"Jetzt impfen lassen!"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_7">"Mit der Covid-19-Impfung können Sie die Langzeitfolgen einer Covid-19-Erkrankung vermeiden."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_8">"Jetzt impfen lassen!"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_8">"Mit der Covid-19-Impfung können Sie dazu beitragen, das Gesundheitswesen zu entlasten."</string>
+
+    <!-- vaccination hint box title -->
+    <string name="vaccination_hint_title_9">"Jetzt impfen lassen!"</string>
+
+    <!-- vaccination hint box text -->
+    <string name="vaccination_hint_text_9">"Mit der Covid-19-Impfung können Sie dazu beitragen, die Freiheiten des Alltags zurückzubringen."</string>
+
+    <!-- vaccination booking info screen title -->
+    <string name="vaccination_booking_info_title">"Impftermin in Ihrer Nähe buchen"</string>
+
+    <!-- vaccination booking info screen text -->
+    <string name="vaccination_booking_info_text">"Eine Impfung könnte zum Beispiel an diesen Orten in Ihrer Nähe stattfinden:
+
+- in spezifischen Impfzentren
+- in Spitälern
+- bei Ihrem Hausarzt oder Ihrer Hausärztin
+- in Impfapotheken
+
+Viele Orte bieten auch Walk-in-Impfungen ohne Termine an."</string>
+
+    <!-- vaccination booking info screen info box at bottom -->
+    <string name="vaccination_booking_info_info">"Die Covid-19-Impfung ist für Personen ab 12 Jahren empfohlen. Die Impfung ist gratis."</string>
+
+    <!-- Header on vaccination appointment screen -->
+    <string name="vaccination_appointment_header">"Impftermin"</string>
+
+    <!-- Book vaccination appointment button title on homescreen -->
+    <string name="vaccination_homescreen_button_title">"Impftermin buchen"</string>
+
+    <!-- Choose your canton title in vaccination appointment screen -->
+    <string name="vaccination_choose_your_canton">"Wählen Sie Ihren Kanton"</string>
+
+    <!-- Link title for more information about the vaccine -->
+    <string name="vaccination_more_information_title">"Weitere Informationen rund um die Covid-19-Impfung"</string>
+
+    <!-- Button text for information about the vaccine at the bottom of the certificate -->
+    <string name="vaccination_information_button_in_certificate">"Informationen zur Impfung"</string>
+
+    <!-- Vaccination Booking Info URL Link -->
+    <string name="vaccination_booking_info_url">"https://bag-coronavirus.ch/impfung/"</string>
 </resources>

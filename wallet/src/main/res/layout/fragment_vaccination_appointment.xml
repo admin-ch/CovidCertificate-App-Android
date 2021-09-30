@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white"
+	app:applyWindowInsets="all">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			android:elevation="@dimen/toolbar_elevation"
+			app:layout_constraintTop_toTopOf="parent"
+			app:navigationIcon="@drawable/ic_close_red"
+			app:title="@string/vaccination_appointment_header"
+			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
+			app:titleTextColor="@color/grey" />
+
+		<androidx.core.widget.NestedScrollView
+			android:layout_width="match_parent"
+			android:layout_height="match_parent"
+			android:clipToPadding="false"
+			android:paddingBottom="@dimen/spacing_larger">
+
+			<LinearLayout
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical">
+
+				<TextView
+					android:id="@+id/vaccination_booking_title"
+					style="@style/CovidCertificate.Text.Bold.Title"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_very_large"
+					android:layout_marginTop="@dimen/spacing_very_large"
+					android:gravity="center_horizontal"
+					tools:text="@string/vaccination_booking_info_title" />
+
+				<TextView
+					android:id="@+id/vaccination_booking_text"
+					style="@style/CovidCertificate.Text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_very_large"
+					android:layout_marginTop="@dimen/spacing_huge"
+					tools:text="@string/vaccination_booking_info_text" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_large"
+					android:layout_marginTop="@dimen/spacing_very_large"
+					android:background="@drawable/bg_certificate_bubble"
+					android:orientation="horizontal"
+					android:padding="@dimen/spacing_larger"
+					app:backgroundTint="@color/blueish">
+
+					<TextView
+						android:id="@+id/vaccination_booking_info"
+						style="@style/CovidCertificate.Text"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						tools:text="@string/vaccination_booking_info_info" />
+
+				</LinearLayout>
+
+				<TextView
+					style="@style/CovidCertificate.Text.Bold.Emphasized"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_large"
+					android:layout_marginTop="@dimen/spacing_very_large"
+					android:gravity="center"
+					android:text="@string/vaccination_choose_your_canton" />
+
+				<androidx.recyclerview.widget.RecyclerView
+					android:id="@+id/vaccination_appointment_canton_list"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:nestedScrollingEnabled="true"
+					android:overScrollMode="never"
+					android:scrollbars="none"
+					app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+					tools:itemCount="5"
+					tools:listitem="@layout/item_vaccination_appointment_canton" />
+
+				<LinearLayout
+					android:id="@+id/vaccination_more_info_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center_horizontal"
+					android:layout_marginHorizontal="@dimen/spacing_medium_small"
+					android:layout_marginTop="@dimen/spacing_medium_large"
+					android:background="@drawable/ripple_rounded_rect"
+					android:orientation="horizontal"
+					android:paddingVertical="@dimen/spacing_very_small"
+					android:paddingStart="@dimen/spacing_very_small"
+					android:paddingEnd="@dimen/spacing_medium_small">
+
+					<ImageView
+						android:layout_width="@dimen/icon_size_small"
+						android:layout_height="@dimen/icon_size_small"
+						android:layout_marginTop="@dimen/spacing_tiny_small"
+						app:srcCompat="@drawable/ic_link_external" />
+
+					<TextView
+						style="@style/CovidCertificate.Text.Bold.Blue.LinkExternal"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="@dimen/spacing_very_small"
+						android:text="@string/vaccination_more_information_title" />
+				</LinearLayout>
+
+			</LinearLayout>
+		</androidx.core.widget.NestedScrollView>
+	</LinearLayout>
+</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>
