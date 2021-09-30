@@ -4,6 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import java.time.Instant
 import java.time.temporal.ChronoUnit
@@ -23,9 +24,10 @@ class VaccinationHintViewModel(application: Application) : AndroidViewModel(appl
 	init {
 		val now = Instant.now()
 		val lastDismiss = Instant.ofEpochMilli(walletSecureStorage.getVaccinationHintDismissTimestamp())
+		val displayHint = ConfigRepository.getCurrentConfig(application.applicationContext)?.showVaccinationHintHomescreen ?: false
 
 		// Show the vaccination hints if the last dismiss was more than 7 days ago
-		if (lastDismiss.until(now, ChronoUnit.MILLIS) > VACCINATION_HINT_DISMISS_THRESHOLD) {
+		if (displayHint && lastDismiss.until(now, ChronoUnit.MILLIS) > VACCINATION_HINT_DISMISS_THRESHOLD) {
 			displayVaccinationHintMutable.value = true
 		}
 	}
