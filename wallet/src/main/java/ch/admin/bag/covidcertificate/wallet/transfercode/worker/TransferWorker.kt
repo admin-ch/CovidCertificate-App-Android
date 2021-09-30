@@ -13,6 +13,7 @@ package ch.admin.bag.covidcertificate.wallet.transfercode.worker
 import android.content.Context
 import androidx.work.*
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.exception.TimeDeviationException
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
@@ -111,6 +112,8 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 				} else {
 					TransferState.NOT_AVAILABLE
 				}
+			} catch (e: TimeDeviationException) {
+				return TransferState.ERROR
 			} catch (e: IOException) {
 				return TransferState.ERROR
 			}

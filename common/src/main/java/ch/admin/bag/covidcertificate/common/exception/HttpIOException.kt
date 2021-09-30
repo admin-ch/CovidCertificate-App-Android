@@ -8,7 +8,7 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.common.util
+package ch.admin.bag.covidcertificate.common.exception
 
 import retrofit2.Response
 import java.io.IOException
