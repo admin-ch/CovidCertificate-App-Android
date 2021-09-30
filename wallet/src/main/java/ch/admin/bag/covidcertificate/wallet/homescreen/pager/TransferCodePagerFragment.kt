@@ -34,6 +34,7 @@ import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodePage
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeViewModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
+import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeBubbleView
 import ch.admin.bag.covidcertificate.wallet.vaccination.appointment.VaccinationAppointmentFragment
 import ch.admin.bag.covidcertificate.wallet.vaccination.hint.VaccinationHintViewModel
@@ -118,13 +119,17 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 				binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Expired(false, error))
 			}
 			else -> {
-				if (error == null || error.code == ErrorCodes.GENERAL_OFFLINE) {
+				if (error == null
+					|| error.code == ErrorCodes.GENERAL_OFFLINE
+					|| error.code == DeliveryRepository.ERROR_CODE_INVALID_TIME
+				) {
 					binding.transferCodePageWaitingImage.isVisible = displayWaitingImage
 					binding.transferCodePageImage.isVisible = false
 					binding.transferCodePageStatusLabel.text =
 						requireContext().getString(R.string.wallet_transfer_code_state_waiting)
-					binding.transferCodePageBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing,
-						error))
+					binding.transferCodePageBubble.setState(
+						TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing, error)
+					)
 				} else {
 					binding.transferCodePageWaitingImage.isVisible = false
 					binding.transferCodePageImage.isVisible = true

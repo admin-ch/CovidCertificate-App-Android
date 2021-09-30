@@ -44,6 +44,7 @@ import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeDeta
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
+import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.view.TransferCodeBubbleView
 
 class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_detail) {
@@ -134,13 +135,16 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				showErrorOrLastUpdated(error)
 			}
 			else -> {
-
-				if (error == null || error.code == ErrorCodes.GENERAL_OFFLINE) {
+				if (error == null
+					|| error.code == ErrorCodes.GENERAL_OFFLINE
+					|| error.code == DeliveryRepository.ERROR_CODE_INVALID_TIME
+				) {
 					binding.transferCodeDetailWaitingImage.isVisible = true
 					binding.transferCodeDetailImage.isVisible = false
 					binding.transferCodeDetailTitle.setText(R.string.wallet_transfer_code_state_waiting)
-					binding.transferCodeDetailBubble.setState(TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing,
-						error))
+					binding.transferCodeDetailBubble.setState(
+						TransferCodeBubbleView.TransferCodeBubbleState.Valid(isRefreshing, error)
+					)
 					binding.transferCodeRefreshButton.isVisible = true
 					binding.transferCodeErrorCode.isVisible = error != null
 					binding.transferCodeErrorCode.text = error?.code
@@ -168,12 +172,20 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 				ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.orange))
 			binding.transferCodeRefreshButton.setImageResource(R.drawable.ic_retry)
 
-			if (error.code == ErrorCodes.GENERAL_OFFLINE) {
-				val offlineTitle = getString(R.string.wallet_transfer_code_no_internet_title)
-				val offlineText = getString(R.string.wallet_transfer_code_update_no_internet_error_text)
-				binding.transferCodeLastUpdate.text = "$offlineTitle\n$offlineText".makeSubStringBold(offlineTitle)
-			} else {
-				binding.transferCodeDetailRefreshLayout.isVisible = false
+			when (error.code) {
+				DeliveryRepository.ERROR_CODE_INVALID_TIME -> {
+					val errorTitle = getString(R.string.wallet_transfer_code_time_inconsistency_title)
+					val errorText = getString(R.string.wallet_transfer_code_time_inconsistency_text)
+					binding.transferCodeLastUpdate.text = "$errorTitle\n$errorText".makeSubStringBold(errorTitle)
+				}
+				ErrorCodes.GENERAL_OFFLINE -> {
+					val errorTitle = getString(R.string.wallet_transfer_code_no_internet_title)
+					val errorText = getString(R.string.wallet_transfer_code_update_no_internet_error_text)
+					binding.transferCodeLastUpdate.text = "$errorTitle\n$errorText".makeSubStringBold(errorTitle)
+				}
+				else -> {
+					binding.transferCodeDetailRefreshLayout.isVisible = false
+				}
 			}
 		} else {
 			binding.transferCodeDetailRefreshLayout.backgroundTintList =

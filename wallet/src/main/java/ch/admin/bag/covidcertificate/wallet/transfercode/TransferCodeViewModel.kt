@@ -17,6 +17,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import ch.admin.bag.covidcertificate.common.exception.TimeDeviationException
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
@@ -30,11 +31,7 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConve
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import java.io.IOException
 import java.security.KeyPair
 
@@ -85,6 +82,8 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 						// The server returned no certificate
 						conversionStateMutableLiveData.postValue(TransferCodeConversionState.NOT_CONVERTED)
 					}
+				} catch (e: TimeDeviationException) {
+					conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(DeliveryRepository.ERROR_CODE_INVALID_TIME)))
 				} catch (e: IOException) {
 					// A request failed, check if the device has network connectivity or not
 					if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
