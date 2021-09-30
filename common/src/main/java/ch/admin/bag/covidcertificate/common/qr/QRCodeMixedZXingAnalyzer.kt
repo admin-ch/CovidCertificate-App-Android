@@ -44,53 +44,19 @@ class QRCodeMixedZXingAnalyzer(
 	}
 
 	override fun analyze(imageProxy: ImageProxy) {
-		if (isGlobalHistogramBinarizer.getAndSet(!isGlobalHistogramBinarizer.get())) {
-			decodeWithGlobalHistogramBinarizer(imageProxy)
-		} else {
-			decodeWithHybridBinarizer(imageProxy)
-		}
-	}
-
-
-	fun decodeWithGlobalHistogramBinarizer(imageProxy: ImageProxy) {
-		try {
-			if (imageProxy.format in yuvFormats && imageProxy.planes.size == 3) {
-				val data = imageProxy.planes[0].buffer.toByteArray()
-				val source = PlanarYUVLuminanceSource(
-					data,
-					imageProxy.planes[0].rowStride,
-					imageProxy.height,
-					0,
-					0,
-					imageProxy.width,
-					imageProxy.height,
-					false
-				)
-				val binaryBitmap = BinaryBitmap(GlobalHistogramBinarizer(source))
-				try {
-					val result: Result = reader.decodeWithState(binaryBitmap)
-					onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text))
-				} catch (e: NotFoundException) {
-					onDecodeCertificate(DecodeCertificateState.SCANNING)
-					e.printStackTrace()
-				} catch (e: ChecksumException) {
-					onDecodeCertificate(DecodeCertificateState.SCANNING)
-					e.printStackTrace()
-				} catch (e: FormatException) {
-					onDecodeCertificate(DecodeCertificateState.SCANNING)
-					e.printStackTrace()
+		decodeFrame(
+			imageProxy,
+			binarizerFactory = { luminanceSource ->
+				if (isGlobalHistogramBinarizer.getAndSet(!isGlobalHistogramBinarizer.get())) {
+					GlobalHistogramBinarizer(luminanceSource)
+				} else {
+					HybridBinarizer(luminanceSource)
 				}
-			} else {
-				onDecodeCertificate(DecodeCertificateState.ERROR(StateError(QR_CODE_ERROR_WRONG_FORMAT)))
-			}
-		} catch (e: IllegalStateException) {
-			e.printStackTrace()
-		} finally {
-			imageProxy.close()
-		}
+			})
 	}
 
-	private fun decodeWithHybridBinarizer(imageProxy: ImageProxy) {
+
+	private fun decodeFrame(imageProxy: ImageProxy, binarizerFactory: (LuminanceSource) -> Binarizer) {
 		try {
 			if (imageProxy.format in yuvFormats && imageProxy.planes.size == 3) {
 				val data = imageProxy.planes[0].buffer.toByteArray()
@@ -104,7 +70,7 @@ class QRCodeMixedZXingAnalyzer(
 					imageProxy.height,
 					false
 				)
-				val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
+				val binaryBitmap = BinaryBitmap(binarizerFactory.invoke(source))
 				try {
 					val result: Result = reader.decodeWithState(binaryBitmap)
 					onDecodeCertificate(DecodeCertificateState.SUCCESS(result.text))

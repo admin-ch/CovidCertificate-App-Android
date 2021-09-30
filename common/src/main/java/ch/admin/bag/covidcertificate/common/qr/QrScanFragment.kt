@@ -37,7 +37,9 @@ import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
+import kotlinx.coroutines.isActive
 import java.util.concurrent.Executor
 
 abstract class QrScanFragment : Fragment() {
@@ -77,12 +79,12 @@ abstract class QrScanFragment : Fragment() {
 	private var lastUIErrorUpdate = 0L
 
 	private var cameraPermissionState = CameraPermissionState.REQUESTING
-	val secureStorage by lazy { ConfigSecureStorage.getInstance(requireContext()) }
+	private val secureStorage by lazy { ConfigSecureStorage.getInstance(requireContext()) }
 	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
 
 	private val autoFocusClockLiveData = liveData(Dispatchers.IO) {
-		while (true) {
+		while (currentCoroutineContext().isActive) {
 			emit(Unit)
 			delay(3 * 1000L)
 		}
@@ -224,7 +226,7 @@ abstract class QrScanFragment : Fragment() {
 		}
 	}
 
-	open fun setZoom() {
+	private fun setZoom() {
 		val zoomRatio = if (secureStorage.getZoomOn()) {
 			camera?.cameraInfo?.zoomState?.value?.maxZoomRatio
 		} else {
