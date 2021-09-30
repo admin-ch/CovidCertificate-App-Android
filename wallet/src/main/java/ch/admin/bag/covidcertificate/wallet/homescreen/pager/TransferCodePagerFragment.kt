@@ -14,6 +14,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.ViewTreeObserver
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
@@ -81,9 +82,17 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 
 		transferCodeViewModel.downloadCertificateForTransferCode(transferCode)
 
-		vaccinationHintViewModel.displayVaccinationHint.observe(viewLifecycleOwner) { shouldDisplayVaccinationHint ->
-			displayVaccinationHint(shouldDisplayVaccinationHint)
-		}
+		// Wait for a global layouting call before observing the vaccination hint display flag
+		// Before that call, the fragment root will be measured with the entire screen size and not the reduced viewpager size
+		view.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
+			override fun onGlobalLayout() {
+				vaccinationHintViewModel.displayVaccinationHint.observe(viewLifecycleOwner) { shouldDisplayVaccinationHint ->
+					displayVaccinationHint(shouldDisplayVaccinationHint)
+				}
+
+				view.viewTreeObserver.removeOnGlobalLayoutListener(this)
+			}
+		})
 	}
 
 	override fun onDestroyView() {
@@ -180,17 +189,19 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 
 	private fun isAvailableSpaceEnoughForHintAndImage(): Pair<Boolean, Boolean> {
 		binding.apply {
-			val fullHeight = root.height - root.paddingTop - root.paddingBottom
+			val fullHeight = transferCodePageCard.height - transferCodePageCard.paddingTop - transferCodePageCard.paddingBottom
 			val statusLabelHeight = transferCodePageStatusLabel.height + transferCodePageStatusLabel.marginTop + transferCodePageStatusLabel.marginBottom
 			val statusBubbleHeight = transferCodePageBubble.height + transferCodePageBubble.marginTop + transferCodePageBubble.marginBottom
 			val availableHeight = fullHeight - statusLabelHeight - statusBubbleHeight
 
 			// Measure the vaccination hint (which is still hidden) and check if it fits in the available height
 			transferCodePageVaccinationHint.measure(
-				View.MeasureSpec.makeMeasureSpec(binding.root.width, View.MeasureSpec.EXACTLY),
-				View.MeasureSpec.makeMeasureSpec(binding.root.height, View.MeasureSpec.AT_MOST)
+				View.MeasureSpec.makeMeasureSpec(binding.transferCodePageCard.width, View.MeasureSpec.EXACTLY),
+				View.MeasureSpec.makeMeasureSpec(availableHeight, View.MeasureSpec.AT_MOST)
 			)
-			val measuredHintHeight = transferCodePageVaccinationHint.measuredHeight
+			val measuredHintHeight = transferCodePageVaccinationHint.measuredHeight +
+					transferCodePageVaccinationHint.marginTop +
+					transferCodePageVaccinationHint.marginBottom
 			val hasEnoughSpaceForHint = measuredHintHeight < availableHeight
 
 			// The waiting image resizes itself in the height, but it should be at least as tall as the status bubble
