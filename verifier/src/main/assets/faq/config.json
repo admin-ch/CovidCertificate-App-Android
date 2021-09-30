@@ -73,6 +73,14 @@
 					"iconIos": null,
 					"linkTitle": null,
 					"linkUrl": null
+				},
+				{
+					"title": "Wie kann ein Zertifikat Light wieder in ein EU/EFTA-konformes Covid-Zertifikat umgewandelt werden?",
+					"text": "Das Zertifikat Light kann durch die Halterin / den Halter jederzeit in der «COVID Certificate»-App deaktiviert werden. Danach steht das normale Covid-Zertifikat wieder zur Verfügung.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
 				}
 			]
 		},
@@ -142,6 +150,14 @@
 				{
 					"title": "What is the 'certificate light'",
 					"text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "How can a 'certificate light' be converted back into an EU/EFTA-compliant COVID certificate?",
+					"text": "The holder can deactivate a 'certificate light' any time in their COVID Certificate app. After that their normal COVID certificate is available again.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -219,6 +235,14 @@
 					"iconIos": null,
 					"linkTitle": null,
 					"linkUrl": null
+				},
+				{
+					"title": "Comment reconvertir un certificat light en certificat COVID conforme aux normes UE/AELE ?",
+					"text": "Le détenteur peut en tout temps désactiver le certificat light dans l’application «COVID Certificate». Le certificat COVID standard est alors à nouveau disponible.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
 				}
 			]
 		},
@@ -292,6 +316,14 @@
 					"iconIos": null,
 					"linkTitle": null,
 					"linkUrl": null
+				},
+				{
+					"title": "Come si fa a trasformare un certificato light nuovamente in un certificato COVID conforme all’UE/AELS?",
+					"text": "Il certificato light può essere disattivato dal titolare in qualsiasi momento nell’app «COVID Certificate», dopodiché il certificato COVID di base è di nuovo disponibile.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
 				}
 			]
 		},
@@ -361,6 +393,14 @@
 				{
 					"title": "Tge è in certificat light?",
 					"text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.\n\nL'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 48 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà.",
+					"iconAndroid": null,
+					"iconIos": null,
+					"linkTitle": null,
+					"linkUrl": null
+				},
+				{
+					"title": "Co po in certificat light puspè vegnir transfurmà en in certificat COVID confurm a la UE/AECL?",
+					"text": "La possessura u il possessur po deactivar da tut temp il certificat light en l'app «COVID Certificate». Alura stat puspè a disposiziun il certificat COVID normal. ",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
