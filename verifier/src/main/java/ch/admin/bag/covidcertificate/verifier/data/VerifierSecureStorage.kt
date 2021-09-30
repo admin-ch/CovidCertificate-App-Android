@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.verifier.data
 
 import android.content.Context
+import androidx.core.content.edit
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 
@@ -19,13 +20,19 @@ class VerifierSecureStorage private constructor(context: Context) {
 	companion object : SingletonHolder<VerifierSecureStorage, Context>(::VerifierSecureStorage) {
 		private const val PREFERENCES = "SecureStorage"
 		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
+
+		private const val KEY_HAS_ZEBRA_SCANNER = "KEY_HAS_ZEBRA_SCANNER"
 	}
 
 	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, PREFERENCES)
 
 	fun getCertificateLightUpdateboardingCompleted() = prefs.getBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, false)
 
-	fun setCertificateLightUpdateboardingCompleted(completed: Boolean) = prefs.edit().putBoolean(
-		KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, completed
-	).apply()
+	fun setCertificateLightUpdateboardingCompleted(completed: Boolean) = prefs.edit {
+		putBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, completed)
+	}
+
+	fun hasZebraScanner() = prefs.getBoolean(KEY_HAS_ZEBRA_SCANNER, false)
+
+	fun setHasZebraScanner(hasZebraScanner: Boolean) = prefs.edit { putBoolean(KEY_HAS_ZEBRA_SCANNER, hasZebraScanner) }
 }

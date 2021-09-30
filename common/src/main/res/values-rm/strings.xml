@@ -1261,4 +1261,7 @@ Blers lieus porschan er vaccinaziuns «walk-in» senza termin."</string>
 
     <!-- Vaccination Booking Info URL Link -->
     <string name="vaccination_booking_info_url">"https://bag-coronavirus.ch/impfung/"</string>
+
+    <!-- Show information if special hardware detected  -->
+    <string name="verifier_qr_scanner_external_hardware_detected">"Externer Hardwarescanner identifitgà"</string>
 </resources>

@@ -14,16 +14,20 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.common.qr.QrScanFragment
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
 import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.verifier.R
+import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentQrScanBinding
 import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment
 
@@ -54,6 +58,8 @@ class VerifierQrScanFragment : QrScanFragment() {
 	override val zoomOnDrawable: Int = R.drawable.ic_zoom_on_black
 	override val zoomOffDrawable: Int = R.drawable.ic_zoom_off_white
 
+	private val verifierSecureStorage by lazy { VerifierSecureStorage.getInstance(requireContext()) }
+
 	private val zebraIntentReceiver = object : BroadcastReceiver() {
 		override fun onReceive(context: Context?, intent: Intent) {
 			val extras = intent.extras ?: return
@@ -69,7 +75,10 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		registerZebraIntentReceiver()
+
+		if (verifierSecureStorage.hasZebraScanner()) {
+			registerZebraIntentReceiver()
+		}
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -94,6 +103,19 @@ class VerifierQrScanFragment : QrScanFragment() {
 		return binding.root
 	}
 
+	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+
+		if (verifierSecureStorage.hasZebraScanner()) {
+			binding.qrCodeScannerExternalHardwareDetected.isVisible = true
+			// TODO Hide other fields
+		} else {
+			activateCamera()
+		}
+
+		setupActivateCameraButton()
+	}
+
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
@@ -101,7 +123,10 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 	override fun onDestroy() {
 		super.onDestroy()
-		unregisterZebraIntentReceiver()
+
+		if (verifierSecureStorage.hasZebraScanner()) {
+			unregisterZebraIntentReceiver()
+		}
 	}
 
 	override fun decodeQrCodeData(qrCodeData: String, onDecodeSuccess: () -> Unit, onDecodeError: (StateError) -> Unit) {
@@ -111,6 +136,23 @@ class VerifierQrScanFragment : QrScanFragment() {
 				showVerificationFragment(decodeState.certificateHolder)
 			}
 			is VerifierDecodeState.ERROR -> onDecodeError.invoke(decodeState.error)
+		}
+	}
+
+	private fun setupActivateCameraButton() {
+		binding.fragmentCameraActivate.isVisible = verifierSecureStorage.hasZebraScanner()
+
+		binding.fragmentCameraActivate.setOnClickListener {
+			if (isCameraActivated) {
+				deactivateCamera()
+			} else {
+				activateCamera()
+			}
+			binding.fragmentCameraActivate.isSelected = !isCameraActivated
+
+			val iconColor = if (isCameraActivated) R.color.white else R.color.black
+			binding.fragmentCameraActivate.imageTintList =
+				ColorStateList.valueOf(ContextCompat.getColor(requireContext(), iconColor))
 		}
 	}
 

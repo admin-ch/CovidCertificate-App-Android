@@ -1296,4 +1296,7 @@ Viele Orte bieten auch Walk-in-Impfungen ohne Termine an."</string>
 
     <!-- Vaccination Booking Info URL Link -->
     <string name="vaccination_booking_info_url">"https://bag-coronavirus.ch/impfung/"</string>
+
+    <!-- Show information if special hardware detected  -->
+    <string name="verifier_qr_scanner_external_hardware_detected">"Externer Hardwarescanner erkannt"</string>
 </resources>

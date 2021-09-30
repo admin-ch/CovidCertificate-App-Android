@@ -1264,4 +1264,7 @@ Many places also offer walk-in vaccinations without an appointment."</string>
 
     <!-- Vaccination Booking Info URL Link -->
     <string name="vaccination_booking_info_url">"https://foph-coronavirus.ch/vaccination/"</string>
+
+    <!-- Show information if special hardware detected  -->
+    <string name="verifier_qr_scanner_external_hardware_detected">"External hardware scanner detected"</string>
 </resources>
