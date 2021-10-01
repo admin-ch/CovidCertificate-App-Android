@@ -173,47 +173,90 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 			binding.vaccinationHintTitle.text = vaccinationHint?.title
 			binding.vaccinationHintText.text = vaccinationHint?.text
 
-			val (shouldShowHint, shouldShowImage) = isAvailableSpaceEnoughForHintAndImage()
-			displayWaitingImage = display.not() || shouldShowImage
-			binding.transferCodePageVaccinationHint.isVisible = display && shouldShowHint && vaccinationHint != null
+			if (display) {
+				when (calculateViewState()) {
+					TransferCodePagerCardViewState.SHOW_HINT_AND_IMAGE -> {
+						displayWaitingImage = true
+						binding.transferCodePageVaccinationHint.isVisible = true
+						binding.vaccinationHintText.isVisible = true
+					}
+					TransferCodePagerCardViewState.SHOW_HINT_ONLY -> {
+						displayWaitingImage = false
+						binding.transferCodePageVaccinationHint.isVisible = true
+						binding.vaccinationHintText.isVisible = true
+					}
+					TransferCodePagerCardViewState.SHOW_MINI_HINT_ONLY -> {
+						displayWaitingImage = false
+						binding.transferCodePageVaccinationHint.isVisible = true
+						binding.vaccinationHintText.isVisible = false
+						// The layout was measured with the text visible and wouldn't layout correctly now that it is hidden again
+						binding.transferCodePageVaccinationHint.doOnLayout { it.requestLayout() }
+					}
+					TransferCodePagerCardViewState.SHOW_NONE -> {
+						displayWaitingImage = false
+						binding.transferCodePageVaccinationHint.isVisible = false
+					}
+				}
+			} else {
+				binding.transferCodePageVaccinationHint.isVisible = false
+				displayWaitingImage = true
+			}
+
 			binding.transferCodePageWaitingImage.isVisible = displayWaitingImage
 
-			binding.vaccinationHintDismiss.setOnClickListener {
-				vaccinationHintViewModel.dismissVaccinationHint()
-			}
+			binding.vaccinationHintDismiss.setOnClickListener { vaccinationHintViewModel.dismissVaccinationHint() }
 
-			binding.vaccinationHintBookNow.setOnClickListener {
-				requireParentFragment().parentFragmentManager.beginTransaction()
-					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-					.replace(R.id.fragment_container, VaccinationAppointmentFragment.newInstance())
-					.addToBackStack(VaccinationAppointmentFragment::class.java.canonicalName)
-					.commit()
-			}
+			binding.vaccinationHintBookNow.setOnClickListener { showVaccinationHintDetails() }
 		}
 	}
 
-	private fun isAvailableSpaceEnoughForHintAndImage(): Pair<Boolean, Boolean> {
+	private fun showVaccinationHintDetails() {
+		requireParentFragment().parentFragmentManager.beginTransaction()
+			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+			.replace(R.id.fragment_container, VaccinationAppointmentFragment.newInstance())
+			.addToBackStack(VaccinationAppointmentFragment::class.java.canonicalName)
+			.commit()
+	}
+
+	private fun calculateViewState(): TransferCodePagerCardViewState {
 		binding.apply {
 			val fullHeight = transferCodePageCard.height - transferCodePageCard.paddingTop - transferCodePageCard.paddingBottom
 			val statusLabelHeight = transferCodePageStatusLabel.height + transferCodePageStatusLabel.marginTop + transferCodePageStatusLabel.marginBottom
 			val statusBubbleHeight = transferCodePageBubble.height + transferCodePageBubble.marginTop + transferCodePageBubble.marginBottom
 			val availableHeight = fullHeight - statusLabelHeight - statusBubbleHeight
 
-			// Measure the vaccination hint (which is still hidden) and check if it fits in the available height
+			// Measure the (possibly hidden) vaccination hint and check if it fits in the available height
 			transferCodePageVaccinationHint.measure(
-				View.MeasureSpec.makeMeasureSpec(binding.transferCodePageCard.width, View.MeasureSpec.EXACTLY),
-				View.MeasureSpec.makeMeasureSpec(availableHeight, View.MeasureSpec.AT_MOST)
+				View.MeasureSpec.makeMeasureSpec(transferCodePageCard.width, View.MeasureSpec.EXACTLY),
+				View.MeasureSpec.makeMeasureSpec(transferCodePageCard.height, View.MeasureSpec.AT_MOST)
 			)
 			val measuredHintHeight = transferCodePageVaccinationHint.measuredHeight +
 					transferCodePageVaccinationHint.marginTop +
 					transferCodePageVaccinationHint.marginBottom
-			val hasEnoughSpaceForHint = measuredHintHeight < availableHeight
+			val hasEnoughSpaceForHint = measuredHintHeight <= availableHeight
 
-			// The waiting image resizes itself in the height, but it should be at least as tall as the status bubble
-			val hasEnoughSpaceForHintAndImage = (availableHeight - measuredHintHeight) >= statusBubbleHeight
+			// Measure the height of the mini vaccination hint (without text) and check if it fits in the available height
+			val hintTextHeight = vaccinationHintText.measuredHeight + vaccinationHintText.marginTop
+			val measuredMiniHintHeight = measuredHintHeight - hintTextHeight
+			val hasEnoughSpaceForMiniHint = measuredMiniHintHeight <= availableHeight
 
-			return hasEnoughSpaceForHint to hasEnoughSpaceForHintAndImage
+			// The waiting image resizes itself in the height, but it should be at least half as tall as the status bubble
+			val hasEnoughSpaceForHintAndImage = (availableHeight - measuredHintHeight) >= (statusBubbleHeight * 0.5)
+
+			return when {
+				hasEnoughSpaceForHintAndImage -> TransferCodePagerCardViewState.SHOW_HINT_AND_IMAGE
+				hasEnoughSpaceForHint -> TransferCodePagerCardViewState.SHOW_HINT_ONLY
+				hasEnoughSpaceForMiniHint -> TransferCodePagerCardViewState.SHOW_MINI_HINT_ONLY
+				else -> TransferCodePagerCardViewState.SHOW_NONE
+			}
 		}
+	}
+
+	private enum class TransferCodePagerCardViewState {
+		SHOW_HINT_AND_IMAGE,
+		SHOW_HINT_ONLY,
+		SHOW_MINI_HINT_ONLY,
+		SHOW_NONE
 	}
 
 }
