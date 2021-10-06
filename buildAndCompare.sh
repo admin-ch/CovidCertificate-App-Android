@@ -9,18 +9,6 @@ fi
 echo "Which app would you like to build ('wallet' or 'verifier')?"
 read appName
 
-echo "Please enter the keystore filename:"
-read keystoreFile
-
-echo "Please enter the keystore password:"
-read -s keystorePassword
-
-echo "Please enter the keyAlias:"
-read keyAlias
-
-echo "Please enter the keyAlias password:"
-read -s keyAliasPassword
-
 echo "Please enter the build timestamp:"
 read buildTimestamp
 
@@ -29,10 +17,10 @@ read branch
 
 echo "Building apk from source..."
 
-docker images -a | grep "covidcertificate-builder" | awk '{print $3}' | xargs docker rmi
+docker images -a | grep "covidcertificate-builder" | awk '{print $3}' | xargs -r docker rmi
 docker build -t covidcertificate-builder .
 currentPath=`pwd`
-docker run --rm -v $currentPath:/home/covidcertificate/external -w /home/covidcertificate covidcertificate-builder /bin/bash -c "git clone https://github.com/admin-ch/CovidCertificate-App-Android.git; cd CovidCertificate-App-Android; cp /home/covidcertificate/external/$appName/$keystoreFile $appName/$keystoreFile; git checkout $branch; gradle $appName:assembleProdRelease -PkeystorePassword='$keystorePassword' -PkeyAlias=$keyAlias -PkeyAliasPassword='$keyAliasPassword' -PkeystoreFile=$keystoreFile -PbuildTimestamp=$buildTimestamp; cp $appName/build/outputs/apk/prod/release/$appName-prod-release.apk /home/covidcertificate/external/$appName-built.apk"
+docker run --rm -v $currentPath:/home/covidcertificate/external -w /home/covidcertificate covidcertificate-builder /bin/bash -c "git clone https://github.com/admin-ch/CovidCertificate-App-Android.git; cd CovidCertificate-App-Android; keytool -genkeypair -storepass securePassword -keypass securePassword -alias keyAlias -keyalg RSA -keystore $appName/build.keystore -dname 'CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown'; git checkout $branch; echo -n 'Building from commit: '; git rev-parse --verify HEAD; gradle $appName:assembleProdRelease -PkeystorePassword=securePassword -PkeyAlias=keyAlias -PkeyAliasPassword=securePassword -PkeystoreFile=build.keystore -PbuildTimestamp=$buildTimestamp; cp $appName/build/outputs/apk/prod/release/$appName-prod-release.apk /home/covidcertificate/external/$appName-built.apk"
 
 echo "Comparing the APK built from source with the reference APK..."
-python apkdiff.py $appName-built.apk $1
+python3 apkdiff.py $appName-built.apk $1
