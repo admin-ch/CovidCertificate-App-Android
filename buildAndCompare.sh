@@ -24,7 +24,7 @@ read -s keyAliasPassword
 echo "Please enter the build timestamp:"
 read buildTimestamp
 
-echo Branch:
+echo "Branch (e.g. release/version-1.0.0)":
 read branch
 
 echo "Building apk from source..."
