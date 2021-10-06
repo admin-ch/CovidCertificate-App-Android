@@ -13,7 +13,7 @@ Download and install [Docker](https://www.docker.com/).
 ```shell
 git clone https://github.com/admin-ch/CovidCertificate-App-Android.git ~/CovidCertificate-App-Android
 cd ~/CovidCertificate-App-Android
-git checkout 1.0.0
+git checkout release/version-1.0.0
 ```
 
 ## Wallet App
@@ -28,12 +28,14 @@ git checkout 1.0.0
 ### Build the Wallet app using Docker
 
 1. Build a Docker Image with the required Android Tools
-2. Build the App in the Docker Container while specifying the build timestamp that was recorded earlier (e.g., 1595936711208)
-3. Copy the freshly-built APK
+2. Generate a dummy key store for signing
+3. Build the App in the Docker Container while specifying the build timestamp that was recorded earlier (e.g., 1595936711208)
+4. Copy the freshly-built APK
 
 ```shell
 cd ~/CovidCertificate-App-Android
 docker build -t covidcertificate-builder .
+docker run --rm -v ~/CovidCertificate-App-Android:/home/covidcertificate -w /home/covidcertificate covidcertificate-builder keytool -genkeypair -storepass securePassword -keypass securePassword -alias keyAlias -keyalg RSA -keystore wallet/build.keystore -dname 'CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown'
 docker run --rm -v ~/CovidCertificate-App-Android:/home/covidcertificate -w /home/covidcertificate covidcertificate-builder gradle wallet:assembleProdRelease -PkeystorePassword=securePassword -PkeyAlias=keyAlias -PkeyAliasPassword=securePassword -PkeystoreFile=build.keystore -PbuildTimestamp=1622186583268
 cp wallet/build/outputs/apk/prod/release/wallet-prod-release.apk wallet-built.apk
 ```
@@ -78,12 +80,14 @@ python ../apkdiff.py wallet-built.apk wallet-store.apk
 ### Build the Verifier app using Docker
 
 1. Build a Docker Image with the required Android Tools
-2. Build the App in the Docker Container while specifying the build timestamp that was recorded earlier (e.g., 1595936711208)
-3. Copy the freshly-built APK
+2. Generate a dummy key store for signing
+3. Build the App in the Docker Container while specifying the build timestamp that was recorded earlier (e.g., 1595936711208)
+4. Copy the freshly-built APK
 
 ```shell
 cd ~/CovidCertificate-App-Android
 docker build -t covidcertificate-builder .
+docker run --rm -v ~/CovidCertificate-App-Android:/home/covidcertificate -w /home/covidcertificate covidcertificate-builder keytool -genkeypair -storepass securePassword -keypass securePassword -alias keyAlias -keyalg RSA -keystore wallet/build.keystore -dname 'CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown'
 docker run --rm -v ~/CovidCertificate-App-Android:/home/covidcertificate -w /home/covidcertificate covidcertificate-builder gradle verifier:assembleProdRelease -PkeystorePassword=securePassword -PkeyAlias=keyAlias -PkeyAliasPassword=securePassword -PkeystoreFile=build.keystore -PbuildTimestamp=1622186583268
 cp verifier/build/outputs/apk/prod/release/verifier-prod-release.apk verifier-built.apk
 ```
