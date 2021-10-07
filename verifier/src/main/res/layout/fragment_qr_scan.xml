@@ -13,6 +13,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@color/black"
 	tools:context=".qr.VerifierQrScanFragment">
 
 	<androidx.camera.view.PreviewView
@@ -78,6 +79,23 @@
 				app:layout_constraintTop_toBottomOf="@id/qr_code_scanner_milk_top" />
 
 			<TextView
+				android:id="@+id/qr_code_scanner_external_hardware_detected"
+				style="@style/CovidCertificate.Text.Bold"
+				android:layout_width="0dp"
+				android:layout_height="wrap_content"
+				android:layout_margin="@dimen/spacing_large"
+				android:background="@drawable/bg_rect_rounded_small"
+				android:padding="@dimen/spacing_small"
+				android:text="@string/verifier_qr_scanner_external_hardware_detected"
+				android:visibility="gone"
+				app:layout_constraintBottom_toTopOf="@id/camera_preview_container"
+				app:layout_constraintEnd_toEndOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:layout_constraintTop_toBottomOf="@id/toolbar_place_holder"
+				app:layout_constraintWidth_default="wrap"
+				tools:visibility="visible" />
+
+			<TextView
 				android:id="@+id/qr_code_scanner_invalid_code_text"
 				style="@style/CovidCertificate.Text.Bold"
 				android:layout_width="wrap_content"
@@ -95,7 +113,7 @@
 				app:layout_constraintEnd_toEndOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:layout_constraintTop_toBottomOf="@id/toolbar_place_holder"
-				tools:visibility="visible" />
+				tools:visibility="gone" />
 
 			<View
 				android:id="@+id/qr_code_scanner_camera_hole"
@@ -182,9 +200,24 @@
 				android:layout_height="@dimen/floating_button_height"
 				android:layout_margin="@dimen/spacing_large"
 				android:elevation="@dimen/floating_button_elevation"
+				android:visibility="gone"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
-				app:srcCompat="@drawable/ic_zoom_off" />
+				app:srcCompat="@drawable/ic_zoom_off"
+				tools:visibility="visible" />
+
+			<ImageButton
+				android:id="@+id/fragment_camera_activate"
+				style="@style/CovidCertificate.FloatingImageButton.BlackWhite"
+				android:layout_width="@dimen/floating_button_height"
+				android:layout_height="@dimen/floating_button_height"
+				android:layout_margin="@dimen/spacing_large"
+				android:elevation="@dimen/floating_button_elevation"
+				android:visibility="gone"
+				app:layout_constraintBottom_toBottomOf="parent"
+				app:layout_constraintStart_toStartOf="parent"
+				app:srcCompat="@drawable/ic_camera_switch"
+				tools:visibility="visible" />
 
 			<ImageButton
 				android:id="@+id/fragment_qr_scanner_flash_button"

@@ -11,9 +11,9 @@
 package ch.admin.bag.covidcertificate.wallet.transfercode.net
 
 import android.content.Context
-import android.util.Log
 import ch.admin.bag.covidcertificate.common.BuildConfig
-import ch.admin.bag.covidcertificate.common.util.HttpIOException
+import ch.admin.bag.covidcertificate.common.exception.HttpIOException
+import ch.admin.bag.covidcertificate.common.exception.TimeDeviationException
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.CertificatePinning
@@ -27,7 +27,6 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreat
 import okhttp3.Cache
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.security.KeyPair
@@ -35,6 +34,7 @@ import java.security.KeyPair
 internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec) {
 
 	companion object : SingletonHolder<DeliveryRepository, DeliverySpec>(::DeliveryRepository) {
+		const val ERROR_CODE_INVALID_TIME = "I|TIME425"
 		private const val KEY_PAIR_ALGORITHM = "RSA2048"
 	}
 
@@ -85,35 +85,44 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 		}
 	}
 
-	@Throws(HttpIOException::class)
+	@Throws(HttpIOException::class, TimeDeviationException::class)
 	suspend fun download(transferCode: String, keyPair: KeyPair): List<ConvertedCertificate> {
 		val signaturePayload = TransferCodeCrypto.buildMessage("get", transferCode)
 		val signature = TransferCodeCrypto.sign(keyPair, signaturePayload) ?: return emptyList()
 		val requestDeliveryPayload = RequestDeliveryPayload(transferCode, signaturePayload, signature)
 
 		val response = deliveryService.get(requestDeliveryPayload)
-		if (response.code() == 404) {
-			// A 404 indicates that the transfer code was not found on the server, so it was either already delivered or is expired
-			return emptyList()
-		} else if (!response.isSuccessful) {
-			// Any other non-successful status code is considered an error and should be handled by the caller in a try-catch
-			throw HttpIOException(response)
-		}
+		when {
+			response.code() == 425 -> {
+				// A 425 indicates that the client device time deviates too much from the server time
+				throw TimeDeviationException()
+			}
+			response.code() == 404 -> {
+				// A 404 indicates that the transfer code was not found on the server, so it was either already delivered or is expired
+				return emptyList()
+			}
+			!response.isSuccessful -> {
+				// Any other non-successful status code is considered an error and should be handled by the caller in a try-catch
+				throw HttpIOException(response)
+			}
+			else -> {
+				val covidCertDelivery = response.body() ?: return emptyList()
+				if (covidCertDelivery.covidCerts.isEmpty()) {
+					return emptyList()
+				}
 
-		val covidCertDelivery = response.body() ?: return emptyList()
-		if (covidCertDelivery.covidCerts.isEmpty()) {
-			return emptyList()
-		}
-
-		return covidCertDelivery.covidCerts.mapNotNull {
-			val hcert = TransferCodeCrypto.decrypt(keyPair, it.encryptedHcert)
-			val pdf = TransferCodeCrypto.decrypt(keyPair, it.encryptedPdf)
-			if (hcert != null && pdf != null) {
-				ConvertedCertificate(hcert, pdf)
-			} else {
-				null
+				return covidCertDelivery.covidCerts.mapNotNull {
+					val hcert = TransferCodeCrypto.decrypt(keyPair, it.encryptedHcert)
+					val pdf = TransferCodeCrypto.decrypt(keyPair, it.encryptedPdf)
+					if (hcert != null && pdf != null) {
+						ConvertedCertificate(hcert, pdf)
+					} else {
+						null
+					}
+				}
 			}
 		}
+
 	}
 
 	suspend fun complete(transferCode: String, keyPair: KeyPair): Boolean {

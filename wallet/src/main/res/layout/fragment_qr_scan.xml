@@ -13,6 +13,7 @@
 	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
+	android:background="@color/black"
 	tools:context=".qr.WalletQrScanFragment">
 
 	<androidx.camera.view.PreviewView
@@ -263,10 +264,12 @@
 		android:layout_height="@dimen/floating_button_height"
 		android:layout_margin="@dimen/spacing_large"
 		android:elevation="@dimen/floating_button_elevation"
-		app:srcCompat="@drawable/ic_zoom_off"
+		android:visibility="gone"
 		app:layout_constraintBottom_toTopOf="@id/qr_code_scanner_footer_group"
 		app:layout_constraintStart_toStartOf="parent"
-		app:layout_constraintTop_toTopOf="@id/qr_code_scanner_footer_group" />
+		app:layout_constraintTop_toTopOf="@id/qr_code_scanner_footer_group"
+		app:srcCompat="@drawable/ic_zoom_off"
+		tools:visibility="visible" />
 
 	<ImageButton
 		android:id="@+id/fragment_qr_scanner_flash_button"
@@ -275,9 +278,9 @@
 		android:layout_height="@dimen/floating_button_height"
 		android:layout_margin="@dimen/spacing_large"
 		android:elevation="@dimen/floating_button_elevation"
-		app:srcCompat="@drawable/ic_light_off_blue"
 		app:layout_constraintBottom_toTopOf="@id/qr_code_scanner_footer_group"
 		app:layout_constraintEnd_toEndOf="parent"
-		app:layout_constraintTop_toTopOf="@id/qr_code_scanner_footer_group" />
+		app:layout_constraintTop_toTopOf="@id/qr_code_scanner_footer_group"
+		app:srcCompat="@drawable/ic_light_off_blue" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

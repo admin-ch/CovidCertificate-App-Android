@@ -26,8 +26,8 @@ import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ViewTransferCodeBubbleBinding
-import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeCreationViewModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
+import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import java.time.Instant
 
 class TransferCodeBubbleView @JvmOverloads constructor(
@@ -224,7 +224,7 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 				setBubbleBackgroundColor(R.color.redish)
 
 			}
-			TransferCodeCreationViewModel.ERROR_CODE_INVALID_TIME -> {
+			DeliveryRepository.ERROR_CODE_INVALID_TIME -> {
 				binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_no_connection)
 				binding.transferCodeErrorTitle.setText(R.string.wallet_transfer_code_time_inconsistency_title)
 				binding.transferCodeErrorDescription.setText(R.string.wallet_transfer_code_time_inconsistency_text)

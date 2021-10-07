@@ -40,10 +40,6 @@ import java.time.Instant
 
 class TransferCodeCreationViewModel(application: Application) : AndroidViewModel(application) {
 
-	companion object {
-		const val ERROR_CODE_INVALID_TIME = "I|TIME425"
-	}
-
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val deliveryRepository = DeliveryRepository.getInstance(DeliverySpec(application.applicationContext, BuildConfig.BASE_URL_DELIVERY))
 	private val walletDataStorage = WalletDataSecureStorage.getInstance(application.applicationContext)
@@ -82,7 +78,7 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 					creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCodeModel))
 				}
 				TransferCodeCreationResponse.INVALID_TIME -> {
-					creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ERROR_CODE_INVALID_TIME)))
+					creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(DeliveryRepository.ERROR_CODE_INVALID_TIME)))
 				}
 				else -> {
 					creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_REGISTRATION_FAILED)))

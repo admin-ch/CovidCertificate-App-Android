@@ -25,6 +25,7 @@ import ch.admin.bag.covidcertificate.wallet.databinding.ItemTransferCodeListBind
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
+import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
 import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 
@@ -159,7 +160,8 @@ sealed class WalletDataListItem {
 					binding.itemTransferCodeListCode.isVisible = false
 				}
 				conversionItem.conversionState is TransferCodeConversionState.ERROR
-						&& conversionItem.conversionState.error.code != ErrorCodes.GENERAL_OFFLINE -> {
+						&& conversionItem.conversionState.error.code != ErrorCodes.GENERAL_OFFLINE
+						&& conversionItem.conversionState.error.code != DeliveryRepository.ERROR_CODE_INVALID_TIME -> {
 					binding.itemTransferCodeListIcon.setImageResource(R.drawable.ic_scanner_alert)
 					binding.itemTransferCodeListTitle.setText(R.string.wallet_transfer_code_state_expired)
 					binding.itemTransferCodeListInfo.setText(R.string.wallet_transfer_code_unexpected_error_title)

@@ -189,7 +189,12 @@ class CertificateDetailItemListBuilder(
 					showEnglishVersionForLabels
 				)
 			)
-			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, recoveryEntry.getCertificateIdentifier(), false))
+			detailItems.add(
+				UvciItem(
+					recoveryEntry.getCertificateIdentifier(),
+					false
+				)
+			)
 
 			certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
@@ -287,7 +292,12 @@ class CertificateDetailItemListBuilder(
 					showEnglishVersionForLabels
 				)
 			)
-			detailItems.add(ValueItem(R.string.wallet_certificate_identifier, testEntry.getCertificateIdentifier(), false))
+			detailItems.add(
+				UvciItem(
+					testEntry.getCertificateIdentifier(),
+					false
+				)
+			)
 
 			certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
 				detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
