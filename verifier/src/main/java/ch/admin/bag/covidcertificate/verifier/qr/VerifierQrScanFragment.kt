@@ -84,14 +84,21 @@ class VerifierQrScanFragment : QrScanFragment() {
 		}
 
 		setupActivateCameraButton()
+	}
 
+	override fun onResume() {
+		super.onResume()
 		zebraBroadcastReceiver.registerWith(requireContext()) { decodeQrCodeData(it, {}, {}) }
+	}
+
+	override fun onPause() {
+		super.onPause()
+		zebraBroadcastReceiver.unregisterWith(requireContext())
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
-		zebraBroadcastReceiver.unregisterWith(requireContext())
 	}
 
 	override fun decodeQrCodeData(qrCodeData: String, onDecodeSuccess: () -> Unit, onDecodeError: (StateError) -> Unit) {

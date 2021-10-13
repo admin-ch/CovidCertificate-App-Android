@@ -114,9 +114,12 @@ class VerificationFragment : Fragment() {
 			updateHeaderAndVerificationView(it)
 		}
 
-		zebraBroadcastReceiver.registerWith(requireContext()) { decodeQrCodeData(it) }
-
 		verifyAndDisplayCertificateHolder()
+	}
+
+	override fun onResume() {
+		super.onResume()
+		zebraBroadcastReceiver.registerWith(requireContext()) { decodeQrCodeData(it) }
 	}
 
 	override fun onPause() {
@@ -127,12 +130,12 @@ class VerificationFragment : Fragment() {
 			onBackPressedCallback.remove()
 			parentFragmentManager.popBackStack()
 		}
+		zebraBroadcastReceiver.unregisterWith(requireContext())
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
-		zebraBroadcastReceiver.unregisterWith(requireContext())
 	}
 
 	private fun verifyAndDisplayCertificateHolder() {

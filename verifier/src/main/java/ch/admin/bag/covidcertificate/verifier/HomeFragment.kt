@@ -108,14 +108,21 @@ class HomeFragment : Fragment() {
 		}
 
 		setupInfoBox()
+	}
 
+	override fun onResume() {
+		super.onResume()
 		zebraBroadcastReceiver.registerWith(requireContext()) { decodeQrCodeData(it) }
+	}
+
+	override fun onPause() {
+		super.onPause()
+		zebraBroadcastReceiver.unregisterWith(requireContext())
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
-		zebraBroadcastReceiver.unregisterWith(requireContext())
 	}
 
 	private fun setupDebugFragment() {
