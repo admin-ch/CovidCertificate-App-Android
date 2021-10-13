@@ -40,8 +40,8 @@ android {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
 		minSdkVersion 23
 		targetSdkVersion 30
-		versionCode 2600
-		versionName "2.6.0"
+		versionCode 2610
+		versionName "2.6.1"
 
 		// Stops the Gradle plugin’s automatic rasterization of vectors
 		generatedDensities = []
