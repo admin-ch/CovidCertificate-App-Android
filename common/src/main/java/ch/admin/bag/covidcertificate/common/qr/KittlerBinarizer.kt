@@ -15,11 +15,10 @@ import com.google.zxing.common.GlobalHistogramBinarizer
 import okhttp3.internal.and
 import kotlin.math.abs
 
-/*
- *Use a Kittler Binarizer described here //http://www.iztok-jr-fister.eu/static/publications/39.pdf
- *
- *  */
-
+/**
+ * Use a Kittler Binarizer described here //http://www.iztok-jr-fister.eu/static/publications/39.pdf
+ * Currently not in use, but may be in the future for more scanner improvements
+ */
 class KittlerBinarizer(luminanceSource: LuminanceSource) : GlobalHistogramBinarizer(luminanceSource) {
 
 	override fun getBlackMatrix(): BitMatrix {

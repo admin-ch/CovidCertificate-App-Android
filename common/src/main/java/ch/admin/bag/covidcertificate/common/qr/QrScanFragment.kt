@@ -36,10 +36,7 @@ import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.currentCoroutineContext
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.isActive
+import kotlinx.coroutines.*
 import java.util.concurrent.Executor
 
 abstract class QrScanFragment : Fragment() {
@@ -84,6 +81,8 @@ abstract class QrScanFragment : Fragment() {
 	private var isTorchOn: Boolean = false
 	protected var isCameraActivated = false
 
+	private var analyzerCoroutineScope: CoroutineScope? = null
+
 	private val autoFocusClockLiveData = liveData(Dispatchers.IO) {
 		while (currentCoroutineContext().isActive) {
 			emit(Unit)
@@ -100,6 +99,9 @@ abstract class QrScanFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		isTorchOn = savedInstanceState?.getBoolean(STATE_IS_TORCH_ON, isTorchOn) ?: isTorchOn
 		toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+
+		// Create a custom coroutine scope for the QR code analyzer, that can be cancelled independently of the view lifecycle scope
+		analyzerCoroutineScope = CoroutineScope(Job())
 
 		// Wait for the views to be properly laid out
 		qrCodeScanner.post {
@@ -120,6 +122,12 @@ abstract class QrScanFragment : Fragment() {
 	override fun onSaveInstanceState(outState: Bundle) {
 		super.onSaveInstanceState(outState)
 		outState.putBoolean(STATE_IS_TORCH_ON, isTorchOn)
+	}
+
+	override fun onDestroyView() {
+		super.onDestroyView()
+		analyzerCoroutineScope?.cancel()
+		analyzerCoroutineScope = null
 	}
 
 	abstract fun decodeQrCodeData(qrCodeData: String, onDecodeSuccess: () -> Unit, onDecodeError: (StateError) -> Unit)
@@ -175,6 +183,7 @@ abstract class QrScanFragment : Fragment() {
 	@SuppressLint("ClickableViewAccessibility")
 	private fun initializeCamera() {
 		if (!isAdded || !qrCodeScanner.isAttachedToWindow) return
+		val analyzerCoroutineScope = analyzerCoroutineScope ?: return
 
 		val rotation = qrCodeScanner.display.rotation
 		preview = Preview.Builder()
@@ -197,7 +206,7 @@ abstract class QrScanFragment : Fragment() {
 			.also { imageAnalysis ->
 				imageAnalysis.setAnalyzer(
 					mainExecutor,
-					QRCodeMixedZXingAnalyzer { decodeCertificateState: DecodeCertificateState ->
+					QRCodeMixedZXingAnalyzer(analyzerCoroutineScope) { decodeCertificateState ->
 						when (decodeCertificateState) {
 							is DecodeCertificateState.ERROR -> {
 								handleInvalidQRCodeExceptions(decodeCertificateState.error)
@@ -211,6 +220,9 @@ abstract class QrScanFragment : Fragment() {
 									decodeQrCodeData(
 										it,
 										onDecodeSuccess = {
+											// Cancel the analyzer coroutine scope to stop any running analysis coroutines from calling the callback
+											analyzerCoroutineScope.cancel()
+
 											// Once successfully decoded, clear the analyzer from stopping more frames being
 											// analyzed and possibly decoded successfully
 											imageAnalysis.clearAnalyzer()
@@ -224,7 +236,8 @@ abstract class QrScanFragment : Fragment() {
 								}
 							}
 						}
-					})
+					}
+				)
 			}
 
 		cutOut.setOnTouchListener { _: View, motionEvent: MotionEvent ->
