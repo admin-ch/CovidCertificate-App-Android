@@ -17,7 +17,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
@@ -91,7 +90,6 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 
 		displayQrCode()
-		displayValidity()
 		displayCertificateDetails()
 		setupStatusInfo()
 
@@ -101,18 +99,13 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	override fun onResume() {
 		super.onResume()
 		requireActivity().window.overrideScreenBrightness(true)
+		startValidityTimer()
 	}
 
 	override fun onPause() {
 		super.onPause()
 		requireActivity().window.overrideScreenBrightness(false)
-	}
-
-	override fun onDestroyView() {
-		super.onDestroyView()
-		_binding = null
-		validityTimer?.cancel()
-		validityTimer = null
+		cancelValidityTimer()
 	}
 
 	private fun displayQrCode() {
@@ -123,10 +116,10 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	}
 
 	@SuppressLint("SetTextI18n")
-	private fun displayValidity() {
+	private fun startValidityTimer() {
 		val expirationTime = certificateHolder.expirationTime ?: return
 
-		validityTimer?.cancel()
+		cancelValidityTimer()
 		validityTimer = fixedRateTimer(period = TimeUnit.SECONDS.toMillis(1L)) {
 			val now = Instant.now()
 			val remainingTimeInSeconds = expirationTime.epochSecond - now.epochSecond
@@ -141,12 +134,15 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 			}
 
 			if (remainingTimeInSeconds <= 0) {
-				validityTimer?.cancel()
-				validityTimer = null
-
+				cancelValidityTimer()
 				deleteCertificateLightAndShowOriginal()
 			}
 		}
+	}
+
+	private fun cancelValidityTimer() {
+		validityTimer?.cancel()
+		validityTimer = null
 	}
 
 	private fun displayCertificateDetails() {
