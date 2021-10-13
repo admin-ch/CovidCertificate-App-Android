@@ -1,2 +1,1 @@
-- Update Certlogic and use v2 endpoint for national rules
-- Further improvements and bug fixes
+See https://github.com/admin-ch/CovidCertificate-App-Android/releases (or click Links > Changelog)
