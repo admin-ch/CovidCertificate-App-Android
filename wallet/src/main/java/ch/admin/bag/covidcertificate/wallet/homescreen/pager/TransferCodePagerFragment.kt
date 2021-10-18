@@ -87,8 +87,10 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 		// Before that call, the fragment root will be measured with the entire screen size and not the reduced viewpager size
 		view.viewTreeObserver.addOnGlobalLayoutListener(object : ViewTreeObserver.OnGlobalLayoutListener {
 			override fun onGlobalLayout() {
-				vaccinationHintViewModel.displayVaccinationHint.observe(viewLifecycleOwner) { shouldDisplayVaccinationHint ->
-					displayVaccinationHint(shouldDisplayVaccinationHint)
+				if (isAdded) {
+					vaccinationHintViewModel.displayVaccinationHint.observe(viewLifecycleOwner) { shouldDisplayVaccinationHint ->
+						displayVaccinationHint(shouldDisplayVaccinationHint)
+					}
 				}
 
 				view.viewTreeObserver.removeOnGlobalLayoutListener(this)

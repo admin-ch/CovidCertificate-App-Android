@@ -23,17 +23,18 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.views.VerticalMarginItemDecoration
-import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
+import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
+import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
-import ch.admin.bag.covidcertificate.verifier.qr.VerifierQrScanFragment
+import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 import kotlin.math.max
 import kotlin.math.roundToInt
 
@@ -55,6 +56,7 @@ class VerificationFragment : Fragment() {
 	private var _binding: FragmentVerificationBinding? = null
 	private val binding get() = _binding!!
 	private val verificationViewModel: VerificationViewModel by viewModels()
+	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
 	private var certificateHolder: VerifierCertificateHolder? = null
 	private var isClosedByUser = false
 
@@ -88,30 +90,12 @@ class VerificationFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 
-		val certificateHolder = certificateHolder ?: return
-		val personName = certificateHolder.getPersonName()
-
-		binding.verificationFamilyName.text = personName.familyName
-		binding.verificationGivenName.text = personName.givenName
-		binding.verificationBirthdate.text = certificateHolder.getFormattedDateOfBirth()
-		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
-
-		binding.verificationFooterButton.setOnClickListener {
-			isClosedByUser = true
-			onBackPressedCallback.remove()
-			parentFragmentManager.popBackStack()
-		}
-
 		view.doOnLayout { setupScrollBehavior() }
 
-		verificationViewModel.startVerification(certificateHolder)
-
-		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner, {
-			updateHeaderAndVerificationView(it)
-		})
-
 		verificationAdapter = VerificationAdapter {
-			verificationViewModel.retryVerification(certificateHolder)
+			certificateHolder?.let {
+				verificationViewModel.retryVerification(it)
+			}
 		}
 
 		binding.verificationStatusRecyclerView.apply {
@@ -119,6 +103,23 @@ class VerificationFragment : Fragment() {
 			adapter = verificationAdapter
 			addItemDecoration(VerticalMarginItemDecoration(context, R.dimen.spacing_very_small))
 		}
+
+		binding.verificationFooterButton.setOnClickListener {
+			isClosedByUser = true
+			onBackPressedCallback.remove()
+			parentFragmentManager.popBackStack()
+		}
+
+		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner) {
+			updateHeaderAndVerificationView(it)
+		}
+
+		verifyAndDisplayCertificateHolder()
+	}
+
+	override fun onResume() {
+		super.onResume()
+		zebraBroadcastReceiver.registerWith(requireContext()) { decodeQrCodeData(it) }
 	}
 
 	override fun onPause() {
@@ -127,13 +128,27 @@ class VerificationFragment : Fragment() {
 		// it was closed by the user (e.g. with the back or OK button)
 		if (!isClosedByUser) {
 			onBackPressedCallback.remove()
-			parentFragmentManager.popBackStack(VerifierQrScanFragment.TAG, 0)
+			parentFragmentManager.popBackStack()
 		}
+		zebraBroadcastReceiver.unregisterWith(requireContext())
 	}
 
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
+	}
+
+	private fun verifyAndDisplayCertificateHolder() {
+		val certificateHolder = certificateHolder ?: return
+		binding.verificationScrollView.smoothScrollTo(0, 0)
+		val personName = certificateHolder.getPersonName()
+
+		binding.verificationFamilyName.text = personName.familyName
+		binding.verificationGivenName.text = personName.givenName
+		binding.verificationBirthdate.text = certificateHolder.getFormattedDateOfBirth()
+		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
+
+		verificationViewModel.startVerification(certificateHolder)
 	}
 
 	private fun updateHeaderAndVerificationView(verificationState: VerificationState) {
@@ -179,6 +194,18 @@ class VerificationFragment : Fragment() {
 	private fun setupScrollBehavior() {
 		val headerCollapseManager = HeaderCollapseManager(resources, binding)
 		binding.verificationScrollView.setOnScrollChangeListener(headerCollapseManager)
+	}
+
+	private fun decodeQrCodeData(qrCodeData: String) {
+		when (val decodeState = CovidCertificateSdk.Verifier.decode(qrCodeData)) {
+			is VerifierDecodeState.SUCCESS -> {
+				certificateHolder = decodeState.certificateHolder
+				verifyAndDisplayCertificateHolder()
+			}
+			is VerifierDecodeState.ERROR -> {
+				// Ignore errors when scanning in the details screen
+			}
+		}
 	}
 
 	internal class HeaderCollapseManager(resources: Resources, binding: FragmentVerificationBinding) : View.OnScrollChangeListener {

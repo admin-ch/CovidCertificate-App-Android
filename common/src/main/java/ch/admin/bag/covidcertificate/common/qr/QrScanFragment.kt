@@ -174,6 +174,8 @@ abstract class QrScanFragment : Fragment() {
 
 	@SuppressLint("ClickableViewAccessibility")
 	private fun initializeCamera() {
+		if (!isAdded || !qrCodeScanner.isAttachedToWindow) return
+
 		val rotation = qrCodeScanner.display.rotation
 		preview = Preview.Builder()
 			.setTargetResolution(Size(720, 1280))

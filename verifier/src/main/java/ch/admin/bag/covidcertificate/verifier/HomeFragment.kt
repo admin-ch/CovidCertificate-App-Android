@@ -24,11 +24,17 @@ import ch.admin.bag.covidcertificate.common.debug.DebugFragment
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.ImprintFragment
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
+import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDecodeState
+import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.verifier.faq.VerifierFaqFragment
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPageAdapter
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPagerFragment
 import ch.admin.bag.covidcertificate.verifier.qr.VerifierQrScanFragment
+import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment
+import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 import com.google.android.material.tabs.TabLayoutMediator
 import java.util.concurrent.atomic.AtomicLong
 
@@ -41,6 +47,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
 
 	private var _binding: FragmentHomeBinding? = null
 	private val binding get() = _binding!!
@@ -103,6 +110,16 @@ class HomeFragment : Fragment() {
 		setupInfoBox()
 	}
 
+	override fun onResume() {
+		super.onResume()
+		zebraBroadcastReceiver.registerWith(requireContext()) { decodeQrCodeData(it) }
+	}
+
+	override fun onPause() {
+		super.onPause()
+		zebraBroadcastReceiver.unregisterWith(requireContext())
+	}
+
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
@@ -158,6 +175,25 @@ class HomeFragment : Fragment() {
 
 	private fun showInfoDialog(infoBox: InfoBoxModel) {
 		InfoDialogFragment.newInstance(infoBox).show(childFragmentManager, InfoDialogFragment::class.java.canonicalName)
+	}
+
+	private fun decodeQrCodeData(qrCodeData: String) {
+		when (val decodeState = CovidCertificateSdk.Verifier.decode(qrCodeData)) {
+			is VerifierDecodeState.SUCCESS -> {
+				showVerificationFragment(decodeState.certificateHolder)
+			}
+			is VerifierDecodeState.ERROR -> {
+				// Ignore errors when scanning in the home screen
+			}
+		}
+	}
+
+	private fun showVerificationFragment(certificateHolder: VerifierCertificateHolder) {
+		parentFragmentManager.beginTransaction()
+			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+			.replace(R.id.fragment_container, VerificationFragment.newInstance(certificateHolder))
+			.addToBackStack(VerificationFragment::class.java.canonicalName)
+			.commit()
 	}
 
 }
