@@ -698,7 +698,7 @@ n’è betg valaivel"</string>
     <string name="wallet_transfer_code_faq_works_intro_2">"Uschespert ch'il certificat COVID è disponibel, cumpara el en l'app. Sche Vus avais activà ils avis, vegnis Vus infurmada u infurmà da l'app."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"Suenter 7 dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"Suenter 30 dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Permetter avis"</string>
@@ -1263,5 +1263,13 @@ Blers lieus porschan er vaccinaziuns «walk-in» senza termin."</string>
     <string name="vaccination_booking_info_url">"https://bag-coronavirus.ch/impfung/"</string>
 
     <!-- Show information if special hardware detected  -->
-    <string name="verifier_qr_scanner_external_hardware_detected">"Externer Hardwarescanner identifitgà"</string>
+    <string name="verifier_qr_scanner_external_hardware_detected">"Identifitgà il scanner d'indriz tecnic extern"</string>
+
+    <!-- Error popup reset button text -->
+    <string name="error_decryption_reset_button">"Reinizialisar"</string>
+
+    <!-- Text Certificate Could not be loaded {ERROR_CODE} gets replaces with the error code -->
+    <string name="error_decryption_text">"Ils certificats n’han betg pudì vegnir chargiads
+
+Code: {ERROR_CODE}"</string>
 </resources>

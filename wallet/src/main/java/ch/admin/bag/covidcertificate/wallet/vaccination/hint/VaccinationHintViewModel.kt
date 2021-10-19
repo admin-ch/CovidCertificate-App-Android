@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit
 class VaccinationHintViewModel(application: Application) : AndroidViewModel(application) {
 
 	companion object {
-		private val VACCINATION_HINT_DISMISS_THRESHOLD = TimeUnit.DAYS.toMillis(7)
+		private val VACCINATION_HINT_DISMISS_THRESHOLD = TimeUnit.DAYS.toMillis(30)
 	}
 
 	private val walletSecureStorage = WalletSecureStorage.getInstance(application.applicationContext)

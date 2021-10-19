@@ -700,7 +700,7 @@ invalid"</string>
     <string name="wallet_transfer_code_faq_works_intro_2">"As soon as the COVID certificate is available, it appears in the application. If you have activated notifications, you will receive a message from the application."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"The transfer code expires after 7 days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"The transfer code expires after 30 days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Allow notifications"</string>
@@ -1267,4 +1267,12 @@ Many places also offer walk-in vaccinations without an appointment."</string>
 
     <!-- Show information if special hardware detected  -->
     <string name="verifier_qr_scanner_external_hardware_detected">"External hardware scanner detected"</string>
+
+    <!-- Error popup reset button text -->
+    <string name="error_decryption_reset_button">"Reset"</string>
+
+    <!-- Text Certificate Could not be loaded {ERROR_CODE} gets replaces with the error code -->
+    <string name="error_decryption_text">"Certificates could not be loaded
+
+Code: {ERROR_CODE}"</string>
 </resources>

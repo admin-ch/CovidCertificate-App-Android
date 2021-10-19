@@ -721,7 +721,7 @@ ungültig"</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
     <!-- Fuzzy -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"Nach 7 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor der Transfer-Code ungültig wird."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"Nach 30 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor der Transfer-Code ungültig wird."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Mitteilungen erlauben"</string>
@@ -1299,4 +1299,12 @@ Viele Orte bieten auch Walk-in-Impfungen ohne Termine an."</string>
 
     <!-- Show information if special hardware detected  -->
     <string name="verifier_qr_scanner_external_hardware_detected">"Externer Hardwarescanner erkannt"</string>
+
+    <!-- Error popup reset button text -->
+    <string name="error_decryption_reset_button">"Zurücksetzen"</string>
+
+    <!-- Text Certificate Could not be loaded {ERROR_CODE} gets replaces with the error code -->
+    <string name="error_decryption_text">"Zertifikate konnten nicht geladen werden
+
+Code: {ERROR_CODE}"</string>
 </resources>
