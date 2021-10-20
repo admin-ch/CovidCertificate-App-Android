@@ -1002,7 +1002,7 @@
 				{
 					"iconAndroid": "ic_three",
 					"iconIos": "ic-three",
-					"text": "Nach 7 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor der Transfer-Code ungültig wird."
+					"text": "Nach 30 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor der Transfer-Code ungültig wird."
 				}
 			],
 			"faqIconIos": null,
@@ -1051,7 +1051,7 @@
 				{
 					"iconAndroid": "ic_three",
 					"iconIos": "ic-three",
-					"text": "The transfer code expires after 7 days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."
+					"text": "The transfer code expires after 30 days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."
 				}
 			],
 			"faqIconIos": null,
@@ -1100,7 +1100,7 @@
 				{
 					"iconAndroid": "ic_three",
 					"iconIos": "ic-three",
-					"text": "Le code de transfert expire après 7 jours. Une fois ce délai passé, l’application attend tout autre transfert pendant 72 h. Ensuite, le code de transfert n’est plus valable."
+					"text": "Le code de transfert expire après 30 jours. Une fois ce délai passé, l’application attend tout autre transfert pendant 72 h. Ensuite, le code de transfert n’est plus valable."
 				}
 			],
 			"faqIconIos": null,
@@ -1149,7 +1149,7 @@
 				{
 					"iconAndroid": "ic_three",
 					"iconIos": "ic-three",
-					"text": "Il codice di trasferimento scade dopo 7 giorni. Poi l’app attende un eventuale trasferimento per altre 72 ore prima di considerare scaduto il codice."
+					"text": "Il codice di trasferimento scade dopo 30 giorni. Poi l’app attende un eventuale trasferimento per altre 72 ore prima di considerare scaduto il codice."
 				}
 			],
 			"faqIconIos": null,
@@ -1198,7 +1198,7 @@
 				{
 					"iconAndroid": "ic_three",
 					"iconIos": "ic-three",
-					"text": "Suenter 7 dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."
+					"text": "Suenter 30 dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."
 				}
 			],
 			"faqIconIos": null,

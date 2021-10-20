@@ -29,6 +29,7 @@ import ch.admin.bag.covidcertificate.wallet.databinding.ViewTransferCodeBubbleBi
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import java.time.Instant
+import kotlin.math.roundToInt
 
 class TransferCodeBubbleView @JvmOverloads constructor(
 	context: Context,
@@ -133,7 +134,8 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 		}
 
 		if (!state.isRefreshing) {
-			val imageIndex = (daysUntilExpiration - 1).coerceAtLeast(0)
+			val maxIndex = validityIcons.size - 1
+			val imageIndex = ((daysUntilExpiration - 1f) / 30 * maxIndex).roundToInt().coerceIn(0, maxIndex)
 			binding.transferCodeStatusIcon.setImageResource(validityIcons[imageIndex])
 		}
 

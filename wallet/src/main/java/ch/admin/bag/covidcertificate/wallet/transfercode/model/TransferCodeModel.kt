@@ -24,7 +24,7 @@ data class TransferCodeModel(
 	val lastUpdatedTimestamp: Instant,
 ): Serializable {
 
-	val expirationTimestamp = creationTimestamp.plus(7, ChronoUnit.DAYS)
+	val expirationTimestamp = creationTimestamp.plus(30, ChronoUnit.DAYS)
 	val failureTimestamp = expirationTimestamp.plus(72, ChronoUnit.HOURS)
 
 	fun isExpired() = expirationTimestamp.isBefore(Instant.now())

@@ -699,7 +699,7 @@ non valide"</string>
     <string name="wallet_transfer_code_faq_works_intro_2">"Dès que le certificat COVID est disponible, il apparaît dans l’application. Si vous avez activé les notifications, vous recevrez un message de l’application."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"Le code de transfert expire après 7 jours. Une fois ce délai passé, l’application attend tout autre transfert pendant 72 h. Ensuite, le code de transfert n’est plus valable."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"Le code de transfert expire après 30 jours. Une fois ce délai passé, l’application attend tout autre transfert pendant 72 h. Ensuite, le code de transfert n’est plus valable."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Autoriser les messages"</string>
@@ -1266,4 +1266,12 @@ Il est aussi possible de se faire vacciner sans rendez-vous dans de nombreux end
 
     <!-- Show information if special hardware detected  -->
     <string name="verifier_qr_scanner_external_hardware_detected">"Scanner matériel externe détecté"</string>
+
+    <!-- Error popup reset button text -->
+    <string name="error_decryption_reset_button">"Réinitialiser"</string>
+
+    <!-- Text Certificate Could not be loaded {ERROR_CODE} gets replaces with the error code -->
+    <string name="error_decryption_text">"Les certificats n'ont pas pu être chargés
+
+Code: {ERROR_CODE}"</string>
 </resources>
