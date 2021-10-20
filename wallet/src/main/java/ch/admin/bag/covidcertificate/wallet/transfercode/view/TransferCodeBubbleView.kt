@@ -26,6 +26,7 @@ import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ViewTransferCodeBubbleBinding
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeErrorCodes
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import java.time.Instant
@@ -208,7 +209,7 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 				setIconAndTextColor(R.color.orange)
 				setBubbleBackgroundColor(R.color.orangeish)
 			}
-			ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED -> {
+			TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED -> {
 				binding.transferCodeStatusIcon.setImageResource(R.drawable.ic_scanner_alert)
 				binding.transferCodeErrorTitle.setText(R.string.wallet_transfer_code_unexpected_error_text)
 				binding.transferCodeErrorDescription.setText(R.string.wallet_transfer_code_unexpected_error_phone_number)

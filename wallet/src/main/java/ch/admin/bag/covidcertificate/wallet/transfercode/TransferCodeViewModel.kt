@@ -93,7 +93,7 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 					}
 				}
 			} else {
-				conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
+				conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
 			}
 
 			downloadJob = null

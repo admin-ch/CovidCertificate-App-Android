@@ -30,6 +30,7 @@ import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
+import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeErrorCodes
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
@@ -293,7 +294,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 					}
 				}
 			} else {
-				conversionState = TransferCodeConversionState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED))
+				conversionState = TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED))
 			}
 
 			val updatedStatefulWalletItems = updateConversionStateForTransferCode(transferCode, conversionState)
