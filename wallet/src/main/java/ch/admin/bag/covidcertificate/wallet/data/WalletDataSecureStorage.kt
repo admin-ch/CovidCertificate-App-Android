@@ -183,7 +183,7 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		}
 	}
 
-	private fun updateWalletData(walletData: List<WalletDataItem>) {
+	fun updateWalletData(walletData: List<WalletDataItem>) {
 		reentrantLock.lock()
 		try {
 			val json = walletDataItemAdapter.toJson(walletData)

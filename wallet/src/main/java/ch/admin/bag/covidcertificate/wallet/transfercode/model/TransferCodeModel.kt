@@ -17,23 +17,27 @@ import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
 
+/**
+ * The expiresAt and failsAt default values are set to 30d/72h due to the extended validity starting with the 2.7.0 release.
+ * This default value should only be applied during migration, in all other cases, the correct validity range should be set based on
+ * the server configuration.
+ */
 @JsonClass(generateAdapter = true)
 data class TransferCodeModel(
 	val code: String,
 	val creationTimestamp: Instant,
 	val lastUpdatedTimestamp: Instant,
+	val expiresAtTimestamp: Instant = creationTimestamp.plus(30, ChronoUnit.DAYS),
+	val failsAtTimestamp: Instant = expiresAtTimestamp.plus(72, ChronoUnit.HOURS),
 ): Serializable {
 
-	val expirationTimestamp = creationTimestamp.plus(30, ChronoUnit.DAYS)
-	val failureTimestamp = expirationTimestamp.plus(72, ChronoUnit.HOURS)
+	fun isExpired() = expiresAtTimestamp.isBefore(Instant.now())
 
-	fun isExpired() = expirationTimestamp.isBefore(Instant.now())
-
-	fun isFailed() = failureTimestamp.isBefore(Instant.now())
+	fun isFailed() = failsAtTimestamp.isBefore(Instant.now())
 
 	fun getDaysUntilExpiration(): Int {
 		val now = Instant.now().toEpochMilli()
-		val diff = expirationTimestamp.toEpochMilli() - now
+		val diff = expiresAtTimestamp.toEpochMilli() - now
 		return (diff.toDouble() / TimeUnit.DAYS.toMillis(1)).roundToInt()
 	}
 }
