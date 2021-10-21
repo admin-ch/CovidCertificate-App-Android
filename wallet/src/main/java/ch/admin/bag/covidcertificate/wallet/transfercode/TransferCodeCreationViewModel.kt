@@ -37,6 +37,7 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.security.KeyPair
 import java.time.Instant
+import java.time.temporal.ChronoUnit
 
 class TransferCodeCreationViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -73,7 +74,9 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 			when (registrationResponse) {
 				TransferCodeCreationResponse.SUCCESSFUL -> {
 					val now = Instant.now()
-					val transferCodeModel = TransferCodeModel(transferCode, now, now)
+					val expiresAt = now.plus(30, ChronoUnit.DAYS)
+					val failsAt = now.plus(72, ChronoUnit.HOURS)
+					val transferCodeModel = TransferCodeModel(transferCode, now, now, expiresAt, failsAt)
 					walletDataStorage.saveWalletDataItem(WalletDataItem.TransferCodeWalletData(transferCodeModel))
 					creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCodeModel))
 				}
