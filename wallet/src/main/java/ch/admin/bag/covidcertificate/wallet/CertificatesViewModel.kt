@@ -36,12 +36,9 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConve
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.sync.withLock
 import java.io.IOException
 import java.time.Instant
 import kotlin.collections.set
@@ -253,66 +250,71 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 	private fun convertTransferCode(transferCode: TransferCodeModel) {
 		viewModelScope.launch(Dispatchers.IO) {
-			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
+			TransferCodeCrypto.getMutex(transferCode.code).withLock {
+				val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
 
-			var conversionState: TransferCodeConversionState = TransferCodeConversionState.LOADING
-			if (keyPair != null) {
-				try {
-					val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
+				var conversionState: TransferCodeConversionState = TransferCodeConversionState.LOADING
+				if (keyPair != null) {
+					try {
+						val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
 
-					if (decryptedCertificates.isNotEmpty()) {
-						var didReplaceTransferCode = false
+						if (decryptedCertificates.isNotEmpty()) {
+							var didReplaceTransferCode = false
 
-						decryptedCertificates.forEachIndexed { index, convertedCertificate ->
-							val qrCodeData = convertedCertificate.qrCodeData
-							val pdfData = convertedCertificate.pdfData
+							decryptedCertificates.forEachIndexed { index, convertedCertificate ->
+								val qrCodeData = convertedCertificate.qrCodeData
+								val pdfData = convertedCertificate.pdfData
 
-							if (index == 0) {
-								didReplaceTransferCode = walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
-								val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
-								conversionState = if (decodeState is DecodeState.SUCCESS) {
-									TransferCodeConversionState.CONVERTED(decodeState.certificateHolder)
+								if (index == 0) {
+									didReplaceTransferCode =
+										walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
+									val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
+									conversionState = if (decodeState is DecodeState.SUCCESS) {
+										TransferCodeConversionState.CONVERTED(decodeState.certificateHolder)
+									} else {
+										// The certificate returned from the server could not be decoded
+										TransferCodeConversionState.NOT_CONVERTED
+									}
 								} else {
-									// The certificate returned from the server could not be decoded
-									TransferCodeConversionState.NOT_CONVERTED
+									walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
 								}
-							} else {
-								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
 							}
-						}
 
-						// Delete the transfer code on the backend and the key pair only if the certificate was stored (either by the above replace method or from another thread)
-						val didStoreCertificate = walletDataStorage.containsCertificate(decryptedCertificates.first().qrCodeData)
-						if (didReplaceTransferCode || didStoreCertificate) {
-							try {
-								deliveryRepository.complete(transferCode.code, keyPair)
-							} catch (e: IOException) {
-								// This request is best-effort, if it fails, ignore it and let the backend delete the transfer code and certificate
-								// automatically after it expires
+							// Delete the transfer code on the backend and the key pair only if the certificate was stored (either by the above replace method or from another thread)
+							val didStoreCertificate =
+								walletDataStorage.containsCertificate(decryptedCertificates.first().qrCodeData)
+							if (didReplaceTransferCode || didStoreCertificate) {
+								try {
+									deliveryRepository.complete(transferCode.code, keyPair)
+								} catch (e: IOException) {
+									// This request is best-effort, if it fails, ignore it and let the backend delete the transfer code and certificate
+									// automatically after it expires
+								}
+								TransferCodeCrypto.deleteKeyEntry(transferCode.code, getApplication())
 							}
-							TransferCodeCrypto.deleteKeyEntry(transferCode.code, getApplication())
+						} else {
+							conversionState = TransferCodeConversionState.NOT_CONVERTED
 						}
-					} else {
-						conversionState = TransferCodeConversionState.NOT_CONVERTED
+					} catch (e: TimeDeviationException) {
+						conversionState = TransferCodeConversionState.ERROR(StateError(DeliveryRepository.ERROR_CODE_INVALID_TIME))
+					} catch (e: IOException) {
+						conversionState = if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
+							TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_NETWORK_FAILURE))
+						} else {
+							TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_OFFLINE))
+						}
 					}
-				} catch (e: TimeDeviationException) {
-					conversionState = TransferCodeConversionState.ERROR(StateError(DeliveryRepository.ERROR_CODE_INVALID_TIME))
-				} catch (e: IOException) {
-					conversionState = if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
-						TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_NETWORK_FAILURE))
-					} else {
-						TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_OFFLINE))
-					}
+				} else {
+					conversionState =
+						TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED))
 				}
-			} else {
-				conversionState = TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED))
-			}
 
-			val updatedStatefulWalletItems = updateConversionStateForTransferCode(transferCode, conversionState)
+				val updatedStatefulWalletItems = updateConversionStateForTransferCode(transferCode, conversionState)
 
-			// Set the livedata value on the main dispatcher to prevent multiple posts overriding each other
-			withContext(Dispatchers.Main.immediate) {
-				statefulWalletItemsMutableLiveData.value = updatedStatefulWalletItems
+				// Set the livedata value on the main dispatcher to prevent multiple posts overriding each other
+				withContext(Dispatchers.Main.immediate) {
+					statefulWalletItemsMutableLiveData.value = updatedStatefulWalletItems
+				}
 			}
 		}
 	}
