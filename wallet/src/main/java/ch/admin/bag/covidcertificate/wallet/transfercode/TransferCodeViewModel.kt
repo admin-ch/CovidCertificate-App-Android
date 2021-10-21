@@ -24,6 +24,7 @@ import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.MainApplication
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
@@ -73,6 +74,8 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 										walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
 									val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
 									if (decodeState is DecodeState.SUCCESS) {
+										MainApplication.getTransferCodeConversionMapping(getApplication())
+											?.put(transferCode.code, decodeState.certificateHolder)
 										conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(decodeState.certificateHolder))
 									} else {
 										// The certificate returned from the server could not be decoded
@@ -104,7 +107,13 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 						}
 					}
 				} else {
-					conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
+					val alreadyLoadedCertificate =
+						MainApplication.getTransferCodeConversionMapping(getApplication())?.get(transferCode.code)
+					if (alreadyLoadedCertificate != null) {
+						conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(alreadyLoadedCertificate))
+					} else {
+						conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
+					}
 				}
 
 				downloadJob = null

@@ -270,6 +270,8 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 										walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
 									val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
 									conversionState = if (decodeState is DecodeState.SUCCESS) {
+										MainApplication.getTransferCodeConversionMapping(getApplication())
+											?.put(transferCode.code, decodeState.certificateHolder)
 										TransferCodeConversionState.CONVERTED(decodeState.certificateHolder)
 									} else {
 										// The certificate returned from the server could not be decoded
@@ -305,8 +307,14 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 						}
 					}
 				} else {
-					conversionState =
-						TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED))
+					val alreadyLoadedCertificate =
+						MainApplication.getTransferCodeConversionMapping(getApplication())?.get(transferCode.code)
+					if (alreadyLoadedCertificate != null) {
+						conversionState = TransferCodeConversionState.CONVERTED(alreadyLoadedCertificate)
+					} else {
+						conversionState =
+							TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED))
+					}
 				}
 
 				val updatedStatefulWalletItems = updateConversionStateForTransferCode(transferCode, conversionState)

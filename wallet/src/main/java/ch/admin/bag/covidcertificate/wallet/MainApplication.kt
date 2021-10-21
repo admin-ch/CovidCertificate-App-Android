@@ -1,6 +1,7 @@
 package ch.admin.bag.covidcertificate.wallet
 
 import android.app.Application
+import android.content.Context
 import android.os.Build
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
@@ -12,6 +13,7 @@ import ch.admin.bag.covidcertificate.common.util.EnvironmentUtil
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.data.CertificateStorage
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
@@ -20,6 +22,21 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.worker.TransferWorker
 import ch.admin.bag.covidcertificate.wallet.util.NotificationUtil
 
 class MainApplication : Application() {
+
+	companion object {
+
+		fun getTransferCodeConversionMapping(context: Context): HashMap<String, CertificateHolder>? {
+			val applicationContext = context.applicationContext
+			if (applicationContext is MainApplication) {
+				return applicationContext.getTransferCodeConversionMappingInternal()
+			} else {
+				return null
+			}
+		}
+
+	}
+
+	val transferCodeConversionMapping = HashMap<String, CertificateHolder>()
 
 	override fun onCreate() {
 		super.onCreate()
@@ -90,4 +107,7 @@ class MainApplication : Application() {
 		})
 		NotificationUtil.createTransferNotificationChannel(this)
 	}
+
+	private fun getTransferCodeConversionMappingInternal() = transferCodeConversionMapping
+
 }

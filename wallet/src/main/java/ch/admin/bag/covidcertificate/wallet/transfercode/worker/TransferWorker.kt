@@ -14,7 +14,10 @@ import android.content.Context
 import androidx.work.*
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.exception.TimeDeviationException
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.MainApplication
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
@@ -106,6 +109,11 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 							if (index == 0) {
 								didReplaceTransferCode =
 									walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
+								val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
+								if (decodeState is DecodeState.SUCCESS) {
+									MainApplication.getTransferCodeConversionMapping(applicationContext)
+										?.put(transferCode.code, decodeState.certificateHolder)
+								}
 							} else {
 								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
 							}
