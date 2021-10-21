@@ -35,6 +35,7 @@ class MainApplication : Application() {
 		CovidCertificateSdk.init(this, EnvironmentUtil.getSdkEnvironment())
 
 		migrateCertificatesToWalletData()
+		migrateTransferCodeValidity()
 
 		setupTransferWorker()
 	}
@@ -53,6 +54,19 @@ class MainApplication : Application() {
 			}
 
 			walletStorage.setMigratedCertificatesToWalletData(true)
+		}
+	}
+
+	private fun migrateTransferCodeValidity() {
+		val walletStorage = WalletSecureStorage.getInstance(this)
+		if (!walletStorage.getMigratedTransferCodeValidity()) {
+			// Reading the wallet data once from the storage and writing it again immediately is enough to migrate the validity.
+			// The data class constructor defines the new fields with a default value, so it is automatically set when deserializing
+			val walletDataStorage = WalletDataSecureStorage.getInstance(this)
+			val walletDataItems = walletDataStorage.getWalletData()
+			walletDataStorage.updateWalletData(walletDataItems)
+
+			walletStorage.setMigratedTransferCodeValidity(true)
 		}
 	}
 

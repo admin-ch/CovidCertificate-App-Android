@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.wallet.data
 
 import android.content.Context
+import androidx.core.content.edit
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -20,6 +21,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import java.time.Instant
+import java.util.concurrent.locks.ReentrantLock
 
 class WalletDataSecureStorage private constructor(context: Context) {
 
@@ -36,6 +38,7 @@ class WalletDataSecureStorage private constructor(context: Context) {
 	}
 
 	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, SHARED_PREFERENCES_NAME)
+	private val reentrantLock = ReentrantLock()
 
 	fun saveWalletDataItem(dataItem: WalletDataItem) {
 		val walletData = getWalletData().toMutableList()
@@ -81,11 +84,14 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		updateWalletData(walletData)
 	}
 
+	/**
+	 * @return True if a transfer code was replaced with a certificate, false otherwise
+	 */
 	fun replaceTransferCodeWithCertificate(
 		transferCode: TransferCodeModel,
 		certificateQrCodeData: String,
 		pdfData: String? = null
-	) {
+	): Boolean {
 		val walletData = getWalletData().toMutableList()
 		val index =
 			walletData.indexOfFirst { it is WalletDataItem.TransferCodeWalletData && it.transferCode.code == transferCode.code }
@@ -95,7 +101,9 @@ class WalletDataSecureStorage private constructor(context: Context) {
 				walletData.add(index, WalletDataItem.CertificateWalletData(certificateQrCodeData, pdfData))
 			}
 			updateWalletData(walletData)
+			return true
 		}
+		return false
 	}
 
 	fun changeWalletDataItemPosition(oldPosition: Int, newPosition: Int) {
@@ -110,11 +118,17 @@ class WalletDataSecureStorage private constructor(context: Context) {
 	}
 
 	fun getWalletData(): List<WalletDataItem> {
-		val json = prefs.getString(KEY_WALLET_DATA_ITEMS, null)
-		if (json == null || json.isEmpty()) {
-			return emptyList()
+		reentrantLock.lock()
+
+		try {
+			val json = prefs.getString(KEY_WALLET_DATA_ITEMS, null)
+			if (json == null || json.isEmpty()) {
+				return emptyList()
+			}
+			return walletDataItemAdapter.fromJson(json) ?: emptyList()
+		} finally {
+			reentrantLock.unlock()
 		}
-		return walletDataItemAdapter.fromJson(json) ?: emptyList()
 	}
 
 	fun storeCertificateLight(fullCertificate: CertificateHolder, certificateLightData: String, certificateLightQrCode: String) {
@@ -169,9 +183,14 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		}
 	}
 
-	private fun updateWalletData(walletData: List<WalletDataItem>) {
-		val json = walletDataItemAdapter.toJson(walletData)
-		prefs.edit().putString(KEY_WALLET_DATA_ITEMS, json).apply()
+	fun updateWalletData(walletData: List<WalletDataItem>) {
+		reentrantLock.lock()
+		try {
+			val json = walletDataItemAdapter.toJson(walletData)
+			prefs.edit { putString(KEY_WALLET_DATA_ITEMS, json) }
+		} finally {
+			reentrantLock.unlock()
+		}
 	}
 
 	private fun List<WalletDataItem>.containsCertificate(qrCodeData: String) =

@@ -31,7 +31,11 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConve
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import java.io.IOException
 import java.security.KeyPair
 
@@ -61,11 +65,13 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 					val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
 
 					if (decryptedCertificates.isNotEmpty()) {
+						var didReplaceTransferCode = false
+
 						decryptedCertificates.forEachIndexed { index, convertedCertificate ->
 							val qrCodeData = convertedCertificate.qrCodeData
 							val pdfData = convertedCertificate.pdfData
 							if (index == 0) {
-								walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
+								didReplaceTransferCode = walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
 								val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
 								if (decodeState is DecodeState.SUCCESS) {
 									conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(decodeState.certificateHolder))
@@ -76,6 +82,11 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 							} else {
 								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
 							}
+						}
+
+						// Delete the transfer code on the backend and the key pair only if the certificate was stored (either by the above replace method or from another thread)
+						val didStoreCertificate = walletDataStorage.containsCertificate(decryptedCertificates.first().qrCodeData)
+						if (didReplaceTransferCode || didStoreCertificate) {
 							deleteTransferCodeOnServer(transferCode, keyPair)
 						}
 					} else {
