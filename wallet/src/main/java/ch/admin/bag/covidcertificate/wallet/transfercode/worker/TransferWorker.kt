@@ -11,15 +11,13 @@
 package ch.admin.bag.covidcertificate.wallet.transfercode.worker
 
 import android.content.Context
-import androidx.work.BackoffPolicy
-import androidx.work.CoroutineWorker
-import androidx.work.ExistingPeriodicWorkPolicy
-import androidx.work.PeriodicWorkRequest
-import androidx.work.WorkManager
-import androidx.work.WorkerParameters
+import androidx.work.*
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.exception.TimeDeviationException
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.MainApplication
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
@@ -28,6 +26,7 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
 import ch.admin.bag.covidcertificate.wallet.util.NotificationUtil
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.sync.withLock
 import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.util.concurrent.TimeUnit
@@ -52,7 +51,11 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 				max(checkIntervalConfig?.let { it / 20 } ?: DEFAULT_FLEX_INTERVAL, MIN_FLEX_INTERVAL),
 				TimeUnit.MILLISECONDS
 			)
-				.setBackoffCriteria(BackoffPolicy.EXPONENTIAL, config?.androidTransferCheckBackoffMs ?: DEFAULT_BACKOFF_DELAY, TimeUnit.MILLISECONDS)
+				.setBackoffCriteria(
+					BackoffPolicy.EXPONENTIAL,
+					config?.androidTransferCheckBackoffMs ?: DEFAULT_BACKOFF_DELAY,
+					TimeUnit.MILLISECONDS
+				)
 				.build()
 
 			WorkManager.getInstance(context)
@@ -90,46 +93,54 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 	}
 
 	private suspend fun downloadTransferCertificate(transferCode: TransferCodeModel): TransferState {
-		val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, applicationContext)
+		TransferCodeCrypto.getMutex(transferCode.code).withLock {
+			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, applicationContext)
 
-		if (keyPair != null) {
-			try {
-				val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
+			if (keyPair != null) {
+				try {
+					val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
 
-				return if (decryptedCertificates.isNotEmpty()) {
-					var didReplaceTransferCode = false
+					return if (decryptedCertificates.isNotEmpty()) {
+						var didReplaceTransferCode = false
 
-					decryptedCertificates.forEachIndexed { index, convertedCertificate ->
-						val qrCodeData = convertedCertificate.qrCodeData
-						val pdfData = convertedCertificate.pdfData
-						if (index == 0) {
-							didReplaceTransferCode = walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
-						} else {
-							walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
+						decryptedCertificates.forEachIndexed { index, convertedCertificate ->
+							val qrCodeData = convertedCertificate.qrCodeData
+							val pdfData = convertedCertificate.pdfData
+							if (index == 0) {
+								didReplaceTransferCode =
+									walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
+								val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
+								if (decodeState is DecodeState.SUCCESS) {
+									MainApplication.getTransferCodeConversionMapping(applicationContext)
+										?.put(transferCode.code, decodeState.certificateHolder)
+								}
+							} else {
+								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
+							}
 						}
-					}
 
-					// Delete the transfer code on the backend and the key pair only if the certificate was stored (either by the above replace method or from another thread)
-					val didStoreCertificate = walletDataStorage.containsCertificate(decryptedCertificates.first().qrCodeData)
-					if (didReplaceTransferCode || didStoreCertificate) {
-						try {
-							deliveryRepository.complete(transferCode.code, keyPair)
-						} catch (e: IOException) {
-							// Best effort only
+						// Delete the transfer code on the backend and the key pair only if the certificate was stored (either by the above replace method or from another thread)
+						val didStoreCertificate = walletDataStorage.containsCertificate(decryptedCertificates.first().qrCodeData)
+						if (didReplaceTransferCode || didStoreCertificate) {
+							try {
+								deliveryRepository.complete(transferCode.code, keyPair)
+							} catch (e: IOException) {
+								// Best effort only
+							}
+							TransferCodeCrypto.deleteKeyEntry(transferCode.code, applicationContext)
 						}
-						TransferCodeCrypto.deleteKeyEntry(transferCode.code, applicationContext)
+						TransferState.SUCCESS
+					} else {
+						TransferState.NOT_AVAILABLE
 					}
-					TransferState.SUCCESS
-				} else {
-					TransferState.NOT_AVAILABLE
+				} catch (e: TimeDeviationException) {
+					return TransferState.ERROR
+				} catch (e: IOException) {
+					return TransferState.ERROR
 				}
-			} catch (e: TimeDeviationException) {
-				return TransferState.ERROR
-			} catch (e: IOException) {
+			} else {
 				return TransferState.ERROR
 			}
-		} else {
-			return TransferState.ERROR
 		}
 	}
 

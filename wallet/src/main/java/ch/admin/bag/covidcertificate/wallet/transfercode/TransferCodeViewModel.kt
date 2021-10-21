@@ -24,6 +24,7 @@ import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.MainApplication
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
@@ -31,11 +32,8 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConve
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.sync.withLock
 import java.io.IOException
 import java.security.KeyPair
 
@@ -56,58 +54,70 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 
 		conversionStateMutableLiveData.value = TransferCodeConversionState.LOADING
 		downloadJob = viewModelScope.launch(Dispatchers.IO) {
-			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
+			TransferCodeCrypto.getMutex(transferCode.code).withLock {
+				val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
 
-			if (keyPair != null) {
-				try {
-					if (delayInMillis > 0) delay(delayInMillis)
+				if (keyPair != null) {
+					try {
+						if (delayInMillis > 0) delay(delayInMillis)
 
-					val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
+						val decryptedCertificates = deliveryRepository.download(transferCode.code, keyPair)
 
-					if (decryptedCertificates.isNotEmpty()) {
-						var didReplaceTransferCode = false
+						if (decryptedCertificates.isNotEmpty()) {
+							var didReplaceTransferCode = false
 
-						decryptedCertificates.forEachIndexed { index, convertedCertificate ->
-							val qrCodeData = convertedCertificate.qrCodeData
-							val pdfData = convertedCertificate.pdfData
-							if (index == 0) {
-								didReplaceTransferCode = walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
-								val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
-								if (decodeState is DecodeState.SUCCESS) {
-									conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(decodeState.certificateHolder))
+							decryptedCertificates.forEachIndexed { index, convertedCertificate ->
+								val qrCodeData = convertedCertificate.qrCodeData
+								val pdfData = convertedCertificate.pdfData
+								if (index == 0) {
+									didReplaceTransferCode =
+										walletDataStorage.replaceTransferCodeWithCertificate(transferCode, qrCodeData, pdfData)
+									val decodeState = CovidCertificateSdk.Wallet.decode(qrCodeData)
+									if (decodeState is DecodeState.SUCCESS) {
+										MainApplication.getTransferCodeConversionMapping(getApplication())
+											?.put(transferCode.code, decodeState.certificateHolder)
+										conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(decodeState.certificateHolder))
+									} else {
+										// The certificate returned from the server could not be decoded
+										conversionStateMutableLiveData.postValue(TransferCodeConversionState.NOT_CONVERTED)
+									}
 								} else {
-									// The certificate returned from the server could not be decoded
-									conversionStateMutableLiveData.postValue(TransferCodeConversionState.NOT_CONVERTED)
+									walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
 								}
-							} else {
-								walletDataStorage.saveWalletDataItem(WalletDataItem.CertificateWalletData(qrCodeData, pdfData))
 							}
-						}
 
-						// Delete the transfer code on the backend and the key pair only if the certificate was stored (either by the above replace method or from another thread)
-						val didStoreCertificate = walletDataStorage.containsCertificate(decryptedCertificates.first().qrCodeData)
-						if (didReplaceTransferCode || didStoreCertificate) {
-							deleteTransferCodeOnServer(transferCode, keyPair)
+							// Delete the transfer code on the backend and the key pair only if the certificate was stored (either by the above replace method or from another thread)
+							val didStoreCertificate =
+								walletDataStorage.containsCertificate(decryptedCertificates.first().qrCodeData)
+							if (didReplaceTransferCode || didStoreCertificate) {
+								deleteTransferCodeOnServer(transferCode, keyPair)
+							}
+						} else {
+							// The server returned no certificate
+							conversionStateMutableLiveData.postValue(TransferCodeConversionState.NOT_CONVERTED)
 						}
-					} else {
-						// The server returned no certificate
-						conversionStateMutableLiveData.postValue(TransferCodeConversionState.NOT_CONVERTED)
+					} catch (e: TimeDeviationException) {
+						conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(DeliveryRepository.ERROR_CODE_INVALID_TIME)))
+					} catch (e: IOException) {
+						// A request failed, check if the device has network connectivity or not
+						if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
+							conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_NETWORK_FAILURE)))
+						} else {
+							conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_OFFLINE)))
+						}
 					}
-				} catch (e: TimeDeviationException) {
-					conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(DeliveryRepository.ERROR_CODE_INVALID_TIME)))
-				} catch (e: IOException) {
-					// A request failed, check if the device has network connectivity or not
-					if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
-						conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_NETWORK_FAILURE)))
+				} else {
+					val alreadyLoadedCertificate =
+						MainApplication.getTransferCodeConversionMapping(getApplication())?.get(transferCode.code)
+					if (alreadyLoadedCertificate != null) {
+						conversionStateMutableLiveData.postValue(TransferCodeConversionState.CONVERTED(alreadyLoadedCertificate))
 					} else {
-						conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(ErrorCodes.GENERAL_OFFLINE)))
+						conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
 					}
 				}
-			} else {
-				conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
-			}
 
-			downloadJob = null
+				downloadJob = null
+			}
 		}
 	}
 
@@ -116,9 +126,11 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 		// In that case, the viewModelScope wouldn't make sense because it is cleared when the fragment is popped.
 		// For this kind of fire-and-forget coroutine, the GlobalScope is therefore fine.
 		GlobalScope.launch(Dispatchers.IO) {
-			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
-			if (keyPair != null) {
-				deleteTransferCodeOnServer(transferCode, keyPair)
+			TransferCodeCrypto.getMutex(transferCode.code).withLock {
+				val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
+				if (keyPair != null) {
+					deleteTransferCodeOnServer(transferCode, keyPair)
+				}
 			}
 		}
 	}
