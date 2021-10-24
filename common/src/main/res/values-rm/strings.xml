@@ -388,7 +388,7 @@ signatura nunvalaivla"</string>
     <string name="wallet_certificate_refresh">"Il certificat vegn actualisada"</string>
 
     <!-- Message nach erfolgreicher Aktualisierung im Zertifikatdetail -->
-    <string name="wallet_certificate_refresh_success">"Actualisada reussida"</string>
+    <string name="wallet_certificate_refresh_success">"Actualisada"</string>
 
     <!-- Accessibility: Info Box Butto -->
     <string name="accessibility_info_box">"Infurmaziun"</string>

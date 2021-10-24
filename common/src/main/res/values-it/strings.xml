@@ -392,7 +392,7 @@ Svizzera"</string>
     <string name="wallet_certificate_refresh">"Il certificato è in fase di aggiornamento"</string>
 
     <!-- Message nach erfolgreicher Aktualisierung im Zertifikatdetail -->
-    <string name="wallet_certificate_refresh_success">"Aggiornamento effettuata con successo"</string>
+    <string name="wallet_certificate_refresh_success">"Aggiornamento"</string>
 
     <!-- Accessibility: Info Box Butto -->
     <string name="accessibility_info_box">"Informazione"</string>

@@ -391,7 +391,7 @@ Switzerland"</string>
     <string name="wallet_certificate_refresh">"The certificate is being refreshed"</string>
 
     <!-- Message nach erfolgreicher Aktualisierung im Zertifikatdetail -->
-    <string name="wallet_certificate_refresh_success">"Refresh successful"</string>
+    <string name="wallet_certificate_refresh_success">"Refreshed"</string>
 
     <!-- Accessibility: Info Box Butto -->
     <string name="accessibility_info_box">"Information"</string>
