@@ -384,11 +384,11 @@ signatura nunvalaivla"</string>
     <!-- "Bis" Label im Zertifikats-Detail -->
     <string name="wallet_certificate_valid_until">"fin ils"</string>
 
-    <!-- Message im Zertifikatsdetail während Überprüfung -->
-    <string name="wallet_certificate_verifying">"Il certificat vegn verifitgà"</string>
+    <!-- Message im Zertifikatsdetail während Aktualisierung -->
+    <string name="wallet_certificate_refresh">"Il certificat vegn actualisada"</string>
 
-    <!-- Message nach erfolgreicher Prüfung im Zertifikatdetail -->
-    <string name="wallet_certificate_verify_success">"Verificaziun reussida"</string>
+    <!-- Message nach erfolgreicher Aktualisierung im Zertifikatdetail -->
+    <string name="wallet_certificate_refresh_success">"Actualisada reussida"</string>
 
     <!-- Accessibility: Info Box Butto -->
     <string name="accessibility_info_box">"Infurmaziun"</string>

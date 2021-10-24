@@ -181,7 +181,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	private fun displayLoadingState() {
 		showLoadingIndicator(true)
 		setVerificationStateBubbleColor(R.color.greyish)
-		binding.certificateLightDetailVerificationStatus.setText(R.string.wallet_certificate_verifying)
+		binding.certificateLightDetailVerificationStatus.setText(R.string.wallet_certificate_refresh)
 	}
 
 	private fun displaySuccessState() {

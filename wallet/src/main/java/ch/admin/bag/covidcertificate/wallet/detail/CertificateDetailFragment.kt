@@ -267,10 +267,9 @@ class CertificateDetailFragment : Fragment() {
 		setInfoBubbleBackgrounds(R.color.greyish, R.color.greyish)
 		updateConversionButtons(isLightCertificateEnabled = false, isPdfExportEnabled = false)
 
-		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
+		val info = SpannableString(context.getString(R.string.wallet_certificate_refresh))
 		if (isForceValidate) {
 			showStatusInfoAndDescription(null, info, 0)
-			showForceValidation(R.color.grey, 0, 0, info)
 		} else {
 			showStatusInfoAndDescription(null, info, 0)
 		}
@@ -283,17 +282,16 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoValidityGroup.isVisible = true
 		binding.certificateDetailErrorCode.isVisible = false
 		showValidityDate(state.validityRange?.validUntil, certificateHolder.certType, state)
-		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
+		setInfoBubbleBackgrounds(R.color.blueish, R.color.blueish)
 
 		// Certificate Light and PDF export is enabled for a valid certificate that was issued in Switzerland
 		val isIssuedInSwitzerland = ISSUER_SWITZERLAND.contains(certificateHolder.issuer)
 		updateConversionButtons(isLightCertificateEnabled = isIssuedInSwitzerland, isPdfExportEnabled = isIssuedInSwitzerland)
 
 		val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
-		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
+		val forceValidationInfo = context.getString(R.string.wallet_certificate_refresh_success).makeBold()
 		if (isForceValidate) {
-			showStatusInfoAndDescription(null, forceValidationInfo, R.drawable.ic_check_green)
-			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, forceValidationInfo)
+			showStatusInfoAndDescription(null, forceValidationInfo, R.drawable.ic_check_grey)
 			readjustStatusDelayed(R.color.blueish, R.drawable.ic_info_blue, info)
 		} else {
 			showStatusInfoAndDescription(null, info, R.drawable.ic_info_blue)

@@ -136,7 +136,7 @@ class CertificatePagerFragment : Fragment() {
 		showLoadingIndicator(true)
 		setInfoBubbleBackground(R.color.greyish)
 		binding.certificatePageStatusIcon.setImageResource(0)
-		binding.certificatePageInfo.text = SpannableString(context.getString(R.string.wallet_certificate_verifying))
+		binding.certificatePageInfo.text = SpannableString(context.getString(R.string.wallet_certificate_refresh))
 	}
 
 	private fun displaySuccessState() {

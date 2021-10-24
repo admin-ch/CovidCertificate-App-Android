@@ -171,7 +171,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 	private fun displayLoadingState() {
 		showLoadingIndicator(true)
 		setVerificationStateBubbleColor(R.color.greyish)
-		binding.certificatePageStatusInfo.setText(R.string.wallet_certificate_verifying)
+		binding.certificatePageStatusInfo.setText(R.string.wallet_certificate_refresh)
 
 	}
 

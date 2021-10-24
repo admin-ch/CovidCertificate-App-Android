@@ -388,11 +388,11 @@ Schweiz"</string>
     <!-- "Bis" Label im Zertifikats-Detail -->
     <string name="wallet_certificate_valid_until">"bis"</string>
 
-    <!-- Message im Zertifikatsdetail während Überprüfung -->
-    <string name="wallet_certificate_verifying">"Das Zertifikat wird geprüft"</string>
+    <!-- Message im Zertifikatsdetail während Aktualisierung -->
+    <string name="wallet_certificate_refresh">"Das Zertifikat wird aktualisiert"</string>
 
-    <!-- Message nach erfolgreicher Prüfung im Zertifikatdetail -->
-    <string name="wallet_certificate_verify_success">"Prüfung erfolgreich"</string>
+    <!-- Message nach erfolgreicher Aktualisierung im Zertifikatdetail -->
+    <string name="wallet_certificate_refresh_success">"Aktualisierung erfolgreich"</string>
 
     <!-- Accessibility: Info Box Butto -->
     <string name="accessibility_info_box">"Information"</string>
