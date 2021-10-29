@@ -38,9 +38,9 @@ android {
 
 	defaultConfig {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
-		minSdkVersion 24
+		minSdkVersion 23
 		targetSdkVersion 30
-		versionCode 2701
+		versionCode 2700
 		versionName "2.7.0"
 
 		// Stops the Gradle plugin’s automatic rasterization of vectors
