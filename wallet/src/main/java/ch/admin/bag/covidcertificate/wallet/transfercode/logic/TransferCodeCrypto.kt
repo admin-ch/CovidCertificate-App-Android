@@ -18,6 +18,7 @@ import android.security.keystore.KeyProperties
 import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
 import ch.admin.bag.covidcertificate.sdk.core.extensions.toBase64
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
+import kotlinx.coroutines.sync.Mutex
 import org.bouncycastle.jce.provider.BouncyCastleProvider
 import java.security.KeyFactory
 import java.security.KeyPair
@@ -47,6 +48,19 @@ object TransferCodeCrypto {
 			// Remove platform provided bouncy castle provider and add updated one from library on Android 23 and lower
 			Security.removeProvider(BOUNCY_CASTLE_PROVIDER)
 			Security.addProvider(BouncyCastleProvider())
+		}
+	}
+
+	private val mutexMap = HashMap<String, Mutex>()
+
+	@Synchronized fun getMutex(alias: String): Mutex {
+		var mutex = mutexMap.get(alias)
+		if(mutex == null){
+			mutex = Mutex()
+			mutexMap.put(alias, mutex)
+			return mutex
+		}else{
+			return mutex
 		}
 	}
 

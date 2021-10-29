@@ -37,6 +37,7 @@ import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.security.KeyPair
 import java.time.Instant
+import java.time.temporal.ChronoUnit
 
 class TransferCodeCreationViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -60,7 +61,7 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 			if (keyPair != null) {
 				registerTransferCode(transferCode, keyPair)
 			} else {
-				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
+				creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_KEYPAIR_GENERATION_FAILED)))
 			}
 
 			transferCodeCreationJob = null
@@ -73,7 +74,9 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 			when (registrationResponse) {
 				TransferCodeCreationResponse.SUCCESSFUL -> {
 					val now = Instant.now()
-					val transferCodeModel = TransferCodeModel(transferCode, now, now)
+					val expiresAt = now.plus(30, ChronoUnit.DAYS)
+					val failsAt = now.plus(72, ChronoUnit.HOURS)
+					val transferCodeModel = TransferCodeModel(transferCode, now, now, expiresAt, failsAt)
 					walletDataStorage.saveWalletDataItem(WalletDataItem.TransferCodeWalletData(transferCodeModel))
 					creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCodeModel))
 				}
@@ -81,7 +84,7 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 					creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(DeliveryRepository.ERROR_CODE_INVALID_TIME)))
 				}
 				else -> {
-					creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(ErrorCodes.INAPP_DELIVERY_REGISTRATION_FAILED)))
+					creationStateMutableLiveData.postValue(TransferCodeCreationState.ERROR(StateError(TransferCodeErrorCodes.INAPP_DELIVERY_REGISTRATION_FAILED)))
 				}
 			}
 		} catch (e: IOException) {
