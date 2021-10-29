@@ -18,7 +18,7 @@ android {
 	compileSdkVersion 30
 
 	defaultConfig {
-		minSdkVersion 23
+		minSdkVersion 24
 		targetSdkVersion 30
 
 		// Stops the Gradle plugin’s automatic rasterization of vectors
