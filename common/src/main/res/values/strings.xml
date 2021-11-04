@@ -1272,7 +1272,10 @@ Many places also offer walk-in vaccinations without an appointment."</string>
     <string name="error_decryption_reset_button">"Reset"</string>
 
     <!-- Text Certificate Could not be loaded {ERROR_CODE} gets replaces with the error code -->
-    <string name="error_decryption_text">"Certificates could not be loaded
+    <string name="error_decryption_text">"Certificates could not be loaded Code: {ERROR_CODE}"</string>
 
-Code: {ERROR_CODE}"</string>
+    <string name="covid_certificate_sero_positiv_test_title">Recovery antibody</string>
+    <string name="wallet_certificate_sero_positiv_test_analyse_date_title">Datum Analyse</string>
+
+
 </resources>
