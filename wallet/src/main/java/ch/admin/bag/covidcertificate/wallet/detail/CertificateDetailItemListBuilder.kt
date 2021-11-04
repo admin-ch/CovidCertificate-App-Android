@@ -273,6 +273,36 @@ class CertificateDetailItemListBuilder(
 			)
 		}
 
+		testEntry.getTestCenter()?.let { testCenter ->
+			detailItems.add(ValueItem(R.string.wallet_certificate_test_done_by, testCenter, showEnglishVersionForLabels))
+		}
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_test_land,
+				testEntry.getTestCountry(showEnglishVersionForLabels), showEnglishVersionForLabels
+			)
+		)
+
+		// Issuer
+		detailItems.add(DividerItem)
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_vaccination_issuer_title,
+				testEntry.getIssuer(),
+				showEnglishVersionForLabels
+			)
+		)
+		detailItems.add(
+			UvciItem(
+				testEntry.getCertificateIdentifier(),
+				false
+			)
+		)
+
+		certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
+		}
+
 		return detailItems
 	}
 
