@@ -215,7 +215,7 @@ class CertificateDetailItemListBuilder(
 		}
 
 		detailItems.add(DividerItem)
-		if (tests[0].isSeroPositiv()) {
+		if (tests[0].isSerologicalTest()) {
 			detailItems.add(TitleItem(R.string.covid_certificate_sero_positiv_test_title, showEnglishVersionForLabels))
 		} else {
 			detailItems.add(TitleItem(R.string.covid_certificate_test_title, showEnglishVersionForLabels))
@@ -223,7 +223,7 @@ class CertificateDetailItemListBuilder(
 
 		for (testEntry in tests) {
 			detailItems.add(DividerItem)
-			if (testEntry.isSeroPositiv()) {
+			if (testEntry.isSerologicalTest()) {
 				detailItems.addAll(buildTestEntriesForSeroPositiv(testEntry = testEntry))
 			} else {
 				detailItems.addAll(buildTestEntriesForPCRAndRAT(testEntry = testEntry))
