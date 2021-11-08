@@ -12,10 +12,14 @@ package ch.admin.bag.covidcertificate.wallet.transfercode.model
 
 import com.squareup.moshi.JsonClass
 import java.io.Serializable
+import java.time.Duration
 import java.time.Instant
-import java.time.temporal.ChronoUnit
 import java.util.concurrent.TimeUnit
 import kotlin.math.roundToInt
+
+val TRANSFER_CODE_VALIDITY_DURATION = Duration.ofDays(30)
+val TRANSFER_CODE_DURATION_FAILS_AFTER_EXPIRES = Duration.ofHours(72)
+val PRE_V2_6_0_TRANSFER_CODE_VALIDITY_DURATION = Duration.ofDays(7)
 
 /**
  * The expiresAt and failsAt default values are set to 7d/72h due to the extended validity starting with the 2.7.0 release.
@@ -27,9 +31,9 @@ data class TransferCodeModel(
 	val code: String,
 	val creationTimestamp: Instant,
 	val lastUpdatedTimestamp: Instant,
-	val expiresAtTimestamp: Instant = creationTimestamp.plus(7, ChronoUnit.DAYS),
-	val failsAtTimestamp: Instant = expiresAtTimestamp.plus(72, ChronoUnit.HOURS),
-): Serializable {
+	val expiresAtTimestamp: Instant = creationTimestamp.plus(PRE_V2_6_0_TRANSFER_CODE_VALIDITY_DURATION),
+	var failsAtTimestamp: Instant = expiresAtTimestamp.plus(TRANSFER_CODE_DURATION_FAILS_AFTER_EXPIRES),
+) : Serializable {
 
 	fun isExpired() = expiresAtTimestamp.isBefore(Instant.now())
 

@@ -18,6 +18,7 @@ import ch.admin.bag.covidcertificate.wallet.data.CertificateStorage
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.TRANSFER_CODE_DURATION_FAILS_AFTER_EXPIRES
 import ch.admin.bag.covidcertificate.wallet.transfercode.worker.TransferWorker
 import ch.admin.bag.covidcertificate.wallet.util.NotificationUtil
 
@@ -84,6 +85,21 @@ class MainApplication : Application() {
 			walletDataStorage.updateWalletData(walletDataItems)
 
 			walletStorage.setMigratedTransferCodeValidity(true)
+		}
+		if (!walletStorage.getMigratedTransferCodeFailsAt()) {
+			// In 2.7.0 there was a bug that set failsAt of transferCodes to now+72h instead of now+30h, this migration fixes this
+			val walletDataStorage = WalletDataSecureStorage.getInstance(this)
+			val walletDataItems = walletDataStorage.getWalletData()
+			for(walletItem in walletDataItems){
+				if(walletItem is WalletDataItem.TransferCodeWalletData){
+					if(walletItem.transferCode.failsAtTimestamp.isBefore(walletItem.transferCode.expiresAtTimestamp)){
+						walletItem.transferCode.failsAtTimestamp = walletItem.transferCode.expiresAtTimestamp.plus(TRANSFER_CODE_DURATION_FAILS_AFTER_EXPIRES);
+					}
+				}
+			}
+			walletDataStorage.updateWalletData(walletDataItems)
+
+			walletStorage.setMigratedTransferCodeFailsAt(true)
 		}
 	}
 

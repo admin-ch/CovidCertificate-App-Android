@@ -25,9 +25,7 @@ import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataSecureStorage
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.Luhn
 import ch.admin.bag.covidcertificate.wallet.transfercode.logic.TransferCodeCrypto
-import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationResponse
-import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeCreationState
-import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
+import ch.admin.bag.covidcertificate.wallet.transfercode.model.*
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
 import kotlinx.coroutines.Dispatchers
@@ -74,8 +72,8 @@ class TransferCodeCreationViewModel(application: Application) : AndroidViewModel
 			when (registrationResponse) {
 				TransferCodeCreationResponse.SUCCESSFUL -> {
 					val now = Instant.now()
-					val expiresAt = now.plus(30, ChronoUnit.DAYS)
-					val failsAt = now.plus(72, ChronoUnit.HOURS)
+					val expiresAt = now.plus(TRANSFER_CODE_VALIDITY_DURATION)
+					val failsAt = expiresAt.plus(TRANSFER_CODE_DURATION_FAILS_AFTER_EXPIRES)
 					val transferCodeModel = TransferCodeModel(transferCode, now, now, expiresAt, failsAt)
 					walletDataStorage.saveWalletDataItem(WalletDataItem.TransferCodeWalletData(transferCodeModel))
 					creationStateMutableLiveData.postValue(TransferCodeCreationState.SUCCESS(transferCodeModel))
