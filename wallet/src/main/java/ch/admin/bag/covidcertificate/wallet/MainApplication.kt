@@ -87,7 +87,7 @@ class MainApplication : Application() {
 			walletStorage.setMigratedTransferCodeValidity(true)
 		}
 		if (!walletStorage.getMigratedTransferCodeFailsAt()) {
-			// In 2.7.0 there was a bug that set failsAt of transferCodes to now+72h instead of now+30h, this migration fixes this
+			// In 2.7.0 there was a bug that set failsAt of transferCodes to now+72h (wrong) instead of expiredAt+72h = now+30d+72h (correct), this migration fixes this
 			val walletDataStorage = WalletDataSecureStorage.getInstance(this)
 			val walletDataItems = walletDataStorage.getWalletData()
 			for(walletItem in walletDataItems){
