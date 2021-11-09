@@ -167,14 +167,16 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 			// If this is a force verification (from the detail page), first refresh the trust list
 			CovidCertificateSdk.refreshTrustList(viewModelScope, onCompletionCallback = {
 				enqueueVerificationTask(certificateHolder, delayInMillis)
-			}, onErrorCallback = {
+			}, onErrorCallback = { errorCode ->
 				// If loading the trust list failed, tell the verification task to ignore the local trust list.
 				// That way the offline mode / network failure error handling is already taken care of by the verification controller
-				if (isForceVerification) {
-					//if force verification was presesed the local trustlist should only be used as last resort
-					enqueueVerificationTask(certificateHolder, delayInMillis)
+				if (errorCode == ErrorCodes.TIME_INCONSISTENCY) {
+					statefulWalletItemsMutableLiveData.value = updateVerificationStateForDccHolder(
+						certificateHolder,
+						VerificationState.ERROR(StateError(errorCode), null)
+					)
 				} else {
-					enqueueVerificationTask(certificateHolder, delayInMillis, ignoreLocalTrustList = true)
+					enqueueVerificationTask(certificateHolder, delayInMillis)
 				}
 			})
 		} else {
@@ -223,14 +225,13 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 	private fun enqueueVerificationTask(
 		certificateHolder: CertificateHolder,
-		delayInMillis: Long,
-		ignoreLocalTrustList: Boolean = false
+		delayInMillis: Long
 	) {
 		verificationJobs[certificateHolder]?.cancel()
 
 		viewModelScope.launch {
 			if (delayInMillis > 0) delay(delayInMillis)
-			val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificateHolder, viewModelScope, ignoreLocalTrustList)
+			val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificateHolder, viewModelScope)
 
 			val job = viewModelScope.launch {
 				verificationStateFlow.collect { state ->

@@ -1275,4 +1275,8 @@ Many places also offer walk-in vaccinations without an appointment."</string>
     <string name="error_decryption_text">"Certificates could not be loaded
 
 Code: {ERROR_CODE}"</string>
+
+
+    <string name="wallet_time_inconsistency_error_title">"Prüfung nicht möglich"</string>
+    <string name="wallet_time_inconsistency_error_text">"Datum und Uhrzeit auf dem Gerät sind falsch eingestellt."</string>
 </resources>

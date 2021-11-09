@@ -28,6 +28,7 @@ const val DATE_REPLACEMENT_STRING = "{DATE}"
  * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
  */
 fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == ErrorCodes.GENERAL_OFFLINE
+fun VerificationState.isTimeInconsistency() = this is VerificationState.ERROR && this.error.code == ErrorCodes.TIME_INCONSISTENCY
 
 fun VerificationState.INVALID.getValidationStatusString(context: Context) = when {
 	signatureState is CheckSignatureState.INVALID -> {
