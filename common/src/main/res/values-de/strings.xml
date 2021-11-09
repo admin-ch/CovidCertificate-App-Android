@@ -415,7 +415,7 @@ Schweiz"</string>
     <string name="covid_certificate_test_title">"Test"</string>
     <string name="wallet_certificate_test_result_title">"Ergebnis"</string>
     <string name="wallet_certificate_test_result_negativ">"Nicht erkannt (Negativ)"</string>
-    <string name="wallet_certificate_test_result_positiv">"Positiv"</string>
+    <string name="wallet_certificate_test_result_positiv">"Erkannt (Positiv)"</string>
     <string name="wallet_certificate_test_type">"Typ"</string>
     <string name="wallet_certificate_test_name">"Name"</string>
     <string name="wallet_certificate_test_holder">"Hersteller"</string>
@@ -1304,7 +1304,7 @@ Viele Orte bieten auch Walk-in-Impfungen ohne Termine an."</string>
     <string name="error_decryption_reset_button">"Zurücksetzen"</string>
 
     <!-- Text Certificate Could not be loaded {ERROR_CODE} gets replaces with the error code -->
-    <string name="error_decryption_text">"Zertifikate konnten nicht geladen werden
-
-Code: {ERROR_CODE}"</string>
+    <string name="error_decryption_text">"Zertifikate konnten nicht geladen werden Code: {ERROR_CODE}"</string>
+    
+    <string name="covid_certificate_sero_positiv_test_title">Genesung Antikörper</string>
 </resources>
