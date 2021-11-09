@@ -14,6 +14,10 @@ import android.content.Context
 import androidx.core.content.edit
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.Types
+import java.time.Duration
+import java.time.Instant
 
 class WalletSecureStorage private constructor(context: Context) {
 
@@ -27,6 +31,10 @@ class WalletSecureStorage private constructor(context: Context) {
 		private const val KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX = "TRANSFER_CODE_PUBLIC_KEY_"
 		private const val KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX = "TRANSFER_CODE_PRIVATE_KEY_"
 		private const val KEY_VACCINATION_HINT_DISMISS_TIMESTAMP = "KEY_VACCINATION_HINT_DISMISS_TIMESTAMP"
+		private const val KEY_LAST_SCAN_TIMES = "KEY_LAST_SCAN_TIMES"
+		private val moshi = Moshi.Builder().build()
+		private val longListAdapter =
+			moshi.adapter<List<Long>>(Types.newParameterizedType(List::class.java, Long::class.javaObjectType))
 	}
 
 	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, PREFERENCES)
@@ -82,6 +90,31 @@ class WalletSecureStorage private constructor(context: Context) {
 
 	fun setTransferCodePrivateKey(keyAlias: String, encodedKey: String?) = prefs.edit {
 		putString(KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX + keyAlias, encodedKey)
+	}
+
+	fun addLastScanTimes(time: Long) {
+		val times = getLastScanTimes().toMutableList()
+		times.add(time)
+		prefs.edit {
+			putString(KEY_LAST_SCAN_TIMES, longListAdapter.toJson(times))
+		}
+	}
+
+	private fun getLastScanTimes(): List<Long> {
+		val times = longListAdapter.fromJson(prefs.getString(KEY_LAST_SCAN_TIMES, "[]")) ?: emptyList()
+		return times.sortedDescending().filterIndexed { index, _ -> index < 10 }
+	}
+
+	fun has10OrMoreScansInLast24h(): Boolean {
+		return getLastScanTimes().filter { time ->
+			Instant.ofEpochMilli(time).isAfter(Instant.now().minus(Duration.ofDays(1)))
+		}.size >= 10
+	}
+
+	fun resetScanCount() {
+		prefs.edit {
+			putString(KEY_LAST_SCAN_TIMES, longListAdapter.toJson(emptyList()))
+		}
 	}
 
 }

@@ -19,14 +19,14 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
-import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
+import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateAddBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailAdapter
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailItemListBuilder
+import ch.admin.bag.covidcertificate.wallet.qr.VerifierInfoDialogFragment
 
 class CertificateAddFragment : Fragment() {
 
@@ -34,12 +34,13 @@ class CertificateAddFragment : Fragment() {
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 		private const val ARG_FROM_CAMERA = "ARG_FROM_CAMERA"
 
-		fun newInstance(certificateHolder: CertificateHolder, fromCamera: Boolean): CertificateAddFragment = CertificateAddFragment().apply {
-			arguments = bundleOf(
-				ARG_CERTIFICATE to certificateHolder,
-				ARG_FROM_CAMERA to fromCamera,
-			)
-		}
+		fun newInstance(certificateHolder: CertificateHolder, fromCamera: Boolean): CertificateAddFragment =
+			CertificateAddFragment().apply {
+				arguments = bundleOf(
+					ARG_CERTIFICATE to certificateHolder,
+					ARG_FROM_CAMERA to fromCamera,
+				)
+			}
 	}
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
@@ -99,6 +100,19 @@ class CertificateAddFragment : Fragment() {
 
 	}
 
+
+	override fun onResume() {
+		super.onResume()
+
+		val walletSecureStorage = WalletSecureStorage.getInstance(requireContext())
+		if (walletSecureStorage.has10OrMoreScansInLast24h()) {
+			VerifierInfoDialogFragment.newInstance()
+				.show(childFragmentManager, VerifierInfoDialogFragment::class.java.canonicalName)
+			walletSecureStorage.resetScanCount()
+		}
+
+	}
+
 	override fun onDestroyView() {
 		super.onDestroyView()
 		_binding = null
@@ -116,7 +130,8 @@ class CertificateAddFragment : Fragment() {
 		binding.certificateAddName.text = name
 		binding.certificateAddBirthdate.text = certificateHolder.certificate.getFormattedDateOfBirth()
 
-		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, certificateHolder, showEnglishVersion = false).buildAll()
+		val detailItems =
+			CertificateDetailItemListBuilder(recyclerView.context, certificateHolder, showEnglishVersion = false).buildAll()
 		adapter.setItems(detailItems)
 	}
 
