@@ -22,6 +22,7 @@ class WalletSecureStorage private constructor(context: Context) {
 		private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
 		private const val KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA = "KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA"
 		private const val KEY_MIGRATED_TRANSFER_CODE_VALIDITY = "KEY_MIGRATED_TRANSFER_CODE_VALIDITY"
+		private const val KEY_MIGRATED_TRANSFER_CODE_FAILS_AT = "KEY_MIGRATED_TRANSFER_CODE_FAILS_AT"
 		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
 		private const val KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX = "TRANSFER_CODE_PUBLIC_KEY_"
 		private const val KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX = "TRANSFER_CODE_PRIVATE_KEY_"
@@ -46,6 +47,12 @@ class WalletSecureStorage private constructor(context: Context) {
 
 	fun setMigratedTransferCodeValidity(migrated: Boolean) = prefs.edit {
 		putBoolean(KEY_MIGRATED_TRANSFER_CODE_VALIDITY, migrated)
+	}
+
+	fun getMigratedTransferCodeFailsAt() = prefs.getBoolean(KEY_MIGRATED_TRANSFER_CODE_FAILS_AT, false)
+
+	fun setMigratedTransferCodeFailsAt(migrated: Boolean) = prefs.edit {
+		putBoolean(KEY_MIGRATED_TRANSFER_CODE_FAILS_AT, migrated)
 	}
 
 	fun getCertificateLightUpdateboardingCompleted() = prefs.getBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, false)
