@@ -58,7 +58,7 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 	fun importPdf(clipData: ClipData) {
 		if (clipData.itemCount != 1 || clipData.getItemAt(0) == null || clipData.getItemAt(0).uri == null) {
 			pdfImportMutableLiveData.postValue(
-				PdfImportState.DONE(DecodeState.ERROR(StateError(PdfErrorCodes.FAILED_TO_READ, "The PDF was not be imported")))
+				PdfImportState.DONE(DecodeState.ERROR(StateError(PdfErrorCodes.FAILED_TO_READ, "The PDF was not imported")))
 			)
 			return
 		}

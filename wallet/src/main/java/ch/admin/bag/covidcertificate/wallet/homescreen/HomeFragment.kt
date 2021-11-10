@@ -355,9 +355,9 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun showImportError(errorCode: String) {
-		val message = getString(R.string.verifier_error_invalid_format) + " ($errorCode)"
+		val message = getString(R.string.error_file_import_text) + " ($errorCode)"
 		AlertDialog.Builder(requireContext(), R.style.CovidCertificate_AlertDialogStyle)
-			.setTitle(R.string.error_title)
+			.setTitle(R.string.error_file_import_title)
 			.setMessage(message)
 			.setPositiveButton(R.string.ok_button) { dialog, _ ->
 				dialog.dismiss()
