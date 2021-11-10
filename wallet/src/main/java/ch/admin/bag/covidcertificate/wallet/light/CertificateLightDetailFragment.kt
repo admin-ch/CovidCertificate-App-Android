@@ -187,8 +187,8 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	private fun displaySuccessState() {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.blueish)
-		binding.certificateLightDetailStatusIcon.setImageResource(R.drawable.ic_info_blue)
-		binding.certificateLightDetailVerificationStatus.setText(R.string.verifier_verify_success_certificate_light_info)
+		binding.certificateLightDetailStatusIcon.setImageResource(R.drawable.ic_flag_ch)
+		binding.certificateLightDetailVerificationStatus.setText(R.string.wallet_only_valid_in_switzerland)
 	}
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {

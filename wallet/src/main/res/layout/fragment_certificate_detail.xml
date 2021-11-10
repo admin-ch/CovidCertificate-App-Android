@@ -133,12 +133,21 @@
 							android:layout_width="match_parent"
 							android:layout_height="wrap_content"
 							android:background="@drawable/bg_certificate_bubble"
-							app:backgroundTint="@color/blueish"
 							android:gravity="center"
 							android:minLines="2"
 							android:padding="@dimen/spacing_medium_large"
 							app:layout_constraintTop_toTopOf="parent"
 							tools:text="@string/verifier_verify_success_info" />
+
+						<ImageView
+							android:id="@+id/certificate_detail_info_red_border"
+							android:layout_width="0dp"
+							android:layout_height="0dp"
+							app:layout_constraintStart_toStartOf="@id/certificate_detail_info"
+							app:layout_constraintEnd_toEndOf="@id/certificate_detail_info"
+							app:layout_constraintTop_toTopOf="@id/certificate_detail_info"
+							app:layout_constraintBottom_toBottomOf="@id/certificate_detail_info"
+							android:src="@drawable/bg_certificate_bubble_bundesrot"/>
 
 						<TextView
 							android:id="@+id/certificate_detail_info_verification_status"
