@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.wallet.pdf.net
 
 import android.content.Context
+import ch.admin.bag.covidcertificate.common.extensions.setTimeouts
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.CertificatePinning
@@ -26,6 +27,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 class PdfExportRepository private constructor(context: Context) {
 
@@ -41,6 +43,7 @@ class PdfExportRepository private constructor(context: Context) {
 			.addInterceptor(JwsInterceptor(rootCa, expectedCommonName))
 			.addInterceptor(UserAgentInterceptor(Config.userAgent))
 			.addInterceptor(AcceptLanguageHeaderInterceptor(context.getString(R.string.language_key)))
+			.setTimeouts()
 
 		val cacheSize = 5 * 1024 * 1024 // 5 MB
 		val cache = Cache(context.cacheDir, cacheSize.toLong())

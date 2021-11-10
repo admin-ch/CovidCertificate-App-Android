@@ -14,6 +14,7 @@ import android.content.Context
 import ch.admin.bag.covidcertificate.common.BuildConfig
 import ch.admin.bag.covidcertificate.common.exception.HttpIOException
 import ch.admin.bag.covidcertificate.common.exception.TimeDeviationException
+import ch.admin.bag.covidcertificate.common.extensions.setTimeouts
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.CertificatePinning
@@ -30,6 +31,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.security.KeyPair
+import java.util.concurrent.TimeUnit
 
 internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec) {
 
@@ -47,6 +49,7 @@ internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec
 			.certificatePinner(CertificatePinning.pinner)
 			.addInterceptor(JwsInterceptor(rootCa, expectedCommonName))
 			.addInterceptor(UserAgentInterceptor(Config.userAgent))
+			.setTimeouts()
 
 		val cacheSize = 5 * 1024 * 1024 // 5 MB
 		val cache = Cache(deliverySpec.context.cacheDir, cacheSize.toLong())
