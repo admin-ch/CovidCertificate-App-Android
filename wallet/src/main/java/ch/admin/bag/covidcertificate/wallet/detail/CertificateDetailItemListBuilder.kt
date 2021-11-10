@@ -263,16 +263,6 @@ class CertificateDetailItemListBuilder(
 			)
 		}
 
-		testEntry.getFormattedResultDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampleDate ->
-			detailItems.add(
-				ValueItem(
-					R.string.wallet_certificate_sero_positiv_test_analyse_date_title ,
-					sampleDate,
-					showEnglishVersionForLabels
-				)
-			)
-		}
-
 		val acceptedTestProvider = AcceptedTestProvider.getInstance(context)
 		detailItems.add(
 			ValueItem(

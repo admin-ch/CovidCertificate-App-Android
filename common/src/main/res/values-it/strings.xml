@@ -1280,19 +1280,16 @@ Molti di essi offrono anche vaccinazioni libere senza appuntamento."</string>
 
 Code: {ERROR_CODE}"</string>
     <string name="covid_certificate_sero_positiv_test_title">"Guarigione (Anticorpi)"</string>
-    <string name="wallet_time_inconsistency_error_title">"Prüfung nicht möglich"</string>
-    <string name="wallet_time_inconsistency_error_text">"Datum und Uhrzeit auf dem Gerät sind falsch eingestellt."</string>
-    <string name="wallet_info_box_certificate_scan_title">"Müssen Sie Zertifikate prüfen?"</string>
-    <string name="wallet_info_box_certificate_scan_text">"Sie haben in kurzer Zeit einige Zertifikate gescannt.
-
-Für eine datenschutzkonforme Prüfung nutzen Sie die «COVID Certificate Check»-App."</string>
-    <string name="wallet_info_box_certificate_scan_button_check_app">"Zur Check-App"</string>
-    <string name="wallet_info_box_certificate_scan_close">"Verstanden"</string>
+    <string name="wallet_time_inconsistency_error_title">"Impossibile effettuare la verifica"</string>
+    <string name="wallet_time_inconsistency_error_text">"Impostazione di data, ora o fuso orario del dispositivo non corretta."</string>
+    <string name="wallet_info_box_certificate_scan_title">"Si vogliono verificare certificati?"</string>
+    <string name="wallet_info_box_certificate_scan_text">"Per una verifica più rapida e conforme alla protezione dei dati, utilizzare l'app \"COVID Certificate Check\""</string>
+    <string name="wallet_info_box_certificate_scan_button_check_app">"All'app Check"</string>
+    <string name="wallet_info_box_certificate_scan_close">"Capito"</string>
 
     <!-- Fuzzy -->
     <string name="wallet_info_box_certificate_scan_text_bold">"«COVID Certificate Check»-App."</string>
     <string name="wallet_only_valid_in_switzerland">"Valido solo in Svizzera con un documento di legittimazione"</string>
-    <string name="wallet_certificate_sero_positiv_test_analyse_date_title">"Datum der Anaylse"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Risultati"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Sufficiente"</string>
 </resources>
