@@ -415,7 +415,7 @@ Schweiz"</string>
     <string name="covid_certificate_test_title">"Test"</string>
     <string name="wallet_certificate_test_result_title">"Ergebnis"</string>
     <string name="wallet_certificate_test_result_negativ">"Nicht erkannt (Negativ)"</string>
-    <string name="wallet_certificate_test_result_positiv">"Positiv"</string>
+    <string name="wallet_certificate_test_result_positiv">"Erkannt (Positiv)"</string>
     <string name="wallet_certificate_test_type">"Typ"</string>
     <string name="wallet_certificate_test_name">"Name"</string>
     <string name="wallet_certificate_test_holder">"Hersteller"</string>
@@ -1307,4 +1307,18 @@ Viele Orte bieten auch Walk-in-Impfungen ohne Termine an."</string>
     <string name="error_decryption_text">"Zertifikate konnten nicht geladen werden
 
 Code: {ERROR_CODE}"</string>
+    <string name="wallet_certificate_sero_positiv_test_analyse_date_title">Datum der Anaylse</string>
+    <string name="covid_certificate_sero_positiv_test_title">"Genesung Antikörper"</string>
+    <string name="wallet_time_inconsistency_error_title">"Prüfung nicht möglich"</string>
+    <string name="wallet_time_inconsistency_error_text">"Datum und Uhrzeit auf dem Gerät sind falsch eingestellt."</string>
+    <string name="wallet_info_box_certificate_scan_title">"Müssen Sie Zertifikate prüfen?"</string>
+    <string name="wallet_info_box_certificate_scan_text">"Sie haben in kurzer Zeit einige Zertifikate gescannt.
+
+Für eine datenschutzkonforme Prüfung nutzen Sie die «COVID Certificate Check»-App."</string>
+    <string name="wallet_info_box_certificate_scan_button_check_app">"Zur Check-App"</string>
+    <string name="wallet_info_box_certificate_scan_close">"Verstanden"</string>
+
+    <!-- Fuzzy -->
+    <string name="wallet_info_box_certificate_scan_text_bold">"«COVID Certificate Check»-App."</string>
+    <string name="wallet_only_valid_in_switzerland">"Nur in der Schweiz gültig"</string>
 </resources>
