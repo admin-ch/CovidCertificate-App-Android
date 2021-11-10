@@ -87,3 +87,5 @@ lint/tmp/
 .idea/misc.xml
 
 .idea/
+
+.DS_Store
