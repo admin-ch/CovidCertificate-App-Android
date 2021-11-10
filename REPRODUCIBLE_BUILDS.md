@@ -1,53 +1,39 @@
 # Reproducible Builds
 
-## Install Docker
+This document outlines how you can reproduce the Android app.
 
-Download and install [Docker](https://www.docker.com/).
+The instructions below are for the wallet app.
+To reproduce the verifier app, change **all** occurences of `wallet` to `verifier`.
 
-## Download the app's source code
+## Prerequisites
 
-1. Make sure you have `git` installed
-2. Clone the Github repository
-3. Checkout the tag that corresponds to the version of your app (e.g., 1.0.0)
+1. Make sure you have both [Docker](https://www.docker.com/) and `git` installed.
+2. Clone the repository
+3. Checkout the tag (or branch or commit) that corresponds to the version of your app (e.g., 1.0.0)
 
 ```shell
 git clone https://github.com/admin-ch/CovidCertificate-App-Android.git ~/CovidCertificate-App-Android
 cd ~/CovidCertificate-App-Android
-git checkout release/version-1.0.0
+git tag       # List all available tags
+git checkout v2.7.0-2700-wallet
 ```
 
-## Wallet App
+## Verifying the app
 
-### Check your app version and build timestamp
+### Step 1: Check your app version and build timestamp
 
 1. Open the app
 2. Click on the `i` button in the top-right corner
 3. Check the app version in the top right corner
 4. Check the build timestamp in the bottom right corner, which is the number before the slash (e.g., 1622186583268), and record its value to be used later
 
-### Build the Wallet app using Docker
-
-1. Build a Docker Image with the required Android Tools
-2. Generate a dummy key store for signing
-3. Build the App in the Docker Container while specifying the build timestamp that was recorded earlier (e.g., 1595936711208)
-4. Copy the freshly-built APK
-
-```shell
-cd ~/CovidCertificate-App-Android
-docker build -t covidcertificate-builder .
-docker run --rm -v ~/CovidCertificate-App-Android:/home/covidcertificate -w /home/covidcertificate covidcertificate-builder keytool -genkeypair -storepass securePassword -keypass securePassword -alias keyAlias -keyalg RSA -keystore wallet/build.keystore -dname 'CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown'
-docker run --rm -v ~/CovidCertificate-App-Android:/home/covidcertificate -w /home/covidcertificate covidcertificate-builder gradle wallet:assembleProdRelease -PkeystorePassword=securePassword -PkeyAlias=keyAlias -PkeyAliasPassword=securePassword -PkeystoreFile=build.keystore -PbuildTimestamp=1622186583268
-cp wallet/build/outputs/apk/prod/release/wallet-prod-release.apk wallet-built.apk
-```
-
-### Extract the Play Store APK from your phone
+### Step 2: Extract the APK from your device
 
 1. Make sure you have `adb` installed
 2. Connect your phone to your computer
-3. Extract the APK from the phone
+3. Extract the APK from the phone:
 
 ```shell
-cd ~/CovidCertificate-App-Android/wallet
 adb pull `adb shell pm path ch.admin.bag.covidcertificate.wallet | cut -d':' -f2` wallet-store.apk
 ```
 
@@ -57,73 +43,24 @@ If you want to check the version of the APK you are pulling from your device:
 adb shell dumpsys package ch.admin.bag.covidcertificate.wallet | grep versionName=| cut -d '=' -f 2
 ```
 
-### Compare the two files
+### Step 3: Reproduce it
 
-1. Make sure you have `python` installed
-2. Use the `apkdiff` script to compare the APKs
-
-```shell
-cd ~/CovidCertificate-App-Android/wallet
-python ../apkdiff.py wallet-built.apk wallet-store.apk
-```
-
-
-## Verifier App
-
-### Check your app version and build timestamp
-
-1. Open the app
-2. Click on the `i` button in the top-right corner
-3. Check the app version in the top right corner
-4. Check the build timestamp in the bottom right corner, which is the number before the slash (e.g., 1622186583268), and record its value to be used later
-
-### Build the Verifier app using Docker
-
-1. Build a Docker Image with the required Android Tools
-2. Generate a dummy key store for signing
-3. Build the App in the Docker Container while specifying the build timestamp that was recorded earlier (e.g., 1595936711208)
-4. Copy the freshly-built APK
+TLDR: Run the script and follow its instructions:
 
 ```shell
-cd ~/CovidCertificate-App-Android
-docker build -t covidcertificate-builder .
-docker run --rm -v ~/CovidCertificate-App-Android:/home/covidcertificate -w /home/covidcertificate covidcertificate-builder keytool -genkeypair -storepass securePassword -keypass securePassword -alias keyAlias -keyalg RSA -keystore wallet/build.keystore -dname 'CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown'
-docker run --rm -v ~/CovidCertificate-App-Android:/home/covidcertificate -w /home/covidcertificate covidcertificate-builder gradle verifier:assembleProdRelease -PkeystorePassword=securePassword -PkeyAlias=keyAlias -PkeyAliasPassword=securePassword -PkeystoreFile=build.keystore -PbuildTimestamp=1622186583268
-cp verifier/build/outputs/apk/prod/release/verifier-prod-release.apk verifier-built.apk
+./buildAndCompare.sh wallet-store.apk
 ```
 
-### Extract the Play Store APK from your phone
+The script will do the following:
 
-1. Make sure you have `adb` installed
-2. Connect your phone to your computer
-3. Extract the APK from the phone
+1. Build a Docker image with the required Android tools
+2. (Optionally) Generate a dummy key store for signing
+3. Build the app from source in the Docker container
+4. Compare the APK pulled from your phone with the APK built from source
+
+To manually compare to files you can run:
 
 ```shell
-cd ~/CovidCertificate-App-Android/verifier
-adb pull `adb shell pm path ch.admin.bag.covidcertificate.verifier | cut -d':' -f2` wallet-store.apk
+python3 apkdiff.py wallet-built.apk wallet-store.apk
 ```
 
-If you want to check the version of the APK you are pulling from your device:
-
-```shell
-adb shell dumpsys package ch.admin.bag.covidcertificate.verifier | grep versionName=| cut -d '=' -f 2
-```
-
-### Compare the two files
-
-1. Make sure you have `python` installed
-2. Use the `apkdiff` script to compare the APKs
-
-```shell
-cd ~/CovidCertificate-App-Android/verifier
-python ../apkdiff.py verifier-built.apk verifier-store.apk
-```
-
-## Building and checking with script
-
-As an alternative you can also run the build and comparison process with the buildAndCompare.sh script.
-The script expects the path to the APK to compare with and will ask you for all other inputs:
-
-```shell
-./buildAndCompare.sh path/to/store.apk
-```
