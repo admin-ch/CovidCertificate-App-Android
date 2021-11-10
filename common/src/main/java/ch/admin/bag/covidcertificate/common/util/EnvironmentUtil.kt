@@ -19,6 +19,7 @@ object EnvironmentUtil {
 		"dev" -> SdkEnvironment.DEV
 		"abn" -> SdkEnvironment.ABN
 		"prod" -> SdkEnvironment.PROD
+		"prodfdroid" -> SdkEnvironment.PROD
 		else -> throw IllegalArgumentException("Unknown environment $flavor")
 	}
 
