@@ -122,7 +122,7 @@ class CertificatePagerFragment : Fragment() {
 
 		when (state) {
 			is VerificationState.LOADING -> displayLoadingState()
-			is VerificationState.SUCCESS -> displaySuccessState()
+			is VerificationState.SUCCESS -> displaySuccessState(state)
 			is VerificationState.INVALID -> displayInvalidState(state)
 			is VerificationState.ERROR -> displayErrorState(state)
 		}
@@ -136,16 +136,23 @@ class CertificatePagerFragment : Fragment() {
 		showLoadingIndicator(true)
 		setInfoBubbleBackground(R.color.greyish)
 		binding.certificatePageStatusIcon.setImageResource(0)
+		binding.certificatePageInfoRedBorder.visibility = View.GONE
 		binding.certificatePageInfo.text = SpannableString(context.getString(R.string.wallet_certificate_verifying))
 	}
 
-	private fun displaySuccessState() {
+	private fun displaySuccessState(state: VerificationState.SUCCESS) {
 		val context = context ?: return
 		showLoadingIndicator(false)
 		setInfoBubbleBackground(R.color.blueish)
-		binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_info_blue)
-		binding.certificatePageInfo.text = SpannableString(context.getString(R.string.verifier_verify_success_info))
-
+		if(state.isValidOnlyInSwitzerland){
+			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_flag_ch)
+			binding.certificatePageInfoRedBorder.visibility = View.VISIBLE
+			binding.certificatePageInfo.text = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))
+		}else {
+			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_info_blue)
+			binding.certificatePageInfoRedBorder.visibility = View.GONE
+			binding.certificatePageInfo.text = SpannableString(context.getString(R.string.verifier_verify_success_info))
+		}
 	}
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {
@@ -171,6 +178,7 @@ class CertificatePagerFragment : Fragment() {
 
 		setInfoBubbleBackground(infoBubbleColorId)
 		binding.certificatePageStatusIcon.setImageResource(statusIconId)
+		binding.certificatePageInfoRedBorder.visibility = View.GONE
 		binding.certificatePageInfo.text = state.getValidationStatusString(context)
 	}
 
@@ -181,6 +189,7 @@ class CertificatePagerFragment : Fragment() {
 
 		val statusIconId = if (state.isOfflineMode()) R.drawable.ic_offline else R.drawable.ic_process_error_grey
 		binding.certificatePageStatusIcon.setImageResource(statusIconId)
+		binding.certificatePageInfoRedBorder.visibility = View.GONE
 
 		binding.certificatePageInfo.text = if (state.isOfflineMode()) {
 			context.getString(R.string.wallet_homescreen_offline).makeBold()
