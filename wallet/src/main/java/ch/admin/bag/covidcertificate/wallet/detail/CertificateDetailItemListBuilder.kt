@@ -245,12 +245,12 @@ class CertificateDetailItemListBuilder(
 		}
 
 		val resultStringId =
-			if (testEntry.isNegative()) R.string.wallet_certificate_test_result_negativ else R.string.wallet_certificate_test_result_positiv
+			if (testEntry.isNegative()) R.string.wallet_certificate_test_result_negativ else R.string.covid_certificate_sero_positiv_test_befund_value
 		var value = context.getString(resultStringId)
 		if (showEnglishVersionForLabels) {
 			value = "$value\n${getEnglishTranslation(context, resultStringId)}"
 		}
-		detailItems.add(ValueItem(R.string.wallet_certificate_test_result_title, value, showEnglishVersionForLabels))
+		detailItems.add(ValueItem(R.string.covid_certificate_sero_positiv_test_befund_label, value, showEnglishVersionForLabels))
 
 		detailItems.add(DividerItem)
 		testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampleDate ->
@@ -263,15 +263,14 @@ class CertificateDetailItemListBuilder(
 			)
 		}
 
-		testEntry.getFormattedResultDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampleDate ->
-			detailItems.add(
-				ValueItem(
-					R.string.wallet_certificate_sero_positiv_test_analyse_date_title ,
-					sampleDate,
-					showEnglishVersionForLabels
-				)
+		val acceptedTestProvider = AcceptedTestProvider.getInstance(context)
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_test_type,
+				acceptedTestProvider.getTestType(testEntry),
+				showEnglishVersionForLabels
 			)
-		}
+		)
 
 		testEntry.getTestCenter()?.let { testCenter ->
 			detailItems.add(ValueItem(R.string.wallet_certificate_test_done_by, testCenter, showEnglishVersionForLabels))
