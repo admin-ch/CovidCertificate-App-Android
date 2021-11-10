@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.wallet.light.net
 
 import android.content.Context
+import ch.admin.bag.covidcertificate.common.extensions.setTimeouts
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.CertificatePinning
@@ -25,6 +26,7 @@ import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 class CertificateLightRepository private constructor(context: Context) {
 
@@ -41,6 +43,7 @@ class CertificateLightRepository private constructor(context: Context) {
 			.certificatePinner(CertificatePinning.pinner)
 			.addInterceptor(JwsInterceptor(rootCa, expectedCommonName))
 			.addInterceptor(UserAgentInterceptor(Config.userAgent))
+			.setTimeouts()
 
 		val cacheSize = 5 * 1024 * 1024 // 5 MB
 		val cache = Cache(context.cacheDir, cacheSize.toLong())
