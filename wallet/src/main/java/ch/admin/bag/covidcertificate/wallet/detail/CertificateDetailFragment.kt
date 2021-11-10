@@ -18,7 +18,6 @@ import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
@@ -382,6 +381,13 @@ class CertificateDetailFragment : Fragment() {
 			icon = R.drawable.ic_offline
 			forceValidationIcon = R.drawable.ic_offline_orange
 			forceValidationIconLarge = R.drawable.ic_offline_large
+		} else if (state.isTimeInconsistency()) {
+			info = context.getString(R.string.wallet_time_inconsistency_error_title).makeBold()
+			forceValidationInfo = context.getString(R.string.wallet_time_inconsistency_error_title).makeBold()
+			description = SpannableString(context.getString(R.string.wallet_transfer_code_time_inconsistency_text))
+			icon = R.drawable.ic_timeerror
+			forceValidationIcon = R.drawable.ic_timeerror_orange
+			forceValidationIconLarge = R.drawable.ic_timeerror_large
 		} else {
 			info = SpannableString(context.getString(R.string.wallet_homescreen_network_error))
 			forceValidationInfo = context.getString(R.string.wallet_detail_network_error_title).makeBold()
