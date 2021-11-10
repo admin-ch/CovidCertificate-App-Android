@@ -1288,6 +1288,7 @@ Für eine datenschutzkonforme Prüfung nutzen Sie die «COVID Certificate Check�
     <!-- Fuzzy -->
     <string name="wallet_info_box_certificate_scan_text_bold">"«COVID Certificate Check»-App."</string>
     <string name="wallet_only_valid_in_switzerland">"Only valid within Switzerland and in combination with an identity document"</string>
-
-    <string name="wallet_certificate_sero_positiv_test_analyse_date_title">Datum der Anaylse</string>
+    <string name="wallet_certificate_sero_positiv_test_analyse_date_title">"Datum der Anaylse"</string>
+    <string name="covid_certificate_sero_positiv_test_befund_label">"Finding"</string>
+    <string name="covid_certificate_sero_positiv_test_befund_value">"Sufficient"</string>
 </resources>
