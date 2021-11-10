@@ -12,16 +12,3 @@ include ':common'
 include ':verifier'
 include ':wallet'
 rootProject.name = "CovidCertificate"
-
-includeBuild('../CovidCertificate-SDK-Android') {
-	dependencySubstitution {
-		// Substitute a maven dependency (group & artifact) with a local project (module reference, if the project has no module, pass ':')
-		substitute module('ch.admin.bag.covidcertificate:sdk-android') with project(':sdk')
-	}
-}
-
-includeBuild('../CovidCertificate-SDK-Kotlin') {
-	dependencySubstitution {
-		substitute module('ch.admin.bag.covidcertificate:sdk-core') with project(':')
-	}
-}
