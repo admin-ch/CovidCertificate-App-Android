@@ -288,14 +288,25 @@ class CertificateDetailFragment : Fragment() {
 		val isIssuedInSwitzerland = ISSUER_SWITZERLAND.contains(certificateHolder.issuer)
 		updateConversionButtons(isLightCertificateEnabled = isIssuedInSwitzerland, isPdfExportEnabled = isIssuedInSwitzerland)
 
-		val info = SpannableString(context.getString(R.string.verifier_verify_success_info))
+		var info: SpannableString
+		var iconId: Int
+		var showRedBorder: Boolean
+		if (certificateHolder.containsCertOnlyValidInCH()) {
+			info = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))
+			iconId = R.drawable.ic_flag_ch
+			showRedBorder = true
+		} else {
+			info = SpannableString(context.getString(R.string.verifier_verify_success_info))
+			iconId = R.drawable.ic_info_blue
+			showRedBorder = false
+		}
 		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
 		if (isForceValidate) {
 			showStatusInfoAndDescription(null, forceValidationInfo, R.drawable.ic_check_green)
 			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, forceValidationInfo)
-			readjustStatusDelayed(R.color.blueish, R.drawable.ic_info_blue, info)
+			readjustStatusDelayed(R.color.blueish, iconId, info, showRedBorder)
 		} else {
-			showStatusInfoAndDescription(null, info, R.drawable.ic_info_blue)
+			showStatusInfoAndDescription(null, info, iconId, showRedBorder)
 		}
 	}
 
@@ -530,10 +541,16 @@ class CertificateDetailFragment : Fragment() {
 	/**
 	 * Display the verification status info and description
 	 */
-	private fun showStatusInfoAndDescription(description: SpannableString?, info: SpannableString?, @DrawableRes iconId: Int) {
+	private fun showStatusInfoAndDescription(
+		description: SpannableString?,
+		info: SpannableString?,
+		@DrawableRes iconId: Int,
+		showRedBorder: Boolean = false
+	) {
 		binding.certificateDetailInfoDescription.text = description
 		binding.certificateDetailInfo.text = info
 		binding.certificateDetailStatusIcon.setImageResource(iconId)
+		binding.certificateDetailInfoRedBorder.visibility = if(showRedBorder) View.VISIBLE else View.GONE
 	}
 
 	/**
@@ -543,6 +560,7 @@ class CertificateDetailFragment : Fragment() {
 		@ColorRes infoBubbleColorId: Int,
 		@DrawableRes statusIconId: Int,
 		info: SpannableString?,
+		showRedBorder: Boolean = false
 	) {
 		hideDelayedJob?.cancel()
 		hideDelayedJob = viewLifecycleOwner.lifecycleScope.launch {
@@ -560,6 +578,7 @@ class CertificateDetailFragment : Fragment() {
 			binding.certificateDetailInfoDescriptionGroup.animateBackgroundTintColor(
 				ContextCompat.getColor(context, infoBubbleColorId)
 			)
+			binding.certificateDetailInfoRedBorder.visibility = if(showRedBorder) View.VISIBLE else View.GONE
 
 			binding.certificateDetailInfoVerificationStatus.hideAnimated()
 			binding.certificateDetailInfoValidityGroup.animateBackgroundTintColor(

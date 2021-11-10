@@ -172,13 +172,14 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 		showLoadingIndicator(true)
 		setVerificationStateBubbleColor(R.color.greyish)
 		binding.certificatePageStatusInfo.setText(R.string.wallet_certificate_verifying)
-
+		binding.certificatePageStatusInfoRedBorder.visibility = View.GONE
 	}
 
 	private fun displaySuccessState() {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.blueish)
-		binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_info_blue)
+		binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_flag_ch)
+		binding.certificatePageStatusInfoRedBorder.visibility = View.VISIBLE
 		binding.certificatePageStatusInfo.setText(R.string.verifier_verify_success_certificate_light_info)
 	}
 
@@ -186,12 +187,14 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.greyish)
 		binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_error_grey)
+		binding.certificatePageStatusInfoRedBorder.visibility = View.GONE
 		binding.certificatePageStatusInfo.text = state.getValidationStatusString(requireContext())
 	}
 
 	private fun displayErrorState(state: VerificationState.ERROR) {
 		showLoadingIndicator(false)
 		setVerificationStateBubbleColor(R.color.greyish)
+		binding.certificatePageStatusInfoRedBorder.visibility = View.GONE
 		if (state.isOfflineMode()) {
 			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_offline)
 			binding.certificatePageStatusInfo.text = getString(R.string.wallet_homescreen_offline).makeBold()

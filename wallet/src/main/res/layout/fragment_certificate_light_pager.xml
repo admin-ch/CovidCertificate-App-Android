@@ -117,6 +117,16 @@
 			app:layout_constraintBottom_toBottomOf="parent"
 			tools:text="@string/verifier_verify_success_certificate_light_info" />
 
+		<ImageView
+			android:id="@+id/certificate_page_status_info_red_border"
+			android:layout_width="0dp"
+			android:layout_height="0dp"
+			app:layout_constraintStart_toStartOf="@id/certificate_page_status_info"
+			app:layout_constraintEnd_toEndOf="@id/certificate_page_status_info"
+			app:layout_constraintTop_toTopOf="@id/certificate_page_status_info"
+			app:layout_constraintBottom_toBottomOf="@id/certificate_page_status_info"
+			android:src="@drawable/bg_certificate_bubble_bundesrot"/>
+
 		<FrameLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
