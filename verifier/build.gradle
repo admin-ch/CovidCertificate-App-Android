@@ -68,6 +68,11 @@ android {
 			buildConfigField "String", "BASE_URL", '"https://www.cc.bit.admin.ch/app/verifier/v1/"'
 			buildConfigField "String", "SDK_APP_TOKEN", '"25958ed0-7790-4846-9341-7c7ef87ec389"'
 		}
+		prodfdroid {
+			minSdkVersion 24
+			buildConfigField "String", "BASE_URL", '"https://www.cc.bit.admin.ch/app/verifier/v1/"'
+			buildConfigField "String", "SDK_APP_TOKEN", '"25958ed0-7790-4846-9341-7c7ef87ec389"'
+		}
 	}
 
 	flavorDimensions "version"
