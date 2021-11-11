@@ -777,7 +777,7 @@
 	},
 	"androidTransferCheckIntervalMs": 7200000,
 	"androidTransferCheckBackoffMs": 30000,
-	"timeshiftDetectionEnabled": true,
+	"timeshiftDetectionEnabled": false,
 	"transferQuestions": {
 		"de": {
 			"faqTitle": "Covid-Zertifikate direkt in die App geliefert",
