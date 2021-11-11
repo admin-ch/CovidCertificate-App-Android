@@ -14,11 +14,27 @@ plugins {
 	id 'kotlin-kapt'
 }
 
+ext.readPropertyWithDefault = { paramName, defaultValue ->
+	if (project.hasProperty(paramName)) {
+		return project.getProperties().get(paramName)
+	} else {
+		Properties properties = new Properties()
+		if (project.rootProject.file('local.properties').exists()) {
+			properties.load(project.rootProject.file('local.properties').newDataInputStream())
+		}
+		if (properties.getProperty(paramName) != null) {
+			return properties.getProperty(paramName)
+		} else {
+			return defaultValue
+		}
+	}
+}
+
 android {
 	compileSdkVersion 30
 
 	defaultConfig {
-		minSdkVersion 23
+		minSdkVersion readPropertyWithDefault('minSdkVersion', '23').toInteger()
 		targetSdkVersion 30
 
 		// Stops the Gradle plugin’s automatic rasterization of vectors
