@@ -23,11 +23,12 @@ case "$willProvideKeystore" in
   [nN][oO]|[nN])
   echo "[WARNING] Auto-generating a dummy keystore with default credentials. Do NOT use the resulting APK!"
   rm -f "$appName"/insecure.keystore
-  keytool -genkeypair -storepass password -keypass password -alias keyAlias -keyalg RSA -keystore "$appName"/insecure.keystore -dname 'CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown'
+  # Generate a keystore with default credentials that is only valid 1 day
+  keytool -genkeypair -storepass password -keypass password -alias keyAlias -keyalg RSA -keystore "$appName"/insecure.keystore -dname 'CN=Unknown, OU=Unknown, O=Unknown, L=Unknown, ST=Unknown, C=Unknown' -validity 1
   keystoreFile="$appName"/insecure.keystore
   keystorePassword=password
   keyAlias=keyAlias
-  keyAliasPassword=keyAliasPassword
+  keyAliasPassword=password
   ;;
 
   # Case 2: Let the user choose a keystore
@@ -64,11 +65,11 @@ read fdroid
 # Set gradle task to be run
 case "$fdroid" in
   [yY][eE][sS]|[yY])
-  gradletask="$appName":assembleProdfdroidRelease
+  overrideMinSdk="-PminSdkVersion=24"
   ;;
 
   *)
-  gradletask="$appName":assembleProdRelease
+  overrideMinSdk=""
   ;;
 esac
 
@@ -77,7 +78,7 @@ echo "Building apk from source..."
 # Clean up any existing images
 docker images -a | grep "covidcertificate-builder" | awk '{print $3}' | xargs -r docker rmi
 
-# Freshly build the container image
+# Build a fresh container image
 docker build -t covidcertificate-builder .
 
 # Prepare the build command (for readability)
@@ -86,7 +87,7 @@ buildCommand=$(cat <<EOF
 git clone https://github.com/admin-ch/CovidCertificate-App-Android.git;
 cd CovidCertificate-App-Android;
 git checkout $tree;
-gradle $gradletask -PkeystorePassword=$keystorePassword -PkeyAlias=$keyAlias -PkeyAliasPassword=$keyAliasPassword -PkeystoreFile=/home/covidcertificate/external/$keystoreFile -PbuildTimestamp=$buildTimestamp -Pbranch=buildBranch;
+gradle $appName:assembleProdRelease -PkeystorePassword=$keystorePassword -PkeyAlias=$keyAlias -PkeyAliasPassword=$keyAliasPassword -PkeystoreFile=/home/covidcertificate/external/$keystoreFile -PbuildTimestamp=$buildTimestamp -Pbranch=$buildBranch $overrideMinSdk;
 cp $appName/build/outputs/apk/prod/release/$appName-prod-release.apk /home/covidcertificate/external/$appName-built.apk
 EOF
 )
@@ -95,5 +96,9 @@ buildCommand=$(echo -n "$buildCommand" | tr '\n' ' ' ) # replace newlines by spa
 # Build the app in the container
 docker run --rm -v "$currentPath":/home/covidcertificate/external -w /home/covidcertificate covidcertificate-builder /bin/bash -c -eux "$buildCommand"
 
+# Remove dummy keystore again
+rm -f "$appName"/insecure.keystore
+
 echo "Comparing the APK built from source with the reference APK..."
 python apkdiff.py $appName-built.apk $referenceApk
+
