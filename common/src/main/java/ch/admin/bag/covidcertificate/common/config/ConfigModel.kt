@@ -33,7 +33,7 @@ data class ConfigModel(
 	val showVaccinationHintHomescreen: Boolean?,
 	val showVaccinationHintDetail: Boolean?,
 	val showVaccinationHintTransfer: Boolean?,
-
+	val timeshiftDetectionEnabled: Boolean?
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
@@ -41,10 +41,12 @@ data class ConfigModel(
 	fun getTransferQuestionsFaqs(languageKey: String): FaqModel? = transferQuestions?.get(languageKey)
 	fun getTransferWorksFaqs(languageKey: String): FaqModel? = transferWorks?.get(languageKey)
 	fun getVaccinationHints(languageKey: String): List<VaccinationHintModel>? = vaccinationHints?.get(languageKey)
-	fun getVaccinationBookingCantons(languageKey: String): List<VaccinationBookingCantonModel>? = vaccinationBookingCantons?.get(languageKey)
+	fun getVaccinationBookingCantons(languageKey: String): List<VaccinationBookingCantonModel>? =
+		vaccinationBookingCantons?.get(languageKey)
+
 	fun getVaccinationBookingInfo(languageKey: String): VaccinationBookingInfoModel? = vaccinationBookingInfo?.get(languageKey)
 
-	fun generateFaqItems(languageKey: String) : List<Faq> {
+	fun generateFaqItems(languageKey: String): List<Faq> {
 		val itemsList = mutableListOf<Faq>()
 		getQuestionsFaqs(languageKey)?.let { questionModel ->
 			val questionItems = questionModel.faqEntries

@@ -27,7 +27,6 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.debug.DebugFragment
@@ -41,10 +40,7 @@ import ch.admin.bag.covidcertificate.common.views.rotate
 import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
-import ch.admin.bag.covidcertificate.wallet.BuildConfig
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
-import ch.admin.bag.covidcertificate.wallet.DeeplinkViewModel
-import ch.admin.bag.covidcertificate.wallet.R
+import ch.admin.bag.covidcertificate.wallet.*
 import ch.admin.bag.covidcertificate.wallet.add.CertificateAddFragment
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.wallet.debug.WalletDebugFragment
@@ -73,7 +69,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
-	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private lateinit var configRepository: ConfigRepository
 	private val deeplinkViewModel by activityViewModels<DeeplinkViewModel>()
 	private val pdfViewModel by activityViewModels<PdfViewModel>()
 
@@ -92,6 +88,11 @@ class HomeFragment : Fragment() {
 				}
 			}
 		}
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		configRepository = ConfigRepository.getInstanceWallet(requireContext())
+	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -396,7 +397,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun setupInfoBox() {
-		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
+		configRepository.configLiveData.observe(viewLifecycleOwner) { config ->
 			val buttonHeaderEmpty = binding.homescreenHeaderEmpty.headerNotification
 			val buttonHeaderNotEmpty = binding.homescreenHeaderNotEmpty.headerNotification
 			val localizedInfo = config.getInfoBox(getString(R.string.language_key))

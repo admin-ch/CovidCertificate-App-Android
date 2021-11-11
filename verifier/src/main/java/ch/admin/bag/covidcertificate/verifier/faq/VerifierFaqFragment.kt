@@ -10,11 +10,11 @@
 
 package ch.admin.bag.covidcertificate.verifier.faq
 
-import androidx.fragment.app.activityViewModels
-import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
+import android.os.Bundle
 import ch.admin.bag.covidcertificate.common.faq.FaqFragment
-import ch.admin.bag.covidcertificate.verifier.BuildConfig
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.verifier.R
+import ch.admin.bag.covidcertificate.verifier.getInstanceVerifier
 
 class VerifierFaqFragment : FaqFragment() {
 
@@ -22,14 +22,19 @@ class VerifierFaqFragment : FaqFragment() {
 		fun newInstance(): FaqFragment = VerifierFaqFragment()
 	}
 
-	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private lateinit var configRepository: ConfigRepository
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+		configRepository = ConfigRepository.getInstanceVerifier(requireContext())
+	}
 
 	override fun setupFaqProvider() {
 		toolbar.setTitle(R.string.verifier_support_header)
-		configViewModel.configLiveData.observe(viewLifecycleOwner, { config ->
+		configRepository.configLiveData.observe(viewLifecycleOwner, { config ->
 			val languageKey = getString(R.string.language_key)
 			setupFaqList(config.generateFaqItems(languageKey))
 		})
-		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
+		configRepository.loadConfig()
 	}
 }

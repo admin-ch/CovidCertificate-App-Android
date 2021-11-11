@@ -24,13 +24,13 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.transition.TransitionManager
-import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.FaqModel
 import ch.admin.bag.covidcertificate.common.faq.FaqAdapter
 import ch.admin.bag.covidcertificate.common.faq.model.Faq
 import ch.admin.bag.covidcertificate.common.faq.model.Header
 import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
 import ch.admin.bag.covidcertificate.common.faq.model.Question
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.common.views.rotate
@@ -42,6 +42,7 @@ import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeDetailBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
+import ch.admin.bag.covidcertificate.wallet.getInstanceWallet
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
@@ -62,7 +63,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	private var _binding: FragmentTransferCodeDetailBinding? = null
 	private val binding get() = _binding!!
 
-	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private lateinit var configRepository: ConfigRepository
 	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
 	private val transferCodeViewModel by viewModels<TransferCodeViewModel>()
 	private val faqAdapter = FaqAdapter { url: String -> context?.let { UrlUtil.openUrl(it, url) } }
@@ -72,6 +73,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 		super.onCreate(savedInstanceState)
 		transferCode = (arguments?.getSerializable(ARG_TRANSFER_CODE) as? TransferCodeModel)
 			?: throw IllegalStateException("${this::class.java.simpleName} created without a transfer code argument!")
+		configRepository = ConfigRepository.getInstanceWallet(requireContext())
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -92,7 +94,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 		binding.transferCodeRefreshButton.setOnClickListener { onRefreshButtonClicked() }
 		binding.transferCodeDetailDeleteButton.setOnClickListener { onDeleteButtonClicked() }
 
-		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
+		configRepository.configLiveData.observe(viewLifecycleOwner) { config ->
 			val languageKey = getString(R.string.language_key)
 			config.getTransferWorksFaqs(languageKey)?.let {
 				showTransferCodeFaqItems(it)
