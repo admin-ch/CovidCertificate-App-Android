@@ -30,6 +30,8 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolde
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.VaccinationEntry
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -161,12 +163,24 @@ class CertificatePagerFragment : Fragment() {
 
 		val infoBubbleColorId: Int
 		val statusIconId: Int
-		when (state.nationalRulesState) {
-			is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
+		val signatureState = state.signatureState
+		val revocationState = state.revocationState
+		val nationalRulesState = state.nationalRulesState
+
+		when {
+			signatureState is CheckSignatureState.INVALID -> {
+				infoBubbleColorId = R.color.greyish
+				statusIconId = R.drawable.ic_error_grey
+			}
+			revocationState is CheckRevocationState.INVALID -> {
+				infoBubbleColorId = R.color.greyish
+				statusIconId = R.drawable.ic_error_grey
+			}
+			nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
 				infoBubbleColorId = R.color.blueish
 				statusIconId = R.drawable.ic_invalid_grey
 			}
-			is CheckNationalRulesState.NOT_YET_VALID -> {
+			nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
 				infoBubbleColorId = R.color.blueish
 				statusIconId = R.drawable.ic_timelapse
 			}

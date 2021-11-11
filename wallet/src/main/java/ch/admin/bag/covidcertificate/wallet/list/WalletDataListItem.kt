@@ -18,6 +18,8 @@ import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemCertificateListBinding
@@ -68,10 +70,26 @@ sealed class WalletDataListItem {
 					binding.itemCertificateListIconStatusGroup.isVisible = true
 					binding.itemCertificateListIconStatus.isVisible = true
 
-					val statusIconId = when (state.nationalRulesState) {
-						is CheckNationalRulesState.NOT_VALID_ANYMORE -> R.drawable.ic_invalid_grey
-						is CheckNationalRulesState.NOT_YET_VALID -> R.drawable.ic_timelapse
-						else -> R.drawable.ic_error_grey
+					val signatureState = state.signatureState
+					val revocationState = state.revocationState
+					val nationalRulesState = state.nationalRulesState
+					val statusIconId: Int
+					when {
+						signatureState is CheckSignatureState.INVALID -> {
+							statusIconId = R.drawable.ic_error_grey
+						}
+						revocationState is CheckRevocationState.INVALID -> {
+							statusIconId = R.drawable.ic_error_grey
+						}
+						nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
+							statusIconId = R.drawable.ic_invalid_grey
+						}
+						nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
+							statusIconId =  R.drawable.ic_timelapse
+						}
+						else -> {
+							statusIconId = R.drawable.ic_error_grey
+						}
 					}
 					binding.itemCertificateListIconStatus.setImageResource(statusIconId)
 				}

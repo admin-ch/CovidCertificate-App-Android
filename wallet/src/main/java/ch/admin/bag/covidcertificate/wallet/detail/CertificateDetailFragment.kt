@@ -337,12 +337,24 @@ class CertificateDetailFragment : Fragment() {
 
 		val icon: Int
 		val forceValidationIcon: Int
-		when (state.nationalRulesState) {
-			is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
+		val signatureState = state.signatureState
+		val revocationState = state.revocationState
+		val nationalRulesState = state.nationalRulesState
+
+		when {
+			signatureState is CheckSignatureState.INVALID -> {
+				icon = R.drawable.ic_error_grey
+				forceValidationIcon = R.drawable.ic_error
+			}
+			revocationState is CheckRevocationState.INVALID -> {
+				icon = R.drawable.ic_error_grey
+				forceValidationIcon = R.drawable.ic_error
+			}
+			nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
 				icon = R.drawable.ic_invalid_grey
 				forceValidationIcon = R.drawable.ic_invalid_red
 			}
-			is CheckNationalRulesState.NOT_YET_VALID -> {
+			nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
 				icon = R.drawable.ic_timelapse
 				forceValidationIcon = R.drawable.ic_timelapse_red
 			}
@@ -550,7 +562,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescription.text = description
 		binding.certificateDetailInfo.text = info
 		binding.certificateDetailStatusIcon.setImageResource(iconId)
-		binding.certificateDetailInfoRedBorder.visibility = if(showRedBorder) View.VISIBLE else View.GONE
+		binding.certificateDetailInfoRedBorder.visibility = if (showRedBorder) View.VISIBLE else View.GONE
 	}
 
 	/**
@@ -578,7 +590,7 @@ class CertificateDetailFragment : Fragment() {
 			binding.certificateDetailInfoDescriptionGroup.animateBackgroundTintColor(
 				ContextCompat.getColor(context, infoBubbleColorId)
 			)
-			binding.certificateDetailInfoRedBorder.visibility = if(showRedBorder) View.VISIBLE else View.GONE
+			binding.certificateDetailInfoRedBorder.visibility = if (showRedBorder) View.VISIBLE else View.GONE
 
 			binding.certificateDetailInfoVerificationStatus.hideAnimated()
 			binding.certificateDetailInfoValidityGroup.animateBackgroundTintColor(
