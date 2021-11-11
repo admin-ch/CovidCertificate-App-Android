@@ -252,6 +252,16 @@ class CertificateDetailItemListBuilder(
 		}
 		detailItems.add(ValueItem(R.string.covid_certificate_sero_positiv_test_befund_label, value, showEnglishVersionForLabels))
 
+		val acceptedTestProvider = AcceptedTestProvider.getInstance(context)
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_test_type,
+				acceptedTestProvider.getTestType(testEntry),
+				showEnglishVersionForLabels
+			)
+		)
+
+
 		detailItems.add(DividerItem)
 		testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampleDate ->
 			detailItems.add(
@@ -262,15 +272,6 @@ class CertificateDetailItemListBuilder(
 				)
 			)
 		}
-
-		val acceptedTestProvider = AcceptedTestProvider.getInstance(context)
-		detailItems.add(
-			ValueItem(
-				R.string.wallet_certificate_test_type,
-				acceptedTestProvider.getTestType(testEntry),
-				showEnglishVersionForLabels
-			)
-		)
 
 		testEntry.getTestCenter()?.let { testCenter ->
 			detailItems.add(ValueItem(R.string.wallet_certificate_test_done_by, testCenter, showEnglishVersionForLabels))
