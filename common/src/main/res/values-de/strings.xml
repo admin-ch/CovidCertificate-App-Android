@@ -1309,7 +1309,7 @@ Viele Orte bieten auch Walk-in-Impfungen ohne Termine an."</string>
 Code: {ERROR_CODE}"</string>
     <string name="covid_certificate_sero_positiv_test_title">"Genesung (Antikörper)"</string>
     <string name="wallet_time_inconsistency_error_title">"Prüfung nicht möglich"</string>
-    <string name="wallet_time_inconsistency_error_text">"Datum und Uhrzeit auf dem Gerät sind falsch eingestellt."</string>
+    <string name="wallet_time_inconsistency_error_text">"Datum, Uhrzeit oder Zeitzone auf dem Gerät sind falsch eingestellt."</string>
     <string name="wallet_info_box_certificate_scan_title">"Wollen Sie Zertifikate überprüfen?"</string>
     <string name="wallet_info_box_certificate_scan_text">"Für eine Datenschutzkonforme und schnellere Prüfung nutzen Sie die \"COVID Certificate Check\"-App."</string>
     <string name="wallet_info_box_certificate_scan_button_check_app">"Zur Check-App"</string>
