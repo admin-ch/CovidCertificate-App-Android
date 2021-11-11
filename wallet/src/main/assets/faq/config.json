@@ -777,6 +777,7 @@
 	},
 	"androidTransferCheckIntervalMs": 7200000,
 	"androidTransferCheckBackoffMs": 30000,
+	"timeshiftDetectionEnabled": false,
 	"transferQuestions": {
 		"de": {
 			"faqTitle": "Covid-Zertifikate direkt in die App geliefert",
@@ -2244,8 +2245,7 @@
 			"info": "La vaccinaziun cunter COVID-19 è recumandada per persunas a partir da 12 onns. La vaccinaziun è gratuita."
 		}
 	},
-	"showVaccinationHintHomescreen": false,
-	"showVaccinationHintDetail": false,
-	"showVaccinationHintTransfer": false,
-	"timeshiftDetectionEnabled": true
+	"showVaccinationHintHomescreen": true,
+	"showVaccinationHintDetail": true,
+	"showVaccinationHintTransfer": true
 }

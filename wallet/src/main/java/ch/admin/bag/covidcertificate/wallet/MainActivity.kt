@@ -17,12 +17,14 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.common.net.ConfigRepository
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.repository.TimeShiftDetectionConfig
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityMainBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.HomeFragment
@@ -35,7 +37,7 @@ class MainActivity : BaseActivity() {
 		private const val KEY_IS_INTENT_CONSUMED = "KEY_IS_INTENT_CONSUMED"
 	}
 
-	private lateinit var configRepository: ConfigRepository
+	private val configViewModel by viewModels<ConfigViewModel>()
 	private val deeplinkViewModel by viewModels<DeeplinkViewModel>()
 	private val pdfViewModel by viewModels<PdfViewModel>()
 
@@ -62,8 +64,6 @@ class MainActivity : BaseActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
-		configRepository = ConfigRepository.getInstanceWallet(this)
-
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		val view = binding.root
 		setContentView(view)
@@ -86,7 +86,10 @@ class MainActivity : BaseActivity() {
 			}
 		}
 
-		configRepository.configLiveData.observe(this) { config -> handleConfig(config) }
+		configViewModel.configLiveData.observe(this) { config ->
+			CovidCertificateSdk.setTimeShiftDetectingConfig(TimeShiftDetectionConfig( config.timeshiftDetectionEnabled ?: false))
+			handleConfig(config)
+		}
 		pdfViewModel.clearPdfFiles()
 
 		if (savedInstanceState != null) {
@@ -125,7 +128,7 @@ class MainActivity : BaseActivity() {
 	}
 
 	private fun loadConfigAndTrustList() {
-		configRepository.loadConfig()
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
 		CovidCertificateSdk.refreshTrustList(lifecycleScope)
 	}
 

@@ -9,12 +9,10 @@ import androidx.lifecycle.OnLifecycleEvent
 import androidx.lifecycle.ProcessLifecycleOwner
 import ch.admin.bag.covidcertificate.common.debug.DebugFragment
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
-import ch.admin.bag.covidcertificate.common.net.ConfigSpec
 import ch.admin.bag.covidcertificate.common.util.EnvironmentUtil
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
-import ch.admin.bag.covidcertificate.sdk.android.repository.TimeShiftDetectionConfig
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.wallet.data.CertificateStorage
 import ch.admin.bag.covidcertificate.wallet.data.WalletDataItem
@@ -52,16 +50,7 @@ class MainApplication : Application() {
 		Config.userAgent =
 			UserAgentInterceptor.UserAgentGenerator { "${this.packageName};${BuildConfig.VERSION_NAME};${BuildConfig.BUILD_TIME};Android;${Build.VERSION.SDK_INT}" }
 
-		val timeShiftDetectionConfig =
-			TimeShiftDetectionConfig(enabled = ConfigRepository.getCurrentConfig(this)?.timeshiftDetectionEnabled ?: false)
-		ConfigRepository.getInstanceWallet(this).configLiveData.observeForever {
-			timeShiftDetectionConfig.enabled = it.timeshiftDetectionEnabled ?: false
-		}
-		CovidCertificateSdk.init(
-			this,
-			EnvironmentUtil.getSdkEnvironment(),
-			timeShiftDetectionConfig
-		)
+		CovidCertificateSdk.init(this, EnvironmentUtil.getSdkEnvironment())
 
 		migrateCertificatesToWalletData()
 		migrateTransferCodeValidity()
@@ -101,11 +90,10 @@ class MainApplication : Application() {
 			// In 2.7.0 there was a bug that set failsAt of transferCodes to now+72h (wrong) instead of expiredAt+72h = now+30d+72h (correct), this migration fixes this
 			val walletDataStorage = WalletDataSecureStorage.getInstance(this)
 			val walletDataItems = walletDataStorage.getWalletData()
-			for (walletItem in walletDataItems) {
-				if (walletItem is WalletDataItem.TransferCodeWalletData) {
-					if (walletItem.transferCode.failsAtTimestamp.isBefore(walletItem.transferCode.expiresAtTimestamp)) {
-						walletItem.transferCode.failsAtTimestamp =
-							walletItem.transferCode.expiresAtTimestamp.plus(TRANSFER_CODE_DURATION_FAILS_AFTER_EXPIRES);
+			for(walletItem in walletDataItems){
+				if(walletItem is WalletDataItem.TransferCodeWalletData){
+					if(walletItem.transferCode.failsAtTimestamp.isBefore(walletItem.transferCode.expiresAtTimestamp)){
+						walletItem.transferCode.failsAtTimestamp = walletItem.transferCode.expiresAtTimestamp.plus(TRANSFER_CODE_DURATION_FAILS_AFTER_EXPIRES);
 					}
 				}
 			}
@@ -138,8 +126,4 @@ class MainApplication : Application() {
 
 	private fun getTransferCodeConversionMappingInternal() = transferCodeConversionMapping
 
-}
-
-fun ConfigRepository.Companion.getInstanceWallet(context: Context): ConfigRepository {
-	return getInstance(ConfigSpec(context, BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString()))
 }

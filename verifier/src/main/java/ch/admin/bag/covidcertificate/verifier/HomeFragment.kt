@@ -14,14 +14,16 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.debug.DebugFragment
 import ch.admin.bag.covidcertificate.common.dialog.InfoDialogFragment
 import ch.admin.bag.covidcertificate.common.html.BuildInfo
 import ch.admin.bag.covidcertificate.common.html.ImprintFragment
-import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
 import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDecodeState
@@ -44,16 +46,11 @@ class HomeFragment : Fragment() {
 		}
 	}
 
-	private lateinit var configRepository: ConfigRepository
+	private val configViewModel by activityViewModels<ConfigViewModel>()
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
 
 	private var _binding: FragmentHomeBinding? = null
 	private val binding get() = _binding!!
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		configRepository = ConfigRepository.getInstanceVerifier(requireContext())
-	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentHomeBinding.inflate(inflater, container, false)
@@ -147,7 +144,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun setupInfoBox() {
-		configRepository.configLiveData.observe(viewLifecycleOwner) { config ->
+		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
 			val notificationButton = binding.homescreenHeader.headerNotification
 			val localizedInfo = config.getInfoBox(getString(R.string.language_key))
 			val hasInfoBox = localizedInfo != null
