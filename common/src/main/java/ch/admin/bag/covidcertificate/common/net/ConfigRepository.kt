@@ -12,8 +12,6 @@ package ch.admin.bag.covidcertificate.common.net
 
 import android.content.Context
 import android.os.Build
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import ch.admin.bag.covidcertificate.common.BuildConfig
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
@@ -26,8 +24,6 @@ import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.JwsInterceptor
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import okhttp3.Cache
 import okhttp3.OkHttpClient
@@ -35,6 +31,7 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.util.concurrent.TimeUnit
 
 class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 
@@ -51,9 +48,6 @@ class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 
 	private val configService: ConfigService
 	private val storage = ConfigSecureStorage.getInstance(configSpec.context)
-
-	private val configMutableLiveData = MutableLiveData<ConfigModel>()
-	val configLiveData: LiveData<ConfigModel> = configMutableLiveData
 
 	init {
 		val rootCa = CovidCertificateSdk.getRootCa(configSpec.context)
@@ -81,13 +75,7 @@ class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 			.create(ConfigService::class.java)
 	}
 
-	fun loadConfig() {
-		GlobalScope.launch {
-			loadConfig(configSpec.context)?.let { config -> configMutableLiveData.postValue(config) }
-		}
-	}
-
-	private suspend fun loadConfig(context: Context): ConfigModel? {
+	suspend fun loadConfig(context: Context): ConfigModel? {
 		val requestTimeStamp = System.currentTimeMillis()
 		val appVersion = APP_VERSION_PREFIX_ANDROID + configSpec.versionName
 		val osVersion = OS_VERSION_PREFIX_ANDROID + Build.VERSION.SDK_INT

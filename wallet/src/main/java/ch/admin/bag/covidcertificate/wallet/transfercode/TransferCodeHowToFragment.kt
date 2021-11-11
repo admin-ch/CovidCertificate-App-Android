@@ -15,16 +15,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.FaqModel
 import ch.admin.bag.covidcertificate.common.faq.FaqAdapter
 import ch.admin.bag.covidcertificate.common.faq.model.Faq
 import ch.admin.bag.covidcertificate.common.faq.model.Header
 import ch.admin.bag.covidcertificate.common.faq.model.Question
-import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
+import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeHowtoBinding
-import ch.admin.bag.covidcertificate.wallet.getInstanceWallet
 
 class TransferCodeHowToFragment : Fragment(R.layout.fragment_transfer_code_howto) {
 
@@ -35,13 +36,8 @@ class TransferCodeHowToFragment : Fragment(R.layout.fragment_transfer_code_howto
 	private var _binding: FragmentTransferCodeHowtoBinding? = null
 	private val binding get() = _binding!!
 
-	private lateinit var configRepository: ConfigRepository
+	private val configViewModel by activityViewModels<ConfigViewModel>()
 	private val faqAdapter = FaqAdapter { url: String -> context?.let { UrlUtil.openUrl(it, url) } }
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		configRepository = ConfigRepository.getInstanceWallet(requireContext())
-	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentTransferCodeHowtoBinding.inflate(inflater, container, false)
@@ -53,13 +49,13 @@ class TransferCodeHowToFragment : Fragment(R.layout.fragment_transfer_code_howto
 		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 		binding.transferCodeHowtoList.adapter = faqAdapter
 
-		configRepository.configLiveData.observe(viewLifecycleOwner) { config ->
+		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
 			val languageKey = getString(R.string.language_key)
 			config.getTransferQuestionsFaqs(languageKey)?.let {
 				showTransferCodeFaqItems(it)
 			}
 		}
-		configRepository.loadConfig()
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
 	}
 
 	override fun onDestroyView() {

@@ -68,7 +68,7 @@
 				},
 				{
 					"title": "Was ist das Zertifikat Light?",
-					"text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 48 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 48 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
+					"text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 48 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 48 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -109,7 +109,7 @@
 				},
 				{
 					"title": "What are the current validity criteria in Switzerland?",
-					"text": "The current validity period of Covid certificates can be found here:",
+					"text": "The current validity period of COVID certificates can be found here:",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Further information",
@@ -149,7 +149,7 @@
 				},
 				{
 					"title": "What is the 'certificate light'",
-					"text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'.",
+					"text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -410,5 +410,6 @@
 		}
 	},
 	"androidTransferCheckIntervalMs": 0,
-	"androidTransferCheckBackoffMs": 0
+	"androidTransferCheckBackoffMs": 0,
+	"timeshiftDetectionEnabled": false
 }

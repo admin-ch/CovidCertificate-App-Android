@@ -10,11 +10,11 @@
 
 package ch.admin.bag.covidcertificate.wallet.faq
 
-import android.os.Bundle
+import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.faq.FaqFragment
-import ch.admin.bag.covidcertificate.common.net.ConfigRepository
+import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.R
-import ch.admin.bag.covidcertificate.wallet.getInstanceWallet
 
 class WalletFaqFragment : FaqFragment() {
 
@@ -22,20 +22,15 @@ class WalletFaqFragment : FaqFragment() {
 		fun newInstance(): WalletFaqFragment = WalletFaqFragment()
 	}
 
-	private lateinit var configRepository: ConfigRepository
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		configRepository = ConfigRepository.getInstanceWallet(requireContext())
-	}
+	private val configViewModel by activityViewModels<ConfigViewModel>()
 
 	override fun setupFaqProvider() {
 		toolbar.setTitle(R.string.wallet_faq_header)
-		configRepository.configLiveData.observe(viewLifecycleOwner, { config ->
+		configViewModel.configLiveData.observe(viewLifecycleOwner, { config ->
 			val languageKey = getString(R.string.language_key)
 			setupFaqList(config.generateFaqItems(languageKey))
 		})
-		configRepository.loadConfig()
+		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
 	}
 
 }
