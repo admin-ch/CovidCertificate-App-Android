@@ -1,15 +1,19 @@
 package ch.admin.bag.covidcertificate.verifier
 
 import android.app.Application
+import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.os.Build
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.debug.DebugFragment
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
+import ch.admin.bag.covidcertificate.common.net.ConfigSpec
 import ch.admin.bag.covidcertificate.common.util.EnvironmentUtil
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.interceptor.UserAgentInterceptor
+import ch.admin.bag.covidcertificate.sdk.android.repository.TimeShiftDetectionConfig
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraDataWedgeApiUtil
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraResultActionBroadcastReceiver
@@ -33,7 +37,7 @@ class MainApplication : Application() {
 		Config.userAgent =
 			UserAgentInterceptor.UserAgentGenerator { "${this.packageName};${BuildConfig.VERSION_NAME};${BuildConfig.BUILD_TIME};Android;${Build.VERSION.SDK_INT}" }
 
-		CovidCertificateSdk.init(this, EnvironmentUtil.getSdkEnvironment())
+		CovidCertificateSdk.init(this, EnvironmentUtil.getSdkEnvironment(), TimeShiftDetectionConfig(enabled = false))
 
 		checkForExternalScanners()
 
@@ -50,4 +54,8 @@ class MainApplication : Application() {
 		sendBroadcast(enumerateScannersIntent)
 	}
 
+}
+
+fun ConfigRepository.Companion.getInstanceVerifier(context: Context): ConfigRepository {
+	return getInstance(ConfigSpec(context, BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString()))
 }

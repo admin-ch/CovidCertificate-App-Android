@@ -15,13 +15,11 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -33,7 +31,7 @@ class MainActivity : BaseActivity() {
 
 	private lateinit var binding: ActivityMainBinding
 
-	private val configViewModel by viewModels<ConfigViewModel>()
+	private lateinit var configRepository: ConfigRepository
 	private val secureStorage by lazy { VerifierSecureStorage.getInstance(this) }
 
 	private var forceUpdateDialog: AlertDialog? = null
@@ -55,6 +53,8 @@ class MainActivity : BaseActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
+		configRepository = ConfigRepository.getInstanceVerifier(this)
+
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		val view = binding.root
 		setContentView(view)
@@ -71,7 +71,7 @@ class MainActivity : BaseActivity() {
 			}
 		}
 
-		configViewModel.configLiveData.observe(this) { config -> handleConfig(config) }
+		configRepository.configLiveData.observe(this) { config -> handleConfig(config) }
 	}
 
 	override fun onStart() {
@@ -89,7 +89,7 @@ class MainActivity : BaseActivity() {
 	}
 
 	private fun loadConfigAndTrustList() {
-		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
+		configRepository.loadConfig()
 		CovidCertificateSdk.refreshTrustList(lifecycleScope)
 	}
 

@@ -2246,5 +2246,6 @@
 	},
 	"showVaccinationHintHomescreen": false,
 	"showVaccinationHintDetail": false,
-	"showVaccinationHintTransfer": false
+	"showVaccinationHintTransfer": false,
+	"timeshiftDetectionEnabled": true
 }
