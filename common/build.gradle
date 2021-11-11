@@ -32,9 +32,6 @@ android {
 		dev {}
 		abn {}
 		prod {}
-		prodfdroid {
-			minSdkVersion 24
-		}
 	}
 
 	flavorDimensions "version"
