@@ -38,7 +38,7 @@ android {
 
 	defaultConfig {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
-		minSdkVersion 23
+		minSdkVersion readPropertyWithDefault('minSdkVersion', '23').toInteger()
 		targetSdkVersion 30
 		versionCode 2800
 		versionName "2.8.0"
@@ -65,11 +65,6 @@ android {
 			applicationIdSuffix '.abn'
 		}
 		prod {
-			buildConfigField "String", "BASE_URL", '"https://www.cc.bit.admin.ch/app/verifier/v1/"'
-			buildConfigField "String", "SDK_APP_TOKEN", '"25958ed0-7790-4846-9341-7c7ef87ec389"'
-		}
-		prodfdroid {
-			minSdkVersion 24
 			buildConfigField "String", "BASE_URL", '"https://www.cc.bit.admin.ch/app/verifier/v1/"'
 			buildConfigField "String", "SDK_APP_TOKEN", '"25958ed0-7790-4846-9341-7c7ef87ec389"'
 		}

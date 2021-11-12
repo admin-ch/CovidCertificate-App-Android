@@ -38,7 +38,7 @@ android {
 
 	defaultConfig {
 		applicationId "ch.admin.bag.covidcertificate.wallet"
-		minSdkVersion 23
+		minSdkVersion readPropertyWithDefault('minSdkVersion', '23').toInteger()
 		targetSdkVersion 30
 		versionCode 2800
 		versionName "2.8.0"
@@ -69,13 +69,6 @@ android {
 			applicationIdSuffix '.abn'
 		}
 		prod {
-			buildConfigField "String", "BASE_URL", '"https://www.cc.bit.admin.ch/app/wallet/v1/"'
-			buildConfigField "String", "BASE_URL_DELIVERY", '"https://covidcertificate-app.bit.admin.ch/app/delivery/v1/"'
-			buildConfigField "String", "BASE_URL_TRANSFORMATION", '"https://covidcertificate-app.bit.admin.ch/app/transform/v1/"'
-			buildConfigField "String", "SDK_APP_TOKEN", '"0795dc8b-d8d0-4313-abf2-510b12d50939"'
-		}
-		prodfdroid {
-			minSdkVersion 24
 			buildConfigField "String", "BASE_URL", '"https://www.cc.bit.admin.ch/app/wallet/v1/"'
 			buildConfigField "String", "BASE_URL_DELIVERY", '"https://covidcertificate-app.bit.admin.ch/app/delivery/v1/"'
 			buildConfigField "String", "BASE_URL_TRANSFORMATION", '"https://covidcertificate-app.bit.admin.ch/app/transform/v1/"'
