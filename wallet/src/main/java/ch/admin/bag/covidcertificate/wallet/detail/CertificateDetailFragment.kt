@@ -407,7 +407,7 @@ class CertificateDetailFragment : Fragment() {
 		} else if (state.isTimeInconsistency()) {
 			info = context.getString(R.string.wallet_time_inconsistency_error_title).makeBold()
 			forceValidationInfo = context.getString(R.string.wallet_time_inconsistency_error_title).makeBold()
-			description = SpannableString(context.getString(R.string.wallet_transfer_code_time_inconsistency_text))
+			description = SpannableString(context.getString(R.string.wallet_time_inconsistency_error_text))
 			icon = R.drawable.ic_timeerror
 			forceValidationIcon = R.drawable.ic_timeerror_orange
 			forceValidationIconLarge = R.drawable.ic_timeerror_large
