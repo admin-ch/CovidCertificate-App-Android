@@ -402,13 +402,14 @@ class CertificateDetailItemListBuilder(
 			val dateTextEnglish =
 				getEnglishTranslation(context, issuerText).replace("{DATE}", dateString)
 			items.add(ValueItemWithoutLabel(dateTextEnglish, true))
-		}
-		items.add(
-			ValueItemWithoutLabel(
-				context.getString(R.string.wallet_certificate_detail_date_format_info),
-				showEnglishVersionForLabels
+
+			items.add(
+				ValueItemWithoutLabel(
+					context.getString(R.string.wallet_certificate_detail_date_format_info),
+					showEnglishVersionForLabels
+				)
 			)
-		)
+		}
 		return items
 	}
 
