@@ -107,7 +107,7 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 				binding.certificateLightConversionContent.isVisible = true
 				binding.certificateLightConversionIntroLayout.isVisible = false
 				binding.certificateLightConversionErrorLayout.isVisible = true
-				binding.certificateLightConversionErrorCode.text = null
+				binding.certificateLightConversionErrorCode.text = state.errorCode
 
 				setStatusIconAndTint(R.drawable.ic_error)
 				setStatusText(R.string.wallet_certificate_light_rate_limit_title, R.string.wallet_certificate_light_rate_limit_text)
