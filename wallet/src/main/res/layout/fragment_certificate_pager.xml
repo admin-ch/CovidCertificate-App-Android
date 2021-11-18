@@ -49,7 +49,7 @@
 			android:id="@+id/certificate_page_qr_code"
 			android:layout_width="0dp"
 			android:layout_height="0dp"
-			android:layout_marginHorizontal="@dimen/spacing_huger"
+			android:layout_marginHorizontal="@dimen/spacing_larger"
 			android:layout_marginTop="@dimen/spacing_medium_large"
 			android:layout_marginBottom="@dimen/spacing_medium"
 			app:layout_constraintBottom_toTopOf="@+id/certificate_page_name"
