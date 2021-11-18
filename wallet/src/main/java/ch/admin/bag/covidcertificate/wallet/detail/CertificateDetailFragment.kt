@@ -288,10 +288,10 @@ class CertificateDetailFragment : Fragment() {
 		val isIssuedInSwitzerland = ISSUER_SWITZERLAND.contains(certificateHolder.issuer)
 		updateConversionButtons(isLightCertificateEnabled = isIssuedInSwitzerland, isPdfExportEnabled = isIssuedInSwitzerland)
 
-		var info: SpannableString
-		var iconId: Int
-		var showRedBorder: Boolean
-		if (certificateHolder.containsCertOnlyValidInCH()) {
+		val info: SpannableString
+		val iconId: Int
+		val showRedBorder: Boolean
+		if (state.isValidOnlyInSwitzerland) {
 			info = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))
 			iconId = R.drawable.ic_flag_ch
 			showRedBorder = true
