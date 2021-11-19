@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-  ~
-  ~ This Source Code Form is subject to the terms of the Mozilla Public
-  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-  ~
-  ~ SPDX-License-Identifier: MPL-2.0
-  -->
 <resources>
 
     <!-- Android App Name -->
@@ -721,7 +712,7 @@ ungültig"</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
     <!-- Fuzzy -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"Nach 30 Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor der Transfer-Code ungültig wird."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"Nach &lt;transferCodeValidity&gt; Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor der Transfer-Code ungültig wird."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Mitteilungen erlauben"</string>
@@ -1321,4 +1312,13 @@ Code: {ERROR_CODE}"</string>
 &amp; innerhalb der Schweiz gültig"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Befund"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Genügend"</string>
+
+    <!-- Ausnahme Test Zertifikat Detail: Titel für Startdatum des Attests -->
+    <string name="wallet_certificate_ausnahme_test_attest_start_date">"Startdatum des Attests"</string>
+
+    <!-- Ausnahme Test Zertifikat Detail: Titel für verantwortliche Stelle für Ausstellung -->
+    <string name="wallet_certificate_ausnahme_responsible_issuer">"Verantwortliche Stelle für Ausstellung"</string>
+
+    <!-- Testname für Schweizer Ausnahme Zertifikat für Nicht-Testbare und Nicht-Impfbare Personen -->
+    <string name="covid_certificate_ch_ausnahme_test_title">"Ausnahme Zertifikat"</string>
 </resources>

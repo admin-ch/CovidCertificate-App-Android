@@ -217,6 +217,8 @@ class CertificateDetailItemListBuilder(
 		detailItems.add(DividerItem)
 		if (tests[0].isSerologicalTest()) {
 			detailItems.add(TitleItem(R.string.covid_certificate_sero_positiv_test_title, showEnglishVersionForLabels))
+		} else if (tests[0].isChAusnahmeTest()) {
+			detailItems.add(TitleItem(R.string.covid_certificate_ch_ausnahme_test_title, showEnglishVersionForLabels))
 		} else {
 			detailItems.add(TitleItem(R.string.covid_certificate_test_title, showEnglishVersionForLabels))
 		}
@@ -225,10 +227,93 @@ class CertificateDetailItemListBuilder(
 			detailItems.add(DividerItem)
 			if (testEntry.isSerologicalTest()) {
 				detailItems.addAll(buildTestEntriesForSeroPositiv(testEntry = testEntry))
+			} else if (testEntry.isChAusnahmeTest()) {
+				detailItems.addAll(buildTestEntriesForChAusnahmeTest(testEntry))
 			} else {
 				detailItems.addAll(buildTestEntriesForPCRAndRAT(testEntry = testEntry))
 			}
 		}
+		return detailItems
+	}
+
+	private fun buildTestEntriesForChAusnahmeTest(testEntry: TestEntry): Collection<CertificateDetailItem> {
+		val detailItems = ArrayList<CertificateDetailItem>()
+		if (testEntry.isTargetDiseaseCorrect()) {
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_target_disease_title,
+					context.getString(R.string.target_disease_name),
+					showEnglishVersionForLabels
+				)
+			)
+		}
+
+		val resultStringId =
+			if (testEntry.isNegative()) R.string.wallet_certificate_test_result_negativ else R.string.wallet_certificate_test_result_positiv
+		var value = context.getString(resultStringId)
+		if (showEnglishVersionForLabels) {
+			value = "$value\n${getEnglishTranslation(context, resultStringId)}"
+		}
+		detailItems.add(ValueItem(R.string.wallet_certificate_test_result_title, value, showEnglishVersionForLabels))
+
+		val acceptedTestProvider = AcceptedTestProvider.getInstance(context)
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_test_type,
+				acceptedTestProvider.getTestType(testEntry),
+				showEnglishVersionForLabels
+			)
+		)
+
+		detailItems.add(DividerItem)
+
+		testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampleDate ->
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_ausnahme_test_attest_start_date,
+					sampleDate,
+					showEnglishVersionForLabels
+				)
+			)
+		}
+
+		testEntry.getTestCenter()?.let { testCenter ->
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_ausnahme_responsible_issuer,
+					testCenter,
+					showEnglishVersionForLabels
+				)
+			)
+		}
+
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_test_land,
+				testEntry.getTestCountry(showEnglishVersionForLabels), showEnglishVersionForLabels
+			)
+		)
+
+		// Issuer
+		detailItems.add(DividerItem)
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_vaccination_issuer_title,
+				testEntry.getIssuer(),
+				showEnglishVersionForLabels
+			)
+		)
+		detailItems.add(
+			UvciItem(
+				testEntry.getCertificateIdentifier(),
+				false
+			)
+		)
+
+		certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
+		}
+
 		return detailItems
 	}
 
