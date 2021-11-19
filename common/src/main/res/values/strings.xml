@@ -1288,4 +1288,13 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_only_valid_in_switzerland">"Only valid within Switzerland and in combination with an identity document"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Finding"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Sufficient"</string>
+
+    <!-- Validation button dialog -->
+    <string name="validate_action_title">This is not how you should validate a COVID Certificate!</string>
+    <string name="validate_action_explanation"> Check the certificate only with the COVID Certificate Check app.</string>
+    <string name="validate_action_fineprint_text">This is the only way of guaranteeing that the certificate presented and the information it contains are genuine and have not been manipulated.
+        The look of the app for certificate holders (the COVID Certificate app) could have been simulated. For this reason, manual scrolling, “check on sight” and the use of the “refresh” button are not permitted in the app for certificate holders.
+        The “refresh” button in the app for certificate holders is only there to enable the holder to see whether the certificate is still valid.</string>
+    <string name="validate_action_ok_button">Understood</string>
+    <string name="validate_action_dismiss_button">Dismiss</string>
 </resources>

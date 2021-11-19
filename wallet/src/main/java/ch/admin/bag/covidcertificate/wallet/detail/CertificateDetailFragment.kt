@@ -18,6 +18,9 @@ import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
@@ -46,6 +49,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesSta
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
+import ch.admin.bag.covidcertificate.sdk.core.verifier.nationalrules.ValidityRange
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
@@ -59,7 +63,9 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import org.w3c.dom.Text
 import java.time.LocalDateTime
+import java.time.Month
 
 class CertificateDetailFragment : Fragment() {
 
@@ -139,15 +145,48 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		binding.certificateDetailButtonReverify.setOnClickListener {
-			binding.certificateDetailButtonReverify.hideAnimated()
-			binding.scrollview.smoothScrollTo(0, 0)
-			isForceValidate = true
-			hideDelayedJob?.cancel()
-			certificatesViewModel.startVerification(
-				certificateHolder,
-				delayInMillis = STATUS_LOAD_DELAY,
-				isForceVerification = true
+			// Show popup explaining purpose of verification
+			val view = LinearLayout(context)
+			val inflater = LayoutInflater.from(context).inflate(
+				R.layout.dialog_fragment_certificate_scanning_info,
+				view,
 			)
+
+			val dialogTitle = inflater.findViewById<TextView>(R.id.scanning_dialog_title)
+			dialogTitle.text = getString(R.string.validate_action_title)
+			val dialogText = inflater.findViewById<TextView>(R.id.scanning_dialog_text)
+			dialogText.text = getString(R.string.validate_action_explanation)
+
+			val dialogFineprint = inflater.findViewById<TextView>(R.id.scanning_dialog_fineprint)
+			dialogFineprint.text = getString(R.string.validate_action_fineprint_text)
+
+			val dialogOkButton = inflater.findViewById<Button>(R.id.scanning_dialog_understood_button)
+			dialogOkButton.text = getString(R.string.validate_action_ok_button)
+			val dialogDismissButton = inflater.findViewById<Button>(R.id.scanning_dialog_dismiss_button)
+			dialogDismissButton.text = getString(R.string.validate_action_dismiss_button)
+
+			val dialog = AlertDialog.Builder(view.context, R.style.CovidCertificate_AlertDialogStyle)
+				.setIcon(R.drawable.ic_error_grey)
+				.setCancelable(true)
+				.setView(inflater)
+				.create()
+
+			dialogOkButton.setOnClickListener {
+				dialog.dismiss()
+				binding.certificateDetailButtonReverify.hideAnimated()
+				binding.scrollview.smoothScrollTo(0, 0)
+				isForceValidate = true
+				hideDelayedJob?.cancel()
+				certificatesViewModel.startVerification(
+					certificateHolder,
+					delayInMillis = STATUS_LOAD_DELAY,
+					isForceVerification = true
+				)
+			}
+			dialogDismissButton.setOnClickListener {
+				dialog.dismiss()
+			}
+			dialog.show()
 		}
 	}
 
@@ -246,7 +285,6 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun updateStatusInfo(verificationState: VerificationState?) {
 		val state = verificationState ?: return
-
 		changeAlpha(state.getQrAlpha())
 		setCertificateDetailTextColor(state.getNameDobColor())
 
@@ -283,7 +321,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoValidityGroup.isVisible = true
 		binding.certificateDetailErrorCode.isVisible = false
 		showValidityDate(state.validityRange?.validUntil, certificateHolder.certType, state)
-		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
+		setInfoBubbleBackgrounds(R.color.blueish, R.color.blueish)
 
 		// Certificate Light and PDF export is enabled for a valid certificate that was issued in Switzerland
 		val isIssuedInSwitzerland = ISSUER_SWITZERLAND.contains(certificateHolder.issuer)
@@ -301,14 +339,7 @@ class CertificateDetailFragment : Fragment() {
 			iconId = R.drawable.ic_info_blue
 			showRedBorder = false
 		}
-		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
-		if (isForceValidate) {
-			showStatusInfoAndDescription(null, forceValidationInfo, R.drawable.ic_check_green)
-			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, forceValidationInfo)
-			readjustStatusDelayed(R.color.blueish, iconId, info, showRedBorder)
-		} else {
-			showStatusInfoAndDescription(null, info, iconId, showRedBorder)
-		}
+		showStatusInfoAndDescription(null, info, iconId, showRedBorder)
 	}
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {
