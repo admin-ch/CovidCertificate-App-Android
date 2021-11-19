@@ -27,6 +27,7 @@ import ch.admin.bag.covidcertificate.wallet.R
 class CertificateDetailItemListBuilder(
 	val context: Context,
 	val certificateHolder: CertificateHolder,
+	val isDetailScreen: Boolean,
 	val showEnglishVersion: Boolean = true
 ) {
 	private val showEnglishVersionForLabels = showEnglishVersion && LocaleUtil.isSystemLangNotEnglish(context)
@@ -402,11 +403,11 @@ class CertificateDetailItemListBuilder(
 			val dateTextEnglish =
 				getEnglishTranslation(context, issuerText).replace("{DATE}", dateString)
 			items.add(ValueItemWithoutLabel(dateTextEnglish, true))
-
+		}
+		if (isDetailScreen) {
 			items.add(
 				ValueItemWithoutLabel(
-					context.getString(R.string.wallet_certificate_detail_date_format_info),
-					showEnglishVersionForLabels
+					context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
 				)
 			)
 		}

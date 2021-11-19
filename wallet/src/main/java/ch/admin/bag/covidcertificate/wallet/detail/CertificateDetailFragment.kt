@@ -195,7 +195,8 @@ class CertificateDetailFragment : Fragment() {
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)
 
-		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, certificateHolder).buildAll()
+		val detailItems =
+			CertificateDetailItemListBuilder(recyclerView.context, certificateHolder, isDetailScreen = true).buildAll()
 		adapter.setItems(detailItems)
 	}
 

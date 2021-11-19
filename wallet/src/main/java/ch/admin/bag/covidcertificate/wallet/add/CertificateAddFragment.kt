@@ -130,8 +130,12 @@ class CertificateAddFragment : Fragment() {
 		binding.certificateAddName.text = name
 		binding.certificateAddBirthdate.text = certificateHolder.certificate.getFormattedDateOfBirth()
 
-		val detailItems =
-			CertificateDetailItemListBuilder(recyclerView.context, certificateHolder, showEnglishVersion = false).buildAll()
+		val detailItems = CertificateDetailItemListBuilder(
+			recyclerView.context,
+			certificateHolder,
+			isDetailScreen = false,
+			showEnglishVersion = false
+		).buildAll()
 		adapter.setItems(detailItems)
 	}
 
