@@ -18,7 +18,6 @@ import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
@@ -66,7 +65,6 @@ class CertificateDetailFragment : Fragment() {
 
 	companion object {
 		private const val STATUS_HIDE_DELAY = 2000L
-		private const val STATUS_LOAD_DELAY = 1000L
 
 		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 
@@ -138,18 +136,6 @@ class CertificateDetailFragment : Fragment() {
 				.create()
 				.show()
 		}
-
-		binding.certificateDetailButtonReverify.setOnClickListener {
-			binding.certificateDetailButtonReverify.hideAnimated()
-			binding.scrollview.smoothScrollTo(0, 0)
-			isForceValidate = true
-			hideDelayedJob?.cancel()
-			certificatesViewModel.startVerification(
-				certificateHolder,
-				delayInMillis = STATUS_LOAD_DELAY,
-				isForceVerification = true
-			)
-		}
 	}
 
 	override fun onResume() {
@@ -204,7 +190,6 @@ class CertificateDetailFragment : Fragment() {
 		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
 			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
 				.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
-					binding.certificateDetailButtonReverify.showAnimated()
 					updateStatusInfo(it.state)
 				}
 		}
@@ -560,7 +545,6 @@ class CertificateDetailFragment : Fragment() {
 
 			binding.certificateDetailStatusIcon.setImageResource(statusIconId)
 
-			binding.certificateDetailButtonReverify.showAnimated()
 			isForceValidate = false
 		}
 	}

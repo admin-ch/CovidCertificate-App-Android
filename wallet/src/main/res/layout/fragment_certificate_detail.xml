@@ -442,17 +442,6 @@
 
 			</androidx.core.widget.NestedScrollView>
 
-			<ImageButton
-				android:id="@+id/certificate_detail_button_reverify"
-				style="@style/CovidCertificate.FloatingImageButton"
-				android:layout_width="@dimen/floating_button_height"
-				android:layout_height="@dimen/floating_button_height"
-				android:layout_gravity="bottom|end"
-				android:layout_marginEnd="@dimen/spacing_very_large"
-				android:layout_marginBottom="@dimen/spacing_very_large"
-				android:elevation="@dimen/floating_button_elevation"
-				app:srcCompat="@drawable/ic_load" />
-
 		</FrameLayout>
 
 	</LinearLayout>
