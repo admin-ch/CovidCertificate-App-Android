@@ -1290,7 +1290,7 @@ Code: {ERROR_CODE}"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Sufficient"</string>
 
     <!-- Validation button dialog -->
-    <string name="validate_action_title">This is not how you should validate a COVID Certificate!</string>
+    <string name="validate_action_title">Not a validation method!</string>
     <string name="validate_action_explanation"> Check the certificate only with the COVID Certificate Check app.</string>
     <string name="validate_action_fineprint_text">This is the only way of guaranteeing that the certificate presented and the information it contains are genuine and have not been manipulated.
         The look of the app for certificate holders (the COVID Certificate app) could have been simulated. For this reason, manual scrolling, “check on sight” and the use of the “refresh” button are not permitted in the app for certificate holders.
