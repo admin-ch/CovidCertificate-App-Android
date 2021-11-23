@@ -194,38 +194,8 @@ abstract class QrScanFragment : Fragment() {
 			.setTargetRotation(rotation)
 			.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
 			.build()
-			.also { imageAnalysis ->
-				imageAnalysis.setAnalyzer(
-					mainExecutor,
-					QRCodeMixedZXingAnalyzer { decodeCertificateState: DecodeCertificateState ->
-						when (decodeCertificateState) {
-							is DecodeCertificateState.ERROR -> {
-								handleInvalidQRCodeExceptions(decodeCertificateState.error)
-							}
-							DecodeCertificateState.SCANNING -> {
-								view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
-							}
-							is DecodeCertificateState.SUCCESS -> {
-								val qrCodeData = decodeCertificateState.qrCode
-								qrCodeData?.let {
-									decodeQrCodeData(
-										it,
-										onDecodeSuccess = {
-											// Once successfully decoded, clear the analyzer from stopping more frames being
-											// analyzed and possibly decoded successfully
-											imageAnalysis.clearAnalyzer()
 
-											view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
-										},
-										onDecodeError = { error ->
-											view?.post { handleInvalidQRCodeExceptions(error) }
-										}
-									)
-								}
-							}
-						}
-					})
-			}
+		setAnalyzer()
 
 		cutOut.setOnTouchListener { _: View, motionEvent: MotionEvent ->
 			when (motionEvent.action) {
@@ -245,6 +215,44 @@ abstract class QrScanFragment : Fragment() {
 				else -> false
 			}
 		}
+	}
+
+	protected fun restartAnalyzer() {
+		setAnalyzer()
+	}
+
+	private fun setAnalyzer() {
+		imageAnalyzer?.clearAnalyzer()
+		imageAnalyzer?.setAnalyzer(
+			mainExecutor,
+			QRCodeMixedZXingAnalyzer { decodeCertificateState: DecodeCertificateState ->
+				when (decodeCertificateState) {
+					is DecodeCertificateState.ERROR -> {
+						handleInvalidQRCodeExceptions(decodeCertificateState.error)
+					}
+					DecodeCertificateState.SCANNING -> {
+						view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
+					}
+					is DecodeCertificateState.SUCCESS -> {
+						val qrCodeData = decodeCertificateState.qrCode
+						qrCodeData?.let {
+							decodeQrCodeData(
+								it,
+								onDecodeSuccess = {
+									// Once successfully decoded, clear the analyzer from stopping more frames being
+									// analyzed and possibly decoded successfully
+									imageAnalyzer?.clearAnalyzer()
+
+									view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
+								},
+								onDecodeError = { error ->
+									view?.post { handleInvalidQRCodeExceptions(error) }
+								}
+							)
+						}
+					}
+				}
+			})
 	}
 
 	private fun setZoom() {
