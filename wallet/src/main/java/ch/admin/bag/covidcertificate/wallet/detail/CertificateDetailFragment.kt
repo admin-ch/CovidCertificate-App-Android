@@ -59,6 +59,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import java.lang.Integer.max
 import java.time.LocalDateTime
 
 class CertificateDetailFragment : Fragment() {
@@ -149,6 +150,9 @@ class CertificateDetailFragment : Fragment() {
 				isForceVerification = true
 			)
 		}
+
+		setupReverifyButtonOffset()
+
 	}
 
 	override fun onResume() {
@@ -210,6 +214,24 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		certificatesViewModel.startVerification(certificateHolder)
+	}
+
+	private fun setupReverifyButtonOffset() {
+		val certPos = intArrayOf(0, 0)
+		val buttonPos = intArrayOf(0, 0)
+
+		binding.root.post { reloadReverifyButtonOffset(certPos, buttonPos) }
+		binding.scrollview.setOnScrollChangeListener { _, _, _, _, _ -> reloadReverifyButtonOffset(certPos, buttonPos) }
+	}
+
+	private fun reloadReverifyButtonOffset(certPos: IntArray = intArrayOf(0, 0), buttonPos: IntArray = intArrayOf(0, 0)) {
+		binding.certificateDetailQrCode.getLocationOnScreen(certPos)
+		val certificateBottomY = certPos[1] + binding.certificateDetailQrCode.height
+		binding.certificateDetailButtonReverify.getLocationOnScreen(buttonPos)
+		val buttonTopY = buttonPos[1] - binding.certificateDetailButtonReverify.translationY.toInt()
+
+		binding.certificateDetailButtonReverify.translationY = max(0, certificateBottomY - buttonTopY).toFloat()
+
 	}
 
 	private fun setupConversionButtons() {
