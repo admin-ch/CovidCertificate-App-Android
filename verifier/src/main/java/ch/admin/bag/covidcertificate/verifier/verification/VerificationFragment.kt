@@ -20,9 +20,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
@@ -43,6 +45,8 @@ class VerificationFragment : Fragment() {
 	companion object {
 		private val TAG = VerificationFragment::class.java.canonicalName
 		private const val ARG_DECODE_DGC = "ARG_DECODE_DGC"
+
+		const val RESULT_FRAGMENT_POPPED = "RESULT_FRAGMENT_POPPED"
 
 		fun newInstance(certificateHolder: VerifierCertificateHolder): VerificationFragment {
 			return VerificationFragment().apply {
@@ -66,6 +70,7 @@ class VerificationFragment : Fragment() {
 		override fun handleOnBackPressed() {
 			isClosedByUser = true
 			parentFragmentManager.popBackStack()
+			setFragmentResult(RESULT_FRAGMENT_POPPED, bundleOf())
 			remove()
 		}
 	}
@@ -108,6 +113,7 @@ class VerificationFragment : Fragment() {
 			isClosedByUser = true
 			onBackPressedCallback.remove()
 			parentFragmentManager.popBackStack()
+			setFragmentResult(RESULT_FRAGMENT_POPPED, bundleOf())
 		}
 
 		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner) {
@@ -129,6 +135,7 @@ class VerificationFragment : Fragment() {
 		if (!isClosedByUser) {
 			onBackPressedCallback.remove()
 			parentFragmentManager.popBackStack()
+			setFragmentResult(RESULT_FRAGMENT_POPPED, bundleOf())
 		}
 		zebraBroadcastReceiver.unregisterWith(requireContext())
 	}

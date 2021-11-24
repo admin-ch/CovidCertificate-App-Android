@@ -17,6 +17,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.setFragmentResultListener
 import ch.admin.bag.covidcertificate.common.qr.QrScanFragment
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
@@ -26,6 +27,7 @@ import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentQrScanBinding
 import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment
+import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment.Companion.RESULT_FRAGMENT_POPPED
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 
 class VerifierQrScanFragment : QrScanFragment() {
@@ -51,6 +53,14 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 	private val verifierSecureStorage by lazy { VerifierSecureStorage.getInstance(requireContext()) }
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(verifierSecureStorage) }
+
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+
+		// Restart the Analyzer whenever the VerificationFragment is popped
+		setFragmentResultListener(RESULT_FRAGMENT_POPPED) { _, _ -> restartAnalyzer() }
+	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		super.onCreateView(inflater, container, savedInstanceState)
@@ -131,7 +141,7 @@ class VerifierQrScanFragment : QrScanFragment() {
 	private fun showVerificationFragment(certificateHolder: VerifierCertificateHolder) {
 		parentFragmentManager.beginTransaction()
 			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-			.replace(R.id.fragment_container, VerificationFragment.newInstance(certificateHolder))
+			.add(R.id.fragment_container, VerificationFragment.newInstance(certificateHolder))
 			.addToBackStack(VerificationFragment::class.java.canonicalName)
 			.commit()
 	}
