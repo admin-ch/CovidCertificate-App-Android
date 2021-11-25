@@ -1,6 +1,47 @@
 {
 	"forceUpdate": false,
-	"infoBox": null,
+	"infoBox": {
+		"de": {
+			"title": "Noch keinen Covidcode? (de)",
+			"msg": "Sie wurden positiv getestet (PCR-Test oder Antigen-Schnelltest) und haben nach 4h noch keinen Covidcode erhalten?\nDann kontaktieren Sie die Infoline Coronavirus:",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "437150582"
+		},
+		"en": {
+			"title": "Noch keinen Covidcode? (en)",
+			"msg": "Sie wurden positiv getestet (PCR-Test oder Antigen-Schnelltest) und haben nach 4h noch keinen Covidcode erhalten?\nDann kontaktieren Sie die Infoline Coronavirus:",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "437151822"
+		},
+		"fr": {
+			"title": "Noch keinen Covidcode? (fr)",
+			"msg": "Sie wurden positiv getestet (PCR-Test oder Antigen-Schnelltest) und haben nach 4h noch keinen Covidcode erhalten?\nDann kontaktieren Sie die Infoline Coronavirus:",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "437152907"
+		},
+		"it": {
+			"title": "Noch keinen Covidcode? (it)",
+			"msg": "Sie wurden positiv getestet (PCR-Test oder Antigen-Schnelltest) und haben nach 4h noch keinen Covidcode erhalten?\nDann kontaktieren Sie die Infoline Coronavirus:",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "437155852"
+		},
+		"rm": {
+			"title": "Noch keinen Covidcode? (rm)",
+			"msg": "Sie wurden positiv getestet (PCR-Test oder Antigen-Schnelltest) und haben nach 4h noch keinen Covidcode erhalten?\nDann kontaktieren Sie die Infoline Coronavirus:",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "437164284"
+		}
+	},
 	"questions": {
 		"de": {
 			"faqTitle": "Was sind Covid-Zertifikate?",
