@@ -28,7 +28,6 @@ data class ConfigModel(
 	val lightCertificateActive: Boolean?,
 	val pdfGenerationActive: Boolean?,
 	val vaccinationHints: Map<String, List<VaccinationHintModel>>?,
-	val vaccinationBookingCantons: Map<String, List<VaccinationBookingCantonModel>>?,
 	val vaccinationBookingInfo: Map<String, VaccinationBookingInfoModel>?,
 	val showVaccinationHintHomescreen: Boolean?,
 	val showVaccinationHintDetail: Boolean?,
@@ -41,8 +40,6 @@ data class ConfigModel(
 	fun getTransferQuestionsFaqs(languageKey: String): FaqModel? = transferQuestions?.get(languageKey)
 	fun getTransferWorksFaqs(languageKey: String): FaqModel? = transferWorks?.get(languageKey)
 	fun getVaccinationHints(languageKey: String): List<VaccinationHintModel>? = vaccinationHints?.get(languageKey)
-	fun getVaccinationBookingCantons(languageKey: String): List<VaccinationBookingCantonModel>? =
-		vaccinationBookingCantons?.get(languageKey)
 
 	fun getVaccinationBookingInfo(languageKey: String): VaccinationBookingInfoModel? = vaccinationBookingInfo?.get(languageKey)
 

@@ -63,6 +63,35 @@
 					android:layout_marginTop="@dimen/spacing_huge"
 					tools:text="@string/vaccination_booking_info_text" />
 
+				<TextView
+					android:id="@+id/impfcheck_title"
+					style="@style/CovidCertificate.Text.Bold.Emphasized"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_very_large"
+					android:layout_marginTop="@dimen/spacing_medium_large"
+					android:layout_marginBottom="@dimen/spacing_small"
+					android:gravity="left"
+					android:text="@string/vaccination_impf_check_title" />
+
+				<TextView
+					android:id="@+id/impfcheck_info_text"
+					style="@style/CovidCertificate.Text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_very_large"
+					android:text="@string/vaccination_impf_check_info_text" />
+
+				<Button
+					android:id="@+id/impfcheck_action"
+					style="@style/CovidCertificate.Button"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_margin="@dimen/spacing_very_large"
+					android:drawableRight="@drawable/ic_link_external"
+					android:drawableTint="@color/white"
+					android:text="@string/vaccination_impf_check_action" />
+
 				<LinearLayout
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
@@ -83,26 +112,6 @@
 						tools:text="@string/vaccination_booking_info_info" />
 
 				</LinearLayout>
-
-				<TextView
-					style="@style/CovidCertificate.Text.Bold.Emphasized"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="@dimen/spacing_medium_large"
-					android:layout_marginTop="@dimen/spacing_very_large"
-					android:gravity="center"
-					android:text="@string/vaccination_choose_your_canton" />
-
-				<androidx.recyclerview.widget.RecyclerView
-					android:id="@+id/vaccination_appointment_canton_list"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:nestedScrollingEnabled="true"
-					android:overScrollMode="never"
-					android:scrollbars="none"
-					app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-					tools:itemCount="5"
-					tools:listitem="@layout/item_vaccination_appointment_canton" />
 
 				<LinearLayout
 					android:id="@+id/vaccination_more_info_button"
