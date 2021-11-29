@@ -1291,8 +1291,8 @@ Code: {ERROR_CODE}"</string>
     <string name="infobox_update_title">"New version available"</string>
     <string name="infobox_update_text">"Download the latest version of the app."</string>
     <string name="infobox_update_button">"Update"</string>
-    <string name="vaccination_impf_check_info_text">"Der Covid-19 Impf-Check gibt Auskunft über Erst- sowie Auffrischimpfungen und führt Sie zur entsprechenden Anlaufstelle in Ihrem Kanton."</string>
-    <string name="vaccination_impf_check_action">"Zum Impf-Check"</string>
+    <string name="vaccination_impf_check_info_text">"The COVID-19 Vaccination Check provides information on initial and booster vaccinations and guides you to the relevant point of contact in your canton."</string>
+    <string name="vaccination_impf_check_action">"To the Vaccination Check"</string>
     <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
     <string name="vaccination_impf_check_title">"Book an appointment now"</string>
 </resources>

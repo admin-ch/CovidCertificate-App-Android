@@ -1285,11 +1285,11 @@ Code: {ERROR_CODE}"</string>
 
     <!-- Testname für Schweizer Ausnahme Zertifikat für Nicht-Testbare und Nicht-Impfbare Personen -->
     <string name="covid_certificate_ch_ausnahme_test_title">"Ausnahme Zertifikat"</string>
-    <string name="infobox_update_title">"Neue Version verfügbar"</string>
+    <string name="infobox_update_title">"A disposiziun versiun nova"</string>
     <string name="infobox_update_text">"Chargiai giu la nova versiun da l'app."</string>
     <string name="infobox_update_button">"Actualisar"</string>
-    <string name="vaccination_impf_check_info_text">"Der Covid-19 Impf-Check gibt Auskunft über Erst- sowie Auffrischimpfungen und führt Sie zur entsprechenden Anlaufstelle in Ihrem Kanton."</string>
-    <string name="vaccination_impf_check_action">"Zum Impf-Check"</string>
+    <string name="vaccination_impf_check_info_text">"Il check da vaccinaziun COVID-19 As infurmescha davart las emprimas vaccinaziuns sco er davart las vaccinaziuns da rinfrestgament ed As maina al post da consultaziun correspundent da Voss chantun.  "</string>
+    <string name="vaccination_impf_check_action">"Al check da vaccinaziun"</string>
     <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
     <string name="vaccination_impf_check_title">"Reservar in termin ussa"</string>
 </resources>

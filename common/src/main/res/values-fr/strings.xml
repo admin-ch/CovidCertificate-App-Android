@@ -1290,8 +1290,8 @@ Code: {ERROR_CODE}"</string>
     <string name="infobox_update_title">"Nouvelle version disponible"</string>
     <string name="infobox_update_text">"Téléchargez la nouvelle version de l'application."</string>
     <string name="infobox_update_button">"Mettre à jour"</string>
-    <string name="vaccination_impf_check_info_text">"Der Covid-19 Impf-Check gibt Auskunft über Erst- sowie Auffrischimpfungen und führt Sie zur entsprechenden Anlaufstelle in Ihrem Kanton."</string>
-    <string name="vaccination_impf_check_action">"Zum Impf-Check"</string>
+    <string name="vaccination_impf_check_info_text">"COVID-19 Vac-check fournit des renseignements sur la première vaccination ainsi que sur la vaccination de rappel et vous guide vers le service compétent de votre canton."</string>
+    <string name="vaccination_impf_check_action">"Vers COVID-19 Vac-check"</string>
     <string name="vaccination_impf_check_url">"https://covid19-vac-check.ch/"</string>
     <string name="vaccination_impf_check_title">"Prendre un rendez-vous maintenant"</string>
 </resources>
