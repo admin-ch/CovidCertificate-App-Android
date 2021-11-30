@@ -146,10 +146,10 @@ class CertificateDetailFragment : Fragment() {
 
 		binding.certificateDetailButtonReverify.setOnClickListener {
 			// Show popup explaining purpose of verification
-			val view = LinearLayout(context)
+			val v = LinearLayout(context)
 			val inflater = LayoutInflater.from(context).inflate(
 				R.layout.dialog_fragment_certificate_scanning_info,
-				view,
+				v,
 			)
 
 			val dialogTitle = inflater.findViewById<TextView>(R.id.scanning_dialog_title)
@@ -165,7 +165,7 @@ class CertificateDetailFragment : Fragment() {
 			val dialogDismissButton = inflater.findViewById<Button>(R.id.scanning_dialog_dismiss_button)
 			dialogDismissButton.text = getString(R.string.validate_action_dismiss_button)
 
-			val dialog = AlertDialog.Builder(view.context, R.style.CovidCertificate_AlertDialogStyle)
+			val dialog = AlertDialog.Builder(v.context, R.style.CovidCertificate_AlertDialogStyle)
 				.setIcon(R.drawable.ic_error_grey)
 				.setCancelable(true)
 				.setView(inflater)
@@ -338,6 +338,12 @@ class CertificateDetailFragment : Fragment() {
 			info = SpannableString(context.getString(R.string.verifier_verify_success_info))
 			iconId = R.drawable.ic_info_blue
 			showRedBorder = false
+		}
+		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
+		if (isForceValidate) {
+			resetStatus(R.color.blueish, info, showRedBorder)
+		} else {
+			showStatusInfoAndDescription(null, info, iconId, showRedBorder)
 		}
 		showStatusInfoAndDescription(null, info, iconId, showRedBorder)
 	}
@@ -595,6 +601,39 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfo.text = info
 		binding.certificateDetailStatusIcon.setImageResource(iconId)
 		binding.certificateDetailInfoRedBorder.visibility = if (showRedBorder) View.VISIBLE else View.GONE
+	}
+
+	/*
+		Resets the view after a validation, without showing any positive / negative action
+	 */
+	private fun resetStatus(
+		@ColorRes infoBubbleColorId: Int,
+		info: SpannableString?,
+		showRedBorder: Boolean = false
+	) {
+		hideDelayedJob?.cancel()
+		hideDelayedJob = viewLifecycleOwner.lifecycleScope.launch {
+			if (!isActive || !isVisible) return@launch
+			val context = binding.root.context
+
+			binding.certificateDetailQrCodeStatusGroup.hideAnimated()
+			binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
+				ContextCompat.getColor(context, android.R.color.transparent)
+			)
+
+			binding.certificateDetailInfo.text = info
+			binding.certificateDetailInfoDescriptionGroup.animateBackgroundTintColor(
+				ContextCompat.getColor(context, infoBubbleColorId)
+			)
+			binding.certificateDetailInfoRedBorder.visibility = if (showRedBorder) View.VISIBLE else View.GONE
+
+			binding.certificateDetailInfoVerificationStatus.hideAnimated()
+			binding.certificateDetailInfoValidityGroup.animateBackgroundTintColor(
+				ContextCompat.getColor(context, infoBubbleColorId)
+			)
+			binding.certificateDetailButtonReverify.showAnimated()
+			isForceValidate = false
+		}
 	}
 
 	/**
