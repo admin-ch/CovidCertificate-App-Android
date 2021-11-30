@@ -38,10 +38,7 @@ import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightDetailBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
-import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
-import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
-import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
-import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
+import ch.admin.bag.covidcertificate.wallet.util.*
 import java.time.Instant
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -111,7 +108,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	private fun displayQrCode() {
 		val decoded = qrCodeImage.fromBase64()
 		val qrCodeBitmap = BitmapFactory.decodeByteArray(decoded, 0, decoded.size)
-		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap)
+		val qrCodeDrawable = BitmapDrawable(resources, QrCode.convertBitmapToBw(qrCodeBitmap))
 		binding.certificateLightDetailQrCode.setImageDrawable(qrCodeDrawable)
 	}
 

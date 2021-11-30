@@ -13,6 +13,8 @@ package ch.admin.bag.covidcertificate.wallet.util
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.os.Parcel
+import androidx.core.graphics.get
+import androidx.core.graphics.set
 import com.google.zxing.BarcodeFormat
 import com.google.zxing.EncodeHintType
 import com.google.zxing.MultiFormatWriter
@@ -46,6 +48,19 @@ class QrCode private constructor(val data: String, val size: Int) {
 				}
 			}
 			return bitmap
+		}
+
+		fun convertBitmapToBw(input: Bitmap): Bitmap {
+			val mutableBitmap = input.copy(input.config, true)
+			for(x in 0 until mutableBitmap.width){
+				for(y in 0 until mutableBitmap.height) {
+					val p = mutableBitmap[x, y]
+					if(p != Color.WHITE && p != Color.BLACK) {
+						mutableBitmap[x, y] = Color.BLACK
+					}
+				}
+			}
+			return mutableBitmap
 		}
 	}
 
