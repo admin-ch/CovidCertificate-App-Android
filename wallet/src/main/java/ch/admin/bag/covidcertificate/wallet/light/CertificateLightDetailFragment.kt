@@ -17,7 +17,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.annotation.ColorRes
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -27,6 +31,7 @@ import androidx.fragment.app.viewModels
 import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
+import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrintIsoDateTime
 import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
@@ -94,6 +99,42 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		setupStatusInfo()
 
 		binding.certificateLightDetailDeactivateButton.setOnClickListener { deleteCertificateLightAndShowOriginal() }
+
+		binding.certificateDetailButtonReverify.setOnClickListener {
+			// Show popup explaining purpose of verification
+			val v = LinearLayout(context)
+			val inflater = LayoutInflater.from(context).inflate(
+				R.layout.dialog_fragment_certificate_scanning_info,
+				v,
+			)
+
+			val dialogTitle = inflater.findViewById<TextView>(R.id.scanning_dialog_title)
+			dialogTitle.text = getString(R.string.validate_action_title)
+			val dialogText = inflater.findViewById<TextView>(R.id.scanning_dialog_text)
+			dialogText.text = getString(R.string.validate_action_explanation)
+
+			val dialogFineprint = inflater.findViewById<TextView>(R.id.scanning_dialog_fineprint)
+			dialogFineprint.text = getString(R.string.validate_action_fineprint_text)
+
+			val dialogOkButton = inflater.findViewById<Button>(R.id.scanning_dialog_understood_button)
+			dialogOkButton.text = getString(R.string.validate_action_ok_button)
+			val dialogDismissButton = inflater.findViewById<Button>(R.id.scanning_dialog_dismiss_button)
+			dialogDismissButton.text = getString(R.string.validate_action_dismiss_button)
+
+			val dialog = AlertDialog.Builder(v.context, R.style.CovidCertificate_AlertDialogStyle)
+				.setIcon(R.drawable.ic_error_grey)
+				.setCancelable(true)
+				.setView(inflater)
+				.create()
+
+			dialogOkButton.setOnClickListener {
+				dialog.dismiss()
+			}
+			dialogDismissButton.setOnClickListener {
+				dialog.dismiss()
+			}
+			dialog.show()
+		}
 	}
 
 	override fun onResume() {
