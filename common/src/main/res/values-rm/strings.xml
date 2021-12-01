@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-  ~
-  ~ This Source Code Form is subject to the terms of the Mozilla Public
-  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-  ~
-  ~ SPDX-License-Identifier: MPL-2.0
-  -->
 <resources>
 
     <!-- Android App Name -->
@@ -698,7 +689,7 @@ n’è betg valaivel"</string>
     <string name="wallet_transfer_code_faq_works_intro_2">"Uschespert ch'il certificat COVID è disponibel, cumpara el en l'app. Sche Vus avais activà ils avis, vegnis Vus infurmada u infurmà da l'app."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"Suenter 30 dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"Suenter {TRANSFER_CODE_VALIDITY} dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Permetter avis"</string>
@@ -828,7 +819,7 @@ Per actualisar las glistas da verificaziun sto l'app esser colliada cun l'intern
     <string name="wallet_certificate_light_detail_summary_2">"Cuntegna mo il num, il prenum, la data da naschientscha ed ina signatura digitala"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Valaivel per max. 48 uras"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Valaivel per max. 24 uras"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"La conversiun dal certificat COVID en in certificat light succeda online."</string>
@@ -908,7 +899,7 @@ e mo en Svizra"</string>
     <string name="wallet_certificate_light_detail_text_1">"Sche Vus activais il certificat light, vegn creà or da las datas da Voss certificat COVID in nov code QR che na cuntegna naginas datas da sanadad."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"Entant ch'il certificat COVID normal po vegnir duvrà en il rom da sia valaivladad senza restricziuns tant en Svizra sco er en il stadis da la UE e da la AECL, po il certificat light vegnir duvrà mo en Svizra.Per motivs da la protecziun da datas sto il certificat light vegnir activà danovamain suenter 48 uras. El na porta nagins dretgs supplementars en cumparegliaziun cun il certificat COVID normal. "</string>
+    <string name="wallet_certificate_light_detail_text_2">"Entant ch'il certificat COVID normal po vegnir duvrà en il rom da sia valaivladad senza restricziuns tant en Svizra sco er en il stadis da la UE e da la AECL, po il certificat light vegnir duvrà mo en Svizra.Per motivs da la protecziun da datas sto il certificat light vegnir activà danovamain suenter 24 uras. El na porta nagins dretgs supplementars en cumparegliaziun cun il certificat COVID normal. "</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"mo danovamain nagins"</string>
@@ -950,13 +941,13 @@ e mo en Svizra"</string>
 
 L'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.
 
-Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 48 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
+Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
     <string name="verifier_faq_works_question_8">"Tge è in certificat light?"</string>
     <string name="verifier_faq_works_answer_8">"L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.
 
 L'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.
 
-Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 48 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
+Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
     <string name="verifier_faq_works_question_9">"Co po in certificat light puspè vegnir transfurmà en in certificat COVID confurm a la UE/AECL?"</string>
     <string name="verifier_faq_works_answer_9">"La possessura u il possessur po deactivar da tut temp il certificat light en l'app «COVID Certificate». Alura stat puspè a disposiziun il certificat COVID normal. "</string>
 
@@ -1285,4 +1276,20 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_only_valid_in_switzerland">"Valaivel mo cun in document da legitimaziun e mo en Svizra"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Diagnosa"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Suffizient"</string>
+
+    <!-- Ausnahme Test Zertifikat Detail: Titel für Startdatum des Attests -->
+    <string name="wallet_certificate_ausnahme_test_attest_start_date">"Startdatum des Attests"</string>
+
+    <!-- Ausnahme Test Zertifikat Detail: Titel für verantwortliche Stelle für Ausstellung -->
+    <string name="wallet_certificate_ausnahme_responsible_issuer">"Verantwortliche Stelle für Ausstellung"</string>
+
+    <!-- Testname für Schweizer Ausnahme Zertifikat für Nicht-Testbare und Nicht-Impfbare Personen -->
+    <string name="covid_certificate_ch_ausnahme_test_title">"Ausnahme Zertifikat"</string>
+    <string name="infobox_update_title">"A disposiziun versiun nova"</string>
+    <string name="infobox_update_text">"Chargiai giu la nova versiun da l'app."</string>
+    <string name="infobox_update_button">"Actualisar"</string>
+    <string name="vaccination_impf_check_info_text">"Il check da vaccinaziun COVID-19 As infurmescha davart las emprimas vaccinaziuns sco er davart las vaccinaziuns da rinfrestgament ed As maina al post da consultaziun correspundent da Voss chantun.  "</string>
+    <string name="vaccination_impf_check_action">"Al check da vaccinaziun"</string>
+    <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
+    <string name="vaccination_impf_check_title">"Reservar in termin ussa"</string>
 </resources>
