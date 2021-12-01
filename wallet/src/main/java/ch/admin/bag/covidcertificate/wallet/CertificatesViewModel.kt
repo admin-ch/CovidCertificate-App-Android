@@ -23,6 +23,7 @@ import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CheckMode
 import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
@@ -231,7 +232,7 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 		viewModelScope.launch {
 			if (delayInMillis > 0) delay(delayInMillis)
-			val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificateHolder, viewModelScope)
+			val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificateHolder, CheckMode.NORMAL, viewModelScope)
 
 			val job = viewModelScope.launch {
 				verificationStateFlow.collect { state ->

@@ -17,6 +17,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CheckMode
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
@@ -34,7 +35,7 @@ class VerificationViewModel(application: Application) : AndroidViewModel(applica
 
 	fun startVerification(certificateHolder: VerifierCertificateHolder) {
 		viewModelScope.launch {
-			val verificationStateFlow = CovidCertificateSdk.Verifier.verify(certificateHolder, viewModelScope)
+			val verificationStateFlow = CovidCertificateSdk.Verifier.verify(certificateHolder, CheckMode.NORMAL, viewModelScope)
 			verificationStateFlow.collect {
 				verificationStateMutableLiveData.postValue(it)
 			}
