@@ -16,9 +16,7 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.makeBold
-import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
@@ -29,7 +27,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
  */
 fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == ErrorCodes.GENERAL_OFFLINE
 
-fun VerificationState.getVerificationStateItems(context: Context) : List<VerificationItem> {
+fun VerificationState.getVerificationStateItems(context: Context): List<VerificationItem> {
 	val items = mutableListOf<VerificationItem>()
 
 	val isLoading = this == VerificationState.LOADING
@@ -109,7 +107,7 @@ fun VerificationState.getStatusInformationString(context: Context): String {
 		}
 		is VerificationState.INVALID -> ""
 		VerificationState.LOADING -> context.getString(R.string.wallet_certificate_verifying)
-		is VerificationState.SUCCESS -> if (this.isLightCertificate) {
+		is VerificationState.SUCCESS -> if (this.successState.isLightCertificate) {
 			context.getString(R.string.verifier_verify_success_certificate_light_info)
 		} else {
 			context.getString(R.string.verifier_verify_success_info)

@@ -42,10 +42,7 @@ import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.*
 import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
@@ -304,7 +301,10 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = true
 		binding.certificateDetailErrorCode.isVisible = false
-		showValidityDate(state.validityRange?.validUntil, certificateHolder.certType, state)
+		val walletState = state.successState as WalletSuccessState
+
+		showValidityDate(walletState.validityRange?.validUntil, certificateHolder.certType, state)
+
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
 
 		// Certificate Light and PDF export is enabled for a valid certificate that was issued in Switzerland
@@ -314,7 +314,7 @@ class CertificateDetailFragment : Fragment() {
 		val info: SpannableString
 		val iconId: Int
 		val showRedBorder: Boolean
-		if (state.isValidOnlyInSwitzerland) {
+		if (walletState.isValidOnlyInSwitzerland) {
 			info = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))
 			iconId = R.drawable.ic_flag_ch
 			showRedBorder = true
