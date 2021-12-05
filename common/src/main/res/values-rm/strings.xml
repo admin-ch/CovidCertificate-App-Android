@@ -698,7 +698,7 @@ n’è betg valaivel"</string>
     <string name="wallet_transfer_code_faq_works_intro_2">"Uschespert ch'il certificat COVID è disponibel, cumpara el en l'app. Sche Vus avais activà ils avis, vegnis Vus infurmada u infurmà da l'app."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"Suenter 30 dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"Suenter &lt;transferCodeValidity&gt; dis scada il code da transfer. Silsuenter spetga l'app anc ulteriuras 72 uras, avant ch'il code da transfer daventa nunvalaivel."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Permetter avis"</string>
@@ -1285,4 +1285,20 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_only_valid_in_switzerland">"Valaivel mo cun in document da legitimaziun e mo en Svizra"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Diagnosa"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Suffizient"</string>
+
+    <!-- Ausnahme Test Zertifikat Detail: Titel für Startdatum des Attests -->
+    <string name="wallet_certificate_ausnahme_test_attest_start_date">"Startdatum des Attests"</string>
+
+    <!-- Ausnahme Test Zertifikat Detail: Titel für verantwortliche Stelle für Ausstellung -->
+    <string name="wallet_certificate_ausnahme_responsible_issuer">"Verantwortliche Stelle für Ausstellung"</string>
+
+    <!-- Testname für Schweizer Ausnahme Zertifikat für Nicht-Testbare und Nicht-Impfbare Personen -->
+    <string name="covid_certificate_ch_ausnahme_test_title">"Ausnahme Zertifikat"</string>
+    <string name="infobox_update_title">"A disposiziun versiun nova"</string>
+    <string name="infobox_update_text">"Chargiai giu la nova versiun da l'app."</string>
+    <string name="infobox_update_button">"Actualisar"</string>
+    <string name="vaccination_impf_check_info_text">"Il check da vaccinaziun COVID-19 As infurmescha davart las emprimas vaccinaziuns sco er davart las vaccinaziuns da rinfrestgament ed As maina al post da consultaziun correspundent da Voss chantun.  "</string>
+    <string name="vaccination_impf_check_action">"Al check da vaccinaziun"</string>
+    <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
+    <string name="vaccination_impf_check_title">"Reservar in termin ussa"</string>
 </resources>

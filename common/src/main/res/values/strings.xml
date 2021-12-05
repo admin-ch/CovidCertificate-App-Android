@@ -700,7 +700,7 @@ invalid"</string>
     <string name="wallet_transfer_code_faq_works_intro_2">"As soon as the COVID certificate is available, it appears in the application. If you have activated notifications, you will receive a message from the application."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"The transfer code expires after 30 days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"The transfer code expires after &lt;transferCodeValidity&gt; days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Allow notifications"</string>
@@ -1288,4 +1288,20 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_only_valid_in_switzerland">"Only valid within Switzerland and in combination with an identity document"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Finding"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Sufficient"</string>
+
+    <!-- Ausnahme Test Zertifikat Detail: Titel für Startdatum des Attests -->
+    <string name="wallet_certificate_ausnahme_test_attest_start_date">"Startdatum des Attests"</string>
+
+    <!-- Ausnahme Test Zertifikat Detail: Titel für verantwortliche Stelle für Ausstellung -->
+    <string name="wallet_certificate_ausnahme_responsible_issuer">"Verantwortliche Stelle für Ausstellung"</string>
+
+    <!-- Testname für Schweizer Ausnahme Zertifikat für Nicht-Testbare und Nicht-Impfbare Personen -->
+    <string name="covid_certificate_ch_ausnahme_test_title">"Ausnahme Zertifikat"</string>
+    <string name="infobox_update_title">"New version available"</string>
+    <string name="infobox_update_text">"Download the latest version of the app."</string>
+    <string name="infobox_update_button">"Update"</string>
+    <string name="vaccination_impf_check_info_text">"The COVID-19 Vaccination Check provides information on initial and booster vaccinations and guides you to the relevant point of contact in your canton."</string>
+    <string name="vaccination_impf_check_action">"To the Vaccination Check"</string>
+    <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
+    <string name="vaccination_impf_check_title">"Book an appointment now"</string>
 </resources>
