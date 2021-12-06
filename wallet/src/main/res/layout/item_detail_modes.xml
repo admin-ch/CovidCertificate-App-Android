@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginHorizontal="@dimen/spacing_very_very_large"
+	android:layout_marginVertical="@dimen/spacing_large">
+
+	<View
+		android:layout_width="match_parent"
+		android:layout_height="4dp"
+		android:layout_gravity="center"
+		android:background="@drawable/line_dashed_grey" />
+
+	<LinearLayout
+		android:id="@+id/certificate_detail_info_modes_list"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_gravity="center"
+		android:background="@drawable/oval_horizontal"
+		android:orientation="horizontal"
+		android:paddingHorizontal="6dp">
+
+	</LinearLayout>
+
+</FrameLayout>

@@ -18,6 +18,7 @@ import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
@@ -326,11 +327,43 @@ class CertificateDetailFragment : Fragment() {
 		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
 		if (isForceValidate) {
 			showStatusInfoAndDescription(null, forceValidationInfo, R.drawable.ic_check_green)
-			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, forceValidationInfo)
+			showForceValidation(
+				R.color.green,
+				R.drawable.ic_check_green,
+				R.drawable.ic_check_large,
+				forceValidationInfo,
+				walletState.modeValidity
+			)
 			readjustStatusDelayed(R.color.blueish, iconId, info, showRedBorder)
 		} else {
 			showStatusInfoAndDescription(null, info, iconId, showRedBorder)
 		}
+
+		showModes(walletState.modeValidity)
+	}
+
+	private fun showModes(modeValidities: List<ModeValidity>) {
+		for (modeValidity in modeValidities) {
+			val imageView = ImageView(requireContext())
+			if (modeValidity.isModeValid == ModeValidityState.SUCCESS) {
+				//TODO get icon form config
+				if (modeValidity.mode == "THREE_G") {
+					imageView.setImageResource(R.drawable.ic_wallet_check_mode_info_three)
+				} else {
+					imageView.setImageResource(R.drawable.ic_wallet_check_mode_info_two)
+				}
+			} else if (modeValidity.isModeValid == ModeValidityState.INVALID) {
+				//TODO get icon form config
+				if (modeValidity.mode == "THREE_G") {
+					imageView.setImageResource(R.drawable.ic_wallet_check_mode_info_three)
+					imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey_light))
+				} else {
+					imageView.setImageResource(R.drawable.ic_wallet_check_mode_info_two_no)
+				}
+			}
+			binding.certificateDetailInfoModes.certificateDetailInfoModesList.addView(imageView)
+		}
+
 	}
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {
@@ -555,6 +588,7 @@ class CertificateDetailFragment : Fragment() {
 		@DrawableRes validationIconId: Int,
 		@DrawableRes validationIconLargeId: Int,
 		info: SpannableString?,
+		modeValidities: List<ModeValidity>
 	) {
 		binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
 			ContextCompat.getColor(

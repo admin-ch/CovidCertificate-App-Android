@@ -143,11 +143,11 @@
 							android:id="@+id/certificate_detail_info_red_border"
 							android:layout_width="0dp"
 							android:layout_height="0dp"
-							app:layout_constraintStart_toStartOf="@id/certificate_detail_info"
-							app:layout_constraintEnd_toEndOf="@id/certificate_detail_info"
-							app:layout_constraintTop_toTopOf="@id/certificate_detail_info"
+							android:src="@drawable/bg_certificate_bubble_bundesrot"
 							app:layout_constraintBottom_toBottomOf="@id/certificate_detail_info"
-							android:src="@drawable/bg_certificate_bubble_bundesrot"/>
+							app:layout_constraintEnd_toEndOf="@id/certificate_detail_info"
+							app:layout_constraintStart_toStartOf="@id/certificate_detail_info"
+							app:layout_constraintTop_toTopOf="@id/certificate_detail_info" />
 
 						<TextView
 							android:id="@+id/certificate_detail_info_verification_status"
@@ -155,11 +155,11 @@
 							android:layout_width="match_parent"
 							android:layout_height="0dp"
 							android:background="@drawable/bg_certificate_bubble"
-							app:backgroundTint="@color/blueish"
 							android:gravity="center"
 							android:minLines="2"
 							android:padding="@dimen/spacing_medium_large"
 							android:visibility="gone"
+							app:backgroundTint="@color/blueish"
 							app:layout_constraintBottom_toBottomOf="@id/certificate_detail_info"
 							app:layout_constraintTop_toTopOf="@id/certificate_detail_info"
 							tools:text="@string/verifier_verify_success_title"
@@ -198,10 +198,10 @@
 						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
 						android:layout_marginTop="@dimen/spacing_very_small"
 						android:background="@drawable/bg_certificate_bubble"
-						app:backgroundTint="@color/blueish"
 						android:orientation="horizontal"
 						android:paddingHorizontal="@dimen/spacing_medium_large"
-						android:paddingVertical="@dimen/spacing_medium_small">
+						android:paddingVertical="@dimen/spacing_medium_small"
+						app:backgroundTint="@color/blueish">
 
 						<TextView
 							android:id="@+id/certificate_detail_info_description"
@@ -221,10 +221,10 @@
 						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
 						android:layout_marginTop="@dimen/spacing_very_small"
 						android:background="@drawable/bg_certificate_bubble"
-						app:backgroundTint="@color/blueish"
 						android:orientation="horizontal"
 						android:paddingHorizontal="@dimen/spacing_medium_large"
-						android:paddingVertical="@dimen/spacing_medium_small">
+						android:paddingVertical="@dimen/spacing_medium_small"
+						app:backgroundTint="@color/blueish">
 
 						<TextView
 							android:id="@+id/certificate_detail_info_validity_date_disclaimer"
@@ -245,17 +245,17 @@
 								style="@style/CovidCertificate.Text"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
-								app:backgroundTint="@color/blueish"
 								android:gravity="end"
-								android:text="@string/wallet_certificate_valid_until" />
+								android:text="@string/wallet_certificate_valid_until"
+								app:backgroundTint="@color/blueish" />
 
 							<TextView
 								android:id="@+id/certificate_detail_info_validity_date"
 								style="@style/CovidCertificate.Text.Bold"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
-								app:backgroundTint="@color/blueish"
 								android:gravity="end"
+								app:backgroundTint="@color/blueish"
 								tools:text="01.01.2022" />
 
 						</LinearLayout>
@@ -275,12 +275,15 @@
 						tools:text="Error-Code"
 						tools:visibility="visible" />
 
+					<include
+						android:id="@+id/certificate_detail_info_modes"
+						layout="@layout/item_detail_modes" />
+
 					<androidx.recyclerview.widget.RecyclerView
 						android:id="@+id/certificate_detail_data_recycler_view"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
-						android:layout_marginTop="@dimen/spacing_large"
 						android:overScrollMode="never"
 						android:scrollbars="none"
 						app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"

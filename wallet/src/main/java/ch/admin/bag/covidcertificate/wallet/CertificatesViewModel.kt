@@ -231,7 +231,10 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 		viewModelScope.launch {
 			if (delayInMillis > 0) delay(delayInMillis)
-			val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificateHolder, setOf("THREE_G"), viewModelScope)
+
+			val verificationIdentifier =
+				CovidCertificateSdk.Wallet.getActiveModes().map { activeMode -> activeMode.id }.toSet()
+			val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificateHolder, verificationIdentifier, viewModelScope)
 
 			val job = viewModelScope.launch {
 				verificationStateFlow.collect { state ->
