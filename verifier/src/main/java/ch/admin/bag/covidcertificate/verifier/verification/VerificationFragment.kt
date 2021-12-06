@@ -24,6 +24,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -36,6 +37,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
+import ch.admin.bag.covidcertificate.verifier.modes.ModesViewModel
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -60,6 +62,7 @@ class VerificationFragment : Fragment() {
 	private var _binding: FragmentVerificationBinding? = null
 	private val binding get() = _binding!!
 	private val verificationViewModel: VerificationViewModel by viewModels()
+	private val modesViewModel by activityViewModels<ModesViewModel>()
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
 	private var certificateHolder: VerifierCertificateHolder? = null
 	private var isClosedByUser = false
@@ -99,7 +102,7 @@ class VerificationFragment : Fragment() {
 
 		verificationAdapter = VerificationAdapter {
 			certificateHolder?.let {
-				verificationViewModel.retryVerification(it)
+				verificationViewModel.retryVerification(it, modesViewModel.selectedModeLiveData.value!!)
 			}
 		}
 
@@ -163,7 +166,7 @@ class VerificationFragment : Fragment() {
 		binding.verificationBirthdate.text = certificateHolder.getFormattedDateOfBirth()
 		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
 
-		verificationViewModel.startVerification(certificateHolder)
+		verificationViewModel.startVerification(certificateHolder, modesViewModel.selectedModeLiveData.value!!)
 	}
 
 	private fun updateHeaderAndVerificationView(verificationState: VerificationState) {

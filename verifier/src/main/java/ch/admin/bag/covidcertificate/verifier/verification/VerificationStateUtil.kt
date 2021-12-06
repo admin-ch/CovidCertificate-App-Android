@@ -17,10 +17,7 @@ import androidx.annotation.DrawableRes
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.*
 
 /**
  * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
@@ -213,6 +210,14 @@ fun VerificationState.getHeaderColor(): Int {
 		is VerificationState.ERROR -> R.color.orange
 		is VerificationState.INVALID -> R.color.red
 		VerificationState.LOADING -> R.color.grey
-		is VerificationState.SUCCESS -> R.color.green
+		is VerificationState.SUCCESS -> {
+			when ((this.successState as SuccessState.VerifierSuccessState).modeValidity.isModeValid) {
+				ModeValidityState.SUCCESS -> R.color.green
+				ModeValidityState.INVALID -> R.color.orange
+				ModeValidityState.IS_LIGHT -> R.color.orange
+				ModeValidityState.UNKNOWN -> R.color.orange
+				ModeValidityState.UNKNOWN_MODE -> R.color.orange
+			}
+		}
 	}
 }
