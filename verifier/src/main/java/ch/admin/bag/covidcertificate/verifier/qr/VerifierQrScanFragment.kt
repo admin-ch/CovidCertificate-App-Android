@@ -16,7 +16,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColorInt
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import ch.admin.bag.covidcertificate.common.qr.QrScanFragment
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -26,6 +28,8 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentQrScanBinding
+import ch.admin.bag.covidcertificate.verifier.modes.ChooseModeDialogFragment
+import ch.admin.bag.covidcertificate.verifier.modes.ModesViewModel
 import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment
 import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment.Companion.RESULT_FRAGMENT_POPPED
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
@@ -54,6 +58,7 @@ class VerifierQrScanFragment : QrScanFragment() {
 	private val verifierSecureStorage by lazy { VerifierSecureStorage.getInstance(requireContext()) }
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(verifierSecureStorage) }
 
+	private val modesViewModel by activityViewModels<ModesViewModel>()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -91,6 +96,20 @@ class VerifierQrScanFragment : QrScanFragment() {
 			binding.qrCodeScannerExternalHardwareDetected.isVisible = true
 		} else {
 			activateCamera()
+		}
+
+		modesViewModel.selectedModeLiveData.observe(viewLifecycleOwner) {
+			val mode = modesViewModel.getSelectedMode()
+			if (mode == null) {
+				binding.fragmentQrScannerModeIndicator.visibility = View.GONE
+			} else {
+				binding.fragmentQrScannerModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
+				binding.fragmentQrScannerModeIndicator.text = mode.title
+				binding.fragmentQrScannerModeIndicator.visibility = View.VISIBLE
+			}
+			binding.fragmentQrScannerModeIndicator.setOnClickListener{
+				ChooseModeDialogFragment.newInstance().show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
+			}
 		}
 
 		setupActivateCameraButton()

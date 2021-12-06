@@ -10,6 +10,7 @@
 
 <ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
 	android:layout_width="match_parent"
 	android:layout_height="match_parent"
 	android:orientation="vertical"
@@ -108,7 +109,6 @@
 			app:srcCompat="@drawable/ic_faq"
 			app:tint="@color/grey" />
 
-
 		<ImageView
 			android:id="@+id/homescreen_settings_button"
 			android:layout_width="wrap_content"
@@ -121,6 +121,21 @@
 			app:layout_constraintEnd_toEndOf="parent"
 			app:srcCompat="@drawable/ic_settings"
 			app:tint="@color/grey" />
+
+		<TextView
+			android:id="@+id/homescreen_mode_indicator"
+			style="@style/CovidCertificate.Text.Bold"
+			android:layout_width="wrap_content"
+			android:layout_height="28dp"
+			android:layout_marginRight="-17dp"
+			android:background="@drawable/bg_pill"
+			android:gravity="center_vertical"
+			android:paddingHorizontal="@dimen/spacing_medium_large"
+			app:layout_constraintBottom_toBottomOf="@id/homescreen_settings_button"
+			app:layout_constraintEnd_toStartOf="@id/homescreen_settings_button"
+			app:layout_constraintTop_toTopOf="@id/homescreen_settings_button"
+			tools:backgroundTint="@color/green"
+			tools:text="3G" />
 
 	</androidx.constraintlayout.widget.ConstraintLayout>
 

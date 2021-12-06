@@ -10,10 +10,12 @@
 
 package ch.admin.bag.covidcertificate.verifier
 
+import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.graphics.toColorInt
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -30,6 +32,8 @@ import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDeco
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.verifier.faq.VerifierFaqFragment
+import ch.admin.bag.covidcertificate.verifier.modes.ChooseModeDialogFragment
+import ch.admin.bag.covidcertificate.verifier.modes.ModesViewModel
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPageAdapter
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPagerFragment
 import ch.admin.bag.covidcertificate.verifier.qr.VerifierQrScanFragment
@@ -47,6 +51,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private val modesViewModel by activityViewModels<ModesViewModel>()
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
 
 	private var _binding: FragmentHomeBinding? = null
@@ -63,11 +68,15 @@ class HomeFragment : Fragment() {
 		binding.viewPager.adapter = adapter
 
 		binding.homescreenScanButton.setOnClickListener {
-			parentFragmentManager.beginTransaction()
-				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-				.replace(R.id.fragment_container, VerifierQrScanFragment.newInstance())
-				.addToBackStack(VerifierQrScanFragment::class.java.canonicalName)
-				.commit()
+			if(modesViewModel.getSelectedMode()==null){
+				showModeSelection()
+			}else {
+				parentFragmentManager.beginTransaction()
+					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+					.replace(R.id.fragment_container, VerifierQrScanFragment.newInstance())
+					.addToBackStack(VerifierQrScanFragment::class.java.canonicalName)
+					.commit()
+			}
 		}
 
 		binding.homescreenSupportButton.setOnClickListener {
@@ -76,6 +85,21 @@ class HomeFragment : Fragment() {
 				.replace(R.id.fragment_container, VerifierFaqFragment.newInstance())
 				.addToBackStack(VerifierFaqFragment::class.java.canonicalName)
 				.commit()
+		}
+
+		binding.homescreenSettingsButton.setOnClickListener {
+			showModeSelection()
+		}
+
+		modesViewModel.selectedModeLiveData.observe(viewLifecycleOwner) {
+			val mode = modesViewModel.getSelectedMode()
+			if (mode == null) {
+				binding.homescreenModeIndicator.visibility = View.GONE
+			} else {
+				binding.homescreenModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
+				binding.homescreenModeIndicator.text = mode.title
+				binding.homescreenModeIndicator.visibility = View.VISIBLE
+			}
 		}
 
 		TabLayoutMediator(binding.tabLayout, binding.viewPager) { _, _ ->
@@ -108,6 +132,10 @@ class HomeFragment : Fragment() {
 		}
 
 		setupInfoBox()
+	}
+
+	private fun showModeSelection() {
+		ChooseModeDialogFragment.newInstance().show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
 	}
 
 	override fun onResume() {

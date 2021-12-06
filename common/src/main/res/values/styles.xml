@@ -260,4 +260,10 @@
 		<item name="android:windowIsFloating">true</item>
 		<item name="android:gravity">center</item>
 	</style>
+
+	<style name="CovidCertificate.ChooseModeDialog" parent="Theme.MaterialComponents.Light.Dialog">
+		<item name="android:windowFrame">@null</item>
+		<item name="android:windowBackground">@drawable/bg_rect_rounded_sheet</item>
+		<item name="android:windowIsFloating">true</item>
+	</style>
 </resources>

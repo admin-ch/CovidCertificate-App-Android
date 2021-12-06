@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginBottom="@dimen/spacing_small"
+	android:background="@drawable/bg_rect_rounded_small"
+	android:padding="@dimen/spacing_medium">
+
+	<TextView
+		android:id="@+id/title"
+		style="@style/CovidCertificate.Text.Bold"
+		android:layout_width="0dp"
+		android:layout_height="wrap_content"
+		android:layout_weight="1"
+		tools:text="3G" />
+
+	<ImageView
+		android:id="@+id/buttonIcon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:src="@drawable/ic_checkbox_empty" />
+
+</LinearLayout>

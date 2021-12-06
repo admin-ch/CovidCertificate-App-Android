@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginVertical="@dimen/spacing_medium"
+	android:orientation="horizontal">
+
+	<ImageView
+		android:id="@+id/icon"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:paddingEnd="@dimen/spacing_large"
+		android:src="@drawable/ic_info_outline"
+		app:tint="@color/blue" />
+
+	<TextView
+		android:id="@+id/info_text"
+		style="@style/CovidCertificate.Text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:text="Für Betriebe und Veranstalter mit 3G-Regel." />
+
+</LinearLayout>
