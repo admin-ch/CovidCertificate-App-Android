@@ -301,7 +301,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = true
 		binding.certificateDetailErrorCode.isVisible = false
-		val walletState = state.successState as WalletSuccessState
+		val walletState = state.successState as SuccessState.WalletSuccessState
 
 		showValidityDate(walletState.validityRange?.validUntil, certificateHolder.certType, state)
 

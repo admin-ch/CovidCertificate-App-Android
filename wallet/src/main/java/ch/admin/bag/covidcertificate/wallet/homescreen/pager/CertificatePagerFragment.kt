@@ -143,7 +143,7 @@ class CertificatePagerFragment : Fragment() {
 		val context = context ?: return
 		showLoadingIndicator(false)
 		setInfoBubbleBackground(R.color.blueish)
-		val walletState = state.successState as WalletSuccessState
+		val walletState = state.successState as SuccessState.WalletSuccessState
 		if(walletState.isValidOnlyInSwitzerland){
 			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_flag_ch)
 			binding.certificatePageInfoRedBorder.visibility = View.VISIBLE
