@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-  ~
-  ~ This Source Code Form is subject to the terms of the Mozilla Public
-  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-  ~
-  ~ SPDX-License-Identifier: MPL-2.0
-  -->
 <resources>
 
     <!-- Android App Name -->
@@ -704,7 +695,7 @@ non valido"</string>
     <string name="wallet_transfer_code_faq_works_intro_2">"Non appena il certificato COVID è disponibile, viene visualizzato nell’app. Se hai attivato le notifiche, ne riceverai una dall’app."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"Il codice di trasferimento scade dopo &lt;transferCodeValidity&gt; giorni. Poi l’app attende un eventuale trasferimento per altre 72 ore prima di considerare scaduto il codice."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"Il codice di trasferimento scade dopo {TRANSFER_CODE_VALIDITY} giorni. Poi l’app attende un eventuale trasferimento per altre 72 ore prima di considerare scaduto il codice."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Consenti notifiche"</string>
@@ -834,7 +825,7 @@ Per poter aggiornare gli elenchi di verifica, l’app deve essere aperta e colle
     <string name="wallet_certificate_light_detail_summary_2">"Contiene solamente cognome, nome, data di nascita e una firma elettronica"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Valido per 48 ore al massimo"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Valido per 24 ore al massimo"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"La conversione del certificato COVID in certificato light avviene online."</string>
@@ -914,7 +905,7 @@ con un documento di legittimazione"</string>
     <string name="wallet_certificate_light_detail_text_1">"Quando attivi il certificato light, dai dati del tuo certificato COVID viene creato un nuovo codice QR, il quale non contiene dati sanitari."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"Se valido, il certificato COVID normale può essere utilizzato senza limitazioni sia in Svizzera sia nell'UE/AELS, mentre il certificato light può essere utilizzato solamente in Svizzera. Per motivi legati alla protezione dei dati, il certificato light deve essere riattivato dopo 48 ore. Rispetto al certificato COVID normale non implica alcun diritto supplementare."</string>
+    <string name="wallet_certificate_light_detail_text_2">"Se valido, il certificato COVID normale può essere utilizzato senza limitazioni sia in Svizzera sia nell'UE/AELS, mentre il certificato light può essere utilizzato solamente in Svizzera. Per motivi legati alla protezione dei dati, il certificato light deve essere riattivato dopo 24 ore. Rispetto al certificato COVID normale non implica alcun diritto supplementare."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"solamente deve alcun"</string>
@@ -952,17 +943,21 @@ con un documento di legittimazione"</string>
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
     <string name="wallet_certificate_list_light_certificate_badge">"Light"</string>
     <string name="wallet_faq_questions_question_6">"Che cos'è il certificato light?"</string>
+
+    <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
     <string name="wallet_faq_questions_answer_6">"L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.
 
 Il certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».
 
-Il «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 48 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 48 ore, il certificato light può essere disattivato semplicemente."</string>
+Il «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di {LIGHT_CERT_VALIDITY_IN_H} ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le {LIGHT_CERT_VALIDITY_IN_H} ore, il certificato light può essere disattivato semplicemente."</string>
     <string name="verifier_faq_works_question_8">"Che cos'è il certificato light?"</string>
+
+    <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
     <string name="verifier_faq_works_answer_8">"L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.
 
 Il certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».
 
-Il «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 48 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 48 ore, il certificato light può essere disattivato semplicemente."</string>
+Il «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di {LIGHT_CERT_VALIDITY_IN_H} ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le {LIGHT_CERT_VALIDITY_IN_H} ore, il certificato light può essere disattivato semplicemente."</string>
     <string name="verifier_faq_works_question_9">"Come si fa a trasformare un certificato light nuovamente in un certificato COVID conforme all’UE/AELS?"</string>
     <string name="verifier_faq_works_answer_9">"Il certificato light può essere disattivato dal titolare in qualsiasi momento nell’app «COVID Certificate», dopodiché il certificato COVID di base è di nuovo disponibile."</string>
 
@@ -1304,8 +1299,24 @@ Code: {ERROR_CODE}"</string>
     <string name="infobox_update_title">"È disponibile una nuova versione"</string>
     <string name="infobox_update_text">"Caricare la nuova versione dellʼapp."</string>
     <string name="infobox_update_button">"Aggiorna"</string>
+
+    <!-- vaccination booking  screen info about Impf-Check (impf-check.ch) -->
     <string name="vaccination_impf_check_info_text">"Il COVID-19 Vac-Check fornisce informazioni sulle prime vaccinazioni, sulle vaccinazioni di richiamo e ti indirizza verso il punto di contatto del tuo Cantone."</string>
+
+    <!-- button title for link to impf-check.ch -->
     <string name="vaccination_impf_check_action">"Vai al COVID-19 Vac-Check"</string>
+
+    <!-- URL to ImpfCheck -->
     <string name="vaccination_impf_check_url">"https://covid19-vac-check.ch/"</string>
     <string name="vaccination_impf_check_title">"Prendi appuntamento ora"</string>
+
+    <!-- Fuzzy -->
+    <string name="verifier_faq_works_linktext_1">"Video esplicativo"</string>
+    <string name="verifier_faq_works_linkurl_1"></string>
+
+    <!-- Title of button to choose verification mode -->
+    <string name="verifier_choose_mode_button_title">"wählen"</string>
+
+    <!-- Verifier app scan button with indication of mode -->
+    <string name="verifier_homescreen_scan_button_with_mode">"Prüfen ({MODE})"</string>
 </resources>

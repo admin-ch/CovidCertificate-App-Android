@@ -33,7 +33,7 @@ class ChooseModeDialogFragment : DialogFragment() {
 	private var _binding: DialogFragmentChooseModeBinding? = null
 	private val binding get() = _binding!!
 
-	private val viewModel by activityViewModels<ModesViewModel>()
+	private val viewModel by activityViewModels<ModesAndConfigViewModel>()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -52,12 +52,12 @@ class ChooseModeDialogFragment : DialogFragment() {
 
 			for (mode in modes) {
 				val itemView = ItemModeButtonBinding.inflate(layoutInflater, binding.infoItemsLayout, false)
-				itemView.title.text = mode.value.title
+				itemView.title.text = mode.title
 
 				viewModel.selectedModeLiveData.observe(viewLifecycleOwner) { selectedMode ->
-					if (selectedMode == mode.key) {
+					if (selectedMode == mode.id) {
 						itemView.buttonIcon.setImageResource(R.drawable.ic_checkbox_filled)
-						itemView.root.backgroundTintList = ColorStateList.valueOf(mode.value.hexColor.toColorInt())
+						itemView.root.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
 					} else {
 						itemView.buttonIcon.setImageResource(R.drawable.ic_checkbox_empty)
 						itemView.root.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.grey_light, null))
@@ -65,7 +65,7 @@ class ChooseModeDialogFragment : DialogFragment() {
 				}
 
 				itemView.root.setOnClickListener {
-					viewModel.setSelectedMode(mode.key)
+					viewModel.setSelectedMode(mode.id)
 				}
 
 				binding.modeItemsLayout.addView(itemView.root)
@@ -86,7 +86,6 @@ class ChooseModeDialogFragment : DialogFragment() {
 					CheckModeInfoEntry("ic_settings", "Die Einstellungen können jederzeit geändert werden")
 				)
 			} else {
-				binding.chooseModeButton.text = mode.title + " wählen"
 				binding.chooseModeButton.visibility = View.VISIBLE
 				items = mode.infos
 			}

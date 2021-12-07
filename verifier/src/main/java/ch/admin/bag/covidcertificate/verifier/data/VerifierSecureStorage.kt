@@ -44,12 +44,19 @@ class VerifierSecureStorage private constructor(context: Context) {
 		putLong(KEY_MODE_SELECTION_TIME, System.currentTimeMillis())
 	}
 
-	fun getSelectedMode(maxAge: Long): String? {
+	fun getSelectedMode(): String? {
+		return prefs.getString(KEY_SELECTED_MODE, null)
+	}
+
+	fun resetSelectedModeIfNeeded(maxAge: Long): Boolean {
 		val selectionTime = prefs.getLong(KEY_MODE_SELECTION_TIME, 0)
 		if (selectionTime < System.currentTimeMillis() - maxAge) {
-			return null
+			prefs.edit {
+				putString(KEY_SELECTED_MODE, null)
+			}
+			return true
 		} else {
-			return prefs.getString(KEY_SELECTED_MODE, null)
+			return false
 		}
 	}
 }

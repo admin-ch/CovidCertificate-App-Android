@@ -14,6 +14,13 @@ data class CheckModeInfoModel(
 	val infos: List<CheckModeInfoEntry>
 )
 
+data class CheckModeInfoModelWithId(
+	val id: String,
+	val title: String,
+	val hexColor: String,
+	val infos: List<CheckModeInfoEntry>
+)
+
 @JsonClass(generateAdapter = true)
 data class CheckModeInfoEntry(
 	val iconAndroid: String,

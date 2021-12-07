@@ -33,7 +33,7 @@ import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.verifier.faq.VerifierFaqFragment
 import ch.admin.bag.covidcertificate.verifier.modes.ChooseModeDialogFragment
-import ch.admin.bag.covidcertificate.verifier.modes.ModesViewModel
+import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPageAdapter
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPagerFragment
 import ch.admin.bag.covidcertificate.verifier.qr.VerifierQrScanFragment
@@ -50,8 +50,7 @@ class HomeFragment : Fragment() {
 		}
 	}
 
-	private val configViewModel by activityViewModels<ConfigViewModel>()
-	private val modesViewModel by activityViewModels<ModesViewModel>()
+	private val modesAndConfigViewModel by activityViewModels<ModesAndConfigViewModel>()
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
 
 	private var _binding: FragmentHomeBinding? = null
@@ -68,7 +67,7 @@ class HomeFragment : Fragment() {
 		binding.viewPager.adapter = adapter
 
 		binding.homescreenScanButton.setOnClickListener {
-			if(modesViewModel.getSelectedMode()==null){
+			if(modesAndConfigViewModel.getSelectedMode()==null){
 				showModeSelection()
 			}else {
 				parentFragmentManager.beginTransaction()
@@ -91,14 +90,16 @@ class HomeFragment : Fragment() {
 			showModeSelection()
 		}
 
-		modesViewModel.selectedModeLiveData.observe(viewLifecycleOwner) {
-			val mode = modesViewModel.getSelectedMode()
+		modesAndConfigViewModel.selectedModeLiveData.observe(viewLifecycleOwner) {
+			val mode = modesAndConfigViewModel.getSelectedMode()
 			if (mode == null) {
 				binding.homescreenModeIndicator.visibility = View.GONE
+				binding.homescreenScanButton.text = getString(R.string.verifier_homescreen_scan_button)
 			} else {
 				binding.homescreenModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
 				binding.homescreenModeIndicator.text = mode.title
 				binding.homescreenModeIndicator.visibility = View.VISIBLE
+				binding.homescreenScanButton.text = getString(R.string.verifier_homescreen_scan_button_with_mode).replace("{MODE}", mode.title)
 			}
 		}
 
@@ -141,6 +142,7 @@ class HomeFragment : Fragment() {
 	override fun onResume() {
 		super.onResume()
 		zebraBroadcastReceiver.registerWith(requireContext()) { decodeQrCodeData(it) }
+		modesAndConfigViewModel.resetSelectedModeIfNeeded()
 	}
 
 	override fun onPause() {
@@ -172,7 +174,7 @@ class HomeFragment : Fragment() {
 	}
 
 	private fun setupInfoBox() {
-		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
+		modesAndConfigViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
 			val notificationButton = binding.homescreenHeader.headerNotification
 			val localizedInfo = config.getInfoBox(getString(R.string.language_key))
 			val hasInfoBox = localizedInfo != null

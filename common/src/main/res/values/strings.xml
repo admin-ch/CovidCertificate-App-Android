@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-  ~
-  ~ This Source Code Form is subject to the terms of the Mozilla Public
-  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-  ~
-  ~ SPDX-License-Identifier: MPL-2.0
-  -->
 <resources>
 
     <!-- Android App Name -->
@@ -700,7 +691,7 @@ invalid"</string>
     <string name="wallet_transfer_code_faq_works_intro_2">"As soon as the COVID certificate is available, it appears in the application. If you have activated notifications, you will receive a message from the application."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <string name="wallet_transfer_code_faq_works_intro_3">"The transfer code expires after &lt;transferCodeValidity&gt; days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."</string>
+    <string name="wallet_transfer_code_faq_works_intro_3">"The transfer code expires after {TRANSFER_CODE_VALIDITY} days. After this period, the application waits for any further transfers for 72 hours. After that, the transfer code is no longer valid."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_title">"Allow notifications"</string>
@@ -830,7 +821,7 @@ In order to update the checklists, the app must be open and connected to the Int
     <string name="wallet_certificate_light_detail_summary_2">"Only contains last name, first name, date of birth and electronic signature"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Only valid for 48 hours"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Only valid for 24 hours"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"Your COVID certificate is converted to the 'light' version online."</string>
@@ -910,7 +901,7 @@ and in combination with an identity document"</string>
     <string name="wallet_certificate_light_detail_text_1">"When you activate the 'light' version of the certificate, a new QR code is generated using data from your COVID certificate that does not contain any health-related information."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"While the regular COVID certificate can be used without restriction both in Switzerland and in the EU/EFTA during its period of validity, the 'light' version can only be used in Switzerland. For data protection reasons, the 'light' version has to be reactivated after 48 hours. It does not afford any additional rights to the normal COVID certificate."</string>
+    <string name="wallet_certificate_light_detail_text_2">"While the regular COVID certificate can be used without restriction both in Switzerland and in the EU/EFTA during its period of validity, the 'light' version can only be used in Switzerland. For data protection reasons, the 'light' version has to be reactivated after 24 hours. It does not afford any additional rights to the normal COVID certificate."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"only has to does not"</string>
@@ -948,17 +939,21 @@ expired"</string>
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
     <string name="wallet_certificate_list_light_certificate_badge">"Light"</string>
     <string name="wallet_faq_questions_question_6">"What is the 'certificate light'"</string>
+
+    <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
     <string name="wallet_faq_questions_answer_6">"The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. 
 
 The alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.
 
-The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'."</string>
+The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for {LIGHT_CERT_VALIDITY_IN_H} hours and must then be reactivated. If you need to use the normal certificate before the end of the {LIGHT_CERT_VALIDITY_IN_H}-hour period, you can simply deactivate the 'certificate light'."</string>
     <string name="verifier_faq_works_question_8">"What is the 'certificate light'"</string>
+
+    <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
     <string name="verifier_faq_works_answer_8">"The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. 
 
 The alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.
 
-The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'."</string>
+The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for {LIGHT_CERT_VALIDITY_IN_H} hours and must then be reactivated. If you need to use the normal certificate before the end of the {LIGHT_CERT_VALIDITY_IN_H}-hour period, you can simply deactivate the 'certificate light'."</string>
     <string name="verifier_faq_works_question_9">"How can a 'certificate light' be converted back into an EU/EFTA-compliant COVID certificate?"</string>
     <string name="verifier_faq_works_answer_9">"The holder can deactivate a 'certificate light' any time in their COVID Certificate app. After that their normal COVID certificate is available again."</string>
 
@@ -1300,8 +1295,24 @@ Code: {ERROR_CODE}"</string>
     <string name="infobox_update_title">"New version available"</string>
     <string name="infobox_update_text">"Download the latest version of the app."</string>
     <string name="infobox_update_button">"Update"</string>
+
+    <!-- vaccination booking  screen info about Impf-Check (impf-check.ch) -->
     <string name="vaccination_impf_check_info_text">"The COVID-19 Vaccination Check provides information on initial and booster vaccinations and guides you to the relevant point of contact in your canton."</string>
+
+    <!-- button title for link to impf-check.ch -->
     <string name="vaccination_impf_check_action">"To the Vaccination Check"</string>
+
+    <!-- URL to ImpfCheck -->
     <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
     <string name="vaccination_impf_check_title">"Book an appointment now"</string>
+
+    <!-- Fuzzy -->
+    <string name="verifier_faq_works_linktext_1">"Explanatory video"</string>
+    <string name="verifier_faq_works_linkurl_1"></string>
+
+    <!-- Title of button to choose verification mode -->
+    <string name="verifier_choose_mode_button_title">"wählen"</string>
+
+    <!-- Verifier app scan button with indication of mode -->
+    <string name="verifier_homescreen_scan_button_with_mode">"Prüfen ({MODE})"</string>
 </resources>

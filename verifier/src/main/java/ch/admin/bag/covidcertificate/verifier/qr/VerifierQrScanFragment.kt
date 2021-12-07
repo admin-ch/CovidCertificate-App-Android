@@ -29,7 +29,7 @@ import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentQrScanBinding
 import ch.admin.bag.covidcertificate.verifier.modes.ChooseModeDialogFragment
-import ch.admin.bag.covidcertificate.verifier.modes.ModesViewModel
+import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment
 import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment.Companion.RESULT_FRAGMENT_POPPED
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
@@ -58,7 +58,7 @@ class VerifierQrScanFragment : QrScanFragment() {
 	private val verifierSecureStorage by lazy { VerifierSecureStorage.getInstance(requireContext()) }
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(verifierSecureStorage) }
 
-	private val modesViewModel by activityViewModels<ModesViewModel>()
+	private val modesViewModel by activityViewModels<ModesAndConfigViewModel>()
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)

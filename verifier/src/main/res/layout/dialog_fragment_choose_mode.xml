@@ -97,7 +97,7 @@
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_very_large"
 			android:layout_marginBottom="@dimen/spacing_medium_large"
-			tools:text="3G wählen" />
+			android:text="@string/verifier_choose_mode_button_title" />
 
 	</LinearLayout>
 </ScrollView>

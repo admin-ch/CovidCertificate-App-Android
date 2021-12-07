@@ -27,13 +27,14 @@ import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.ActivityMainBinding
+import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 import ch.admin.bag.covidcertificate.verifier.updateboarding.UpdateboardingActivity
 
 class MainActivity : BaseActivity() {
 
 	private lateinit var binding: ActivityMainBinding
 
-	private val configViewModel by viewModels<ConfigViewModel>()
+	private val configViewModel by viewModels<ModesAndConfigViewModel>()
 	private val secureStorage by lazy { VerifierSecureStorage.getInstance(this) }
 
 	private var forceUpdateDialog: AlertDialog? = null
