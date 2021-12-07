@@ -11,7 +11,10 @@
 package ch.admin.bag.covidcertificate.verifier.modes
 
 import android.app.Application
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.asFlow
+import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.common.config.CheckModeInfoModelWithId
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -62,6 +65,9 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 				configModeItems
 			}.collect {
 				modesMutableLiveData.postValue(it)
+				if (getSelectedMode() == null) {
+					setSelectedMode(null)
+				}
 			}
 		}
 	}

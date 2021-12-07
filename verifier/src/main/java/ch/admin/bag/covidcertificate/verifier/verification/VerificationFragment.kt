@@ -19,11 +19,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
@@ -33,6 +35,8 @@ import ch.admin.bag.covidcertificate.common.views.VerticalMarginItemDecoration
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
 import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.ModeValidityState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.SuccessState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
@@ -102,7 +106,7 @@ class VerificationFragment : Fragment() {
 
 		verificationAdapter = VerificationAdapter {
 			certificateHolder?.let {
-				verificationViewModel.retryVerification(it, modesViewModel.selectedModeLiveData.value!!)
+				verificationViewModel.retryVerification(it, modesViewModel.selectedModeLiveData.value ?: "unknown")
 			}
 		}
 
@@ -121,6 +125,16 @@ class VerificationFragment : Fragment() {
 
 		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner) {
 			updateHeaderAndVerificationView(it)
+
+			if (it is VerificationState.SUCCESS && (it.successState as SuccessState.VerifierSuccessState).modeValidity.isModeValid == ModeValidityState.UNKNOWN_MODE) {
+				AlertDialog.Builder(requireContext())
+					.setMessage(R.string.verifier_error_mode_no_longer_exists)
+					.setPositiveButton(R.string.ok_button) { _, _ -> }
+					.create()
+					.show()
+				modesViewModel.setSelectedMode(null)
+				parentFragmentManager.popBackStack(VerificationFragment::class.java.canonicalName, POP_BACK_STACK_INCLUSIVE)
+			}
 		}
 
 		verifyAndDisplayCertificateHolder()
@@ -166,7 +180,7 @@ class VerificationFragment : Fragment() {
 		binding.verificationBirthdate.text = certificateHolder.getFormattedDateOfBirth()
 		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
 
-		verificationViewModel.startVerification(certificateHolder, modesViewModel.selectedModeLiveData.value!!)
+		verificationViewModel.startVerification(certificateHolder, modesViewModel.selectedModeLiveData.value ?: "unknown")
 	}
 
 	private fun updateHeaderAndVerificationView(verificationState: VerificationState) {
@@ -192,7 +206,7 @@ class VerificationFragment : Fragment() {
 	private fun updateStatusBubbles(state: VerificationState) {
 		val context = binding.root.context
 
-		verificationAdapter.setItems(state.getVerificationStateItems(context))
+		verificationAdapter.setItems(state.getVerificationStateItems(context, modesViewModel.getSelectedMode()?.title ?: ""))
 
 		binding.verificationErrorCode.apply {
 			visibility = View.INVISIBLE
