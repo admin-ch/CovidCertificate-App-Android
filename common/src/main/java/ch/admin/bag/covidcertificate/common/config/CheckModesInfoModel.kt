@@ -4,19 +4,21 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class CheckModesInfoModel(
-	val title: String,
-	val infos: Map<String, CheckModeInfoModel>,
-	val modes: Map<String, ModeModel>
+	//for wallet app
+	val title: String?,
+	val modes: Map<String, WalletModeModel>?,
+	//for verifier
+	val infos: Map<String, CheckModeInfoModel>?
 )
 
 @JsonClass(generateAdapter = true)
-data class ModeModel(
-	val ok: ModeDetails,
-	val notOk: ModeDetails
+data class WalletModeModel(
+	val ok: WalletModeDetails,
+	val notOk: WalletModeDetails
 )
 
 @JsonClass(generateAdapter = true)
-data class ModeDetails(
+data class WalletModeDetails(
 	val iconAndroid: String,
 	val iconIos: String,
 	val text: String
