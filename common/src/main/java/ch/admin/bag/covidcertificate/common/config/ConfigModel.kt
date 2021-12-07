@@ -33,7 +33,8 @@ data class ConfigModel(
 	val showVaccinationHintDetail: Boolean?,
 	val showVaccinationHintTransfer: Boolean?,
 	val timeshiftDetectionEnabled: Boolean?,
-	val checkModesInfos: Map<String, CheckModesInfoModel>?
+	val checkModesInfos: Map<String, CheckModesInfoModel>?,
+	val checkModeReselectAfterHours: Int?
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
