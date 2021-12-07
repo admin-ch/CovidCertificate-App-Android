@@ -11,9 +11,6 @@
 package ch.admin.bag.covidcertificate.wallet.detail
 
 import android.content.res.ColorStateList
-import android.graphics.Bitmap
-import android.graphics.Canvas
-import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -21,13 +18,11 @@ import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
@@ -43,7 +38,6 @@ import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
-import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.utils.*
@@ -52,17 +46,19 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.state.*
-import ch.admin.bag.covidcertificate.sdk.core.models.trustlist.ActiveModes
 import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeRefreshBinding
+import ch.admin.bag.covidcertificate.wallet.dialog.ModeInfoDialogFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
 import ch.admin.bag.covidcertificate.wallet.util.*
+import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.getHumanReadableName
+import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.textAsBitmap
 import ch.admin.bag.covidcertificate.wallet.vaccination.appointment.VaccinationAppointmentFragment
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -159,6 +155,10 @@ class CertificateDetailFragment : Fragment() {
 				delayInMillis = STATUS_LOAD_DELAY,
 				isForceVerification = true
 			)
+		}
+
+		binding.certificateDetailInfoModes.certificateDetailInfoModesList.setOnClickListener {
+			ModeInfoDialogFragment.newInstance().show(childFragmentManager, ModeInfoDialogFragment::class.java.canonicalName)
 		}
 
 		setupReverifyButtonOffset()
@@ -384,6 +384,7 @@ class CertificateDetailFragment : Fragment() {
 				} else {
 					val bitmap =
 						textAsBitmap(
+							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(R.dimen.text_size_small),
 							ContextCompat.getColor(requireContext(), R.color.blue)
@@ -398,6 +399,7 @@ class CertificateDetailFragment : Fragment() {
 				} else {
 					val bitmap =
 						textAsBitmap(
+							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(R.dimen.text_size_small),
 							ContextCompat.getColor(requireContext(), R.color.grey)
@@ -439,6 +441,7 @@ class CertificateDetailFragment : Fragment() {
 				} else {
 					val bitmap =
 						textAsBitmap(
+							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(R.dimen.text_size_small),
 							ContextCompat.getColor(requireContext(), R.color.white)
@@ -453,6 +456,7 @@ class CertificateDetailFragment : Fragment() {
 				} else {
 					val bitmap =
 						textAsBitmap(
+							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(R.dimen.text_size_small),
 							ContextCompat.getColor(requireContext(), R.color.black)
@@ -464,27 +468,6 @@ class CertificateDetailFragment : Fragment() {
 				imageView.imageTintList = colorStateList
 			}
 		}
-	}
-
-	private fun getHumanReadableName(mode: String): String {
-		val activeModes: List<ActiveModes> = CovidCertificateSdk.Wallet.getActiveModes().value
-		return activeModes.find { activeMode -> activeMode.id == mode }?.displayName ?: mode
-	}
-
-	private fun textAsBitmap(text: String, textSize: Int, @ColorInt textColor: Int): Bitmap? {
-		val customTypeface = ResourcesCompat.getFont(requireContext(), R.font.inter_bold)
-		val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-		paint.textSize = textSize.toFloat()
-		paint.color = textColor
-		paint.textAlign = Paint.Align.LEFT
-		paint.typeface = customTypeface
-		val baseline: Float = -paint.ascent()
-		val width = (paint.measureText(text) + 0.5f).toInt()
-		val height = (baseline + paint.descent() + 0.5f).toInt()
-		val image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
-		val canvas = Canvas(image)
-		canvas.drawText(text, 0.0f, baseline, paint)
-		return image
 	}
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {

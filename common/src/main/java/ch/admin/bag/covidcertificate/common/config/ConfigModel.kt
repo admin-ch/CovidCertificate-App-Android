@@ -45,6 +45,7 @@ data class ConfigModel(
 	fun getVaccinationHints(languageKey: String): List<VaccinationHintModel>? = vaccinationHints?.get(languageKey)
 	fun getCheckModesInfos(languageKey: String): Map<String, CheckModeInfoModel>? = checkModesInfos?.get(languageKey)?.infos
 	fun getCheckModes(languageKey: String): Map<String, WalletModeModel>? = checkModesInfo?.get(languageKey)?.modes
+	fun getInfoModeTitle(languageKey: String): String? = checkModesInfo?.get(languageKey)?.title
 
 	fun getVaccinationBookingInfo(languageKey: String): VaccinationBookingInfoModel? = vaccinationBookingInfo?.get(languageKey)
 
