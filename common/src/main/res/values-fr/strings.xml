@@ -1314,4 +1314,49 @@ Code: {ERROR_CODE}"</string>
 
     <!-- Verifier app scan button with indication of mode -->
     <string name="verifier_homescreen_scan_button_with_mode">"Prüfen ({MODE})"</string>
+
+    <!-- error if scan was performed with a no longer existing mode -->
+    <string name="verifier_error_mode_no_longer_exists">"Ihr gewählter Prüfmodus existiert nicht mehr."</string>
+
+    <!-- title for info pop-up in wallet app describing the validation states for the different check modes -->
+    <string name="wallet_check_mode_info_title">"Infos"</string>
+
+    <!-- text for info pop-up in wallet app describing 2G OK state -->
+    <string name="wallet_check_mode_info_2g_ok_text">"Hier könnte ein Text stehen, der erklärt was 2G bedeutet und dass der Zertifikatstyp für 2G ok ist."</string>
+
+    <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
+    <string name="wallet_check_mode_info_2g_not_ok_text">"Hier könnte ein Text stehen, der erklärt was 2G bedeutet und dass der Zertifikatstyp für 2G NICHT ok ist."</string>
+
+    <!-- check app -> check mode select pop-up -> display name of check mode 3G -->
+    <string name="verifier_check_mode_info_3g_title">"3G"</string>
+
+    <!-- check app -> check mode select pop-up -> display name of check mode 2G -->
+    <string name="verifier_check_mode_info_2g_title">"2G"</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
+    <string name="verifier_check_mode_info_3g_text_1">"Für Betriebe und Veranstalter mit 3G-Regel."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
+    <string name="verifier_check_mode_info_3g_text_2">"Es werden gültige Zertifikate von Impfungen, Genesungen und Tests akzeptiert."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
+    <string name="verifier_check_mode_info_3g_text_3">"Light-Zertifikate können geprüft werden."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
+    <string name="verifier_check_mode_info_2g_text_1">"Für Betriebe und Veranstalter mit 2G-Regel. Es werden nur Zertifikate von Impfungen und Genesungen akzeptiert."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
+    <string name="verifier_check_mode_info_2g_text_2">"Zertifikate von Covid-Tests werden als ungültig dargestellt."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
+    <string name="verifier_check_mode_info_2g_text_3">"Light-Zertifikate können im 2G-Modus nicht geprüft werden."</string>
+
+    <!-- Verifier: Modus auswählen Titel -->
+    <string name="verifier_mode_title">"Prüfmodus"</string>
+
+    <!-- text for info pop-up in wallet app describing 3G OK state -->
+    <string name="wallet_check_mode_info_3g_ok_text">"Hier könnte ein Text stehen, der erklärt was 3G bedeutet und dass der Zertifikatstyp für 3G ok ist."</string>
+
+    <!-- text for info pop-up in wallet app describing 3G NOT OK state -->
+    <string name="wallet_check_mode_info_3g_not_ok_text">"Hier könnte ein Text stehen, der erklärt was 3G bedeutet und dass der Zertifikatstyp für 3G NICHT ok ist."</string>
 </resources>

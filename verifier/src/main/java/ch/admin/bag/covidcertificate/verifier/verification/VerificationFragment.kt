@@ -37,7 +37,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
-import ch.admin.bag.covidcertificate.verifier.modes.ModesViewModel
+import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -62,7 +62,7 @@ class VerificationFragment : Fragment() {
 	private var _binding: FragmentVerificationBinding? = null
 	private val binding get() = _binding!!
 	private val verificationViewModel: VerificationViewModel by viewModels()
-	private val modesViewModel by activityViewModels<ModesViewModel>()
+	private val modesViewModel by activityViewModels<ModesAndConfigViewModel>()
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
 	private var certificateHolder: VerifierCertificateHolder? = null
 	private var isClosedByUser = false
