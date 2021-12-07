@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 
 abstract class ConfigViewModel(application: Application) : AndroidViewModel(application) {
 
-	private val configMutableLiveData = MutableLiveData<ConfigModel>()
+	private val configMutableLiveData = MutableLiveData<ConfigModel>(ConfigRepository.getCurrentConfig(application))
 	val configLiveData: LiveData<ConfigModel> = configMutableLiveData
 
 	fun loadConfig(baseUrl: String, versionName: String, buildTime: String) {
