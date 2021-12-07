@@ -20,6 +20,7 @@ import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentVaccinationAppointmentBinding
 
@@ -32,7 +33,7 @@ class VaccinationAppointmentFragment : Fragment() {
 	private var _binding: FragmentVaccinationAppointmentBinding? = null
 	private val binding get() = _binding!!
 
-	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private val configViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentVaccinationAppointmentBinding.inflate(inflater, container, false)

@@ -18,7 +18,6 @@ import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
@@ -44,9 +43,11 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.state.*
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
+import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeBinding
+import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeRefreshBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
@@ -75,7 +76,7 @@ class CertificateDetailFragment : Fragment() {
 		}
 	}
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	private var _binding: FragmentCertificateDetailBinding? = null
 	private val binding get() = _binding!!
@@ -290,7 +291,7 @@ class CertificateDetailFragment : Fragment() {
 		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
 		if (isForceValidate) {
 			showStatusInfoAndDescription(null, info, 0)
-			showForceValidation(R.color.grey, 0, 0, info)
+			showForceValidation(R.color.grey, 0, 0, info, emptyList())
 		} else {
 			showStatusInfoAndDescription(null, info, 0)
 		}
@@ -343,28 +344,60 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun showModes(modeValidities: List<ModeValidity>) {
+		binding.certificateDetailInfoModes.certificateDetailInfoModesList.removeAllViews()
 		for (modeValidity in modeValidities) {
-			val imageView = ImageView(requireContext())
+			val itemBinding = ItemDetailModeBinding.inflate(
+				layoutInflater,
+				binding.certificateDetailInfoModes.certificateDetailInfoModesList,
+				true
+			)
+			val imageView = itemBinding.root
 			if (modeValidity.isModeValid == ModeValidityState.SUCCESS) {
 				//TODO get icon form config
 				if (modeValidity.mode == "THREE_G") {
-					imageView.setImageResource(R.drawable.ic_wallet_check_mode_info_three)
+					imageView.setImageResource(R.drawable.ic_3g)
 				} else {
-					imageView.setImageResource(R.drawable.ic_wallet_check_mode_info_two)
+					imageView.setImageResource(R.drawable.ic_2g)
 				}
+				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
 			} else if (modeValidity.isModeValid == ModeValidityState.INVALID) {
 				//TODO get icon form config
 				if (modeValidity.mode == "THREE_G") {
-					imageView.setImageResource(R.drawable.ic_wallet_check_mode_info_three)
-					imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey_light))
+					imageView.setImageResource(R.drawable.ic_no3g)
 				} else {
-					imageView.setImageResource(R.drawable.ic_wallet_check_mode_info_two_no)
+					imageView.setImageResource(R.drawable.ic_no2g)
 				}
+				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey_light))
 			}
-			binding.certificateDetailInfoModes.certificateDetailInfoModesList.addView(imageView)
 		}
-
 	}
+
+	private fun showModesForRefresh(modeValidities: List<ModeValidity>) {
+		binding.certificateDetailRefreshModeValidity.removeAllViews()
+		for (modeValidity in modeValidities) {
+			val itemBinding =
+				ItemDetailModeRefreshBinding.inflate(layoutInflater, binding.certificateDetailRefreshModeValidity, true)
+			val imageView = itemBinding.root
+			if (modeValidity.isModeValid == ModeValidityState.SUCCESS) {
+				//TODO get icon form config
+				if (modeValidity.mode == "THREE_G") {
+					imageView.setImageResource(R.drawable.ic_3g)
+				} else {
+					imageView.setImageResource(R.drawable.ic_2g)
+				}
+				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
+			} else if (modeValidity.isModeValid == ModeValidityState.INVALID) {
+				//TODO get icon form config
+				if (modeValidity.mode == "THREE_G") {
+					imageView.setImageResource(R.drawable.ic_no3g)
+				} else {
+					imageView.setImageResource(R.drawable.ic_no2g)
+				}
+				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey_light))
+			}
+		}
+	}
+
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {
 		val context = context ?: return
@@ -422,7 +455,7 @@ class CertificateDetailFragment : Fragment() {
 
 		if (isForceValidate) {
 			showStatusInfoAndDescription(null, info, forceValidationIcon)
-			showForceValidation(R.color.red, forceValidationIcon, R.drawable.ic_error_large, info)
+			showForceValidation(R.color.red, forceValidationIcon, R.drawable.ic_error_large, info, emptyList())
 			readjustStatusDelayed(infoBubbleColorId, icon, info)
 		} else {
 			showStatusInfoAndDescription(null, info, icon)
@@ -478,7 +511,7 @@ class CertificateDetailFragment : Fragment() {
 
 		if (isForceValidate) {
 			showStatusInfoAndDescription(description, forceValidationInfo, icon)
-			showForceValidation(R.color.orange, forceValidationIcon, forceValidationIconLarge, forceValidationInfo)
+			showForceValidation(R.color.orange, forceValidationIcon, forceValidationIconLarge, forceValidationInfo, emptyList())
 			readjustStatusDelayed(R.color.greyish, icon, info)
 		} else {
 			showStatusInfoAndDescription(description, info, icon)
@@ -605,6 +638,7 @@ class CertificateDetailFragment : Fragment() {
 			text = info
 			if (!isVisible) showAnimated()
 		}
+		showModesForRefresh(modeValidities)
 	}
 
 	/**

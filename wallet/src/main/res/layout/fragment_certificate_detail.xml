@@ -96,6 +96,26 @@
 								android:layout_gravity="center"
 								android:indeterminateTint="@color/white" />
 
+							<LinearLayout
+								android:id="@+id/certificate_detail_refresh_mode_validity"
+								android:layout_width="wrap_content"
+								android:layout_height="wrap_content"
+								android:layout_gravity="bottom|center_horizontal"
+								android:layout_marginBottom="47dp"
+								android:orientation="horizontal">
+
+								<ImageView
+									android:layout_width="48dp"
+									android:layout_height="48dp"
+									android:src="@drawable/ic_2g" />
+
+								<ImageView
+									android:layout_width="48dp"
+									android:layout_height="48dp"
+									android:src="@drawable/ic_3g" />
+
+							</LinearLayout>
+
 						</FrameLayout>
 
 					</FrameLayout>
@@ -277,7 +297,7 @@
 
 					<include
 						android:id="@+id/certificate_detail_info_modes"
-						layout="@layout/item_detail_modes" />
+						layout="@layout/item_detail_modes_list" />
 
 					<androidx.recyclerview.widget.RecyclerView
 						android:id="@+id/certificate_detail_data_recycler_view"

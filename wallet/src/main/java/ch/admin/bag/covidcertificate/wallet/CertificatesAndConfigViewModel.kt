@@ -13,10 +13,8 @@ package ch.admin.bag.covidcertificate.wallet
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.exception.TimeDeviationException
 import ch.admin.bag.covidcertificate.common.util.SingleLiveEvent
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -43,7 +41,7 @@ import java.io.IOException
 import java.time.Instant
 import kotlin.collections.set
 
-class CertificatesViewModel(application: Application) : AndroidViewModel(application) {
+class CertificatesAndConfigViewModel(application: Application) : ConfigViewModel(application) {
 
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val walletDataStorage: WalletDataSecureStorage by lazy { WalletDataSecureStorage.getInstance(application.applicationContext) }
@@ -231,11 +229,9 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 		viewModelScope.launch {
 			if (delayInMillis > 0) delay(delayInMillis)
-
-			val verificationIdentifier =
-				CovidCertificateSdk.Wallet.getActiveModes().map { activeMode -> activeMode.id }.toSet()
-			val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificateHolder, verificationIdentifier, viewModelScope)
-
+			val verificationIdentifier = CovidCertificateSdk.Wallet.getActiveModes().value.map { activeMode -> activeMode.id }.toSet()
+			val verificationStateFlow =
+				CovidCertificateSdk.Wallet.verify(certificateHolder, verificationIdentifier, viewModelScope)
 			val job = viewModelScope.launch {
 				verificationStateFlow.collect { state ->
 					// Replace the verified certificate in the live data

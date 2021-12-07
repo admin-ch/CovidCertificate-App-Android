@@ -20,7 +20,7 @@ import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.net.ConfigSpec
 import kotlinx.coroutines.launch
 
-open class ConfigViewModel(application: Application) : AndroidViewModel(application) {
+abstract class ConfigViewModel(application: Application) : AndroidViewModel(application) {
 
 	private val configMutableLiveData = MutableLiveData<ConfigModel>()
 	val configLiveData: LiveData<ConfigModel> = configMutableLiveData

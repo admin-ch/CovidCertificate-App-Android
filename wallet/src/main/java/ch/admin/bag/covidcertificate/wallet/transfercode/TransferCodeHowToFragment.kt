@@ -24,6 +24,7 @@ import ch.admin.bag.covidcertificate.common.faq.model.Header
 import ch.admin.bag.covidcertificate.common.faq.model.Question
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeHowtoBinding
 
@@ -36,7 +37,7 @@ class TransferCodeHowToFragment : Fragment(R.layout.fragment_transfer_code_howto
 	private var _binding: FragmentTransferCodeHowtoBinding? = null
 	private val binding get() = _binding!!
 
-	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private val configViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 	private val faqAdapter = FaqAdapter { url: String -> context?.let { UrlUtil.openUrl(it, url) } }
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {

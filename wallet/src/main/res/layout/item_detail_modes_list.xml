@@ -18,8 +18,6 @@
 		android:layout_gravity="center"
 		android:background="@drawable/oval_horizontal"
 		android:orientation="horizontal"
-		android:paddingHorizontal="6dp">
-
-	</LinearLayout>
+		android:paddingHorizontal="6dp"/>
 
 </FrameLayout>

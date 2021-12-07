@@ -28,7 +28,7 @@ import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodePagerBinding
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeViewModel
@@ -52,7 +52,7 @@ class TransferCodePagerFragment : Fragment(R.layout.fragment_transfer_code_pager
 	private var _binding: FragmentTransferCodePagerBinding? = null
 	private val binding get() = _binding!!
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 	private val vaccinationHintViewModel by activityViewModels<VaccinationHintViewModel>()
 	private val transferCodeViewModel by viewModels<TransferCodeViewModel>()
 	private var transferCode: TransferCodeModel? = null

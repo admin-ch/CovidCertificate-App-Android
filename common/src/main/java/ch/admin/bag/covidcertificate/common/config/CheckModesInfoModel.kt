@@ -4,7 +4,22 @@ import com.squareup.moshi.JsonClass
 
 @JsonClass(generateAdapter = true)
 data class CheckModesInfoModel(
-	val infos: Map<String, CheckModeInfoModel>
+	val title: String,
+	val infos: Map<String, CheckModeInfoModel>,
+	val modes: Map<String, ModeModel>
+)
+
+@JsonClass(generateAdapter = true)
+data class ModeModel(
+	val ok: ModeDetails,
+	val notOk: ModeDetails
+)
+
+@JsonClass(generateAdapter = true)
+data class ModeDetails(
+	val iconAndroid: String,
+	val iconIos: String,
+	val text: String
 )
 
 @JsonClass(generateAdapter = true)
