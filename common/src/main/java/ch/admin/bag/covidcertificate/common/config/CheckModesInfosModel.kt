@@ -1,15 +1,18 @@
 package ch.admin.bag.covidcertificate.common.config
 
 import com.squareup.moshi.JsonClass
-
+//for verifier
 @JsonClass(generateAdapter = true)
-data class CheckModesInfoModel(
-	//for wallet app
-	val title: String?,
-	val modes: Map<String, WalletModeModel>?,
-	//for verifier
+data class CheckModesInfosModel(
 	val infos: Map<String, CheckModeInfoModel>?
 )
+//for wallet
+@JsonClass(generateAdapter = true)
+data class CheckModesInfoModel(
+	val title: String?,
+	val modes: Map<String, WalletModeModel>?,
+)
+
 
 @JsonClass(generateAdapter = true)
 data class WalletModeModel(

@@ -11,6 +11,9 @@
 package ch.admin.bag.covidcertificate.wallet.detail
 
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Paint
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -18,16 +21,21 @@ import android.text.SpannableString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
+import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.config.WalletModeModel
 import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
@@ -35,6 +43,7 @@ import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
+import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.utils.*
@@ -43,6 +52,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.state.*
+import ch.admin.bag.covidcertificate.sdk.core.models.trustlist.ActiveModes
 import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
@@ -60,6 +70,7 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.lang.Integer.max
 import java.time.LocalDateTime
+
 
 class CertificateDetailFragment : Fragment() {
 
@@ -151,7 +162,6 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		setupReverifyButtonOffset()
-
 	}
 
 	override fun onResume() {
@@ -345,6 +355,8 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun showModes(modeValidities: List<ModeValidity>) {
 		binding.certificateDetailInfoModes.certificateDetailInfoModesList.removeAllViews()
+		val configLiveData: ConfigModel? = certificatesViewModel.configLiveData.value
+		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))
 		for (modeValidity in modeValidities) {
 			val itemBinding = ItemDetailModeBinding.inflate(
 				layoutInflater,
@@ -352,52 +364,128 @@ class CertificateDetailFragment : Fragment() {
 				true
 			)
 			val imageView = itemBinding.root
+			val walletModeModel: WalletModeModel? = checkedModes?.get(modeValidity.mode)
+			val resOk =
+				requireContext().resources.getIdentifier(
+					walletModeModel?.ok?.iconAndroid ?: "",
+					"drawable",
+					requireContext().packageName
+				)
+			val resNotOk =
+				requireContext().resources.getIdentifier(
+					walletModeModel?.notOk?.iconAndroid ?: "",
+					"drawable",
+					requireContext().packageName
+				)
+
 			if (modeValidity.isModeValid == ModeValidityState.SUCCESS) {
-				//TODO get icon form config
-				if (modeValidity.mode == "THREE_G") {
-					imageView.setImageResource(R.drawable.ic_3g)
+				if (resOk != 0) {
+					imageView.setImageResource(resOk)
 				} else {
-					imageView.setImageResource(R.drawable.ic_2g)
+					val bitmap =
+						textAsBitmap(
+							getHumanReadableName(modeValidity.mode),
+							resources.getDimensionPixelSize(R.dimen.text_size_small),
+							ContextCompat.getColor(requireContext(), R.color.blue)
+						)
+					imageView.setImageBitmap(bitmap)
 				}
 				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
 			} else if (modeValidity.isModeValid == ModeValidityState.INVALID) {
-				//TODO get icon form config
-				if (modeValidity.mode == "THREE_G") {
-					imageView.setImageResource(R.drawable.ic_no3g)
+				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey))
+				if (resNotOk != 0) {
+					imageView.setImageResource(resNotOk)
 				} else {
-					imageView.setImageResource(R.drawable.ic_no2g)
+					val bitmap =
+						textAsBitmap(
+							getHumanReadableName(modeValidity.mode),
+							resources.getDimensionPixelSize(R.dimen.text_size_small),
+							ContextCompat.getColor(requireContext(), R.color.grey)
+						)
+					imageView.setImageBitmap(bitmap)
+					imageView.foreground = AppCompatResources.getDrawable(requireContext(), R.drawable.mode_diagonal)
+					imageView.foregroundTintList = colorStateList
 				}
-				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey_light))
+				imageView.imageTintList = colorStateList
 			}
 		}
 	}
 
 	private fun showModesForRefresh(modeValidities: List<ModeValidity>) {
 		binding.certificateDetailRefreshModeValidity.removeAllViews()
+		val configLiveData: ConfigModel? = certificatesViewModel.configLiveData.value
+		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))
 		for (modeValidity in modeValidities) {
 			val itemBinding =
 				ItemDetailModeRefreshBinding.inflate(layoutInflater, binding.certificateDetailRefreshModeValidity, true)
 			val imageView = itemBinding.root
+			val walletModeModel: WalletModeModel? = checkedModes?.get(modeValidity.mode)
+			val resOk =
+				requireContext().resources.getIdentifier(
+					walletModeModel?.ok?.iconAndroid ?: "",
+					"drawable",
+					requireContext().packageName
+				)
+			val resNotOk =
+				requireContext().resources.getIdentifier(
+					walletModeModel?.notOk?.iconAndroid ?: "",
+					"drawable",
+					requireContext().packageName
+				)
 			if (modeValidity.isModeValid == ModeValidityState.SUCCESS) {
-				//TODO get icon form config
-				if (modeValidity.mode == "THREE_G") {
-					imageView.setImageResource(R.drawable.ic_3g)
+
+				if (resOk != 0) {
+					imageView.setImageResource(resOk)
 				} else {
-					imageView.setImageResource(R.drawable.ic_2g)
+					val bitmap =
+						textAsBitmap(
+							getHumanReadableName(modeValidity.mode),
+							resources.getDimensionPixelSize(R.dimen.text_size_small),
+							ContextCompat.getColor(requireContext(), R.color.white)
+						)
+					imageView.setImageBitmap(bitmap)
 				}
 				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
 			} else if (modeValidity.isModeValid == ModeValidityState.INVALID) {
-				//TODO get icon form config
-				if (modeValidity.mode == "THREE_G") {
-					imageView.setImageResource(R.drawable.ic_no3g)
+				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black))
+				if (resNotOk != 0) {
+					imageView.setImageResource(resNotOk)
 				} else {
-					imageView.setImageResource(R.drawable.ic_no2g)
+					val bitmap =
+						textAsBitmap(
+							getHumanReadableName(modeValidity.mode),
+							resources.getDimensionPixelSize(R.dimen.text_size_small),
+							ContextCompat.getColor(requireContext(), R.color.black)
+						)
+					imageView.setImageBitmap(bitmap)
+					imageView.foreground = AppCompatResources.getDrawable(requireContext(), R.drawable.mode_diagonal)
+					imageView.foregroundTintList = colorStateList
 				}
-				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey_light))
+				imageView.imageTintList = colorStateList
 			}
 		}
 	}
 
+	private fun getHumanReadableName(mode: String): String {
+		val activeModes: List<ActiveModes> = CovidCertificateSdk.Wallet.getActiveModes().value
+		return activeModes.find { activeMode -> activeMode.id == mode }?.displayName ?: mode
+	}
+
+	private fun textAsBitmap(text: String, textSize: Int, @ColorInt textColor: Int): Bitmap? {
+		val customTypeface = ResourcesCompat.getFont(requireContext(), R.font.inter_bold)
+		val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+		paint.textSize = textSize.toFloat()
+		paint.color = textColor
+		paint.textAlign = Paint.Align.LEFT
+		paint.typeface = customTypeface
+		val baseline: Float = -paint.ascent()
+		val width = (paint.measureText(text) + 0.5f).toInt()
+		val height = (baseline + paint.descent() + 0.5f).toInt()
+		val image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
+		val canvas = Canvas(image)
+		canvas.drawText(text, 0.0f, baseline, paint)
+		return image
+	}
 
 	private fun displayInvalidState(state: VerificationState.INVALID) {
 		val context = context ?: return

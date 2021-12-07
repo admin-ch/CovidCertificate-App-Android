@@ -2,7 +2,6 @@
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="18dp"
 	android:layout_height="18dp"
-	android:src="@drawable/ic_2g"
 	android:layout_marginTop="5dp"
 	android:scaleType="fitCenter"
 	android:layout_marginHorizontal="5dp"
