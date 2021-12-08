@@ -10,7 +10,6 @@
 
 package ch.admin.bag.covidcertificate.wallet.dialog
 
-import android.app.Dialog
 import android.content.res.ColorStateList
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -82,7 +81,8 @@ class ModeInfoDialogFragment : DialogFragment() {
 						requireContext(),
 						getHumanReadableName(mode.key),
 						resources.getDimensionPixelSize(ch.admin.bag.covidcertificate.wallet.R.dimen.text_size_small),
-						ContextCompat.getColor(requireContext(), ch.admin.bag.covidcertificate.wallet.R.color.blue)
+						ContextCompat.getColor(requireContext(), ch.admin.bag.covidcertificate.wallet.R.color.blue),
+						ContextCompat.getColor(requireContext(), ch.admin.bag.covidcertificate.wallet.R.color.white)
 					)
 				imageView.setImageBitmap(bitmap)
 			}

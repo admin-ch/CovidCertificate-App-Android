@@ -21,7 +21,6 @@ import android.view.ViewGroup
 import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.content.res.AppCompatResources
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
@@ -387,7 +386,8 @@ class CertificateDetailFragment : Fragment() {
 							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(R.dimen.text_size_small),
-							ContextCompat.getColor(requireContext(), R.color.blue)
+							ContextCompat.getColor(requireContext(), R.color.blue),
+							ContextCompat.getColor(requireContext(), android.R.color.white)
 						)
 					imageView.setImageBitmap(bitmap)
 				}
@@ -396,19 +396,19 @@ class CertificateDetailFragment : Fragment() {
 				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey))
 				if (resNotOk != 0) {
 					imageView.setImageResource(resNotOk)
+					imageView.imageTintList = colorStateList
 				} else {
 					val bitmap =
 						textAsBitmap(
 							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(R.dimen.text_size_small),
-							ContextCompat.getColor(requireContext(), R.color.grey)
+							ContextCompat.getColor(requireContext(), R.color.grey),
+							ContextCompat.getColor(requireContext(), android.R.color.white),
+							isNotOK = true
 						)
 					imageView.setImageBitmap(bitmap)
-					imageView.foreground = AppCompatResources.getDrawable(requireContext(), R.drawable.mode_diagonal)
-					imageView.foregroundTintList = colorStateList
 				}
-				imageView.imageTintList = colorStateList
 			}
 		}
 	}
@@ -435,7 +435,6 @@ class CertificateDetailFragment : Fragment() {
 					requireContext().packageName
 				)
 			if (modeValidity.isModeValid == ModeValidityState.SUCCESS) {
-
 				if (resOk != 0) {
 					imageView.setImageResource(resOk)
 				} else {
@@ -444,7 +443,8 @@ class CertificateDetailFragment : Fragment() {
 							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(R.dimen.text_size_small),
-							ContextCompat.getColor(requireContext(), R.color.white)
+							ContextCompat.getColor(requireContext(), R.color.white),
+							ContextCompat.getColor(requireContext(), R.color.green),
 						)
 					imageView.setImageBitmap(bitmap)
 				}
@@ -453,19 +453,20 @@ class CertificateDetailFragment : Fragment() {
 				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black))
 				if (resNotOk != 0) {
 					imageView.setImageResource(resNotOk)
+					imageView.imageTintList = colorStateList
 				} else {
 					val bitmap =
 						textAsBitmap(
 							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(R.dimen.text_size_small),
-							ContextCompat.getColor(requireContext(), R.color.black)
+							ContextCompat.getColor(requireContext(), R.color.black),
+							ContextCompat.getColor(requireContext(), R.color.green),
+							isNotOK = true
 						)
 					imageView.setImageBitmap(bitmap)
-					imageView.foreground = AppCompatResources.getDrawable(requireContext(), R.drawable.mode_diagonal)
-					imageView.foregroundTintList = colorStateList
 				}
-				imageView.imageTintList = colorStateList
+
 			}
 		}
 	}

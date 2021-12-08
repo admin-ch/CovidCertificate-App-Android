@@ -16,7 +16,14 @@ object BitmapUtil {
 		return activeModes.find { activeMode -> activeMode.id == mode }?.displayName ?: mode
 	}
 
-	fun textAsBitmap(context: Context, text: String, textSize: Int, @ColorInt textColor: Int): Bitmap? {
+	fun textAsBitmap(
+		context: Context,
+		text: String,
+		textSize: Int,
+		@ColorInt textColor: Int,
+		@ColorInt backgroundColor: Int,
+		isNotOK: Boolean = false
+	): Bitmap? {
 		val customTypeface = ResourcesCompat.getFont(context, R.font.inter_bold)
 		val paint = Paint(Paint.ANTI_ALIAS_FLAG)
 		paint.textSize = textSize.toFloat()
@@ -29,6 +36,12 @@ object BitmapUtil {
 		val image = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
 		val canvas = Canvas(image)
 		canvas.drawText(text, 0.0f, baseline, paint)
+		if (isNotOK) {
+			paint.strokeWidth = 5.0f
+			canvas.drawLine(10.0f, 3.0f, width.toFloat() - 12.0f, height.toFloat() - 3.0f, paint)
+			paint.color = backgroundColor
+			canvas.drawLine(14.0f, 0.0f, width.toFloat() - 8.0f, height.toFloat() - 6.0f, paint)
+		}
 		return image
 	}
 }
