@@ -365,6 +365,9 @@ class CertificateDetailFragment : Fragment() {
 		val configLiveData: ConfigModel? = certificatesViewModel.configLiveData.value
 		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))
 		for (modeValidity in modeValidities) {
+			if (modeValidity.modeValidityState != ModeValidityState.SUCCESS || modeValidity.modeValidityState != ModeValidityState.INVALID) {
+				continue
+			}
 			val itemBinding = ItemDetailModeBinding.inflate(
 				layoutInflater,
 				binding.certificateDetailInfoModes.certificateDetailInfoModesList,
@@ -427,6 +430,9 @@ class CertificateDetailFragment : Fragment() {
 		val configLiveData: ConfigModel? = certificatesViewModel.configLiveData.value
 		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))
 		for (modeValidity in modeValidities) {
+			if (modeValidity.modeValidityState != ModeValidityState.SUCCESS || modeValidity.modeValidityState != ModeValidityState.INVALID) {
+				continue
+			}
 			val itemBinding =
 				ItemDetailModeRefreshBinding.inflate(layoutInflater, binding.certificateDetailRefreshModeValidity, true)
 			val imageView = itemBinding.root
