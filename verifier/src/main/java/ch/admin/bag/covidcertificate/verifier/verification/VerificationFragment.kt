@@ -126,7 +126,7 @@ class VerificationFragment : Fragment() {
 		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner) {
 			updateHeaderAndVerificationView(it)
 
-			if (it is VerificationState.SUCCESS && (it.successState as SuccessState.VerifierSuccessState).modeValidity.isModeValid == ModeValidityState.UNKNOWN_MODE) {
+			if (it is VerificationState.SUCCESS && (it.successState as SuccessState.VerifierSuccessState).modeValidity.modeValidityState == ModeValidityState.UNKNOWN_MODE) {
 				AlertDialog.Builder(requireContext())
 					.setMessage(R.string.verifier_error_mode_no_longer_exists)
 					.setPositiveButton(R.string.ok_button) { _, _ -> }

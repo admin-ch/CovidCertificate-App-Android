@@ -266,4 +266,4 @@ fun VerificationState.getHeaderColor(): Int {
 }
 
 private fun VerificationState.SUCCESS.getModeValidity() =
-	(this.successState as SuccessState.VerifierSuccessState).modeValidity.isModeValid
+	(this.successState as SuccessState.VerifierSuccessState).modeValidity.modeValidityState

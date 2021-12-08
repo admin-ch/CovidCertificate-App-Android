@@ -377,7 +377,7 @@ class CertificateDetailFragment : Fragment() {
 					requireContext().packageName
 				)
 
-			if (modeValidity.isModeValid == ModeValidityState.SUCCESS) {
+			if (modeValidity.modeValidityState == ModeValidityState.SUCCESS) {
 				if (resOk != 0) {
 					imageView.setImageResource(resOk)
 				} else {
@@ -392,7 +392,7 @@ class CertificateDetailFragment : Fragment() {
 					imageView.setImageBitmap(bitmap)
 				}
 				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
-			} else if (modeValidity.isModeValid == ModeValidityState.INVALID) {
+			} else if (modeValidity.modeValidityState == ModeValidityState.INVALID) {
 				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey))
 				if (resNotOk != 0) {
 					imageView.setImageResource(resNotOk)
@@ -434,7 +434,7 @@ class CertificateDetailFragment : Fragment() {
 					"drawable",
 					requireContext().packageName
 				)
-			if (modeValidity.isModeValid == ModeValidityState.SUCCESS) {
+			if (modeValidity.modeValidityState == ModeValidityState.SUCCESS) {
 				if (resOk != 0) {
 					imageView.setImageResource(resOk)
 				} else {
@@ -449,7 +449,7 @@ class CertificateDetailFragment : Fragment() {
 					imageView.setImageBitmap(bitmap)
 				}
 				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
-			} else if (modeValidity.isModeValid == ModeValidityState.INVALID) {
+			} else if (modeValidity.modeValidityState == ModeValidityState.INVALID) {
 				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black))
 				if (resNotOk != 0) {
 					imageView.setImageResource(resNotOk)
