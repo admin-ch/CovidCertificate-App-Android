@@ -130,7 +130,6 @@ class VerificationFragment : Fragment() {
 				AlertDialog.Builder(requireContext())
 					.setMessage(R.string.verifier_error_mode_no_longer_exists)
 					.setPositiveButton(R.string.ok_button) { _, _ -> }
-					.create()
 					.show()
 				modesViewModel.setSelectedMode(null)
 				parentFragmentManager.popBackStack(VerificationFragment::class.java.canonicalName, POP_BACK_STACK_INCLUSIVE)

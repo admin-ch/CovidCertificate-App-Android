@@ -16,8 +16,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.graphics.toColorInt
+import androidx.core.view.isVisible
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import ch.admin.bag.covidcertificate.common.config.CheckModeInfoEntry
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.DialogFragmentChooseModeBinding
@@ -46,15 +48,18 @@ class ChooseModeDialogFragment : DialogFragment() {
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+		val observers = mutableListOf<Observer<String?>>()
 		viewModel.modesLiveData.observe(viewLifecycleOwner) { modes ->
 
 			binding.modeItemsLayout.removeAllViews()
+			observers.forEach { viewModel.selectedModeLiveData.removeObserver(it) }
+			observers.clear()
 
 			for (mode in modes) {
 				val itemView = ItemModeButtonBinding.inflate(layoutInflater, binding.infoItemsLayout, false)
 				itemView.title.text = mode.title
-
-				viewModel.selectedModeLiveData.observe(viewLifecycleOwner) { selectedMode ->
+				val observer = Observer<String?> { selectedMode ->
 					if (selectedMode == mode.id) {
 						itemView.buttonIcon.setImageResource(R.drawable.ic_checkbox_filled)
 						itemView.root.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
@@ -63,6 +68,8 @@ class ChooseModeDialogFragment : DialogFragment() {
 						itemView.root.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.grey_light, null))
 					}
 				}
+				viewModel.selectedModeLiveData.observe(viewLifecycleOwner, observer)
+				observers.add(observer)
 
 				itemView.root.setOnClickListener {
 					viewModel.setSelectedMode(mode.id)
@@ -80,13 +87,13 @@ class ChooseModeDialogFragment : DialogFragment() {
 			val mode = viewModel.getSelectedMode()
 			val items: List<CheckModeInfoEntry>
 			if (mode == null) {
-				binding.chooseModeButton.visibility = View.GONE
+				binding.chooseModeButton.isVisible = false
 				items = listOf(
-					CheckModeInfoEntry("ic_info", "Wählen Sie den Modus, in dem Sie Zertifikate prüfen müssen."),
-					CheckModeInfoEntry("ic_settings", "Die Einstellungen können jederzeit geändert werden")
+					CheckModeInfoEntry("ic_info", getString(R.string.verifier_check_mode_info_unselected_text_1)),
+					CheckModeInfoEntry("ic_settings", getString(R.string.verifier_check_mode_info_unselected_text_2))
 				)
 			} else {
-				binding.chooseModeButton.visibility = View.VISIBLE
+				binding.chooseModeButton.isVisible = true
 				items = mode.infos
 			}
 

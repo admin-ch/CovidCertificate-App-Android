@@ -156,9 +156,6 @@ class CertificateDetailFragment : Fragment() {
 			)
 		}
 
-		binding.certificateDetailInfoModes.certificateDetailInfoModesList.setOnClickListener {
-			ModeInfoDialogFragment.newInstance().show(childFragmentManager, ModeInfoDialogFragment::class.java.canonicalName)
-		}
 
 		setupReverifyButtonOffset()
 	}
@@ -350,9 +347,20 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		showModes(walletState.modeValidity)
+		setupButton(walletState.modeValidity)
+	}
+
+	private fun setupButton(modeValidities: List<ModeValidity>) {
+		val arrayList = arrayListOf<ModeValidity>()
+		arrayList.addAll(modeValidities)
+		binding.certificateDetailInfoModes.certificateDetailInfoModesList.setOnClickListener {
+			ModeInfoDialogFragment.newInstance(arrayList)
+				.show(childFragmentManager, ModeInfoDialogFragment::class.java.canonicalName)
+		}
 	}
 
 	private fun showModes(modeValidities: List<ModeValidity>) {
+		if (modeValidities.size <= 1) return
 		binding.certificateDetailInfoModes.certificateDetailInfoModesList.removeAllViews()
 		val configLiveData: ConfigModel? = certificatesViewModel.configLiveData.value
 		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))
@@ -414,6 +422,7 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun showModesForRefresh(modeValidities: List<ModeValidity>) {
+		if (modeValidities.size <= 1) return
 		binding.certificateDetailRefreshModeValidity.removeAllViews()
 		val configLiveData: ConfigModel? = certificatesViewModel.configLiveData.value
 		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))

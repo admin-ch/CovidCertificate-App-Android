@@ -34,6 +34,9 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 	private val selectedModeMutableLiveData = MutableLiveData<String?>()
 	val selectedModeLiveData: LiveData<String?> = selectedModeMutableLiveData
 
+	private val isSingleModeMutableLiveData = MutableLiveData(false)
+	val isSingleModeLiveData: LiveData<Boolean> = isSingleModeMutableLiveData
+
 	init {
 		selectedModeMutableLiveData.value = verifierSecureStorage.getSelectedMode()
 
@@ -62,6 +65,7 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 						)
 					}
 				}
+				isSingleModeMutableLiveData.value = configModeItems.size == 1
 				configModeItems
 			}.collect {
 				modesMutableLiveData.postValue(it)
@@ -81,7 +85,10 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 		modesLiveData.value?.firstOrNull { it.id == selectedModeLiveData.value }
 
 	fun resetSelectedModeIfNeeded() {
-		if (verifierSecureStorage.resetSelectedModeIfNeeded((configLiveData.value?.checkModeReselectAfterHours ?: 48) * 60 * 60 * 1000L)) {
+		if (verifierSecureStorage.resetSelectedModeIfNeeded(
+				(configLiveData.value?.checkModeReselectAfterHours ?: 48) * 60 * 60 * 1000L
+			)
+		) {
 			selectedModeMutableLiveData.value = null
 		}
 	}

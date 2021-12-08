@@ -100,7 +100,7 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 		modesViewModel.selectedModeLiveData.observe(viewLifecycleOwner) {
 			val mode = modesViewModel.getSelectedMode()
-			if (mode == null) {
+			if (mode == null || modesViewModel.isSingleModeLiveData.value == true) {
 				binding.fragmentQrScannerModeIndicator.visibility = View.GONE
 			} else {
 				binding.fragmentQrScannerModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())

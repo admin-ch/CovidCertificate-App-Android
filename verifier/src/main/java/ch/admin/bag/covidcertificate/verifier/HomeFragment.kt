@@ -67,9 +67,17 @@ class HomeFragment : Fragment() {
 		binding.viewPager.adapter = adapter
 
 		binding.homescreenScanButton.setOnClickListener {
-			if(modesAndConfigViewModel.getSelectedMode()==null){
+			if (modesAndConfigViewModel.isSingleModeLiveData.value == true){
+				modesAndConfigViewModel.modesLiveData.value?.let { modes ->
+					if (modes.size == 1) {
+						modesAndConfigViewModel.setSelectedMode(modes.first().id)
+					}
+				}
+			}
+
+			if (modesAndConfigViewModel.getSelectedMode() == null) {
 				showModeSelection()
-			}else {
+			} else {
 				parentFragmentManager.beginTransaction()
 					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 					.replace(R.id.fragment_container, VerifierQrScanFragment.newInstance())
@@ -92,14 +100,17 @@ class HomeFragment : Fragment() {
 
 		modesAndConfigViewModel.selectedModeLiveData.observe(viewLifecycleOwner) {
 			val mode = modesAndConfigViewModel.getSelectedMode()
-			if (mode == null) {
-				binding.homescreenModeIndicator.visibility = View.GONE
+			if (mode == null || modesAndConfigViewModel.isSingleModeLiveData.value == true) {
+				binding.homescreenModeIndicator.isVisible = false
 				binding.homescreenScanButton.text = getString(R.string.verifier_homescreen_scan_button)
+				binding.homescreenSettingsButton.isVisible = false
 			} else {
 				binding.homescreenModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
 				binding.homescreenModeIndicator.text = mode.title
-				binding.homescreenModeIndicator.visibility = View.VISIBLE
-				binding.homescreenScanButton.text = getString(R.string.verifier_homescreen_scan_button_with_mode).replace("{MODE}", mode.title)
+				binding.homescreenModeIndicator.isVisible = true
+				binding.homescreenSettingsButton.isVisible = true
+				binding.homescreenScanButton.text =
+					getString(R.string.verifier_homescreen_scan_button_with_mode).replace("{MODE}", mode.title)
 			}
 		}
 
