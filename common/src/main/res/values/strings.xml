@@ -1381,4 +1381,10 @@ Code: {ERROR_CODE}"</string>
 
     <!-- Text für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
     <string name="verifier_verify_light_not_supported_by_mode_text">"Die Prüfung kann in diesem Fall nur erfolgen, wenn die Umwandlung in ein Zertifikat Light rückgängig gemacht wird."</string>
+
+    <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
+    <string name="verifier_check_mode_info_unselected_text_1">"Wählen Sie den Modus, in dem Sie Zertifikate prüfen müssen."</string>
+
+    <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
+    <string name="verifier_check_mode_info_unselected_text_2">"Die Einstellungen können jederzeit geändert werden"</string>
 </resources>
