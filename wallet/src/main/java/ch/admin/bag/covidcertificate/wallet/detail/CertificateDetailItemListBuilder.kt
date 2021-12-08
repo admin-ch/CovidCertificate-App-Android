@@ -50,7 +50,6 @@ class CertificateDetailItemListBuilder(
 			return detailItems
 		}
 
-		detailItems.add(DividerItem)
 		val firstVaccine = vaccinations.first()
 		if (firstVaccine.isNotFullyProtected()) {
 			detailItems.add(TitleItem(R.string.wallet_certificate_type_incomplete_vaccine, showEnglishVersionForLabels))
@@ -151,7 +150,6 @@ class CertificateDetailItemListBuilder(
 			return detailItems
 		}
 
-		detailItems.add(DividerItem)
 		detailItems.add(TitleItem(R.string.covid_certificate_recovery_title, showEnglishVersionForLabels))
 
 		for (recoveryEntry in recoveries) {
@@ -215,7 +213,6 @@ class CertificateDetailItemListBuilder(
 			return detailItems
 		}
 
-		detailItems.add(DividerItem)
 		if (tests[0].isSerologicalTest()) {
 			detailItems.add(TitleItem(R.string.covid_certificate_sero_positiv_test_title, showEnglishVersionForLabels))
 		} else {

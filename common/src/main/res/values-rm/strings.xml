@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+    ~
+    ~ This Source Code Form is subject to the terms of the Mozilla Public
+    ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+    ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+    ~
+    ~ SPDX-License-Identifier: MPL-2.0
+    -->
 <resources>
 
     <!-- Android App Name -->
@@ -72,7 +81,7 @@ document da legitimaziun"</string>
     <string name="verifier_verify_error_title">"Il certificat n'è betg valaivel"</string>
 
     <!-- Fehler Infotext bei Prüfung (Nationale Regeln) -->
-    <string name="verifier_verify_error_info_for_national_rules">"Na correspunda betg als criteris da valaivladad da la Svizra"</string>
+    <string name="verifier_verify_error_info_for_national_rules">"Entspricht nicht den Gültigkeitskriterien der Schweiz oder des Prüfmodus ({MODUS})"</string>
 
     <!-- Fehler Infotext bei Prüfung (Zertifikat Fehler) -->
     <string name="verifier_verify_error_info_for_certificate_invalid">"Il certificat COVID n'ha betg ina signatura valaivla"</string>
@@ -819,7 +828,7 @@ Per actualisar las glistas da verificaziun sto l'app esser colliada cun l'intern
     <string name="wallet_certificate_light_detail_summary_2">"Cuntegna mo il num, il prenum, la data da naschientscha ed ina signatura digitala"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Valaivel per max. 24 uras"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Valaivel per max. {LIGHT_CERT_VALIDITY_IN_H} uras"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"La conversiun dal certificat COVID en in certificat light succeda online."</string>
@@ -899,7 +908,7 @@ e mo en Svizra"</string>
     <string name="wallet_certificate_light_detail_text_1">"Sche Vus activais il certificat light, vegn creà or da las datas da Voss certificat COVID in nov code QR che na cuntegna naginas datas da sanadad."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"Entant ch'il certificat COVID normal po vegnir duvrà en il rom da sia valaivladad senza restricziuns tant en Svizra sco er en il stadis da la UE e da la AECL, po il certificat light vegnir duvrà mo en Svizra.Per motivs da la protecziun da datas sto il certificat light vegnir activà danovamain suenter 24 uras. El na porta nagins dretgs supplementars en cumparegliaziun cun il certificat COVID normal. "</string>
+    <string name="wallet_certificate_light_detail_text_2">"Entant ch'il certificat COVID normal po vegnir duvrà en il rom da sia valaivladad senza restricziuns tant en Svizra sco er en il stadis da la UE e da la AECL, po il certificat light vegnir duvrà mo en Svizra.Per motivs da la protecziun da datas sto il certificat light vegnir activà danovamain suenter {LIGHT_CERT_VALIDITY_IN_H} uras. El na porta nagins dretgs supplementars en cumparegliaziun cun il certificat COVID normal. "</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"mo danovamain nagins"</string>
@@ -937,17 +946,21 @@ e mo en Svizra"</string>
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
     <string name="wallet_certificate_list_light_certificate_badge">"Light"</string>
     <string name="wallet_faq_questions_question_6">"Tge è in certificat light?"</string>
+
+    <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
     <string name="wallet_faq_questions_answer_6">"L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.
 
 L'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.
 
-Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
+Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da {LIGHT_CERT_VALIDITY_IN_H} uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
     <string name="verifier_faq_works_question_8">"Tge è in certificat light?"</string>
+
+    <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
     <string name="verifier_faq_works_answer_8">"L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.
 
 L'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.
 
-Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
+Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da {LIGHT_CERT_VALIDITY_IN_H} uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
     <string name="verifier_faq_works_question_9">"Co po in certificat light puspè vegnir transfurmà en in certificat COVID confurm a la UE/AECL?"</string>
     <string name="verifier_faq_works_answer_9">"La possessura u il possessur po deactivar da tut temp il certificat light en l'app «COVID Certificate». Alura stat puspè a disposiziun il certificat COVID normal. "</string>
 
@@ -1288,8 +1301,94 @@ Code: {ERROR_CODE}"</string>
     <string name="infobox_update_title">"A disposiziun versiun nova"</string>
     <string name="infobox_update_text">"Chargiai giu la nova versiun da l'app."</string>
     <string name="infobox_update_button">"Actualisar"</string>
+
+    <!-- vaccination booking  screen info about Impf-Check (impf-check.ch) -->
     <string name="vaccination_impf_check_info_text">"Il check da vaccinaziun COVID-19 As infurmescha davart las emprimas vaccinaziuns sco er davart las vaccinaziuns da rinfrestgament ed As maina al post da consultaziun correspundent da Voss chantun.  "</string>
+
+    <!-- button title for link to impf-check.ch -->
     <string name="vaccination_impf_check_action">"Al check da vaccinaziun"</string>
+
+    <!-- URL to ImpfCheck -->
     <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
     <string name="vaccination_impf_check_title">"Reservar in termin ussa"</string>
+    <string name="verifier_faq_works_linktext_1">"Erklärvideo"</string>
+    <string name="verifier_faq_works_linkurl_1"></string>
+
+    <!-- Title of button to choose verification mode -->
+    <string name="verifier_choose_mode_button_title">"wählen"</string>
+
+    <!-- 👍 -->
+    <!-- Verifier app scan button with indication of mode -->
+    <string name="verifier_homescreen_scan_button_with_mode">"Prüfen ({MODE})"</string>
+
+    <!-- error if scan was performed with a no longer existing mode -->
+    <string name="verifier_error_mode_no_longer_exists">"Ihr gewählter Prüfmodus existiert nicht mehr."</string>
+
+    <!-- 👍 -->
+    <!-- title for info pop-up in wallet app describing the validation states for the different check modes -->
+    <string name="wallet_check_mode_info_title">"Infos"</string>
+
+    <!-- 👍 -->
+    <!-- text for info pop-up in wallet app describing 2G OK state -->
+    <string name="wallet_check_mode_info_2g_ok_text">"Hier könnte ein Text stehen, der erklärt was 2G bedeutet und dass der Zertifikatstyp für 2G ok ist."</string>
+
+    <!-- 👍 -->
+    <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
+    <string name="wallet_check_mode_info_2g_not_ok_text">"Hier könnte ein Text stehen, der erklärt was 2G bedeutet und dass der Zertifikatstyp für 2G NICHT ok ist."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> display name of check mode 3G -->
+    <string name="verifier_check_mode_info_3g_title">"3G"</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> display name of check mode 2G -->
+    <string name="verifier_check_mode_info_2g_title">"2G"</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
+    <string name="verifier_check_mode_info_3g_text_1">"Für Betriebe und Veranstalter mit 3G-Regel."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
+    <string name="verifier_check_mode_info_3g_text_2">"Es werden gültige Zertifikate von Impfungen, Genesungen und Tests akzeptiert."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
+    <string name="verifier_check_mode_info_3g_text_3">"Light-Zertifikate können geprüft werden."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
+    <string name="verifier_check_mode_info_2g_text_1">"Für Betriebe und Veranstalter mit 2G-Regel. Es werden nur Zertifikate von Impfungen und Genesungen akzeptiert."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
+    <string name="verifier_check_mode_info_2g_text_2">"Zertifikate von Covid-Tests werden als ungültig dargestellt."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
+    <string name="verifier_check_mode_info_2g_text_3">"Light-Zertifikate können im 2G-Modus nicht geprüft werden."</string>
+
+    <!-- 👍 -->
+    <!-- Verifier: Modus auswählen Titel -->
+    <string name="verifier_mode_title">"Prüfmodus"</string>
+
+    <!-- 👍 -->
+    <!-- text for info pop-up in wallet app describing 3G OK state -->
+    <string name="wallet_check_mode_info_3g_ok_text">"Hier könnte ein Text stehen, der erklärt was 3G bedeutet und dass der Zertifikatstyp für 3G ok ist."</string>
+
+    <!-- 👍 -->
+    <!-- text for info pop-up in wallet app describing 3G NOT OK state -->
+    <string name="wallet_check_mode_info_3g_not_ok_text">"Hier könnte ein Text stehen, der erklärt was 3G bedeutet und dass der Zertifikatstyp für 3G NICHT ok ist."</string>
+
+    <!-- Titel für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
+    <string name="verifier_verify_light_not_supported_by_mode_title">"Beim zu prüfenden Covid-Zertifikat handelt es sich um ein Zertifikat Light. Dies kann im {MODUS}-Prüfmodus nicht geprüft werden."</string>
+
+    <!-- Text für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
+    <string name="verifier_verify_light_not_supported_by_mode_text">"Die Prüfung kann in diesem Fall nur erfolgen, wenn die Umwandlung in ein Zertifikat Light rückgängig gemacht wird."</string>
+
+    <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
+    <string name="verifier_check_mode_info_unselected_text_1">"Wählen Sie den Modus, in dem Sie Zertifikate prüfen müssen."</string>
+
+    <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
+    <string name="verifier_check_mode_info_unselected_text_2">"Die Einstellungen können jederzeit geändert werden"</string>
 </resources>

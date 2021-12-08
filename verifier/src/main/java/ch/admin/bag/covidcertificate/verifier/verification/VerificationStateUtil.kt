@@ -16,25 +16,20 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.util.makeBold
-import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.*
 
 /**
  * The verification state indicates an offline mode if it is an ERROR and the error code is set to GENERAL_OFFLINE (G|OFF)
  */
 fun VerificationState.isOfflineMode() = this is VerificationState.ERROR && this.error.code == ErrorCodes.GENERAL_OFFLINE
 
-fun VerificationState.getVerificationStateItems(context: Context) : List<VerificationItem> {
+fun VerificationState.getVerificationStateItems(context: Context, modeTitle: String): List<VerificationItem> {
 	val items = mutableListOf<VerificationItem>()
 
 	val isLoading = this == VerificationState.LOADING
 
-	val statusString = getValidationStatusStrings(context)
+	val statusString = getValidationStatusStrings(context, modeTitle)
 	val statusIcons = getValidationStatusIcons()
 	val statusBubbleColors = getStatusBubbleColors()
 	val numStatus = listOf(statusString.size, statusIcons.size, statusBubbleColors.size).minOrNull() ?: 0
@@ -43,17 +38,29 @@ fun VerificationState.getVerificationStateItems(context: Context) : List<Verific
 		items.add(StatusItem(statusString[i], statusIcons[i], statusBubbleColors[i], isLoading))
 	}
 
-	if (!isLoading && this !is VerificationState.INVALID) {
-		val showRetry = this is VerificationState.ERROR
-		items.add(InfoItem(getStatusInformationString(context), getInfoIconColor(), getStatusInformationBubbleColor(), showRetry))
+	if (!isLoading) {
+		val statusInfoText = getStatusInformationString(context)
+		if (statusInfoText != null) {
+			val showRetry = this is VerificationState.ERROR
+			items.add(InfoItem(statusInfoText, getInfoIconColor(), getStatusInformationBubbleColor(), showRetry))
+		}
 	}
 
 	return items
 }
 
-fun VerificationState.getValidationStatusStrings(context: Context): List<SpannableString> {
+fun VerificationState.getValidationStatusStrings(context: Context, modeTitle:String): List<SpannableString> {
 	return when (this) {
-		is VerificationState.SUCCESS -> listOf(context.getString(R.string.verifier_verify_success_title).makeBold())
+		is VerificationState.SUCCESS -> when (getModeValidity()) {
+			ModeValidityState.SUCCESS -> listOf(context.getString(R.string.verifier_verify_success_title).makeBold())
+			ModeValidityState.IS_LIGHT -> listOf(context.getString(R.string.verifier_verify_light_not_supported_by_mode_title).replace("{MODUS}", modeTitle).makeBold())
+			ModeValidityState.INVALID -> listOf(
+				SpannableString(context.getString(R.string.verifier_verify_success_info_for_certificate_valid)),
+				SpannableString(context.getString(R.string.verifier_verify_success_info_for_blacklist)),
+				context.getString(R.string.verifier_verify_error_info_for_national_rules).replace("{MODUS}", modeTitle).makeBold()
+			)
+			else -> listOf(context.getString(R.string.verifier_verify_error_list_title).makeBold())
+		}
 		is VerificationState.ERROR -> {
 			listOf(
 				if (isOfflineMode()) {
@@ -76,7 +83,7 @@ fun VerificationState.getValidationStatusStrings(context: Context): List<Spannab
 						is CheckNationalRulesState.INVALID,
 						is CheckNationalRulesState.NOT_VALID_ANYMORE,
 						is CheckNationalRulesState.NOT_YET_VALID -> {
-							stateStrings.add(context.getString(R.string.verifier_verify_error_info_for_national_rules).makeBold())
+							stateStrings.add(context.getString(R.string.verifier_verify_error_info_for_national_rules).replace("{MODUS}", modeTitle).makeBold())
 						}
 					}
 				} else {
@@ -98,7 +105,7 @@ fun VerificationState.getValidationStatusStrings(context: Context): List<Spannab
 	}
 }
 
-fun VerificationState.getStatusInformationString(context: Context): String {
+fun VerificationState.getStatusInformationString(context: Context): String? {
 	return when (this) {
 		is VerificationState.ERROR -> {
 			if (isOfflineMode()) {
@@ -107,12 +114,17 @@ fun VerificationState.getStatusInformationString(context: Context): String {
 				context.getString(R.string.verifier_verify_error_list_info_text)
 			}
 		}
-		is VerificationState.INVALID -> ""
+		is VerificationState.INVALID -> null
 		VerificationState.LOADING -> context.getString(R.string.wallet_certificate_verifying)
-		is VerificationState.SUCCESS -> if (this.isLightCertificate) {
-			context.getString(R.string.verifier_verify_success_certificate_light_info)
-		} else {
-			context.getString(R.string.verifier_verify_success_info)
+		is VerificationState.SUCCESS -> when (getModeValidity()) {
+			ModeValidityState.SUCCESS -> if (this.isLightCertificate) {
+				context.getString(R.string.verifier_verify_success_certificate_light_info)
+			} else {
+				context.getString(R.string.verifier_verify_success_info)
+			}
+			ModeValidityState.IS_LIGHT -> context.getString(R.string.verifier_verify_light_not_supported_by_mode_text)
+			ModeValidityState.INVALID -> null
+			else -> context.getString(R.string.verifier_verify_error_list_info_text)
 		}
 	}
 }
@@ -144,7 +156,16 @@ fun VerificationState.getValidationStatusIcons(): List<Int> {
 			}
 			stateIcons
 		}
-		is VerificationState.SUCCESS -> listOf(R.drawable.ic_check_green)
+		is VerificationState.SUCCESS -> when (getModeValidity()) {
+			ModeValidityState.SUCCESS -> listOf(R.drawable.ic_check_green)
+			ModeValidityState.IS_LIGHT -> listOf(R.drawable.ic_process_error)
+			ModeValidityState.INVALID -> listOf(
+				R.drawable.ic_privacy_grey,
+				R.drawable.ic_check_grey,
+				R.drawable.ic_error
+			)
+			else -> listOf(R.drawable.ic_error)
+		}
 		VerificationState.LOADING -> listOf(0)
 	}
 }
@@ -161,7 +182,11 @@ fun VerificationState.getValidationStatusIconLarge(): Int {
 		}
 		is VerificationState.INVALID -> R.drawable.ic_error_large
 		VerificationState.LOADING -> 0
-		is VerificationState.SUCCESS -> R.drawable.ic_check_large
+		is VerificationState.SUCCESS -> when (getModeValidity()) {
+			ModeValidityState.SUCCESS -> R.drawable.ic_check_large
+			ModeValidityState.IS_LIGHT -> R.drawable.ic_process_error_large
+			else -> R.drawable.ic_error_large
+		}
 	}
 }
 
@@ -185,7 +210,12 @@ fun VerificationState.getStatusBubbleColors(): List<Int> {
 			stateColors
 		}
 		VerificationState.LOADING -> listOf(R.color.greyish)
-		is VerificationState.SUCCESS -> listOf(R.color.greenish)
+		is VerificationState.SUCCESS -> when (getModeValidity()) {
+			ModeValidityState.SUCCESS -> listOf(R.color.greenish)
+			ModeValidityState.IS_LIGHT -> listOf(R.color.orangeish)
+			ModeValidityState.INVALID -> listOf(R.color.greyish, R.color.greyish, R.color.redish)
+			else -> listOf(R.color.redish)
+		}
 	}
 }
 
@@ -195,7 +225,11 @@ fun VerificationState.getStatusInformationBubbleColor(): Int {
 		is VerificationState.ERROR -> R.color.orangeish
 		is VerificationState.INVALID -> R.color.redish
 		VerificationState.LOADING -> R.color.greyish
-		is VerificationState.SUCCESS -> R.color.blueish
+		is VerificationState.SUCCESS -> when (getModeValidity()) {
+			ModeValidityState.SUCCESS -> R.color.blueish
+			ModeValidityState.IS_LIGHT -> R.color.orangeish
+			else -> R.color.redish
+		}
 	}
 }
 
@@ -205,7 +239,11 @@ fun VerificationState.getInfoIconColor(): Int {
 		is VerificationState.ERROR -> R.color.orange
 		is VerificationState.INVALID -> R.color.red
 		VerificationState.LOADING -> R.color.grey
-		is VerificationState.SUCCESS -> R.color.blue
+		is VerificationState.SUCCESS -> when (getModeValidity()) {
+			ModeValidityState.SUCCESS -> R.color.blue
+			ModeValidityState.IS_LIGHT -> R.color.orange
+			else -> R.color.red
+		}
 	}
 }
 
@@ -215,6 +253,17 @@ fun VerificationState.getHeaderColor(): Int {
 		is VerificationState.ERROR -> R.color.orange
 		is VerificationState.INVALID -> R.color.red
 		VerificationState.LOADING -> R.color.grey
-		is VerificationState.SUCCESS -> R.color.green
+		is VerificationState.SUCCESS -> {
+			when (getModeValidity()) {
+				ModeValidityState.SUCCESS -> R.color.green
+				ModeValidityState.INVALID -> R.color.red
+				ModeValidityState.IS_LIGHT -> R.color.orange
+				ModeValidityState.UNKNOWN -> R.color.red_error
+				ModeValidityState.UNKNOWN_MODE -> R.color.red_error
+			}
+		}
 	}
 }
+
+private fun VerificationState.SUCCESS.getModeValidity() =
+	(this.successState as SuccessState.VerifierSuccessState).modeValidity.modeValidityState

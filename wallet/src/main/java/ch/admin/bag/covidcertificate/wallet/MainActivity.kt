@@ -17,11 +17,9 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.repository.TimeShiftDetectionConfig
@@ -37,7 +35,7 @@ class MainActivity : BaseActivity() {
 		private const val KEY_IS_INTENT_CONSUMED = "KEY_IS_INTENT_CONSUMED"
 	}
 
-	private val configViewModel by viewModels<ConfigViewModel>()
+	private val configViewModel by viewModels<CertificatesAndConfigViewModel>()
 	private val deeplinkViewModel by viewModels<DeeplinkViewModel>()
 	private val pdfViewModel by viewModels<PdfViewModel>()
 
@@ -87,7 +85,7 @@ class MainActivity : BaseActivity() {
 		}
 
 		configViewModel.configLiveData.observe(this) { config ->
-			CovidCertificateSdk.setTimeShiftDetectingConfig(TimeShiftDetectionConfig( config.timeshiftDetectionEnabled ?: false))
+			CovidCertificateSdk.setTimeShiftDetectingConfig(TimeShiftDetectionConfig(config.timeshiftDetectionEnabled ?: false))
 			handleConfig(config)
 		}
 		pdfViewModel.clearPdfFiles()

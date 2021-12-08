@@ -20,9 +20,9 @@ import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.net.ConfigSpec
 import kotlinx.coroutines.launch
 
-class ConfigViewModel(application: Application) : AndroidViewModel(application) {
+abstract class ConfigViewModel(application: Application) : AndroidViewModel(application) {
 
-	private val configMutableLiveData = MutableLiveData<ConfigModel>()
+	private val configMutableLiveData = MutableLiveData<ConfigModel>(ConfigRepository.getCurrentConfig(application))
 	val configLiveData: LiveData<ConfigModel> = configMutableLiveData
 
 	fun loadConfig(baseUrl: String, versionName: String, buildTime: String) {
@@ -30,7 +30,8 @@ class ConfigViewModel(application: Application) : AndroidViewModel(application) 
 		val configRepository = ConfigRepository.getInstance(configSpec)
 
 		viewModelScope.launch {
-			configRepository.loadConfig(getApplication())?.let { config -> configMutableLiveData.postValue(config) }
+			configRepository.loadConfig(getApplication())?.let { config ->
+				configMutableLiveData.postValue(config) }
 		}
 	}
 

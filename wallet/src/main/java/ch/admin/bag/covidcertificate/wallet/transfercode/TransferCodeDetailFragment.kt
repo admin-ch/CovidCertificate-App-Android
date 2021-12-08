@@ -38,7 +38,7 @@ import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE
 import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrint
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentTransferCodeDetailBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
@@ -62,8 +62,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 	private var _binding: FragmentTransferCodeDetailBinding? = null
 	private val binding get() = _binding!!
 
-	private val configViewModel by activityViewModels<ConfigViewModel>()
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 	private val transferCodeViewModel by viewModels<TransferCodeViewModel>()
 	private val faqAdapter = FaqAdapter { url: String -> context?.let { UrlUtil.openUrl(it, url) } }
 	private var transferCode: TransferCodeModel? = null
@@ -92,7 +91,7 @@ class TransferCodeDetailFragment : Fragment(R.layout.fragment_transfer_code_deta
 		binding.transferCodeRefreshButton.setOnClickListener { onRefreshButtonClicked() }
 		binding.transferCodeDetailDeleteButton.setOnClickListener { onDeleteButtonClicked() }
 
-		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
+		certificatesViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
 			val languageKey = getString(R.string.language_key)
 			config.getTransferWorksFaqs(languageKey)?.let {
 				showTransferCodeFaqItems(it)

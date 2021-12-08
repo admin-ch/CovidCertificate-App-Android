@@ -19,11 +19,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,10 +35,13 @@ import ch.admin.bag.covidcertificate.common.views.VerticalMarginItemDecoration
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
 import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.ModeValidityState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.SuccessState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
+import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -60,6 +66,7 @@ class VerificationFragment : Fragment() {
 	private var _binding: FragmentVerificationBinding? = null
 	private val binding get() = _binding!!
 	private val verificationViewModel: VerificationViewModel by viewModels()
+	private val modesViewModel by activityViewModels<ModesAndConfigViewModel>()
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
 	private var certificateHolder: VerifierCertificateHolder? = null
 	private var isClosedByUser = false
@@ -99,7 +106,7 @@ class VerificationFragment : Fragment() {
 
 		verificationAdapter = VerificationAdapter {
 			certificateHolder?.let {
-				verificationViewModel.retryVerification(it)
+				verificationViewModel.retryVerification(it, modesViewModel.selectedModeLiveData.value ?: "unknown")
 			}
 		}
 
@@ -118,6 +125,15 @@ class VerificationFragment : Fragment() {
 
 		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner) {
 			updateHeaderAndVerificationView(it)
+
+			if (it is VerificationState.SUCCESS && (it.successState as SuccessState.VerifierSuccessState).modeValidity.modeValidityState == ModeValidityState.UNKNOWN_MODE) {
+				AlertDialog.Builder(requireContext())
+					.setMessage(R.string.verifier_error_mode_no_longer_exists)
+					.setPositiveButton(R.string.ok_button) { _, _ -> }
+					.show()
+				modesViewModel.setSelectedMode(null)
+				parentFragmentManager.popBackStack(VerificationFragment::class.java.canonicalName, POP_BACK_STACK_INCLUSIVE)
+			}
 		}
 
 		verifyAndDisplayCertificateHolder()
@@ -163,7 +179,7 @@ class VerificationFragment : Fragment() {
 		binding.verificationBirthdate.text = certificateHolder.getFormattedDateOfBirth()
 		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
 
-		verificationViewModel.startVerification(certificateHolder)
+		verificationViewModel.startVerification(certificateHolder, modesViewModel.selectedModeLiveData.value ?: "unknown")
 	}
 
 	private fun updateHeaderAndVerificationView(verificationState: VerificationState) {
@@ -189,7 +205,7 @@ class VerificationFragment : Fragment() {
 	private fun updateStatusBubbles(state: VerificationState) {
 		val context = binding.root.context
 
-		verificationAdapter.setItems(state.getVerificationStateItems(context))
+		verificationAdapter.setItems(state.getVerificationStateItems(context, modesViewModel.getSelectedMode()?.title ?: ""))
 
 		binding.verificationErrorCode.apply {
 			visibility = View.INVISIBLE

@@ -14,6 +14,7 @@ import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.faq.FaqFragment
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 
 class WalletFaqFragment : FaqFragment() {
@@ -22,7 +23,7 @@ class WalletFaqFragment : FaqFragment() {
 		fun newInstance(): WalletFaqFragment = WalletFaqFragment()
 	}
 
-	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private val configViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	override fun setupFaqProvider() {
 		toolbar.setTitle(R.string.wallet_faq_header)

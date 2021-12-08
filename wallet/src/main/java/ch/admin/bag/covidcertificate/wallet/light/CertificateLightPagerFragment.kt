@@ -30,7 +30,7 @@ import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightPagerBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
@@ -58,7 +58,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 			}
 	}
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 	private val certificateLightViewModel by viewModels<CertificateLightViewModel>()
 
 	private var _binding: FragmentCertificateLightPagerBinding? = null

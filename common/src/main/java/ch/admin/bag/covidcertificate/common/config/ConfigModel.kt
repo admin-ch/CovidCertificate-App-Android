@@ -32,7 +32,10 @@ data class ConfigModel(
 	val showVaccinationHintHomescreen: Boolean?,
 	val showVaccinationHintDetail: Boolean?,
 	val showVaccinationHintTransfer: Boolean?,
-	val timeshiftDetectionEnabled: Boolean?
+	val timeshiftDetectionEnabled: Boolean?,
+	val checkModesInfos: Map<String, CheckModesInfosModel>?,
+	val checkModesInfo: Map<String, CheckModesInfoModel>?,
+	val checkModeReselectAfterHours: Int?
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
@@ -40,6 +43,9 @@ data class ConfigModel(
 	fun getTransferQuestionsFaqs(languageKey: String): FaqModel? = transferQuestions?.get(languageKey)
 	fun getTransferWorksFaqs(languageKey: String): FaqModel? = transferWorks?.get(languageKey)
 	fun getVaccinationHints(languageKey: String): List<VaccinationHintModel>? = vaccinationHints?.get(languageKey)
+	fun getCheckModesInfos(languageKey: String): Map<String, CheckModeInfoModel>? = checkModesInfos?.get(languageKey)?.infos
+	fun getCheckModes(languageKey: String): Map<String, WalletModeModel>? = checkModesInfo?.get(languageKey)?.modes
+	fun getInfoModeTitle(languageKey: String): String? = checkModesInfo?.get(languageKey)?.title
 
 	fun getVaccinationBookingInfo(languageKey: String): VaccinationBookingInfoModel? = vaccinationBookingInfo?.get(languageKey)
 

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-  ~
-  ~ This Source Code Form is subject to the terms of the Mozilla Public
-  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-  ~
-  ~ SPDX-License-Identifier: MPL-2.0
-  -->
+    <!--
+    ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+    ~
+    ~ This Source Code Form is subject to the terms of the Mozilla Public
+    ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+    ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+    ~
+    ~ SPDX-License-Identifier: MPL-2.0
+    -->
 <resources>
 
     <!-- Android App Name -->
@@ -82,7 +82,7 @@ an identity document"</string>
     <string name="verifier_verify_error_title">"COVID Certificate invalid"</string>
 
     <!-- Fehler Infotext bei Prüfung (Nationale Regeln) -->
-    <string name="verifier_verify_error_info_for_national_rules">"Does not meet Switzerland's validity criteria"</string>
+    <string name="verifier_verify_error_info_for_national_rules">"Entspricht nicht den Gültigkeitskriterien der Schweiz oder des Prüfmodus ({MODUS})"</string>
 
     <!-- Fehler Infotext bei Prüfung (Zertifikat Fehler) -->
     <string name="verifier_verify_error_info_for_certificate_invalid">"The COVID certificate does not have a valid signature"</string>
@@ -830,7 +830,7 @@ In order to update the checklists, the app must be open and connected to the Int
     <string name="wallet_certificate_light_detail_summary_2">"Only contains last name, first name, date of birth and electronic signature"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Only valid for 24 hours"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Only valid for {LIGHT_CERT_VALIDITY_IN_H} hours"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"Your COVID certificate is converted to the 'light' version online."</string>
@@ -910,7 +910,7 @@ and in combination with an identity document"</string>
     <string name="wallet_certificate_light_detail_text_1">"When you activate the 'light' version of the certificate, a new QR code is generated using data from your COVID certificate that does not contain any health-related information."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"While the regular COVID certificate can be used without restriction both in Switzerland and in the EU/EFTA during its period of validity, the 'light' version can only be used in Switzerland. For data protection reasons, the 'light' version has to be reactivated after 24 hours. It does not afford any additional rights to the normal COVID certificate."</string>
+    <string name="wallet_certificate_light_detail_text_2">"While the regular COVID certificate can be used without restriction both in Switzerland and in the EU/EFTA during its period of validity, the 'light' version can only be used in Switzerland. For data protection reasons, the 'light' version has to be reactivated after {LIGHT_CERT_VALIDITY_IN_H} hours. It does not afford any additional rights to the normal COVID certificate."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"only has to does not"</string>
@@ -948,17 +948,21 @@ expired"</string>
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
     <string name="wallet_certificate_list_light_certificate_badge">"Light"</string>
     <string name="wallet_faq_questions_question_6">"What is the 'certificate light'"</string>
+
+    <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
     <string name="wallet_faq_questions_answer_6">"The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. 
 
 The alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.
 
-The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 24 hours and must then be reactivated. If you need to use the normal certificate before the end of the 24-hour period, you can simply deactivate the 'certificate light'."</string>
+The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for {LIGHT_CERT_VALIDITY_IN_H} hours and must then be reactivated. If you need to use the normal certificate before the end of the {LIGHT_CERT_VALIDITY_IN_H}-hour period, you can simply deactivate the 'certificate light'."</string>
     <string name="verifier_faq_works_question_8">"What is the 'certificate light'"</string>
+
+    <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
     <string name="verifier_faq_works_answer_8">"The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. 
 
 The alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.
 
-The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 24 hours and must then be reactivated. If you need to use the normal certificate before the end of the 24-hour period, you can simply deactivate the 'certificate light'."</string>
+The 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for {LIGHT_CERT_VALIDITY_IN_H} hours and must then be reactivated. If you need to use the normal certificate before the end of the {LIGHT_CERT_VALIDITY_IN_H}-hour period, you can simply deactivate the 'certificate light'."</string>
     <string name="verifier_faq_works_question_9">"How can a 'certificate light' be converted back into an EU/EFTA-compliant COVID certificate?"</string>
     <string name="verifier_faq_works_answer_9">"The holder can deactivate a 'certificate light' any time in their COVID Certificate app. After that their normal COVID certificate is available again."</string>
 
@@ -1300,8 +1304,96 @@ Code: {ERROR_CODE}"</string>
     <string name="infobox_update_title">"New version available"</string>
     <string name="infobox_update_text">"Download the latest version of the app."</string>
     <string name="infobox_update_button">"Update"</string>
+
+    <!-- vaccination booking  screen info about Impf-Check (impf-check.ch) -->
     <string name="vaccination_impf_check_info_text">"The COVID-19 Vaccination Check provides information on initial and booster vaccinations and guides you to the relevant point of contact in your canton."</string>
+
+    <!-- button title for link to impf-check.ch -->
     <string name="vaccination_impf_check_action">"To the Vaccination Check"</string>
+
+    <!-- URL to ImpfCheck -->
     <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
     <string name="vaccination_impf_check_title">"Book an appointment now"</string>
+
+    <!-- Fuzzy -->
+    <string name="verifier_faq_works_linktext_1">"Explanatory video"</string>
+    <string name="verifier_faq_works_linkurl_1"></string>
+
+    <!-- Title of button to choose verification mode -->
+    <string name="verifier_choose_mode_button_title">"wählen"</string>
+
+    <!-- 👍 -->
+    <!-- Verifier app scan button with indication of mode -->
+    <string name="verifier_homescreen_scan_button_with_mode">"Prüfen ({MODE})"</string>
+
+    <!-- error if scan was performed with a no longer existing mode -->
+    <string name="verifier_error_mode_no_longer_exists">"Ihr gewählter Prüfmodus existiert nicht mehr."</string>
+
+    <!-- 👍 -->
+    <!-- title for info pop-up in wallet app describing the validation states for the different check modes -->
+    <string name="wallet_check_mode_info_title">"Infos"</string>
+
+    <!-- 👍 -->
+    <!-- text for info pop-up in wallet app describing 2G OK state -->
+    <string name="wallet_check_mode_info_2g_ok_text">"Hier könnte ein Text stehen, der erklärt was 2G bedeutet und dass der Zertifikatstyp für 2G ok ist."</string>
+
+    <!-- 👍 -->
+    <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
+    <string name="wallet_check_mode_info_2g_not_ok_text">"Hier könnte ein Text stehen, der erklärt was 2G bedeutet und dass der Zertifikatstyp für 2G NICHT ok ist."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> display name of check mode 3G -->
+    <string name="verifier_check_mode_info_3g_title">"3G"</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> display name of check mode 2G -->
+    <string name="verifier_check_mode_info_2g_title">"2G"</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
+    <string name="verifier_check_mode_info_3g_text_1">"Für Betriebe und Veranstalter mit 3G-Regel."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
+    <string name="verifier_check_mode_info_3g_text_2">"Es werden gültige Zertifikate von Impfungen, Genesungen und Tests akzeptiert."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
+    <string name="verifier_check_mode_info_3g_text_3">"Light-Zertifikate können geprüft werden."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
+    <string name="verifier_check_mode_info_2g_text_1">"Für Betriebe und Veranstalter mit 2G-Regel. Es werden nur Zertifikate von Impfungen und Genesungen akzeptiert."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
+    <string name="verifier_check_mode_info_2g_text_2">"Zertifikate von Covid-Tests werden als ungültig dargestellt."</string>
+
+    <!-- 👍 -->
+    <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
+    <string name="verifier_check_mode_info_2g_text_3">"Light-Zertifikate können im 2G-Modus nicht geprüft werden."</string>
+
+    <!-- 👍 -->
+    <!-- Verifier: Modus auswählen Titel -->
+    <string name="verifier_mode_title">"Prüfmodus"</string>
+
+    <!-- 👍 -->
+    <!-- text for info pop-up in wallet app describing 3G OK state -->
+    <string name="wallet_check_mode_info_3g_ok_text">"Hier könnte ein Text stehen, der erklärt was 3G bedeutet und dass der Zertifikatstyp für 3G ok ist."</string>
+
+    <!-- 👍 -->
+    <!-- text for info pop-up in wallet app describing 3G NOT OK state -->
+    <string name="wallet_check_mode_info_3g_not_ok_text">"Hier könnte ein Text stehen, der erklärt was 3G bedeutet und dass der Zertifikatstyp für 3G NICHT ok ist."</string>
+
+    <!-- Titel für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
+    <string name="verifier_verify_light_not_supported_by_mode_title">"Beim zu prüfenden Covid-Zertifikat handelt es sich um ein Zertifikat Light. Dies kann im {MODUS}-Prüfmodus nicht geprüft werden."</string>
+
+    <!-- Text für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
+    <string name="verifier_verify_light_not_supported_by_mode_text">"Die Prüfung kann in diesem Fall nur erfolgen, wenn die Umwandlung in ein Zertifikat Light rückgängig gemacht wird."</string>
+
+    <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
+    <string name="verifier_check_mode_info_unselected_text_1">"Wählen Sie den Modus, in dem Sie Zertifikate prüfen müssen."</string>
+
+    <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
+    <string name="verifier_check_mode_info_unselected_text_2">"Die Einstellungen können jederzeit geändert werden"</string>
 </resources>

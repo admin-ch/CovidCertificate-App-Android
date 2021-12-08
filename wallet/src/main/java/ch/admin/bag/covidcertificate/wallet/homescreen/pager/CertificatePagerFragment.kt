@@ -29,11 +29,8 @@ import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.VaccinationEntry
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.sdk.core.models.state.*
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding
 import ch.admin.bag.covidcertificate.wallet.util.QrCode
@@ -53,7 +50,7 @@ class CertificatePagerFragment : Fragment() {
 		}
 	}
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	private var _binding: FragmentCertificatePagerBinding? = null
 	private val binding get() = _binding!!
@@ -146,7 +143,8 @@ class CertificatePagerFragment : Fragment() {
 		val context = context ?: return
 		showLoadingIndicator(false)
 		setInfoBubbleBackground(R.color.blueish)
-		if(state.isValidOnlyInSwitzerland){
+		val walletState = state.successState as SuccessState.WalletSuccessState
+		if(walletState.isValidOnlyInSwitzerland){
 			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_flag_ch)
 			binding.certificatePageInfoRedBorder.visibility = View.VISIBLE
 			binding.certificatePageInfo.text = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+	android:layout_height="wrap_content"
+	android:overScrollMode="never">
+
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal"
+		android:orientation="vertical"
+		android:paddingHorizontal="@dimen/spacing_very_large"
+		android:paddingTop="@dimen/spacing_very_large"
+		android:paddingBottom="@dimen/spacing_medium_large">
+
+		<TextView
+			android:id="@+id/info_dialog_title"
+			style="@style/CovidCertificate.Text.Bold.Title"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginBottom="@dimen/spacing_very_large"
+			android:gravity="center"
+			android:text="@string/verifier_mode_title" />
+
+		<LinearLayout
+			android:id="@+id/mode_items_layout"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical" />
+
+		<LinearLayout
+			android:id="@+id/info_items_layout"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:orientation="vertical" />
+
+		<Button
+			android:id="@+id/choose_mode_button"
+			style="@style/CovidCertificate.Button"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_marginTop="@dimen/spacing_very_large"
+			android:layout_marginBottom="@dimen/spacing_medium_large"
+			android:text="@string/verifier_choose_mode_button_title" />
+
+	</LinearLayout>
+</ScrollView>
