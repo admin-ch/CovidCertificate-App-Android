@@ -35,7 +35,8 @@ data class ConfigModel(
 	val timeshiftDetectionEnabled: Boolean?,
 	val checkModesInfos: Map<String, CheckModesInfosModel>?,
 	val checkModesInfo: Map<String, CheckModesInfoModel>?,
-	val checkModeReselectAfterHours: Int?
+	val checkModeReselectAfterHours: Int?,
+	val lightCertDurationInHours: Int?
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)

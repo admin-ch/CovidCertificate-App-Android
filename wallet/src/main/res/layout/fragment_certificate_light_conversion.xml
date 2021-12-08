@@ -176,6 +176,7 @@
 										app:tint="@color/blue" />
 
 									<TextView
+										android:id="@+id/certificate_light_conversion_hour_info"
 										style="@style/CovidCertificate.Text"
 										android:layout_width="match_parent"
 										android:layout_height="wrap_content"
