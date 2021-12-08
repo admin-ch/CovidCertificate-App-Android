@@ -828,7 +828,7 @@ Per actualisar las glistas da verificaziun sto l'app esser colliada cun l'intern
     <string name="wallet_certificate_light_detail_summary_2">"Cuntegna mo il num, il prenum, la data da naschientscha ed ina signatura digitala"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Valaivel per max. 24 uras"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Valaivel per max. {LIGHT_CERT_VALIDITY_IN_H} uras"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"La conversiun dal certificat COVID en in certificat light succeda online."</string>
@@ -908,7 +908,7 @@ e mo en Svizra"</string>
     <string name="wallet_certificate_light_detail_text_1">"Sche Vus activais il certificat light, vegn creà or da las datas da Voss certificat COVID in nov code QR che na cuntegna naginas datas da sanadad."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"Entant ch'il certificat COVID normal po vegnir duvrà en il rom da sia valaivladad senza restricziuns tant en Svizra sco er en il stadis da la UE e da la AECL, po il certificat light vegnir duvrà mo en Svizra.Per motivs da la protecziun da datas sto il certificat light vegnir activà danovamain suenter 24 uras. El na porta nagins dretgs supplementars en cumparegliaziun cun il certificat COVID normal. "</string>
+    <string name="wallet_certificate_light_detail_text_2">"Entant ch'il certificat COVID normal po vegnir duvrà en il rom da sia valaivladad senza restricziuns tant en Svizra sco er en il stadis da la UE e da la AECL, po il certificat light vegnir duvrà mo en Svizra.Per motivs da la protecziun da datas sto il certificat light vegnir activà danovamain suenter {LIGHT_CERT_VALIDITY_IN_H} uras. El na porta nagins dretgs supplementars en cumparegliaziun cun il certificat COVID normal. "</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"mo danovamain nagins"</string>

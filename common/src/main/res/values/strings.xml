@@ -830,7 +830,7 @@ In order to update the checklists, the app must be open and connected to the Int
     <string name="wallet_certificate_light_detail_summary_2">"Only contains last name, first name, date of birth and electronic signature"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Only valid for 24 hours"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Only valid for {LIGHT_CERT_VALIDITY_IN_H} hours"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"Your COVID certificate is converted to the 'light' version online."</string>
@@ -910,7 +910,7 @@ and in combination with an identity document"</string>
     <string name="wallet_certificate_light_detail_text_1">"When you activate the 'light' version of the certificate, a new QR code is generated using data from your COVID certificate that does not contain any health-related information."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"While the regular COVID certificate can be used without restriction both in Switzerland and in the EU/EFTA during its period of validity, the 'light' version can only be used in Switzerland. For data protection reasons, the 'light' version has to be reactivated after 24 hours. It does not afford any additional rights to the normal COVID certificate."</string>
+    <string name="wallet_certificate_light_detail_text_2">"While the regular COVID certificate can be used without restriction both in Switzerland and in the EU/EFTA during its period of validity, the 'light' version can only be used in Switzerland. For data protection reasons, the 'light' version has to be reactivated after {LIGHT_CERT_VALIDITY_IN_H} hours. It does not afford any additional rights to the normal COVID certificate."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"only has to does not"</string>

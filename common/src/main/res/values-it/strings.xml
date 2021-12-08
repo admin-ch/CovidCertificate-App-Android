@@ -834,7 +834,7 @@ Per poter aggiornare gli elenchi di verifica, l’app deve essere aperta e colle
     <string name="wallet_certificate_light_detail_summary_2">"Contiene solamente cognome, nome, data di nascita e una firma elettronica"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Valido per 24 ore al massimo"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Valido per {LIGHT_CERT_VALIDITY_IN_H} ore al massimo"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"La conversione del certificato COVID in certificato light avviene online."</string>
@@ -914,7 +914,7 @@ con un documento di legittimazione"</string>
     <string name="wallet_certificate_light_detail_text_1">"Quando attivi il certificato light, dai dati del tuo certificato COVID viene creato un nuovo codice QR, il quale non contiene dati sanitari."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"Se valido, il certificato COVID normale può essere utilizzato senza limitazioni sia in Svizzera sia nell'UE/AELS, mentre il certificato light può essere utilizzato solamente in Svizzera. Per motivi legati alla protezione dei dati, il certificato light deve essere riattivato dopo 24 ore. Rispetto al certificato COVID normale non implica alcun diritto supplementare."</string>
+    <string name="wallet_certificate_light_detail_text_2">"Se valido, il certificato COVID normale può essere utilizzato senza limitazioni sia in Svizzera sia nell'UE/AELS, mentre il certificato light può essere utilizzato solamente in Svizzera. Per motivi legati alla protezione dei dati, il certificato light deve essere riattivato dopo {LIGHT_CERT_VALIDITY_IN_H} ore. Rispetto al certificato COVID normale non implica alcun diritto supplementare."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"solamente deve alcun"</string>

@@ -830,7 +830,7 @@ Pour actualiser les listes de contrôle, l’application doit être ouverte et c
     <string name="wallet_certificate_light_detail_summary_2">"Ne contient que le nom, le prénom, la date de naissance et une signature électronique"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Valide pour 24h au maximum"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Valide pour {LIGHT_CERT_VALIDITY_IN_H} h au maximum"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"Le certificat COVID est converti en certificat light en ligne."</string>
@@ -910,7 +910,7 @@ et avec un document d’identité"</string>
     <string name="wallet_certificate_light_detail_text_1">"Quand vous activez le certificat light, un nouveau code QR est créé à partir des données de votre certificat COVID. Ce nouveau code ne contient pas de données sur la santé."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext 2 -->
-    <string name="wallet_certificate_light_detail_text_2">"Tant qu’il est valide, le certificat COVID normal est utilisable sans limitation en Suisse et dans l’UE/l’AELE. Par contre, le certificat light n’est utilisable qu’en Suisse. Pour des raisons de protection des données, le certificat light doit être réactivé après 24 heures. Il n’apporte aucun droit supplémentaire par rapport au certificat COVID normal."</string>
+    <string name="wallet_certificate_light_detail_text_2">"Tant qu’il est valide, le certificat COVID normal est utilisable sans limitation en Suisse et dans l’UE/l’AELE. Par contre, le certificat light n’est utilisable qu’en Suisse. Pour des raisons de protection des données, le certificat light doit être réactivé après {LIGHT_CERT_VALIDITY_IN_H} heures. Il n’apporte aucun droit supplémentaire par rapport au certificat COVID normal."</string>
 
     <!-- Wallet: Zertifikat Light Erklärungstext Bold -->
     <string name="wallet_certificate_light_detail_text_2_bold">"n’est utilisable qu’en doit être aucun"</string>
