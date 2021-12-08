@@ -94,6 +94,11 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		setupStatusInfo()
 
 		binding.certificateLightDetailDeactivateButton.setOnClickListener { deleteCertificateLightAndShowOriginal() }
+
+		val lightCertDurationInHours = certificatesViewModel.configLiveData.value?.lightCertDurationInHours ?: 24
+		var hourInfoText = getString(R.string.wallet_certificate_light_detail_summary_3)
+		hourInfoText = hourInfoText.replace("{LIGHT_CERT_VALIDITY_IN_H}", lightCertDurationInHours.toString())
+		binding.certificateLightDetailHourInfo.text = hourInfoText
 	}
 
 	override fun onResume() {
