@@ -2285,12 +2285,12 @@
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete werden in diesem Prüfmodus nicht akzeptiert."
+						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete und Zertifikate Light werden nicht akzeptiert."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete werden in diesem Prüfmodus nicht akzeptiert."
+						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete und Zertifikate Light werden nicht akzeptiert."
 					}
 				}
 			}
@@ -2314,12 +2314,12 @@
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. In this mode, COVID certificates are not accepted for people who have tested negative."
+						"text": "For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. Light certificates and COVID certificates for people who have tested negative are not accepted."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. In this mode, COVID certificates are not accepted for people who have tested negative."
+						"text": "For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. Light certificates and COVID certificates for people who have tested negative are not accepted."
 					}
 				}
 			}
@@ -2343,12 +2343,12 @@
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives ne peuvent pas être vérifiés sous ce mode de contrôle."
+						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives ne peuvent pas être vérifiés sous ce mode de contrôle."
+						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."
 					}
 				}
 			}
@@ -2372,12 +2372,12 @@
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guartite. I certificati COVID di test non sono accettati in questa modalità."
+						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guarite. I certificati COVID per persone testate negative e i certificati light non sono accettati."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guartite. I certificati COVID di test non sono accettati in questa modalità."
+						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guarite. I certificati COVID per persone testate negative e i certificati light non sono accettati."
 					}
 				}
 			}
@@ -2401,12 +2401,12 @@
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ na vegnan betg acceptadas en quest modus da verificaziun."
+						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ e certificats light na vegnan betg acceptads."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ na vegnan betg acceptadas en quest modus da verificaziun."
+						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ e certificats light na vegnan betg acceptads."
 					}
 				}
 			}
