@@ -66,10 +66,10 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 						)
 					}
 				}
-				isSingleModeMutableLiveData.value = configModeItems.size == 1
 				configModeItems
 			}.collect {
-				modesMutableLiveData.postValue(it)
+				modesMutableLiveData.value = it
+				isSingleModeMutableLiveData.value = it.size == 1
 				if (getSelectedMode() == null) {
 					setSelectedMode(null)
 				}
