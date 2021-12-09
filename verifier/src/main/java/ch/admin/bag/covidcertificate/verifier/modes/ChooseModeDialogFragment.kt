@@ -85,16 +85,16 @@ class ChooseModeDialogFragment : DialogFragment() {
 			binding.infoItemsLayout.removeAllViews()
 
 			val mode = viewModel.getSelectedMode()
-			val items: List<CheckModeInfoEntry>
+			val items: ArrayList<CheckModeInfoEntry> = arrayListOf()
 			if (mode == null) {
 				binding.chooseModeButton.isVisible = false
-				items = listOf(
-					CheckModeInfoEntry("ic_info", getString(R.string.verifier_check_mode_info_unselected_text_1)),
-					CheckModeInfoEntry("ic_settings", getString(R.string.verifier_check_mode_info_unselected_text_2))
-				)
+				val unselectedModeInfos = viewModel.configLiveData.value?.getUnselectedModesInfos(getString(R.string.language_key))
+				unselectedModeInfos?.infos?.forEach { unselectedModeInfo ->
+					items.add(CheckModeInfoEntry(unselectedModeInfo.iconAndroid, unselectedModeInfo.text))
+				}
 			} else {
 				binding.chooseModeButton.isVisible = true
-				items = mode.infos
+				items.addAll(mode.infos)
 			}
 
 			for (item in items) {

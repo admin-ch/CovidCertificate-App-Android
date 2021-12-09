@@ -45,6 +45,8 @@ data class ConfigModel(
 	fun getTransferWorksFaqs(languageKey: String): FaqModel? = transferWorks?.get(languageKey)
 	fun getVaccinationHints(languageKey: String): List<VaccinationHintModel>? = vaccinationHints?.get(languageKey)
 	fun getCheckModesInfos(languageKey: String): Map<String, CheckModeInfoModel>? = checkModesInfos?.get(languageKey)?.infos
+	fun getUnselectedModesInfos(languageKey: String): VerifierInfos? = checkModesInfos?.get(languageKey)?.unselected
+
 	fun getCheckModes(languageKey: String): Map<String, WalletModeModel>? = checkModesInfo?.get(languageKey)?.modes
 	fun getInfoModeTitle(languageKey: String): String? = checkModesInfo?.get(languageKey)?.title
 
