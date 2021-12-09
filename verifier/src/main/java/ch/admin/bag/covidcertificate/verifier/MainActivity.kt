@@ -56,6 +56,8 @@ class MainActivity : BaseActivity() {
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
+		configViewModel.loadActiveModes(getString(R.string.language_key))
+
 		binding = ActivityMainBinding.inflate(layoutInflater)
 		val view = binding.root
 		setContentView(view)

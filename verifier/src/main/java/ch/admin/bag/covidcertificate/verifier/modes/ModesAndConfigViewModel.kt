@@ -18,7 +18,6 @@ import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.common.config.CheckModeInfoModelWithId
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
-import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.combine
@@ -39,12 +38,14 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 
 	init {
 		selectedModeMutableLiveData.value = verifierSecureStorage.getSelectedMode()
+	}
 
+	fun loadActiveModes(langKey: String) {
 		viewModelScope.launch {
 			CovidCertificateSdk.Verifier.getActiveModes().combine(configLiveData.asFlow()) { activeModes, config ->
 				val configModeItems = mutableListOf<CheckModeInfoModelWithId>()
 				for (mode in activeModes) {
-					var configItem = config?.getCheckModesInfos(application.getString(R.string.language_key))?.get(mode.id)
+					val configItem = config?.getCheckModesInfos(langKey)?.get(mode.id)
 					if (configItem != null) {
 						configModeItems.add(
 							CheckModeInfoModelWithId(
