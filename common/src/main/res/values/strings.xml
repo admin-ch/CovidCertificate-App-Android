@@ -82,7 +82,7 @@ an identity document"</string>
     <string name="verifier_verify_error_title">"COVID Certificate invalid"</string>
 
     <!-- Fehler Infotext bei Prüfung (Nationale Regeln) -->
-    <string name="verifier_verify_error_info_for_national_rules">"Entspricht nicht den Gültigkeitskriterien der Schweiz oder des Prüfmodus ({MODUS})"</string>
+    <string name="verifier_verify_error_info_for_national_rules">"Does not meet the validity criteria for Switzerland or for the selected verification mode ({MODUS})"</string>
 
     <!-- Fehler Infotext bei Prüfung (Zertifikat Fehler) -->
     <string name="verifier_verify_error_info_for_certificate_invalid">"The COVID certificate does not have a valid signature"</string>
@@ -1317,29 +1317,29 @@ Code: {ERROR_CODE}"</string>
 
     <!-- Fuzzy -->
     <string name="verifier_faq_works_linktext_1">"Explanatory video"</string>
-    <string name="verifier_faq_works_linkurl_1"></string>
+    <string name="verifier_faq_works_linkurl_1">"https://www.youtube.com/watch?v=lsCOUM0zBdg"</string>
 
     <!-- Title of button to choose verification mode -->
-    <string name="verifier_choose_mode_button_title">"wählen"</string>
+    <string name="verifier_choose_mode_button_title">"Select"</string>
 
     <!-- 👍 -->
     <!-- Verifier app scan button with indication of mode -->
-    <string name="verifier_homescreen_scan_button_with_mode">"Prüfen ({MODE})"</string>
+    <string name="verifier_homescreen_scan_button_with_mode">"Verify ({MODE})"</string>
 
     <!-- error if scan was performed with a no longer existing mode -->
-    <string name="verifier_error_mode_no_longer_exists">"Ihr gewählter Prüfmodus existiert nicht mehr."</string>
+    <string name="verifier_error_mode_no_longer_exists">"Your selected verification mode no longer exists."</string>
 
     <!-- 👍 -->
     <!-- title for info pop-up in wallet app describing the validation states for the different check modes -->
-    <string name="wallet_check_mode_info_title">"Infos"</string>
+    <string name="wallet_check_mode_info_title">"Info"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G OK state -->
-    <string name="wallet_check_mode_info_2g_ok_text">"Hier könnte ein Text stehen, der erklärt was 2G bedeutet und dass der Zertifikatstyp für 2G ok ist."</string>
+    <string name="wallet_check_mode_info_2g_ok_text">"For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. In this mode, COVID certificates are not accepted for people who have tested negative."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
-    <string name="wallet_check_mode_info_2g_not_ok_text">"Hier könnte ein Text stehen, der erklärt was 2G bedeutet und dass der Zertifikatstyp für 2G NICHT ok ist."</string>
+    <string name="wallet_check_mode_info_2g_not_ok_text">"For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. In this mode, COVID certificates are not accepted for people who have tested negative."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> display name of check mode 3G -->
@@ -1351,49 +1351,49 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
-    <string name="verifier_check_mode_info_3g_text_1">"Für Betriebe und Veranstalter mit 3G-Regel."</string>
+    <string name="verifier_check_mode_info_3g_text_1">"For organisations and events applying the 3G rule."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
-    <string name="verifier_check_mode_info_3g_text_2">"Es werden gültige Zertifikate von Impfungen, Genesungen und Tests akzeptiert."</string>
+    <string name="verifier_check_mode_info_3g_text_2">"In this mode, COVID certificates are accepted for people who have been vaccinated, or who have recovered or tested negative."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> info text for check mode 3g -->
-    <string name="verifier_check_mode_info_3g_text_3">"Light-Zertifikate können geprüft werden."</string>
+    <string name="verifier_check_mode_info_3g_text_3">"It is possible to verify a \"light\" certificate in this mode."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
-    <string name="verifier_check_mode_info_2g_text_1">"Für Betriebe und Veranstalter mit 2G-Regel. Es werden nur Zertifikate von Impfungen und Genesungen akzeptiert."</string>
+    <string name="verifier_check_mode_info_2g_text_1">"For organisations and events applying the 2G rule."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
-    <string name="verifier_check_mode_info_2g_text_2">"Zertifikate von Covid-Tests werden als ungültig dargestellt."</string>
+    <string name="verifier_check_mode_info_2g_text_2">"In this mode, COVID certificates are accepted for people who have been vaccinated or who have recovered."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
-    <string name="verifier_check_mode_info_2g_text_3">"Light-Zertifikate können im 2G-Modus nicht geprüft werden."</string>
+    <string name="verifier_check_mode_info_2g_text_3">"It is not possible to verify a \"light\" certificate in this mode."</string>
 
     <!-- 👍 -->
     <!-- Verifier: Modus auswählen Titel -->
-    <string name="verifier_mode_title">"Prüfmodus"</string>
+    <string name="verifier_mode_title">"Verification mode"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G OK state -->
-    <string name="wallet_check_mode_info_3g_ok_text">"Hier könnte ein Text stehen, der erklärt was 3G bedeutet und dass der Zertifikatstyp für 3G ok ist."</string>
+    <string name="wallet_check_mode_info_3g_ok_text">"For access to organisations and events applying the 3G rule, COVID certificates for people who have been vaccinated, or who have recovered or tested negative are permitted."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G NOT OK state -->
-    <string name="wallet_check_mode_info_3g_not_ok_text">"Hier könnte ein Text stehen, der erklärt was 3G bedeutet und dass der Zertifikatstyp für 3G NICHT ok ist."</string>
+    <string name="wallet_check_mode_info_3g_not_ok_text">"For access to organisations and events applying the 3G rule, COVID certificates for people who have been vaccinated, or who have recovered or tested negative are permitted."</string>
 
     <!-- Titel für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
-    <string name="verifier_verify_light_not_supported_by_mode_title">"Beim zu prüfenden Covid-Zertifikat handelt es sich um ein Zertifikat Light. Dies kann im {MODUS}-Prüfmodus nicht geprüft werden."</string>
+    <string name="verifier_verify_light_not_supported_by_mode_title">"The COVID certificate being verified is a \"light\" certificate. This cannot be verified in {MODUS} verification mode."</string>
 
     <!-- Text für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
-    <string name="verifier_verify_light_not_supported_by_mode_text">"Die Prüfung kann in diesem Fall nur erfolgen, wenn die Umwandlung in ein Zertifikat Light rückgängig gemacht wird."</string>
+    <string name="verifier_verify_light_not_supported_by_mode_text">"In this case, the certificate can be verified only if the conversion to a \"light\" certificate is reversed. "</string>
 
     <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
-    <string name="verifier_check_mode_info_unselected_text_1">"Wählen Sie den Modus, in dem Sie Zertifikate prüfen müssen."</string>
+    <string name="verifier_check_mode_info_unselected_text_1">"Select the verification mode that you want to use for verifying COVID certificates."</string>
 
     <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
-    <string name="verifier_check_mode_info_unselected_text_2">"Die Einstellungen können jederzeit geändert werden"</string>
+    <string name="verifier_check_mode_info_unselected_text_2">"The verification mode can be changed at any time."</string>
 </resources>
