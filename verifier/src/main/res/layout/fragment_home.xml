@@ -76,7 +76,7 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:layout_marginTop="@dimen/spacing_very_large"
-					android:layout_marginBottom="@dimen/spacing_very_large"
+					android:layout_marginBottom="100dp"
 					android:text="@string/verifier_homescreen_scan_button" />
 
 			</LinearLayout>
