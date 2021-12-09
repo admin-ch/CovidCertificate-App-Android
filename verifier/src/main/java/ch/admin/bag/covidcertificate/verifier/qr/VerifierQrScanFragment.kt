@@ -107,8 +107,9 @@ class VerifierQrScanFragment : QrScanFragment() {
 				binding.fragmentQrScannerModeIndicator.text = mode.title
 				binding.fragmentQrScannerModeIndicator.visibility = View.VISIBLE
 			}
-			binding.fragmentQrScannerModeIndicator.setOnClickListener{
-				ChooseModeDialogFragment.newInstance().show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
+			binding.fragmentQrScannerModeIndicator.setOnClickListener {
+				ChooseModeDialogFragment.newInstance()
+					.show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
 			}
 		}
 
@@ -117,6 +118,19 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 	override fun onResume() {
 		super.onResume()
+		if (modesViewModel.isSingleModeLiveData.value == true) {
+			modesViewModel.modesLiveData.value?.let { modes ->
+				if (modes.size == 1) {
+					modesViewModel.setSelectedMode(modes.first().id)
+				}
+			}
+		}
+
+		if (modesViewModel.getSelectedMode() == null) {
+			ChooseModeDialogFragment.newInstance().apply { isCancelable = false }
+				.show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
+		}
+
 		zebraBroadcastReceiver.registerWith(requireContext()) { decodeQrCodeData(it, {}, {}) }
 	}
 

@@ -66,23 +66,11 @@ class HomeFragment : Fragment() {
 		binding.viewPager.adapter = adapter
 
 		binding.homescreenScanButton.setOnClickListener {
-			if (modesAndConfigViewModel.isSingleModeLiveData.value == true) {
-				modesAndConfigViewModel.modesLiveData.value?.let { modes ->
-					if (modes.size == 1) {
-						modesAndConfigViewModel.setSelectedMode(modes.first().id)
-					}
-				}
-			}
-
-			if (modesAndConfigViewModel.getSelectedMode() == null) {
-				showModeSelection()
-			} else {
-				parentFragmentManager.beginTransaction()
-					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-					.replace(R.id.fragment_container, VerifierQrScanFragment.newInstance())
-					.addToBackStack(VerifierQrScanFragment::class.java.canonicalName)
-					.commit()
-			}
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, VerifierQrScanFragment.newInstance())
+				.addToBackStack(VerifierQrScanFragment::class.java.canonicalName)
+				.commit()
 		}
 
 		binding.homescreenSupportButton.setOnClickListener {
@@ -94,7 +82,7 @@ class HomeFragment : Fragment() {
 		}
 
 		binding.homescreenSettingsButton.setOnClickListener {
-			showModeSelection()
+			ChooseModeDialogFragment.newInstance().show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
 		}
 
 		modesAndConfigViewModel.selectedModeLiveData.observe(viewLifecycleOwner) {
@@ -143,10 +131,6 @@ class HomeFragment : Fragment() {
 		}
 
 		setupInfoBox()
-	}
-
-	private fun showModeSelection() {
-		ChooseModeDialogFragment.newInstance().show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
 	}
 
 	override fun onResume() {
