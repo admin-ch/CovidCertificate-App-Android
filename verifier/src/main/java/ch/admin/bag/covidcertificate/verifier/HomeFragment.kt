@@ -94,6 +94,10 @@ class HomeFragment : Fragment() {
 			} else {
 				binding.homescreenModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
 				binding.homescreenModeIndicator.text = mode.title
+				binding.homescreenModeIndicator.setOnClickListener {
+					ChooseModeDialogFragment.newInstance()
+						.show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
+				}
 				binding.homescreenModeIndicator.isVisible = true
 				binding.homescreenSettingsButton.isVisible = true
 				binding.homescreenScanButton.text =
