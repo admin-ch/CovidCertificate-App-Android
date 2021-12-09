@@ -19,7 +19,6 @@ import androidx.core.graphics.toColorInt
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.debug.DebugFragment
@@ -67,7 +66,7 @@ class HomeFragment : Fragment() {
 		binding.viewPager.adapter = adapter
 
 		binding.homescreenScanButton.setOnClickListener {
-			if (modesAndConfigViewModel.isSingleModeLiveData.value == true){
+			if (modesAndConfigViewModel.isSingleModeLiveData.value == true) {
 				modesAndConfigViewModel.modesLiveData.value?.let { modes ->
 					if (modes.size == 1) {
 						modesAndConfigViewModel.setSelectedMode(modes.first().id)
@@ -103,7 +102,7 @@ class HomeFragment : Fragment() {
 			if (mode == null || modesAndConfigViewModel.isSingleModeLiveData.value == true) {
 				binding.homescreenModeIndicator.isVisible = false
 				binding.homescreenScanButton.text = getString(R.string.verifier_homescreen_scan_button)
-				binding.homescreenSettingsButton.isVisible = false
+				binding.homescreenSettingsButton.isVisible = modesAndConfigViewModel.isSingleModeLiveData.value != true
 			} else {
 				binding.homescreenModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
 				binding.homescreenModeIndicator.text = mode.title
