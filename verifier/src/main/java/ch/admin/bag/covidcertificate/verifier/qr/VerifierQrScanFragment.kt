@@ -98,9 +98,9 @@ class VerifierQrScanFragment : QrScanFragment() {
 			activateCamera()
 		}
 
-		modesViewModel.selectedModeLiveData.observe(viewLifecycleOwner) {
-			val mode = modesViewModel.getSelectedMode()
-			if (mode == null || modesViewModel.isSingleModeLiveData.value == true) {
+		modesViewModel.modesLiveData.observe(viewLifecycleOwner) { modeState ->
+			val mode = modeState.selectedMode
+			if (mode == null || modeState.availableModes.size <= 1) {
 				binding.fragmentQrScannerModeIndicator.visibility = View.GONE
 			} else {
 				binding.fragmentQrScannerModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
@@ -118,15 +118,9 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 	override fun onResume() {
 		super.onResume()
-		if (modesViewModel.isSingleModeLiveData.value == true) {
-			modesViewModel.modesLiveData.value?.let { modes ->
-				if (modes.size == 1) {
-					modesViewModel.setSelectedMode(modes.first().id)
-				}
-			}
-		}
 
-		if (modesViewModel.getSelectedMode() == null) {
+		val modeState = modesViewModel.modesLiveData.value
+		if (modeState?.availableModes?.size ?: 0 > 1 && modeState?.selectedMode == null) {
 			ChooseModeDialogFragment.newInstance().apply { isCancelable = false }
 				.show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
 		}

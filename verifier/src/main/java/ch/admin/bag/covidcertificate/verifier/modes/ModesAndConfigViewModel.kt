@@ -26,16 +26,12 @@ import kotlinx.coroutines.launch
 
 class ModesAndConfigViewModel(application: Application) : ConfigViewModel(application) {
 
-	val verifierSecureStorage = VerifierSecureStorage.getInstance(application)
+	private val verifierSecureStorage = VerifierSecureStorage.getInstance(application)
 
-	private val modesMutableLiveData = MutableLiveData<List<CheckModeInfoModelWithId>>()
-	val modesLiveData: LiveData<List<CheckModeInfoModelWithId>> = modesMutableLiveData
+	private val modesMutableLiveData = MutableLiveData<ModeState>()
+	val modesLiveData: LiveData<ModeState> = modesMutableLiveData
 
 	private val selectedModeMutableLiveData = MutableLiveData<String?>()
-	val selectedModeLiveData: LiveData<String?> = selectedModeMutableLiveData
-
-	private val isSingleModeMutableLiveData = MutableLiveData(false)
-	val isSingleModeLiveData: LiveData<Boolean> = isSingleModeMutableLiveData
 
 	init {
 		selectedModeMutableLiveData.value = verifierSecureStorage.getSelectedMode()
@@ -68,15 +64,16 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 					}
 				}
 				configModeItems
-			}.collect {
-				isSingleModeMutableLiveData.value = it.size == 1
-				modesMutableLiveData.value = it
-				val curMode = getSelectedMode()
-				if (curMode == null) {
-					setSelectedMode(null)
-				}else{
-					selectedModeMutableLiveData.value = curMode.id
+			}.combine(selectedModeMutableLiveData.asFlow()) { configModeItems, selectedModeIdentifier ->
+				val selectedMode: CheckModeInfoModelWithId?
+				if (configModeItems.size == 1) {
+					selectedMode = configModeItems[0]
+				} else {
+					selectedMode = configModeItems.firstOrNull { it.id == selectedModeIdentifier }
 				}
+				ModeState(configModeItems, selectedMode)
+			}.collect {
+				modesMutableLiveData.value = it
 			}
 		}
 	}
@@ -85,9 +82,6 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 		selectedModeMutableLiveData.value = mode
 		verifierSecureStorage.setSelectedMode(mode)
 	}
-
-	fun getSelectedMode(): CheckModeInfoModelWithId? =
-		modesLiveData.value?.firstOrNull { it.id == selectedModeLiveData.value }
 
 	fun resetSelectedModeIfNeeded() {
 		if (verifierSecureStorage.resetSelectedModeIfNeeded(
@@ -98,4 +92,5 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 		}
 	}
 
+	data class ModeState(val availableModes: List<CheckModeInfoModelWithId>, val selectedMode: CheckModeInfoModelWithId?)
 }
