@@ -69,10 +69,13 @@ class ModesAndConfigViewModel(application: Application) : ConfigViewModel(applic
 				}
 				configModeItems
 			}.collect {
-				modesMutableLiveData.value = it
 				isSingleModeMutableLiveData.value = it.size == 1
-				if (getSelectedMode() == null) {
+				modesMutableLiveData.value = it
+				val curMode = getSelectedMode()
+				if (curMode == null) {
 					setSelectedMode(null)
+				}else{
+					selectedModeMutableLiveData.value = curMode.id
 				}
 			}
 		}
