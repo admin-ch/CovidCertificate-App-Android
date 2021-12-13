@@ -41,6 +41,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
+import ch.admin.bag.covidcertificate.verifier.databinding.ItemVerificationHeaderIconBinding
 import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 import kotlin.math.max
@@ -197,7 +198,16 @@ class VerificationFragment : Fragment() {
 
 		binding.verificationHeaderProgressBar.isVisible = isLoading
 		binding.verificationHeaderIcon.isVisible = !isLoading
-		binding.verificationHeaderIcon.setImageResource(state.getValidationStatusIconLarge())
+
+		val inflater = LayoutInflater.from(context)
+		binding.verificationHeaderIcons.isVisible = !isLoading
+		binding.verificationHeaderIcons.removeAllViews()
+		val headerIcons = state.getValidationStatusIconsLarge()
+		headerIcons.forEach {
+			val iconView = ItemVerificationHeaderIconBinding.inflate(inflater, binding.verificationHeaderIcons, true)
+			iconView.root.setImageResource(it)
+		}
+
 		ColorStateList.valueOf(ContextCompat.getColor(context, state.getHeaderColor())).let { headerBackgroundTint ->
 			binding.verificationBaseGroup.backgroundTintList = headerBackgroundTint
 			binding.verificationContentGroup.backgroundTintList = headerBackgroundTint
