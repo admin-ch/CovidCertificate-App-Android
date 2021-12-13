@@ -1335,11 +1335,11 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G OK state -->
-    <string name="wallet_check_mode_info_2g_ok_text">"L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives ne peuvent pas être vérifiés sous ce mode de contrôle."</string>
+    <string name="wallet_check_mode_info_2g_ok_text">"L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
-    <string name="wallet_check_mode_info_2g_not_ok_text">"L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives ne peuvent pas être vérifiés sous ce mode de contrôle."</string>
+    <string name="wallet_check_mode_info_2g_not_ok_text">"L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> display name of check mode 3G -->

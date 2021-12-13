@@ -49,18 +49,18 @@ class ChooseModeDialogFragment : DialogFragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-		val observers = mutableListOf<Observer<String?>>()
-		viewModel.modesLiveData.observe(viewLifecycleOwner) { modes ->
+		val observers = mutableListOf<Observer<ModesAndConfigViewModel.ModeState?>>()
+		viewModel.modesLiveData.observe(viewLifecycleOwner) { modeState ->
 
 			binding.modeItemsLayout.removeAllViews()
-			observers.forEach { viewModel.selectedModeLiveData.removeObserver(it) }
+			observers.forEach { viewModel.modesLiveData.removeObserver(it) }
 			observers.clear()
 
-			for (mode in modes) {
+			for (mode in modeState.availableModes) {
 				val itemView = ItemModeButtonBinding.inflate(layoutInflater, binding.infoItemsLayout, false)
 				itemView.title.text = mode.title
-				val observer = Observer<String?> { selectedMode ->
-					if (selectedMode == mode.id) {
+				val observer = Observer<ModesAndConfigViewModel.ModeState?> { modeState ->
+					if (modeState.selectedMode?.id == mode.id) {
 						itemView.buttonIcon.setImageResource(R.drawable.ic_checkbox_filled)
 						itemView.root.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
 					} else {
@@ -68,7 +68,7 @@ class ChooseModeDialogFragment : DialogFragment() {
 						itemView.root.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.grey_light, null))
 					}
 				}
-				viewModel.selectedModeLiveData.observe(viewLifecycleOwner, observer)
+				viewModel.modesLiveData.observe(viewLifecycleOwner, observer)
 				observers.add(observer)
 
 				itemView.root.setOnClickListener {
@@ -80,11 +80,11 @@ class ChooseModeDialogFragment : DialogFragment() {
 			}
 		}
 
-		viewModel.selectedModeLiveData.observe(viewLifecycleOwner) { selectedMode ->
+		viewModel.modesLiveData.observe(viewLifecycleOwner) { modeState ->
 
 			binding.infoItemsLayout.removeAllViews()
 
-			val mode = viewModel.getSelectedMode()
+			val mode = modeState.selectedMode
 			val items: ArrayList<CheckModeInfoEntry> = arrayListOf()
 			if (mode == null) {
 				binding.chooseModeButton.isVisible = false

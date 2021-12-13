@@ -1339,11 +1339,11 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G OK state -->
-    <string name="wallet_check_mode_info_2g_ok_text">"Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guartite. I certificati COVID di test non sono accettati in questa modalità."</string>
+    <string name="wallet_check_mode_info_2g_ok_text">"Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guarite. I certificati COVID per persone testate negative e i certificati light non sono accettati."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
-    <string name="wallet_check_mode_info_2g_not_ok_text">"Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guartite. I certificati COVID di test non sono accettati in questa modalità."</string>
+    <string name="wallet_check_mode_info_2g_not_ok_text">"Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guarite. I certificati COVID per persone testate negative e i certificati light non sono accettati."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> display name of check mode 3G -->

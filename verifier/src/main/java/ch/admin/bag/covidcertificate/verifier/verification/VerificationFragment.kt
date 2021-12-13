@@ -106,7 +106,7 @@ class VerificationFragment : Fragment() {
 
 		verificationAdapter = VerificationAdapter {
 			certificateHolder?.let {
-				verificationViewModel.retryVerification(it, modesViewModel.selectedModeLiveData.value ?: "unknown")
+				verificationViewModel.retryVerification(it, modesViewModel.modesLiveData.value?.selectedMode?.id ?: "unknown")
 			}
 		}
 
@@ -179,7 +179,10 @@ class VerificationFragment : Fragment() {
 		binding.verificationBirthdate.text = certificateHolder.getFormattedDateOfBirth()
 		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
 
-		verificationViewModel.startVerification(certificateHolder, modesViewModel.selectedModeLiveData.value ?: "unknown")
+		verificationViewModel.startVerification(
+			certificateHolder,
+			modesViewModel.modesLiveData.value?.selectedMode?.id ?: "unknown"
+		)
 	}
 
 	private fun updateHeaderAndVerificationView(verificationState: VerificationState) {
@@ -205,7 +208,12 @@ class VerificationFragment : Fragment() {
 	private fun updateStatusBubbles(state: VerificationState) {
 		val context = binding.root.context
 
-		verificationAdapter.setItems(state.getVerificationStateItems(context, modesViewModel.getSelectedMode()?.title ?: ""))
+		verificationAdapter.setItems(
+			state.getVerificationStateItems(
+				context,
+				modesViewModel.modesLiveData.value?.selectedMode?.title ?: ""
+			)
+		)
 
 		binding.verificationErrorCode.apply {
 			visibility = View.INVISIBLE

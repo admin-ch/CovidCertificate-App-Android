@@ -85,12 +85,12 @@ class HomeFragment : Fragment() {
 			ChooseModeDialogFragment.newInstance().show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
 		}
 
-		modesAndConfigViewModel.selectedModeLiveData.observe(viewLifecycleOwner) {
-			val mode = modesAndConfigViewModel.getSelectedMode()
-			if (mode == null || modesAndConfigViewModel.isSingleModeLiveData.value == true) {
+		modesAndConfigViewModel.modesLiveData.observe(viewLifecycleOwner) { modeState ->
+			val mode = modeState.selectedMode
+			if (mode == null || modeState.availableModes.size == 1) {
 				binding.homescreenModeIndicator.isVisible = false
 				binding.homescreenScanButton.text = getString(R.string.verifier_homescreen_scan_button)
-				binding.homescreenSettingsButton.isVisible = modesAndConfigViewModel.isSingleModeLiveData.value != true
+				binding.homescreenSettingsButton.isVisible = modeState.availableModes.size > 1
 			} else {
 				binding.homescreenModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
 				binding.homescreenModeIndicator.text = mode.title

@@ -1335,11 +1335,11 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G OK state -->
-    <string name="wallet_check_mode_info_2g_ok_text">"For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. In this mode, COVID certificates are not accepted for people who have tested negative."</string>
+    <string name="wallet_check_mode_info_2g_ok_text">"For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. Light certificates and COVID certificates for people who have tested negative are not accepted."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
-    <string name="wallet_check_mode_info_2g_not_ok_text">"For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. In this mode, COVID certificates are not accepted for people who have tested negative."</string>
+    <string name="wallet_check_mode_info_2g_not_ok_text">"For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. Light certificates and COVID certificates for people who have tested negative are not accepted."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> display name of check mode 3G -->
@@ -1371,7 +1371,7 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
-    <string name="verifier_check_mode_info_2g_text_3">"It is not possible to verify a \"light\" certificate in this mode."</string>
+    <string name="verifier_check_mode_info_2g_text_3">"In order to be able to guarantee data privacy, the verification of a certificate light is not possible when 2G is applied."</string>
 
     <!-- 👍 -->
     <!-- Verifier: Modus auswählen Titel -->

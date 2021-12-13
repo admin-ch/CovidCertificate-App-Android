@@ -513,7 +513,7 @@
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "It is not possible to verify a \"light\" certificate in this mode."
+							"text": "In order to be able to guarantee data privacy, the verification of a certificate light is not possible when 2G is applied."
 						}
 					]
 				}
