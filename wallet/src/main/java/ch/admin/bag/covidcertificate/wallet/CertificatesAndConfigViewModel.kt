@@ -169,20 +169,18 @@ class CertificatesAndConfigViewModel(application: Application) : ConfigViewModel
 			statefulWalletItemsMutableLiveData.value = updatedStatefulWalletItems
 
 			// If this is a force verification (from the detail page), first refresh the trust list
-			CovidCertificateSdk.refreshTrustList(viewModelScope, onCompletionCallback = {
-				enqueueVerificationTask(certificateHolder, delayInMillis)
-			}, onErrorCallback = { errorCode ->
-				// If loading the trust list failed, tell the verification task to ignore the local trust list.
-				// That way the offline mode / network failure error handling is already taken care of by the verification controller
-				if (errorCode == ErrorCodes.TIME_INCONSISTENCY) {
+			CovidCertificateSdk.refreshTrustList(
+				viewModelScope,
+				onCompletionCallback = {
+					enqueueVerificationTask(certificateHolder, delayInMillis)
+				},
+				onErrorCallback = { errorCode ->
 					statefulWalletItemsMutableLiveData.value = updateVerificationStateForDccHolder(
 						certificateHolder,
 						VerificationState.ERROR(StateError(errorCode), null)
 					)
-				} else {
-					enqueueVerificationTask(certificateHolder, delayInMillis)
 				}
-			})
+			)
 		} else {
 			enqueueVerificationTask(certificateHolder, delayInMillis)
 		}
