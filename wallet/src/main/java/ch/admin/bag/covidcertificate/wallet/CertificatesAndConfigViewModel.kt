@@ -175,10 +175,18 @@ class CertificatesAndConfigViewModel(application: Application) : ConfigViewModel
 					enqueueVerificationTask(certificateHolder, delayInMillis)
 				},
 				onErrorCallback = { errorCode ->
-					statefulWalletItemsMutableLiveData.value = updateVerificationStateForDccHolder(
-						certificateHolder,
-						VerificationState.ERROR(StateError(errorCode), null)
-					)
+					if (errorCode.startsWith(ErrorCodes.GENERAL_NETWORK_FAILURE)) {
+						// If the error is a general network failure (specific HTTP error are also prefixed with the GNF error code)
+						// enqueue the verification task with the local trust list (which might or might not be valid)
+						enqueueVerificationTask(certificateHolder, delayInMillis)
+					} else {
+						// In all other error cases (most notably timeshift and unknown host (aka offline) exceptions), set the
+						// verification state to error
+						statefulWalletItemsMutableLiveData.value = updateVerificationStateForDccHolder(
+							certificateHolder,
+							VerificationState.ERROR(StateError(errorCode), null)
+						)
+					}
 				}
 			)
 		} else {
