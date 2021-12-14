@@ -830,7 +830,7 @@ In order to update the checklists, the app must be open and connected to the Int
     <string name="wallet_certificate_light_detail_summary_2">"Only contains last name, first name, date of birth and electronic signature"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 3 -->
-    <string name="wallet_certificate_light_detail_summary_3">"Only valid for {LIGHT_CERT_VALIDITY_IN_H} hours"</string>
+    <string name="wallet_certificate_light_detail_summary_3">"Only valid for a max of {LIGHT_CERT_VALIDITY_IN_H} hours"</string>
 
     <!-- Wallet: Zertifikat Light Summary Punkt 4 -->
     <string name="wallet_certificate_light_detail_summary_4">"Your COVID certificate is converted to the 'light' version online."</string>
