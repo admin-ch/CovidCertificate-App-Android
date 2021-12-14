@@ -31,12 +31,12 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.security.KeyPair
-import java.util.concurrent.TimeUnit
 
 internal class DeliveryRepository private constructor(deliverySpec: DeliverySpec) {
 
 	companion object : SingletonHolder<DeliveryRepository, DeliverySpec>(::DeliveryRepository) {
 		const val ERROR_CODE_INVALID_TIME = "I|TIME425"
+		const val ERROR_CODE_FAILED = "I|FAI"
 		private const val KEY_PAIR_ALGORITHM = "RSA2048"
 	}
 

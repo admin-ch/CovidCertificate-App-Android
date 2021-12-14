@@ -93,6 +93,11 @@ class TransferWorker(context: Context, workerParams: WorkerParameters) : Corouti
 	}
 
 	private suspend fun downloadTransferCertificate(transferCode: TransferCodeModel): TransferState {
+		if (transferCode.isFailed()) {
+			//if transfercode is expired plus TRANSFER_CODE_DURATION_FAILS_AFTER_EXPIRES is over, we stop the request and return an NOT_AVAILABLE
+			return TransferState.NOT_AVAILABLE
+		}
+
 		TransferCodeCrypto.getMutex(transferCode.code).withLock {
 			val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, applicationContext)
 
