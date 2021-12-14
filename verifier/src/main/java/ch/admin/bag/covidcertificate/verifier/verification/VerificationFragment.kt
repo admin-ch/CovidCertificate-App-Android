@@ -30,6 +30,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.views.VerticalMarginItemDecoration
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -104,12 +105,13 @@ class VerificationFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 
 		view.doOnLayout { setupScrollBehavior() }
-
-		verificationAdapter = VerificationAdapter {
+		verificationAdapter = VerificationAdapter(onRetryClickListener = {
 			certificateHolder?.let {
 				verificationViewModel.retryVerification(it, modesViewModel.modesLiveData.value?.selectedMode?.id ?: "unknown")
 			}
-		}
+		}, onPlayStoreClickListener = {
+			UrlUtil.openUrl(context, getString(R.string.verifier_android_app_google_play_store_url))
+		})
 
 		binding.verificationStatusRecyclerView.apply {
 			layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
