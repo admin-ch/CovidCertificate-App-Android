@@ -1317,7 +1317,7 @@ Code: {ERROR_CODE}"</string>
 
     <!-- Fuzzy -->
     <string name="verifier_faq_works_linktext_1">"Explanatory video"</string>
-    <string name="verifier_faq_works_linkurl_1">"https://www.youtube.com/watch?v=lsCOUM0zBdg"</string>
+    <string name="verifier_faq_works_linkurl_1">"https://youtu.be/lNfcS1mcCAQ"</string>
 
     <!-- Title of button to choose verification mode -->
     <string name="verifier_choose_mode_button_title">"Select"</string>
@@ -1371,7 +1371,7 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
-    <string name="verifier_check_mode_info_2g_text_3">"In order to be able to guarantee data privacy, the verification of a certificate light is not possible when 2G is applied."</string>
+    <string name="verifier_check_mode_info_2g_text_3">"It is not possible to verify a \"light\" certificate in this mode."</string>
 
     <!-- 👍 -->
     <!-- Verifier: Modus auswählen Titel -->
@@ -1389,11 +1389,44 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_verify_light_not_supported_by_mode_title">"The COVID certificate being verified is a \"light\" certificate. This cannot be verified in {MODUS} verification mode."</string>
 
     <!-- Text für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
-    <string name="verifier_verify_light_not_supported_by_mode_text">"In this case, the certificate can be verified only if the conversion to a \"light\" certificate is reversed. "</string>
+    <string name="verifier_verify_light_not_supported_by_mode_text">"In this case, the certificate can be verified only if the conversion to a \"light\" certificate is reversed."</string>
 
     <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
     <string name="verifier_check_mode_info_unselected_text_1">"Select the verification mode that you want to use for verifying COVID certificates."</string>
 
     <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
     <string name="verifier_check_mode_info_unselected_text_2">"The verification mode can be changed at any time."</string>
+
+    <!-- check app -> check mode select pop-up -> display name of check mode 2G+ -->
+    <string name="verifier_check_mode_info_2g_plus_title">"2G+"</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
+    <string name="verifier_check_mode_info_2g_plus_text_1">"Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
+    <string name="verifier_check_mode_info_2g_plus_text_2">"Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiger PCR- oder Antigen-Schnelltest benötigt."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
+    <string name="verifier_check_mode_info_2g_plus_text_3">"In diesem Modus müssen zwei Covid-Zertifikate einzeln überprüft werden."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
+    <string name="verifier_check_mode_info_2g_plus_text_4">"Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."</string>
+
+    <!-- 2G+: Anzeige, dass Zertifikat 2G erfüllt -->
+    <string name="verifier_2g_plus_success2g">"Gültiges Covid-Zertifikat nach 2G-Regelung"</string>
+
+    <!-- 2G+: Info, dass Zertifikat + erfüllt -->
+    <string name="verifier_2g_plus_successplus">"Gültiges Covid-Zertifikat für Getestete"</string>
+
+    <!-- Verifier: 2G+ Info, dass noch + nötig -->
+    <string name="verifier_2g_plus_infoplus">"Für 2G+ nur in Kombination mit einem gültigen PCR- oder Antigentest zugelassen."</string>
+
+    <!-- Verifier: 2G+ Info dass noch 2G nötig -->
+    <string name="verifier_2g_plus_info2g">"Für 2G+ nur in Kombination mit einem gültigen Covid-Zertifikat für Geimpfte oder Genesene zugelassen."</string>
+
+    <!-- Prüfung fehlgeschlagen App update nötig -->
+    <string name="verifier_error_app_store_text">"Die Prüfung kann mit dieser App Version nicht durchgeführt werden. Laden Sie die neue Version der App."</string>
+
+    <!-- Button Text für Prüfung fehlgeschlagen App update nötig  -->
+    <string name="verifier_error_app_store_button">"Zum App-Store"</string>
 </resources>
