@@ -15,8 +15,10 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.extensions.isSerologicalTest
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
@@ -49,7 +51,7 @@ sealed class WalletDataListItem {
 			binding.itemCertificateListName.alpha = qrAlpha
 			binding.itemCertificateListIconQr.alpha = qrAlpha
 
-			setCertificateType(binding.itemCertificateListType, state, certType)
+			setCertificateType(binding.itemCertificateListType, certificate, state, certType)
 			binding.itemCertificateListType.isVisible = certType != null
 
 			when (state) {
@@ -119,6 +121,7 @@ sealed class WalletDataListItem {
 		 */
 		private fun setCertificateType(
 			view: TextView,
+			certificate: CertificateHolder?,
 			state: VerificationState,
 			certType: CertType?,
 		) {
@@ -147,7 +150,14 @@ sealed class WalletDataListItem {
 			val typeLabelRes: Int = when (certType) {
 				CertType.LIGHT -> R.string.wallet_certificate_list_light_certificate_badge
 				CertType.RECOVERY -> R.string.certificate_reason_recovered
-				CertType.TEST -> R.string.certificate_reason_tested
+				CertType.TEST -> {
+					val isSerologicalTest = (certificate?.certificate as? DccCert)?.tests?.firstOrNull()?.isSerologicalTest() ?: false
+					if (isSerologicalTest) {
+						R.string.certificate_reason_recovered
+					} else {
+						R.string.certificate_reason_tested
+					}
+				}
 				else -> R.string.certificate_reason_vaccinated
 			}
 			view.setText(typeLabelRes)
