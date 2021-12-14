@@ -32,7 +32,11 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConve
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.withLock
 import java.io.IOException
 import java.security.KeyPair
@@ -51,6 +55,13 @@ class TransferCodeViewModel(application: Application) : AndroidViewModel(applica
 
 	fun downloadCertificateForTransferCode(transferCode: TransferCodeModel, delayInMillis: Long = 0L) {
 		downloadJob?.cancel()
+
+		if (transferCode.isFailed()) {
+			// If transfer code is failed, return early with the error code for a failed transfer code
+			conversionStateMutableLiveData.postValue(TransferCodeConversionState.ERROR(StateError(DeliveryRepository.ERROR_CODE_FAILED)))
+			downloadJob = null
+			return
+		}
 
 		conversionStateMutableLiveData.value = TransferCodeConversionState.LOADING
 		downloadJob = viewModelScope.launch(Dispatchers.IO) {

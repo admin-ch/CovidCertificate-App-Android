@@ -13,7 +13,9 @@ package ch.admin.bag.covidcertificate.wallet
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
-import androidx.lifecycle.*
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.exception.TimeDeviationException
 import ch.admin.bag.covidcertificate.common.util.SingleLiveEvent
@@ -34,9 +36,13 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConve
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.time.Instant
 import kotlin.collections.set
@@ -254,6 +260,14 @@ class CertificatesAndConfigViewModel(application: Application) : ConfigViewModel
 	}
 
 	private fun convertTransferCode(transferCode: TransferCodeModel) {
+		if (transferCode.isFailed()) {
+			// If transfer code is failed, return early with the error code for a failed transfer code
+			val conversionState = TransferCodeConversionState.ERROR(StateError(DeliveryRepository.ERROR_CODE_FAILED))
+			val updatedStatefulWalletItems = updateConversionStateForTransferCode(transferCode, conversionState)
+			statefulWalletItemsMutableLiveData.value = updatedStatefulWalletItems
+			return
+		}
+
 		viewModelScope.launch(Dispatchers.IO) {
 			TransferCodeCrypto.getMutex(transferCode.code).withLock {
 				val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())
