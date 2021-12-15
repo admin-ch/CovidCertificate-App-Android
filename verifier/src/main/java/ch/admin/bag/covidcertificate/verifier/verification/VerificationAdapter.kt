@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView
 import ch.admin.bag.covidcertificate.verifier.databinding.ItemVerificationStatusBinding
 import ch.admin.bag.covidcertificate.verifier.databinding.ItemVerificationStatusInfoBinding
 
-class VerificationAdapter(private val onRetryClickListener: View.OnClickListener) :
+class VerificationAdapter(
+	private val onRetryClickListener: View.OnClickListener,
+	private val onPlayStoreClickListener: View.OnClickListener
+) :
 	RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
 	private val items: MutableList<VerificationItem> = mutableListOf()
@@ -24,7 +27,8 @@ class VerificationAdapter(private val onRetryClickListener: View.OnClickListener
 			0 -> StatusViewHolder(ItemVerificationStatusBinding.inflate(LayoutInflater.from(parent.context), parent, false))
 			else -> InfoViewHolder(
 				ItemVerificationStatusInfoBinding.inflate(LayoutInflater.from(parent.context), parent, false),
-				onRetryClickListener
+				onRetryClickListener,
+				onPlayStoreClickListener
 			)
 		}
 	}

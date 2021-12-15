@@ -30,6 +30,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.views.VerticalMarginItemDecoration
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -41,6 +42,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
+import ch.admin.bag.covidcertificate.verifier.databinding.ItemVerificationHeaderIconBinding
 import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 import kotlin.math.max
@@ -103,12 +105,13 @@ class VerificationFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 
 		view.doOnLayout { setupScrollBehavior() }
-
-		verificationAdapter = VerificationAdapter {
+		verificationAdapter = VerificationAdapter(onRetryClickListener = {
 			certificateHolder?.let {
 				verificationViewModel.retryVerification(it, modesViewModel.modesLiveData.value?.selectedMode?.id ?: "unknown")
 			}
-		}
+		}, onPlayStoreClickListener = {
+			UrlUtil.openUrl(context, getString(R.string.verifier_android_app_google_play_store_url))
+		})
 
 		binding.verificationStatusRecyclerView.apply {
 			layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -197,7 +200,16 @@ class VerificationFragment : Fragment() {
 
 		binding.verificationHeaderProgressBar.isVisible = isLoading
 		binding.verificationHeaderIcon.isVisible = !isLoading
-		binding.verificationHeaderIcon.setImageResource(state.getValidationStatusIconLarge())
+
+		val inflater = LayoutInflater.from(context)
+		binding.verificationHeaderIcons.isVisible = !isLoading
+		binding.verificationHeaderIcons.removeAllViews()
+		val headerIcons = state.getValidationStatusIconsLarge()
+		headerIcons.forEach {
+			val iconView = ItemVerificationHeaderIconBinding.inflate(inflater, binding.verificationHeaderIcons, true)
+			iconView.root.setImageResource(it)
+		}
+
 		ColorStateList.valueOf(ContextCompat.getColor(context, state.getHeaderColor())).let { headerBackgroundTint ->
 			binding.verificationBaseGroup.backgroundTintList = headerBackgroundTint
 			binding.verificationContentGroup.backgroundTintList = headerBackgroundTint

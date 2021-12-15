@@ -168,12 +168,18 @@
 				android:layout_gravity="center_horizontal"
 				android:paddingVertical="@dimen/spacing_tiny_small">
 
-				<ImageView
-					android:id="@+id/verification_header_icon"
-					android:layout_width="match_parent"
-					android:layout_height="match_parent"
-					app:srcCompat="@drawable/ic_check_large"
-					android:visibility="visible" />
+				<LinearLayout
+					android:layout_width="wrap_content"
+					android:id="@+id/verification_header_icons"
+					android:layout_height="wrap_content">
+
+					<ImageView
+						android:id="@+id/verification_header_icon"
+						android:layout_width="match_parent"
+						android:layout_height="match_parent"
+						app:srcCompat="@drawable/ic_check_large"
+						android:visibility="visible" />
+				</LinearLayout>
 
 				<ProgressBar
 					android:id="@+id/verification_header_progress_bar"
