@@ -57,7 +57,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Erklärvideo",
-					"linkUrl": "https://www.youtube.com/watch?v=cVlAi184DU4"
+					"linkUrl": "https://youtu.be/14Sk2QTaJhA"
 				},
 				{
 					"title": "Was wird genau geprüft?",
@@ -138,7 +138,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Explanatory video",
-					"linkUrl": "https://www.youtube.com/watch?v=lsCOUM0zBdg"
+					"linkUrl": "https://youtu.be/lNfcS1mcCAQ"
 				},
 				{
 					"title": "What exactly is checked?",
@@ -219,7 +219,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Vidéo explicative",
-					"linkUrl": "https://www.youtube.com/watch?v=mwrorCW39Nk"
+					"linkUrl": "https://youtu.be/90JHMToWPNM"
 				},
 				{
 					"title": "Sur quoi porte le contrôle au juste?",
@@ -300,7 +300,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Video esplicativo",
-					"linkUrl": "https://www.youtube.com/watch?v=Ix1s0PankKo&feature=emb_title"
+					"linkUrl": "https://youtu.be/pt8Sf5xOISU"
 				},
 				{
 					"title": "Cosa viene verificato esattamente?",
@@ -381,7 +381,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Video explicativ",
-					"linkUrl": "https://www.youtube.com/watch?v=cVlAi184DU4"
+					"linkUrl": "https://youtu.be/14Sk2QTaJhA"
 				},
 				{
 					"title": "Tge vegn propi verifitgà?",
@@ -494,7 +494,33 @@
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus aus Datenschutzgründen nicht möglich."
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird."
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss."
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."
 						}
 					]
 				}
@@ -554,7 +580,33 @@
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "In order to be able to guarantee data privacy, the verification of a certificate light is not possible when 2G is applied."
+							"text": "It is not possible to verify a \"light\" certificate in this mode."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (EN)"
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (EN)"
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (EN)"
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (EN)"
 						}
 					]
 				}
@@ -614,7 +666,33 @@
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Pour des questions de protection des données, il ne peut pas être utilisé pour vérifier un «certificat light»."
+							"text": "La vérification d’un «certificat light» n'est pas possible dans ce mode."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (FR)"
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (FR)"
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (FR)"
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (FR)"
 						}
 					]
 				}
@@ -674,7 +752,33 @@
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Questa modalità non permette di verificare i certificati light per motivi legati alla protezione dei dati."
+							"text": "Questa modalità non permette di verificare i certificati light."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (IT)"
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (IT)"
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (IT)"
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (IT)"
 						}
 					]
 				}
@@ -734,7 +838,33 @@
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Per motivs da la protecziun da datas na po in certificat light betg vegnir verifitgà en quest modus."
+							"text": "“Certificat light” na po betg vegnir verifitgà en il modus da verificaziun da 2G."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (RM)"
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (RM)"
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (RM)"
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (RM)"
 						}
 					]
 				}
