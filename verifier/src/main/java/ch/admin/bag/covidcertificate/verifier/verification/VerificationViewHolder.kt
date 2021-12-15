@@ -50,6 +50,7 @@ class InfoViewHolder(
 				}
 			} else {
 				infoRetry.isVisible = false
+				infoApplink.isVisible = false
 			}
 		}
 	}
