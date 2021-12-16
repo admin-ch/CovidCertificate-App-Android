@@ -1327,10 +1327,10 @@ Code: {ERROR_CODE}"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Genügend"</string>
 
     <!-- Ausnahme Test Zertifikat Detail: Titel für Startdatum des Attests -->
-    <string name="wallet_certificate_ausnahme_test_attest_start_date">"Startdatum des Attests"</string>
+    <string name="wallet_certificate_ausnahme_test_attest_start_date">"Beginn der Gültigkeit"</string>
 
     <!-- Ausnahme Test Zertifikat Detail: Titel für verantwortliche Stelle für Ausstellung -->
-    <string name="wallet_certificate_ausnahme_responsible_issuer">"Verantwortliche Stelle für Ausstellung"</string>
+    <string name="wallet_certificate_ausnahme_responsible_issuer">"Für die Ausstellung verantwortliche Stelle"</string>
 
     <!-- Testname für Schweizer Ausnahme Zertifikat für Nicht-Testbare und Nicht-Impfbare Personen -->
     <string name="covid_certificate_ch_ausnahme_test_title">"Ausnahme Zertifikat"</string>
@@ -1441,13 +1441,13 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_check_mode_info_2g_plus_text_1">"Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird."</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
-    <string name="verifier_check_mode_info_2g_plus_text_2">"Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiger PCR- oder Antigen-Schnelltest benötigt."</string>
+    <string name="verifier_check_mode_info_2g_plus_text_2">"Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss."</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
-    <string name="verifier_check_mode_info_2g_plus_text_3">"In diesem Modus müssen zwei Covid-Zertifikate einzeln überprüft werden."</string>
+    <string name="verifier_check_mode_info_2g_plus_text_3">"Ausnahmen: Personen, welche vor weniger als 90 Tagen entweder eine Genesung durchgemacht oder ihre letzte Impfdosis erhalten haben, benötigen kein zusätzliches Testzertifikat."</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
-    <string name="verifier_check_mode_info_2g_plus_text_4">"Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."</string>
+    <string name="verifier_check_mode_info_2g_plus_text_4">"Die Prüfung von Zertifikate Light ist in diesem Modus nicht möglich."</string>
 
     <!-- 2G+: Anzeige, dass Zertifikat 2G erfüllt -->
     <string name="verifier_2g_plus_success2g">"Gültiges Covid-Zertifikat nach 2G-Regelung"</string>
@@ -1457,14 +1457,26 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_2g_plus_successplus">"Gültiges Covid-Zertifikat für Getestete"</string>
 
     <!-- Verifier: 2G+ Info, dass noch + nötig -->
-    <string name="verifier_2g_plus_infoplus">"Für 2G+ nur in Kombination mit einem gültigen PCR- oder Antigentest zugelassen."</string>
+    <string name="verifier_2g_plus_infoplus">"Für 2G+ nur in Kombination mit der Prüfung eines gültigen Testzertifikats zugelassen."</string>
 
     <!-- Verifier: 2G+ Info dass noch 2G nötig -->
-    <string name="verifier_2g_plus_info2g">"Für 2G+ nur in Kombination mit einem gültigen Covid-Zertifikat für Geimpfte oder Genesene zugelassen."</string>
+    <string name="verifier_2g_plus_info2g">"Für 2G+ nur in Kombination mit der Prüfung eines Covid-Zertifikats für Geimpfte oder Genesene zugelassen."</string>
 
     <!-- Prüfung fehlgeschlagen App update nötig -->
-    <string name="verifier_error_app_store_text">"Die Prüfung kann mit dieser App Version nicht durchgeführt werden. Laden Sie die neue Version der App."</string>
+    <string name="verifier_error_app_store_text">"Die Prüfung dieser Art des Covid-Zertifikats bedingt die neuste Version der Check-App. Bitte aktualisieren Sie Ihre App und wiederholen Sie den Prüfvorgang."</string>
 
     <!-- Button Text für Prüfung fehlgeschlagen App update nötig  -->
-    <string name="verifier_error_app_store_button">"Zum App-Store"</string>
+    <string name="verifier_error_app_store_button">"Zum App Store"</string>
+
+    <!-- check app -> check mode select pop-up -> display name of check mode Testzertifikat -->
+    <string name="verifier_check_mode_info_test_cert_title">"Testzertifikat"</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode Testzertifikat -->
+    <string name="verifier_check_mode_info_test_cert_text_1">"Für Bereiche, bei denen ein gültiges Testzertifikat notwendig ist."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode Testzertifikat -->
+    <string name="verifier_check_mode_info_test_cert_text_2">"In diesem Modus werden Covid-Zertifikate für negativ Getestete basierend auf einem PCR- oder Antigen-Schnelltest akzeptiert."</string>
+
+    <!-- check app -> check mode select pop-up -> info text for check mode Testzertifikat -->
+    <string name="verifier_check_mode_info_test_cert_text_3">"Die Prüfung von Zertifikate Light ist in diesem Modus nicht möglich."</string>
 </resources>
