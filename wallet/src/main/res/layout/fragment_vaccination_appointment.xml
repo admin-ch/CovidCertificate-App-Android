@@ -63,6 +63,28 @@
 					android:layout_marginTop="@dimen/spacing_huge"
 					tools:text="@string/vaccination_booking_info_text" />
 
+				<LinearLayout
+					android:id="@+id/vaccination_booking_info_frame"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_large"
+					android:layout_marginTop="@dimen/spacing_very_large"
+					android:background="@drawable/bg_certificate_bubble"
+					android:orientation="horizontal"
+					android:padding="@dimen/spacing_larger"
+					app:backgroundTint="@color/blueish">
+
+					<TextView
+						android:id="@+id/vaccination_booking_info"
+						style="@style/CovidCertificate.Text"
+						android:layout_width="0dp"
+						android:layout_height="wrap_content"
+						android:layout_weight="1"
+						android:gravity="center"
+						tools:text="@string/vaccination_booking_info_info" />
+
+				</LinearLayout>
+
 				<TextView
 					android:id="@+id/impfcheck_title"
 					style="@style/CovidCertificate.Text.Bold.Emphasized"
@@ -91,28 +113,6 @@
 					android:drawableRight="@drawable/ic_link_external"
 					android:drawableTint="@color/white"
 					android:text="@string/vaccination_impf_check_action" />
-
-				<LinearLayout
-					android:id="@+id/vaccination_booking_info_frame"
-					android:layout_width="match_parent"
-					android:layout_height="wrap_content"
-					android:layout_marginHorizontal="@dimen/spacing_medium_large"
-					android:layout_marginTop="@dimen/spacing_very_large"
-					android:background="@drawable/bg_certificate_bubble"
-					android:orientation="horizontal"
-					android:padding="@dimen/spacing_larger"
-					app:backgroundTint="@color/blueish">
-
-					<TextView
-						android:id="@+id/vaccination_booking_info"
-						style="@style/CovidCertificate.Text"
-						android:layout_width="0dp"
-						android:layout_height="wrap_content"
-						android:layout_weight="1"
-						android:gravity="center"
-						tools:text="@string/vaccination_booking_info_info" />
-
-				</LinearLayout>
 
 				<LinearLayout
 					android:id="@+id/vaccination_more_info_button"
