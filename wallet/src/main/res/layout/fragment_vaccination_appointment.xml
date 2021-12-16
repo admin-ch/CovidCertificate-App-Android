@@ -93,6 +93,7 @@
 					android:text="@string/vaccination_impf_check_action" />
 
 				<LinearLayout
+					android:id="@+id/vaccination_booking_info_frame"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
 					android:layout_marginHorizontal="@dimen/spacing_medium_large"

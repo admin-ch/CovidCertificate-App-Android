@@ -14,10 +14,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
 import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
@@ -56,7 +56,9 @@ class VaccinationAppointmentFragment : Fragment() {
 		val vaccinationBookingInfo = config.getVaccinationBookingInfo(languageKey)
 		binding.vaccinationBookingTitle.text = vaccinationBookingInfo?.title
 		binding.vaccinationBookingText.text = vaccinationBookingInfo?.text
+		binding.vaccinationBookingInfoFrame.isVisible = !vaccinationBookingInfo?.info.isNullOrEmpty()
 		binding.vaccinationBookingInfo.text = vaccinationBookingInfo?.info
+
 
 		if (vaccinationBookingInfo?.impfcheckTitle != null && vaccinationBookingInfo.impfcheckText != null && vaccinationBookingInfo.impfcheckButton != null && vaccinationBookingInfo.impfcheckUrl != null) {
 			binding.impfcheckTitle.text = vaccinationBookingInfo.impfcheckTitle
