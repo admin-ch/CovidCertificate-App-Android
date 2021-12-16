@@ -1432,7 +1432,7 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_check_mode_info_test_cert_text_1">"Per secturs che dovran in certificat d'in test valaivel."</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode Testzertifikat -->
-    <string name="verifier_check_mode_info_test_cert_text_2">"In this mode, COVID certificates are accepted for people who have tested negative based on a PCR or rapid antigen test."</string>
+    <string name="verifier_check_mode_info_test_cert_text_2">"En quest modus vegnan acceptads certificats COVID per persunas cun in test negativ sin basa d’in test da PCR u d’in test svelt d’antigens."</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode Testzertifikat -->
     <string name="verifier_check_mode_info_test_cert_text_3">"En quest modus na pon vegnir verifitgads nagins certificats light."</string>
