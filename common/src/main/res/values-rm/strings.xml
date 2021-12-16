@@ -1246,7 +1246,7 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
 Blers lieus porschan er vaccinaziuns «walk-in» senza termin."</string>
 
     <!-- vaccination booking info screen info box at bottom -->
-    <string name="vaccination_booking_info_info">"La vaccinaziun cunter COVID-19 è recumandada per persunas a partir da 12 onns. La vaccinaziun è gratuita."</string>
+    <string name="vaccination_booking_info_info">"La vaccinaziun cunter COVID-19 è recumandada per persunas a partir da 5 onns."</string>
 
     <!-- Header on vaccination appointment screen -->
     <string name="vaccination_appointment_header">"Termin da vaccinaziun"</string>

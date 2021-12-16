@@ -1253,7 +1253,7 @@ Il «certificato light» è disponibile unicamente in versione elettronica nell'
 Molti di essi offrono anche vaccinazioni libere senza appuntamento."</string>
 
     <!-- vaccination booking info screen info box at bottom -->
-    <string name="vaccination_booking_info_info">"La vaccinazione anti-COVID-19 è raccomandata per le persone a partire dai 12 anni ed è gratuita."</string>
+    <string name="vaccination_booking_info_info">"La vaccinazione anti-COVID-19 è raccomandata per le persone a partire dai 5 anni."</string>
 
     <!-- Header on vaccination appointment screen -->
     <string name="vaccination_appointment_header">"Appuntamento per la vaccinazione"</string>

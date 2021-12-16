@@ -1249,7 +1249,7 @@ The 'Certificate light' is only available electronically in the app and is only 
 Many places also offer walk-in vaccinations without an appointment."</string>
 
     <!-- vaccination booking info screen info box at bottom -->
-    <string name="vaccination_booking_info_info">"The COVID-19 vaccination is recommended for those over 12. It's free of charge."</string>
+    <string name="vaccination_booking_info_info">"The COVID-19 vaccination is recommended for those over 5. "</string>
 
     <!-- Header on vaccination appointment screen -->
     <string name="vaccination_appointment_header">"Vaccination appointment"</string>
