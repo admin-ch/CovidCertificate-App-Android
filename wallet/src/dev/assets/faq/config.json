@@ -1,6 +1,47 @@
 {
 	"forceUpdate": false,
-	"infoBox": null,
+	"infoBox": {
+		"de": {
+			"title": "Mock InfoBox Titel (de)",
+			"msg": "Ein Mock Text mit mehreren Zeilen.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "830796854"
+		},
+		"en": {
+			"title": "Mock InfoBox Titel (en)",
+			"msg": "Ein Mock Text mit mehreren Zeilen.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "830798094"
+		},
+		"fr": {
+			"title": "Mock InfoBox Titel (fr)",
+			"msg": "Ein Mock Text mit mehreren Zeilen.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "830799179"
+		},
+		"it": {
+			"title": "Mock InfoBox Titel (it)",
+			"msg": "Ein Mock Text mit mehreren Zeilen.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "830802124"
+		},
+		"rm": {
+			"title": "Mock InfoBox Titel (rm)",
+			"msg": "Ein Mock Text mit mehreren Zeilen.\nLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+			"url": "tel:+41583877780",
+			"urlTitle": "+41 58 387 77 80",
+			"isDismissible": false,
+			"infoId": "830810556"
+		}
+	},
 	"questions": {
 		"de": {
 			"faqTitle": "Was sind Covid-Zertifikate?",
@@ -67,7 +108,7 @@
 				},
 				{
 					"title": "Was ist das Zertifikat Light?",
-					"text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 48 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 48 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
+					"text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 24 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 24 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -140,7 +181,7 @@
 				},
 				{
 					"title": "What is the 'certificate light'",
-					"text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'.",
+					"text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 24 hours and must then be reactivated. If you need to use the normal certificate before the end of the 24-hour period, you can simply deactivate the 'certificate light'.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -213,7 +254,7 @@
 				},
 				{
 					"title": "Qu’est-ce que le certificat light ?",
-					"text": "L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Ce certificat « light » indique uniquement si le certificat présenté est valide, sans fournir de données sur la santé.\n\nL’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.\n\nLe certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 48 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light.",
+					"text": "L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Ce certificat « light » indique uniquement si le certificat présenté est valide, sans fournir de données sur la santé.\n\nL’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.\n\nLe certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 24 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -286,7 +327,7 @@
 				},
 				{
 					"title": "Che cos'è il certificato light?",
-					"text": "L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.\n\nIl certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».\n\nIl «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 48 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 48 ore, il certificato light può essere disattivato semplicemente.",
+					"text": "L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.\n\nIl certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».\n\nIl «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 24 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 24 ore, il certificato light può essere disattivato semplicemente.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -359,7 +400,7 @@
 				},
 				{
 					"title": "Tge è in certificat light?",
-					"text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.\n\nL'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 48 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà.",
+					"text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.\n\nL'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -2222,29 +2263,197 @@
 		"de": {
 			"title": "Impftermin in Ihrer Nähe buchen",
 			"text": "Eine Impfung könnte zum Beispiel an diesen Orten in Ihrer Nähe stattfinden:\n\n- in spezifischen Impfzentren\n- in Spitälern\n- bei Ihrem Hausarzt oder Ihrer Hausärztin\n- in Impfapotheken\n\nViele Orte bieten auch Walk-in-Impfungen ohne Termine an.",
-			"info": "Die Covid-19-Impfung ist für Personen ab 12 Jahren empfohlen. Die Impfung ist gratis."
+			"info": "Die Covid-19-Impfung ist für Personen ab 12 Jahren empfohlen. Die Impfung ist gratis.",
+			"impfcheckTitle": "Jetzt Termin buchen",
+			"impfcheckText": "Der Covid-19 Impf-Check gibt Auskunft über Erst- sowie Auffrischimpfungen und führt Sie zur entsprechenden Anlaufstelle in Ihrem Kanton.",
+			"impfcheckButton": "Zum Impf-Check",
+			"impfcheckUrl": "https://covid19.impf-check.ch/"
 		},
 		"en": {
 			"title": "Book a vaccination appointment near you",
 			"text": "Vaccination may be performed at the following locations near you:\n\n- at specific vaccination centres\n- in hospitals\n- at your general practitioner's surgery\n- at a vaccination pharmacy\n\nMany places also offer walk-in vaccinations without an appointment.",
-			"info": "The COVID-19 vaccination is recommended for those over 12. It's free of charge."
+			"info": "The COVID-19 vaccination is recommended for those over 12. It's free of charge.",
+			"impfcheckTitle": "Book an appointment now",
+			"impfcheckText": "The COVID-19 Vaccination Check provides information on initial and booster vaccinations and guides you to the relevant point of contact in your canton.",
+			"impfcheckButton": "To the Vaccination Check",
+			"impfcheckUrl": "https://covid19.impf-check.ch/"
 		},
 		"fr": {
 			"title": "Prendre un rendez-vous de vaccination près de chez vous",
 			"text": "La vaccination pourrait, par exemple, être proposée dans les lieux suivants situés à proximité de chez vous :\n\n- dans des centres de vaccination désignés\n- dans les hôpitaux\n- chez votre médecin de famille\n- dans les pharmacies\n\nIl est aussi possible de se faire vacciner sans rendez-vous dans de nombreux endroits.",
-			"info": "Gratuite, la vaccination contre le COVID-19 est recommandée pour les personnes dès 12 ans."
+			"info": "Gratuite, la vaccination contre le COVID-19 est recommandée pour les personnes dès 12 ans.",
+			"impfcheckTitle": "Prendre un rendez-vous maintenant",
+			"impfcheckText": "COVID-19 Vac-check fournit des renseignements sur la première vaccination ainsi que sur la vaccination de rappel et vous guide vers le service compétent de votre canton.",
+			"impfcheckButton": "Vers COVID-19 Vac-check",
+			"impfcheckUrl": "https://covid19-vac-check.ch/"
 		},
 		"it": {
 			"title": "Prendi appuntamento per la vaccinazione nelle tue vicinanze",
 			"text": "Per esempio potresti farti vaccinare in uno di questi luoghi nelle tue vicinanze:\n\n- in centri di vaccinazione specifici\n- negli ospedali\n- dal tuo medico di famiglia\n- nelle farmacie che vaccinano\n\nMolti di essi offrono anche vaccinazioni libere senza appuntamento.",
-			"info": "La vaccinazione anti-COVID-19 è raccomandata per le persone a partire dai 12 anni ed è gratuita."
+			"info": "La vaccinazione anti-COVID-19 è raccomandata per le persone a partire dai 12 anni ed è gratuita.",
+			"impfcheckTitle": "Prendi appuntamento ora",
+			"impfcheckText": "Il COVID-19 Vac-Check fornisce informazioni sulle prime vaccinazioni, sulle vaccinazioni di richiamo e ti indirizza verso il punto di contatto del tuo Cantone.",
+			"impfcheckButton": "Vai al COVID-19 Vac-Check",
+			"impfcheckUrl": "https://covid19-vac-check.ch/"
 		},
 		"rm": {
 			"title": "Reservar in termin da vaccinaziun en Vossa vischinanza",
 			"text": "Ina vaccinaziun pudess per exempel vegnir fatga en quests lieus en Vossa vischinanza:\n\n- en centers da vaccinaziun specifics\n- en ospitals\n- tar Vossa media u tar Voss medi da chasa\n- en apotecas da vaccinaziun\n\nBlers lieus porschan er vaccinaziuns «walk-in» senza termin.",
-			"info": "La vaccinaziun cunter COVID-19 è recumandada per persunas a partir da 12 onns. La vaccinaziun è gratuita."
+			"info": "La vaccinaziun cunter COVID-19 è recumandada per persunas a partir da 12 onns. La vaccinaziun è gratuita.",
+			"impfcheckTitle": "Reservar in termin ussa",
+			"impfcheckText": "Il check da vaccinaziun COVID-19 As infurmescha davart las emprimas vaccinaziuns sco er davart las vaccinaziuns da rinfrestgament ed As maina al post da consultaziun correspundent da Voss chantun.  ",
+			"impfcheckButton": "Al check da vaccinaziun",
+			"impfcheckUrl": "https://covid19.impf-check.ch/"
 		}
 	},
+	"checkModesInfo": {
+		"de": {
+			"title": "Info",
+			"modes": {
+				"THREE_G": {
+					"ok": {
+						"iconAndroid": "ic_3g",
+						"iconIos": "ic_3g",
+						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 3G-Regelung sind Covid-Zertifikate für Geimpfte, Genesene oder negativ Getestete zugelassen."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no3g",
+						"iconIos": "ic_no3g",
+						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 3G-Regelung sind Covid-Zertifikate für Geimpfte, Genesene oder negativ Getestete zugelassen."
+					}
+				},
+				"TWO_G": {
+					"ok": {
+						"iconAndroid": "ic_2g",
+						"iconIos": "ic_2g",
+						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete und Zertifikate Light werden nicht akzeptiert."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no2g",
+						"iconIos": "ic_no2g",
+						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete und Zertifikate Light werden nicht akzeptiert."
+					}
+				}
+			}
+		},
+		"en": {
+			"title": "Info",
+			"modes": {
+				"THREE_G": {
+					"ok": {
+						"iconAndroid": "ic_3g",
+						"iconIos": "ic_3g",
+						"text": "For access to organisations and events applying the 3G rule, COVID certificates for people who have been vaccinated, or who have recovered or tested negative are permitted."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no3g",
+						"iconIos": "ic_no3g",
+						"text": "For access to organisations and events applying the 3G rule, COVID certificates for people who have been vaccinated, or who have recovered or tested negative are permitted."
+					}
+				},
+				"TWO_G": {
+					"ok": {
+						"iconAndroid": "ic_2g",
+						"iconIos": "ic_2g",
+						"text": "For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. Light certificates and COVID certificates for people who have tested negative are not accepted."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no2g",
+						"iconIos": "ic_no2g",
+						"text": "For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. Light certificates and COVID certificates for people who have tested negative are not accepted."
+					}
+				}
+			}
+		},
+		"fr": {
+			"title": "Info",
+			"modes": {
+				"THREE_G": {
+					"ok": {
+						"iconAndroid": "ic_3g",
+						"iconIos": "ic_3g",
+						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «3G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées, guéries ou testées négatives."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no3g",
+						"iconIos": "ic_no3g",
+						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «3G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées, guéries ou testées négatives."
+					}
+				},
+				"TWO_G": {
+					"ok": {
+						"iconAndroid": "ic_2g",
+						"iconIos": "ic_2g",
+						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no2g",
+						"iconIos": "ic_no2g",
+						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."
+					}
+				}
+			}
+		},
+		"it": {
+			"title": "Info",
+			"modes": {
+				"THREE_G": {
+					"ok": {
+						"iconAndroid": "ic_3g",
+						"iconIos": "ic_3g",
+						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 3G sono ammessi certificati COVID per persone vaccinate, guartite o testate negative."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no3g",
+						"iconIos": "ic_no3g",
+						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 3G sono ammessi certificati COVID per persone vaccinate, guartite o testate negative."
+					}
+				},
+				"TWO_G": {
+					"ok": {
+						"iconAndroid": "ic_2g",
+						"iconIos": "ic_2g",
+						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guarite. I certificati COVID per persone testate negative e i certificati light non sono accettati."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no2g",
+						"iconIos": "ic_no2g",
+						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guarite. I certificati COVID per persone testate negative e i certificati light non sono accettati."
+					}
+				}
+			}
+		},
+		"rm": {
+			"title": "Info",
+			"modes": {
+				"THREE_G": {
+					"ok": {
+						"iconAndroid": "ic_3g",
+						"iconIos": "ic_3g",
+						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 3G èn admess certificats COVID per persunas vaccinadas, per persunas guaridas u per persunas cun in test negativ."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no3g",
+						"iconIos": "ic_no3g",
+						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 3G èn admess certificats COVID per persunas vaccinadas, per persunas guaridas u per persunas cun in test negativ."
+					}
+				},
+				"TWO_G": {
+					"ok": {
+						"iconAndroid": "ic_2g",
+						"iconIos": "ic_2g",
+						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ e certificats light na vegnan betg acceptads."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no2g",
+						"iconIos": "ic_no2g",
+						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ e certificats light na vegnan betg acceptads."
+					}
+				}
+			}
+		}
+	},
+	"lightCertDurationInHours": 24,
 	"showVaccinationHintHomescreen": true,
 	"showVaccinationHintDetail": true,
 	"showVaccinationHintTransfer": true

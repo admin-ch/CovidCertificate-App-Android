@@ -14,15 +14,13 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import androidx.recyclerview.widget.DividerItemDecoration
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
-import ch.admin.bag.covidcertificate.common.config.VaccinationBookingCantonModel
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.wallet.BuildConfig
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentVaccinationAppointmentBinding
 
@@ -35,8 +33,7 @@ class VaccinationAppointmentFragment : Fragment() {
 	private var _binding: FragmentVaccinationAppointmentBinding? = null
 	private val binding get() = _binding!!
 
-	private val configViewModel by activityViewModels<ConfigViewModel>()
-	private val adapter = VaccinationAppointmentCantonAdapter(this::onCantonClicked)
+	private val configViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		_binding = FragmentVaccinationAppointmentBinding.inflate(inflater, container, false)
@@ -46,26 +43,33 @@ class VaccinationAppointmentFragment : Fragment() {
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
 		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
-		setupCantonList()
 		setupMoreInformationButton()
 
 		configViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
 			setupVaccinationBookingInfo(config)
-			adapter.setItems(config.getVaccinationBookingCantons(getString(R.string.language_key)) ?: emptyList())
 		}
 		configViewModel.loadConfig(BuildConfig.BASE_URL, BuildConfig.VERSION_NAME, BuildConfig.BUILD_TIME.toString())
 	}
 
-	private fun setupCantonList() {
-		binding.vaccinationAppointmentCantonList.adapter = adapter
-		binding.vaccinationAppointmentCantonList.addItemDecoration(DividerItemDecoration(requireContext(), LinearLayout.HORIZONTAL))
-	}
-
 	private fun setupVaccinationBookingInfo(config: ConfigModel) {
 		val languageKey = getString(R.string.language_key)
-		binding.vaccinationBookingTitle.text = config.getVaccinationBookingInfo(languageKey)?.title
-		binding.vaccinationBookingText.text = config.getVaccinationBookingInfo(languageKey)?.text
-		binding.vaccinationBookingInfo.text = config.getVaccinationBookingInfo(languageKey)?.info
+		val vaccinationBookingInfo = config.getVaccinationBookingInfo(languageKey)
+		binding.vaccinationBookingTitle.text = vaccinationBookingInfo?.title
+		binding.vaccinationBookingText.text = vaccinationBookingInfo?.text
+		binding.vaccinationBookingInfo.text = vaccinationBookingInfo?.info
+
+		if (vaccinationBookingInfo?.impfcheckTitle != null && vaccinationBookingInfo.impfcheckText != null && vaccinationBookingInfo.impfcheckButton != null && vaccinationBookingInfo.impfcheckUrl != null) {
+			binding.impfcheckTitle.text = vaccinationBookingInfo.impfcheckTitle
+			binding.impfcheckInfoText.text = vaccinationBookingInfo.impfcheckText
+			binding.impfcheckAction.text = vaccinationBookingInfo.impfcheckButton
+			binding.impfcheckAction.setOnClickListener {
+				UrlUtil.openUrl(it.context, vaccinationBookingInfo.impfcheckUrl)
+			}
+		} else {
+			binding.impfcheckTitle.visibility = View.GONE
+			binding.impfcheckInfoText.visibility = View.GONE
+			binding.impfcheckAction.visibility = View.GONE
+		}
 	}
 
 	private fun setupMoreInformationButton() {
@@ -73,10 +77,6 @@ class VaccinationAppointmentFragment : Fragment() {
 			val url = getString(R.string.vaccination_booking_info_url)
 			UrlUtil.openUrl(requireContext(), url)
 		}
-	}
-
-	private fun onCantonClicked(canton: VaccinationBookingCantonModel) {
-		UrlUtil.openUrl(requireContext(), canton.linkUrl)
 	}
 
 }

@@ -16,7 +16,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.graphics.toColorInt
 import androidx.core.view.isVisible
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.setFragmentResultListener
 import ch.admin.bag.covidcertificate.common.qr.QrScanFragment
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
@@ -25,7 +28,10 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentQrScanBinding
+import ch.admin.bag.covidcertificate.verifier.modes.ChooseModeDialogFragment
+import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment
+import ch.admin.bag.covidcertificate.verifier.verification.VerificationFragment.Companion.RESULT_FRAGMENT_POPPED
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 
 class VerifierQrScanFragment : QrScanFragment() {
@@ -51,6 +57,15 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 	private val verifierSecureStorage by lazy { VerifierSecureStorage.getInstance(requireContext()) }
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(verifierSecureStorage) }
+
+	private val modesViewModel by activityViewModels<ModesAndConfigViewModel>()
+
+	override fun onCreate(savedInstanceState: Bundle?) {
+		super.onCreate(savedInstanceState)
+
+		// Restart the Analyzer whenever the VerificationFragment is popped
+		setFragmentResultListener(RESULT_FRAGMENT_POPPED) { _, _ -> restartAnalyzer() }
+	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
 		super.onCreateView(inflater, container, savedInstanceState)
@@ -83,11 +98,33 @@ class VerifierQrScanFragment : QrScanFragment() {
 			activateCamera()
 		}
 
+		modesViewModel.modesLiveData.observe(viewLifecycleOwner) { modeState ->
+			val mode = modeState.selectedMode
+			if (mode == null || modeState.availableModes.size <= 1) {
+				binding.fragmentQrScannerModeIndicator.visibility = View.GONE
+			} else {
+				binding.fragmentQrScannerModeIndicator.backgroundTintList = ColorStateList.valueOf(mode.hexColor.toColorInt())
+				binding.fragmentQrScannerModeIndicator.text = mode.title
+				binding.fragmentQrScannerModeIndicator.visibility = View.VISIBLE
+			}
+			binding.fragmentQrScannerModeIndicator.setOnClickListener {
+				ChooseModeDialogFragment.newInstance()
+					.show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
+			}
+		}
+
 		setupActivateCameraButton()
 	}
 
 	override fun onResume() {
 		super.onResume()
+
+		val modeState = modesViewModel.modesLiveData.value
+		if (modeState?.availableModes?.size ?: 0 > 1 && modeState?.selectedMode == null) {
+			ChooseModeDialogFragment.newInstance().apply { isCancelable = false }
+				.show(childFragmentManager, ChooseModeDialogFragment::class.java.canonicalName)
+		}
+
 		zebraBroadcastReceiver.registerWith(requireContext()) { decodeQrCodeData(it, {}, {}) }
 	}
 
@@ -131,7 +168,7 @@ class VerifierQrScanFragment : QrScanFragment() {
 	private fun showVerificationFragment(certificateHolder: VerifierCertificateHolder) {
 		parentFragmentManager.beginTransaction()
 			.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
-			.replace(R.id.fragment_container, VerificationFragment.newInstance(certificateHolder))
+			.add(R.id.fragment_container, VerificationFragment.newInstance(certificateHolder))
 			.addToBackStack(VerificationFragment::class.java.canonicalName)
 			.commit()
 	}

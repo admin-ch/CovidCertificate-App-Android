@@ -13,10 +13,10 @@ package ch.admin.bag.covidcertificate.wallet
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
-import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.exception.TimeDeviationException
 import ch.admin.bag.covidcertificate.common.util.SingleLiveEvent
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -36,14 +36,18 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConve
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.sync.withLock
+import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.time.Instant
 import kotlin.collections.set
 
-class CertificatesViewModel(application: Application) : AndroidViewModel(application) {
+class CertificatesAndConfigViewModel(application: Application) : ConfigViewModel(application) {
 
 	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 	private val walletDataStorage: WalletDataSecureStorage by lazy { WalletDataSecureStorage.getInstance(application.applicationContext) }
@@ -165,20 +169,26 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 			statefulWalletItemsMutableLiveData.value = updatedStatefulWalletItems
 
 			// If this is a force verification (from the detail page), first refresh the trust list
-			CovidCertificateSdk.refreshTrustList(viewModelScope, onCompletionCallback = {
-				enqueueVerificationTask(certificateHolder, delayInMillis)
-			}, onErrorCallback = { errorCode ->
-				// If loading the trust list failed, tell the verification task to ignore the local trust list.
-				// That way the offline mode / network failure error handling is already taken care of by the verification controller
-				if (errorCode == ErrorCodes.TIME_INCONSISTENCY) {
-					statefulWalletItemsMutableLiveData.value = updateVerificationStateForDccHolder(
-						certificateHolder,
-						VerificationState.ERROR(StateError(errorCode), null)
-					)
-				} else {
+			CovidCertificateSdk.refreshTrustList(
+				viewModelScope,
+				onCompletionCallback = {
 					enqueueVerificationTask(certificateHolder, delayInMillis)
+				},
+				onErrorCallback = { errorCode ->
+					if (errorCode.startsWith(ErrorCodes.GENERAL_NETWORK_FAILURE)) {
+						// If the error is a general network failure (specific HTTP error are also prefixed with the GNF error code)
+						// enqueue the verification task with the local trust list (which might or might not be valid)
+						enqueueVerificationTask(certificateHolder, delayInMillis)
+					} else {
+						// In all other error cases (most notably timeshift and unknown host (aka offline) exceptions), set the
+						// verification state to error
+						statefulWalletItemsMutableLiveData.value = updateVerificationStateForDccHolder(
+							certificateHolder,
+							VerificationState.ERROR(StateError(errorCode), null)
+						)
+					}
 				}
-			})
+			)
 		} else {
 			enqueueVerificationTask(certificateHolder, delayInMillis)
 		}
@@ -231,8 +241,9 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 
 		viewModelScope.launch {
 			if (delayInMillis > 0) delay(delayInMillis)
-			val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificateHolder, viewModelScope)
-
+			val verificationIdentifier = CovidCertificateSdk.Wallet.getActiveModes().value.map { activeMode -> activeMode.id }.toSet()
+			val verificationStateFlow =
+				CovidCertificateSdk.Wallet.verify(certificateHolder, verificationIdentifier, viewModelScope)
 			val job = viewModelScope.launch {
 				verificationStateFlow.collect { state ->
 					// Replace the verified certificate in the live data
@@ -255,6 +266,14 @@ class CertificatesViewModel(application: Application) : AndroidViewModel(applica
 	}
 
 	private fun convertTransferCode(transferCode: TransferCodeModel) {
+		if (transferCode.isFailed()) {
+			// If transfer code is failed, return early with the error code for a failed transfer code
+			val conversionState = TransferCodeConversionState.ERROR(StateError(DeliveryRepository.ERROR_CODE_FAILED))
+			val updatedStatefulWalletItems = updateConversionStateForTransferCode(transferCode, conversionState)
+			statefulWalletItemsMutableLiveData.value = updatedStatefulWalletItems
+			return
+		}
+
 		viewModelScope.launch(Dispatchers.IO) {
 			TransferCodeCrypto.getMutex(transferCode.code).withLock {
 				val keyPair = TransferCodeCrypto.loadKeyPair(transferCode.code, getApplication())

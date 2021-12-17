@@ -22,6 +22,9 @@ class VerifierSecureStorage private constructor(context: Context) {
 		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
 
 		private const val KEY_HAS_ZEBRA_SCANNER = "KEY_HAS_ZEBRA_SCANNER"
+
+		private const val KEY_SELECTED_MODE = "KEY_SELECTED_MODE"
+		private const val KEY_MODE_SELECTION_TIME = "KEY_MODE_SELECTION_TIME"
 	}
 
 	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, PREFERENCES)
@@ -35,4 +38,25 @@ class VerifierSecureStorage private constructor(context: Context) {
 	fun hasZebraScanner() = prefs.getBoolean(KEY_HAS_ZEBRA_SCANNER, false)
 
 	fun setHasZebraScanner(hasZebraScanner: Boolean) = prefs.edit { putBoolean(KEY_HAS_ZEBRA_SCANNER, hasZebraScanner) }
+
+	fun setSelectedMode(mode: String?) = prefs.edit {
+		putString(KEY_SELECTED_MODE, mode)
+		putLong(KEY_MODE_SELECTION_TIME, System.currentTimeMillis())
+	}
+
+	fun getSelectedMode(): String? {
+		return prefs.getString(KEY_SELECTED_MODE, null)
+	}
+
+	fun resetSelectedModeIfNeeded(maxAge: Long): Boolean {
+		val selectionTime = prefs.getLong(KEY_MODE_SELECTION_TIME, 0)
+		if (selectionTime < System.currentTimeMillis() - maxAge) {
+			prefs.edit {
+				putString(KEY_SELECTED_MODE, null)
+			}
+			return true
+		} else {
+			return false
+		}
+	}
 }

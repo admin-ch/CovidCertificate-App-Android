@@ -24,11 +24,13 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.common.util.makeSubStringsBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightConversionBinding
 import ch.admin.bag.covidcertificate.wallet.light.model.CertificateLightConversionState
@@ -44,6 +46,7 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 	}
 
 	private val viewModel by viewModels<CertificateLightViewModel>()
+	private val certificatesAndConfigViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 	private var _binding: FragmentCertificateLightConversionBinding? = null
 	private val binding get() = _binding!!
 
@@ -78,9 +81,15 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 	}
 
 	private fun setConversionInfo() {
-		val text = getString(R.string.wallet_certificate_light_detail_text_2)
+		var text = getString(R.string.wallet_certificate_light_detail_text_2)
+		val lightCertDurationInHours = certificatesAndConfigViewModel.configLiveData.value?.lightCertDurationInHours ?: 24
+		text = text.replace("{LIGHT_CERT_VALIDITY_IN_H}", lightCertDurationInHours.toString())
 		val boldParts = getString(R.string.wallet_certificate_light_detail_text_2_bold)
 		binding.certificateLightConversionInfo.text = text.makeSubStringsBold(boldParts.split(" "))
+
+		var hourInfoText = getString(R.string.wallet_certificate_light_detail_summary_3)
+		hourInfoText = hourInfoText.replace("{LIGHT_CERT_VALIDITY_IN_H}", lightCertDurationInHours.toString())
+		binding.certificateLightConversionHourInfo.text = hourInfoText
 	}
 
 	private fun onConversionStateChanged(state: CertificateLightConversionState) {
@@ -107,7 +116,7 @@ class CertificateLightConversionFragment : Fragment(R.layout.fragment_certificat
 				binding.certificateLightConversionContent.isVisible = true
 				binding.certificateLightConversionIntroLayout.isVisible = false
 				binding.certificateLightConversionErrorLayout.isVisible = true
-				binding.certificateLightConversionErrorCode.text = null
+				binding.certificateLightConversionErrorCode.text = CertificateLightErrorCodes.RATE_LIMIT_EXCEEDED
 
 				setStatusIconAndTint(R.drawable.ic_error)
 				setStatusText(R.string.wallet_certificate_light_rate_limit_title, R.string.wallet_certificate_light_rate_limit_text)

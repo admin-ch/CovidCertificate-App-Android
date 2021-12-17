@@ -15,8 +15,8 @@
 					"text": "Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App mit der dafür vorgesehenen COVID Certificate Check App.",
 					"iconAndroid": null,
 					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
+					"linkTitle": "Erklärvideo",
+					"linkUrl": "https://youtu.be/14Sk2QTaJhA"
 				},
 				{
 					"title": "Was wird genau geprüft?",
@@ -68,7 +68,7 @@
 				},
 				{
 					"title": "Was ist das Zertifikat Light?",
-					"text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 48 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 48 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
+					"text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 24 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 24 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -96,8 +96,8 @@
 					"text": "To check a COVID certificate, use the dedicated COVID Certificate Check app to scan the QR code on the paper certificate or in the COVID Certificate app presented.",
 					"iconAndroid": null,
 					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
+					"linkTitle": "Explanatory video",
+					"linkUrl": "https://youtu.be/lNfcS1mcCAQ"
 				},
 				{
 					"title": "What exactly is checked?",
@@ -149,7 +149,7 @@
 				},
 				{
 					"title": "What is the 'certificate light'",
-					"text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 48 hours and must then be reactivated. If you need to use the normal certificate before the end of the 48-hour period, you can simply deactivate the 'certificate light'.",
+					"text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 24 hours and must then be reactivated. If you need to use the normal certificate before the end of the 24-hour period, you can simply deactivate the 'certificate light'.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -177,8 +177,8 @@
 					"text": "Pour contrôler un certificat COVID, il vous suffit de scanner le code QR figurant sur le document papier ou dans l'app «COVID Certificate» au moyen de l'app de contrôle prévue à cet effet.",
 					"iconAndroid": null,
 					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
+					"linkTitle": "Vidéo explicative",
+					"linkUrl": "https://youtu.be/90JHMToWPNM"
 				},
 				{
 					"title": "Sur quoi porte le contrôle au juste?",
@@ -230,7 +230,7 @@
 				},
 				{
 					"title": "Qu’est-ce que le certificat light ?",
-					"text": "L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Ce certificat « light » indique uniquement si le certificat présenté est valide, sans fournir de données sur la santé.\n\nL’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.\n\nLe certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 48 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light.",
+					"text": "L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Ce certificat « light » indique uniquement si le certificat présenté est valide, sans fournir de données sur la santé.\n\nL’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.\n\nLe certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 24 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -258,8 +258,8 @@
 					"text": "Per verificare un certificato COVID tramite l'app COVID Certificate Check, può scansionare il codice QR che trova sulla copia cartacea del certificato oppure sull’app che le viene mostrata.",
 					"iconAndroid": null,
 					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
+					"linkTitle": "Video esplicativo",
+					"linkUrl": "https://youtu.be/pt8Sf5xOISU"
 				},
 				{
 					"title": "Cosa viene verificato esattamente?",
@@ -311,7 +311,7 @@
 				},
 				{
 					"title": "Che cos'è il certificato light?",
-					"text": "L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.\n\nIl certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».\n\nIl «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 48 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 48 ore, il certificato light può essere disattivato semplicemente.",
+					"text": "L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.\n\nIl certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».\n\nIl «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 24 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 24 ore, il certificato light può essere disattivato semplicemente.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -339,8 +339,8 @@
 					"text": "Per verifitgar in certificat COVID pudais Vus scannar il code QR sin Voss certificat sin palpiri u en l'app COVID Certificate cun l’app «COVID Certificate Check» previsa per quai.",
 					"iconAndroid": null,
 					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
+					"linkTitle": "Video explicativ",
+					"linkUrl": "https://youtu.be/14Sk2QTaJhA"
 				},
 				{
 					"title": "Tge vegn propi verifitgà?",
@@ -392,7 +392,7 @@
 				},
 				{
 					"title": "Tge è in certificat light?",
-					"text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.\n\nL'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 48 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà.",
+					"text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.\n\nL'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -411,5 +411,438 @@
 	},
 	"androidTransferCheckIntervalMs": 0,
 	"androidTransferCheckBackoffMs": 0,
-	"timeshiftDetectionEnabled": false
+	"timeshiftDetectionEnabled": false,
+	"checkModesInfos": {
+		"de": {
+			"infos": {
+				"THREE_G": {
+					"title": "3G",
+					"hexColor": "#86c5d9",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer 3G-Regelung geprüft wird."
+						},
+						{
+							"iconAndroid": "ic_3g",
+							"iconIos": "ic_3g",
+							"text": "In diesem Modus werden Covid-Zertifikate für Geimpfte, Genesene oder negativ Getestete akzeptiert."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light",
+							"iconIos": "ic-qr-certificate-light",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus möglich."
+						}
+					]
+				},
+				"TWO_G": {
+					"title": "2G",
+					"hexColor": "#c2d076",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer 2G-Regelung geprüft wird."
+						},
+						{
+							"iconAndroid": "ic_2g",
+							"iconIos": "ic_2g",
+							"text": "In diesem Modus werden Covid-Zertifikate für Geimpfte oder Genesene akzeptiert."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird."
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss."
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."
+						}
+					]
+				}
+			},
+			"unselected": {
+				"infos": [
+					{
+						"iconAndroid": "ic_expire_i",
+						"iconIos": "ic-expire-i",
+						"text": "Wählen Sie den Prüfmodus, in welchem Sie Covid-Zertifikate prüfen möchten."
+					},
+					{
+						"iconAndroid": "ic_settings",
+						"iconIos": "ic-settings",
+						"text": "Der Prüfmodus kann jederzeit geändert werden."
+					}
+				]
+			}
+		},
+		"en": {
+			"infos": {
+				"THREE_G": {
+					"title": "3G",
+					"hexColor": "#86c5d9",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "For organisations and events applying the 3G rule."
+						},
+						{
+							"iconAndroid": "ic_3g",
+							"iconIos": "ic_3g",
+							"text": "In this mode, COVID certificates are accepted for people who have been vaccinated, or who have recovered or tested negative."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light",
+							"iconIos": "ic-qr-certificate-light",
+							"text": "It is possible to verify a \"light\" certificate in this mode."
+						}
+					]
+				},
+				"TWO_G": {
+					"title": "2G",
+					"hexColor": "#c2d076",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "For organisations and events applying the 2G rule."
+						},
+						{
+							"iconAndroid": "ic_2g",
+							"iconIos": "ic_2g",
+							"text": "In this mode, COVID certificates are accepted for people who have been vaccinated or who have recovered."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "It is not possible to verify a \"light\" certificate in this mode."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (EN)"
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (EN)"
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (EN)"
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (EN)"
+						}
+					]
+				}
+			},
+			"unselected": {
+				"infos": [
+					{
+						"iconAndroid": "ic_expire_i",
+						"iconIos": "ic-expire-i",
+						"text": "Select the verification mode that you want to use for verifying COVID certificates."
+					},
+					{
+						"iconAndroid": "ic_settings",
+						"iconIos": "ic-settings",
+						"text": "The verification mode can be changed at any time."
+					}
+				]
+			}
+		},
+		"fr": {
+			"infos": {
+				"THREE_G": {
+					"title": "3G",
+					"hexColor": "#86c5d9",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Pour les entreprises et les manifestations où les contrôles se fondent sur la règle des «3G»."
+						},
+						{
+							"iconAndroid": "ic_3g",
+							"iconIos": "ic_3g",
+							"text": "Ce mode de contrôle permet de vérifier les certificats COVID des personnes vaccinées, guéries ou testées négatives."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light",
+							"iconIos": "ic-qr-certificate-light",
+							"text": "Il peut être également utilisé pour vérifier un «certificat light»."
+						}
+					]
+				},
+				"TWO_G": {
+					"title": "2G",
+					"hexColor": "#c2d076",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Pour les entreprises et les manifestations où les contrôles se fondent sur la règle des «2G»."
+						},
+						{
+							"iconAndroid": "ic_2g",
+							"iconIos": "ic_2g",
+							"text": "Ce mode de contrôle permet de vérifier les certificats COVID des personnes vaccinées ou guéries."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "La vérification d’un «certificat light» n'est pas possible dans ce mode."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (FR)"
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (FR)"
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (FR)"
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (FR)"
+						}
+					]
+				}
+			},
+			"unselected": {
+				"infos": [
+					{
+						"iconAndroid": "ic_expire_i",
+						"iconIos": "ic-expire-i",
+						"text": "Choisissez le mode de contrôle correspondant aux certificats COVID à vérifier. "
+					},
+					{
+						"iconAndroid": "ic_settings",
+						"iconIos": "ic-settings",
+						"text": "Le mode de contrôle peut être changé en tout temps."
+					}
+				]
+			}
+		},
+		"it": {
+			"infos": {
+				"THREE_G": {
+					"title": "3G",
+					"hexColor": "#86c5d9",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Per le strutture e le manifestazioni in cui si applica la regola 3G."
+						},
+						{
+							"iconAndroid": "ic_3g",
+							"iconIos": "ic_3g",
+							"text": "In questa modalità sono accettati i certificati COVID per persone vaccinate, guartite o testate negative."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light",
+							"iconIos": "ic-qr-certificate-light",
+							"text": "I certificati light possono essere verificati."
+						}
+					]
+				},
+				"TWO_G": {
+					"title": "2G",
+					"hexColor": "#c2d076",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Per le strutture e le manifestazioni in cui si applica la regola 2G."
+						},
+						{
+							"iconAndroid": "ic_2g",
+							"iconIos": "ic_2g",
+							"text": "In questa modalità sono accettati i certificati COVID per persone vaccinate o guartite."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Questa modalità non permette di verificare i certificati light."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (IT)"
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (IT)"
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (IT)"
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (IT)"
+						}
+					]
+				}
+			},
+			"unselected": {
+				"infos": [
+					{
+						"iconAndroid": "ic_expire_i",
+						"iconIos": "ic-expire-i",
+						"text": "Selezionare la modalità in cui verificare i certificati COVID."
+					},
+					{
+						"iconAndroid": "ic_settings",
+						"iconIos": "ic-settings",
+						"text": "La modalità di verifica può essere cambiata in qualsiasi momento."
+					}
+				]
+			}
+		},
+		"rm": {
+			"infos": {
+				"THREE_G": {
+					"title": "3G",
+					"hexColor": "#86c5d9",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Per manaschis ed occurrenzas cun ina regla da 3G."
+						},
+						{
+							"iconAndroid": "ic_3g",
+							"iconIos": "ic_3g",
+							"text": "En quest modus vegnan acceptads certificats COVID per persunas vaccinadas, per persunas guaridas u per persunas cun in test negativ."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light",
+							"iconIos": "ic-qr-certificate-light",
+							"text": "En quest modus po vegnir verifitgà in certificat light."
+						}
+					]
+				},
+				"TWO_G": {
+					"title": "2G",
+					"hexColor": "#c2d076",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Per manaschis ed occurrenzas cun ina regla da 2G."
+						},
+						{
+							"iconAndroid": "ic_2g",
+							"iconIos": "ic_2g",
+							"text": "En quest modus vegnan acceptads ils certificats COVID per persunas vaccinadas u per persunas guaridas."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "“Certificat light” na po betg vegnir verifitgà en il modus da verificaziun da 2G."
+						}
+					]
+				},
+				"TWO_G_PLUS": {
+					"title": "2G+",
+					"hexColor": "#e6ad8e",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (RM)"
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (RM)"
+						},
+						{
+							"iconAndroid": "ic_info_alert",
+							"iconIos": "ic-info-alert",
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (RM)"
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (RM)"
+						}
+					]
+				}
+			},
+			"unselected": {
+				"infos": [
+					{
+						"iconAndroid": "ic_expire_i",
+						"iconIos": "ic-expire-i",
+						"text": "Tscherni il modus da verificaziun, en il qual Vus vulais verifitgar ils certificats COVID."
+					},
+					{
+						"iconAndroid": "ic_settings",
+						"iconIos": "ic-settings",
+						"text": "Il modus da verificaziun po vegnir midà da tut temp."
+					}
+				]
+			}
+		}
+	},
+	"checkModeReselectAfterHours": 48
 }

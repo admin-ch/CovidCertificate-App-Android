@@ -266,7 +266,23 @@
 			app:navigationIcon="@drawable/ic_close"
 			app:title="@string/verifier_title_qr_scan"
 			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
-			app:titleTextColor="@color/white" />
+			app:titleTextColor="@color/white" >
+
+			<TextView
+				android:id="@+id/fragment_qr_scanner_mode_indicator"
+				style="@style/CovidCertificate.Text.Bold"
+				android:layout_width="wrap_content"
+				android:layout_height="28dp"
+				android:layout_marginRight="-17dp"
+				android:background="@drawable/bg_pill"
+				android:gravity="center_vertical"
+				android:layout_gravity="right"
+				android:paddingHorizontal="@dimen/spacing_medium_large"
+				android:layout_marginHorizontal="@dimen/spacing_medium"
+				tools:backgroundTint="@color/green"
+				tools:text="3G" />
+
+		</androidx.appcompat.widget.Toolbar>
 
 	</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>
 </FrameLayout>

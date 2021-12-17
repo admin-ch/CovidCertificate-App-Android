@@ -32,22 +32,22 @@ class VerificationViewModel(application: Application) : AndroidViewModel(applica
 	private val verificationStateMutableLiveData = MutableLiveData<VerificationState>()
 	val verificationLiveData = verificationStateMutableLiveData as LiveData<VerificationState>
 
-	fun startVerification(certificateHolder: VerifierCertificateHolder) {
+	fun startVerification(certificateHolder: VerifierCertificateHolder, verificationMode: String) {
 		viewModelScope.launch {
-			val verificationStateFlow = CovidCertificateSdk.Verifier.verify(certificateHolder, viewModelScope)
+			val verificationStateFlow = CovidCertificateSdk.Verifier.verify(certificateHolder, verificationMode, viewModelScope)
 			verificationStateFlow.collect {
 				verificationStateMutableLiveData.postValue(it)
 			}
 		}
 	}
 
-	fun retryVerification(certificateHolder: VerifierCertificateHolder) {
+	fun retryVerification(certificateHolder: VerifierCertificateHolder, verificationMode: String) {
 		verificationStateMutableLiveData.value = VerificationState.LOADING
 		viewModelScope.launch {
 			delay(STATUS_LOAD_DELAY)
 			if (!isActive) return@launch
 
-			startVerification(certificateHolder)
+			startVerification(certificateHolder, verificationMode)
 		}
 	}
 

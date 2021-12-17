@@ -14,7 +14,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.debug.DebugFragment
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 
 class WalletDebugFragment : DebugFragment() {
@@ -23,7 +23,7 @@ class WalletDebugFragment : DebugFragment() {
 		fun newInstance(): DebugFragment = DebugFragment()
 	}
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)

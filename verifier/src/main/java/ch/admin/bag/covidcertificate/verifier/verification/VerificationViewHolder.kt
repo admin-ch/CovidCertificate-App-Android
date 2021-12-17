@@ -25,7 +25,8 @@ class StatusViewHolder(private val binding: ItemVerificationStatusBinding) : Rec
 
 class InfoViewHolder(
 	private val binding: ItemVerificationStatusInfoBinding,
-	private val onRetryClickListener: View.OnClickListener
+	private val onRetryClickListener: View.OnClickListener,
+	private val onPlayStoreClickListener: View.OnClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
 
 	fun bindStatusItem(infoItem: InfoItem) {
@@ -42,8 +43,14 @@ class InfoViewHolder(
 					onRetryClickListener.onClick(view)
 					infoRetry.setOnClickListener(null)
 				}
+			} else if (infoItem.showAppLink) {
+				infoApplink.isVisible = true
+				infoApplink.setOnClickListener { view ->
+					onPlayStoreClickListener.onClick(view)
+				}
 			} else {
 				infoRetry.isVisible = false
+				infoApplink.isVisible = false
 			}
 		}
 	}

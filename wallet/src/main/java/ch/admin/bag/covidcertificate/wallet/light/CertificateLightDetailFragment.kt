@@ -33,7 +33,7 @@ import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.light.ChLightCert
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightDetailBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
@@ -61,7 +61,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		}
 	}
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 	private val certificateLightViewModel by viewModels<CertificateLightViewModel>()
 
 	private var _binding: FragmentCertificateLightDetailBinding? = null
@@ -94,6 +94,11 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 		setupStatusInfo()
 
 		binding.certificateLightDetailDeactivateButton.setOnClickListener { deleteCertificateLightAndShowOriginal() }
+
+		val lightCertDurationInHours = certificatesViewModel.configLiveData.value?.lightCertDurationInHours ?: 24
+		var hourInfoText = getString(R.string.wallet_certificate_light_detail_summary_3)
+		hourInfoText = hourInfoText.replace("{LIGHT_CERT_VALIDITY_IN_H}", lightCertDurationInHours.toString())
+		binding.certificateLightDetailHourInfo.text = hourInfoText
 	}
 
 	override fun onResume() {

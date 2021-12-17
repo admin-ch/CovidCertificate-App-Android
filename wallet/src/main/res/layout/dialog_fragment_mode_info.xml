@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:overScrollMode="never">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center_horizontal"
+		android:orientation="vertical"
+		android:paddingTop="@dimen/spacing_very_large"
+		android:paddingBottom="@dimen/spacing_medium_large">
+
+		<TextView
+			android:id="@+id/mode_info_title"
+			style="@style/CovidCertificate.Text.Bold.Title"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center"
+			tools:text="Infos" />
+
+		<LinearLayout
+			android:id="@+id/mode_info_list"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical">
+		</LinearLayout>
+
+		<Button
+			android:id="@+id/info_dialog_close_button"
+			style="@style/CovidCertificate.Button.Borderless"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:text="@string/close_button" />
+
+	</LinearLayout>
+</ScrollView>

@@ -28,6 +28,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
+import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.config.WalletModeModel
 import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
@@ -42,24 +44,28 @@ import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.sdk.core.models.state.*
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
+import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeBinding
+import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeRefreshBinding
+import ch.admin.bag.covidcertificate.wallet.dialog.ModeInfoDialogFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
 import ch.admin.bag.covidcertificate.wallet.util.*
+import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.getHumanReadableName
+import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.textAsBitmap
 import ch.admin.bag.covidcertificate.wallet.vaccination.appointment.VaccinationAppointmentFragment
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import java.lang.Integer.max
 import java.time.LocalDateTime
+
 
 class CertificateDetailFragment : Fragment() {
 
@@ -76,7 +82,7 @@ class CertificateDetailFragment : Fragment() {
 		}
 	}
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	private var _binding: FragmentCertificateDetailBinding? = null
 	private val binding get() = _binding!!
@@ -149,6 +155,9 @@ class CertificateDetailFragment : Fragment() {
 				isForceVerification = true
 			)
 		}
+
+
+		setupReverifyButtonOffset()
 	}
 
 	override fun onResume() {
@@ -195,7 +204,8 @@ class CertificateDetailFragment : Fragment() {
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)
 
-		val detailItems = CertificateDetailItemListBuilder(recyclerView.context, certificateHolder).buildAll()
+		val detailItems =
+			CertificateDetailItemListBuilder(recyclerView.context, certificateHolder, isDetailScreen = true).buildAll()
 		adapter.setItems(detailItems)
 	}
 
@@ -209,6 +219,24 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		certificatesViewModel.startVerification(certificateHolder)
+	}
+
+	private fun setupReverifyButtonOffset() {
+		val certPos = intArrayOf(0, 0)
+		val buttonPos = intArrayOf(0, 0)
+
+		binding.root.post { reloadReverifyButtonOffset(certPos, buttonPos) }
+		binding.scrollview.setOnScrollChangeListener { _, _, _, _, _ -> reloadReverifyButtonOffset(certPos, buttonPos) }
+	}
+
+	private fun reloadReverifyButtonOffset(certPos: IntArray = intArrayOf(0, 0), buttonPos: IntArray = intArrayOf(0, 0)) {
+		binding.certificateDetailQrCode.getLocationOnScreen(certPos)
+		val certificateBottomY = certPos[1] + binding.certificateDetailQrCode.height
+		binding.certificateDetailButtonReverify.getLocationOnScreen(buttonPos)
+		val buttonTopY = buttonPos[1] - binding.certificateDetailButtonReverify.translationY.toInt()
+
+		binding.certificateDetailButtonReverify.translationY = max(0, certificateBottomY - buttonTopY).toFloat()
+
 	}
 
 	private fun setupConversionButtons() {
@@ -269,7 +297,7 @@ class CertificateDetailFragment : Fragment() {
 		val info = SpannableString(context.getString(R.string.wallet_certificate_verifying))
 		if (isForceValidate) {
 			showStatusInfoAndDescription(null, info, 0)
-			showForceValidation(R.color.grey, 0, 0, info)
+			showForceValidation(R.color.grey, 0, 0, info, emptyList())
 		} else {
 			showStatusInfoAndDescription(null, info, 0)
 		}
@@ -281,7 +309,10 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 		binding.certificateDetailInfoValidityGroup.isVisible = true
 		binding.certificateDetailErrorCode.isVisible = false
-		showValidityDate(state.validityRange?.validUntil, certificateHolder.certType, state)
+		val walletState = state.successState as SuccessState.WalletSuccessState
+
+		showValidityDate(walletState.validityRange?.validUntil, certificateHolder.certType, state)
+
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
 
 		// Certificate Light and PDF export is enabled for a valid certificate that was issued in Switzerland
@@ -291,7 +322,7 @@ class CertificateDetailFragment : Fragment() {
 		val info: SpannableString
 		val iconId: Int
 		val showRedBorder: Boolean
-		if (state.isValidOnlyInSwitzerland) {
+		if (walletState.isValidOnlyInSwitzerland) {
 			info = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))
 			iconId = R.drawable.ic_flag_ch
 			showRedBorder = true
@@ -303,10 +334,155 @@ class CertificateDetailFragment : Fragment() {
 		val forceValidationInfo = context.getString(R.string.wallet_certificate_verify_success).makeBold()
 		if (isForceValidate) {
 			showStatusInfoAndDescription(null, forceValidationInfo, R.drawable.ic_check_green)
-			showForceValidation(R.color.green, R.drawable.ic_check_green, R.drawable.ic_check_large, forceValidationInfo)
+			showForceValidation(
+				R.color.green,
+				R.drawable.ic_check_green,
+				R.drawable.ic_check_large,
+				forceValidationInfo,
+				walletState.modeValidity
+			)
 			readjustStatusDelayed(R.color.blueish, iconId, info, showRedBorder)
 		} else {
 			showStatusInfoAndDescription(null, info, iconId, showRedBorder)
+		}
+
+		showModes(walletState.modeValidity)
+		setupButton(walletState.modeValidity)
+	}
+
+	private fun setupButton(modeValidities: List<ModeValidity>) {
+		val arrayList = arrayListOf<ModeValidity>()
+		arrayList.addAll(modeValidities)
+		binding.certificateDetailInfoModes.certificateDetailInfoModesList.setOnClickListener {
+			ModeInfoDialogFragment.newInstance(arrayList)
+				.show(childFragmentManager, ModeInfoDialogFragment::class.java.canonicalName)
+		}
+	}
+
+	private fun showModes(modeValidities: List<ModeValidity>) {
+		if (modeValidities.size <= 1) return
+		binding.certificateDetailInfoModes.certificateDetailInfoModesList.removeAllViews()
+		val configLiveData: ConfigModel? = certificatesViewModel.configLiveData.value
+		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))
+		for (modeValidity in modeValidities) {
+			if (modeValidity.modeValidityState != ModeValidityState.SUCCESS && modeValidity.modeValidityState != ModeValidityState.INVALID) {
+				continue
+			}
+			val itemBinding = ItemDetailModeBinding.inflate(
+				layoutInflater,
+				binding.certificateDetailInfoModes.certificateDetailInfoModesList,
+				true
+			)
+			val imageView = itemBinding.root
+			val walletModeModel: WalletModeModel? = checkedModes?.get(modeValidity.mode)
+			val resOk =
+				requireContext().resources.getIdentifier(
+					walletModeModel?.ok?.iconAndroid ?: "",
+					"drawable",
+					requireContext().packageName
+				)
+			val resNotOk =
+				requireContext().resources.getIdentifier(
+					walletModeModel?.notOk?.iconAndroid ?: "",
+					"drawable",
+					requireContext().packageName
+				)
+
+			if (modeValidity.modeValidityState == ModeValidityState.SUCCESS) {
+				if (resOk != 0) {
+					imageView.setImageResource(resOk)
+				} else {
+					val bitmap =
+						textAsBitmap(
+							requireContext(),
+							getHumanReadableName(modeValidity.mode),
+							resources.getDimensionPixelSize(R.dimen.text_size_small),
+							ContextCompat.getColor(requireContext(), R.color.blue),
+							ContextCompat.getColor(requireContext(), android.R.color.white)
+						)
+					imageView.setImageBitmap(bitmap)
+				}
+				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
+			} else if (modeValidity.modeValidityState == ModeValidityState.INVALID) {
+				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey))
+				if (resNotOk != 0) {
+					imageView.setImageResource(resNotOk)
+					imageView.imageTintList = colorStateList
+				} else {
+					val bitmap =
+						textAsBitmap(
+							requireContext(),
+							getHumanReadableName(modeValidity.mode),
+							resources.getDimensionPixelSize(R.dimen.text_size_small),
+							ContextCompat.getColor(requireContext(), R.color.grey),
+							ContextCompat.getColor(requireContext(), android.R.color.white),
+							isNotOK = true
+						)
+					imageView.setImageBitmap(bitmap)
+				}
+			}
+		}
+	}
+
+	private fun showModesForRefresh(modeValidities: List<ModeValidity>) {
+		if (modeValidities.size <= 1) return
+		val configLiveData: ConfigModel? = certificatesViewModel.configLiveData.value
+		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))
+
+		for (modeValidity in modeValidities) {
+			if (modeValidity.modeValidityState != ModeValidityState.SUCCESS && modeValidity.modeValidityState != ModeValidityState.INVALID) {
+				continue
+			}
+			val itemBinding =
+				ItemDetailModeRefreshBinding.inflate(layoutInflater, binding.certificateDetailRefreshModeValidity, true)
+			val imageView = itemBinding.root
+			val walletModeModel: WalletModeModel? = checkedModes?.get(modeValidity.mode)
+			val resOk =
+				requireContext().resources.getIdentifier(
+					walletModeModel?.ok?.iconAndroid ?: "",
+					"drawable",
+					requireContext().packageName
+				)
+			val resNotOk =
+				requireContext().resources.getIdentifier(
+					walletModeModel?.notOk?.iconAndroid ?: "",
+					"drawable",
+					requireContext().packageName
+				)
+			if (modeValidity.modeValidityState == ModeValidityState.SUCCESS) {
+				if (resOk != 0) {
+					imageView.setImageResource(resOk)
+				} else {
+					val bitmap =
+						textAsBitmap(
+							requireContext(),
+							getHumanReadableName(modeValidity.mode),
+							resources.getDimensionPixelSize(R.dimen.text_size_small),
+							ContextCompat.getColor(requireContext(), R.color.white),
+							ContextCompat.getColor(requireContext(), R.color.green),
+						)
+					imageView.setImageBitmap(bitmap)
+				}
+				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
+			} else if (modeValidity.modeValidityState == ModeValidityState.INVALID) {
+				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black))
+				if (resNotOk != 0) {
+					imageView.setImageResource(resNotOk)
+					imageView.imageTintList = colorStateList
+				} else {
+					val bitmap =
+						textAsBitmap(
+							requireContext(),
+							getHumanReadableName(modeValidity.mode),
+							resources.getDimensionPixelSize(R.dimen.text_size_small),
+							ContextCompat.getColor(requireContext(), R.color.black),
+							ContextCompat.getColor(requireContext(), R.color.green),
+							isNotOK = true
+						)
+					imageView.setImageBitmap(bitmap)
+				}
+
+			}
 		}
 	}
 
@@ -366,7 +542,7 @@ class CertificateDetailFragment : Fragment() {
 
 		if (isForceValidate) {
 			showStatusInfoAndDescription(null, info, forceValidationIcon)
-			showForceValidation(R.color.red, forceValidationIcon, R.drawable.ic_error_large, info)
+			showForceValidation(R.color.red, forceValidationIcon, R.drawable.ic_error_large, info, emptyList())
 			readjustStatusDelayed(infoBubbleColorId, icon, info)
 		} else {
 			showStatusInfoAndDescription(null, info, icon)
@@ -422,7 +598,7 @@ class CertificateDetailFragment : Fragment() {
 
 		if (isForceValidate) {
 			showStatusInfoAndDescription(description, forceValidationInfo, icon)
-			showForceValidation(R.color.orange, forceValidationIcon, forceValidationIconLarge, forceValidationInfo)
+			showForceValidation(R.color.orange, forceValidationIcon, forceValidationIconLarge, forceValidationInfo, emptyList())
 			readjustStatusDelayed(R.color.greyish, icon, info)
 		} else {
 			showStatusInfoAndDescription(description, info, icon)
@@ -532,7 +708,9 @@ class CertificateDetailFragment : Fragment() {
 		@DrawableRes validationIconId: Int,
 		@DrawableRes validationIconLargeId: Int,
 		info: SpannableString?,
+		modeValidities: List<ModeValidity>
 	) {
+		binding.certificateDetailRefreshModeValidity.removeAllViews()
 		binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
 			ContextCompat.getColor(
 				requireContext(),
@@ -548,6 +726,7 @@ class CertificateDetailFragment : Fragment() {
 			text = info
 			if (!isVisible) showAnimated()
 		}
+		showModesForRefresh(modeValidities)
 	}
 
 	/**

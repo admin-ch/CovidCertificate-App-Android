@@ -20,7 +20,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateAddBinding
@@ -43,7 +43,7 @@ class CertificateAddFragment : Fragment() {
 			}
 	}
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	private var _binding: FragmentCertificateAddBinding? = null
 	private val binding get() = _binding!!
@@ -130,8 +130,12 @@ class CertificateAddFragment : Fragment() {
 		binding.certificateAddName.text = name
 		binding.certificateAddBirthdate.text = certificateHolder.certificate.getFormattedDateOfBirth()
 
-		val detailItems =
-			CertificateDetailItemListBuilder(recyclerView.context, certificateHolder, showEnglishVersion = false).buildAll()
+		val detailItems = CertificateDetailItemListBuilder(
+			recyclerView.context,
+			certificateHolder,
+			isDetailScreen = false,
+			showEnglishVersion = false
+		).buildAll()
 		adapter.setItems(detailItems)
 	}
 

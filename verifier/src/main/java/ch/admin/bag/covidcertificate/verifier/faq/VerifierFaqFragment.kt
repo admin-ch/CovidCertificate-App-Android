@@ -15,6 +15,7 @@ import ch.admin.bag.covidcertificate.common.config.ConfigViewModel
 import ch.admin.bag.covidcertificate.common.faq.FaqFragment
 import ch.admin.bag.covidcertificate.verifier.BuildConfig
 import ch.admin.bag.covidcertificate.verifier.R
+import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 
 class VerifierFaqFragment : FaqFragment() {
 
@@ -22,7 +23,7 @@ class VerifierFaqFragment : FaqFragment() {
 		fun newInstance(): FaqFragment = VerifierFaqFragment()
 	}
 
-	private val configViewModel by activityViewModels<ConfigViewModel>()
+	private val configViewModel by activityViewModels<ModesAndConfigViewModel>()
 
 	override fun setupFaqProvider() {
 		toolbar.setTitle(R.string.verifier_support_header)

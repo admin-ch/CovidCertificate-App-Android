@@ -20,7 +20,7 @@ import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
-import ch.admin.bag.covidcertificate.wallet.CertificatesViewModel
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatesListBinding
 import ch.admin.bag.covidcertificate.wallet.detail.CertificateDetailFragment
@@ -37,7 +37,7 @@ class CertificatesListFragment : Fragment() {
 		fun newInstance(): CertificatesListFragment = CertificatesListFragment()
 	}
 
-	private val certificatesViewModel by activityViewModels<CertificatesViewModel>()
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	private var _binding: FragmentCertificatesListBinding? = null
 	private val binding get() = _binding!!

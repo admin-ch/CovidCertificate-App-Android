@@ -19,21 +19,31 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
+import androidx.core.os.bundleOf
 import androidx.core.view.doOnLayout
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager.POP_BACK_STACK_INCLUSIVE
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
+import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
 import ch.admin.bag.covidcertificate.common.views.VerticalMarginItemDecoration
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.models.VerifierCertificateHolder
 import ch.admin.bag.covidcertificate.sdk.android.verification.state.VerifierDecodeState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.ModeValidityState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.SuccessState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.data.VerifierSecureStorage
 import ch.admin.bag.covidcertificate.verifier.databinding.FragmentVerificationBinding
+import ch.admin.bag.covidcertificate.verifier.databinding.ItemVerificationHeaderIconBinding
+import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
 import ch.admin.bag.covidcertificate.verifier.zebra.ZebraActionBroadcastReceiver
 import kotlin.math.max
 import kotlin.math.roundToInt
@@ -43,6 +53,8 @@ class VerificationFragment : Fragment() {
 	companion object {
 		private val TAG = VerificationFragment::class.java.canonicalName
 		private const val ARG_DECODE_DGC = "ARG_DECODE_DGC"
+
+		const val RESULT_FRAGMENT_POPPED = "RESULT_FRAGMENT_POPPED"
 
 		fun newInstance(certificateHolder: VerifierCertificateHolder): VerificationFragment {
 			return VerificationFragment().apply {
@@ -56,6 +68,7 @@ class VerificationFragment : Fragment() {
 	private var _binding: FragmentVerificationBinding? = null
 	private val binding get() = _binding!!
 	private val verificationViewModel: VerificationViewModel by viewModels()
+	private val modesViewModel by activityViewModels<ModesAndConfigViewModel>()
 	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
 	private var certificateHolder: VerifierCertificateHolder? = null
 	private var isClosedByUser = false
@@ -66,6 +79,7 @@ class VerificationFragment : Fragment() {
 		override fun handleOnBackPressed() {
 			isClosedByUser = true
 			parentFragmentManager.popBackStack()
+			setFragmentResult(RESULT_FRAGMENT_POPPED, bundleOf())
 			remove()
 		}
 	}
@@ -91,12 +105,13 @@ class VerificationFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 
 		view.doOnLayout { setupScrollBehavior() }
-
-		verificationAdapter = VerificationAdapter {
+		verificationAdapter = VerificationAdapter(onRetryClickListener = {
 			certificateHolder?.let {
-				verificationViewModel.retryVerification(it)
+				verificationViewModel.retryVerification(it, modesViewModel.modesLiveData.value?.selectedMode?.id ?: "unknown")
 			}
-		}
+		}, onPlayStoreClickListener = {
+			UrlUtil.openUrl(context, getString(R.string.verifier_android_app_google_play_store_url))
+		})
 
 		binding.verificationStatusRecyclerView.apply {
 			layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
@@ -108,10 +123,20 @@ class VerificationFragment : Fragment() {
 			isClosedByUser = true
 			onBackPressedCallback.remove()
 			parentFragmentManager.popBackStack()
+			setFragmentResult(RESULT_FRAGMENT_POPPED, bundleOf())
 		}
 
 		verificationViewModel.verificationLiveData.observe(viewLifecycleOwner) {
 			updateHeaderAndVerificationView(it)
+
+			if (it is VerificationState.SUCCESS && (it.successState as SuccessState.VerifierSuccessState).modeValidity.modeValidityState == ModeValidityState.UNKNOWN_MODE) {
+				AlertDialog.Builder(requireContext())
+					.setMessage(R.string.verifier_error_mode_no_longer_exists)
+					.setPositiveButton(R.string.ok_button) { _, _ -> }
+					.show()
+				modesViewModel.setSelectedMode(null)
+				parentFragmentManager.popBackStack(VerificationFragment::class.java.canonicalName, POP_BACK_STACK_INCLUSIVE)
+			}
 		}
 
 		verifyAndDisplayCertificateHolder()
@@ -129,6 +154,7 @@ class VerificationFragment : Fragment() {
 		if (!isClosedByUser) {
 			onBackPressedCallback.remove()
 			parentFragmentManager.popBackStack()
+			setFragmentResult(RESULT_FRAGMENT_POPPED, bundleOf())
 		}
 		zebraBroadcastReceiver.unregisterWith(requireContext())
 	}
@@ -156,7 +182,10 @@ class VerificationFragment : Fragment() {
 		binding.verificationBirthdate.text = certificateHolder.getFormattedDateOfBirth()
 		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
 
-		verificationViewModel.startVerification(certificateHolder)
+		verificationViewModel.startVerification(
+			certificateHolder,
+			modesViewModel.modesLiveData.value?.selectedMode?.id ?: "unknown"
+		)
 	}
 
 	private fun updateHeaderAndVerificationView(verificationState: VerificationState) {
@@ -171,7 +200,16 @@ class VerificationFragment : Fragment() {
 
 		binding.verificationHeaderProgressBar.isVisible = isLoading
 		binding.verificationHeaderIcon.isVisible = !isLoading
-		binding.verificationHeaderIcon.setImageResource(state.getValidationStatusIconLarge())
+
+		val inflater = LayoutInflater.from(context)
+		binding.verificationHeaderIcons.isVisible = !isLoading
+		binding.verificationHeaderIcons.removeAllViews()
+		val headerIcons = state.getValidationStatusIconsLarge()
+		headerIcons.forEach {
+			val iconView = ItemVerificationHeaderIconBinding.inflate(inflater, binding.verificationHeaderIcons, true)
+			iconView.root.setImageResource(it)
+		}
+
 		ColorStateList.valueOf(ContextCompat.getColor(context, state.getHeaderColor())).let { headerBackgroundTint ->
 			binding.verificationBaseGroup.backgroundTintList = headerBackgroundTint
 			binding.verificationContentGroup.backgroundTintList = headerBackgroundTint
@@ -182,7 +220,12 @@ class VerificationFragment : Fragment() {
 	private fun updateStatusBubbles(state: VerificationState) {
 		val context = binding.root.context
 
-		verificationAdapter.setItems(state.getVerificationStateItems(context))
+		verificationAdapter.setItems(
+			state.getVerificationStateItems(
+				context,
+				modesViewModel.modesLiveData.value?.selectedMode?.title ?: ""
+			)
+		)
 
 		binding.verificationErrorCode.apply {
 			visibility = View.INVISIBLE

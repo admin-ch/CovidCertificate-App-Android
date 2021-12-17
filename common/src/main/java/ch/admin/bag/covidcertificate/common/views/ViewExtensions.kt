@@ -27,8 +27,6 @@ import com.google.android.material.shape.ShapeAppearanceModel
 
 fun View.showAnimated(
 	duration: Long = resources.getInteger(android.R.integer.config_shortAnimTime).toLong(),
-	translationXby: Float = 0f,
-	translationYby: Float = 0f,
 	fade: Boolean = true
 ) {
 	animation?.cancel()
@@ -36,30 +34,22 @@ fun View.showAnimated(
 
 	visibility = View.VISIBLE
 	alpha = if (fade) 0f else 1f
-	translationX = translationXby
-	translationY = translationYby
 
 	animate()
 		.setDuration(duration)
 		.alpha(1f)
-		.translationX(0f)
-		.translationY(0f)
 		.setInterpolator(DecelerateInterpolator())
 		.setListener(null)
 }
 
 fun View.hideAnimated(
 	duration: Long = resources.getInteger(android.R.integer.config_shortAnimTime).toLong(),
-	translationXby: Float = 0f,
-	translationYby: Float = 0f,
 	fade: Boolean = true
 ) {
 	animation?.cancel()
 	animate()
 		.setDuration((duration * alpha).toLong())
 		.alpha(if (fade) 0f else 1f)
-		.translationX(translationXby)
-		.translationY(translationYby)
 		.setInterpolator(AccelerateInterpolator())
 		.setListener(object : AnimatorListenerAdapter() {
 			override fun onAnimationEnd(animation: Animator?) {
