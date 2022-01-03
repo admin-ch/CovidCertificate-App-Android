@@ -515,12 +515,33 @@
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat."
+							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen entweder eine Genesung durchgemacht oder ihre letzte Impfdosis erhalten haben, benötigen kein zusätzliches Testzertifikat."
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."
+							"text": "Die Prüfung von Zertifikate Light ist in diesem Modus nicht möglich."
+						}
+					]
+				},
+				"TEST_CERT": {
+					"title": "Testzertifikat",
+					"hexColor": "#facafa",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Für Bereiche, bei denen ein gültiges Testzertifikat notwendig ist."
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "In diesem Modus werden Covid-Zertifikate für negativ Getestete basierend auf einem PCR- oder Antigen-Schnelltest akzeptiert."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Die Prüfung von Zertifikate Light ist in diesem Modus nicht möglich."
 						}
 					]
 				}
@@ -591,22 +612,43 @@
 						{
 							"iconAndroid": "ic_expire_i",
 							"iconIos": "ic-expire-i",
-							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (EN)"
+							"text": "For organisations and events applying the 2G+ rule."
 						},
 						{
 							"iconAndroid": "ic_2g_plus",
 							"iconIos": "ic-2-g-plus",
-							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (EN)"
+							"text": "In addition to a COVID certificate for people who have been vaccinated or who have recovered, a valid test certificate is required. This must be verified separately."
 						},
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (EN)"
+							"text": "Exceptions: no additional certificate is required for people who have received a vaccination or recovered less than 90 days ago."
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (EN)"
+							"text": "It is not possible to verify \"light\" certificates in this mode."
+						}
+					]
+				},
+				"TEST_CERT": {
+					"title": "Test certificate",
+					"hexColor": "#facafa",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "For areas in which a valid test certificate is required."
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "In this mode, COVID certificates are accepted for people who have tested negative based on a PCR or rapid antigen test."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "It is not possible to verify \"light\" certificates in this mode."
 						}
 					]
 				}
@@ -677,22 +719,43 @@
 						{
 							"iconAndroid": "ic_expire_i",
 							"iconIos": "ic-expire-i",
-							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (FR)"
+							"text": "Pour les entreprises et les manifestations qui appliquent la règle des 2G+."
 						},
 						{
 							"iconAndroid": "ic_2g_plus",
 							"iconIos": "ic-2-g-plus",
-							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (FR)"
+							"text": "En plus d'un certificat COVID de vaccination ou de guérison, il faut présenter un certificat de test valable, qui doit être vérifié séparément."
 						},
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (FR)"
+							"text": "Exceptions: les personnes qui, depuis moins de 90 jours, sont guéries ou vaccinées n'ont pas besoin d'un certificat de test en complément."
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (FR)"
+							"text": "Ce mode ne permet pas de vérifier les «certificats light»."
+						}
+					]
+				},
+				"TEST_CERT": {
+					"title": "Certificat de test",
+					"hexColor": "#facafa",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Destiné aux domaines qui nécessitent un certificat de test valable."
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "Ce mode permet de vérifier les certificats des personnes qui disposent d'un résultat négatif à un test PCR ou à un test rapide antigénique."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "Ce mode ne permet pas de vérifier les «certificats light»."
 						}
 					]
 				}
@@ -763,22 +826,43 @@
 						{
 							"iconAndroid": "ic_expire_i",
 							"iconIos": "ic-expire-i",
-							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (IT)"
+							"text": "Per strutture e manifestazioni cui si applica la regola 2G+."
 						},
 						{
 							"iconAndroid": "ic_2g_plus",
 							"iconIos": "ic-2-g-plus",
-							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (IT)"
+							"text": "Oltre a un certificato di vaccinazione o di guarigione COVID è richiesto un certificato di test valido, che deve essere verificato separatamente."
 						},
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (IT)"
+							"text": "Eccezioni: le persone guarite da meno di 90 giorni o che hanno ricevuto la vaccinazione non devono presentare un ulteriore certificato di test."
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (IT)"
+							"text": "In questa modalità non è possibile verificare i certificati light."
+						}
+					]
+				},
+				"TEST_CERT": {
+					"title": "Certificato di test",
+					"hexColor": "#facafa",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Per i contesti in cui è richiesto un certificato di test valido."
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "In questa modalità sono accettati i certificati COVID rilasciati alle persone risultate negative a un test PCR o a un test antigenico rapido."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "In questa modalità non è possibile verificare i certificati light."
 						}
 					]
 				}
@@ -849,22 +933,43 @@
 						{
 							"iconAndroid": "ic_expire_i",
 							"iconIos": "ic-expire-i",
-							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird. (RM)"
+							"text": "Per manaschis ed occurrenzas, nua ch’i vegn verifitgà tenor la regla da 2G+."
 						},
 						{
 							"iconAndroid": "ic_2g_plus",
 							"iconIos": "ic-2-g-plus",
-							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss. (RM)"
+							"text": "Ultra d’in certificat COVID per persunas vaccinadas e guaridas dovri in certificat d'in test valaivel che sto vegnir verifitgà separadamain."
 						},
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen eine Genesung durchgemacht oder eine (Booster-)Impfung erhalten haben, benötigen kein zusätzliches Testzertifikat. (RM)"
+							"text": "Excepziuns: persunas ch’èn guaridas u che han survegnì ina vaccinaziun avant damain che 90 dis na dovran nagin certificat supplementar d'in test."
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
 							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich. (RM)"
+							"text": "En quest modus na pon vegnir verifitgads nagins certificats light."
+						}
+					]
+				},
+				"TEST_CERT": {
+					"title": "Certificat d'in test",
+					"hexColor": "#facafa",
+					"infos": [
+						{
+							"iconAndroid": "ic_expire_i",
+							"iconIos": "ic-expire-i",
+							"text": "Per secturs che dovran in certificat d'in test valaivel."
+						},
+						{
+							"iconAndroid": "ic_2g_plus",
+							"iconIos": "ic-2-g-plus",
+							"text": "In this mode, COVID certificates are accepted for people who have tested negative based on a PCR or rapid antigen test."
+						},
+						{
+							"iconAndroid": "ic_qr_certificate_light_no",
+							"iconIos": "ic-qr-certificate-light-no",
+							"text": "En quest modus na pon vegnir verifitgads nagins certificats light."
 						}
 					]
 				}

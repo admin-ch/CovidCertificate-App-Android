@@ -78,11 +78,11 @@ fun VerificationState.getValidationStatusStrings(context: Context, modeTitle: St
 				context.getString(R.string.verifier_verify_error_info_for_national_rules).replace("{MODUS}", modeTitle).makeBold()
 			)
 			ModeValidityState.SUCCESS_2G -> listOf(
-				SpannableString(context.getString(R.string.verifier_2g_plus_success2g)),
+				context.getString(R.string.verifier_2g_plus_success2g).makeBold(),
 				SpannableString(context.getString(R.string.verifier_2g_plus_infoplus))
 			)
 			ModeValidityState.SUCCESS_2G_PLUS -> listOf(
-				SpannableString(context.getString(R.string.verifier_2g_plus_successplus)),
+				context.getString(R.string.verifier_2g_plus_successplus).makeBold(),
 				SpannableString(context.getString(R.string.verifier_2g_plus_info2g))
 			)
 			ModeValidityState.UNKNOWN -> listOf(

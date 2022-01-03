@@ -156,7 +156,7 @@
 		<item name="android:textStyle">bold</item>
 		<item name="android:background">@drawable/bg_button_default</item>
 		<item name="android:stateListAnimator">@null</item>
-		<item name="android:height">@dimen/button_height</item>
+		<item name="android:layout_height">@dimen/button_height</item>
 		<item name="android:paddingStart">@dimen/spacing_very_large</item>
 		<item name="android:paddingEnd">@dimen/spacing_very_large</item>
 	</style>
