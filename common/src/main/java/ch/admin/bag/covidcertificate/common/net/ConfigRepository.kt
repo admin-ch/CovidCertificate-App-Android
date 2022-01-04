@@ -31,7 +31,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.util.concurrent.TimeUnit
 
 class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 
@@ -96,6 +95,13 @@ class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 
 		if (config == null) config = storage.getConfig()
 		if (config == null) config = AssetUtil.loadDefaultConfig(context)
+
+		// If the config has disabled the refresh button for the first time, store the timestamp. Otherwise clear the timestamp
+		if (config?.refreshButtonDisabled == true && storage.getRefreshButtonDisabledTimestamp() < 0L) {
+			storage.setRefreshButtonDisabledTimestamp(System.currentTimeMillis())
+		} else {
+			storage.setRefreshButtonDisabledTimestamp(-1L)
+		}
 
 		return config
 	}
