@@ -246,25 +246,6 @@ class CertificateDetailItemListBuilder(
 			)
 		}
 
-		val resultStringId =
-			if (testEntry.isNegative()) R.string.wallet_certificate_test_result_negativ else R.string.wallet_certificate_test_result_positiv
-		var value = context.getString(resultStringId)
-		if (showEnglishVersionForLabels) {
-			value = "$value\n${getEnglishTranslation(context, resultStringId)}"
-		}
-		detailItems.add(ValueItem(R.string.wallet_certificate_test_result_title, value, showEnglishVersionForLabels))
-
-		val acceptedTestProvider = AcceptedTestProvider.getInstance(context)
-		detailItems.add(
-			ValueItem(
-				R.string.wallet_certificate_test_type,
-				acceptedTestProvider.getTestType(testEntry),
-				showEnglishVersionForLabels
-			)
-		)
-
-		detailItems.add(DividerItem)
-
 		testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampleDate ->
 			detailItems.add(
 				ValueItem(
