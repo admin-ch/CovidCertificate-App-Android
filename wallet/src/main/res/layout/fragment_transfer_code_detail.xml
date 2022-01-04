@@ -134,19 +134,18 @@
 							app:layout_constraintStart_toStartOf="parent"
 							app:layout_constraintTop_toTopOf="parent" />
 
-						<ImageButton
+						<com.google.android.material.floatingactionbutton.FloatingActionButton
 							android:id="@+id/transfer_code_refresh_button"
-							style="@style/CovidCertificate.FloatingImageButton"
-							android:layout_width="@dimen/floating_button_small_height"
-							android:layout_height="@dimen/floating_button_small_height"
+							style="@style/CovidCertificate.FloatingActionButton"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							app:fabCustomSize="@dimen/floating_button_small_height"
 							android:layout_marginHorizontal="@dimen/spacing_medium_large"
 							android:layout_marginVertical="@dimen/spacing_medium"
-							android:elevation="@dimen/floating_button_elevation"
 							app:layout_constraintBottom_toBottomOf="parent"
 							app:layout_constraintEnd_toEndOf="parent"
 							app:layout_constraintTop_toTopOf="parent"
-							app:srcCompat="@drawable/ic_load"
-							app:tint="@color/white" />
+							app:srcCompat="@drawable/ic_load" />
 
 					</androidx.constraintlayout.widget.ConstraintLayout>
 
