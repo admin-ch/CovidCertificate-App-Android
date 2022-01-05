@@ -1312,7 +1312,7 @@ Code: {ERROR_CODE}"</string>
     <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
     <string name="vaccination_impf_check_title">"Reservar in termin ussa"</string>
     <string name="verifier_faq_works_linktext_1">"Video explicativ"</string>
-    <string name="verifier_faq_works_linkurl_1">"https://youtu.be/14Sk2QTaJhA"</string>
+    <string name="verifier_faq_works_linkurl_1">"https://youtu.be/DClLZIUjr3w"</string>
 
     <!-- Title of button to choose verification mode -->
     <string name="verifier_choose_mode_button_title">"Tscherner"</string>
@@ -1402,7 +1402,7 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_check_mode_info_2g_plus_text_2">"Ultra d’in certificat COVID per persunas vaccinadas e guaridas dovri in certificat d'in test valaivel che sto vegnir verifitgà separadamain."</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
-    <string name="verifier_check_mode_info_2g_plus_text_3">"Excepziuns: persunas ch’èn guaridas u che han survegnì ina vaccinaziun avant damain che 90 dis na dovran nagin certificat supplementar d'in test."</string>
+    <string name="verifier_check_mode_info_2g_plus_text_3">"Excepziuns: Persunas ch'èn vegnidas vaccinadas cumplettamain, che han laschà rinfrestgar la vaccinaziun u ch'èn guaridas (sin basa d'in test da PCR) avant maximalmain 120 dis"</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
     <string name="verifier_check_mode_info_2g_plus_text_4">"En quest modus na pon vegnir verifitgads nagins certificats light."</string>
@@ -1436,4 +1436,41 @@ Code: {ERROR_CODE}"</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode Testzertifikat -->
     <string name="verifier_check_mode_info_test_cert_text_3">"En quest modus na pon vegnir verifitgads nagins certificats light."</string>
+
+    <!-- wallet refresh button removal info box text -->
+    <string name="wallet_refresh_button_info_text_1">"Die Funktion zur Selbstprüfung von Zertifikaten («Refresh-Button») wurde entfernt."</string>
+
+    <!-- wallet refresh button removal info box text -->
+    <string name="wallet_refresh_button_info_text_2">"Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt direkt auf dem Zertifikat angezeigt."</string>
+
+    <!-- wallet refresh button removal info box text -->
+    <string name="wallet_refresh_button_info_text_3">"Um Covid Zertifikate zu prüfen, muss der QR-Code mit einer Prüfapp gescannt werden."</string>
+
+    <!-- wallet refresh button removal info box fat title above text 3 -->
+    <string name="wallet_refresh_button_info_fat_title_3">"Für Prüfende"</string>
+
+    <!-- wallet refresh button removal info box link text -->
+    <string name="wallet_refresh_button_info_link_text">"Mehr erfahren"</string>
+
+    <!-- wallet refresh button removal info box link url -->
+    <string name="wallet_refresh_button_info_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#1070048217"</string>
+
+    <!-- text for info pop-up in wallet app describing 2G+ OK state -->
+    <string name="wallet_check_mode_info_2g_plus_ok_text">"Das Zertifikat ermöglicht den Zutritt zu Orten und Aktivitäten mit 2G+-Regelung. (Das Zertifikat für die Impfung oder Genesung ist weniger als 120 Tage alt.)"</string>
+
+    <!-- text for info pop-up in wallet app describing 2G+ NOT OK state -->
+    <string name="wallet_check_mode_info_2g_plus_not_ok_text">"Für den Zutritt zu Orten und Aktivitäten mit einer 2G+-Regelung wird zusätzlich ein Zertifikat für ein negatives Testresultat benötigt."</string>
+
+    <!-- wallet refresh button removal info box title -->
+    <string name="wallet_refresh_button_info_title">"Info"</string>
+
+    <!-- Ausnahme-Zertifikat: Medizinisches Attest ausgestellt in -->
+    <string name="wallet_certificate_ausnahme_issued_country">"L'attest dal medi è vegnì emess a"</string>
+
+    <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
+    <string name="wallet_certificate_detail_note_ausnahme">"Quest attest n'è betg in document da viadi. 
+
+Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad actuala en Svizra pudais Vus verifitgar da tut temp cun l'app «Covid-Certificate». 
+
+Tut tenor il concept da protecziun respectiv sto la possessura u il possessur eventualmain purtar ina mascrina a chaschun d'occurrenzas u en instituziuns, nua ch'in certificat è obligatoric."</string>
 </resources>

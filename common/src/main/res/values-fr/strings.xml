@@ -1317,7 +1317,7 @@ Code: {ERROR_CODE}"</string>
 
     <!-- Fuzzy -->
     <string name="verifier_faq_works_linktext_1">"Vidéo explicative"</string>
-    <string name="verifier_faq_works_linkurl_1">"https://youtu.be/90JHMToWPNM"</string>
+    <string name="verifier_faq_works_linkurl_1">"https://youtu.be/O-9YhJDI3ZI"</string>
 
     <!-- Title of button to choose verification mode -->
     <string name="verifier_choose_mode_button_title">"Choisir"</string>
@@ -1409,7 +1409,7 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_check_mode_info_2g_plus_text_2">"En plus d'un certificat COVID de vaccination ou de guérison, il faut présenter un certificat de test valable, qui doit être vérifié séparément."</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
-    <string name="verifier_check_mode_info_2g_plus_text_3">"Exceptions: les personnes qui, depuis moins de 90 jours, sont guéries ou vaccinées n'ont pas besoin d'un certificat de test en complément."</string>
+    <string name="verifier_check_mode_info_2g_plus_text_3">"Exceptions: les personnes dont la vaccination, la vaccination de rappel ou la guérison datent de moins de 120 jours"</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode 2G+ -->
     <string name="verifier_check_mode_info_2g_plus_text_4">"Ce mode ne permet pas de vérifier les «certificats light»."</string>
@@ -1443,4 +1443,41 @@ Code: {ERROR_CODE}"</string>
 
     <!-- check app -> check mode select pop-up -> info text for check mode Testzertifikat -->
     <string name="verifier_check_mode_info_test_cert_text_3">"Ce mode ne permet pas de vérifier les «certificats light»."</string>
+
+    <!-- wallet refresh button removal info box text -->
+    <string name="wallet_refresh_button_info_text_1">"Die Funktion zur Selbstprüfung von Zertifikaten («Refresh-Button») wurde entfernt."</string>
+
+    <!-- wallet refresh button removal info box text -->
+    <string name="wallet_refresh_button_info_text_2">"Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt direkt auf dem Zertifikat angezeigt."</string>
+
+    <!-- wallet refresh button removal info box text -->
+    <string name="wallet_refresh_button_info_text_3">"Um Covid Zertifikate zu prüfen, muss der QR-Code mit einer Prüfapp gescannt werden."</string>
+
+    <!-- wallet refresh button removal info box fat title above text 3 -->
+    <string name="wallet_refresh_button_info_fat_title_3">"Für Prüfende"</string>
+
+    <!-- wallet refresh button removal info box link text -->
+    <string name="wallet_refresh_button_info_link_text">"Mehr erfahren"</string>
+
+    <!-- wallet refresh button removal info box link url -->
+    <string name="wallet_refresh_button_info_link_url">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#-1006172949"</string>
+
+    <!-- text for info pop-up in wallet app describing 2G+ OK state -->
+    <string name="wallet_check_mode_info_2g_plus_ok_text">"Das Zertifikat ermöglicht den Zutritt zu Orten und Aktivitäten mit 2G+-Regelung. (Das Zertifikat für die Impfung oder Genesung ist weniger als 120 Tage alt.)"</string>
+
+    <!-- text for info pop-up in wallet app describing 2G+ NOT OK state -->
+    <string name="wallet_check_mode_info_2g_plus_not_ok_text">"Für den Zutritt zu Orten und Aktivitäten mit einer 2G+-Regelung wird zusätzlich ein Zertifikat für ein negatives Testresultat benötigt."</string>
+
+    <!-- wallet refresh button removal info box title -->
+    <string name="wallet_refresh_button_info_title">"Info"</string>
+
+    <!-- Ausnahme-Zertifikat: Medizinisches Attest ausgestellt in -->
+    <string name="wallet_certificate_ausnahme_issued_country">"Attestation médicale délivrée en"</string>
+
+    <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
+    <string name="wallet_certificate_detail_note_ausnahme">"Le présent certificat n'est pas un document de voyage. 
+
+Ce certificat n'a qu'une durée de validité limitée. L'application «COVID Certificate» vous permet en tout temps de vérifier la durée de validité actuellement déterminante en Suisse. 
+
+En fonction des mesures de protection applicables, le ou la titulaire d'un certificat peut être tenu/e de porter un masque dans le cadre de manifestations et dans les lieux où la présentation d'un certificat COVID-19 est obligatoire."</string>
 </resources>

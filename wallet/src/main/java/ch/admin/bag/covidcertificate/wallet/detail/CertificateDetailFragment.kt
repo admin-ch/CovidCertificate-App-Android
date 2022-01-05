@@ -40,6 +40,7 @@ import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.utils.*
+import ch.admin.bag.covidcertificate.sdk.core.extensions.isChAusnahmeTest
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -121,6 +122,7 @@ class CertificateDetailFragment : Fragment() {
 		updateToolbarTitle()
 		setupCertificateDetails()
 		setupStatusInfo()
+		setupDetailNote()
 		setupConversionButtons()
 		setupVaccinationAppointmentButton()
 
@@ -219,6 +221,15 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		certificatesViewModel.startVerification(certificateHolder)
+	}
+
+	private fun setupDetailNote() {
+		val dccCert = certificateHolder.certificate as? DccCert
+		if (dccCert?.tests?.first()?.isChAusnahmeTest() == true) {
+			binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_ausnahme)
+		} else {
+			binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note)
+		}
 	}
 
 	private fun setupReverifyButtonOffset() {

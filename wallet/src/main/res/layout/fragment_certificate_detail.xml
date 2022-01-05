@@ -298,6 +298,7 @@
 						tools:listitem="@layout/item_detail_divider" />
 
 					<TextView
+						android:id="@+id/certificate_detail_note"
 						style="@style/CovidCertificate.Text"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"

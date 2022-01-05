@@ -213,20 +213,94 @@ class CertificateDetailItemListBuilder(
 			return detailItems
 		}
 
-		if (tests[0].isSerologicalTest()) {
-			detailItems.add(TitleItem(R.string.covid_certificate_sero_positiv_test_title, showEnglishVersionForLabels))
-		} else {
-			detailItems.add(TitleItem(R.string.covid_certificate_test_title, showEnglishVersionForLabels))
+		when {
+			tests[0].isSerologicalTest() -> {
+				detailItems.add(TitleItem(R.string.covid_certificate_sero_positiv_test_title, showEnglishVersionForLabels))
+			}
+			tests[0].isChAusnahmeTest() -> {
+				detailItems.add(TitleItem(R.string.covid_certificate_ch_ausnahme_test_title, showEnglishVersionForLabels))
+			}
+			else -> {
+				detailItems.add(TitleItem(R.string.covid_certificate_test_title, showEnglishVersionForLabels))
+			}
 		}
 
 		for (testEntry in tests) {
 			detailItems.add(DividerItem)
-			if (testEntry.isSerologicalTest()) {
-				detailItems.addAll(buildTestEntriesForSeroPositiv(testEntry = testEntry))
-			} else {
-				detailItems.addAll(buildTestEntriesForPCRAndRAT(testEntry = testEntry))
+			when {
+				testEntry.isSerologicalTest() -> {
+					detailItems.addAll(buildTestEntriesForSeroPositiv(testEntry = testEntry))
+				}
+				testEntry.isChAusnahmeTest() -> {
+					detailItems.addAll(buildTestEntriesForChAusnahmeTest(testEntry))
+				}
+				else -> {
+					detailItems.addAll(buildTestEntriesForPCRAndRAT(testEntry = testEntry))
+				}
 			}
 		}
+		return detailItems
+	}
+
+	private fun buildTestEntriesForChAusnahmeTest(testEntry: TestEntry): Collection<CertificateDetailItem> {
+		val detailItems = ArrayList<CertificateDetailItem>()
+		if (testEntry.isTargetDiseaseCorrect()) {
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_target_disease_title,
+					context.getString(R.string.target_disease_name),
+					showEnglishVersionForLabels
+				)
+			)
+		}
+
+		testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampleDate ->
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_ausnahme_test_attest_start_date,
+					sampleDate,
+					showEnglishVersionForLabels
+				)
+			)
+		}
+
+		testEntry.getTestCenter()?.let { testCenter ->
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_ausnahme_responsible_issuer,
+					testCenter,
+					showEnglishVersionForLabels
+				)
+			)
+		}
+
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_ausnahme_issued_country,
+				testEntry.getTestCountry(showEnglishVersionForLabels), showEnglishVersionForLabels
+			)
+		)
+
+		// Issuer
+		detailItems.add(DividerItem)
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_vaccination_issuer_title,
+				testEntry.getIssuer(),
+				showEnglishVersionForLabels
+			)
+		)
+		detailItems.add(
+			UvciItem(
+				testEntry.getCertificateIdentifier(),
+				false
+			)
+		)
+
+		certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
+		}
+
 		return detailItems
 	}
 
