@@ -268,7 +268,7 @@ class CertificateDetailItemListBuilder(
 
 		detailItems.add(
 			ValueItem(
-				R.string.wallet_certificate_test_land,
+				R.string.wallet_certificate_ausnahme_issued_country,
 				testEntry.getTestCountry(showEnglishVersionForLabels), showEnglishVersionForLabels
 			)
 		)
