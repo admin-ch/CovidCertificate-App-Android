@@ -18,16 +18,19 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
-import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.WalletModeModel
+import ch.admin.bag.covidcertificate.common.extensions.getDrawableIdentifier
 import ch.admin.bag.covidcertificate.sdk.core.models.state.ModeValidity
-import ch.admin.bag.covidcertificate.sdk.core.models.state.ModeValidityState
 import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
+import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.DialogFragmentModeInfoBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemModeListInfoBinding
 import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.getHumanReadableName
 import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.textAsBitmap
+import ch.admin.bag.covidcertificate.wallet.util.isInvalid
+import ch.admin.bag.covidcertificate.wallet.util.isPartiallyValid
+import ch.admin.bag.covidcertificate.wallet.util.isValid
 
 class ModeInfoDialogFragment : DialogFragment() {
 
@@ -74,62 +77,43 @@ class ModeInfoDialogFragment : DialogFragment() {
 		val checkedModes: Map<String, WalletModeModel>? = configLiveData?.getCheckModes(getString(R.string.language_key))
 		binding.modeInfoTitle.text = configLiveData?.getInfoModeTitle(getString(R.string.language_key))
 		binding.modeInfoList.removeAllViews()
+
 		for (modeValidity in modeValidities) {
+			val modeValidityState = modeValidity.modeValidityState
 			val itemBinding = ItemModeListInfoBinding.inflate(layoutInflater, binding.modeInfoList, true)
 			val imageView = itemBinding.modeListInfoImage
 			val walletModeModel: WalletModeModel? = checkedModes?.get(modeValidity.mode)
-			val resOk =
-				requireContext().resources.getIdentifier(
-					walletModeModel?.ok?.iconAndroid ?: "",
-					"drawable",
-					requireContext().packageName
-				)
-			val resNotOk =
-				requireContext().resources.getIdentifier(
-					walletModeModel?.notOk?.iconAndroid ?: "",
-					"drawable",
-					requireContext().packageName
-				)
-			if (modeValidity.modeValidityState == ModeValidityState.SUCCESS) {
+			val resOk = requireContext().getDrawableIdentifier(walletModeModel?.ok?.iconAndroid ?: "")
+			val resNotOk = requireContext().getDrawableIdentifier(walletModeModel?.notOk?.iconAndroid ?: "")
+
+			if (modeValidityState.isValid()) {
 				if (resOk != 0) {
 					imageView.setImageResource(resOk)
-					imageView.imageTintList =
-						ColorStateList.valueOf(
-							ContextCompat.getColor(
-								requireContext(),
-								ch.admin.bag.covidcertificate.wallet.R.color.blue
-							)
-						)
+					imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
 				} else {
 					val bitmap =
 						textAsBitmap(
 							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(ch.admin.bag.covidcertificate.wallet.R.dimen.text_size_small),
-							ContextCompat.getColor(requireContext(), ch.admin.bag.covidcertificate.wallet.R.color.blue),
-							ContextCompat.getColor(requireContext(), ch.admin.bag.covidcertificate.wallet.R.color.white)
+							ContextCompat.getColor(requireContext(), R.color.blue),
+							ContextCompat.getColor(requireContext(), R.color.white)
 						)
 					imageView.setImageBitmap(bitmap)
 				}
 				itemBinding.modeListInfoText.text = walletModeModel?.ok?.text
-			} else if (modeValidity.modeValidityState == ModeValidityState.INVALID) {
+			} else if (modeValidityState.isPartiallyValid() || modeValidityState.isInvalid()) {
 				if (resNotOk != 0) {
 					imageView.setImageResource(resNotOk)
-					imageView.imageTintList =
-						ColorStateList.valueOf(
-							ContextCompat.getColor(
-								requireContext(),
-								ch.admin.bag.covidcertificate.wallet.R.color.grey
-							)
-						)
+					imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey))
 				} else {
 					val bitmap =
 						textAsBitmap(
 							requireContext(),
 							getHumanReadableName(modeValidity.mode),
 							resources.getDimensionPixelSize(ch.admin.bag.covidcertificate.wallet.R.dimen.text_size_small),
-							ContextCompat.getColor(requireContext(), ch.admin.bag.covidcertificate.wallet.R.color.blue),
-							ContextCompat.getColor(requireContext(), ch.admin.bag.covidcertificate.wallet.R.color.white),
+							ContextCompat.getColor(requireContext(), R.color.blue),
+							ContextCompat.getColor(requireContext(), R.color.white),
 							isNotOK = true
 						)
 					imageView.setImageBitmap(bitmap)

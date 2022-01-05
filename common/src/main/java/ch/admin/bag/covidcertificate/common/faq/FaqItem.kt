@@ -17,6 +17,7 @@ import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.common.databinding.ItemFaqHeaderBinding
 import ch.admin.bag.covidcertificate.common.databinding.ItemFaqIntroSectionBinding
 import ch.admin.bag.covidcertificate.common.databinding.ItemFaqQuestionBinding
+import ch.admin.bag.covidcertificate.common.extensions.getDrawableIdentifier
 import ch.admin.bag.covidcertificate.common.faq.model.Header
 import ch.admin.bag.covidcertificate.common.faq.model.IntroSection
 import ch.admin.bag.covidcertificate.common.faq.model.Question
@@ -39,7 +40,7 @@ data class HeaderItem(val header: Header) : FaqItem() {
 		}
 
 		val drawableId = header.iconName?.let { iconName ->
-			view.context.resources.getIdentifier(iconName, "drawable", view.context.packageName)
+			view.context.getDrawableIdentifier(iconName)
 		} ?: 0
 
 		binding.itemFaqHeaderIllu.apply {
@@ -93,7 +94,7 @@ data class IntroSectionItem(val introSection: IntroSection) : FaqItem() {
 
 	override fun bindView(view: View, onItemClickListener: (() -> Unit)?) {
 		val binding = ItemFaqIntroSectionBinding.bind(view)
-		val drawableId = view.context.resources.getIdentifier(introSection.iconName, "drawable", view.context.packageName)
+		val drawableId = view.context.getDrawableIdentifier(introSection.iconName)
 		binding.faqIntroSectionIcon.setImageResource(drawableId)
 		binding.faqIntroSectionText.text = introSection.text
 	}
