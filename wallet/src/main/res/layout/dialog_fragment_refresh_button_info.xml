@@ -72,8 +72,8 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="@dimen/spacing_medium"
-				android:contentDescription="@string/verifier_app_title"
 				android:background="?android:attr/selectableItemBackground"
+				android:contentDescription="@string/verifier_app_title"
 				android:src="@drawable/ic_covid_check_app" />
 
 			<com.google.android.material.button.MaterialButton
@@ -82,10 +82,12 @@
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:layout_marginTop="@dimen/spacing_small"
+				android:paddingStart="0dp"
 				android:textAllCaps="false"
 				app:icon="@drawable/ic_link_external"
 				app:iconPadding="@dimen/spacing_medium"
 				app:iconTint="@color/blue"
+				tools:ignore="RtlSymmetry"
 				tools:text="@string/wallet_refresh_button_info_link_text" />
 
 		</LinearLayout>
@@ -95,7 +97,7 @@
 		android:id="@+id/dialogCloseButton"
 		style="@style/CovidCertificate.Button.Borderless"
 		android:layout_width="match_parent"
-		android:layout_marginHorizontal="@dimen/spacing_larger"
 		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/spacing_larger"
 		android:text="@string/close_button" />
 </LinearLayout>
