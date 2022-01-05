@@ -257,13 +257,12 @@
 
 	</LinearLayout>
 
-	<ImageButton
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
 		android:id="@+id/fragment_qr_zoom"
-		style="@style/CovidCertificate.FloatingImageButton.WhiteBlue"
+		style="@style/CovidCertificate.FloatingActionButton.WhiteBlue"
 		android:layout_width="@dimen/floating_button_height"
 		android:layout_height="@dimen/floating_button_height"
 		android:layout_margin="@dimen/spacing_large"
-		android:elevation="@dimen/floating_button_elevation"
 		android:visibility="gone"
 		app:layout_constraintBottom_toTopOf="@id/qr_code_scanner_footer_group"
 		app:layout_constraintStart_toStartOf="parent"
@@ -271,13 +270,12 @@
 		app:srcCompat="@drawable/ic_zoom_off"
 		tools:visibility="visible" />
 
-	<ImageButton
+	<com.google.android.material.floatingactionbutton.FloatingActionButton
 		android:id="@+id/fragment_qr_scanner_flash_button"
-		style="@style/CovidCertificate.FloatingImageButton.WhiteBlue"
+		style="@style/CovidCertificate.FloatingActionButton.WhiteBlue"
 		android:layout_width="@dimen/floating_button_height"
 		android:layout_height="@dimen/floating_button_height"
 		android:layout_margin="@dimen/spacing_large"
-		android:elevation="@dimen/floating_button_elevation"
 		app:layout_constraintBottom_toTopOf="@id/qr_code_scanner_footer_group"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintTop_toTopOf="@id/qr_code_scanner_footer_group"

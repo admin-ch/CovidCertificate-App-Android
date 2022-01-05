@@ -193,39 +193,36 @@
 				app:layout_constraintStart_toStartOf="@id/qr_code_scanner_camera_hole"
 				app:layout_constraintTop_toBottomOf="@id/camera_preview_container" />
 
-			<ImageButton
+			<com.google.android.material.floatingactionbutton.FloatingActionButton
 				android:id="@+id/fragment_qr_zoom"
-				style="@style/CovidCertificate.FloatingImageButton.BlackWhite"
+				style="@style/CovidCertificate.FloatingActionButton.BlackWhite"
 				android:layout_width="@dimen/floating_button_height"
 				android:layout_height="@dimen/floating_button_height"
 				android:layout_margin="@dimen/spacing_large"
-				android:elevation="@dimen/floating_button_elevation"
 				android:visibility="gone"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:srcCompat="@drawable/ic_zoom_off"
 				tools:visibility="visible" />
 
-			<ImageButton
+			<com.google.android.material.floatingactionbutton.FloatingActionButton
 				android:id="@+id/fragment_camera_activate"
-				style="@style/CovidCertificate.FloatingImageButton.BlackWhite"
+				style="@style/CovidCertificate.FloatingActionButton.BlackWhite"
 				android:layout_width="@dimen/floating_button_height"
 				android:layout_height="@dimen/floating_button_height"
 				android:layout_margin="@dimen/spacing_large"
-				android:elevation="@dimen/floating_button_elevation"
 				android:visibility="gone"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintStart_toStartOf="parent"
 				app:srcCompat="@drawable/ic_camera_switch"
 				tools:visibility="visible" />
 
-			<ImageButton
+			<com.google.android.material.floatingactionbutton.FloatingActionButton
 				android:id="@+id/fragment_qr_scanner_flash_button"
-				style="@style/CovidCertificate.FloatingImageButton.BlackWhite"
+				style="@style/CovidCertificate.FloatingActionButton.BlackWhite"
 				android:layout_width="@dimen/floating_button_height"
 				android:layout_height="@dimen/floating_button_height"
 				android:layout_margin="@dimen/spacing_large"
-				android:elevation="@dimen/floating_button_elevation"
 				app:layout_constraintBottom_toBottomOf="parent"
 				app:layout_constraintEnd_toEndOf="parent"
 				app:srcCompat="@drawable/ic_light_off" />

@@ -31,6 +31,8 @@ class ConfigSecureStorage private constructor(context: Context) {
 
 		private const val KEY_ZOOM_ACTIVE = "KEY_ZOOM_ACTIVE"
 
+		private const val KEY_REFRESH_BUTTON_DISABLED_TIMESTAMP = "KEY_REFRESH_BUTTON_DISABLED_TIMESTAMP"
+
 		private val moshi = Moshi.Builder().build()
 		private val configModelAdapter = moshi.adapter(ConfigModel::class.java)
 	}
@@ -65,4 +67,7 @@ class ConfigSecureStorage private constructor(context: Context) {
 
 	fun getZoomOn(): Boolean = prefs.getBoolean(KEY_ZOOM_ACTIVE, false)
 	fun setZoomOn(isZoomActive: Boolean) = prefs.edit().putBoolean(KEY_ZOOM_ACTIVE, isZoomActive).apply()
+
+	fun getRefreshButtonDisabledTimestamp(): Long = prefs.getLong(KEY_REFRESH_BUTTON_DISABLED_TIMESTAMP, -1L)
+	fun setRefreshButtonDisabledTimestamp(timestamp: Long) = prefs.edit { putLong(KEY_REFRESH_BUTTON_DISABLED_TIMESTAMP, timestamp) }
 }

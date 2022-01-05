@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:orientation="vertical"
+	android:paddingTop="@dimen/spacing_very_large"
+	android:paddingBottom="@dimen/spacing_medium_large">
+
+	<TextView
+		android:id="@+id/title"
+		style="@style/CovidCertificate.Text.Bold.Title"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center"
+		tools:text="@string/wallet_refresh_button_info_title" />
+
+	<ScrollView
+		android:layout_width="match_parent"
+		android:layout_height="0dp"
+		android:layout_weight="1"
+		android:overScrollMode="never">
+
+		<LinearLayout
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:padding="@dimen/spacing_larger">
+
+			<TextView
+				android:id="@+id/text1"
+				style="@style/CovidCertificate.Text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				tools:text="@string/wallet_refresh_button_info_text_1" />
+
+			<TextView
+				android:id="@+id/text2"
+				style="@style/CovidCertificate.Text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_large"
+				tools:text="@string/wallet_refresh_button_info_text_2" />
+
+			<TextView
+				android:id="@+id/fatTitle"
+				style="@style/CovidCertificate.Text.Bold"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_large"
+				tools:text="@string/wallet_refresh_button_info_fat_title_3" />
+
+			<TextView
+				android:id="@+id/text3"
+				style="@style/CovidCertificate.Text"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				tools:text="@string/wallet_refresh_button_info_text_3" />
+
+			<ImageView
+				android:id="@+id/covidCheckAppButton"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_medium"
+				android:background="?android:attr/selectableItemBackground"
+				android:contentDescription="@string/verifier_app_title"
+				android:src="@drawable/ic_covid_check_app" />
+
+			<com.google.android.material.button.MaterialButton
+				android:id="@+id/learnMoreButton"
+				style="@style/CovidCertificate.Button.Borderless"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="@dimen/spacing_small"
+				android:paddingStart="0dp"
+				android:textAllCaps="false"
+				app:icon="@drawable/ic_link_external"
+				app:iconPadding="@dimen/spacing_medium"
+				app:iconTint="@color/blue"
+				tools:ignore="RtlSymmetry"
+				tools:text="@string/wallet_refresh_button_info_link_text" />
+
+		</LinearLayout>
+	</ScrollView>
+
+	<Button
+		android:id="@+id/dialogCloseButton"
+		style="@style/CovidCertificate.Button.Borderless"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginHorizontal="@dimen/spacing_larger"
+		android:text="@string/close_button" />
+</LinearLayout>

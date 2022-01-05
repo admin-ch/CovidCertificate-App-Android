@@ -36,7 +36,9 @@ data class ConfigModel(
 	val checkModesInfos: Map<String, CheckModesInfosModel>?,
 	val checkModesInfo: Map<String, CheckModesInfoModel>?,
 	val checkModeReselectAfterHours: Int?,
-	val lightCertDurationInHours: Int?
+	val lightCertDurationInHours: Int?,
+	val refreshButtonDisabled: Boolean?,
+	val refreshButtonInfo: Map<String, RefreshButtonInfoModel>?,
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
@@ -46,6 +48,7 @@ data class ConfigModel(
 	fun getVaccinationHints(languageKey: String): List<VaccinationHintModel>? = vaccinationHints?.get(languageKey)
 	fun getCheckModesInfos(languageKey: String): Map<String, CheckModeInfoModel>? = checkModesInfos?.get(languageKey)?.infos
 	fun getUnselectedModesInfos(languageKey: String): VerifierInfos? = checkModesInfos?.get(languageKey)?.unselected
+	fun getRefreshButtonInfo(languageKey: String): RefreshButtonInfoModel? = refreshButtonInfo?.get(languageKey)
 
 	fun getCheckModes(languageKey: String): Map<String, WalletModeModel>? = checkModesInfo?.get(languageKey)?.modes
 	fun getInfoModeTitle(languageKey: String): String? = checkModesInfo?.get(languageKey)?.title
