@@ -1,6 +1,7 @@
 package ch.admin.bag.covidcertificate.common.config
 
 import com.squareup.moshi.JsonClass
+import java.io.Serializable
 
 @JsonClass(generateAdapter = true)
 data class RefreshButtonInfoModel(
@@ -11,4 +12,4 @@ data class RefreshButtonInfoModel(
 	val text3: String,
 	val linkText: String,
 	val linkUrl: String,
-)
+) : Serializable

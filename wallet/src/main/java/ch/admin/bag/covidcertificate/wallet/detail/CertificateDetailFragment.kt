@@ -30,6 +30,7 @@ import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.WalletModeModel
+import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
@@ -52,6 +53,7 @@ import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetai
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeRefreshBinding
 import ch.admin.bag.covidcertificate.wallet.dialog.ModeInfoDialogFragment
+import ch.admin.bag.covidcertificate.wallet.dialog.RefreshButtonInfoDialogFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
@@ -66,6 +68,7 @@ import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 import java.lang.Integer.max
 import java.time.LocalDateTime
+import java.util.concurrent.TimeUnit
 
 
 class CertificateDetailFragment : Fragment() {
@@ -146,20 +149,7 @@ class CertificateDetailFragment : Fragment() {
 				.show()
 		}
 
-		binding.certificateDetailButtonReverify.setOnClickListener {
-			binding.certificateDetailButtonReverify.hideAnimated()
-			binding.scrollview.smoothScrollTo(0, 0)
-			isForceValidate = true
-			hideDelayedJob?.cancel()
-			certificatesViewModel.startVerification(
-				certificateHolder,
-				delayInMillis = STATUS_LOAD_DELAY,
-				isForceVerification = true
-			)
-		}
-
-
-		setupReverifyButtonOffset()
+		setupReverifyButtons()
 	}
 
 	override fun onResume() {
@@ -215,7 +205,9 @@ class CertificateDetailFragment : Fragment() {
 		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
 			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
 				.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
-					binding.certificateDetailButtonReverify.showAnimated()
+					if (ConfigRepository.getCurrentConfig(requireContext())?.refreshButtonDisabled != true) {
+						binding.certificateDetailButtonReverify.showAnimated()
+					}
 					updateStatusInfo(it.state)
 				}
 		}
@@ -232,6 +224,47 @@ class CertificateDetailFragment : Fragment() {
 		}
 	}
 
+	private fun setupReverifyButtons() {
+		binding.certificateDetailButtonReverify.setOnClickListener {
+			binding.certificateDetailButtonReverify.hideAnimated()
+			binding.scrollview.smoothScrollTo(0, 0)
+			isForceValidate = true
+			hideDelayedJob?.cancel()
+			certificatesViewModel.startVerification(
+				certificateHolder,
+				delayInMillis = STATUS_LOAD_DELAY,
+				isForceVerification = true
+			)
+		}
+
+		binding.certificateDetailButtonReverifyInfo.setOnClickListener {
+			val config = ConfigRepository.getCurrentConfig(requireContext())
+			val refreshButtonInfo = config?.getRefreshButtonInfo(getString(R.string.language_key))
+			if (refreshButtonInfo != null) {
+				RefreshButtonInfoDialogFragment.newInstance(refreshButtonInfo)
+					.show(childFragmentManager, RefreshButtonInfoDialogFragment::class.java.canonicalName)
+			}
+		}
+
+		certificatesViewModel.configLiveData.observe(viewLifecycleOwner) { config ->
+			// Whenever the config live data changes, check if the refresh button has been disabled.
+			// If yes, also check if the 2 week period for the info button has also passed
+			if (config.refreshButtonDisabled == true) {
+				val disabledTimestamp = ConfigSecureStorage.getInstance(requireContext()).getRefreshButtonDisabledTimestamp()
+				val now = System.currentTimeMillis()
+				val infoButtonPeriod = TimeUnit.DAYS.toMillis(14)
+
+				binding.certificateDetailButtonReverify.isVisible = false
+				binding.certificateDetailButtonReverifyInfo.isVisible = disabledTimestamp + infoButtonPeriod > now
+			} else {
+				binding.certificateDetailButtonReverify.isVisible = true
+				binding.certificateDetailButtonReverifyInfo.isVisible = false
+			}
+		}
+
+		setupReverifyButtonOffset()
+	}
+
 	private fun setupReverifyButtonOffset() {
 		val certPos = intArrayOf(0, 0)
 		val buttonPos = intArrayOf(0, 0)
@@ -243,11 +276,22 @@ class CertificateDetailFragment : Fragment() {
 	private fun reloadReverifyButtonOffset(certPos: IntArray = intArrayOf(0, 0), buttonPos: IntArray = intArrayOf(0, 0)) {
 		binding.certificateDetailQrCode.getLocationOnScreen(certPos)
 		val certificateBottomY = certPos[1] + binding.certificateDetailQrCode.height
-		binding.certificateDetailButtonReverify.getLocationOnScreen(buttonPos)
-		val buttonTopY = buttonPos[1] - binding.certificateDetailButtonReverify.translationY.toInt()
 
-		binding.certificateDetailButtonReverify.translationY = max(0, certificateBottomY - buttonTopY).toFloat()
+		val buttonTopY = when {
+			binding.certificateDetailButtonReverify.isVisible -> {
+				binding.certificateDetailButtonReverify.getLocationOnScreen(buttonPos)
+				buttonPos[1] - binding.certificateDetailButtonReverify.translationY.toInt()
+			}
+			binding.certificateDetailButtonReverifyInfo.isVisible -> {
+				binding.certificateDetailButtonReverifyInfo.getLocationOnScreen(buttonPos)
+				buttonPos[1] - binding.certificateDetailButtonReverifyInfo.translationY.toInt()
+			}
+			else -> 0
+		}
 
+		val translationY = max(0, certificateBottomY - buttonTopY).toFloat()
+		binding.certificateDetailButtonReverify.translationY = translationY
+		binding.certificateDetailButtonReverifyInfo.translationY = translationY
 	}
 
 	private fun setupConversionButtons() {
@@ -358,10 +402,10 @@ class CertificateDetailFragment : Fragment() {
 		}
 
 		showModes(walletState.modeValidity)
-		setupButton(walletState.modeValidity)
+		setupModesButton(walletState.modeValidity)
 	}
 
-	private fun setupButton(modeValidities: List<ModeValidity>) {
+	private fun setupModesButton(modeValidities: List<ModeValidity>) {
 		val arrayList = arrayListOf<ModeValidity>()
 		arrayList.addAll(modeValidities)
 		binding.certificateDetailInfoModes.certificateDetailInfoModesList.setOnClickListener {

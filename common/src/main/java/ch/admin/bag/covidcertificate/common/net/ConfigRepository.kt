@@ -96,9 +96,11 @@ class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 		if (config == null) config = storage.getConfig()
 		if (config == null) config = AssetUtil.loadDefaultConfig(context)
 
-		// If the config has disabled the refresh button for the first time, store the timestamp. Otherwise clear the timestamp
-		if (config?.refreshButtonDisabled == true && storage.getRefreshButtonDisabledTimestamp() < 0L) {
-			storage.setRefreshButtonDisabledTimestamp(System.currentTimeMillis())
+		// If the config has disabled the refresh button check if it's the first time and if so, store the timestamp
+		if (config?.refreshButtonDisabled == true) {
+			if (storage.getRefreshButtonDisabledTimestamp() < 0L) {
+				storage.setRefreshButtonDisabledTimestamp(System.currentTimeMillis())
+			}
 		} else {
 			storage.setRefreshButtonDisabledTimestamp(-1L)
 		}

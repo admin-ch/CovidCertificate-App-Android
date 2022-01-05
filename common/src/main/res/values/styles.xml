@@ -263,5 +263,8 @@
 		<item name="android:windowFrame">@null</item>
 		<item name="android:windowBackground">@drawable/bg_rect_rounded_sheet</item>
 		<item name="android:windowIsFloating">true</item>
+
+		<!-- Make the dialog at least 80% width in portrait mode -->
+		<item name="android:windowMinWidthMinor">80%</item>
 	</style>
 </resources>

@@ -67,4 +67,10 @@
 
 	</application>
 
+	<queries>
+		<package android:name="ch.admin.bag.covidcertificate.verifier" />
+		<package android:name="ch.admin.bag.covidcertificate.verifier.abn" />
+		<package android:name="ch.admin.bag.covidcertificate.verifier.dev" />
+	</queries>
+
 </manifest>
