@@ -213,22 +213,30 @@ class CertificateDetailItemListBuilder(
 			return detailItems
 		}
 
-		if (tests[0].isSerologicalTest()) {
-			detailItems.add(TitleItem(R.string.covid_certificate_sero_positiv_test_title, showEnglishVersionForLabels))
-		} else if (tests[0].isChAusnahmeTest()) {
-			detailItems.add(TitleItem(R.string.covid_certificate_ch_ausnahme_test_title, showEnglishVersionForLabels))
-		} else {
-			detailItems.add(TitleItem(R.string.covid_certificate_test_title, showEnglishVersionForLabels))
+		when {
+			tests[0].isSerologicalTest() -> {
+				detailItems.add(TitleItem(R.string.covid_certificate_sero_positiv_test_title, showEnglishVersionForLabels))
+			}
+			tests[0].isChAusnahmeTest() -> {
+				detailItems.add(TitleItem(R.string.covid_certificate_ch_ausnahme_test_title, showEnglishVersionForLabels))
+			}
+			else -> {
+				detailItems.add(TitleItem(R.string.covid_certificate_test_title, showEnglishVersionForLabels))
+			}
 		}
 
 		for (testEntry in tests) {
 			detailItems.add(DividerItem)
-			if (testEntry.isSerologicalTest()) {
-				detailItems.addAll(buildTestEntriesForSeroPositiv(testEntry = testEntry))
-			} else if (testEntry.isChAusnahmeTest()) {
-				detailItems.addAll(buildTestEntriesForChAusnahmeTest(testEntry))
-			} else {
-				detailItems.addAll(buildTestEntriesForPCRAndRAT(testEntry = testEntry))
+			when {
+				testEntry.isSerologicalTest() -> {
+					detailItems.addAll(buildTestEntriesForSeroPositiv(testEntry = testEntry))
+				}
+				testEntry.isChAusnahmeTest() -> {
+					detailItems.addAll(buildTestEntriesForChAusnahmeTest(testEntry))
+				}
+				else -> {
+					detailItems.addAll(buildTestEntriesForPCRAndRAT(testEntry = testEntry))
+				}
 			}
 		}
 		return detailItems
