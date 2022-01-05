@@ -21,6 +21,7 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import ch.admin.bag.covidcertificate.common.config.CheckModeInfoEntry
+import ch.admin.bag.covidcertificate.common.extensions.getDrawableIdentifier
 import ch.admin.bag.covidcertificate.verifier.R
 import ch.admin.bag.covidcertificate.verifier.databinding.DialogFragmentChooseModeBinding
 import ch.admin.bag.covidcertificate.verifier.databinding.ItemModeButtonBinding
@@ -100,7 +101,7 @@ class ChooseModeDialogFragment : DialogFragment() {
 			for (item in items) {
 				val itemView = ItemModeInfoBinding.inflate(layoutInflater, binding.infoItemsLayout, false)
 
-				val iconId = resources.getIdentifier(item.iconAndroid, "drawable", context?.packageName)
+				val iconId = requireContext().getDrawableIdentifier(item.iconAndroid)
 				if (iconId != 0) {
 					itemView.icon.setImageResource(iconId)
 				} else {

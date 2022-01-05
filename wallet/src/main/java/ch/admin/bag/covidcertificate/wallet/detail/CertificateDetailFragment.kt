@@ -31,6 +31,7 @@ import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.WalletModeModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
+import ch.admin.bag.covidcertificate.common.extensions.getDrawableIdentifier
 import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.getInvalidErrorCode
@@ -419,10 +420,13 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoModes.certificateDetailInfoModesList.removeAllViews()
 		val configLiveData: ConfigModel? = certificatesViewModel.configLiveData.value
 		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))
+
 		for (modeValidity in modeValidities) {
-			if (modeValidity.modeValidityState != ModeValidityState.SUCCESS && modeValidity.modeValidityState != ModeValidityState.INVALID) {
+			val modeValidityState = modeValidity.modeValidityState
+			if (modeValidityState.isLight() || modeValidityState.isUnknown()) {
 				continue
 			}
+
 			val itemBinding = ItemDetailModeBinding.inflate(
 				layoutInflater,
 				binding.certificateDetailInfoModes.certificateDetailInfoModesList,
@@ -430,18 +434,8 @@ class CertificateDetailFragment : Fragment() {
 			)
 			val imageView = itemBinding.root
 			val walletModeModel: WalletModeModel? = checkedModes?.get(modeValidity.mode)
-			val resOk =
-				requireContext().resources.getIdentifier(
-					walletModeModel?.ok?.iconAndroid ?: "",
-					"drawable",
-					requireContext().packageName
-				)
-			val resNotOk =
-				requireContext().resources.getIdentifier(
-					walletModeModel?.notOk?.iconAndroid ?: "",
-					"drawable",
-					requireContext().packageName
-				)
+			val resOk = requireContext().getDrawableIdentifier(walletModeModel?.ok?.iconAndroid ?: "")
+			val resNotOk = requireContext().getDrawableIdentifier(walletModeModel?.notOk?.iconAndroid ?: "")
 
 			if (modeValidity.modeValidityState == ModeValidityState.SUCCESS) {
 				if (resOk != 0) {
@@ -458,7 +452,7 @@ class CertificateDetailFragment : Fragment() {
 					imageView.setImageBitmap(bitmap)
 				}
 				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.blue))
-			} else if (modeValidity.modeValidityState == ModeValidityState.INVALID) {
+			} else if (modeValidityState.isPartiallyValid() || modeValidityState.isInvalid()) {
 				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.grey))
 				if (resNotOk != 0) {
 					imageView.setImageResource(resNotOk)
@@ -485,26 +479,19 @@ class CertificateDetailFragment : Fragment() {
 		val checkedModes = configLiveData?.getCheckModes(getString(R.string.language_key))
 
 		for (modeValidity in modeValidities) {
-			if (modeValidity.modeValidityState != ModeValidityState.SUCCESS && modeValidity.modeValidityState != ModeValidityState.INVALID) {
+			val modeValidityState = modeValidity.modeValidityState
+			if (modeValidityState.isLight() || modeValidityState.isUnknown()) {
 				continue
 			}
+
 			val itemBinding =
 				ItemDetailModeRefreshBinding.inflate(layoutInflater, binding.certificateDetailRefreshModeValidity, true)
 			val imageView = itemBinding.root
 			val walletModeModel: WalletModeModel? = checkedModes?.get(modeValidity.mode)
-			val resOk =
-				requireContext().resources.getIdentifier(
-					walletModeModel?.ok?.iconAndroid ?: "",
-					"drawable",
-					requireContext().packageName
-				)
-			val resNotOk =
-				requireContext().resources.getIdentifier(
-					walletModeModel?.notOk?.iconAndroid ?: "",
-					"drawable",
-					requireContext().packageName
-				)
-			if (modeValidity.modeValidityState == ModeValidityState.SUCCESS) {
+			val resOk = requireContext().getDrawableIdentifier(walletModeModel?.ok?.iconAndroid ?: "")
+			val resNotOk = requireContext().getDrawableIdentifier(walletModeModel?.notOk?.iconAndroid ?: "")
+
+			if (modeValidityState.isValid()) {
 				if (resOk != 0) {
 					imageView.setImageResource(resOk)
 				} else {
@@ -519,7 +506,7 @@ class CertificateDetailFragment : Fragment() {
 					imageView.setImageBitmap(bitmap)
 				}
 				imageView.imageTintList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.white))
-			} else if (modeValidity.modeValidityState == ModeValidityState.INVALID) {
+			} else if (modeValidityState.isPartiallyValid() || modeValidityState.isInvalid()) {
 				val colorStateList = ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.black))
 				if (resNotOk != 0) {
 					imageView.setImageResource(resNotOk)
