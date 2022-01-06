@@ -246,7 +246,7 @@ Beachten Sie, dass Sie in jedem Fall auf Verlangen auch noch ein Ausweisdokument
     <string name="wallet_faq_works_answer_2">"Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument des Zertifikatsinhabers / der Zertifikatsinhaberin gültig."</string>
 
     <!-- Antwort 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_3">"In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist."</string>
+    <string name="wallet_faq_works_answer_3">"Die App prüft automatisch, ob Ihr Zertifikat den Gültigkeitskriterien der Schweiz entspricht. Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt auf dem Zertifikat in der App angezeigt."</string>
 
     <!-- Antwort 9 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_4">"Ihre persönlichen Daten werden in keinem zentralen System gespeichert, sondern befinden sich ausschliesslich bei Ihnen lokal auf dem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform."</string>
@@ -1333,7 +1333,7 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_certificate_ausnahme_responsible_issuer">"Für die Ausstellung verantwortliche Stelle"</string>
 
     <!-- Testname für Schweizer Ausnahme Zertifikat für Nicht-Testbare und Nicht-Impfbare Personen -->
-    <string name="covid_certificate_ch_ausnahme_test_title">"Ausnahme Zertifikat"</string>
+    <string name="covid_certificate_ch_ausnahme_test_title">"Ausnahmezertifikat"</string>
     <string name="infobox_update_title">"Neue Version verfügbar"</string>
     <string name="infobox_update_text">"Laden Sie die neue Version der App."</string>
     <string name="infobox_update_button">"Aktualisieren"</string>
@@ -1369,12 +1369,12 @@ Code: {ERROR_CODE}"</string>
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G OK state -->
     <!-- Fuzzy -->
-    <string name="wallet_check_mode_info_2g_ok_text">"Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete und Zertifikate Light werden nicht akzeptiert."</string>
+    <string name="wallet_check_mode_info_2g_ok_text">"Zutritt zu Betrieben und Veranstaltungen für geimpfte oder genesene Personen."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
     <!-- Fuzzy -->
-    <string name="wallet_check_mode_info_2g_not_ok_text">"Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete und Zertifikate Light werden nicht akzeptiert."</string>
+    <string name="wallet_check_mode_info_2g_not_ok_text">"Kein Zutritt."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> display name of check mode 3G -->
@@ -1415,11 +1415,11 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G OK state -->
-    <string name="wallet_check_mode_info_3g_ok_text">"Für den Zutritt zu Betrieben und Veranstaltungen mit 3G-Regelung sind Covid-Zertifikate für Geimpfte, Genesene oder negativ Getestete zugelassen."</string>
+    <string name="wallet_check_mode_info_3g_ok_text">"Zutritt zu Betrieben und Veranstaltungen für geimpfte, genesene oder negativ getestete Personen."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G NOT OK state -->
-    <string name="wallet_check_mode_info_3g_not_ok_text">"Für den Zutritt zu Betrieben und Veranstaltungen mit 3G-Regelung sind Covid-Zertifikate für Geimpfte, Genesene oder negativ Getestete zugelassen."</string>
+    <string name="wallet_check_mode_info_3g_not_ok_text">"Kein Zutritt."</string>
 
     <!-- Titel für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
     <string name="verifier_verify_light_not_supported_by_mode_title">"Beim zu prüfenden Covid-Zertifikat handelt es sich um ein Zertifikat Light. Dies kann im {MODUS}-Prüfmodus nicht geprüft werden."</string>
@@ -1481,13 +1481,13 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_check_mode_info_test_cert_text_3">"Die Prüfung von Zertifikate Light ist in diesem Modus nicht möglich."</string>
 
     <!-- wallet refresh button removal info box text -->
-    <string name="wallet_refresh_button_info_text_1">"Die Funktion zur Selbstprüfung von Zertifikaten («Refresh-Button») wurde entfernt."</string>
+    <string name="wallet_refresh_button_info_text_1">"Der «Refresh-Button» wurde entfernt."</string>
 
     <!-- wallet refresh button removal info box text -->
-    <string name="wallet_refresh_button_info_text_2">"Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt direkt auf dem Zertifikat angezeigt."</string>
+    <string name="wallet_refresh_button_info_text_2">"Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt auf dem Zertifikat angezeigt."</string>
 
     <!-- wallet refresh button removal info box text -->
-    <string name="wallet_refresh_button_info_text_3">"Um Covid Zertifikate zu prüfen, muss der QR-Code mit einer Prüfapp gescannt werden."</string>
+    <string name="wallet_refresh_button_info_text_3">"Die Prüfung von Covid-Zertifikaten ist mit der App «COVID Certificate Check» vorzunehmen."</string>
 
     <!-- wallet refresh button removal info box fat title above text 3 -->
     <!-- Fuzzy -->
@@ -1501,10 +1501,10 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_refresh_button_info_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#1070048217"</string>
 
     <!-- text for info pop-up in wallet app describing 2G+ OK state -->
-    <string name="wallet_check_mode_info_2g_plus_ok_text">"Das Zertifikat ermöglicht den Zutritt zu Orten und Aktivitäten mit 2G+-Regelung. (Das Zertifikat für die Impfung oder Genesung ist weniger als 120 Tage alt.)"</string>
+    <string name="wallet_check_mode_info_2g_plus_ok_text">"Zutritt zu Betrieben und Veranstaltungen für Personen, deren vollständige Impfung, Auffrischimpfung oder Genesung (basierend auf PCR-Test) nicht länger als 120 Tage zurückliegt. Sie benötigen kein zusätzliches Testzertifikat."</string>
 
     <!-- text for info pop-up in wallet app describing 2G+ NOT OK state -->
-    <string name="wallet_check_mode_info_2g_plus_not_ok_text">"Für den Zutritt zu Orten und Aktivitäten mit einer 2G+-Regelung wird zusätzlich ein Zertifikat für ein negatives Testresultat benötigt."</string>
+    <string name="wallet_check_mode_info_2g_plus_not_ok_text">"Für den Zutritt zu Betrieben und Veranstaltungen wird zusätzlich zum Covid-Zertifikat für geimpfte oder genesene Personen ein negatives Testresultat benötigt."</string>
 
     <!-- wallet refresh button removal info box title -->
     <string name="wallet_refresh_button_info_title">"Info"</string>
@@ -1519,4 +1519,8 @@ Code: {ERROR_CODE}"</string>
 Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen. 
 
 Die Inhaberin oder der Inhaber kann entsprechend dem jeweils gültigen Schutzkonzept bei zertifikatspflichtigen Veranstaltungen und Einrichtungen verpflichtet sein, eine Gesichtsmaske zu tragen."</string>
+
+    <!-- Wallet: Ausnahme Label für Liste -->
+    <!-- Fuzzy -->
+    <string name="covid_certificate_ch_ausnahme_list_label">"Ausnahme"</string>
 </resources>

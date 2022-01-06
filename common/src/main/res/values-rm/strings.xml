@@ -243,7 +243,7 @@ Resguardai per plaschair che Vus stuais en mintga cas preschentar – sin dumond
     <string name="wallet_faq_works_answer_2">"Gea, quai è pussaivel. Vus pudais p.ex. arcunar en Vossa app ils certificats COVID da tut Vossas confamigliaras e da tut Voss confamigliars. Er en quest cas vala: Il certificat COVID è valaivel mo en cumbinaziun cun in document da legitimaziun  da la possessura u dal possessur dal certificat."</string>
 
     <!-- Antwort 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_3">"En l'app COVID Certificate vegn inditgà cura che Voss certificat COVID spira en Svizra. Vus pudais ultra da quai verifitgar en la vista da detagls, sche Voss certificat COVID è actualmain valaivel."</string>
+    <string name="wallet_faq_works_answer_3">"L’app verifitgescha automaticamain, sche Voss certificat correspunda als criteris da valaivladad da la Svizra. Sche Voss certificat COVID è spirà u n’è tecnicamain betg valaivel, vegn quai inditgà directamain sin il certificat en l’app."</string>
 
     <!-- Antwort 9 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_4">"Vossas datas persunalas na vegnan betg arcunadas en in sistem central, mabain mo localmain sin Voss telefonin resp. en il code QR sin Voss certificat COVID en furma da palpiri."</string>
@@ -379,7 +379,8 @@ signatura nunvalaivla"</string>
     <string name="wallet_certificate_already_exists">"Quest certificat è gia arcunà en l'app"</string>
 
     <!-- Titel Gültigkeit im Zertifikatsdetail -->
-    <string name="wallet_certificate_validity">"Valaivladad en Svizra"</string>
+    <string name="wallet_certificate_validity">"Valaivladad 
+en Svizra"</string>
 
     <!-- "Bis" Label im Zertifikats-Detail -->
     <string name="wallet_certificate_valid_until">"fin ils"</string>
@@ -1330,11 +1331,11 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G OK state -->
-    <string name="wallet_check_mode_info_2g_ok_text">"Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ e certificats light na vegnan betg acceptads."</string>
+    <string name="wallet_check_mode_info_2g_ok_text">"Access a manaschis ed ad occurrenzas per persunas vaccinadas u guaridas."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
-    <string name="wallet_check_mode_info_2g_not_ok_text">"Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ e certificats light na vegnan betg acceptads."</string>
+    <string name="wallet_check_mode_info_2g_not_ok_text">"Nagin access."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> display name of check mode 3G -->
@@ -1374,11 +1375,11 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G OK state -->
-    <string name="wallet_check_mode_info_3g_ok_text">"Per l’access a manaschis ed ad occurrenzas cun ina regla da 3G èn admess certificats COVID per persunas vaccinadas, per persunas guaridas u per persunas cun in test negativ."</string>
+    <string name="wallet_check_mode_info_3g_ok_text">"Access a manaschis ed ad occurrenzas per persunas vaccinadas, guaridas u cun in test negativ."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G NOT OK state -->
-    <string name="wallet_check_mode_info_3g_not_ok_text">"Per l’access a manaschis ed ad occurrenzas cun ina regla da 3G èn admess certificats COVID per persunas vaccinadas, per persunas guaridas u per persunas cun in test negativ."</string>
+    <string name="wallet_check_mode_info_3g_not_ok_text">"Nagin access."</string>
 
     <!-- Titel für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
     <string name="verifier_verify_light_not_supported_by_mode_title">"Qua sa tracti d’in certificat light. In tal certificat na po betg vegnir verifitgà en il modus da verificaziun da {MODUS}."</string>
@@ -1438,31 +1439,31 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_check_mode_info_test_cert_text_3">"En quest modus na pon vegnir verifitgads nagins certificats light."</string>
 
     <!-- wallet refresh button removal info box text -->
-    <string name="wallet_refresh_button_info_text_1">"Die Funktion zur Selbstprüfung von Zertifikaten («Refresh-Button») wurde entfernt."</string>
+    <string name="wallet_refresh_button_info_text_1">"La «buttun da refresh» è vegnida stizzada."</string>
 
     <!-- wallet refresh button removal info box text -->
-    <string name="wallet_refresh_button_info_text_2">"Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt direkt auf dem Zertifikat angezeigt."</string>
+    <string name="wallet_refresh_button_info_text_2">"Sche Voss certificat COVID è spirà u sch’el n’è tecnicamain betg valaivel, vegn quai inditgà directamain sin il certificat."</string>
 
     <!-- wallet refresh button removal info box text -->
-    <string name="wallet_refresh_button_info_text_3">"Um Covid Zertifikate zu prüfen, muss der QR-Code mit einer Prüfapp gescannt werden."</string>
+    <string name="wallet_refresh_button_info_text_3">"Ils certificats COVID ston vegnir verifitgads cun l’app «COVID Certificate Check»."</string>
 
     <!-- wallet refresh button removal info box fat title above text 3 -->
-    <string name="wallet_refresh_button_info_fat_title_3">"Für Prüfende"</string>
+    <string name="wallet_refresh_button_info_fat_title_3">"Per las persunas che verifitgeschan"</string>
 
     <!-- wallet refresh button removal info box link text -->
-    <string name="wallet_refresh_button_info_link_text">"Mehr erfahren"</string>
+    <string name="wallet_refresh_button_info_link_text">"Dapli infurmaziuns"</string>
 
     <!-- wallet refresh button removal info box link url -->
     <string name="wallet_refresh_button_info_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#1070048217"</string>
 
     <!-- text for info pop-up in wallet app describing 2G+ OK state -->
-    <string name="wallet_check_mode_info_2g_plus_ok_text">"Das Zertifikat ermöglicht den Zutritt zu Orten und Aktivitäten mit 2G+-Regelung. (Das Zertifikat für die Impfung oder Genesung ist weniger als 120 Tage alt.)"</string>
+    <string name="wallet_check_mode_info_2g_plus_ok_text">"Access a manaschis ed ad occurrenzas per persunas ch’èn vaccinadas cumplettamain, che han laschà rinfrestgar la vaccinaziun u ch’èn guaridas (sin basa d’in test da PCR) avant maximalmain 120 dis. Vus na duvrais nagin certificat da test supplementar."</string>
 
     <!-- text for info pop-up in wallet app describing 2G+ NOT OK state -->
-    <string name="wallet_check_mode_info_2g_plus_not_ok_text">"Für den Zutritt zu Orten und Aktivitäten mit einer 2G+-Regelung wird zusätzlich ein Zertifikat für ein negatives Testresultat benötigt."</string>
+    <string name="wallet_check_mode_info_2g_plus_not_ok_text">"Per l’access a manaschis ed ad occurrenzas dovri ultra dal certificat COVID per persunas vaccinadas u guaridas in test negativ."</string>
 
     <!-- wallet refresh button removal info box title -->
-    <string name="wallet_refresh_button_info_title">"Info"</string>
+    <string name="wallet_refresh_button_info_title">"Infurmaziun"</string>
 
     <!-- Ausnahme-Zertifikat: Medizinisches Attest ausgestellt in -->
     <string name="wallet_certificate_ausnahme_issued_country">"L'attest dal medi è vegnì emess a"</string>
@@ -1473,4 +1474,8 @@ Code: {ERROR_CODE}"</string>
 Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad actuala en Svizra pudais Vus verifitgar da tut temp cun l'app «Covid-Certificate». 
 
 Tut tenor il concept da protecziun respectiv sto la possessura u il possessur eventualmain purtar ina mascrina a chaschun d'occurrenzas u en instituziuns, nua ch'in certificat è obligatoric."</string>
+
+    <!-- Wallet: Ausnahme Label für Liste -->
+    <!-- Fuzzy -->
+    <string name="covid_certificate_ch_ausnahme_list_label">"Excepziunal"</string>
 </resources>
