@@ -1477,5 +1477,5 @@ Tut tenor il concept da protecziun respectiv sto la possessura u il possessur ev
 
     <!-- Wallet: Ausnahme Label für Liste -->
     <!-- Fuzzy -->
-    <string name="covid_certificate_ch_ausnahme_list_label">"Excepziunal"</string>
+    <string name="covid_certificate_ch_ausnahme_list_label">"Excepziun"</string>
 </resources>
