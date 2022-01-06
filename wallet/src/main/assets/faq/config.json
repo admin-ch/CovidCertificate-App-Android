@@ -402,7 +402,7 @@
 				},
 				{
 					"title": "Wie sehe ich, ob mein Covid-Zertifikat gültig ist?",
-					"text": "In der COVID Certificate App wird ausgewiesen, wann Ihr Covid-Zertifikat in der Schweiz ablaufen wird. Sie können in der Detail-Ansicht zudem per Knopfdruck überprüfen, ob Ihr Covid-Zertifikat aktuell gültig ist.",
+					"text": "Die App prüft automatisch, ob Ihr Zertifikat den Gültigkeitskriterien der Schweiz entspricht. Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt auf dem Zertifikat in der App angezeigt.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -483,7 +483,7 @@
 				},
 				{
 					"title": "How can I see if my COVID certificate is valid?",
-					"text": "The COVID Certificate app shows when your COVID certificate will expire in Switzerland. You can also use the details view to check at the touch of a button whether your COVID certificate is currently valid.",
+					"text": "The app automatically checks whether your certificate meets Switzerland's validity criteria. If your COVID certificate has expired or is technically invalid, this is indicated directly on the certificate in the app. ",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -563,8 +563,8 @@
 					"linkUrl": null
 				},
 				{
-					"title": "Comment savoir si mon certificat est valable?",
-					"text": "L'app contient la date d'expiration de votre certificat COVID en Suisse. En pressant le bouton prévu à cet effet, vous pouvez en outre vérifier dans la vue détaillée si votre certificat COVID est encore valable.",
+					"title": "Comment voir si mon certificat COVID est valable?",
+					"text": "L’app verifica automaticamente se il certificato soddisfa i criteri di validità applicati in Svizzera. Se il certificato è scaduto o se non è valido per motivi tecnici, l’informazione compare direttamente nell’app.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -645,7 +645,7 @@
 				},
 				{
 					"title": "Come posso verificare se il mio certificato COVID è valido?",
-					"text": "L'app COVID Certificate riporta la data di scadenza del Suo certificato in Svizzera. Può verificare se il Suo certificato COVID è attualmente valido cliccando sull’opzione che permette di visualizzare i dettagli.",
+					"text": "L’app verifica automaticamente se il certificato soddisfa i criteri di validità applicati in Svizzera. Se il certificato è scaduto o se non è valido per motivi tecnici, l’informazione compare direttamente nell’app.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -726,7 +726,7 @@
 				},
 				{
 					"title": "Co ves jau, sche mes certificat COVID è valaivel?",
-					"text": "En l'app COVID Certificate vegn inditgà cura che Voss certificat COVID spira en Svizra. Vus pudais ultra da quai verifitgar en la vista da detagls, sche Voss certificat COVID è actualmain valaivel.",
+					"text": "L’app verifitgescha automaticamain, sche Voss certificat correspunda als criteris da valaivladad da la Svizra. Sche Voss certificat COVID è spirà u n’è tecnicamain betg valaivel, vegn quai inditgà directamain sin il certificat en l’app.",
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": null,
@@ -777,7 +777,7 @@
 	},
 	"androidTransferCheckIntervalMs": 7200000,
 	"androidTransferCheckBackoffMs": 30000,
-	"timeshiftDetectionEnabled": false,
+	"timeshiftDetectionEnabled": true,
 	"transferQuestions": {
 		"de": {
 			"faqTitle": "Covid-Zertifikate direkt in die App geliefert",
@@ -2222,7 +2222,7 @@
 		"de": {
 			"title": "Impftermin in Ihrer Nähe buchen",
 			"text": "Eine Impfung könnte zum Beispiel an diesen Orten in Ihrer Nähe stattfinden:\n\n- in spezifischen Impfzentren\n- in Spitälern\n- bei Ihrem Hausarzt oder Ihrer Hausärztin\n- in Impfapotheken\n\nViele Orte bieten auch Walk-in-Impfungen ohne Termine an.",
-			"info": "Die Covid-19-Impfung ist für Personen ab 12 Jahren empfohlen. Die Impfung ist gratis.",
+			"info": "Die Covid-19-Impfung ist für Personen ab 5 Jahren empfohlen.",
 			"impfcheckTitle": "Jetzt Termin buchen",
 			"impfcheckText": "Der Covid-19 Impf-Check gibt Auskunft über Erst- sowie Auffrischimpfungen und führt Sie zur entsprechenden Anlaufstelle in Ihrem Kanton.",
 			"impfcheckButton": "Zum Impf-Check",
@@ -2231,7 +2231,7 @@
 		"en": {
 			"title": "Book a vaccination appointment near you",
 			"text": "Vaccination may be performed at the following locations near you:\n\n- at specific vaccination centres\n- in hospitals\n- at your general practitioner's surgery\n- at a vaccination pharmacy\n\nMany places also offer walk-in vaccinations without an appointment.",
-			"info": "The COVID-19 vaccination is recommended for those over 12. It's free of charge.",
+			"info": "The COVID-19 vaccination is recommended for those over 5. ",
 			"impfcheckTitle": "Book an appointment now",
 			"impfcheckText": "The COVID-19 Vaccination Check provides information on initial and booster vaccinations and guides you to the relevant point of contact in your canton.",
 			"impfcheckButton": "To the Vaccination Check",
@@ -2240,7 +2240,7 @@
 		"fr": {
 			"title": "Prendre un rendez-vous de vaccination près de chez vous",
 			"text": "La vaccination pourrait, par exemple, être proposée dans les lieux suivants situés à proximité de chez vous :\n\n- dans des centres de vaccination désignés\n- dans les hôpitaux\n- chez votre médecin de famille\n- dans les pharmacies\n\nIl est aussi possible de se faire vacciner sans rendez-vous dans de nombreux endroits.",
-			"info": "Gratuite, la vaccination contre le COVID-19 est recommandée pour les personnes dès 12 ans.",
+			"info": "La vaccination contre le COVID-19 est recommandée pour les personnes dès 5 ans.",
 			"impfcheckTitle": "Prendre un rendez-vous maintenant",
 			"impfcheckText": "COVID-19 Vac-check fournit des renseignements sur la première vaccination ainsi que sur la vaccination de rappel et vous guide vers le service compétent de votre canton.",
 			"impfcheckButton": "Vers COVID-19 Vac-check",
@@ -2249,7 +2249,7 @@
 		"it": {
 			"title": "Prendi appuntamento per la vaccinazione nelle tue vicinanze",
 			"text": "Per esempio potresti farti vaccinare in uno di questi luoghi nelle tue vicinanze:\n\n- in centri di vaccinazione specifici\n- negli ospedali\n- dal tuo medico di famiglia\n- nelle farmacie che vaccinano\n\nMolti di essi offrono anche vaccinazioni libere senza appuntamento.",
-			"info": "La vaccinazione anti-COVID-19 è raccomandata per le persone a partire dai 12 anni ed è gratuita.",
+			"info": "La vaccinazione anti-COVID-19 è raccomandata per le persone a partire dai 5 anni.",
 			"impfcheckTitle": "Prendi appuntamento ora",
 			"impfcheckText": "Il COVID-19 Vac-Check fornisce informazioni sulle prime vaccinazioni, sulle vaccinazioni di richiamo e ti indirizza verso il punto di contatto del tuo Cantone.",
 			"impfcheckButton": "Vai al COVID-19 Vac-Check",
@@ -2258,7 +2258,7 @@
 		"rm": {
 			"title": "Reservar in termin da vaccinaziun en Vossa vischinanza",
 			"text": "Ina vaccinaziun pudess per exempel vegnir fatga en quests lieus en Vossa vischinanza:\n\n- en centers da vaccinaziun specifics\n- en ospitals\n- tar Vossa media u tar Voss medi da chasa\n- en apotecas da vaccinaziun\n\nBlers lieus porschan er vaccinaziuns «walk-in» senza termin.",
-			"info": "La vaccinaziun cunter COVID-19 è recumandada per persunas a partir da 12 onns. La vaccinaziun è gratuita.",
+			"info": "La vaccinaziun cunter COVID-19 è recumandada per persunas a partir da 5 onns.",
 			"impfcheckTitle": "Reservar in termin ussa",
 			"impfcheckText": "Il check da vaccinaziun COVID-19 As infurmescha davart las emprimas vaccinaziuns sco er davart las vaccinaziuns da rinfrestgament ed As maina al post da consultaziun correspundent da Voss chantun.  ",
 			"impfcheckButton": "Al check da vaccinaziun",
@@ -2273,24 +2273,36 @@
 					"ok": {
 						"iconAndroid": "ic_3g",
 						"iconIos": "ic_3g",
-						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 3G-Regelung sind Covid-Zertifikate für Geimpfte, Genesene oder negativ Getestete zugelassen."
+						"text": "Zutritt zu Betrieben und Veranstaltungen für geimpfte, genesene oder negativ getestete Personen."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no3g",
 						"iconIos": "ic_no3g",
-						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 3G-Regelung sind Covid-Zertifikate für Geimpfte, Genesene oder negativ Getestete zugelassen."
+						"text": "Kein Zutritt."
 					}
 				},
 				"TWO_G": {
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete und Zertifikate Light werden nicht akzeptiert."
+						"text": "Zutritt zu Betrieben und Veranstaltungen für geimpfte oder genesene Personen."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "Für den Zutritt zu Betrieben und Veranstaltungen mit 2G-Regelung sind Covid-Zertifikate für Geimpfte oder Genesene zugelassen. Covid-Zertifikate für negativ Getestete und Zertifikate Light werden nicht akzeptiert."
+						"text": "Kein Zutritt."
+					}
+				},
+				"TWO_G_PLUS": {
+					"ok": {
+						"iconAndroid": "ic_2g_plus",
+						"iconIos": "ic-2-g-plus",
+						"text": "Zutritt zu Betrieben und Veranstaltungen für Personen, deren vollständige Impfung, Auffrischimpfung oder Genesung (basierend auf PCR-Test) nicht länger als 120 Tage zurückliegt. Sie benötigen kein zusätzliches Testzertifikat."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no_2_g_plus_height",
+						"iconIos": "ic-no-2-g-plus-height",
+						"text": "Für den Zutritt zu Betrieben und Veranstaltungen wird zusätzlich zum Covid-Zertifikat für geimpfte oder genesene Personen ein negatives Testresultat benötigt."
 					}
 				}
 			}
@@ -2302,24 +2314,36 @@
 					"ok": {
 						"iconAndroid": "ic_3g",
 						"iconIos": "ic_3g",
-						"text": "For access to organisations and events applying the 3G rule, COVID certificates for people who have been vaccinated, or who have recovered or tested negative are permitted."
+						"text": "Access to organisations and events permitted for people who have been vaccinated, or who have recovered or tested negative."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no3g",
 						"iconIos": "ic_no3g",
-						"text": "For access to organisations and events applying the 3G rule, COVID certificates for people who have been vaccinated, or who have recovered or tested negative are permitted."
+						"text": "Access not permitted."
 					}
 				},
 				"TWO_G": {
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. Light certificates and COVID certificates for people who have tested negative are not accepted."
+						"text": "Access to organisations and events permitted for people who have been vaccinated or who have recovered."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "For access to organisations and events applying the 2G rule, COVID certificates for people who have been vaccinated or who have recovered are permitted. Light certificates and COVID certificates for people who have tested negative are not accepted."
+						"text": "Access not permitted."
+					}
+				},
+				"TWO_G_PLUS": {
+					"ok": {
+						"iconAndroid": "ic_2g_plus",
+						"iconIos": "ic-2-g-plus",
+						"text": "Access to organisations and events permitted for people who have been fully vaccinated, have received a booster jab or have recovered (based on PCR test results) in the preceding 120 days; an additional test certificate is not required."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no_2_g_plus_height",
+						"iconIos": "ic-no-2-g-plus-height",
+						"text": "To gain access to organisations and events, a negative test result is required in addition to the COVID certificate for people who have been vaccinated or have recovered."
 					}
 				}
 			}
@@ -2331,24 +2355,36 @@
 					"ok": {
 						"iconAndroid": "ic_3g",
 						"iconIos": "ic_3g",
-						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «3G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées, guéries ou testées négatives."
+						"text": "Accès aux établissements et aux manifestations réservé aux personnes vaccinées, guéries ou testées négatives."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no3g",
 						"iconIos": "ic_no3g",
-						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «3G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées, guéries ou testées négatives."
+						"text": "Accès refusé."
 					}
 				},
 				"TWO_G": {
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."
+						"text": "Accès aux établissements et aux manifestations réservé aux personnes vaccinées ou guéries."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."
+						"text": "Accès refusé."
+					}
+				},
+				"TWO_G_PLUS": {
+					"ok": {
+						"iconAndroid": "ic_2g_plus",
+						"iconIos": "ic-2-g-plus",
+						"text": "L’accesso a strutture e manifestazioni è consentito alle persone per le quali sono trascorsi al massimo 120 giorni dal completamento del ciclo vaccinale, dalla somministrazione della dose di richiamo o dalla guarigione (sulla base di un test PCR). In questo caso non è necessario un ulteriore certificato di test."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no_2_g_plus_height",
+						"iconIos": "ic-no-2-g-plus-height",
+						"text": "Accès aux établissements et aux manifestations réservé aux personnes vaccinées ou guéries qui présentent, en plus d'un certificat COVID, un résultat de test négatif."
 					}
 				}
 			}
@@ -2360,24 +2396,36 @@
 					"ok": {
 						"iconAndroid": "ic_3g",
 						"iconIos": "ic_3g",
-						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 3G sono ammessi certificati COVID per persone vaccinate, guartite o testate negative."
+						"text": "L’accesso a strutture e manifestazioni è consentito alle persone vaccinate, guarite o testate negative."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no3g",
 						"iconIos": "ic_no3g",
-						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 3G sono ammessi certificati COVID per persone vaccinate, guartite o testate negative."
+						"text": "L’accesso non è consentito."
 					}
 				},
 				"TWO_G": {
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guarite. I certificati COVID per persone testate negative e i certificati light non sono accettati."
+						"text": "L’accesso  a strutture e manifestazioni è consentito alle persone vaccinate o guarite."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "Per l’accesso a strutture e a manifestazioni in cui si applica la regola 2G sono ammessi certificati COVID per persone vaccinate o guarite. I certificati COVID per persone testate negative e i certificati light non sono accettati."
+						"text": "L’accesso non è consentito."
+					}
+				},
+				"TWO_G_PLUS": {
+					"ok": {
+						"iconAndroid": "ic_2g_plus",
+						"iconIos": "ic-2-g-plus",
+						"text": "L’accesso a strutture e manifestazioni è consentito alle persone per le quali sono trascorsi al massimo 120 giorni dal completamento del ciclo vaccinale, dalla somministrazione della dose di richiamo o dalla guarigione (sulla base di un test PCR). In questo caso non è necessario un ulteriore certificato di test."
+					},
+					"notOk": {
+						"iconAndroid": "ic_no_2_g_plus_height",
+						"iconIos": "ic-no-2-g-plus-height",
+						"text": "Oltre al certificato di vaccinazione o di guarigione, per l’accesso a strutture e manifestazioni è necessario presentare anche il risultato di un test negativo."
 					}
 				}
 			}
@@ -2389,24 +2437,36 @@
 					"ok": {
 						"iconAndroid": "ic_3g",
 						"iconIos": "ic_3g",
-						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 3G èn admess certificats COVID per persunas vaccinadas, per persunas guaridas u per persunas cun in test negativ."
+						"text": "Access en manaschis e d’As participar ad occurrenzas per persunas vaccinadas, guaridas u cun in test negativ."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no3g",
 						"iconIos": "ic_no3g",
-						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 3G èn admess certificats COVID per persunas vaccinadas, per persunas guaridas u per persunas cun in test negativ."
+						"text": "Nagin access."
 					}
 				},
 				"TWO_G": {
 					"ok": {
 						"iconAndroid": "ic_2g",
 						"iconIos": "ic_2g",
-						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ e certificats light na vegnan betg acceptads."
+						"text": "Access en manaschis e d’As participar ad occurrenzas per persunas vaccinadas u guaridas."
 					},
 					"notOk": {
 						"iconAndroid": "ic_no2g",
 						"iconIos": "ic_no2g",
-						"text": "Per l’access a manaschis ed ad occurrenzas cun ina regla da 2G èn admess certificats COVID per persunas vaccinadas u per persunas guaridas. Certificats COVID per persunas cun in test negativ e certificats light na vegnan betg acceptads."
+						"text": "Nagin access."
+					}
+				},
+				"TWO_G_PLUS": {
+					"ok": {
+						"iconAndroid": "ic_2g_plus",
+						"iconIos": "ic-2-g-plus",
+						"text": "Access en manaschis e d’As participar ad occurrenzas per persunas ch’èn vaccinadas cumplettamain, che han laschà rinfrestgar la vaccinaziun u ch’èn guaridas (sin basa d’in test da PCR) avant maximalmain 120 dis. Vus na duvrais nagin certificat da test supplementar. "
+					},
+					"notOk": {
+						"iconAndroid": "ic_no_2_g_plus_height",
+						"iconIos": "ic-no-2-g-plus-height",
+						"text": "Per l’access en manaschis e d’As participar ad occurrenzas dovri ultra dal certificat COVID per persunas vaccinadas u guaridas in test negativ."
 					}
 				}
 			}
@@ -2415,5 +2475,53 @@
 	"lightCertDurationInHours": 24,
 	"showVaccinationHintHomescreen": true,
 	"showVaccinationHintDetail": true,
-	"showVaccinationHintTransfer": true
+	"showVaccinationHintTransfer": true,
+	"refreshButtonDisabled": false,
+	"refreshButtonInfo": {
+		"de": {
+			"title": "Info",
+			"text1": "Der «Refresh-Button» wurde entfernt.",
+			"text2": "Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt auf dem Zertifikat angezeigt.",
+			"fatTitle": "Für Prüfende",
+			"text3": "Die Prüfung von Covid-Zertifikaten ist mit der App «COVID Certificate Check» vorzunehmen.",
+			"linkText": "Mehr erfahren",
+			"linkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#1070048217"
+		},
+		"en": {
+			"title": "Info",
+			"text1": "The \"Refresh button\" has been removed.",
+			"text2": "If your COVID certificate has expired or is technically invalid, this is indicated directly on the certificate.",
+			"fatTitle": "For verifiers",
+			"text3": "COVID certificates are to be verified with the \"COVID Certificate Check\" app.",
+			"linkText": "To find out more",
+			"linkUrl": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#1851413288"
+		},
+		"fr": {
+			"title": "Information",
+			"text1": "Le bouton «rafraîchir» a été supprimée.",
+			"text2": "Si votre certificat COVID a expiré ou s'il n'est techniquement pas valable, cette information apparaît automatiquement sur le certificat.",
+			"fatTitle": "Pour les personnes chargées du contrôle",
+			"text3": "La vérification des certificats COVID doit s'effectuer au moyen de l'application «COVID Certificate Check».",
+			"linkText": "Pour en savoir plus",
+			"linkUrl": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#-1006172949"
+		},
+		"it": {
+			"title": "Informazione",
+			"text1": "Il pulsante «Aggiorna» è stato eliminato.",
+			"text2": "Se il certificato è scaduto o se non è valido per motivi tecnici, l’informazione compare direttamente nell’app. ",
+			"fatTitle": "Per le persone incaricate della verifica",
+			"text3": "I certificati COVID devono essere verificati utilizzando l’app «COVID Certificate Check».",
+			"linkText": "Per saperne di più",
+			"linkUrl": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#1358421103"
+		},
+		"rm": {
+			"title": "Infurmaziun",
+			"text1": "La «buttun da refresh» è vegnida stizzada.",
+			"text2": "Sche Voss certificat COVID è spirà u sch’el n’è tecnicamain betg valaivel, vegn quai inditgà directamain sin il certificat.",
+			"fatTitle": "Per las persunas che verifitgeschan",
+			"text3": "Ils certificats COVID ston vegnir verifitgads cun l’app «COVID Certificate Check».",
+			"linkText": "Dapli infurmaziuns",
+			"linkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#1070048217"
+		}
+	}
 }

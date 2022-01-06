@@ -57,7 +57,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Erklärvideo",
-					"linkUrl": "https://youtu.be/14Sk2QTaJhA"
+					"linkUrl": "https://youtu.be/DClLZIUjr3w"
 				},
 				{
 					"title": "Was wird genau geprüft?",
@@ -138,7 +138,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Explanatory video",
-					"linkUrl": "https://youtu.be/lNfcS1mcCAQ"
+					"linkUrl": "https://youtu.be/spfVPMqukjM"
 				},
 				{
 					"title": "What exactly is checked?",
@@ -219,7 +219,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Vidéo explicative",
-					"linkUrl": "https://youtu.be/90JHMToWPNM"
+					"linkUrl": "https://youtu.be/O-9YhJDI3ZI"
 				},
 				{
 					"title": "Sur quoi porte le contrôle au juste?",
@@ -300,7 +300,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Video esplicativo",
-					"linkUrl": "https://youtu.be/pt8Sf5xOISU"
+					"linkUrl": "https://youtu.be/b4JXnfr2Ugg"
 				},
 				{
 					"title": "Cosa viene verificato esattamente?",
@@ -381,7 +381,7 @@
 					"iconAndroid": null,
 					"iconIos": null,
 					"linkTitle": "Video explicativ",
-					"linkUrl": "https://youtu.be/14Sk2QTaJhA"
+					"linkUrl": "https://youtu.be/DClLZIUjr3w"
 				},
 				{
 					"title": "Tge vegn propi verifitgà?",
@@ -515,7 +515,7 @@
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Ausnahmen: Personen, welche vor weniger als 90 Tagen entweder eine Genesung durchgemacht oder ihre letzte Impfdosis erhalten haben, benötigen kein zusätzliches Testzertifikat."
+							"text": "Ausnahmen: Personen, deren vollständige Impfung, Auffrischimpfung oder Genesung nicht länger als 120 Tage zurückliegt."
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
@@ -534,8 +534,8 @@
 							"text": "Für Bereiche, bei denen ein gültiges Testzertifikat notwendig ist."
 						},
 						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
+							"iconAndroid": "ic_t",
+							"iconIos": "ic-t",
 							"text": "In diesem Modus werden Covid-Zertifikate für negativ Getestete basierend auf einem PCR- oder Antigen-Schnelltest akzeptiert."
 						},
 						{
@@ -622,7 +622,7 @@
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Exceptions: no additional certificate is required for people who have received a vaccination or recovered less than 90 days ago."
+							"text": "Exceptions: People who have been fully vaccinated, received a booster vaccination or recovered (based on a PCR test) no longer than 120 days ago"
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
@@ -641,8 +641,8 @@
 							"text": "For areas in which a valid test certificate is required."
 						},
 						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
+							"iconAndroid": "ic_t",
+							"iconIos": "ic-t",
 							"text": "In this mode, COVID certificates are accepted for people who have tested negative based on a PCR or rapid antigen test."
 						},
 						{
@@ -729,7 +729,7 @@
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Exceptions: les personnes qui, depuis moins de 90 jours, sont guéries ou vaccinées n'ont pas besoin d'un certificat de test en complément."
+							"text": "Exceptions: les personnes dont la vaccination, la vaccination de rappel ou la guérison datent de moins de 120 jours"
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
@@ -748,8 +748,8 @@
 							"text": "Destiné aux domaines qui nécessitent un certificat de test valable."
 						},
 						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
+							"iconAndroid": "ic_t",
+							"iconIos": "ic-t",
 							"text": "Ce mode permet de vérifier les certificats des personnes qui disposent d'un résultat négatif à un test PCR ou à un test rapide antigénique."
 						},
 						{
@@ -836,7 +836,7 @@
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Eccezioni: le persone guarite da meno di 90 giorni o che hanno ricevuto la vaccinazione non devono presentare un ulteriore certificato di test."
+							"text": "Eccezioni: Persone per le quali sono trascorsi al massimo 120 giorni dalla vaccinazione completa, dalla vaccinazione di richiamo o dalla guarigione."
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
@@ -855,8 +855,8 @@
 							"text": "Per i contesti in cui è richiesto un certificato di test valido."
 						},
 						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
+							"iconAndroid": "ic_t",
+							"iconIos": "ic-t",
 							"text": "In questa modalità sono accettati i certificati COVID rilasciati alle persone risultate negative a un test PCR o a un test antigenico rapido."
 						},
 						{
@@ -943,7 +943,7 @@
 						{
 							"iconAndroid": "ic_info_alert",
 							"iconIos": "ic-info-alert",
-							"text": "Excepziuns: persunas ch’èn guaridas u che han survegnì ina vaccinaziun avant damain che 90 dis na dovran nagin certificat supplementar d'in test."
+							"text": "Excepziuns: Persunas ch'èn vegnidas vaccinadas cumplettamain, che han laschà rinfrestgar la vaccinaziun u ch'èn guaridas (sin basa d'in test da PCR) avant maximalmain 120 dis"
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
@@ -962,9 +962,9 @@
 							"text": "Per secturs che dovran in certificat d'in test valaivel."
 						},
 						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
-							"text": "In this mode, COVID certificates are accepted for people who have tested negative based on a PCR or rapid antigen test."
+							"iconAndroid": "ic_t",
+							"iconIos": "ic-t",
+							"text": "En quest modus vegnan acceptads certificats COVID per persunas cun in test negativ sin basa d’in test da PCR u d’in test svelt d’antigens."
 						},
 						{
 							"iconAndroid": "ic_qr_certificate_light_no",
