@@ -195,9 +195,7 @@ class CertificateDetailFragment : Fragment() {
 		val adapter = CertificateDetailAdapter()
 		recyclerView.adapter = adapter
 
-		val personName = certificateHolder.certificate.getPersonName()
-		val name = "${personName.familyName} ${personName.givenName}"
-		binding.certificateDetailName.text = name
+		binding.certificateDetailName.text = certificateHolder.certificate.getPersonName().prettyName()
 		binding.certificateDetailBirthdate.text = certificateHolder.certificate.getFormattedDateOfBirth()
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)
