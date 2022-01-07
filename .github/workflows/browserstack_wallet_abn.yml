@@ -1,4 +1,4 @@
-name: Build Wallet ABN
+name: Build Browserstack UI-Test Wallet
 
 on:
   push:
@@ -23,3 +23,6 @@ jobs:
       uses: ./.github/actions/gradle_docker
       with:
         gradle-cmd: wallet:executeAbnDebugTestsOnBrowserstack
+      env:
+        BROWSERSTACK_USERNAME: ${{ secrets.BROWSERSTACK_USERNAME }}
+        BROWSERSTACK_ACCESSKEY: ${{ secrets.BROWSERSTACK_ACCESSKEY }}
