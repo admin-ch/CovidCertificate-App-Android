@@ -1,0 +1,25 @@
+name: Build Wallet ABN
+
+on:
+  push:
+    branches:
+      - main
+      - 'release/**'
+  pull_request:
+    branches:
+      - main
+      - 'release/**'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: Run UI-Tests on Browserstack
+      uses: ./.github/actions/gradle_docker
+      with:
+        gradle-cmd: wallet:executeAbnDebugTestsOnBrowserstack

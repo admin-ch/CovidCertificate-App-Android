@@ -14,6 +14,7 @@ plugins {
 	id 'kotlin-kapt'
 	id 'org.sonarqube' version '3.0'
 	id 'ch.ubique.gradle.ubdiag'
+	id 'com.browserstack.gradle'
 }
 
 ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
@@ -120,7 +121,14 @@ sonarqube {
 	}
 }
 
+browserStackConfig {
+	username = System.getenv("BROWSERSTACK_USERNAME") ?: ""
+	accessKey = System.getenv("BROWSERSTACK_ACCESSKEY") ?: ""
+	configFilePath = "browserstackConfig.json"
+}
+
 dependencies {
+	androidTestImplementation 'androidx.test:rules:1.4.1-alpha03'
 	coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
@@ -145,5 +153,5 @@ dependencies {
 
 	testImplementation 'junit:junit:4.13.2'
 	androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-	androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+	androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.0-alpha03'
 }
