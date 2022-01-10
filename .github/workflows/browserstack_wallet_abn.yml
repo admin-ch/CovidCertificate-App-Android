@@ -48,7 +48,7 @@ jobs:
         with:
           gradle-cmd: wallet:assembleAbnDebugAndroidTest -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
       - name: upload artefact to Browserstack
-        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/test-suite" -F "file=@/wallet/build/outputs/apk/abn/release/wallet-abn-release.apk" >> test-suite-Response.json
+        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/test-suite" -F "file=@/wallet/build/outputs/apk/androidTest/abn/debug/wallet-abn-debug-androidTest.apk" >> test-suite-Response.json
       - id: upload-app
         run: echo ::set-output name=test-url::'$(jq -r '.test_url'  test-suite-Response.json)
 
