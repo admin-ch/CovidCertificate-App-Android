@@ -26,9 +26,9 @@ jobs:
     - name: Build with Gradle
       uses: ./.github/actions/gradle_docker
       with:
-        gradle-cmd: wallet:assembleAbnRelease -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
+        gradle-cmd: wallet:assembleAbnDebug -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
     - name: upload artefact to Browserstack
-      run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/app" -F "file=@wallet/build/outputs/apk/abn/release/wallet-abn-release.apk" >> appResponse.json
+      run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/app" -F "file=@wallet/build/outputs/apk/abn/debug/wallet-abn-debug.apk" >> appResponse.json
     - id: upload-app
       run: echo ::set-output name=app-url::$(jq -r '.app_url'  appResponse.json)
 
@@ -46,9 +46,9 @@ jobs:
       - name: Build with Gradle
         uses: ./.github/actions/gradle_docker
         with:
-          gradle-cmd: wallet:assembleAbnReleaseAndroidTest -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
+          gradle-cmd: wallet:assembleAbnDebugAndroidTest -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
       - name: upload artefact to Browserstack
-        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/test-suite" -F "file=@wallet/build/outputs/apk/androidTest/abn/release/wallet-abn-release-androidTest.apk" >> testSuiteResponse.json
+        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/test-suite" -F "file=@wallet/build/outputs/apk/androidTest/abn/debug/wallet-abn-debug-androidTest.apk" >> testSuiteResponse.json
       - id: upload-test-suite
         run: echo ::set-output name=test-url::$(jq -r '.test_suite_url'  testSuiteResponse.json)
 
