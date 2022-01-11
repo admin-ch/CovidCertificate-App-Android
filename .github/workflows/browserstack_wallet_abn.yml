@@ -28,16 +28,16 @@ jobs:
       with:
         gradle-cmd: wallet:assembleAbnRelease -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
     - name: upload artefact to Browserstack
-      run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/app" -F "file=@/wallet/build/outputs/apk/abn/release/wallet-abn-release.apk" >> appResponse.json
+      run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/app" -F "file=@wallet/build/outputs/apk/abn/release/wallet-abn-release.apk" >> appResponse.json
     - id: upload-app
-      run: echo ::set-output name=app-url::'$(jq -r '.app_url'  appResponse.json)
+      run: echo ::set-output name=app-url::$(jq -r '.app_url'  appResponse.json)
 
-  build-test-suit-and-upload:
+  build-test-suite-and-upload:
 
     runs-on: ubuntu-latest
 
     outputs:
-      test-url: ${{ steps.upload-app.outputs.test-url }}
+      test-url: ${{ steps.upload-test-suite.outputs.test-url }}
 
     steps:
       - uses: actions/checkout@v2
@@ -48,17 +48,17 @@ jobs:
         with:
           gradle-cmd: wallet:assembleAbnDebugAndroidTest -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
       - name: upload artefact to Browserstack
-        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/test-suite" -F "file=@/wallet/build/outputs/apk/androidTest/abn/debug/wallet-abn-debug-androidTest.apk" >> test-suite-Response.json
-      - id: upload-app
-        run: echo ::set-output name=test-url::'$(jq -r '.test_url'  test-suite-Response.json)
+        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/test-suite" -F "file=@wallet/build/outputs/apk/androidTest/abn/debug/wallet-abn-debug-androidTest.apk" >> testSuiteResponse.json
+      - id: upload-test-suite
+        run: echo ::set-output name=test-url::$(jq -r '.test_suite_url'  testSuiteResponse.json)
 
 
   run-tests:
     runs-on: ubuntu-latest
-    needs: [build-app-and-upload, build-test-suit-and-upload]
+    needs: [build-app-and-upload, build-test-suite-and-upload]
 
     steps:
       - name: run normal tests
-        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/build" -d '{"app":${{ needs.build-app-and-upload.app-url }}, "testSuite":${{ needs.build-test-suit-and-upload.test_url }}, "devices":["Samsung Galaxy S9 Plus-9.0"]  }' -H "Content-Type:application/json"
+        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/build" -d '{"app":"${{ needs.build-app-and-upload.outputs.app-url }}", "testSuite":"${{ needs.build-test-suite-and-upload.outputs.test-url }}", "devices":["Samsung Galaxy S9 Plus-9.0"]  }' -H "Content-Type:application/json"
 
 
