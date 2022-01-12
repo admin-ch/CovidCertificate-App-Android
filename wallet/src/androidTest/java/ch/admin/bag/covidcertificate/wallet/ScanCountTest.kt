@@ -3,6 +3,7 @@ package ch.admin.bag.covidcertificate.wallet
 import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import ch.admin.bag.covidcertificate.common.browserstack.Normal
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import org.junit.Assert.assertFalse
@@ -11,7 +12,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
+@Normal
 @RunWith(AndroidJUnit4::class)
 class ScanCountTest() {
 
