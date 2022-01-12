@@ -59,7 +59,7 @@ jobs:
 
     steps:
       - name: run normal tests
-        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/build" -d '{"app":"${{ needs.build-app-and-upload.outputs.app-url }}", "testSuite":"${{ needs.build-test-suite-and-upload.outputs.test-url }}", "devices":["Samsung Galaxy S10e-9.0"] , "language":"de", "annotation":["ch.admin.bag.covidcertificate.common.browserstack.Normal"]  }' -H "Content-Type:application/json"
+        run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/build" -d '{"app":"${{ needs.build-app-and-upload.outputs.app-url }}", "testSuite":"${{ needs.build-test-suite-and-upload.outputs.test-url }}", "devices":["Samsung Galaxy S10e-9.0"] , "language":"de", "annotation":["ch.admin.bag.covidcertificate.common.browserstack.Normal"], "project":"normal"  }' -H "Content-Type:application/json"
       - name: run airplane tests
         run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/build" -d '{"app":"${{ needs.build-app-and-upload.outputs.app-url }}", "testSuite":"${{ needs.build-test-suite-and-upload.outputs.test-url }}", "devices":["Samsung Galaxy S10e-9.0"] , "networkProfile":"airplane-mode", "annotation":["ch.admin.bag.covidcertificate.common.browserstack.AirplaneMode"]}' -H "Content-Type:application/json"
       - name: run bad network tests
