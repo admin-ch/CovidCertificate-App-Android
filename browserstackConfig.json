@@ -1,9 +1,0 @@
-{
-  "devices": ["Samsung Galaxy S10e-9.0"],
-  "project": "EspressoGradleBuild",
-  "shards": {
-    "numberOfShards": 2
-  },
-  "networkProfile": "airplane-mode",
-  "language": "fr"
-}

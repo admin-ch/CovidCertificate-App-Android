@@ -24,7 +24,6 @@ buildscript {
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 		classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
 		classpath 'ch.ubique.gradle:ubdiag-android:7.0.2'
-		classpath 'gradle.plugin.com.browserstack.gradle:browserstack-gradle-plugin:3.0.3'
 	}
 }
 

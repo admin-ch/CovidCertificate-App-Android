@@ -14,7 +14,6 @@ plugins {
 	id 'kotlin-kapt'
 	id 'org.sonarqube' version '3.0'
 	id 'ch.ubique.gradle.ubdiag'
-	id 'com.browserstack.gradle'
 }
 
 ext.readProperty = { paramName -> readPropertyWithDefault(paramName, null) }
@@ -124,12 +123,6 @@ sonarqube {
 		property "sonar.organization", "admin-ch"
 		property "sonar.host.url", "https://sonarcloud.io"
 	}
-}
-
-browserStackConfig {
-	username = System.getenv("BROWSERSTACK_USERNAME") ?: ""
-	accessKey = System.getenv("BROWSERSTACK_ACCESSKEY") ?: ""
-	configFilePath = "browserstackConfig.json"
 }
 
 dependencies {
