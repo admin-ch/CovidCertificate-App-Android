@@ -26,9 +26,9 @@ jobs:
     - name: Build with Gradle
       uses: ./.github/actions/gradle_docker
       with:
-        gradle-cmd: wallet:assembleAbnDebug -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
+        gradle-cmd: wallet:assembleAbnRelease -PkeystorePassword=${{secrets.KEYSTORE_PASSWORD}} -PkeyAliasPassword=${{secrets.KEY_ALIAS_PASSWORD}}
     - name: upload artefact to Browserstack
-      run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/app" -F "file=@wallet/build/outputs/apk/abn/debug/wallet-abn-debug.apk" >> appResponse.json
+      run: curl -u ${{ secrets.BROWSERSTACK_USERNAME }}:${{ secrets.BROWSERSTACK_ACCESSKEY }} -X Post "https://api-cloud.browserstack.com/app-automate/espresso/v2/app" -F "file=@wallet/build/outputs/apk/abn/release/wallet-abn-release.apk" >> appResponse.json
     - id: upload-app
       run: echo ::set-output name=app-url::$(jq -r '.app_url'  appResponse.json)
 
