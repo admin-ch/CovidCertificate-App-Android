@@ -10,11 +10,14 @@ import androidx.test.espresso.ViewInteraction
 import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
+import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import ch.admin.bag.covidcertificate.common.browserstack.AirplaneMode
+import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.*
+import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -22,46 +25,23 @@ import org.junit.runner.RunWith
 @AirplaneMode
 @LargeTest
 @RunWith(AndroidJUnit4::class)
-class LoadconfigTest {
+class LoadconfigTest : EspressoUtil() {
 
 	@Rule
 	@JvmField
 	var mActivityTestRule = ActivityTestRule(MainActivity::class.java)
+	val secureStorage by lazy { WalletSecureStorage.getInstance(InstrumentationRegistry.getInstrumentation().getTargetContext()) }
+
+	@Before
+	fun checkIfOnboardingIsShown(){
+		if (secureStorage.getOnboardingCompleted()){
+			return
+		}
+		doOnboarding()
+	}
 
 	@Test
 	fun loadconfigTest() {
-        val materialButton = onView(
-            allOf(
-                withId(R.id.onboarding_continue_button),
-                isDisplayed()
-            )
-        )
-        materialButton.perform(click())
-        val materialButton2 = onView(
-            allOf(
-                withId(R.id.onboarding_continue_button),
-                isDisplayed()
-            )
-        )
-        materialButton2.perform(click())
-
-
-        val materialButton3 = onView(
-            allOf(
-                withId(R.id.onboarding_continue_button),
-                isDisplayed()
-            )
-        )
-        materialButton3.perform(click())
-
-        val materialButton4 = onView(
-            allOf(
-                withId(R.id.onboarding_continue_button),
-                isDisplayed()
-            )
-        )
-        materialButton4.perform(click())
-
         val supportButton = onView(
             allOf(
                 withId(R.id.homescreen_support_button),

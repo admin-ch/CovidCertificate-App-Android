@@ -2,7 +2,6 @@ package ch.admin.bag.covidcertificate.wallet
 
 
 import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions.click
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.filters.LargeTest
@@ -24,7 +23,7 @@ import org.junit.runners.MethodSorters
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-class OnboardingTest {
+class OnboardingTest : EspressoUtil() {
 
 	@Rule
 	@JvmField
@@ -32,37 +31,7 @@ class OnboardingTest {
 
 	@Test
 	fun A_onboardingTest() {
-		val materialButton = onView(
-			allOf(
-				withId(R.id.onboarding_continue_button),
-				isDisplayed()
-			)
-		)
-		materialButton.perform(click())
-		val materialButton2 = onView(
-			allOf(
-				withId(R.id.onboarding_continue_button),
-				isDisplayed()
-			)
-		)
-		materialButton2.perform(click())
-
-
-		val materialButton3 = onView(
-			allOf(
-				withId(R.id.onboarding_continue_button),
-				isDisplayed()
-			)
-		)
-		materialButton3.perform(click())
-
-		val materialButton4 = onView(
-			allOf(
-				withId(R.id.onboarding_continue_button),
-				isDisplayed()
-			)
-		)
-		materialButton4.perform(click())
+		doOnboarding()
 
 		val textView = onView(
 			allOf(
