@@ -212,7 +212,7 @@ certificats COVID"</string>
     <string name="wallet_faq_works_question_2">"Puis-je ajouter plusieurs certificats COVID?"</string>
 
     <!-- Frage 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_question_3">"Comment savoir si mon certificat est valable?"</string>
+    <string name="wallet_faq_works_question_3">"Comment voir si mon certificat COVID est valable?"</string>
 
     <!-- Frage 9 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_question_4">"Comment mes données sont-elles protégées?"</string>
@@ -247,7 +247,7 @@ Dans tous les cas, vous devez aussi présenter une pièce d'identité sur demand
     <string name="wallet_faq_works_answer_2">"Oui. Vous pouvez par exemple stocker dans l'app les certificats COVID de tous les membres de votre famille. À noter également dans ce cas qu'un certificat COVID n'est valable que si son détenteur présente une pièce d'identité."</string>
 
     <!-- Antwort 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_3">"L'app contient la date d'expiration de votre certificat COVID en Suisse. En pressant le bouton prévu à cet effet, vous pouvez en outre vérifier dans la vue détaillée si votre certificat COVID est encore valable."</string>
+    <string name="wallet_faq_works_answer_3">"L’app verifica automaticamente se il certificato soddisfa i criteri di validità applicati in Svizzera. Se il certificato è scaduto o se non è valido per motivi tecnici, l’informazione compare direttamente nell’app."</string>
 
     <!-- Antwort 9 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_4">"Vos données personnelles ne sont pas stockées dans un système central, mais ne sont sauvegardées que localement, sur votre appareil mobile ou dans le code QR figurant sur le certificat papier."</string>
@@ -1335,11 +1335,11 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G OK state -->
-    <string name="wallet_check_mode_info_2g_ok_text">"L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."</string>
+    <string name="wallet_check_mode_info_2g_ok_text">"Accès aux établissements et aux manifestations réservé aux personnes vaccinées ou guéries."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
-    <string name="wallet_check_mode_info_2g_not_ok_text">"L'accès aux entreprises et aux manifestations appliquant la règle des «2G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées ou guéries. Les certificats COVID des personnes testées négatives et les certificats light ne sont pas acceptés."</string>
+    <string name="wallet_check_mode_info_2g_not_ok_text">"Accès refusé."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> display name of check mode 3G -->
@@ -1379,11 +1379,11 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G OK state -->
-    <string name="wallet_check_mode_info_3g_ok_text">"L'accès aux entreprises et aux manifestations appliquant la règle des «3G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées, guéries ou testées négatives."</string>
+    <string name="wallet_check_mode_info_3g_ok_text">"Accès aux établissements et aux manifestations réservé aux personnes vaccinées, guéries ou testées négatives."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G NOT OK state -->
-    <string name="wallet_check_mode_info_3g_not_ok_text">"L'accès aux entreprises et aux manifestations appliquant la règle des «3G» est autorisé aux titulaires d'un certificat COVID des personnes vaccinées, guéries ou testées négatives."</string>
+    <string name="wallet_check_mode_info_3g_not_ok_text">"Accès refusé."</string>
 
     <!-- 👍 -->
     <!-- Titel für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
@@ -1445,31 +1445,31 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_check_mode_info_test_cert_text_3">"Ce mode ne permet pas de vérifier les «certificats light»."</string>
 
     <!-- wallet refresh button removal info box text -->
-    <string name="wallet_refresh_button_info_text_1">"Die Funktion zur Selbstprüfung von Zertifikaten («Refresh-Button») wurde entfernt."</string>
+    <string name="wallet_refresh_button_info_text_1">"Le bouton «rafraîchir» a été supprimée."</string>
 
     <!-- wallet refresh button removal info box text -->
-    <string name="wallet_refresh_button_info_text_2">"Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt direkt auf dem Zertifikat angezeigt."</string>
+    <string name="wallet_refresh_button_info_text_2">"Si votre certificat COVID a expiré ou s'il n'est techniquement pas valable, cette information apparaît automatiquement sur le certificat."</string>
 
     <!-- wallet refresh button removal info box text -->
-    <string name="wallet_refresh_button_info_text_3">"Um Covid Zertifikate zu prüfen, muss der QR-Code mit einer Prüfapp gescannt werden."</string>
+    <string name="wallet_refresh_button_info_text_3">"La vérification des certificats COVID doit s'effectuer au moyen de l'application «COVID Certificate Check»."</string>
 
     <!-- wallet refresh button removal info box fat title above text 3 -->
-    <string name="wallet_refresh_button_info_fat_title_3">"Für Prüfende"</string>
+    <string name="wallet_refresh_button_info_fat_title_3">"Pour les personnes chargées du contrôle"</string>
 
     <!-- wallet refresh button removal info box link text -->
-    <string name="wallet_refresh_button_info_link_text">"Mehr erfahren"</string>
+    <string name="wallet_refresh_button_info_link_text">"Pour en savoir plus"</string>
 
     <!-- wallet refresh button removal info box link url -->
     <string name="wallet_refresh_button_info_link_url">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat/covid-zertifikat-pruefer-aussteller-technische-informationen.html#-1006172949"</string>
 
     <!-- text for info pop-up in wallet app describing 2G+ OK state -->
-    <string name="wallet_check_mode_info_2g_plus_ok_text">"Das Zertifikat ermöglicht den Zutritt zu Orten und Aktivitäten mit 2G+-Regelung. (Das Zertifikat für die Impfung oder Genesung ist weniger als 120 Tage alt.)"</string>
+    <string name="wallet_check_mode_info_2g_plus_ok_text">"L’accesso a strutture e manifestazioni è consentito alle persone per le quali sono trascorsi al massimo 120 giorni dal completamento del ciclo vaccinale, dalla somministrazione della dose di richiamo o dalla guarigione (sulla base di un test PCR). In questo caso non è necessario un ulteriore certificato di test."</string>
 
     <!-- text for info pop-up in wallet app describing 2G+ NOT OK state -->
-    <string name="wallet_check_mode_info_2g_plus_not_ok_text">"Für den Zutritt zu Orten und Aktivitäten mit einer 2G+-Regelung wird zusätzlich ein Zertifikat für ein negatives Testresultat benötigt."</string>
+    <string name="wallet_check_mode_info_2g_plus_not_ok_text">"Accès aux établissements et aux manifestations réservé aux personnes vaccinées ou guéries qui présentent, en plus d'un certificat COVID, un résultat de test négatif."</string>
 
     <!-- wallet refresh button removal info box title -->
-    <string name="wallet_refresh_button_info_title">"Info"</string>
+    <string name="wallet_refresh_button_info_title">"Information"</string>
 
     <!-- Ausnahme-Zertifikat: Medizinisches Attest ausgestellt in -->
     <string name="wallet_certificate_ausnahme_issued_country">"Attestation médicale délivrée en"</string>
@@ -1480,4 +1480,8 @@ Code: {ERROR_CODE}"</string>
 Ce certificat n'a qu'une durée de validité limitée. L'application «COVID Certificate» vous permet en tout temps de vérifier la durée de validité actuellement déterminante en Suisse. 
 
 En fonction des mesures de protection applicables, le ou la titulaire d'un certificat peut être tenu/e de porter un masque dans le cadre de manifestations et dans les lieux où la présentation d'un certificat COVID-19 est obligatoire."</string>
+
+    <!-- Wallet: Ausnahme Label für Liste -->
+    <!-- Fuzzy -->
+    <string name="covid_certificate_ch_ausnahme_list_label">"Exception"</string>
 </resources>
