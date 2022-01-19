@@ -217,6 +217,9 @@ class CertificateDetailItemListBuilder(
 			tests[0].isSerologicalTest() -> {
 				detailItems.add(TitleItem(R.string.covid_certificate_sero_positiv_test_title, showEnglishVersionForLabels))
 			}
+			tests[0].isPositiveRatTest() -> {
+				detailItems.add(TitleItem(R.string.covid_certificate_antigen_positive_test, showEnglishVersionForLabels))
+			}
 			tests[0].isChAusnahmeTest() -> {
 				detailItems.add(TitleItem(R.string.covid_certificate_ch_ausnahme_test_title, showEnglishVersionForLabels))
 			}
@@ -231,11 +234,14 @@ class CertificateDetailItemListBuilder(
 				testEntry.isSerologicalTest() -> {
 					detailItems.addAll(buildTestEntriesForSeroPositiv(testEntry = testEntry))
 				}
+				testEntry.isPositiveRatTest() -> {
+					detailItems.addAll(buildTestEntriesForPositiveRatTest(testEntry))
+				}
 				testEntry.isChAusnahmeTest() -> {
 					detailItems.addAll(buildTestEntriesForChAusnahmeTest(testEntry))
 				}
 				else -> {
-					detailItems.addAll(buildTestEntriesForPCRAndRAT(testEntry = testEntry))
+					detailItems.addAll(buildTestEntriesForPCRAndNegativeRAT(testEntry = testEntry))
 				}
 			}
 		}
@@ -378,7 +384,88 @@ class CertificateDetailItemListBuilder(
 		return detailItems
 	}
 
-	private fun buildTestEntriesForPCRAndRAT(testEntry: TestEntry): Collection<CertificateDetailItem> {
+	private fun buildTestEntriesForPositiveRatTest(testEntry: TestEntry): Collection<CertificateDetailItem> {
+		// Test result
+		val detailItems = ArrayList<CertificateDetailItem>()
+		if (testEntry.isTargetDiseaseCorrect()) {
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_target_disease_title,
+					context.getString(R.string.target_disease_name),
+					showEnglishVersionForLabels
+				)
+			)
+		}
+
+
+		// Test details
+		val acceptedTestProvider = AcceptedTestProvider.getInstance(context)
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_test_type,
+				acceptedTestProvider.getTestType(testEntry),
+				showEnglishVersionForLabels
+			)
+		)
+
+		acceptedTestProvider.getManufacturesAndNameLabelIfExists(testEntry)?.let {
+			detailItems.add(ValueItem(R.string.wallet_certificate_test_holder_and_name, it, showEnglishVersionForLabels))
+		}
+
+		// Test dates + country
+		detailItems.add(DividerItem)
+		testEntry.getFormattedSampleDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { sampleDate ->
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_antigen_positive_date,
+					sampleDate,
+					showEnglishVersionForLabels
+				)
+			)
+		}
+		testEntry.getFormattedResultDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { resultDate ->
+			detailItems.add(
+				ValueItem(
+					R.string.wallet_certificate_test_result_date_title,
+					resultDate,
+					showEnglishVersionForLabels
+				)
+			)
+		}
+
+		testEntry.getTestCenter()?.let { testCenter ->
+			detailItems.add(ValueItem(R.string.wallet_certificate_test_done_by, testCenter, showEnglishVersionForLabels))
+		}
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_test_land,
+				testEntry.getTestCountry(showEnglishVersionForLabels), showEnglishVersionForLabels
+			)
+		)
+
+		// Issuer
+		detailItems.add(DividerItem)
+		detailItems.add(
+			ValueItem(
+				R.string.wallet_certificate_vaccination_issuer_title,
+				testEntry.getIssuer(),
+				showEnglishVersionForLabels
+			)
+		)
+		detailItems.add(
+			UvciItem(
+				testEntry.getCertificateIdentifier(),
+				false
+			)
+		)
+
+		certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+			detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
+		}
+		return detailItems
+	}
+
+	private fun buildTestEntriesForPCRAndNegativeRAT(testEntry: TestEntry): Collection<CertificateDetailItem> {
 		// Test result
 		val detailItems = ArrayList<CertificateDetailItem>()
 		if (testEntry.isTargetDiseaseCorrect()) {
