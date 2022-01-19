@@ -570,7 +570,6 @@ As infurmai per plaschair – avant d'As metter en viadi – davart las mesiras 
 As infurmai tar Voss center da test, en l'apoteca u tar Vossa media u Voss medi, sche la transmissiun cun in code da transfer è pussaivla."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_answer_2">"Actualmain è la transmissiun cun in code da transfer concepì per tests dal coronavirus. Co che Vus survegnis in certificat COVID suenter ina vaccinaziun, vegnis Vus a savair qua:"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 3 -->
@@ -760,8 +759,6 @@ n’è betg valaivel"</string>
 
     <!-- Wallet: Accessibility Name für Refresh Button -->
     <string name="accessibility_refresh_button">"Actualisar"</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_transfer_delete_confirm_text">"Vulais Vus propi stizzar il transfer?"</string>
     <string name="wallet_notification_transfer_title">"Transfer reussì"</string>
     <string name="wallet_notification_transfer_text">"Il certificat COVID è arrivà"</string>
@@ -803,11 +800,7 @@ Per actualisar las glistas da verificaziun sto l'app esser colliada cun l'intern
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
     <string name="wallet_certificate_evidence_creation_date">"Cumprova emessa ils
 {DATE}"</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_linktext_2">"Ulteriuras infurmaziuns"</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_linkurl_2">"https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/"</string>
 
     <!-- Wallet: Zertifikat Light Button im Zertifikat Detail -->
@@ -915,11 +908,9 @@ e mo en Svizra"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"mo danovamain nagins"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
-    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_reduced_state">"reducì"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
-    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_expanded_state">"extendì"</string>
 
     <!-- Header im Update Boarding-Screen -->
@@ -1007,7 +998,6 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
     <string name="language_title">"Lingua"</string>
 
     <!-- Information about the date format (always english) -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
     <string name="wallet_certificate_test_holder_and_name">"Producent e Num"</string>
 
@@ -1036,7 +1026,6 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
     <string name="vaccination_booking_ai_name">"Appenzell Dadens"</string>
 
     <!-- url for booking an appointment for vaccination for canton ai -->
-    <!-- Fuzzy -->
     <string name="vaccination_booking_ai_url">"https://www.ai.ch/coronavirus-impfung"</string>
 
     <!-- canton name bl -->
@@ -1049,14 +1038,12 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
     <string name="vaccination_booking_bs_name">"Basilea-Citad"</string>
 
     <!-- url for booking an appointment for vaccination for canton bs -->
-    <!-- Fuzzy -->
     <string name="vaccination_booking_bs_url">"http://www.coronaimpfzentrumbasel.ch"</string>
 
     <!-- canton name be -->
     <string name="vaccination_booking_be_name">"Berna"</string>
 
     <!-- url for booking an appointment for vaccination for canton be -->
-    <!-- Fuzzy -->
     <string name="vaccination_booking_be_url">"http://www.be.ch/corona-impfung"</string>
 
     <!-- canton name fr -->
@@ -1284,8 +1271,6 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_info_box_certificate_scan_text">"Per ina verificaziun pli svelta e confurma a la protecziun da datas, utilisai l'app «COVID Certificate Check»."</string>
     <string name="wallet_info_box_certificate_scan_button_check_app">"Tar l'app «COVID Certificate Check»"</string>
     <string name="wallet_info_box_certificate_scan_close">"Chapì"</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_info_box_certificate_scan_text_bold">"«COVID Certificate Check»-App."</string>
     <string name="wallet_only_valid_in_switzerland">"Valaivel mo cun in document da legitimaziun e mo en Svizra"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Diagnosa"</string>
@@ -1476,6 +1461,71 @@ Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad ac
 Tut tenor il concept da protecziun respectiv sto la possessura u il possessur eventualmain purtar ina mascrina a chaschun d'occurrenzas u en instituziuns, nua ch'in certificat è obligatoric."</string>
 
     <!-- Wallet: Ausnahme Label für Liste -->
-    <!-- Fuzzy -->
     <string name="covid_certificate_ch_ausnahme_list_label">"Excepziun"</string>
+
+    <!-- Wallet: Titel von einem positivem Antigen-Test -->
+    <string name="covid_certificate_antigen_positive_test">"Guariziun (Test svelt d'antigens)"</string>
+
+    <!-- Wallet: Antigen Positive Titel von Testdatum -->
+    <string name="wallet_certificate_antigen_positive_date">"Data da l'emprim resultat positiv"</string>
+
+    <!-- Wallet: Blaue Box für positiven Antigen-Test -->
+    <!-- Fuzzy -->
+    <string name="wallet_certificate_detail_note_positive_antigen">"Quest attest n'è betg in document da viadi.
+
+Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad actuala en Svizra pudais Vus verifitgar da tut temp cun l'app «Covid-Certificate»."</string>
+
+    <!-- banner title on homescreen. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Verkürzte Gültigkeit"</string>
+
+    <!-- banner title in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Verkürzte Gültigkeit"</string>
+
+    <!-- banner text in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
+
+    <!-- more info 'button' text in banner in certicate detail view. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_more_info">"Mehr erfahren"</string>
+
+    <!-- title for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_title">"Info"</string>
+
+    <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+
+    <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist nach dem 1.2.2022 nur noch wenige Tage gültig. Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum, welches nach dem 1.2.2022 mit der reduzierten Dauer von 270 Tagen berechnet wird."</string>
+
+    <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Mehr erfahren"</string>
+
+    <!-- link url for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url"></string>
+
+    <!-- banner title on homescreen. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_homescreen_title">"Verkürzte Gültigkeit"</string>
+
+    <!-- banner title in certificate detail view. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_title">"Verkürzte Gültigkeit"</string>
+
+    <!-- banner text in certificate detail view. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
+
+    <!-- more info 'button' text in banner in certicate detail view. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_more_info">"Mehr erfahren"</string>
+
+    <!-- title for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_title">"Info"</string>
+
+    <!-- text for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+
+    <!-- bold text box for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_bold_text">"Dieses Covid-Zertifikat kann nach dem 1.2.2022 nicht mehr verwendet werden, da die Gültigkeit dann bereits abgelaufen ist."</string>
+
+    <!-- link text for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_text">"Mehr erfahren"</string>
+
+    <!-- link url for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url"></string>
 </resources>

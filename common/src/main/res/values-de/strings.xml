@@ -550,40 +550,32 @@ Bitte informieren Sie sich vor der Reise über die am Zielort geltenden Gesundhe
 
     <!-- prüfen -->
     <!-- Wallet: Transfer Code: FAQ Titel -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_title">"Covid-Zertifikate direkt in die App geliefert"</string>
 
     <!-- Wallet: Transfer Code FAQ Text -->
     <string name="wallet_transfer_code_faq_questions_subtitle">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat, z. B. nach einem Covid-Test, direkt in die App geliefert."</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_question_1">"Wer bietet die Übermittlung per Transfer-Code an?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_question_2">"Können Transfer-Codes auch zur Übermittlung von Impfzertifikaten verwendet werden?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 3 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_question_3">"Wie funktioniert die Übermittlung per Transfer-Code?"</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 4 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_question_4">"Kann ich den Transfer-Code mehrmals benutzen?"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_answer_1">"Wenn Sie einen Covid-Test machen (PCR-Test oder Antigen-Schnelltest), kann der Transfer-Code zur schnellen Übermittlung von Covid-Zertifikaten zum Einsatz kommen.
 
 Informieren Sie sich bei Ihrem Testcenter, in der Apotheke oder bei Ihrem Arzt, ob die Übermittlung per Transfer-Code angeboten wird."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_answer_2">"Aktuell ist die Übermittlung per Transfer-Code auf Covid-Tests ausgelegt. Wie Sie ein Covid-Zertifikat nach einer Impfung erhalten erfahren Sie hier:"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 3 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_answer_3">"Falls die Stelle, die den Covid-Test durchführt, die Übermittlung per Transfer-Code anbietet, werden Sie bereits bei der Anmeldung oder der Testentnahme nach einem Transfer-Code gefragt.
 
 Den Transfer-Code können Sie in der «COVID Certificate»-App erstellen. Tippen Sie dazu auf dem Startbildschirm auf «Hinzufügen» resp. auf das «Plus»-Symbol unten rechts. Danach tippen Sie auf «Transfer-Code erstellen».
@@ -591,36 +583,27 @@ Den Transfer-Code können Sie in der «COVID Certificate»-App erstellen. Tippen
 Die App zeigt Ihnen einen 9-stelligen Code an. Diesen können Sie entweder bei der Anmeldung in ein Formular eintragen oder direkt bei der Testentnahme angeben."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 4 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_answer_4">"Nein, ein Transfer-Code kann nur einmal verwendet werden. Falls Sie mehrere Zertifikate z. B. von Familienangehörigen empfangen möchten, erstellen Sie bitte für jedes Zertifikat einen neuen Code."</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_title">"So funktioniert der Transfer"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_question_1">"Wie sind meine Daten beim Transfer geschützt?"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_question_2">"Was kann ich tun, wenn das Zertifikat nicht ankommt?"</string>
 
     <!-- Wallet: Tranfser Code FAQ 2 Frage 3 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_question_3">"Was passiert bei einem positiven Testresultat?"</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_answer_1">"Für den Transfer wird Ihr Covid-Zertifikat verschlüsselt bereitgestellt. Der Transfer-Code stellt sicher, dass nur Ihre App das Covid-Zertifikat empfangen kann. Unmittelbar nach dem Transfer werden die Daten wieder vom Server gelöscht."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_answer_2">"Sobald das Zertifikat vom Labor oder Testcenter generiert wurde, steht es zum Transfer zur Verfügung. Stellen Sie sicher, dass Ihr Smartphone mit dem Internet verbunden ist, um Zertifikate empfangen zu können.
 
 Sollte ihr Covid-Zertifikat dennoch nicht eintreffen, fragen Sie bei der Stelle nach, die den Test durchgeführt hat (Testcenter, Apotheke, Ärztin / Arzt)."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 3 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_answer_3">"Bei einem positiven Antigen-Schnelltest erhalten Sie vom Labor kein Covid-Zertifikat. 
 
 Bei einem positiven PCR-Test erhalten Sie ein Covid-Zertifikat für Genesene. Es ist ab dem 11. Tag nach der Testentnahme gültig."</string>
@@ -712,15 +695,12 @@ ungültig"</string>
     <string name="wallet_homescreen_network_error">"Gültigkeit konnte nicht ermittelt werden"</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_intro_1">"Die App prüft regelmässig, ob ein Covid-Zertifikat für Ihren Transfer-Code verfügbar ist."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_intro_2">"Sobald das Covid-Zertifikat verfügbar ist, erscheint es in der App. Wenn Sie Mitteilungen aktiviert haben, werden Sie von der App benachrichtigt."</string>
 
     <!-- Wallet: Transfer Code So Funktionierts Text 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_works_intro_3">"Nach {TRANSFER_CODE_VALIDITY} Tagen läuft der Transfer-Code ab. Danach wartet die App noch für weitere 72h auf einen möglichen Transfer, bevor der Transfer-Code ungültig wird."</string>
 
     <!-- Wallet: Titel im Custom-Popup Notification Permission -->
@@ -760,7 +740,6 @@ ungültig"</string>
     <string name="wallet_transfer_code_error_title">"Transfer-Code konnte nicht erstellt werden"</string>
 
     <!-- Wallet: Erstellen Fehler Titel -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_no_internet_title">"Keine Verbindung zum Internet"</string>
 
     <!-- Wallet: Erstellen anderer Fehler Titel -->
@@ -770,7 +749,6 @@ ungültig"</string>
     <string name="wallet_transfer_code_update_error_title">"Aktualisierung zur Zeit nicht möglich"</string>
 
     <!-- Wallet: Transfer Code Update Fehler Text -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_update_no_internet_error_text">"Um den Transfer empfangen zu können, muss die App online sein."</string>
 
     <!-- Wallet Transfer Code Update Fehler Text -->
@@ -780,14 +758,10 @@ ungültig"</string>
     <string name="wallet_transfer_code_generate_error_text">"Versuchen Sie es später erneut."</string>
 
     <!-- Wallet: Transfer Code Fehlertext bei Generieren ohne Internet -->
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_generate_no_internet_error_text">"Um einen Transfer-Code erstellen zu können, muss die App online sein."</string>
 
     <!-- Wallet: Accessibility Name für Refresh Button -->
-    <!-- Fuzzy -->
     <string name="accessibility_refresh_button">"Aktualisieren"</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_transfer_delete_confirm_text">"Wollen Sie den Transfer-Code wirklich löschen?"</string>
     <string name="wallet_notification_transfer_title">"Transfer erfolgreich"</string>
     <string name="wallet_notification_transfer_text">"Das Covid-Zertifikat ist eingetroffen"</string>
@@ -829,11 +803,7 @@ Um die Prüflisten zu aktualisieren muss die App mit dem Internet verbunden sein
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
     <string name="wallet_certificate_evidence_creation_date">"Nachweis erstellt am
 {DATE}"</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_linktext_2">"Weitere Informationen"</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_transfer_code_faq_questions_linkurl_2">"https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/"</string>
 
     <!-- Wallet: Zertifikat Light Button im Zertifikat Detail -->
@@ -875,7 +845,6 @@ Zertifikat Light?"</string>
 konnte nicht aktiviert werden"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation Netzwerk Fehler Titel -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_light_detail_activation_network_error_text">"Um das Zertifikat Light aktivieren zu können, muss die App online sein."</string>
 
     <!-- Info Text bei erfolgreicher Prüfung einers Zertifikate Light -->
@@ -895,12 +864,10 @@ konnte nicht aktiviert werden"</string>
     <string name="wallet_certificate_export_button">"Exportieren"</string>
 
     <!-- Wallet: Zertifikat Export Error Title -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_export_detail_error_title">"PDF konnte nicht
 erstellt werden"</string>
 
     <!-- Wallet: Zertifikat Export Netzwerk Error -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_export_detail_network_error_text">"Um das PDF erstellen zu können, muss die App online sein."</string>
     <string name="accessibility_qr_code">"QR-Code"</string>
 
@@ -947,11 +914,9 @@ erstellt werden"</string>
     <string name="wallet_certificate_light_detail_text_2_bold">"nur muss keine"</string>
 
     <!-- VoiceOver reads this when the expandable box is reduced -->
-    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_reduced_state">"reduziert"</string>
 
     <!-- VoiceOver reads this when the expandable box is expanded -->
-    <!-- Fuzzy -->
     <string name="accessibility_expandable_box_expanded_state">"erweitert"</string>
 
     <!-- Header im Update Boarding-Screen -->
@@ -977,7 +942,6 @@ erstellt werden"</string>
 abgelaufen"</string>
 
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_list_light_certificate_badge">"Light"</string>
     <string name="wallet_faq_questions_question_6">"Was ist das Zertifikat Light?"</string>
 
@@ -1040,7 +1004,6 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
     <string name="language_title">"Sprache"</string>
 
     <!-- Information about the date format (always english) -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_detail_date_format_info">"Date format used: dd.mm.yyyy"</string>
     <string name="wallet_certificate_test_holder_and_name">"Hersteller und Name"</string>
 
@@ -1069,28 +1032,24 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
     <string name="vaccination_booking_ai_name">"Appenzell Innerrhoden"</string>
 
     <!-- url for booking an appointment for vaccination for canton ai -->
-    <!-- Fuzzy -->
     <string name="vaccination_booking_ai_url">"https://www.ai.ch/coronavirus-impfung"</string>
 
     <!-- canton name bl -->
     <string name="vaccination_booking_bl_name">"Basel-Landschaft"</string>
 
     <!-- url for booking an appointment for vaccination for canton bl -->
-    <!-- Fuzzy -->
     <string name="vaccination_booking_bl_url">"https://www.bl.ch/impfen"</string>
 
     <!-- canton name bs -->
     <string name="vaccination_booking_bs_name">"Basel-Stadt"</string>
 
     <!-- url for booking an appointment for vaccination for canton bs -->
-    <!-- Fuzzy -->
     <string name="vaccination_booking_bs_url">"http://www.coronaimpfzentrumbasel.ch"</string>
 
     <!-- canton name be -->
     <string name="vaccination_booking_be_name">"Bern"</string>
 
     <!-- url for booking an appointment for vaccination for canton be -->
-    <!-- Fuzzy -->
     <string name="vaccination_booking_be_url">"http://www.be.ch/corona-impfung"</string>
 
     <!-- canton name fr -->
@@ -1318,8 +1277,6 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_info_box_certificate_scan_text">"Für eine Datenschutzkonforme und schnellere Prüfung nutzen Sie die \"COVID Certificate Check\"-App."</string>
     <string name="wallet_info_box_certificate_scan_button_check_app">"Zur Check-App"</string>
     <string name="wallet_info_box_certificate_scan_close">"Verstanden"</string>
-
-    <!-- Fuzzy -->
     <string name="wallet_info_box_certificate_scan_text_bold">"«COVID Certificate Check»-App."</string>
     <string name="wallet_only_valid_in_switzerland">"Nur mit einem Ausweisdokument 
 &amp; innerhalb der Schweiz gültig"</string>
@@ -1347,8 +1304,6 @@ Code: {ERROR_CODE}"</string>
     <!-- URL to ImpfCheck -->
     <string name="vaccination_impf_check_url">"https://covid19.impf-check.ch/"</string>
     <string name="vaccination_impf_check_title">"Jetzt Termin buchen"</string>
-
-    <!-- Fuzzy -->
     <string name="verifier_faq_works_linktext_1">"Erklärvideo"</string>
     <string name="verifier_faq_works_linkurl_1">"https://youtu.be/DClLZIUjr3w"</string>
 
@@ -1368,12 +1323,10 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G OK state -->
-    <!-- Fuzzy -->
     <string name="wallet_check_mode_info_2g_ok_text">"Zutritt zu Betrieben und Veranstaltungen für geimpfte oder genesene Personen."</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
-    <!-- Fuzzy -->
     <string name="wallet_check_mode_info_2g_not_ok_text">"Kein Zutritt."</string>
 
     <!-- 👍 -->
@@ -1406,7 +1359,6 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> info text for check mode 2g -->
-    <!-- Fuzzy -->
     <string name="verifier_check_mode_info_2g_text_3">"Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."</string>
 
     <!-- 👍 -->
@@ -1428,7 +1380,6 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_verify_light_not_supported_by_mode_text">"Die Prüfung kann in diesem Fall nur erfolgen, wenn die Umwandlung in ein Zertifikat Light rückgängig gemacht wird."</string>
 
     <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
-    <!-- Fuzzy -->
     <string name="verifier_check_mode_info_unselected_text_1">"Wählen Sie den Prüfmodus, in welchem Sie Covid-Zertifikate prüfen möchten."</string>
 
     <!-- check app -> check mode select pop-up -> info text when no check mode is selected -->
@@ -1453,7 +1404,6 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_2g_plus_success2g">"Gültiges Covid-Zertifikat nach 2G-Regelung"</string>
 
     <!-- 2G+: Info, dass Zertifikat + erfüllt -->
-    <!-- Fuzzy -->
     <string name="verifier_2g_plus_successplus">"Gültiges Covid-Zertifikat für Getestete"</string>
 
     <!-- Verifier: 2G+ Info, dass noch + nötig -->
@@ -1490,11 +1440,9 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_refresh_button_info_text_3">"Die Prüfung von Covid-Zertifikaten ist mit der App «COVID Certificate Check» vorzunehmen."</string>
 
     <!-- wallet refresh button removal info box fat title above text 3 -->
-    <!-- Fuzzy -->
     <string name="wallet_refresh_button_info_fat_title_3">"Für Prüfende"</string>
 
     <!-- wallet refresh button removal info box link text -->
-    <!-- Fuzzy -->
     <string name="wallet_refresh_button_info_link_text">"Mehr erfahren"</string>
 
     <!-- wallet refresh button removal info box link url -->
@@ -1510,7 +1458,6 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_refresh_button_info_title">"Info"</string>
 
     <!-- Ausnahme-Zertifikat: Medizinisches Attest ausgestellt in -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_ausnahme_issued_country">"Medizinisches Attest ausgestellt in"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
@@ -1521,6 +1468,71 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
 Die Inhaberin oder der Inhaber kann entsprechend dem jeweils gültigen Schutzkonzept bei zertifikatspflichtigen Veranstaltungen und Einrichtungen verpflichtet sein, eine Gesichtsmaske zu tragen."</string>
 
     <!-- Wallet: Ausnahme Label für Liste -->
-    <!-- Fuzzy -->
     <string name="covid_certificate_ch_ausnahme_list_label">"Ausnahme"</string>
+
+    <!-- Wallet: Titel von einem positivem Antigen-Test -->
+    <string name="covid_certificate_antigen_positive_test">"Genesung (Antigen-Schnelltest)"</string>
+
+    <!-- Wallet: Antigen Positive Titel von Testdatum -->
+    <string name="wallet_certificate_antigen_positive_date">"Datum des ersten positiven Resultats"</string>
+
+    <!-- Wallet: Blaue Box für positiven Antigen-Test -->
+    <!-- Fuzzy -->
+    <string name="wallet_certificate_detail_note_positive_antigen">"Dieses Zertifikat ist kein Reisedokument.
+
+Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen."</string>
+
+    <!-- banner title on homescreen. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Verkürzte Gültigkeit"</string>
+
+    <!-- banner title in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Verkürzte Gültigkeit"</string>
+
+    <!-- banner text in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
+
+    <!-- more info 'button' text in banner in certicate detail view. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_more_info">"Mehr erfahren"</string>
+
+    <!-- title for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_title">"Info"</string>
+
+    <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+
+    <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist nach dem 1.2.2022 nur noch wenige Tage gültig. Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum, welches nach dem 1.2.2022 mit der reduzierten Dauer von 270 Tagen berechnet wird."</string>
+
+    <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Mehr erfahren"</string>
+
+    <!-- link url for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url"></string>
+
+    <!-- banner title on homescreen. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_homescreen_title">"Verkürzte Gültigkeit"</string>
+
+    <!-- banner title in certificate detail view. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_title">"Verkürzte Gültigkeit"</string>
+
+    <!-- banner text in certificate detail view. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
+
+    <!-- more info 'button' text in banner in certicate detail view. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_more_info">"Mehr erfahren"</string>
+
+    <!-- title for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_title">"Info"</string>
+
+    <!-- text for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+
+    <!-- bold text box for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_bold_text">"Dieses Covid-Zertifikat kann nach dem 1.2.2022 nicht mehr verwendet werden, da die Gültigkeit dann bereits abgelaufen ist."</string>
+
+    <!-- link text for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_text">"Mehr erfahren"</string>
+
+    <!-- link url for pop up. case: certificate will be invalid at time of validity change. -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url"></string>
 </resources>
