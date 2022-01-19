@@ -10,12 +10,14 @@
 
 package ch.admin.bag.covidcertificate.common.qr
 
+import android.app.ActivityManager
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.pdf.PdfRenderer
 import android.os.ParcelFileDescriptor
 import com.google.zxing.*
+import com.google.zxing.common.GlobalHistogramBinarizer
 import com.google.zxing.common.HybridBinarizer
 import java.io.File
 import java.lang.Integer.min
@@ -32,30 +34,22 @@ object QRCodeReaderHelper {
 	private val reader = MultiFormatReader().apply { setHints(hints) }
 
 	fun decodeQrCode(bitmap: Bitmap): String? {
-		var decoded: String? = null
-
 		val intArray = IntArray(bitmap.width * bitmap.height)
 		bitmap.getPixels(intArray, 0, bitmap.width, 0, 0, bitmap.width, bitmap.height)
 		val source: LuminanceSource = RGBLuminanceSource(bitmap.width, bitmap.height, intArray)
-		val binaryBitmap = BinaryBitmap(HybridBinarizer(source))
 
-		try {
-			val result: Result = reader.decodeWithState(binaryBitmap)
-			decoded = result.text
-		} catch (e: NotFoundException) {
-			e.printStackTrace()
-		} catch (e: ChecksumException) {
-			e.printStackTrace()
-		} catch (e: FormatException) {
-			e.printStackTrace()
-		}
-		return decoded
+		// First try with hybrid binarizer, then with global histogram binarizer. Same as in the camera scanner
+		return decodeQrCodeWithBinarizer(HybridBinarizer(source))
+			?: decodeQrCodeWithBinarizer(GlobalHistogramBinarizer(source))
 	}
 
 	fun pdfToBitmaps(context: Context, pdfFile: File): Sequence<Bitmap> = sequence {
 		try {
 			PdfRenderer(ParcelFileDescriptor.open(pdfFile, ParcelFileDescriptor.MODE_READ_ONLY)).use { renderer ->
 				val pageCount = renderer.pageCount
+
+				val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
+				val memoryInfo = ActivityManager.MemoryInfo().also { activityManager.getMemoryInfo(it) }
 
 				for (i in 0 until min(pageCount, PDF_PAGE_LIMIT)) {
 					renderer.openPage(i).use { page ->
@@ -69,8 +63,13 @@ object QRCodeReaderHelper {
 						page.renderToBitmap(page.width, page.height).use {
 							yield(it)
 						}
-						page.renderToBitmap(pixelWidth, pixelHeight).use {
-							yield(it)
+
+						if (!memoryInfo.lowMemory) {
+							// Only yield the scaled bitmap if the system is not considered to be in low memory mode
+							// On some devices, this bitmap can get up to 50MB due to the large scale factor
+							page.renderToBitmap(pixelWidth, pixelHeight).use {
+								yield(it)
+							}
 						}
 					}
 				}
@@ -78,6 +77,22 @@ object QRCodeReaderHelper {
 		} catch (ex: Exception) {
 			ex.printStackTrace()
 		}
+	}
+
+	private fun decodeQrCodeWithBinarizer(binarizer: Binarizer): String? {
+		val binaryBitmap = BinaryBitmap(binarizer)
+
+		try {
+			val result: Result = reader.decodeWithState(binaryBitmap)
+			return result.text
+		} catch (e: NotFoundException) {
+			e.printStackTrace()
+		} catch (e: ChecksumException) {
+			e.printStackTrace()
+		} catch (e: FormatException) {
+			e.printStackTrace()
+		}
+		return null
 	}
 
 	private fun PdfRenderer.Page.renderToBitmap(pixelWidth: Int, pixelHeight: Int): Bitmap {
