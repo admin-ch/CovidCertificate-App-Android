@@ -39,6 +39,7 @@ data class ConfigModel(
 	val lightCertDurationInHours: Int?,
 	val refreshButtonDisabled: Boolean?,
 	val refreshButtonInfo: Map<String, RefreshButtonInfoModel>?,
+	val eolBannerInfo: Map<String, Map<String, EolBannerInfoModel>>?,
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
@@ -49,6 +50,7 @@ data class ConfigModel(
 	fun getCheckModesInfos(languageKey: String): Map<String, CheckModeInfoModel>? = checkModesInfos?.get(languageKey)?.infos
 	fun getUnselectedModesInfos(languageKey: String): VerifierInfos? = checkModesInfos?.get(languageKey)?.unselected
 	fun getRefreshButtonInfo(languageKey: String): RefreshButtonInfoModel? = refreshButtonInfo?.get(languageKey)
+	fun getEolBannerInfo(languageKey: String): Map<String, EolBannerInfoModel>? = eolBannerInfo?.get(languageKey)
 
 	fun getCheckModes(languageKey: String): Map<String, WalletModeModel>? = checkModesInfo?.get(languageKey)?.modes
 	fun getInfoModeTitle(languageKey: String): String? = checkModesInfo?.get(languageKey)?.title

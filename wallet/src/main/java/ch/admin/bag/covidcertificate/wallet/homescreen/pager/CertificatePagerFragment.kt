@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.wallet.homescreen.pager
 
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import android.text.SpannableString
@@ -23,6 +24,8 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.transition.TransitionManager
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
@@ -32,12 +35,9 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.VaccinationEn
 import ch.admin.bag.covidcertificate.sdk.core.models.state.*
 import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
+import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding
-import ch.admin.bag.covidcertificate.wallet.util.QrCode
-import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
-import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
-import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
-import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
+import ch.admin.bag.covidcertificate.wallet.util.*
 
 class CertificatePagerFragment : Fragment() {
 
@@ -148,10 +148,33 @@ class CertificatePagerFragment : Fragment() {
 			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_flag_ch)
 			binding.certificatePageInfoRedBorder.visibility = View.VISIBLE
 			binding.certificatePageInfo.text = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))
-		}else {
+		} else {
 			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_info_blue)
 			binding.certificatePageInfoRedBorder.visibility = View.GONE
 			binding.certificatePageInfo.text = SpannableString(context.getString(R.string.verifier_verify_success_info))
+		}
+
+		val isAlreadyDismissed = WalletSecureStorage.getInstance(requireContext()).getDismissedEolBanners().contains(qrCodeData)
+		val eolBannerInfo = ConfigRepository.getCurrentConfig(requireContext())
+			?.getEolBannerInfo(getString(R.string.language_key))
+			?.get(walletState.eolBannerIdentifier)
+
+		binding.certificatePageBanner.isVisible = eolBannerInfo != null && !isAlreadyDismissed
+
+		eolBannerInfo?.let {
+			val backgroundColor = try {
+				Color.parseColor(it.homescreenHexColor)
+			} catch (e: IllegalArgumentException) {
+				ContextCompat.getColor(requireContext(), R.color.yellow)
+			}
+
+			binding.certificatePageBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+			binding.certificatePageBannerTitle.text = it.homescreenTitle
+			binding.certificatePageBannerDismiss.setOnClickListener {
+				WalletSecureStorage.getInstance(requireContext()).addDismissedEolBanner(qrCodeData)
+				TransitionManager.beginDelayedTransition(binding.root)
+				binding.certificatePageBanner.isVisible = false
+			}
 		}
 	}
 
