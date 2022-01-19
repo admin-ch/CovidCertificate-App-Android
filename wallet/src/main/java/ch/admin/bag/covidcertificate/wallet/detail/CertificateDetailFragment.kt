@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.wallet.detail
 
 import android.content.res.ColorStateList
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
@@ -29,6 +30,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.config.EolBannerInfoModel
 import ch.admin.bag.covidcertificate.common.config.WalletModeModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.extensions.getDrawableIdentifier
@@ -41,7 +43,6 @@ import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
-import ch.admin.bag.covidcertificate.sdk.android.utils.*
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isChAusnahmeTest
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
@@ -53,6 +54,7 @@ import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemDetailModeRefreshBinding
+import ch.admin.bag.covidcertificate.wallet.dialog.CertificateBannerInfoDialogFragment
 import ch.admin.bag.covidcertificate.wallet.dialog.ModeInfoDialogFragment
 import ch.admin.bag.covidcertificate.wallet.dialog.RefreshButtonInfoDialogFragment
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
@@ -95,6 +97,7 @@ class CertificateDetailFragment : Fragment() {
 	private lateinit var certificateHolder: CertificateHolder
 
 	private var hideDelayedJob: Job? = null
+	private var eolBannerInfo: EolBannerInfoModel? = null
 
 	private var isForceValidate = false
 	private val pdfExportShareLauncher = registerForActivityResult(PdfExportShareContract()) { uri ->
@@ -129,6 +132,7 @@ class CertificateDetailFragment : Fragment() {
 		setupDetailNote()
 		setupConversionButtons()
 		setupVaccinationAppointmentButton()
+		setupEolBanner()
 
 		binding.certificateDetailToolbar.setNavigationOnClickListener {
 			parentFragmentManager.popBackStack()
@@ -327,6 +331,15 @@ class CertificateDetailFragment : Fragment() {
 		}
 	}
 
+	private fun setupEolBanner() {
+		binding.certificateDetailBannerMoreInfo.setOnClickListener {
+			eolBannerInfo?.let {
+				CertificateBannerInfoDialogFragment.newInstance(it)
+					.show(childFragmentManager, CertificateBannerInfoDialogFragment::class.java.canonicalName)
+			}
+		}
+	}
+
 	private fun updateStatusInfo(verificationState: VerificationState?) {
 		val state = verificationState ?: return
 
@@ -404,6 +417,25 @@ class CertificateDetailFragment : Fragment() {
 
 		showModes(walletState.modeValidity)
 		setupModesButton(walletState.modeValidity)
+
+		eolBannerInfo = ConfigRepository.getCurrentConfig(requireContext())
+			?.getEolBannerInfo(getString(R.string.language_key))
+			?.get(walletState.eolBannerIdentifier)
+
+		binding.certificateDetailBanner.isVisible = eolBannerInfo != null
+
+		eolBannerInfo?.let {
+			val backgroundColor = try {
+				Color.parseColor(it.homescreenHexColor)
+			} catch (e: IllegalArgumentException) {
+				ContextCompat.getColor(requireContext(), R.color.yellow)
+			}
+
+			binding.certificateDetailBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+			binding.certificateDetailBannerTitle.text = it.detailTitle
+			binding.certificateDetailBannerText.text = it.detailText
+			binding.certificateDetailBannerMoreInfo.text = it.detailMoreInfo
+		}
 	}
 
 	private fun setupModesButton(modeValidities: List<ModeValidity>) {
