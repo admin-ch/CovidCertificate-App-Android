@@ -332,7 +332,7 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun setupEolBanner() {
-		binding.certificateDetailBannerMoreInfo.setOnClickListener {
+		binding.certificateDetailBanner.setOnClickListener {
 			eolBannerInfo?.let {
 				CertificateBannerInfoDialogFragment.newInstance(it)
 					.show(childFragmentManager, CertificateBannerInfoDialogFragment::class.java.canonicalName)
