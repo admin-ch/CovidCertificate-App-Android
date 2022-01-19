@@ -24,6 +24,7 @@ import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.transition.TransitionManager
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
@@ -34,6 +35,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.VaccinationEn
 import ch.admin.bag.covidcertificate.sdk.core.models.state.*
 import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
+import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificatePagerBinding
 import ch.admin.bag.covidcertificate.wallet.util.*
 
@@ -152,7 +154,7 @@ class CertificatePagerFragment : Fragment() {
 			binding.certificatePageInfo.text = SpannableString(context.getString(R.string.verifier_verify_success_info))
 		}
 
-		val isAlreadyDismissed = false // TODO Get from preferences
+		val isAlreadyDismissed = WalletSecureStorage.getInstance(requireContext()).getDismissedEolBanners().contains(qrCodeData)
 		val eolBannerInfo = ConfigRepository.getCurrentConfig(requireContext())
 			?.getEolBannerInfo(getString(R.string.language_key))
 			?.get(walletState.eolBannerIdentifier)
@@ -169,7 +171,9 @@ class CertificatePagerFragment : Fragment() {
 			binding.certificatePageBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 			binding.certificatePageBannerTitle.text = it.homescreenTitle
 			binding.certificatePageBannerDismiss.setOnClickListener {
-				// TODO Store certificate ID
+				WalletSecureStorage.getInstance(requireContext()).addDismissedEolBanner(qrCodeData)
+				TransitionManager.beginDelayedTransition(binding.root)
+				binding.certificatePageBanner.isVisible = false
 			}
 		}
 	}
