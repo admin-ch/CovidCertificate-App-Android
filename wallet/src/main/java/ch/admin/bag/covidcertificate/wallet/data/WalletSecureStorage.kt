@@ -32,6 +32,7 @@ class WalletSecureStorage private constructor(context: Context) {
 		private const val KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX = "TRANSFER_CODE_PRIVATE_KEY_"
 		private const val KEY_VACCINATION_HINT_DISMISS_TIMESTAMP = "KEY_VACCINATION_HINT_DISMISS_TIMESTAMP"
 		private const val KEY_LAST_SCAN_TIMES = "KEY_LAST_SCAN_TIMES"
+		private const val KEY_DISMISSED_EOL_BANNERS = "KEY_DISMISSED_EOL_BANNERS"
 		private val moshi = Moshi.Builder().build()
 		private val longListAdapter =
 			moshi.adapter<List<Long>>(Types.newParameterizedType(List::class.java, Long::class.javaObjectType))
@@ -115,6 +116,15 @@ class WalletSecureStorage private constructor(context: Context) {
 		prefs.edit {
 			putString(KEY_LAST_SCAN_TIMES, longListAdapter.toJson(emptyList()))
 		}
+	}
+
+	fun getDismissedEolBanners(): Set<String> {
+		return prefs.getStringSet(KEY_DISMISSED_EOL_BANNERS, emptySet()) ?: emptySet()
+	}
+
+	fun addDismissedEolBanner(qrCodeData: String) {
+		val dismissedEolBanners = getDismissedEolBanners() + qrCodeData
+		prefs.edit { putStringSet(KEY_DISMISSED_EOL_BANNERS, dismissedEolBanners) }
 	}
 
 }

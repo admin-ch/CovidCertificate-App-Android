@@ -15,6 +15,7 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.extensions.isChAusnahmeTest
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isSerologicalTest
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -125,6 +126,9 @@ sealed class WalletDataListItem {
 			state: VerificationState,
 			certType: CertType?,
 		) {
+			val isSerologicalTest = (certificate?.certificate as? DccCert)?.tests?.firstOrNull()?.isSerologicalTest() ?: false
+			val isChAusnahmeTest = (certificate?.certificate as? DccCert)?.tests?.firstOrNull()?.isChAusnahmeTest() ?: false
+
 			val backgroundColorId: Int
 			val textColorId: Int
 			when {
@@ -132,7 +136,19 @@ sealed class WalletDataListItem {
 					backgroundColorId = R.color.greyish
 					textColorId = R.color.grey
 				}
-				certType == CertType.TEST || certType == CertType.LIGHT -> {
+				certType == CertType.TEST -> {
+					when {
+						isSerologicalTest || isChAusnahmeTest -> {
+							backgroundColorId = R.color.blue
+							textColorId = R.color.white
+						}
+						else -> {
+							backgroundColorId = R.color.blueish
+							textColorId = R.color.blue
+						}
+					}
+				}
+				certType == CertType.LIGHT -> {
 					backgroundColorId = R.color.blueish
 					textColorId = R.color.blue
 				}
@@ -151,11 +167,10 @@ sealed class WalletDataListItem {
 				CertType.LIGHT -> R.string.wallet_certificate_list_light_certificate_badge
 				CertType.RECOVERY -> R.string.certificate_reason_recovered
 				CertType.TEST -> {
-					val isSerologicalTest = (certificate?.certificate as? DccCert)?.tests?.firstOrNull()?.isSerologicalTest() ?: false
-					if (isSerologicalTest) {
-						R.string.certificate_reason_recovered
-					} else {
-						R.string.certificate_reason_tested
+					when {
+						isSerologicalTest -> R.string.certificate_reason_recovered
+						isChAusnahmeTest -> R.string.covid_certificate_ch_ausnahme_list_label
+						else -> R.string.certificate_reason_tested
 					}
 				}
 				else -> R.string.certificate_reason_vaccinated
