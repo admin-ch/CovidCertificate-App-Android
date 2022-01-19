@@ -423,15 +423,6 @@ class CertificateDetailItemListBuilder(
 				)
 			)
 		}
-		testEntry.getFormattedResultDate(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { resultDate ->
-			detailItems.add(
-				ValueItem(
-					R.string.wallet_certificate_test_result_date_title,
-					resultDate,
-					showEnglishVersionForLabels
-				)
-			)
-		}
 
 		testEntry.getTestCenter()?.let { testCenter ->
 			detailItems.add(ValueItem(R.string.wallet_certificate_test_done_by, testCenter, showEnglishVersionForLabels))
