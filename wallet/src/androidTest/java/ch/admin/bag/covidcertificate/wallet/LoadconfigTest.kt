@@ -14,6 +14,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import ch.admin.bag.covidcertificate.common.browserstack.AirplaneMode
+import ch.admin.bag.covidcertificate.common.browserstack.BadNetwork
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import org.hamcrest.Matcher
 import org.hamcrest.Matchers.*
@@ -23,6 +24,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @AirplaneMode
+@BadNetwork
 @LargeTest
 @RunWith(AndroidJUnit4::class)
 class LoadconfigTest : EspressoUtil() {

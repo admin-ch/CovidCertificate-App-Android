@@ -10,6 +10,7 @@ import androidx.test.runner.AndroidJUnit4
 import ch.admin.bag.covidcertificate.common.browserstack.AirplaneMode
 import ch.admin.bag.covidcertificate.common.browserstack.BadNetwork
 import ch.admin.bag.covidcertificate.common.browserstack.Normal
+import ch.admin.bag.covidcertificate.common.browserstack.Onboarding
 import org.hamcrest.Matchers.allOf
 import org.junit.FixMethodOrder
 import org.junit.Rule
@@ -17,10 +18,7 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.MethodSorters
 
-@Normal
-@BadNetwork
-@AirplaneMode
-@LargeTest
+@Onboarding
 @RunWith(AndroidJUnit4::class)
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class OnboardingTest : EspressoUtil() {
