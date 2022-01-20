@@ -153,8 +153,7 @@ class CertificateLightDetailFragment : Fragment(R.layout.fragment_certificate_li
 	private fun displayCertificateDetails() {
 		val chLightCert = certificateHolder.certificate as? ChLightCert ?: return
 
-		val name = "${chLightCert.person.familyName} ${chLightCert.person.givenName}"
-		binding.certificateLightDetailName.text = name
+		binding.certificateLightDetailName.text = chLightCert.person.prettyName()
 		val dateOfBirth = chLightCert.dateOfBirth.prettyPrintIsoDateTime(DEFAULT_DISPLAY_DATE_FORMATTER)
 		binding.certificateLightDetailBirthdate.text = dateOfBirth
 	}

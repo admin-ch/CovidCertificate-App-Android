@@ -77,7 +77,7 @@ class CertificatePagerFragment : Fragment() {
 		val qrCodeDrawable = BitmapDrawable(resources, qrCodeBitmap).apply { isFilterBitmap = false }
 		binding.certificatePageQrCode.setImageDrawable(qrCodeDrawable)
 
-		val name = certificateHolder?.certificate?.getPersonName()?.let { "${it.familyName} ${it.givenName}" }
+		val name = certificateHolder?.certificate?.getPersonName()?.prettyName() ?: ""
 		binding.certificatePageName.text = name
 		binding.certificatePageBirthdate.text = certificateHolder?.certificate?.getFormattedDateOfBirth()
 		binding.certificatePageCard.setCutOutCardBackground()

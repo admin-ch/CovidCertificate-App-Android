@@ -113,8 +113,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 	}
 
 	private fun displayCertificateDetails() {
-		val name = certificateHolder.certificate.getPersonName().let { "${it.familyName} ${it.givenName}" }
-		binding.certificatePageName.text = name
+		binding.certificatePageName.text = certificateHolder.certificate.getPersonName().prettyName()
 		binding.certificatePageBirthdate.text = certificateHolder.certificate.getFormattedDateOfBirth()
 	}
 
