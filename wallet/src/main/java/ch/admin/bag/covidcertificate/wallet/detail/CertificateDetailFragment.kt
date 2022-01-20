@@ -45,6 +45,7 @@ import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isChAusnahmeTest
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
+import ch.admin.bag.covidcertificate.sdk.core.extensions.isPositiveRatTest
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
@@ -224,6 +225,8 @@ class CertificateDetailFragment : Fragment() {
 		val dccCert = certificateHolder.certificate as? DccCert
 		if (dccCert?.tests?.first()?.isChAusnahmeTest() == true) {
 			binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_ausnahme)
+		} else if (dccCert?.tests?.first()?.isPositiveRatTest() == true) {
+			binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_positive_antigen)
 		} else {
 			binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note)
 		}
