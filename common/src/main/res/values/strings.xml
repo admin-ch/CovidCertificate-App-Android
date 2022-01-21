@@ -1477,56 +1477,59 @@ The holder may be required to wear a face mask at events and facilities requirin
 This certificate is only valid for a limited period of time. You can check the current duration of validity in Switzerland at any time using the COVID Certificate app."</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Shortened period of validity"</string>
 
     <!-- banner title in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Shortened period of validity"</string>
 
     <!-- banner text in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_text">"This certificate will soon expire."</string>
 
     <!-- more info 'button' text in banner in certicate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_more_info">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_more_info">"More information"</string>
 
     <!-- title for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_title">"Info"</string>
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1">"As of 31 Jan 2022 a shortened period of validity of 270 instead of 365 days applies to COVID vaccination or recovery certificates in Switzerland. This certificate is directly affected by the shortened period of validity:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist nach dem 1.2.2022 nur noch wenige Tage gültig. Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum, welches nach dem 1.2.2022 mit der reduzierten Dauer von 270 Tagen berechnet wird."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"This COVID certificate will only be valid for a few days after 31 Jan 2022."</string>
 
     <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"More information"</string>
 
     <!-- link url for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url"></string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/why-period-validity-certificates-vaccination-or-recovery-being-shortened-365-270"</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_homescreen_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_homescreen_title">"Shortened period of validity"</string>
 
     <!-- banner title in certificate detail view. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_detail_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_title">"Shortened period of validity"</string>
 
     <!-- banner text in certificate detail view. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_text">"This certificate will soon expire."</string>
 
     <!-- more info 'button' text in banner in certicate detail view. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_detail_more_info">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_more_info">"More information"</string>
 
     <!-- title for pop up. case: certificate will be invalid at time of validity change. -->
     <string name="wallet_eol_banner_invalid_from_first_february_popup_title">"Info"</string>
 
     <!-- text for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_text1">"As of 31 Jan 2022 a shortened period of validity of 270 instead of 365 days applies to COVID vaccination or recovery certificates in Switzerland. This certificate is directly affected by the shortened period of validity:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_bold_text">"Dieses Covid-Zertifikat kann nach dem 1.2.2022 nicht mehr verwendet werden, da die Gültigkeit dann bereits abgelaufen ist."</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_bold_text">"This COVID certificate can no longer be used after 31 Jan 2022 as the period of validity will already have expired."</string>
 
     <!-- link text for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_text">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_text">"More information"</string>
 
     <!-- link url for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url"></string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/why-period-validity-certificates-vaccination-or-recovery-being-shortened-365-270"</string>
+
+    <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Please note the expiry date shown on your certificate, which from 31 Jan 2022 is calculated based on the shortened period of validity of 270 days."</string>
 </resources>

@@ -1481,56 +1481,59 @@ Alle manifestazioni e nelle strutture per le quali vige l’obbligo del certific
 Questo certificato ha soltanto una validità temporanea. L'applicazione «COVID Certificate» consente di verificare in qualsiasi momento l'attuale durata di validità in Svizzera."</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Durata di validità abbreviata"</string>
 
     <!-- banner title in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Durata di validità abbreviata"</string>
 
     <!-- banner text in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_text">"Questo certificato sta per scadere."</string>
 
     <!-- more info 'button' text in banner in certicate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_more_info">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_more_info">"Per saperne di più"</string>
 
     <!-- title for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_title">"Info"</string>
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1">"Dal 31 gennaio 2022 in Svizzera vige una durata di validità del certificato COVID per persone vaccinate o guarite di 270 anziché di 365 giorni. Questo certificato è interessato direttamente dall’abbreviazione della durata di validità:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist nach dem 1.2.2022 nur noch wenige Tage gültig. Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum, welches nach dem 1.2.2022 mit der reduzierten Dauer von 270 Tagen berechnet wird."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Questo certificato COVID scade pochi giorni dopo il 31 gennaio 2022."</string>
 
     <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Per saperne di più"</string>
 
     <!-- link url for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url"></string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url">"https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/perche-la-durata-di-validita-dei-certificati-di-vaccinazione-o-di-guarigione-e"</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_homescreen_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_homescreen_title">"Durata di validità abbreviata"</string>
 
     <!-- banner title in certificate detail view. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_detail_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_title">"Durata di validità abbreviata"</string>
 
     <!-- banner text in certificate detail view. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_text">"Questo certificato sta per scadere."</string>
 
     <!-- more info 'button' text in banner in certicate detail view. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_detail_more_info">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_more_info">"Per saperne di più"</string>
 
     <!-- title for pop up. case: certificate will be invalid at time of validity change. -->
     <string name="wallet_eol_banner_invalid_from_first_february_popup_title">"Info"</string>
 
     <!-- text for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_text1">"Dal 31 gennaio 2022 in Svizzera vige una durata di validità del certificato COVID per persone vaccinate o guarite di 270 anziché di 365 giorni. Questo certificato è interessato direttamente dall’abbreviazione della durata di validità:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_bold_text">"Dieses Covid-Zertifikat kann nach dem 1.2.2022 nicht mehr verwendet werden, da die Gültigkeit dann bereits abgelaufen ist."</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_bold_text">"La scadenza della durata di validità di questo certificato COVID è il 31 gennaio 2022. Pertanto il certificato non è più utilizzabile dopo quella data."</string>
 
     <!-- link text for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_text">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_text">"Per saperne di più"</string>
 
     <!-- link url for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url"></string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url">"https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/perche-la-durata-di-validita-dei-certificati-di-vaccinazione-o-di-guarigione-e"</string>
+
+    <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Verifichi la data di scadenza indicata sul certificato, che dal 31 gennaio 2022 è calcolata su una durata di validità ridotta a 270 giorni."</string>
 </resources>
