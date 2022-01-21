@@ -2569,13 +2569,13 @@
     "de": {
       "invalidFromFirstFebruary": {
         "homescreenHexColor": "#ffde27",
-        "homescreenTitle": "Verkürzte Gültigkeit",
+        "homescreenTitle": "Verkürzte Gültigkeitsdauer",
         "detailHexColor": "#ffde27",
-        "detailTitle": "Verkürzte Gültigkeit",
+        "detailTitle": "Verkürzte Gültigkeitsdauer",
         "detailText": "Dieses Zertifikat wird bald ablaufen.",
         "detailMoreInfo": "Mehr erfahren",
         "popupTitle": "Info",
-        "popupText1": "Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:",
+        "popupText1": "Per 31. Jan. 2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:",
         "popupBoldText": "Dieses Covid-Zertifikat kann ab dem 31. Jan. 2022 nicht mehr verwendet werden, da die Gültigkeitsdauer dann bereits abgelaufen sein wird.",
         "popupText2": null,
         "popupLinkText": "Mehr erfahren",
@@ -2583,9 +2583,9 @@
       },
       "invalidInThreeWeeks": {
         "homescreenHexColor": "#ffde27",
-        "homescreenTitle": "Verkürzte Gültigkeit",
+        "homescreenTitle": "Verkürzte Gültigkeitsdauer",
         "detailHexColor": "#ffde27",
-        "detailTitle": "Verkürzte Gültigkeit",
+        "detailTitle": "Verkürzte Gültigkeitsdauer",
         "detailText": "Dieses Zertifikat wird bald ablaufen.",
         "detailMoreInfo": "Mehr erfahren",
         "popupTitle": "Info",
