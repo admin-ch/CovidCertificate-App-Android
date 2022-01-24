@@ -1483,10 +1483,10 @@ Die Inhaberin oder der Inhaber kann entsprechend dem jeweils gültigen Schutzkon
 Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen."</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Verkürzte Gültigkeitsdauer"</string>
 
     <!-- banner title in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Verkürzte Gültigkeitsdauer"</string>
 
     <!-- banner text in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
@@ -1498,22 +1498,24 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_title">"Info"</string>
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+    <!-- Fuzzy -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1">"Per 31. Jan. 2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist nach dem 1.2.2022 nur noch wenige Tage gültig. Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum, welches nach dem 1.2.2022 mit der reduzierten Dauer von 270 Tagen berechnet wird."</string>
+    <!-- Fuzzy -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist ab dem 31. Jan. 2022 nur noch wenige Tage gültig."</string>
 
     <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Mehr erfahren"</string>
 
     <!-- link url for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url"></string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/warum-wird-die-gueltigkeitsdauer-der-zertifikate-fuer-eine-impfung-oder-eine"</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_homescreen_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_homescreen_title">"Verkürzte Gültigkeitsdauer"</string>
 
     <!-- banner title in certificate detail view. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_detail_title">"Verkürzte Gültigkeit"</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_detail_title">"Verkürzte Gültigkeitsdauer"</string>
 
     <!-- banner text in certificate detail view. case: certificate will be invalid at time of validity change. -->
     <string name="wallet_eol_banner_invalid_from_first_february_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
@@ -1525,14 +1527,18 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
     <string name="wallet_eol_banner_invalid_from_first_february_popup_title">"Info"</string>
 
     <!-- text for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_text">"Per 1.2.2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+    <!-- Fuzzy -->
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_text1">"Per 31. Jan. 2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_bold_text">"Dieses Covid-Zertifikat kann nach dem 1.2.2022 nicht mehr verwendet werden, da die Gültigkeit dann bereits abgelaufen ist."</string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_bold_text">"Dieses Covid-Zertifikat kann ab dem 31. Jan. 2022 nicht mehr verwendet werden, da die Gültigkeitsdauer dann bereits abgelaufen sein wird."</string>
 
     <!-- link text for pop up. case: certificate will be invalid at time of validity change. -->
     <string name="wallet_eol_banner_invalid_from_first_february_popup_link_text">"Mehr erfahren"</string>
 
     <!-- link url for pop up. case: certificate will be invalid at time of validity change. -->
-    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url"></string>
+    <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/warum-wird-die-gueltigkeitsdauer-der-zertifikate-fuer-eine-impfung-oder-eine"</string>
+
+    <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum, welches ab dem 31.1.2022 mit der reduzierten Gültigkeitsdauer von 270 Tagen berechnet wird."</string>
 </resources>

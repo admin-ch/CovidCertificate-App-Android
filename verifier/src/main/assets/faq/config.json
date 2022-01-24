@@ -1,953 +1,953 @@
 {
-	"forceUpdate": false,
-	"infoBox": null,
-	"questions": null,
-	"works": {
-		"de": {
-			"faqTitle": "So werden Covid-Zertifikate geprüft",
-			"faqSubTitle": "Mit der COVID Certificate Check App können QR-Codes auf Covid-Zertifikaten gescannt und die Zertifikate auf Echtheit und Gültigkeit überprüft werden.",
-			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
-			"faqEntries": [
-				{
-					"title": "Wie können Covid-Zertifikate geprüft werden?",
-					"text": "Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App mit der dafür vorgesehenen COVID Certificate Check App.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Erklärvideo",
-					"linkUrl": "https://youtu.be/DClLZIUjr3w"
-				},
-				{
-					"title": "Was wird genau geprüft?",
-					"text": "Beim Scannen werden drei Aspekte geprüft:\n– Enthält das Zertifikat eine gültige elektronische Signatur?\n– Ist das Zertifikat nicht widerrufen worden?\n– Entspricht das Zertifikat den Gültigkeitskriterien der Schweiz?\n\nWenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als gültig ausgewiesen.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Was sind die aktuellen Gültigkeitskriterien der Schweiz?",
-					"text": "Die aktuell geltende Gültigkeitsdauer von Covid-Zertifikaten finden Sie hier:",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Weitere Informationen",
-					"linkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
-				},
-				{
-					"title": "Welche Ausweisdokumente sind gültig? Weshalb müssen die Personalien überprüft werden?",
-					"text": "Neben Pass oder ID werden auch andere Ausweisdokumente akzeptiert, die die Identität der betreffenden Person mit einem Foto belegen (z.B. Führerausweis). Das Covid-Zertifikat ist zwar fälschungssicher, mit der Überprüfung der Personalien wird aber erst sichergestellt, dass das vorgezeigte Zertifikat auch auf den Vorweisenden ausgestellt wurde.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Welche Daten sehe ich beim Prüfvorgang?",
-					"text": "Beim Prüfvorgang sehen Sie nur den Namen und das Geburtsdatum der Zertifikatsinhaberin oder des Zertifikatsinhabers und ob das Covid-Zertifikat gültig ist.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Werden beim Prüfvorgang in der COVID Certificate Check App oder in einem zentralen System Daten gespeichert?",
-					"text": "Nein, beim Prüfvorgang werden keine Daten gespeichert - weder in der COVID Certificate Check App noch in einem zentralen System. Es ist somit nicht möglich nachzuvollziehen, welches Covid-Zertifikat von wem, wann und wo überprüft wurde.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Können Zertifikate auch offline geprüft werden?",
-					"text": "Grundsätzlich können Covid-Zertifikate auch ohne eine Internetverbindung geprüft werden. Dazu werden regelmässig aktualisierte Prüflisten von einem zentralen Server heruntergeladen. Diese lokal gespeicherten Prüflisten dürfen nicht älter als 48h sein. \n\nUm die Prüflisten zu aktualisieren muss die App mit dem Internet verbunden sein und geöffnet werden. Die Aktualisierung erfolgt unmittelbar und automatisch.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Was ist das Zertifikat Light?",
-					"text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 24 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 24 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Wie kann ein Zertifikat Light wieder in ein EU/EFTA-konformes Covid-Zertifikat umgewandelt werden?",
-					"text": "Das Zertifikat Light kann durch die Halterin / den Halter jederzeit in der «COVID Certificate»-App deaktiviert werden. Danach steht das normale Covid-Zertifikat wieder zur Verfügung.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				}
-			]
-		},
-		"en": {
-			"faqTitle": "How COVID certificates are checked",
-			"faqSubTitle": "The COVID Certificate Check app can be used to scan the QR codes on COVID certificates and check the certificates for authenticity and validity.",
-			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
-			"faqEntries": [
-				{
-					"title": "How can COVID certificates be checked?",
-					"text": "To check a COVID certificate, use the dedicated COVID Certificate Check app to scan the QR code on the paper certificate or in the COVID Certificate app presented.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Explanatory video",
-					"linkUrl": "https://youtu.be/spfVPMqukjM"
-				},
-				{
-					"title": "What exactly is checked?",
-					"text": "Three aspects are checked when scanning:\n– Does the certificate contain a valid electronic signature?\n– Is the certificate unrevoked?\n– Does the certificate meet Switzerland's validity criteria?\n\nIf the answer to all three questions is affirmative, the COVID certificate is shown as valid.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "What are the current validity criteria in Switzerland?",
-					"text": "The current validity period of COVID certificates can be found here:",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Further information",
-					"linkUrl": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
-				},
-				{
-					"title": "Which identification documents are valid? Why do personal details have to be checked?",
-					"text": "Aside from passports or ID cards, other photo identification documents that prove the identity of the person in question (e.g. driving licence) are also accepted. Although the COVID certificate is forgery-proof, the only way to ensure that the certificate shown was issued to the person presenting it is to check the personal details.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "What data do I see during the verification process?",
-					"text": "During the verification process, you see only the certificate holder's name and date of birth, and whether the COVID certificate is valid.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Is any data stored in the COVID Certificate Check app or in a central system during the verification process?",
-					"text": "No, no data is stored during the verification process, be it in the COVID Certificate Check app or in a central system. Therefore, it is not possible to trace which COVID certificate was checked by whom, when and where.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Is it possible to verify the certificates offline?",
-					"text": "In principle, COVID certificates can also be verified without an Internet connection. For this purpose, regularly updated checklists are downloaded from a central server. These locally stored checklists must not be older than 48 hours. \n\nIn order to update the checklists, the app must be open and connected to the Internet. Updating occurs immediately and automatically.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "What is the 'certificate light'",
-					"text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 24 hours and must then be reactivated. If you need to use the normal certificate before the end of the 24-hour period, you can simply deactivate the 'certificate light'.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "How can a 'certificate light' be converted back into an EU/EFTA-compliant COVID certificate?",
-					"text": "The holder can deactivate a 'certificate light' any time in their COVID Certificate app. After that their normal COVID certificate is available again.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				}
-			]
-		},
-		"fr": {
-			"faqTitle": "Contrôle de certificats COVID",
-			"faqSubTitle": "L'app de contrôle permet de scanner le code QR figurant sur un certificat COVID et de vérifier l'authenticité et la validité de ce dernier.",
-			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
-			"faqEntries": [
-				{
-					"title": "Comment contrôler un certificat COVID?",
-					"text": "Pour contrôler un certificat COVID, il vous suffit de scanner le code QR figurant sur le document papier ou dans l'app «COVID Certificate» au moyen de l'app de contrôle prévue à cet effet.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Vidéo explicative",
-					"linkUrl": "https://youtu.be/O-9YhJDI3ZI"
-				},
-				{
-					"title": "Sur quoi porte le contrôle au juste?",
-					"text": "Le scan du code QR permet de répondre aux trois questions suivantes:\n– Le certificat contient-il une signature électronique valable?\n– Le certificat a-t-il été révoqué?\n– Le certificat remplit-il les critères de validité fixés par la Suisse?\n\nSi vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la validité du certificat COVID est attestée.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Quels sont les critères de validité actuels de la Suisse ?",
-					"text": "Vous trouverez des informations sur la durée de validité actuelle du certificat COVID à l’adresse suivante :",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Informations supplémentaires",
-					"linkUrl": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
-				},
-				{
-					"title": "Quelles pièces d'identité sont valables? Pourquoi faut-il vérifier les données personnelles?",
-					"text": "Outre le passeport et la carte d'identité, les pièces d'identité réputées valables sont celles qui attestent l'identité de la personne concernée au moyen d'une photo (par ex. permis de conduire). Le certificat COVID est certes infalsifiable, mais le contrôle des données personnelles est le seul moyen de vérifier que le certificat a été établi au nom de la personne qui le présente.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "À quelles données ai-je accès lors du contrôle?",
-					"text": "Lors du contrôle, vous n'avez accès qu'au nom et à la date de naissance du détenteur du certificat et voyez seulement si le certificat COVID est valable.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Quid du stockage des données lors du contrôle?",
-					"text": "Aucune des données auxquelles vous avez accès lors du contrôle n'est stockée dans l'app ou dans un système central. Il est par conséquent impossible de savoir quel certificat COVID a été vérifié par qui, quand et où.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "La vérification des certificats est-elle possible hors ligne ?",
-					"text": "En principe, il est aussi possible de vérifier les certificats COVID sans connexion Internet. À cette fin, des listes de contrôle régulièrement mises à jour sont téléchargées à partir d’un serveur central. Elles sont enregistrées localement et ne doivent pas remonter à plus de 48 h.\n\nPour actualiser les listes de contrôle, l’application doit être ouverte et connectée à Internet. La mise à jour s’effectue immédiatement et automatiquement.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Qu’est-ce que le certificat light ?",
-					"text": "L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Ce certificat « light » indique uniquement si le certificat présenté est valide, sans fournir de données sur la santé.\n\nL’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.\n\nLe certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 24 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Comment reconvertir un certificat light en certificat COVID conforme aux normes UE/AELE ?",
-					"text": "Le détenteur peut en tout temps désactiver le certificat light dans l’application «COVID Certificate». Le certificat COVID standard est alors à nouveau disponible.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				}
-			]
-		},
-		"it": {
-			"faqTitle": "Come avviene la verifica dei certificati COVID?",
-			"faqSubTitle": "Con l'app COVID Certificate Check è possibile scansionare i relativi codici QR e verificare l'autenticità e la validità dei certificati COVID.",
-			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
-			"faqEntries": [
-				{
-					"title": "Come posso verificare i certificati COVID?",
-					"text": "Per verificare un certificato COVID tramite l'app COVID Certificate Check, può scansionare il codice QR che trova sulla copia cartacea del certificato oppure sull’app che le viene mostrata.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Video esplicativo",
-					"linkUrl": "https://youtu.be/b4JXnfr2Ugg"
-				},
-				{
-					"title": "Cosa viene verificato esattamente?",
-					"text": "Scansionando il codice QR vengono verificati i seguenti tre aspetti.\n– Il certificato contiene una firma elettronica valida?\n– Il certificato è ancora valido?\n– Il certificato rispetta i criteri di validità previsti dalla normativa svizzera?\n\nSe tutti i tre aspetti sono valutati positivamente, il certificato COVID è considerato valido.\n",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Quali sono attualmente i criteri di validità in Svizzera?",
-					"text": "L’attuale durata di validità dei certificati COVID è consultabile qui:",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Ulteriori informazioni",
-					"linkUrl": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
-				},
-				{
-					"title": "Quali documenti di legittimazione sono accettati o validi? Perché devono essere verificati i dati personali?",
-					"text": "Oltre al passaporto o alla carta d'identità sono accettati altri documenti che provano l'identità della persona in questione tramite una foto (ad es. licenza di condurre). Il certificato COVID non è falsificabile, tuttavia solo verificando i dati personali si garantisce che il certificato sia stato effettivamente rilasciato alla persona che lo sta mostrando.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Quali dati posso visualizzare durante il processo di verifica?",
-					"text": "Durante il processo di verifica visualizzerà solo nome e cognome nonché la data di nascita del titolare del certificato e l'indicazione della validità del certificato.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Durante il processo di verifica vengono salvati dati nell'app COVID Certificate Check o in un sistema centrale?",
-					"text": "No, durante il processo di verifica non vengono salvati dati nell'app COVID Certificate Check né in un sistema centrale. In questo modo, non è possibile risalire a quali certificati sono stati verificati, da chi, quando e dove.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "I certificati possono essere verificati anche offline?",
-					"text": "In linea di principio, i certificati COVID possono essere verificati anche senza connessione Internet. A tale scopo, vengono scaricati regolarmente da un server centrale gli elenchi di verifica aggiornati. Questi elenchi salvati localmente non devono avere più di 48 ore. \n\nPer poter aggiornare gli elenchi di verifica, l’app deve essere aperta e collegata a Internet. L’aggiornamento avviene in modo immediato e automatico.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Che cos'è il certificato light?",
-					"text": "L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.\n\nIl certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».\n\nIl «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 24 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 24 ore, il certificato light può essere disattivato semplicemente.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Come si fa a trasformare un certificato light nuovamente in un certificato COVID conforme all’UE/AELS?",
-					"text": "Il certificato light può essere disattivato dal titolare in qualsiasi momento nell’app «COVID Certificate», dopodiché il certificato COVID di base è di nuovo disponibile.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				}
-			]
-		},
-		"rm": {
-			"faqTitle": "Uschia vegnan verifitgads ils certificats COVID",
-			"faqSubTitle": "Cun l'app COVID Certificate Check pon vegnir scannads ils codes QR sin ils certificats COVID per verifitgar l'autenticitad e la valaivladad dals certificats.",
-			"faqIntroSections": null,
-			"faqIconIos": "ic-faq-image",
-			"faqIconAndroid": "ic_faq_image",
-			"faqEntries": [
-				{
-					"title": "Co pon vegnir verifitgads ils certificats COVID?",
-					"text": "Per verifitgar in certificat COVID pudais Vus scannar il code QR sin Voss certificat sin palpiri u en l'app COVID Certificate cun l’app «COVID Certificate Check» previsa per quai.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Video explicativ",
-					"linkUrl": "https://youtu.be/DClLZIUjr3w"
-				},
-				{
-					"title": "Tge vegn propi verifitgà?",
-					"text": "Cun scannar vegnan verifitgads trais aspects:\n– Cuntegna il certificat ina signatura digitala valaivla?\n– N'è il certificat betg vegnì revocà?\n– Correspunda il certificat als criteris da valaivladad en Svizra?\n\nSche tut ils trais aspects vegnan valitads en moda positiva, vegn il certificat COVID considerà sco valaivel.\n",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Tge èn ils criteris da valaivladad actuals da la Svizra?",
-					"text": "La durada da valaivladad vertenta actuala dals certificats COVID chattais Vus qua:",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": "Ulteriuras infurmaziuns",
-					"linkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
-				},
-				{
-					"title": "Tge documents da legitimaziun vegnan acceptads resp. èn valaivels? Pertge ston vegnir verifitgadas las persunalias?",
-					"text": "Ultra dal passaport e da la ID vegnan acceptads er auters documents da legitimaziun valaivels che cumprovan l’identitad da la persuna pertutgada cun ina fotografia (p.ex. permiss dad ir cun auto). Il certificat COVID na po bain betg vegnir falsifitgà, però pir cun verifitgar las persunalias vegn controllà, sch'il certificat preschentà è vegnì emess per la persuna ch'al preschenta.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Tge datas ves jau tar la procedura da verificaziun?",
-					"text": "Tar la procedura da verificaziun vesais Vus mo il num e la data da naschientscha da la possessura u dal possessur dal certificat e sch'il certificat COVID è valaivel.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Vegnan arcunadas datas en in sistem central u en l'app COVID Certificate Check tar la procedura da verificaziun?",
-					"text": "Na, tar la procedura da verificaziun na vegnan arcunadas naginas datas – ni en l'app COVID Certificate Check ni en in sistem central? I n'è pia betg pussaivel d'identifitgar tge certificat COVID ch'è vegnì verifitgà da tgi, cura e nua.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Pon ils certificats er vegnir verifitgads offline?",
-					"text": "Da princip pon ils certificats COVID er vegnir verifitgads senza ina colliaziun cun l'internet. Per far quai vegnan chargiadas giu regularmain d'in server central glistas da verificaziun actualisadas. Questas glistas da verificaziun arcunadas localmain na dastgan betg esser pli veglias che 48 uras.\n\nPer actualisar las glistas da verificaziun sto l'app esser colliada cun l'internet e vegnir averta. L'actualisaziun succeda immediatamain ed automaticamain.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Tge è in certificat light?",
-					"text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.\n\nL'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà.",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				},
-				{
-					"title": "Co po in certificat light puspè vegnir transfurmà en in certificat COVID confurm a la UE/AECL?",
-					"text": "La possessura u il possessur po deactivar da tut temp il certificat light en l'app «COVID Certificate». Alura stat puspè a disposiziun il certificat COVID normal. ",
-					"iconAndroid": null,
-					"iconIos": null,
-					"linkTitle": null,
-					"linkUrl": null
-				}
-			]
-		}
-	},
-	"androidTransferCheckIntervalMs": 0,
-	"androidTransferCheckBackoffMs": 0,
-	"timeshiftDetectionEnabled": false,
-	"checkModesInfos": {
-		"de": {
-			"infos": {
-				"THREE_G": {
-					"title": "3G",
-					"hexColor": "#86c5d9",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer 3G-Regelung geprüft wird."
-						},
-						{
-							"iconAndroid": "ic_3g",
-							"iconIos": "ic_3g",
-							"text": "In diesem Modus werden Covid-Zertifikate für Geimpfte, Genesene oder negativ Getestete akzeptiert."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light",
-							"iconIos": "ic-qr-certificate-light",
-							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus möglich."
-						}
-					]
-				},
-				"TWO_G": {
-					"title": "2G",
-					"hexColor": "#c2d076",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer 2G-Regelung geprüft wird."
-						},
-						{
-							"iconAndroid": "ic_2g",
-							"iconIos": "ic_2g",
-							"text": "In diesem Modus werden Covid-Zertifikate für Geimpfte oder Genesene akzeptiert."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."
-						}
-					]
-				},
-				"TWO_G_PLUS": {
-					"title": "2G+",
-					"hexColor": "#e6ad8e",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird."
-						},
-						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
-							"text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss."
-						},
-						{
-							"iconAndroid": "ic_info_alert",
-							"iconIos": "ic-info-alert",
-							"text": "Ausnahmen: Personen, deren vollständige Impfung, Auffrischimpfung oder Genesung nicht länger als 120 Tage zurückliegt."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Die Prüfung von Zertifikate Light ist in diesem Modus nicht möglich."
-						}
-					]
-				},
-				"TEST_CERT": {
-					"title": "Testzertifikat",
-					"hexColor": "#facafa",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Für Bereiche, bei denen ein gültiges Testzertifikat notwendig ist."
-						},
-						{
-							"iconAndroid": "ic_t",
-							"iconIos": "ic-t",
-							"text": "In diesem Modus werden Covid-Zertifikate für negativ Getestete basierend auf einem PCR- oder Antigen-Schnelltest akzeptiert."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Die Prüfung von Zertifikate Light ist in diesem Modus nicht möglich."
-						}
-					]
-				}
-			},
-			"unselected": {
-				"infos": [
-					{
-						"iconAndroid": "ic_expire_i",
-						"iconIos": "ic-expire-i",
-						"text": "Wählen Sie den Prüfmodus, in welchem Sie Covid-Zertifikate prüfen möchten."
-					},
-					{
-						"iconAndroid": "ic_settings",
-						"iconIos": "ic-settings",
-						"text": "Der Prüfmodus kann jederzeit geändert werden."
-					}
-				]
-			}
-		},
-		"en": {
-			"infos": {
-				"THREE_G": {
-					"title": "3G",
-					"hexColor": "#86c5d9",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "For organisations and events applying the 3G rule."
-						},
-						{
-							"iconAndroid": "ic_3g",
-							"iconIos": "ic_3g",
-							"text": "In this mode, COVID certificates are accepted for people who have been vaccinated, or who have recovered or tested negative."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light",
-							"iconIos": "ic-qr-certificate-light",
-							"text": "It is possible to verify a \"light\" certificate in this mode."
-						}
-					]
-				},
-				"TWO_G": {
-					"title": "2G",
-					"hexColor": "#c2d076",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "For organisations and events applying the 2G rule."
-						},
-						{
-							"iconAndroid": "ic_2g",
-							"iconIos": "ic_2g",
-							"text": "In this mode, COVID certificates are accepted for people who have been vaccinated or who have recovered."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "It is not possible to verify a \"light\" certificate in this mode."
-						}
-					]
-				},
-				"TWO_G_PLUS": {
-					"title": "2G+",
-					"hexColor": "#e6ad8e",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "For organisations and events applying the 2G+ rule."
-						},
-						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
-							"text": "In addition to a COVID certificate for people who have been vaccinated or who have recovered, a valid test certificate is required. This must be verified separately."
-						},
-						{
-							"iconAndroid": "ic_info_alert",
-							"iconIos": "ic-info-alert",
-							"text": "Exceptions: People who have been fully vaccinated, received a booster vaccination or recovered (based on a PCR test) no longer than 120 days ago"
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "It is not possible to verify \"light\" certificates in this mode."
-						}
-					]
-				},
-				"TEST_CERT": {
-					"title": "Test certificate",
-					"hexColor": "#facafa",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "For areas in which a valid test certificate is required."
-						},
-						{
-							"iconAndroid": "ic_t",
-							"iconIos": "ic-t",
-							"text": "In this mode, COVID certificates are accepted for people who have tested negative based on a PCR or rapid antigen test."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "It is not possible to verify \"light\" certificates in this mode."
-						}
-					]
-				}
-			},
-			"unselected": {
-				"infos": [
-					{
-						"iconAndroid": "ic_expire_i",
-						"iconIos": "ic-expire-i",
-						"text": "Select the verification mode that you want to use for verifying COVID certificates."
-					},
-					{
-						"iconAndroid": "ic_settings",
-						"iconIos": "ic-settings",
-						"text": "The verification mode can be changed at any time."
-					}
-				]
-			}
-		},
-		"fr": {
-			"infos": {
-				"THREE_G": {
-					"title": "3G",
-					"hexColor": "#86c5d9",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Pour les entreprises et les manifestations où les contrôles se fondent sur la règle des «3G»."
-						},
-						{
-							"iconAndroid": "ic_3g",
-							"iconIos": "ic_3g",
-							"text": "Ce mode de contrôle permet de vérifier les certificats COVID des personnes vaccinées, guéries ou testées négatives."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light",
-							"iconIos": "ic-qr-certificate-light",
-							"text": "Il peut être également utilisé pour vérifier un «certificat light»."
-						}
-					]
-				},
-				"TWO_G": {
-					"title": "2G",
-					"hexColor": "#c2d076",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Pour les entreprises et les manifestations où les contrôles se fondent sur la règle des «2G»."
-						},
-						{
-							"iconAndroid": "ic_2g",
-							"iconIos": "ic_2g",
-							"text": "Ce mode de contrôle permet de vérifier les certificats COVID des personnes vaccinées ou guéries."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "La vérification d’un «certificat light» n'est pas possible dans ce mode."
-						}
-					]
-				},
-				"TWO_G_PLUS": {
-					"title": "2G+",
-					"hexColor": "#e6ad8e",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Pour les entreprises et les manifestations qui appliquent la règle des 2G+."
-						},
-						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
-							"text": "En plus d'un certificat COVID de vaccination ou de guérison, il faut présenter un certificat de test valable, qui doit être vérifié séparément."
-						},
-						{
-							"iconAndroid": "ic_info_alert",
-							"iconIos": "ic-info-alert",
-							"text": "Exceptions: les personnes dont la vaccination, la vaccination de rappel ou la guérison datent de moins de 120 jours"
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Ce mode ne permet pas de vérifier les «certificats light»."
-						}
-					]
-				},
-				"TEST_CERT": {
-					"title": "Certificat de test",
-					"hexColor": "#facafa",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Destiné aux domaines qui nécessitent un certificat de test valable."
-						},
-						{
-							"iconAndroid": "ic_t",
-							"iconIos": "ic-t",
-							"text": "Ce mode permet de vérifier les certificats des personnes qui disposent d'un résultat négatif à un test PCR ou à un test rapide antigénique."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Ce mode ne permet pas de vérifier les «certificats light»."
-						}
-					]
-				}
-			},
-			"unselected": {
-				"infos": [
-					{
-						"iconAndroid": "ic_expire_i",
-						"iconIos": "ic-expire-i",
-						"text": "Choisissez le mode de contrôle correspondant aux certificats COVID à vérifier. "
-					},
-					{
-						"iconAndroid": "ic_settings",
-						"iconIos": "ic-settings",
-						"text": "Le mode de contrôle peut être changé en tout temps."
-					}
-				]
-			}
-		},
-		"it": {
-			"infos": {
-				"THREE_G": {
-					"title": "3G",
-					"hexColor": "#86c5d9",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Per le strutture e le manifestazioni in cui si applica la regola 3G."
-						},
-						{
-							"iconAndroid": "ic_3g",
-							"iconIos": "ic_3g",
-							"text": "In questa modalità sono accettati i certificati COVID per persone vaccinate, guartite o testate negative."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light",
-							"iconIos": "ic-qr-certificate-light",
-							"text": "I certificati light possono essere verificati."
-						}
-					]
-				},
-				"TWO_G": {
-					"title": "2G",
-					"hexColor": "#c2d076",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Per le strutture e le manifestazioni in cui si applica la regola 2G."
-						},
-						{
-							"iconAndroid": "ic_2g",
-							"iconIos": "ic_2g",
-							"text": "In questa modalità sono accettati i certificati COVID per persone vaccinate o guartite."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "Questa modalità non permette di verificare i certificati light."
-						}
-					]
-				},
-				"TWO_G_PLUS": {
-					"title": "2G+",
-					"hexColor": "#e6ad8e",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Per strutture e manifestazioni cui si applica la regola 2G+."
-						},
-						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
-							"text": "Oltre a un certificato di vaccinazione o di guarigione COVID è richiesto un certificato di test valido, che deve essere verificato separatamente."
-						},
-						{
-							"iconAndroid": "ic_info_alert",
-							"iconIos": "ic-info-alert",
-							"text": "Eccezioni: Persone per le quali sono trascorsi al massimo 120 giorni dalla vaccinazione completa, dalla vaccinazione di richiamo o dalla guarigione."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "In questa modalità non è possibile verificare i certificati light."
-						}
-					]
-				},
-				"TEST_CERT": {
-					"title": "Certificato di test",
-					"hexColor": "#facafa",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Per i contesti in cui è richiesto un certificato di test valido."
-						},
-						{
-							"iconAndroid": "ic_t",
-							"iconIos": "ic-t",
-							"text": "In questa modalità sono accettati i certificati COVID rilasciati alle persone risultate negative a un test PCR o a un test antigenico rapido."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "In questa modalità non è possibile verificare i certificati light."
-						}
-					]
-				}
-			},
-			"unselected": {
-				"infos": [
-					{
-						"iconAndroid": "ic_expire_i",
-						"iconIos": "ic-expire-i",
-						"text": "Selezionare la modalità in cui verificare i certificati COVID."
-					},
-					{
-						"iconAndroid": "ic_settings",
-						"iconIos": "ic-settings",
-						"text": "La modalità di verifica può essere cambiata in qualsiasi momento."
-					}
-				]
-			}
-		},
-		"rm": {
-			"infos": {
-				"THREE_G": {
-					"title": "3G",
-					"hexColor": "#86c5d9",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Per manaschis ed occurrenzas cun ina regla da 3G."
-						},
-						{
-							"iconAndroid": "ic_3g",
-							"iconIos": "ic_3g",
-							"text": "En quest modus vegnan acceptads certificats COVID per persunas vaccinadas, per persunas guaridas u per persunas cun in test negativ."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light",
-							"iconIos": "ic-qr-certificate-light",
-							"text": "En quest modus po vegnir verifitgà in certificat light."
-						}
-					]
-				},
-				"TWO_G": {
-					"title": "2G",
-					"hexColor": "#c2d076",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Per manaschis ed occurrenzas cun ina regla da 2G."
-						},
-						{
-							"iconAndroid": "ic_2g",
-							"iconIos": "ic_2g",
-							"text": "En quest modus vegnan acceptads ils certificats COVID per persunas vaccinadas u per persunas guaridas."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "“Certificat light” na po betg vegnir verifitgà en il modus da verificaziun da 2G."
-						}
-					]
-				},
-				"TWO_G_PLUS": {
-					"title": "2G+",
-					"hexColor": "#e6ad8e",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Per manaschis ed occurrenzas, nua ch’i vegn verifitgà tenor la regla da 2G+."
-						},
-						{
-							"iconAndroid": "ic_2g_plus",
-							"iconIos": "ic-2-g-plus",
-							"text": "Ultra d’in certificat COVID per persunas vaccinadas e guaridas dovri in certificat d'in test valaivel che sto vegnir verifitgà separadamain."
-						},
-						{
-							"iconAndroid": "ic_info_alert",
-							"iconIos": "ic-info-alert",
-							"text": "Excepziuns: Persunas ch'èn vegnidas vaccinadas cumplettamain, che han laschà rinfrestgar la vaccinaziun u ch'èn guaridas (sin basa d'in test da PCR) avant maximalmain 120 dis"
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "En quest modus na pon vegnir verifitgads nagins certificats light."
-						}
-					]
-				},
-				"TEST_CERT": {
-					"title": "Certificat d'in test",
-					"hexColor": "#facafa",
-					"infos": [
-						{
-							"iconAndroid": "ic_expire_i",
-							"iconIos": "ic-expire-i",
-							"text": "Per secturs che dovran in certificat d'in test valaivel."
-						},
-						{
-							"iconAndroid": "ic_t",
-							"iconIos": "ic-t",
-							"text": "En quest modus vegnan acceptads certificats COVID per persunas cun in test negativ sin basa d’in test da PCR u d’in test svelt d’antigens."
-						},
-						{
-							"iconAndroid": "ic_qr_certificate_light_no",
-							"iconIos": "ic-qr-certificate-light-no",
-							"text": "En quest modus na pon vegnir verifitgads nagins certificats light."
-						}
-					]
-				}
-			},
-			"unselected": {
-				"infos": [
-					{
-						"iconAndroid": "ic_expire_i",
-						"iconIos": "ic-expire-i",
-						"text": "Tscherni il modus da verificaziun, en il qual Vus vulais verifitgar ils certificats COVID."
-					},
-					{
-						"iconAndroid": "ic_settings",
-						"iconIos": "ic-settings",
-						"text": "Il modus da verificaziun po vegnir midà da tut temp."
-					}
-				]
-			}
-		}
-	},
-	"checkModeReselectAfterHours": 48
+  "forceUpdate": false,
+  "infoBox": null,
+  "questions": null,
+  "works": {
+    "de": {
+      "faqTitle": "So werden Covid-Zertifikate geprüft",
+      "faqSubTitle": "Mit der COVID Certificate Check App können QR-Codes auf Covid-Zertifikaten gescannt und die Zertifikate auf Echtheit und Gültigkeit überprüft werden.",
+      "faqIntroSections": null,
+      "faqIconIos": "ic-faq-image",
+      "faqIconAndroid": "ic_faq_image",
+      "faqEntries": [
+        {
+          "title": "Wie können Covid-Zertifikate geprüft werden?",
+          "text": "Um ein Covid-Zertifikat zu prüfen, scannen Sie den QR-Code auf dem Papierzertifikat oder in der vorgewiesenen COVID Certificate App mit der dafür vorgesehenen COVID Certificate Check App.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Erklärvideo",
+          "linkUrl": "https://youtu.be/DClLZIUjr3w"
+        },
+        {
+          "title": "Was wird genau geprüft?",
+          "text": "Beim Scannen werden drei Aspekte geprüft:\n– Enthält das Zertifikat eine gültige elektronische Signatur?\n– Ist das Zertifikat nicht widerrufen worden?\n– Entspricht das Zertifikat den Gültigkeitskriterien der Schweiz?\n\nWenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als gültig ausgewiesen.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Was sind die aktuellen Gültigkeitskriterien der Schweiz?",
+          "text": "Die aktuell geltende Gültigkeitsdauer von Covid-Zertifikaten finden Sie hier:",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Weitere Informationen",
+          "linkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
+        },
+        {
+          "title": "Welche Ausweisdokumente sind gültig? Weshalb müssen die Personalien überprüft werden?",
+          "text": "Neben Pass oder ID werden auch andere Ausweisdokumente akzeptiert, die die Identität der betreffenden Person mit einem Foto belegen (z.B. Führerausweis). Das Covid-Zertifikat ist zwar fälschungssicher, mit der Überprüfung der Personalien wird aber erst sichergestellt, dass das vorgezeigte Zertifikat auch auf den Vorweisenden ausgestellt wurde.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Welche Daten sehe ich beim Prüfvorgang?",
+          "text": "Beim Prüfvorgang sehen Sie nur den Namen und das Geburtsdatum der Zertifikatsinhaberin oder des Zertifikatsinhabers und ob das Covid-Zertifikat gültig ist.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Werden beim Prüfvorgang in der COVID Certificate Check App oder in einem zentralen System Daten gespeichert?",
+          "text": "Nein, beim Prüfvorgang werden keine Daten gespeichert - weder in der COVID Certificate Check App noch in einem zentralen System. Es ist somit nicht möglich nachzuvollziehen, welches Covid-Zertifikat von wem, wann und wo überprüft wurde.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Können Zertifikate auch offline geprüft werden?",
+          "text": "Grundsätzlich können Covid-Zertifikate auch ohne eine Internetverbindung geprüft werden. Dazu werden regelmässig aktualisierte Prüflisten von einem zentralen Server heruntergeladen. Diese lokal gespeicherten Prüflisten dürfen nicht älter als 48h sein. \n\nUm die Prüflisten zu aktualisieren muss die App mit dem Internet verbunden sein und geöffnet werden. Die Aktualisierung erfolgt unmittelbar und automatisch.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Was ist das Zertifikat Light?",
+          "text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 24 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 24 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Wie kann ein Zertifikat Light wieder in ein EU/EFTA-konformes Covid-Zertifikat umgewandelt werden?",
+          "text": "Das Zertifikat Light kann durch die Halterin / den Halter jederzeit in der «COVID Certificate»-App deaktiviert werden. Danach steht das normale Covid-Zertifikat wieder zur Verfügung.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        }
+      ]
+    },
+    "en": {
+      "faqTitle": "How COVID certificates are checked",
+      "faqSubTitle": "The COVID Certificate Check app can be used to scan the QR codes on COVID certificates and check the certificates for authenticity and validity.",
+      "faqIntroSections": null,
+      "faqIconIos": "ic-faq-image",
+      "faqIconAndroid": "ic_faq_image",
+      "faqEntries": [
+        {
+          "title": "How can COVID certificates be checked?",
+          "text": "To check a COVID certificate, use the dedicated COVID Certificate Check app to scan the QR code on the paper certificate or in the COVID Certificate app presented.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Explanatory video",
+          "linkUrl": "https://youtu.be/spfVPMqukjM"
+        },
+        {
+          "title": "What exactly is checked?",
+          "text": "Three aspects are checked when scanning:\n– Does the certificate contain a valid electronic signature?\n– Is the certificate unrevoked?\n– Does the certificate meet Switzerland's validity criteria?\n\nIf the answer to all three questions is affirmative, the COVID certificate is shown as valid.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "What are the current validity criteria in Switzerland?",
+          "text": "The current validity period of COVID certificates can be found here:",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Further information",
+          "linkUrl": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
+        },
+        {
+          "title": "Which identification documents are valid? Why do personal details have to be checked?",
+          "text": "Aside from passports or ID cards, other photo identification documents that prove the identity of the person in question (e.g. driving licence) are also accepted. Although the COVID certificate is forgery-proof, the only way to ensure that the certificate shown was issued to the person presenting it is to check the personal details.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "What data do I see during the verification process?",
+          "text": "During the verification process, you see only the certificate holder's name and date of birth, and whether the COVID certificate is valid.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Is any data stored in the COVID Certificate Check app or in a central system during the verification process?",
+          "text": "No, no data is stored during the verification process, be it in the COVID Certificate Check app or in a central system. Therefore, it is not possible to trace which COVID certificate was checked by whom, when and where.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Is it possible to verify the certificates offline?",
+          "text": "In principle, COVID certificates can also be verified without an Internet connection. For this purpose, regularly updated checklists are downloaded from a central server. These locally stored checklists must not be older than 48 hours. \n\nIn order to update the checklists, the app must be open and connected to the Internet. Updating occurs immediately and automatically.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "What is the 'certificate light'",
+          "text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 24 hours and must then be reactivated. If you need to use the normal certificate before the end of the 24-hour period, you can simply deactivate the 'certificate light'.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "How can a 'certificate light' be converted back into an EU/EFTA-compliant COVID certificate?",
+          "text": "The holder can deactivate a 'certificate light' any time in their COVID Certificate app. After that their normal COVID certificate is available again.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        }
+      ]
+    },
+    "fr": {
+      "faqTitle": "Contrôle de certificats COVID",
+      "faqSubTitle": "L'app de contrôle permet de scanner le code QR figurant sur un certificat COVID et de vérifier l'authenticité et la validité de ce dernier.",
+      "faqIntroSections": null,
+      "faqIconIos": "ic-faq-image",
+      "faqIconAndroid": "ic_faq_image",
+      "faqEntries": [
+        {
+          "title": "Comment contrôler un certificat COVID?",
+          "text": "Pour contrôler un certificat COVID, il vous suffit de scanner le code QR figurant sur le document papier ou dans l'app «COVID Certificate» au moyen de l'app de contrôle prévue à cet effet.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Vidéo explicative",
+          "linkUrl": "https://youtu.be/O-9YhJDI3ZI"
+        },
+        {
+          "title": "Sur quoi porte le contrôle au juste?",
+          "text": "Le scan du code QR permet de répondre aux trois questions suivantes:\n– Le certificat contient-il une signature électronique valable?\n– Le certificat a-t-il été révoqué?\n– Le certificat remplit-il les critères de validité fixés par la Suisse?\n\nSi vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la validité du certificat COVID est attestée.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Quels sont les critères de validité actuels de la Suisse ?",
+          "text": "Vous trouverez des informations sur la durée de validité actuelle du certificat COVID à l’adresse suivante :",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Informations supplémentaires",
+          "linkUrl": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
+        },
+        {
+          "title": "Quelles pièces d'identité sont valables? Pourquoi faut-il vérifier les données personnelles?",
+          "text": "Outre le passeport et la carte d'identité, les pièces d'identité réputées valables sont celles qui attestent l'identité de la personne concernée au moyen d'une photo (par ex. permis de conduire). Le certificat COVID est certes infalsifiable, mais le contrôle des données personnelles est le seul moyen de vérifier que le certificat a été établi au nom de la personne qui le présente.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "À quelles données ai-je accès lors du contrôle?",
+          "text": "Lors du contrôle, vous n'avez accès qu'au nom et à la date de naissance du détenteur du certificat et voyez seulement si le certificat COVID est valable.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Quid du stockage des données lors du contrôle?",
+          "text": "Aucune des données auxquelles vous avez accès lors du contrôle n'est stockée dans l'app ou dans un système central. Il est par conséquent impossible de savoir quel certificat COVID a été vérifié par qui, quand et où.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "La vérification des certificats est-elle possible hors ligne ?",
+          "text": "En principe, il est aussi possible de vérifier les certificats COVID sans connexion Internet. À cette fin, des listes de contrôle régulièrement mises à jour sont téléchargées à partir d’un serveur central. Elles sont enregistrées localement et ne doivent pas remonter à plus de 48 h.\n\nPour actualiser les listes de contrôle, l’application doit être ouverte et connectée à Internet. La mise à jour s’effectue immédiatement et automatiquement.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Qu’est-ce que le certificat light ?",
+          "text": "L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Ce certificat « light » indique uniquement si le certificat présenté est valide, sans fournir de données sur la santé.\n\nL’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.\n\nLe certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 24 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Comment reconvertir un certificat light en certificat COVID conforme aux normes UE/AELE ?",
+          "text": "Le détenteur peut en tout temps désactiver le certificat light dans l’application «COVID Certificate». Le certificat COVID standard est alors à nouveau disponible.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        }
+      ]
+    },
+    "it": {
+      "faqTitle": "Come avviene la verifica dei certificati COVID?",
+      "faqSubTitle": "Con l'app COVID Certificate Check è possibile scansionare i relativi codici QR e verificare l'autenticità e la validità dei certificati COVID.",
+      "faqIntroSections": null,
+      "faqIconIos": "ic-faq-image",
+      "faqIconAndroid": "ic_faq_image",
+      "faqEntries": [
+        {
+          "title": "Come posso verificare i certificati COVID?",
+          "text": "Per verificare un certificato COVID tramite l'app COVID Certificate Check, può scansionare il codice QR che trova sulla copia cartacea del certificato oppure sull’app che le viene mostrata.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Video esplicativo",
+          "linkUrl": "https://youtu.be/b4JXnfr2Ugg"
+        },
+        {
+          "title": "Cosa viene verificato esattamente?",
+          "text": "Scansionando il codice QR vengono verificati i seguenti tre aspetti.\n– Il certificato contiene una firma elettronica valida?\n– Il certificato è ancora valido?\n– Il certificato rispetta i criteri di validità previsti dalla normativa svizzera?\n\nSe tutti i tre aspetti sono valutati positivamente, il certificato COVID è considerato valido.\n",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Quali sono attualmente i criteri di validità in Svizzera?",
+          "text": "L’attuale durata di validità dei certificati COVID è consultabile qui:",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Ulteriori informazioni",
+          "linkUrl": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
+        },
+        {
+          "title": "Quali documenti di legittimazione sono accettati o validi? Perché devono essere verificati i dati personali?",
+          "text": "Oltre al passaporto o alla carta d'identità sono accettati altri documenti che provano l'identità della persona in questione tramite una foto (ad es. licenza di condurre). Il certificato COVID non è falsificabile, tuttavia solo verificando i dati personali si garantisce che il certificato sia stato effettivamente rilasciato alla persona che lo sta mostrando.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Quali dati posso visualizzare durante il processo di verifica?",
+          "text": "Durante il processo di verifica visualizzerà solo nome e cognome nonché la data di nascita del titolare del certificato e l'indicazione della validità del certificato.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Durante il processo di verifica vengono salvati dati nell'app COVID Certificate Check o in un sistema centrale?",
+          "text": "No, durante il processo di verifica non vengono salvati dati nell'app COVID Certificate Check né in un sistema centrale. In questo modo, non è possibile risalire a quali certificati sono stati verificati, da chi, quando e dove.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "I certificati possono essere verificati anche offline?",
+          "text": "In linea di principio, i certificati COVID possono essere verificati anche senza connessione Internet. A tale scopo, vengono scaricati regolarmente da un server centrale gli elenchi di verifica aggiornati. Questi elenchi salvati localmente non devono avere più di 48 ore. \n\nPer poter aggiornare gli elenchi di verifica, l’app deve essere aperta e collegata a Internet. L’aggiornamento avviene in modo immediato e automatico.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Che cos'è il certificato light?",
+          "text": "L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.\n\nIl certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».\n\nIl «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 24 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 24 ore, il certificato light può essere disattivato semplicemente.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Come si fa a trasformare un certificato light nuovamente in un certificato COVID conforme all’UE/AELS?",
+          "text": "Il certificato light può essere disattivato dal titolare in qualsiasi momento nell’app «COVID Certificate», dopodiché il certificato COVID di base è di nuovo disponibile.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        }
+      ]
+    },
+    "rm": {
+      "faqTitle": "Uschia vegnan verifitgads ils certificats COVID",
+      "faqSubTitle": "Cun l'app COVID Certificate Check pon vegnir scannads ils codes QR sin ils certificats COVID per verifitgar l'autenticitad e la valaivladad dals certificats.",
+      "faqIntroSections": null,
+      "faqIconIos": "ic-faq-image",
+      "faqIconAndroid": "ic_faq_image",
+      "faqEntries": [
+        {
+          "title": "Co pon vegnir verifitgads ils certificats COVID?",
+          "text": "Per verifitgar in certificat COVID pudais Vus scannar il code QR sin Voss certificat sin palpiri u en l'app COVID Certificate cun l’app «COVID Certificate Check» previsa per quai.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Video explicativ",
+          "linkUrl": "https://youtu.be/DClLZIUjr3w"
+        },
+        {
+          "title": "Tge vegn propi verifitgà?",
+          "text": "Cun scannar vegnan verifitgads trais aspects:\n– Cuntegna il certificat ina signatura digitala valaivla?\n– N'è il certificat betg vegnì revocà?\n– Correspunda il certificat als criteris da valaivladad en Svizra?\n\nSche tut ils trais aspects vegnan valitads en moda positiva, vegn il certificat COVID considerà sco valaivel.\n",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Tge èn ils criteris da valaivladad actuals da la Svizra?",
+          "text": "La durada da valaivladad vertenta actuala dals certificats COVID chattais Vus qua:",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": "Ulteriuras infurmaziuns",
+          "linkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"
+        },
+        {
+          "title": "Tge documents da legitimaziun vegnan acceptads resp. èn valaivels? Pertge ston vegnir verifitgadas las persunalias?",
+          "text": "Ultra dal passaport e da la ID vegnan acceptads er auters documents da legitimaziun valaivels che cumprovan l’identitad da la persuna pertutgada cun ina fotografia (p.ex. permiss dad ir cun auto). Il certificat COVID na po bain betg vegnir falsifitgà, però pir cun verifitgar las persunalias vegn controllà, sch'il certificat preschentà è vegnì emess per la persuna ch'al preschenta.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Tge datas ves jau tar la procedura da verificaziun?",
+          "text": "Tar la procedura da verificaziun vesais Vus mo il num e la data da naschientscha da la possessura u dal possessur dal certificat e sch'il certificat COVID è valaivel.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Vegnan arcunadas datas en in sistem central u en l'app COVID Certificate Check tar la procedura da verificaziun?",
+          "text": "Na, tar la procedura da verificaziun na vegnan arcunadas naginas datas – ni en l'app COVID Certificate Check ni en in sistem central? I n'è pia betg pussaivel d'identifitgar tge certificat COVID ch'è vegnì verifitgà da tgi, cura e nua.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Pon ils certificats er vegnir verifitgads offline?",
+          "text": "Da princip pon ils certificats COVID er vegnir verifitgads senza ina colliaziun cun l'internet. Per far quai vegnan chargiadas giu regularmain d'in server central glistas da verificaziun actualisadas. Questas glistas da verificaziun arcunadas localmain na dastgan betg esser pli veglias che 48 uras.\n\nPer actualisar las glistas da verificaziun sto l'app esser colliada cun l'internet e vegnir averta. L'actualisaziun succeda immediatamain ed automaticamain.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Tge è in certificat light?",
+          "text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.\n\nL'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà.",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        },
+        {
+          "title": "Co po in certificat light puspè vegnir transfurmà en in certificat COVID confurm a la UE/AECL?",
+          "text": "La possessura u il possessur po deactivar da tut temp il certificat light en l'app «COVID Certificate». Alura stat puspè a disposiziun il certificat COVID normal. ",
+          "iconAndroid": null,
+          "iconIos": null,
+          "linkTitle": null,
+          "linkUrl": null
+        }
+      ]
+    }
+  },
+  "androidTransferCheckIntervalMs": 0,
+  "androidTransferCheckBackoffMs": 0,
+  "timeshiftDetectionEnabled": false,
+  "checkModesInfos": {
+    "de": {
+      "infos": {
+        "THREE_G": {
+          "title": "3G",
+          "hexColor": "#86c5d9",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Für Betriebe und Veranstaltungen, in welchen mit einer 3G-Regelung geprüft wird."
+            },
+            {
+              "iconAndroid": "ic_3g",
+              "iconIos": "ic_3g",
+              "text": "In diesem Modus werden Covid-Zertifikate für Geimpfte, Genesene oder negativ Getestete akzeptiert."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light",
+              "iconIos": "ic-qr-certificate-light",
+              "text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus möglich."
+            }
+          ]
+        },
+        "TWO_G": {
+          "title": "2G",
+          "hexColor": "#c2d076",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Für Betriebe und Veranstaltungen, in welchen mit einer 2G-Regelung geprüft wird."
+            },
+            {
+              "iconAndroid": "ic_2g",
+              "iconIos": "ic_2g",
+              "text": "In diesem Modus werden Covid-Zertifikate für Geimpfte oder Genesene akzeptiert."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "Die Prüfung von einem Zertifikat Light ist in diesem Modus nicht möglich."
+            }
+          ]
+        },
+        "TWO_G_PLUS": {
+          "title": "2G+",
+          "hexColor": "#e6ad8e",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Für Betriebe und Veranstaltungen, in welchen mit einer Regelung nach 2G+ geprüft wird."
+            },
+            {
+              "iconAndroid": "ic_2g_plus",
+              "iconIos": "ic-2-g-plus",
+              "text": "Zusätzlich zu einem Covid-Zertifikat für Geimpfte oder Genesene wird ein gültiges Testzertifikat benötigt, welches separat geprüft werden muss."
+            },
+            {
+              "iconAndroid": "ic_info_alert",
+              "iconIos": "ic-info-alert",
+              "text": "Ausnahmen: Personen, deren vollständige Impfung, Auffrischimpfung oder Genesung nicht länger als 120 Tage zurückliegt."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "Die Prüfung von Zertifikate Light ist in diesem Modus nicht möglich."
+            }
+          ]
+        },
+        "TEST_CERT": {
+          "title": "Testzertifikat",
+          "hexColor": "#facafa",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Für Bereiche, bei denen ein gültiges Testzertifikat notwendig ist."
+            },
+            {
+              "iconAndroid": "ic_t",
+              "iconIos": "ic-t",
+              "text": "In diesem Modus werden Covid-Zertifikate für negativ Getestete basierend auf einem PCR- oder Antigen-Schnelltest akzeptiert."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "Die Prüfung von Zertifikate Light ist in diesem Modus nicht möglich."
+            }
+          ]
+        }
+      },
+      "unselected": {
+        "infos": [
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Wählen Sie den Prüfmodus, in welchem Sie Covid-Zertifikate prüfen möchten."
+          },
+          {
+            "iconAndroid": "ic_settings",
+            "iconIos": "ic-settings",
+            "text": "Der Prüfmodus kann jederzeit geändert werden."
+          }
+        ]
+      }
+    },
+    "en": {
+      "infos": {
+        "THREE_G": {
+          "title": "3G",
+          "hexColor": "#86c5d9",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "For organisations and events applying the 3G rule."
+            },
+            {
+              "iconAndroid": "ic_3g",
+              "iconIos": "ic_3g",
+              "text": "In this mode, COVID certificates are accepted for people who have been vaccinated, or who have recovered or tested negative."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light",
+              "iconIos": "ic-qr-certificate-light",
+              "text": "It is possible to verify a \"light\" certificate in this mode."
+            }
+          ]
+        },
+        "TWO_G": {
+          "title": "2G",
+          "hexColor": "#c2d076",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "For organisations and events applying the 2G rule."
+            },
+            {
+              "iconAndroid": "ic_2g",
+              "iconIos": "ic_2g",
+              "text": "In this mode, COVID certificates are accepted for people who have been vaccinated or who have recovered."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "It is not possible to verify a \"light\" certificate in this mode."
+            }
+          ]
+        },
+        "TWO_G_PLUS": {
+          "title": "2G+",
+          "hexColor": "#e6ad8e",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "For organisations and events applying the 2G+ rule."
+            },
+            {
+              "iconAndroid": "ic_2g_plus",
+              "iconIos": "ic-2-g-plus",
+              "text": "In addition to a COVID certificate for people who have been vaccinated or who have recovered, a valid test certificate is required. This must be verified separately."
+            },
+            {
+              "iconAndroid": "ic_info_alert",
+              "iconIos": "ic-info-alert",
+              "text": "Exceptions: People who have been fully vaccinated, received a booster vaccination or recovered (based on a PCR test) no longer than 120 days ago"
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "It is not possible to verify \"light\" certificates in this mode."
+            }
+          ]
+        },
+        "TEST_CERT": {
+          "title": "Test certificate",
+          "hexColor": "#facafa",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "For areas in which a valid test certificate is required."
+            },
+            {
+              "iconAndroid": "ic_t",
+              "iconIos": "ic-t",
+              "text": "In this mode, COVID certificates are accepted for people who have tested negative based on a PCR or rapid antigen test."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "It is not possible to verify \"light\" certificates in this mode."
+            }
+          ]
+        }
+      },
+      "unselected": {
+        "infos": [
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Select the verification mode that you want to use for verifying COVID certificates."
+          },
+          {
+            "iconAndroid": "ic_settings",
+            "iconIos": "ic-settings",
+            "text": "The verification mode can be changed at any time."
+          }
+        ]
+      }
+    },
+    "fr": {
+      "infos": {
+        "THREE_G": {
+          "title": "3G",
+          "hexColor": "#86c5d9",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Pour les entreprises et les manifestations où les contrôles se fondent sur la règle des «3G»."
+            },
+            {
+              "iconAndroid": "ic_3g",
+              "iconIos": "ic_3g",
+              "text": "Ce mode de contrôle permet de vérifier les certificats COVID des personnes vaccinées, guéries ou testées négatives."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light",
+              "iconIos": "ic-qr-certificate-light",
+              "text": "Il peut être également utilisé pour vérifier un «certificat light»."
+            }
+          ]
+        },
+        "TWO_G": {
+          "title": "2G",
+          "hexColor": "#c2d076",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Pour les entreprises et les manifestations où les contrôles se fondent sur la règle des «2G»."
+            },
+            {
+              "iconAndroid": "ic_2g",
+              "iconIos": "ic_2g",
+              "text": "Ce mode de contrôle permet de vérifier les certificats COVID des personnes vaccinées ou guéries."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "La vérification d’un «certificat light» n'est pas possible dans ce mode."
+            }
+          ]
+        },
+        "TWO_G_PLUS": {
+          "title": "2G+",
+          "hexColor": "#e6ad8e",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Pour les entreprises et les manifestations qui appliquent la règle des 2G+."
+            },
+            {
+              "iconAndroid": "ic_2g_plus",
+              "iconIos": "ic-2-g-plus",
+              "text": "En plus d'un certificat COVID de vaccination ou de guérison, il faut présenter un certificat de test valable, qui doit être vérifié séparément."
+            },
+            {
+              "iconAndroid": "ic_info_alert",
+              "iconIos": "ic-info-alert",
+              "text": "Exceptions: les personnes dont la vaccination, la vaccination de rappel ou la guérison datent de moins de 120 jours"
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "Ce mode ne permet pas de vérifier les «certificats light»."
+            }
+          ]
+        },
+        "TEST_CERT": {
+          "title": "Certificat de test",
+          "hexColor": "#facafa",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Destiné aux domaines qui nécessitent un certificat de test valable."
+            },
+            {
+              "iconAndroid": "ic_t",
+              "iconIos": "ic-t",
+              "text": "Ce mode permet de vérifier les certificats des personnes qui disposent d'un résultat négatif à un test PCR ou à un test rapide antigénique."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "Ce mode ne permet pas de vérifier les «certificats light»."
+            }
+          ]
+        }
+      },
+      "unselected": {
+        "infos": [
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Choisissez le mode de contrôle correspondant aux certificats COVID à vérifier."
+          },
+          {
+            "iconAndroid": "ic_settings",
+            "iconIos": "ic-settings",
+            "text": "Le mode de contrôle peut être changé en tout temps."
+          }
+        ]
+      }
+    },
+    "it": {
+      "infos": {
+        "THREE_G": {
+          "title": "3G",
+          "hexColor": "#86c5d9",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Per le strutture e le manifestazioni in cui si applica la regola 3G."
+            },
+            {
+              "iconAndroid": "ic_3g",
+              "iconIos": "ic_3g",
+              "text": "In questa modalità sono accettati i certificati COVID per persone vaccinate, guartite o testate negative."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light",
+              "iconIos": "ic-qr-certificate-light",
+              "text": "I certificati light possono essere verificati."
+            }
+          ]
+        },
+        "TWO_G": {
+          "title": "2G",
+          "hexColor": "#c2d076",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Per le strutture e le manifestazioni in cui si applica la regola 2G."
+            },
+            {
+              "iconAndroid": "ic_2g",
+              "iconIos": "ic_2g",
+              "text": "In questa modalità sono accettati i certificati COVID per persone vaccinate o guartite."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "Questa modalità non permette di verificare i certificati light."
+            }
+          ]
+        },
+        "TWO_G_PLUS": {
+          "title": "2G+",
+          "hexColor": "#e6ad8e",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Per strutture e manifestazioni cui si applica la regola 2G+."
+            },
+            {
+              "iconAndroid": "ic_2g_plus",
+              "iconIos": "ic-2-g-plus",
+              "text": "Oltre a un certificato di vaccinazione o di guarigione COVID è richiesto un certificato di test valido, che deve essere verificato separatamente."
+            },
+            {
+              "iconAndroid": "ic_info_alert",
+              "iconIos": "ic-info-alert",
+              "text": "Eccezioni: Persone per le quali sono trascorsi al massimo 120 giorni dalla vaccinazione completa, dalla vaccinazione di richiamo o dalla guarigione."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "In questa modalità non è possibile verificare i certificati light."
+            }
+          ]
+        },
+        "TEST_CERT": {
+          "title": "Certificato di test",
+          "hexColor": "#facafa",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Per i contesti in cui è richiesto un certificato di test valido."
+            },
+            {
+              "iconAndroid": "ic_t",
+              "iconIos": "ic-t",
+              "text": "In questa modalità sono accettati i certificati COVID rilasciati alle persone risultate negative a un test PCR o a un test antigenico rapido."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "In questa modalità non è possibile verificare i certificati light."
+            }
+          ]
+        }
+      },
+      "unselected": {
+        "infos": [
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Selezionare la modalità in cui verificare i certificati COVID."
+          },
+          {
+            "iconAndroid": "ic_settings",
+            "iconIos": "ic-settings",
+            "text": "La modalità di verifica può essere cambiata in qualsiasi momento."
+          }
+        ]
+      }
+    },
+    "rm": {
+      "infos": {
+        "THREE_G": {
+          "title": "3G",
+          "hexColor": "#86c5d9",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Per manaschis ed occurrenzas cun ina regla da 3G."
+            },
+            {
+              "iconAndroid": "ic_3g",
+              "iconIos": "ic_3g",
+              "text": "En quest modus vegnan acceptads certificats COVID per persunas vaccinadas, per persunas guaridas u per persunas cun in test negativ."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light",
+              "iconIos": "ic-qr-certificate-light",
+              "text": "En quest modus po vegnir verifitgà in certificat light."
+            }
+          ]
+        },
+        "TWO_G": {
+          "title": "2G",
+          "hexColor": "#c2d076",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Per manaschis ed occurrenzas cun ina regla da 2G."
+            },
+            {
+              "iconAndroid": "ic_2g",
+              "iconIos": "ic_2g",
+              "text": "En quest modus vegnan acceptads ils certificats COVID per persunas vaccinadas u per persunas guaridas."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "“Certificat light” na po betg vegnir verifitgà en il modus da verificaziun da 2G."
+            }
+          ]
+        },
+        "TWO_G_PLUS": {
+          "title": "2G+",
+          "hexColor": "#e6ad8e",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Per manaschis ed occurrenzas, nua ch’i vegn verifitgà tenor la regla da 2G+."
+            },
+            {
+              "iconAndroid": "ic_2g_plus",
+              "iconIos": "ic-2-g-plus",
+              "text": "Ultra d’in certificat COVID per persunas vaccinadas e guaridas dovri in certificat d'in test valaivel che sto vegnir verifitgà separadamain."
+            },
+            {
+              "iconAndroid": "ic_info_alert",
+              "iconIos": "ic-info-alert",
+              "text": "Excepziuns: Persunas ch'èn vegnidas vaccinadas cumplettamain, che han laschà rinfrestgar la vaccinaziun u ch'èn guaridas (sin basa d'in test da PCR) avant maximalmain 120 dis"
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "En quest modus na pon vegnir verifitgads nagins certificats light."
+            }
+          ]
+        },
+        "TEST_CERT": {
+          "title": "Certificat d'in test",
+          "hexColor": "#facafa",
+          "infos": [
+            {
+              "iconAndroid": "ic_expire_i",
+              "iconIos": "ic-expire-i",
+              "text": "Per secturs che dovran in certificat d'in test valaivel."
+            },
+            {
+              "iconAndroid": "ic_t",
+              "iconIos": "ic-t",
+              "text": "En quest modus vegnan acceptads certificats COVID per persunas cun in test negativ sin basa d’in test da PCR u d’in test svelt d’antigens."
+            },
+            {
+              "iconAndroid": "ic_qr_certificate_light_no",
+              "iconIos": "ic-qr-certificate-light-no",
+              "text": "En quest modus na pon vegnir verifitgads nagins certificats light."
+            }
+          ]
+        }
+      },
+      "unselected": {
+        "infos": [
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Tscherni il modus da verificaziun, en il qual Vus vulais verifitgar ils certificats COVID."
+          },
+          {
+            "iconAndroid": "ic_settings",
+            "iconIos": "ic-settings",
+            "text": "Il modus da verificaziun po vegnir midà da tut temp."
+          }
+        ]
+      }
+    }
+  },
+  "checkModeReselectAfterHours": 48
 }
