@@ -47,6 +47,7 @@ data class DebugCertificateItem(val verifiedCertificate: StatefulWalletItem.Veri
 			CertType.VACCINATION -> {
 				typeLabelRes = R.string.certificate_reason_vaccinated
 			}
+			else -> {}
 		}
 
 		val isInvalid = state is VerificationState.INVALID
