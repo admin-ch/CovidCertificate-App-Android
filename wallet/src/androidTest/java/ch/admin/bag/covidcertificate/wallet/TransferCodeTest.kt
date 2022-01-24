@@ -65,7 +65,6 @@ class TransferCodeTest : EspressoUtil() {
 
 
 	private fun clickButton(id: Int) {
-		Thread.sleep(500)
 		onView(allOf(withId(id), isDisplayed())).perform(click())
 	}
 
