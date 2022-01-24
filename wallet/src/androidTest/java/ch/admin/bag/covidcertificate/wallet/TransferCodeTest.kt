@@ -10,6 +10,7 @@ import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
 import androidx.viewpager2.widget.ViewPager2
+import ch.admin.bag.covidcertificate.common.browserstack.Normal
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import org.hamcrest.Matchers.allOf
 import org.junit.Assert
@@ -20,6 +21,7 @@ import org.junit.runner.RunWith
 
 
 @LargeTest
+@Normal
 @RunWith(AndroidJUnit4::class)
 class TransferCodeTest : EspressoUtil() {
 
