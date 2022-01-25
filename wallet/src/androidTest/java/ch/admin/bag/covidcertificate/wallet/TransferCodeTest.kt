@@ -42,6 +42,9 @@ class TransferCodeTest : EspressoUtil() {
 	@Test
 	fun testCreateTransferCode() {
 
+		while (countTransfercodesOnHomeScreen() != 0) {
+			deleteTransfercode()
+		}
 		Assert.assertEquals(0, countTransfercodesOnHomeScreen())
 		createTransfercode()
 		Assert.assertEquals(1, countTransfercodesOnHomeScreen())
@@ -53,6 +56,9 @@ class TransferCodeTest : EspressoUtil() {
 	@Test
 	fun testCreateMultipleTransferCodes() {
 
+		while (countTransfercodesOnHomeScreen() != 0) {
+			deleteTransfercode()
+		}
 		Assert.assertEquals(0, countTransfercodesOnHomeScreen())
 		createTransfercode()
 		Assert.assertEquals(1, countTransfercodesOnHomeScreen())
@@ -80,8 +86,7 @@ class TransferCodeTest : EspressoUtil() {
 
 		clickButton(R.id.transfer_code_intro_create)
 
-		Thread.sleep(1000)
-		onView(withId(R.id.transfer_code_content)).perform(waitUntilVisible(30000L))
+		onView(withId(R.id.transfer_code_content)).perform(waitUntilVisible(timeout = 30000L))
 
 		clickButton(R.id.transfer_code_creation_done_button)
 
@@ -92,10 +97,10 @@ class TransferCodeTest : EspressoUtil() {
 		onView(allOf(withId(R.id.transfer_code_page_card), isCompletelyDisplayed())).perform(click())
 
 
-		Thread.sleep(1000)
-		onView(withId(R.id.transfer_code_content)).perform(waitUntilVisible(30000L))
+		onView(withId(R.id.transfer_code_content)).perform(waitUntilVisible(timeout = 30000L))
 
-		onView(withId(R.id.transfer_code_content)).perform(swipeUp())
+		//Scroll to delete button
+		onView(withId(R.id.transfer_code_detail_delete_button)).perform(scrollTo())
 
 		clickButton(R.id.transfer_code_detail_delete_button)
 		clickButton(android.R.id.button1)
