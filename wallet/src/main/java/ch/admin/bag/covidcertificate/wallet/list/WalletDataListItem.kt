@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isChAusnahmeTest
+import ch.admin.bag.covidcertificate.sdk.core.extensions.isPositiveRatTest
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isSerologicalTest
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -46,7 +47,7 @@ sealed class WalletDataListItem {
 			val certificate = verifiedCertificate.certificateHolder
 			val certType = certificate?.certType
 
-			val name = certificate?.certificate?.getPersonName()?.let { "${it.familyName} ${it.givenName}" }
+			val name = certificate?.certificate?.getPersonName()?.prettyName() ?: ""
 			val qrAlpha = state.getQrAlpha()
 			binding.itemCertificateListName.text = name
 			binding.itemCertificateListName.alpha = qrAlpha
@@ -88,7 +89,7 @@ sealed class WalletDataListItem {
 							statusIconId = R.drawable.ic_invalid_grey
 						}
 						nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
-							statusIconId =  R.drawable.ic_timelapse
+							statusIconId = R.drawable.ic_timelapse
 						}
 						else -> {
 							statusIconId = R.drawable.ic_error_grey
@@ -128,6 +129,7 @@ sealed class WalletDataListItem {
 		) {
 			val isSerologicalTest = (certificate?.certificate as? DccCert)?.tests?.firstOrNull()?.isSerologicalTest() ?: false
 			val isChAusnahmeTest = (certificate?.certificate as? DccCert)?.tests?.firstOrNull()?.isChAusnahmeTest() ?: false
+			val isPositiveRatTest = (certificate?.certificate as? DccCert)?.tests?.firstOrNull()?.isPositiveRatTest() ?: false
 
 			val backgroundColorId: Int
 			val textColorId: Int
@@ -138,7 +140,7 @@ sealed class WalletDataListItem {
 				}
 				certType == CertType.TEST -> {
 					when {
-						isSerologicalTest || isChAusnahmeTest -> {
+						isSerologicalTest || isChAusnahmeTest || isPositiveRatTest -> {
 							backgroundColorId = R.color.blue
 							textColorId = R.color.white
 						}
@@ -170,6 +172,7 @@ sealed class WalletDataListItem {
 					when {
 						isSerologicalTest -> R.string.certificate_reason_recovered
 						isChAusnahmeTest -> R.string.covid_certificate_ch_ausnahme_list_label
+						isPositiveRatTest -> R.string.certificate_reason_recovered
 						else -> R.string.certificate_reason_tested
 					}
 				}

@@ -117,6 +117,7 @@ fun VerificationState.getValidationStatusStrings(context: Context, modeTitle: St
 									.replace("{MODUS}", modeTitle).makeBold()
 							)
 						}
+						else -> {}
 					}
 				} else {
 					stateStrings.add(context.getString(R.string.verifier_verify_error_info_for_blacklist).makeBold())

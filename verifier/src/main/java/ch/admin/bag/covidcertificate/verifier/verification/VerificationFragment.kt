@@ -169,18 +169,10 @@ class VerificationFragment : Fragment() {
 		binding.verificationScrollView.smoothScrollTo(0, 0)
 		val personName = certificateHolder.getPersonName()
 
-		if (personName.familyName.isNullOrBlank()) {
-			binding.verificationFamilyName.text = personName.standardizedFamilyName
-		} else {
-			binding.verificationFamilyName.text = personName.familyName
-		}
-		if (personName.givenName.isNullOrBlank()) {
-			binding.verificationGivenName.text = personName.standardizedGivenName
-		} else {
-			binding.verificationGivenName.text = personName.givenName
-		}
+		binding.verificationFamilyName.text = personName.prettyFamilyName()
+		binding.verificationGivenName.text = personName.prettyGivenName()
 		binding.verificationBirthdate.text = certificateHolder.getFormattedDateOfBirth()
-		binding.verificationStandardizedNameLabel.text = "${personName.standardizedFamilyName}<<${personName.standardizedGivenName}"
+		binding.verificationStandardizedNameLabel.text = personName.prettyStandardizedName()
 
 		verificationViewModel.startVerification(
 			certificateHolder,

@@ -84,6 +84,7 @@ class TransferCodeBubbleView @JvmOverloads constructor(
 			is TransferCodeBubbleState.Valid -> showValidState(viewState)
 			is TransferCodeBubbleState.Expired -> showExpiredState(viewState)
 			is TransferCodeBubbleState.Error -> showErrorState(viewState)
+			else -> {}
 		}
 	}
 

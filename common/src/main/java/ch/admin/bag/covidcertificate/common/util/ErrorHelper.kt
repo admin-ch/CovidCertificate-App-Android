@@ -52,6 +52,7 @@ object ErrorHelper {
 		customButtonClickAction?.run()
 		when (errorState) {
 			ErrorState.CAMERA_ACCESS_DENIED -> openApplicationSettings(context)
+			else -> {}
 		}
 	}
 

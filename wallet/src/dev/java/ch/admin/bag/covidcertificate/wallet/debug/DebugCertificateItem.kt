@@ -47,6 +47,7 @@ data class DebugCertificateItem(val verifiedCertificate: StatefulWalletItem.Veri
 			CertType.VACCINATION -> {
 				typeLabelRes = R.string.certificate_reason_vaccinated
 			}
+			else -> {}
 		}
 
 		val isInvalid = state is VerificationState.INVALID
@@ -56,9 +57,7 @@ data class DebugCertificateItem(val verifiedCertificate: StatefulWalletItem.Veri
 		}
 
 		// Name
-		val name = certificate?.certificate?.getPersonName()?.let {
-			"${it.familyName} ${it.givenName}"
-		} ?: verifiedCertificate.qrCodeData
+		val name = certificate?.certificate?.getPersonName()?.prettyName() ?: verifiedCertificate.qrCodeData
 		val qrAlpha = state.getQrAlpha()
 		itemView.findViewById<TextView>(R.id.item_certificate_list_name).apply {
 			text = name
