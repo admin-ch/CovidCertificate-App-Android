@@ -221,12 +221,16 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun setupDetailNote() {
 		val dccCert = certificateHolder.certificate as? DccCert
-		if (dccCert?.tests?.first()?.isChAusnahmeTest() == true) {
-			binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_ausnahme)
-		} else if (dccCert?.tests?.first()?.isPositiveRatTest() == true) {
-			binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_positive_antigen)
-		} else {
-			binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note)
+		when {
+			dccCert?.tests?.firstOrNull()?.isChAusnahmeTest() == true -> {
+				binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_ausnahme)
+			}
+			dccCert?.tests?.firstOrNull()?.isPositiveRatTest() == true -> {
+				binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_positive_antigen)
+			}
+			else -> {
+				binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note)
+			}
 		}
 	}
 
@@ -275,7 +279,11 @@ class CertificateDetailFragment : Fragment() {
 		val certPos = intArrayOf(0, 0)
 		val buttonPos = intArrayOf(0, 0)
 
-		binding.root.post { reloadReverifyButtonOffset(certPos, buttonPos) }
+		binding.root.post {
+			if (isAdded) {
+				reloadReverifyButtonOffset(certPos, buttonPos)
+			}
+		}
 		binding.scrollview.setOnScrollChangeListener { _, _, _, _, _ -> reloadReverifyButtonOffset(certPos, buttonPos) }
 	}
 

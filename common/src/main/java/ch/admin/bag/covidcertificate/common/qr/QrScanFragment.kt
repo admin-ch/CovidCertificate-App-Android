@@ -134,6 +134,8 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	protected fun activateCamera() {
+		if (!isAdded || !qrCodeScanner.isAttachedToWindow) return
+
 		deactivateCamera()
 
 		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
@@ -162,6 +164,8 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	protected fun deactivateCamera() {
+		if (!isAdded || !qrCodeScanner.isAttachedToWindow) return
+
 		autoFocusClockLiveData.removeObservers(viewLifecycleOwner)
 		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
 		cameraProviderFuture.addListener({
