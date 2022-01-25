@@ -10,14 +10,14 @@
 
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
-	ext.kotlin_version = "1.5.30"
+	ext.kotlin_version = "1.6.10"
 	repositories {
 		google()
 		mavenCentral()
 	}
 	dependencies {
-		classpath 'com.android.tools:r8:3.0.69'
-		classpath 'com.android.tools.build:gradle:7.0.3'
+		classpath 'com.android.tools:r8:3.0.73'
+		classpath 'com.android.tools.build:gradle:7.0.4'
 		classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
 		classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
 		classpath 'ch.ubique.gradle:ubdiag-android:7.0.2'
