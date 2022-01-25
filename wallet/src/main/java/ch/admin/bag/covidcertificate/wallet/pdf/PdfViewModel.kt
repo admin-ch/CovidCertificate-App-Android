@@ -47,8 +47,8 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 	private val walletDataStorage = WalletDataSecureStorage.getInstance(application.applicationContext)
 	private val pdfExportRepository = PdfExportRepository.getInstance(application.applicationContext)
 
-	private val pdfImportMutableLiveData: MutableLiveData<PdfImportState> = MutableLiveData()
-	val pdfImportState: LiveData<PdfImportState> = pdfImportMutableLiveData
+	private val pdfImportMutableLiveData: MutableLiveData<PdfImportState?> = MutableLiveData()
+	val pdfImportState: LiveData<PdfImportState?> = pdfImportMutableLiveData
 
 	private val pdfExportMutableLiveData: MutableLiveData<PdfExportState> = MutableLiveData()
 	val pdfExportState: LiveData<PdfExportState> = pdfExportMutableLiveData

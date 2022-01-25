@@ -19,8 +19,8 @@ import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
 
 class DeeplinkViewModel(application: Application) : AndroidViewModel(application) {
 
-	private val deeplinkImportMutableLiveData: MutableLiveData<DecodeState> = MutableLiveData()
-	val deeplinkImportLiveData: LiveData<DecodeState> = deeplinkImportMutableLiveData
+	private val deeplinkImportMutableLiveData: MutableLiveData<DecodeState?> = MutableLiveData()
+	val deeplinkImportLiveData: LiveData<DecodeState?> = deeplinkImportMutableLiveData
 
 	fun importDeeplink(path: String) {
 		deeplinkImportMutableLiveData.postValue(CovidCertificateSdk.Wallet.decode(path))
