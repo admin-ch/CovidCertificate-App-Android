@@ -38,6 +38,7 @@ class OnboardingTest : EspressoUtil() {
 			)
 		)
 		textView.check(matches(withText(R.string.wallet_homescreen_what_to_do)))
+		
 	}
 
 
