@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+ * Copyright (c) 2022 Ubique Innovation AG <https://www.ubique.ch>
  *
  * This Source Code Form is subject to the terms of the Mozilla Public
  * License, v. 2.0. If a copy of the MPL was not distributed with this
@@ -8,8 +8,6 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-include ':common'
-include ':verifier'
-include ':wallet'
-rootProject.name = "CovidCertificate"
+package ch.admin.bag.covidcertificate.common.browserstack
 
+annotation class Onboarding

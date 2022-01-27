@@ -235,6 +235,7 @@ class HomeFragment : Fragment() {
 				is DecodeState.ERROR -> {
 					showImportError(decodeState.error.code)
 				}
+				else -> {}
 			}
 		}
 
@@ -256,6 +257,7 @@ class HomeFragment : Fragment() {
 					}
 					pdfViewModel.clearPdfImport()
 				}
+				else -> {}
 			}
 		}
 	}

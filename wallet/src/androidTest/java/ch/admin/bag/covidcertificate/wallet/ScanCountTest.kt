@@ -1,8 +1,19 @@
+/*
+ * Copyright (c) 2022 Ubique Innovation AG <https://www.ubique.ch>
+ *
+ * This Source Code Form is subject to the terms of the Mozilla Public
+ * License, v. 2.0. If a copy of the MPL was not distributed with this
+ * file, You can obtain one at https://mozilla.org/MPL/2.0/.
+ *
+ * SPDX-License-Identifier: MPL-2.0
+ */
+
 package ch.admin.bag.covidcertificate.wallet
 
 import android.content.Context
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
+import ch.admin.bag.covidcertificate.common.browserstack.Normal
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import org.junit.Assert.assertFalse
@@ -11,7 +22,7 @@ import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
+@Normal
 @RunWith(AndroidJUnit4::class)
 class ScanCountTest() {
 
