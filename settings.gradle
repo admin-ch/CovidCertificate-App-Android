@@ -13,5 +13,3 @@ include ':verifier'
 include ':wallet'
 rootProject.name = "CovidCertificate"
 
-
-
