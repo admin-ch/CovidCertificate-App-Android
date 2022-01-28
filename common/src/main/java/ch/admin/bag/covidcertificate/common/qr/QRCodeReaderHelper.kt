@@ -51,28 +51,29 @@ object QRCodeReaderHelper {
 				val activityManager = context.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
 				val memoryInfo = ActivityManager.MemoryInfo().also { activityManager.getMemoryInfo(it) }
 
-				for (i in 0 until min(pageCount, PDF_PAGE_LIMIT)) {
-					renderer.openPage(i).use { page ->
-						// PDF width/height are given in "points pt" such that 1 pt = 1/72 inch
-						// => 72 "dots-per-inch dpi" <==> scale = 1
-						val scale: Float = context.resources.displayMetrics.densityDpi / 72f
-						val pixelWidth = (scale * page.width).roundToInt()
-						val pixelHeight = (scale * page.height).roundToInt()
+				for (scale in listOf(1f, context.resources.displayMetrics.densityDpi / 72f, 3f, 5f, 7f, 9f)) {
+					for (i in 0 until min(pageCount, PDF_PAGE_LIMIT)) {
+						println("page $i, scale: $scale")
+						renderer.openPage(i).use { page ->
 
-						// Try both the scaled and the unscaled version
-						page.renderToBitmap(page.width, page.height).use {
-							yield(it)
-						}
+							// PDF width/height are given in "points pt" such that 1 pt = 1/72 inch
+							// => 72 "dots-per-inch dpi" <==> scale = 1
+							val pixelWidth = (scale * page.width).roundToInt()
+							val pixelHeight = (scale * page.height).roundToInt()
 
-						if (!memoryInfo.lowMemory) {
-							// Only yield the scaled bitmap if the system is not considered to be in low memory mode
-							// On some devices, this bitmap can get up to 50MB due to the large scale factor
-							page.renderToBitmap(pixelWidth, pixelHeight).use {
-								yield(it)
+
+							if (!memoryInfo.lowMemory && scale > 1f) {
+								// Only yield the scaled bitmap if the system is not considered to be in low memory mode
+								// On some devices, this bitmap can get up to 50MB due to the large scale factor
+								page.renderToBitmap(pixelWidth, pixelHeight).use {
+									yield(it)
+								}
 							}
 						}
 					}
+
 				}
+
 			}
 		} catch (ex: Exception) {
 			ex.printStackTrace()
