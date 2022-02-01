@@ -178,8 +178,7 @@ class WalletDataSecureStorage private constructor(context: Context) {
 
 		if (index >= 0) {
 			val item = walletData.removeAt(index) as WalletDataItem.CertificateWalletData
-			val updatedItem = item.copy(pdfData = pdfData)
-			updatedItem.language = language
+			val updatedItem = item.copy(pdfData = pdfData,  language = language)
 			walletData.add(index, updatedItem)
 			updateWalletData(walletData)
 		}
