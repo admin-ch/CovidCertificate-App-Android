@@ -11,7 +11,9 @@
 package ch.admin.bag.covidcertificate.wallet.pdf.net
 
 import android.content.Context
+import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.extensions.setTimeouts
+import ch.admin.bag.covidcertificate.common.extensions.updateLocale
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.data.Config
 import ch.admin.bag.covidcertificate.sdk.android.net.CertificatePinning
@@ -29,24 +31,24 @@ import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
-class PdfExportRepository private constructor(context: Context) {
+class PdfExportRepository private constructor(applicationContext: Context) {
 
 	companion object : SingletonHolder<PdfExportRepository, Context>(::PdfExportRepository)
 
 	private val pdfExportService: PdfExportService
 
 	init {
-		val rootCa = CovidCertificateSdk.getRootCa(context)
+		val rootCa = CovidCertificateSdk.getRootCa(applicationContext)
 		val expectedCommonName = CovidCertificateSdk.getExpectedCommonName()
 		val okHttpBuilder = OkHttpClient.Builder()
 			.certificatePinner(CertificatePinning.pinner)
 			.addInterceptor(JwsInterceptor(rootCa, expectedCommonName))
 			.addInterceptor(UserAgentInterceptor(Config.userAgent))
-			.addInterceptor(AcceptLanguageHeaderInterceptor(context.getString(R.string.language_key)))
+			.addInterceptor(AcceptLanguageHeaderInterceptor(applicationContext))
 			.setTimeouts()
 
 		val cacheSize = 5 * 1024 * 1024 // 5 MB
-		val cache = Cache(context.cacheDir, cacheSize.toLong())
+		val cache = Cache(applicationContext.cacheDir, cacheSize.toLong())
 		okHttpBuilder.cache(cache)
 
 		if (BuildConfig.DEBUG) {

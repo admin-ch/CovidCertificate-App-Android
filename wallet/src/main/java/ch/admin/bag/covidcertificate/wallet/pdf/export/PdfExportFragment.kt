@@ -69,8 +69,8 @@ class PdfExportFragment : Fragment(R.layout.fragment_pdf_export) {
 		super.onViewCreated(view, savedInstanceState)
 		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 
-		binding.certificatePdfExportButton.setOnClickListener { viewModel.exportPdf(certificateHolder) }
-		binding.certificatePdfExportRetryButton.setOnClickListener { viewModel.exportPdf(certificateHolder) }
+		binding.certificatePdfExportButton.setOnClickListener { viewModel.exportPdf(certificateHolder, requireContext().getString(R.string.language_key)) }
+		binding.certificatePdfExportRetryButton.setOnClickListener { viewModel.exportPdf(certificateHolder,  requireContext().getString(R.string.language_key)) }
 
 		viewModel.pdfExportState.observe(viewLifecycleOwner) { onExportStateChanged(it) }
 	}
