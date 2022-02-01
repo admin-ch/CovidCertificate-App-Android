@@ -12,6 +12,7 @@ package ch.admin.bag.covidcertificate.wallet.data
 
 import android.content.Context
 import androidx.core.content.edit
+import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -162,14 +163,14 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		return null
 	}
 
-	fun getPdfForCertificate(certificateHolder: CertificateHolder): String? {
+	fun getPdfForCertificate(certificateHolder: CertificateHolder, language: String): String? {
 		val walletData = getWalletData()
 		return walletData.filterIsInstance(WalletDataItem.CertificateWalletData::class.java)
-			.firstOrNull { it.qrCodeData == certificateHolder.qrCodeData }
+			.firstOrNull { it.qrCodeData == certificateHolder.qrCodeData  && it.language == language}
 			?.pdfData
 	}
 
-	fun storePdfForCertificate(certificateHolder: CertificateHolder, pdfData: String) {
+	fun storePdfForCertificate(certificateHolder: CertificateHolder, pdfData: String, language: String) {
 		val walletData = getWalletData().toMutableList()
 		val index = walletData.indexOfFirst {
 			it is WalletDataItem.CertificateWalletData && (it.qrCodeData == certificateHolder.qrCodeData)
@@ -178,6 +179,7 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		if (index >= 0) {
 			val item = walletData.removeAt(index) as WalletDataItem.CertificateWalletData
 			val updatedItem = item.copy(pdfData = pdfData)
+			updatedItem.language = language
 			walletData.add(index, updatedItem)
 			updateWalletData(walletData)
 		}

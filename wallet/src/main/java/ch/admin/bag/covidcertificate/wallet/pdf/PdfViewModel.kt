@@ -71,7 +71,8 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 		viewModelScope.launch(Dispatchers.IO) {
 			try {
 				val inputStream: InputStream? = getApplication<Application>().contentResolver.openInputStream(uri)
-				val outputFile: File = File.createTempFile("certificate", PDF_FILE_EXTENSION, getApplication<Application>().cacheDir)
+				val outputFile: File =
+					File.createTempFile("certificate", PDF_FILE_EXTENSION, getApplication<Application>().cacheDir)
 				inputStream?.copyTo(outputFile.outputStream())
 
 				val bitmaps = QRCodeReaderHelper.pdfToBitmaps(getApplication<Application>(), outputFile)
@@ -98,12 +99,12 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 		}
 	}
 
-	fun exportPdf(certificateHolder: CertificateHolder) {
+	fun exportPdf(certificateHolder: CertificateHolder, language: String) {
 		exportJob?.cancel()
 
 		pdfExportMutableLiveData.value = PdfExportState.LOADING
 		exportJob = viewModelScope.launch(Dispatchers.IO) {
-			val pdfData = walletDataStorage.getPdfForCertificate(certificateHolder)
+			val pdfData = walletDataStorage.getPdfForCertificate(certificateHolder, language)
 
 			if (pdfData != null) {
 				// Directly post the pdf data if it was already stored once
@@ -114,7 +115,7 @@ class PdfViewModel(application: Application) : AndroidViewModel(application) {
 					val response = pdfExportRepository.convert(certificateHolder)
 
 					if (response != null) {
-						walletDataStorage.storePdfForCertificate(certificateHolder, response.pdf)
+						walletDataStorage.storePdfForCertificate(certificateHolder, response.pdf, language = language)
 						pdfExportMutableLiveData.postValue(PdfExportState.SUCCESS(response.pdf))
 					} else {
 						val error = checkIfOffline()

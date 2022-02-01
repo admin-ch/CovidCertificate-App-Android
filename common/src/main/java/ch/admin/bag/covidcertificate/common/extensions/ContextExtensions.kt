@@ -11,5 +11,18 @@
 package ch.admin.bag.covidcertificate.common.extensions
 
 import android.content.Context
+import android.content.res.Configuration
+import java.util.*
 
 fun Context.getDrawableIdentifier(drawableName: String) = resources.getIdentifier(drawableName, "drawable", packageName)
+
+fun Context.updateLocale(languageKey: String? = null): Context {
+	val config = Configuration()
+
+	val locale = languageKey?.let {
+		Locale(languageKey, "CH")
+	} ?: Locale.getDefault()
+
+	config.setLocale(locale)
+	return createConfigurationContext(config)
+}
