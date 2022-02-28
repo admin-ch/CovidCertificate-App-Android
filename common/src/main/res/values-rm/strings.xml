@@ -234,7 +234,7 @@ Resguardai per plaschair che Vus stuais en mintga cas preschentar – sin dumond
     <string name="wallet_faq_questions_answer_4">"Il code QR sin Voss certificat COVID cuntegna ina signatura digitala. La signatura è ina impurtanta caracteristica da segirezza che impedescha da falsifitgar il certificat COVID. Il certificat COVID è ultra da quai valaivel mo en cumbinaziun cun in document da legitimaziun."</string>
 
     <!-- Antwort 5 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_5">"Voss certificat COVID na vegn betg arcunà en in sistem central. El è unicamain en Voss agen possess. Tegnai perquai en salv cun quità il certificat COVIDsin palpiri. En cas da perdita, stuais Vus dumandar in nov certificat COVID tar il post che l'ha emess."</string>
+    <string name="wallet_faq_questions_answer_5">"Voss certificat COVID na vegn betg arcunà en in sistem central. El è unicamain en Voss agen possess. Tegnai perquai en salv cun quità il certificat COVIDsin palpiri e/u sco PDF. En cas ch’il certificat va a perder e sto vegnir remplazzà, po vegnir incassada ina taxa."</string>
 
     <!-- Antwort 6 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_1">"Per agiuntar in certificat COVID a l'app, duvrais Vus il certificat original ch'è vegnì emess per Vus sin palpiri u en furma da PDF. Cun l'app COVID Certificate pudais Vus alura scannar il code QR sin il certificat ed al agiuntar a l'app. Silsuenter cumpara il certificat COVID directamain en l'app."</string>
@@ -1098,7 +1098,7 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
     <string name="vaccination_booking_ow_name">"Sursilvania"</string>
 
     <!-- url for booking an appointment for vaccination for canton ow -->
-    <string name="vaccination_booking_ow_url">"https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"</string>
+    <string name="vaccination_booking_ow_url">"https://www.ow.ch/dienstleistungen/7129"</string>
 
     <!-- canton name sg -->
     <string name="vaccination_booking_sg_name">"Son Gagl"</string>
@@ -1167,12 +1167,6 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
     <string name="vaccination_booking_zh_url">"http://www.zh.ch/coronaimpfung"</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_1">"Sa laschar vaccinar ussa!"</string>
-
-    <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_1">"Cun la vaccinaziun cunter COVID-19 pudais Vus desister da far tests repetitivs."</string>
-
-    <!-- vaccination hint box title -->
     <string name="vaccination_hint_title_2">"Sa laschar vaccinar ussa!"</string>
 
     <!-- vaccination hint box text -->
@@ -1213,12 +1207,6 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
 
     <!-- vaccination hint box text -->
     <string name="vaccination_hint_text_8">"Cun la vaccinaziun cunter COVID-19 pudais Vus gidar a distgargiar il sistem da sanadad."</string>
-
-    <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_9">"Sa laschar vaccinar ussa!"</string>
-
-    <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_9">"Cun la vaccinaziun cunter COVID-19 pudais Vus gidar a purtar enavos las libertads dal mintgadi."</string>
 
     <!-- vaccination booking info screen title -->
     <string name="vaccination_booking_info_title">"Reservar in termin da vaccinaziun en Vossa vischinanza"</string>
@@ -1456,9 +1444,7 @@ Code: {ERROR_CODE}"</string>
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
     <string name="wallet_certificate_detail_note_ausnahme">"Quest attest n'è betg in document da viadi. 
 
-Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad actuala en Svizra pudais Vus verifitgar da tut temp cun l'app «Covid-Certificate». 
-
-Tut tenor il concept da protecziun respectiv sto la possessura u il possessur eventualmain purtar ina mascrina a chaschun d'occurrenzas u en instituziuns, nua ch'in certificat è obligatoric."</string>
+Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad actuala en Svizra pudais Vus verifitgar da tut temp cun l'app «Covid-Certificate»."</string>
 
     <!-- Wallet: Ausnahme Label für Liste -->
     <string name="covid_certificate_ch_ausnahme_list_label">"Excepziun"</string>
@@ -1491,10 +1477,10 @@ Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad ac
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_title">"Info"</string>
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1">"A partir dals 31-01-2022 valan en Svizra duradas da valaivladad reducidas da 270 dis empè da 365 dis per certificats COVID per persunas vaccinadas u guaridas. Quest certificat è pertutgà directamain da la valaivladad pli curta:"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1">"Dapi ils 31 da schaner 2022 valan en Svizra duradas da valaivladad reducidas da 270 empè da 365 dis per ils certificats COVID da persunas vaccinadas u guaridas. Quest certificat è pertutgà directamain da la durada da valaivladad reducida:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Quest certificat COVID è valaivel mo pli per intgins dis a partir dals 31-01-2022."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Quest certificat COVID vala mo pli durant paucs dis."</string>
 
     <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Dapli infurmaziuns"</string>
@@ -1530,5 +1516,21 @@ Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad ac
     <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/warum-wird-die-gueltigkeitsdauer-der-zertifikate-fuer-eine-impfung-oder-eine"</string>
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Resguardai per plaschair la data da scadenza inditgada sin il certificat. A partir dals 31-01-2022 vegn questa data calculada sin basa da la valaivladad pli curta da 270 dis."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Resguardai per plaschair la nova data da scadenza sin il certificat. Dapi ils 31 da schaner 2022 vegn questa data calculada sin basa da la durada da valaivladad reducida da 270 dis."</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_title">"Tegnair en salv il certificat!"</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_text">"Sche Vus stizzais l'app, midais u perdais Voss smartphone, van er a perder Voss certificats COVID. 
+Tegnai perquai en salv Voss certificats er ordaifer l'app cun exportar quels sco PDF."</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_button">"Dapli infurmaziuns"</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_url_android">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate"</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_url_ios">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate"</string>
 </resources>
