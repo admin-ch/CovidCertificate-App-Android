@@ -237,7 +237,7 @@ Beachten Sie, dass Sie in jedem Fall auf Verlangen auch noch ein Ausweisdokument
     <string name="wallet_faq_questions_answer_4">"Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument gültig."</string>
 
     <!-- Antwort 5 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_5">"Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen."</string>
+    <string name="wallet_faq_questions_answer_5">"Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier und/oder als PDF deshalb sorgfältig auf. Bei Verlust und Bedarf nach einem Ersatz kann eine Gebühr erhoben werden."</string>
 
     <!-- Antwort 6 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_1">"Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App."</string>
@@ -970,7 +970,7 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
     <string name="wallet_faq_works_question_2_1">"Was ist ein Transfer-Code?"</string>
     <string name="wallet_faq_works_answer_2_1">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat, z. B. nach einem Covid-Test, direkt in die App geliefert."</string>
     <string name="wallet_faq_works_question_5_1">"Ich habe das Covid-Zertifikat ausschliesslich elektronisch in der App. Wie komme ich zum Zertifikat als PDF oder auf Papier?"</string>
-    <string name="wallet_faq_works_answer_5_1">"In der «COVID Certificate»-App finden Sie in der Detailansicht des elektronische Covid-Zertifikats die Funktion «Exportieren». Damit können Sie ein PDF erstellen, dieses speichern und ausdrucken."</string>
+    <string name="wallet_faq_works_answer_5_1">"In der «COVID Certificate»-App finden Sie in der Detailansicht des elektronischen Covid-Zertifikats die Funktion «Exportieren». Damit können Sie ein PDF erstellen, dieses speichern und ausdrucken."</string>
 
     <!-- wallet android app google play store deep link -->
     <string name="wallet_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.wallet"</string>
@@ -1104,7 +1104,7 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
     <string name="vaccination_booking_ow_name">"Obwalden"</string>
 
     <!-- url for booking an appointment for vaccination for canton ow -->
-    <string name="vaccination_booking_ow_url">"https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"</string>
+    <string name="vaccination_booking_ow_url">"https://www.ow.ch/dienstleistungen/7129"</string>
 
     <!-- canton name sg -->
     <string name="vaccination_booking_sg_name">"St. Gallen"</string>
@@ -1173,12 +1173,6 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
     <string name="vaccination_booking_zh_url">"http://www.zh.ch/coronaimpfung"</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_1">"Jetzt impfen lassen!"</string>
-
-    <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_1">"Mit der Covid-19-Impfung können Sie auf das wiederholte Testen verzichten."</string>
-
-    <!-- vaccination hint box title -->
     <string name="vaccination_hint_title_2">"Jetzt impfen lassen!"</string>
 
     <!-- vaccination hint box text -->
@@ -1219,12 +1213,6 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
 
     <!-- vaccination hint box text -->
     <string name="vaccination_hint_text_8">"Mit der Covid-19-Impfung können Sie dazu beitragen, das Gesundheitswesen zu entlasten."</string>
-
-    <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_9">"Jetzt impfen lassen!"</string>
-
-    <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_9">"Mit der Covid-19-Impfung können Sie dazu beitragen, die Freiheiten des Alltags zurückzubringen."</string>
 
     <!-- vaccination booking info screen title -->
     <string name="vaccination_booking_info_title">"Impftermin in Ihrer Nähe buchen"</string>
@@ -1463,9 +1451,7 @@ Code: {ERROR_CODE}"</string>
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
     <string name="wallet_certificate_detail_note_ausnahme">"Dieses Zertifikat ist kein Reisedokument. 
 
-Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen. 
-
-Die Inhaberin oder der Inhaber kann entsprechend dem jeweils gültigen Schutzkonzept bei zertifikatspflichtigen Veranstaltungen und Einrichtungen verpflichtet sein, eine Gesichtsmaske zu tragen."</string>
+Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen."</string>
 
     <!-- Wallet: Ausnahme Label für Liste -->
     <string name="covid_certificate_ch_ausnahme_list_label">"Ausnahme"</string>
@@ -1499,11 +1485,11 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <!-- Fuzzy -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1">"Per 31. Jan. 2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1">"Seit dem 31. Jan. 2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <!-- Fuzzy -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist ab dem 31. Jan. 2022 nur noch wenige Tage gültig."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist nur noch wenige Tage gültig."</string>
 
     <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Mehr erfahren"</string>
@@ -1540,5 +1526,21 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
     <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/warum-wird-die-gueltigkeitsdauer-der-zertifikate-fuer-eine-impfung-oder-eine"</string>
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum, welches ab dem 31.1.2022 mit der reduzierten Gültigkeitsdauer von 270 Tagen berechnet wird."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Bitte beachten Sie das auf dem Zertifikat ausgewiesene neue Ablaufdatum, welches seit dem 31. Jan. 2022 mit einer reduzierten Gültigkeitsdauer von 270 Tagen berechnet wird."</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_title">"Zertifikat sichern!"</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_text">"Wenn Sie die App löschen, Ihr Smartphone wechseln oder verlieren, gehen auch Ihre Covid-Zertifikate verloren.
+Bewahren Sie Ihre Zertifikate daher auch ausserhalb der App auf, indem Sie diese als PDF exportieren."</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_button">"Mehr erfahren"</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_url_android">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate"</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_url_ios">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate"</string>
 </resources>

@@ -237,7 +237,7 @@ Please note that you will also need to show an identification document (passport
     <string name="wallet_faq_questions_answer_4">"The COVID certificate QR code contains an electronic signature. This is an important security feature and makes the COVID certificate forgery-proof. Moreover, the COVID certificate is valid only in combination with an identification document (passport or ID card)."</string>
 
     <!-- Antwort 5 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_5">"Your COVID certificate is not stored in any central system. It is solely in your possession. Therefore, keep your paper COVID certificate in a safe place. If you lose the COVID certificate, you will have to request it again from the issuing office"</string>
+    <string name="wallet_faq_questions_answer_5">"Your COVID-19 certificate is not stored in any central system. It is solely in your possession. Therefore, keep your paper and/or PDF COVID-19 certificate in a safe place. If you lose your certificate and need to replace it, a fee may be charged."</string>
 
     <!-- Antwort 6 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_1">"To add a COVID certificate to the app, you need the original certificate issued to you on paper or as a PDF document. You can use the COVID certificate app to scan the QR code on the original and add it to the app. The COVID certificate will then appear directly in the app."</string>
@@ -1099,7 +1099,7 @@ The 'Certificate light' is only available electronically in the app and is only 
     <string name="vaccination_booking_ow_name">"Obwalden"</string>
 
     <!-- url for booking an appointment for vaccination for canton ow -->
-    <string name="vaccination_booking_ow_url">"https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"</string>
+    <string name="vaccination_booking_ow_url">"https://www.ow.ch/dienstleistungen/7129"</string>
 
     <!-- canton name sg -->
     <string name="vaccination_booking_sg_name">"St. Gallen"</string>
@@ -1168,12 +1168,6 @@ The 'Certificate light' is only available electronically in the app and is only 
     <string name="vaccination_booking_zh_url">"http://www.zh.ch/coronaimpfung"</string>
 
     <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_1">"Get vaccinated today!"</string>
-
-    <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_1">"Being vaccinated against COVID-19 means no more repeat testing. "</string>
-
-    <!-- vaccination hint box title -->
     <string name="vaccination_hint_title_2">"Get vaccinated today!"</string>
 
     <!-- vaccination hint box text -->
@@ -1214,12 +1208,6 @@ The 'Certificate light' is only available electronically in the app and is only 
 
     <!-- vaccination hint box text -->
     <string name="vaccination_hint_text_8">"Being vaccinated against COVID-19 means helping to relieve the pressure on the health system."</string>
-
-    <!-- vaccination hint box title -->
-    <string name="vaccination_hint_title_9">"Get vaccinated today!"</string>
-
-    <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_9">"Being vaccinated against COVID-19 means helping us get our everyday freedoms back."</string>
 
     <!-- vaccination booking info screen title -->
     <string name="vaccination_booking_info_title">"Book a vaccination appointment near you"</string>
@@ -1457,9 +1445,7 @@ Code: {ERROR_CODE}"</string>
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
     <string name="wallet_certificate_detail_note_ausnahme">"This certificate is not a travel document. 
 
-This certificate is only valid for a limited period of time. You can check the current duration of validity in Switzerland at any time using the COVID Certificate app. 
-
-The holder may be required to wear a face mask at events and facilities requiring a certificate, in accordance with the applicable precautionary measures."</string>
+This certificate is only valid for a limited period of time. You can check the current duration of validity in Switzerland at any time using the COVID Certificate app."</string>
 
     <!-- Wallet: Ausnahme Label für Liste -->
     <string name="covid_certificate_ch_ausnahme_list_label">"Exception"</string>
@@ -1495,7 +1481,7 @@ This certificate is only valid for a limited period of time. You can check the c
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1">"As of 31 Jan 2022 a shortened period of validity of 270 instead of 365 days applies to COVID vaccination or recovery certificates in Switzerland. This certificate is directly affected by the shortened period of validity:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"This COVID certificate will only be valid for a few days after 31 Jan 2022."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"This COVID certificate is valid for only a few more days."</string>
 
     <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"More information"</string>
@@ -1531,5 +1517,21 @@ This certificate is only valid for a limited period of time. You can check the c
     <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/why-period-validity-certificates-vaccination-or-recovery-being-shortened-365-270"</string>
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Please note the expiry date shown on your certificate, which from 31 Jan 2022 is calculated based on the shortened period of validity of 270 days."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Please note the new expiry date shown on the certificate, which since 31 January 2022 has been calculated on the basis of the reduced period of validity of 270 days."</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_title">"Back up your certificate!"</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_text">"If you uninstall the app or change or lose your smartphone, you will also lose your COVID certificates.
+This means you should also keep a copy of your certificates outside the app by exporting them as PDFs."</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_button">"Find out more"</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_url_android">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/i-only-have-my-covid-certificate-electronically-covid-certificate-app-how-can-i"</string>
+
+    <!-- Fuzzy -->
+    <string name="infobox_generic_url_ios">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/i-only-have-my-covid-certificate-electronically-covid-certificate-app-how-can-i"</string>
 </resources>
