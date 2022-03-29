@@ -363,7 +363,7 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun setupForeignValidityButton() {
 		binding.certificateForeignValidityButton.setOnClickListener {
-			val fragment = ForeignValidityFragment.newInstance()
+			val fragment = ForeignValidityFragment.newInstance(certificateHolder)
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
 				.replace(R.id.fragment_container, fragment)
