@@ -55,8 +55,8 @@
 						android:layout_height="wrap_content"
 						android:layout_margin="@dimen/spacing_medium_large"
 						android:background="@drawable/bg_info_banner"
-						android:clipToPadding="false"
 						android:clipChildren="false"
+						android:clipToPadding="false"
 						android:foreground="@drawable/ripple_rounded_rect_banner"
 						android:padding="@dimen/spacing_medium"
 						android:visibility="gone"
@@ -328,6 +328,41 @@
 						android:visibility="gone"
 						tools:text="Error-Code"
 						tools:visibility="visible" />
+
+					<LinearLayout
+						android:id="@+id/certificateForeignValidityButton"
+						android:layout_width="match_parent"
+						android:layout_height="44dp"
+						android:layout_marginTop="@dimen/spacing_medium_large"
+						android:layout_marginHorizontal="@dimen/spacing_very_very_large"
+						android:background="@drawable/bg_bordered_button"
+						android:clickable="true"
+						android:focusable="true"
+						android:orientation="horizontal">
+
+						<ImageView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_marginVertical="@dimen/spacing_medium_small"
+							android:layout_marginStart="@dimen/spacing_medium_small"
+							android:layout_marginEnd="@dimen/spacing_very_small"
+							android:src="@drawable/ic_travel" />
+
+						<TextView
+							style="@style/CovidCertificate.Text.Bold.Blue"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center_vertical"
+							android:layout_weight="1"
+							android:text="Gültigkeit im Ausland" />
+
+						<ImageView
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_margin="@dimen/spacing_medium_small"
+							android:src="@drawable/ic_arrow_forward" />
+
+					</LinearLayout>
 
 					<include
 						android:id="@+id/certificate_detail_info_modes"

@@ -62,6 +62,7 @@ import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
+import ch.admin.bag.covidcertificate.wallet.travel.ForeignValidityFragment
 import ch.admin.bag.covidcertificate.wallet.util.*
 import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.getHumanReadableName
 import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.textAsBitmap
@@ -134,6 +135,7 @@ class CertificateDetailFragment : Fragment() {
 		setupConversionButtons()
 		setupVaccinationAppointmentButton()
 		setupEolBanner()
+		setupForeignValidityButton()
 
 		binding.certificateDetailToolbar.setNavigationOnClickListener {
 			parentFragmentManager.popBackStack()
@@ -209,9 +211,19 @@ class CertificateDetailFragment : Fragment() {
 		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
 			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
 				.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
-					if (ConfigRepository.getCurrentConfig(requireContext())?.refreshButtonDisabled != true) {
+					val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
+					if (currentConfig?.refreshButtonDisabled != true) {
 						binding.certificateDetailButtonReverify.showAnimated()
 					}
+
+					val isSuccessState = it.state is VerificationState.SUCCESS
+					val invalidState = it.state as? VerificationState.INVALID
+					val isOnlyNationalRulesInvalid = invalidState?.signatureState is CheckSignatureState.SUCCESS
+							&& (invalidState.revocationState is CheckRevocationState.SUCCESS
+							|| invalidState.revocationState is CheckRevocationState.SKIPPED)
+					binding.certificateForeignValidityButton.isVisible =
+						currentConfig?.foreignRulesCheckEnabled == true && (isSuccessState || isOnlyNationalRulesInvalid)
+
 					updateStatusInfo(it.state)
 				}
 		}
@@ -346,6 +358,17 @@ class CertificateDetailFragment : Fragment() {
 				CertificateBannerInfoDialogFragment.newInstance(it)
 					.show(childFragmentManager, CertificateBannerInfoDialogFragment::class.java.canonicalName)
 			}
+		}
+	}
+
+	private fun setupForeignValidityButton() {
+		binding.certificateForeignValidityButton.setOnClickListener {
+			val fragment = ForeignValidityFragment.newInstance()
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, fragment)
+				.addToBackStack(ForeignValidityFragment::class.java.canonicalName)
+				.commit()
 		}
 	}
 
