@@ -84,8 +84,8 @@ dependencies {
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 	implementation 'androidx.core:core-ktx:1.7.0'
 	implementation 'androidx.appcompat:appcompat:1.4.1'
-	api 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.0'
-	implementation 'androidx.fragment:fragment-ktx:1.4.0'
+	api 'androidx.lifecycle:lifecycle-livedata-ktx:2.4.1'
+	implementation 'androidx.fragment:fragment-ktx:1.4.1'
 	implementation 'com.google.android.material:material:1.5.0'
 	implementation 'androidx.security:security-crypto:1.0.0'
 	kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.13.0'
@@ -93,7 +93,7 @@ dependencies {
 	api 'androidx.camera:camera-view:1.0.0-alpha32'
 	api 'androidx.camera:camera-lifecycle:1.0.2'
 
-	api "com.augustcellars.cose:cose-java:1.1.0"
+	api 'com.augustcellars.cose:cose-java:1.1.0'
 	api 'org.bouncycastle:bcprov-jdk15on:1.69'
 
 	// QR code scanning

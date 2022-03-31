@@ -97,8 +97,8 @@
 							android:background="@drawable/bg_rect_rounded_small_blue_ripple"
 							android:backgroundTint="@color/white"
 							android:clickable="true"
-							android:gravity="center_vertical"
 							android:focusable="true"
+							android:gravity="center_vertical"
 							android:orientation="horizontal"
 							android:paddingHorizontal="@dimen/spacing_medium_large"
 							android:paddingVertical="@dimen/spacing_medium"
@@ -116,10 +116,10 @@
 								style="@style/CovidCertificate.Text.Bold"
 								android:layout_width="0dp"
 								android:layout_height="wrap_content"
-								android:textColor="@color/grey"
 								android:layout_weight="1"
 								android:gravity="end"
-								android:text="@string/wallet_foreign_rules_check_country_empty_label" />
+								android:text="@string/wallet_foreign_rules_check_country_empty_label"
+								android:textColor="@color/grey" />
 
 						</LinearLayout>
 
@@ -131,8 +131,8 @@
 							android:background="@drawable/bg_rect_rounded_small_blue_ripple"
 							android:backgroundTint="@color/white"
 							android:clickable="true"
-							android:gravity="center_vertical"
 							android:focusable="true"
+							android:gravity="center_vertical"
 							android:orientation="horizontal"
 							android:paddingHorizontal="@dimen/spacing_medium_large"
 							android:paddingVertical="@dimen/spacing_medium"
@@ -156,7 +156,72 @@
 
 						</LinearLayout>
 
+						<TextView
+							android:id="@+id/foreignValidityDateTimeError"
+							style="@style/CovidCertificate.Text"
+							android:layout_width="match_parent"
+							android:layout_height="wrap_content"
+							android:layout_marginTop="@dimen/spacing_very_small"
+							android:text="@string/wallet_foreign_rules_check_date_in_past_error"
+							android:textColor="@color/red"
+							android:textSize="@dimen/text_size_small"
+							android:visibility="gone"
+							tools:visibility="visible" />
 					</LinearLayout>
+
+					<TextView
+						android:id="@+id/foreignValidityVerificationState"
+						style="@style/CovidCertificate.Text"
+						android:layout_width="match_parent"
+						android:layout_height="0dp"
+						android:layout_marginTop="@dimen/spacing_very_small"
+						android:background="@drawable/bg_certificate_bubble"
+						android:gravity="center"
+						android:minLines="2"
+						android:padding="@dimen/spacing_medium_large"
+						app:backgroundTint="@color/blueish"
+						app:layout_constraintTop_toBottomOf="@+id/foreignValidityFormContainer"
+						tools:text="@string/wallet_foreign_rules_check_state_empty" />
+
+					<FrameLayout
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:background="@drawable/circle_white"
+						android:padding="@dimen/info_buble_icon_padding"
+						app:layout_constraintBottom_toTopOf="@id/foreignValidityVerificationState"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/foreignValidityFormContainer">
+
+						<ImageView
+							android:id="@+id/foreignValidityVerificationStateIcon"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:layout_gravity="center"
+							app:srcCompat="@drawable/ic_info_blue" />
+
+						<ProgressBar
+							android:id="@+id/foreignValidityVerificationStateProgress"
+							android:layout_width="26dp"
+							android:layout_height="26dp"
+							android:visibility="gone" />
+					</FrameLayout>
+
+					<TextView
+						android:id="@+id/foreignValidityErrorCode"
+						style="@style/CovidCertificate.Text.Grey"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center"
+						android:layout_marginVertical="@dimen/spacing_medium_small"
+						android:textAllCaps="true"
+						android:textSize="@dimen/text_size_small"
+						android:visibility="gone"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toBottomOf="@+id/foreignValidityVerificationState"
+						tools:text="Error-Code"
+						tools:visibility="visible" />
 
 					<androidx.constraintlayout.widget.Group
 						android:id="@+id/foreignValidityHintsGroup"
@@ -174,7 +239,7 @@
 						android:layout_marginHorizontal="@dimen/spacing_medium_large"
 						android:layout_marginTop="@dimen/spacing_huger"
 						android:text="@string/wallet_foreign_rules_check_hints_title"
-						app:layout_constraintTop_toBottomOf="@+id/foreignValidityFormContainer" />
+						app:layout_constraintTop_toBottomOf="@+id/foreignValidityErrorCode" />
 
 					<LinearLayout
 						android:id="@+id/foreignValidityHintsContainer"

@@ -1581,4 +1581,13 @@ Tegnai perquai en salv Voss certificats er ordaifer l'app cun exportar quels sco
 
     <!-- Reise-Check: Titel des Auswahldialoges für das Land -->
     <string name="wallet_foreign_rules_check_country_picker_title">"Land auswählen"</string>
+
+    <!-- Reise-Check: Erste Zeile des Prüfstatus wenn Zertifikat gültig ist -->
+    <string name="wallet_foreign_rules_check_state_valid">"Das Zertifikat ist gültig"</string>
+
+    <!-- Reise-Check: Erste Zeile des Prüfstatus wenn Zertifikat ungültig ist -->
+    <string name="wallet_foreign_rules_check_state_invalid">"Das Zertifikat ist nicht gültig"</string>
+
+    <!-- Reise-Check: Zweite Zeile des Prüfstatus wenn Zertifikat (un-)gültig ist. {COUNTRY} und {DATE} nicht übersetzen -->
+    <string name="wallet_foreign_rules_check_state_country_and_date">"in {COUNTRY} am {DATE}"</string>
 </resources>

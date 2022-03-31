@@ -35,17 +35,17 @@ class ForeignValidityViewModel : ViewModel() {
 	val selectedDateTime = selectedDateTimeMutable.asStateFlow()
 
 	val verificationState = combine(selectedCountryCode, selectedDateTime) { countryCode, checkDate ->
-		val certificate = certificateHolder ?: return@combine null
+		val certificate = certificateHolder ?: return@combine flowOf(null)
 		when {
-			countryCode == null -> null
-			checkDate < LocalDateTime.now() -> null
+			countryCode == null -> flowOf(null)
+			checkDate < LocalDateTime.now().minusMinutes(5) -> flowOf(null)
 			else -> CovidCertificateSdk.Wallet.verify(certificate, emptySet(), countryCode, checkDate, viewModelScope)
 		}
-	}.filterNotNull().flattenMerge()
+	}.flatMapLatest { it }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
 	init {
 		viewModelScope.launch(Dispatchers.IO) {
-			availableCountryCodesMutable.value = CovidCertificateSdk.Wallet.getForeignRulesCountryCodes()
+			availableCountryCodesMutable.value = CovidCertificateSdk.Wallet.getForeignRulesCountryCodes().toList()
 		}
 	}
 

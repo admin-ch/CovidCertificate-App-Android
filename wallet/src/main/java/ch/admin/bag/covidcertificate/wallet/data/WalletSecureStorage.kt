@@ -33,6 +33,8 @@ class WalletSecureStorage private constructor(context: Context) {
 		private const val KEY_VACCINATION_HINT_DISMISS_TIMESTAMP = "KEY_VACCINATION_HINT_DISMISS_TIMESTAMP"
 		private const val KEY_LAST_SCAN_TIMES = "KEY_LAST_SCAN_TIMES"
 		private const val KEY_DISMISSED_EOL_BANNERS = "KEY_DISMISSED_EOL_BANNERS"
+		private const val KEY_FOREIGN_RULES_CHECK_SELECTED_COUNTRY = "KEY_FOREIGN_RULES_CHECK_SELECTED_COUNTRY"
+		private const val KEY_FOREIGN_RULES_CHECK_SELECTED_DATE = "KEY_FOREIGN_RULES_CHECK_SELECTED_DATE"
 		private val moshi = Moshi.Builder().build()
 		private val longListAdapter =
 			moshi.adapter<List<Long>>(Types.newParameterizedType(List::class.java, Long::class.javaObjectType))
@@ -125,6 +127,26 @@ class WalletSecureStorage private constructor(context: Context) {
 	fun addDismissedEolBanner(qrCodeData: String) {
 		val dismissedEolBanners = getDismissedEolBanners() + qrCodeData
 		prefs.edit { putStringSet(KEY_DISMISSED_EOL_BANNERS, dismissedEolBanners) }
+	}
+
+	fun getForeignRulesCheckSelectedCountry(): String? {
+		return prefs.getString(KEY_FOREIGN_RULES_CHECK_SELECTED_COUNTRY, null)
+	}
+
+	fun setForeignRulesCheckSelectedCountry(countryCode: String?) {
+		prefs.edit {
+			putString(KEY_FOREIGN_RULES_CHECK_SELECTED_COUNTRY, countryCode)
+		}
+	}
+
+	fun getForeignRulesCheckSelectedDate(): Long {
+		return prefs.getLong(KEY_FOREIGN_RULES_CHECK_SELECTED_DATE, 0L)
+	}
+
+	fun setForeignRulesCheckSelectedDate(timestamp: Long) {
+		prefs.edit {
+			putLong(KEY_FOREIGN_RULES_CHECK_SELECTED_DATE, timestamp)
+		}
 	}
 
 }
