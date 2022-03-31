@@ -34,7 +34,10 @@ class ForeignValidityViewModel : ViewModel() {
 	private val selectedDateTimeMutable = MutableStateFlow(LocalDateTime.now())
 	val selectedDateTime = selectedDateTimeMutable.asStateFlow()
 
-	val verificationState = combine(selectedCountryCode, selectedDateTime) { countryCode, checkDate ->
+	// A separate shared flow (without conflation like a StateFlow) to trigger a manual reverification without the country or date changing
+	private val reverifyFlow = MutableSharedFlow<Boolean>(replay = 1).also { it.tryEmit(true) }
+
+	val verificationState = combine(selectedCountryCode, selectedDateTime, reverifyFlow) { countryCode, checkDate, _ ->
 		val certificate = certificateHolder ?: return@combine flowOf(null)
 		when {
 			countryCode == null -> flowOf(null)
@@ -63,6 +66,10 @@ class ForeignValidityViewModel : ViewModel() {
 		selectedDateTimeMutable.update {
 			it.withHour(time.hour).withMinute(time.minute)
 		}
+	}
+
+	fun reverify() {
+		reverifyFlow.tryEmit(true)
 	}
 
 }

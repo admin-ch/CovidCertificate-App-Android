@@ -80,14 +80,14 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 			?: throw IllegalStateException("ForeignValidityFragment created without Certificate!")
 		useDateTime = certificateHolder.certType == CertType.TEST && (certificateHolder.certificate as? DccCert)?.tests?.firstOrNull()?.isPositiveRatTest() != true
 		formatter = if (useDateTime) DEFAULT_DISPLAY_DATE_TIME_FORMATTER else DEFAULT_DISPLAY_DATE_FORMATTER
-
 		viewModel.certificateHolder = certificateHolder
-		if (!useDateTime) {
-			viewModel.setSelectedTime(LocalTime.MAX)
-		}
 
 		walletStorage = WalletSecureStorage.getInstance(requireContext())
 		restoreLastSelection()
+
+		if (!useDateTime) {
+			viewModel.setSelectedTime(LocalTime.MAX)
+		}
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -100,6 +100,7 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 
 		setupCountrySelection()
 		setupCheckDateSelection()
+		setupVerificationState()
 
 		binding.toolbar.setNavigationOnClickListener {
 			parentFragmentManager.popBackStack()
@@ -273,6 +274,12 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 	private fun setupCheckDateSelection() {
 		binding.foreignValidityDateContainer.setOnClickListener {
 			showDatePicker()
+		}
+	}
+
+	private fun setupVerificationState() {
+		binding.foreignValidityVerificationState.setOnClickListener {
+			viewModel.reverify()
 		}
 	}
 

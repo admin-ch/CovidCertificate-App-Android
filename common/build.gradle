@@ -78,8 +78,7 @@ android {
 dependencies {
 	coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.1.5'
 
-	api 'ch.admin.bag.covidcertificate:sdk-android:2.0.4'
-	api 'ch.admin.bag.covidcertificate:sdk-core:3.0.4'
+	api 'ch.admin.bag.covidcertificate:sdk-android:2.1.0-dev-58'
 
 	implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
 	implementation 'androidx.core:core-ktx:1.7.0'
