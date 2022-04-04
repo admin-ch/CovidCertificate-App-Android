@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+    ~
+    ~ This Source Code Form is subject to the terms of the Mozilla Public
+    ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+    ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+    ~
+    ~ SPDX-License-Identifier: MPL-2.0
+    -->
 <resources>
 
     <!-- Android App Name -->
@@ -1256,7 +1265,7 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_info_box_certificate_scan_button_check_app">"All'app Check"</string>
     <string name="wallet_info_box_certificate_scan_close">"Capito"</string>
     <string name="wallet_info_box_certificate_scan_text_bold">"«COVID Certificate Check»-App."</string>
-    <string name="wallet_only_valid_in_switzerland">"Valido solo in Svizzera con un documento di legittimazione"</string>
+    <string name="wallet_only_valid_in_switzerland">"Non valido al di fuori della Svizzera"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Risultati"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Sufficiente"</string>
 
@@ -1539,60 +1548,66 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <!-- accessibilityLabel for the "3"-icon -->
     <string name="wallet_scanner_how_it_works_accessibility_icon3">"Terzo"</string>
 
-    <!-- Errorcode, falls (im Reisefeature) ein Land ausgewählt wurde, für das keine Rule existiert, die zu einem gegebenen Zeitpunkt valid ist. -->
-    <string name="wallet_error_no_valid_rule"></string>
-
-    <!-- Errorcode, falls (im Reisefeature) ein Land ausgewählt wurde,  das nicht unterstützt wird. -->
-    <string name="wallet_error_country_not_supported"></string>
-
-    <!-- Errorcode, falls (im Reisefeature) ein Land ausgewählt wurde, für das keine Rule existiert, die zu einem gegebenen Zeitpunkt valid ist. (Fetter Text) -->
-    <string name="wallet_error_no_valid_rule_bold"></string>
-
-    <!-- Errorcode, falls (im Reisefeature) ein Land ausgewählt wurde,  das nicht unterstützt wird. (Fetter Text) -->
-    <string name="wallet_error_country_not_supported_bold"></string>
-
     <!-- Reise-Check: Label des Buttons um Gültigkeit im Ausland zu prüfen -->
-    <string name="wallet_foreign_rules_check_button">"Gültigkeit im Ausland"</string>
+    <string name="wallet_foreign_rules_check_button">"Validità per i viaggi"</string>
 
     <!-- Reise-Check: Titel des Reise-Check Screens -->
-    <string name="wallet_foreign_rules_check_title">"Gültigkeit im Ausland prüfen"</string>
+    <string name="wallet_foreign_rules_check_title">"Validità per i viaggi all’estero"</string>
 
     <!-- Reise-Check: Untertitel des Reise-Check Screens -->
-    <string name="wallet_foreign_rules_check_subtitle">"Prüfen Sie vor einer Reise, ob Ihr Zertifikat für die Einreise in das gewählte Reiseland gültig ist."</string>
+    <string name="wallet_foreign_rules_check_subtitle">"Prima di un viaggio all’estero, informatevi sulla validità del vostro certificato al momento dell’entrata nel Paese di destinazione.  "</string>
 
     <!-- Reise-Check: Titel der Länder- und Datumsauswahl -->
-    <string name="wallet_foreign_rules_check_form_title">"Zertifikat prüfen für"</string>
+    <string name="wallet_foreign_rules_check_form_title">"Verificare per:"</string>
 
     <!-- Reise-Check: Label des Länder Eingabefeldes -->
-    <string name="wallet_foreign_rules_check_country_label">"Land"</string>
+    <string name="wallet_foreign_rules_check_country_label">"Paese:"</string>
 
     <!-- Reise-Check: Wert wenn kein Land ausgewählt -->
     <string name="wallet_foreign_rules_check_country_empty_label">"Wählen"</string>
 
     <!-- Reise-Check: Label des Datum Eingabefeldes -->
-    <string name="wallet_foreign_rules_check_date_label">"Datum"</string>
+    <string name="wallet_foreign_rules_check_date_label">"Entrata in data:"</string>
 
     <!-- Reise-Check: Fehlermeldung wenn Datum in der Vergangenheit liegt -->
     <string name="wallet_foreign_rules_check_date_in_past_error">"Die angegebene Uhrzeit liegt in der Vergangenheit"</string>
 
     <!-- Reise-Check: Titel des Hinweise Abschnittes -->
-    <string name="wallet_foreign_rules_check_hints_title">"Hinweise"</string>
+    <string name="wallet_foreign_rules_check_hints_title">"Avvertenze"</string>
 
     <!-- Reise-Check: Label für den Mehr Informationen Button -->
-    <string name="wallet_foreign_rules_check_hints_more_info_label">"Mehr Informationen finden Sie unter"</string>
+    <string name="wallet_foreign_rules_check_hints_more_info_label">"Maggiori informazioni sono disponibili su"</string>
 
     <!-- Reise-Check: Prüfstatus wenn noch kein Land ausgewählt wurde -->
-    <string name="wallet_foreign_rules_check_state_empty">"Bitte wählen Sie ein Land und den Einreisezeitpunkt aus."</string>
+    <string name="wallet_foreign_rules_check_state_empty">"Vogliate scegliere un Paese e una data di entrata."</string>
 
     <!-- Reise-Check: Titel des Auswahldialoges für das Land -->
     <string name="wallet_foreign_rules_check_country_picker_title">"Land auswählen"</string>
 
     <!-- Reise-Check: Erste Zeile des Prüfstatus wenn Zertifikat gültig ist -->
-    <string name="wallet_foreign_rules_check_state_valid">"Das Zertifikat ist gültig"</string>
+    <string name="wallet_foreign_rules_check_state_valid">"Valido per l’entrata in:"</string>
 
     <!-- Reise-Check: Erste Zeile des Prüfstatus wenn Zertifikat ungültig ist -->
-    <string name="wallet_foreign_rules_check_state_invalid">"Das Zertifikat ist nicht gültig"</string>
+    <string name="wallet_foreign_rules_check_state_invalid">"Non valido per l’entrata in:"</string>
 
     <!-- Reise-Check: Zweite Zeile des Prüfstatus wenn Zertifikat (un-)gültig ist. {COUNTRY} und {DATE} nicht übersetzen -->
-    <string name="wallet_foreign_rules_check_state_country_and_date">"in {COUNTRY} am {DATE}"</string>
+    <string name="wallet_foreign_rules_check_state_country_and_date">"{COUNTRY}, {DATE}"</string>
+
+    <!-- Error-Titel falls das Reisefeature ("Gültigkeit im Ausland") im Offline-Modus gestartet wurde -->
+    <string name="wallet_foreign_rules_check_error_title">"Fehler beim Laden der verfügbaren Länder"</string>
+
+    <!-- Error-Text falls das Reisefeature ("Gültigkeit im Ausland") im Offline-Modus gestartet wurde -->
+    <string name="wallet_foreign_rules_check_network_error_text">"Um die Gültigkeit im Ausland zu überprüfen, muss die App online sein."</string>
+
+    <!-- Reisefeature: Hinweis 1 -->
+    <string name="wallet_foreign_rules_check_hint_1">"Le disposizioni d’entrata possono cambiare. Verificate poco prima della partenza se il vostro certificato è valido e informatevi ulteriormente online sulle disposizioni d’entrata attuali del Paese di destinazione."</string>
+
+    <!-- Reisefeature: Hinweis 2 -->
+    <string name="wallet_foreign_rules_check_hint_2">"Le informazioni sopra indicate si riferiscono solo alle disposizioni d’entrata del Paese di destinazione. Per eventuali settori soggetti all’obbligo di certificato all’interno del Paese possono vigere altre regole."</string>
+
+    <!-- Reisefeature: Hinweis 3 -->
+    <string name="wallet_foreign_rules_check_hint_3">"La Confederazione non si assume la responsabilità per l’attualità e la completezza delle informazioni fornite."</string>
+
+    <!-- Reisefeature: Hinweis 4 -->
+    <string name="wallet_foreign_rules_check_hint_4">"Non avete trovato un Paese? Non tutti i Paesi accettano i certificati COVID o rendono disponibili le regole d’entrata."</string>
 </resources>

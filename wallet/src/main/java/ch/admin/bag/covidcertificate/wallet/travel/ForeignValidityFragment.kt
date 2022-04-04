@@ -31,6 +31,7 @@ import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isPositiveRatTest
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -107,6 +108,8 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 		}
 
 		configViewModel.configLiveData.observe(viewLifecycleOwner) { onConfigChanged(it) }
+		viewLifecycleOwner.collectWhenStarted(viewModel.viewState) { onViewStateChanged(it) }
+		viewLifecycleOwner.collectWhenStarted(viewModel.verificationState) { onVerificationStateChanged(it) }
 
 		viewLifecycleOwner.collectWhenStarted(viewModel.selectedCountryCode) { countryCode ->
 			val textColor = ContextCompat.getColor(requireContext(), if (countryCode != null) R.color.black else R.color.grey)
@@ -122,8 +125,6 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 			binding.foreignValidityDateTimeError.isVisible = dateTime < LocalDateTime.now().minusMinutes(5)
 			walletStorage.setForeignRulesCheckSelectedDate(dateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli())
 		}
-
-		viewLifecycleOwner.collectWhenStarted(viewModel.verificationState) { onVerificationStateChanged(it) }
 	}
 
 	override fun onDestroyView() {
@@ -165,11 +166,43 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 		}
 	}
 
+	private fun onViewStateChanged(state: ForeignValidityViewState) {
+		binding.apply {
+			loadingIndicator.isVisible = state is ForeignValidityViewState.LOADING
+			content.isVisible = state is ForeignValidityViewState.SUCCESS
+			errorContainer.isVisible = state is ForeignValidityViewState.ERROR
+
+			if (state is ForeignValidityViewState.ERROR) {
+				if (state.error.code == ErrorCodes.GENERAL_OFFLINE) {
+					errorStatusMessage.text = buildSpannedString {
+						bold {
+							appendLine(getString(R.string.wallet_transfer_code_no_internet_title))
+						}
+						append(getString(R.string.wallet_foreign_rules_check_network_error_text))
+					}
+				} else {
+					errorStatusMessage.text = buildSpannedString {
+						bold {
+							appendLine(getString(R.string.verifier_network_error_text))
+						}
+						append(getString(R.string.wallet_detail_network_error_text))
+					}
+				}
+
+				errorCode.text = state.error.code
+
+				errorRetryButton.setOnClickListener {
+					viewModel.loadAvailableCountryCodes()
+				}
+			}
+		}
+	}
+
 	private fun onVerificationStateChanged(state: VerificationState?) {
 		TransitionManager.beginDelayedTransition(binding.root)
 
-		val countryName = binding.foreignValidityCountry.text.toString()
-		val checkDate = binding.foreignValidityDateTime.text.toString()
+		val countryName = viewModel.selectedCountryCode.value?.let { getCountryNameFromCode(it) } ?: ""
+		val checkDate = viewModel.selectedDateTime.value.format(formatter)
 		when (state) {
 			null -> {
 				val backgroundColor = ContextCompat.getColor(requireContext(), R.color.blueish)

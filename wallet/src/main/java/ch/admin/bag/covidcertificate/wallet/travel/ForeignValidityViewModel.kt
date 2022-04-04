@@ -10,10 +10,16 @@
 
 package ch.admin.bag.covidcertificate.wallet.travel
 
-import androidx.lifecycle.ViewModel
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
+import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
@@ -21,7 +27,9 @@ import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.LocalTime
 
-class ForeignValidityViewModel : ViewModel() {
+class ForeignValidityViewModel(application: Application) : AndroidViewModel(application) {
+
+	private val connectivityManager = application.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
 	var certificateHolder: CertificateHolder? = null
 
@@ -46,9 +54,26 @@ class ForeignValidityViewModel : ViewModel() {
 		}
 	}.flatMapLatest { it }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
+	private val viewStateMutable = MutableStateFlow<ForeignValidityViewState>(ForeignValidityViewState.LOADING)
+	val viewState = viewStateMutable.asStateFlow()
+
 	init {
+		loadAvailableCountryCodes()
+	}
+
+	fun loadAvailableCountryCodes() {
 		viewModelScope.launch(Dispatchers.IO) {
-			availableCountryCodesMutable.value = CovidCertificateSdk.Wallet.getForeignRulesCountryCodes().toList()
+			viewStateMutable.value = ForeignValidityViewState.LOADING
+			try {
+				availableCountryCodesMutable.value = CovidCertificateSdk.Wallet.getForeignRulesCountryCodes().toList()
+				viewStateMutable.value = ForeignValidityViewState.SUCCESS
+			} catch (e: Exception) {
+				if (NetworkUtil.isNetworkAvailable(connectivityManager)) {
+					viewStateMutable.value = ForeignValidityViewState.ERROR(StateError(ErrorCodes.GENERAL_NETWORK_FAILURE))
+				} else {
+					viewStateMutable.value = ForeignValidityViewState.ERROR(StateError(ErrorCodes.GENERAL_OFFLINE))
+				}
+			}
 		}
 	}
 
