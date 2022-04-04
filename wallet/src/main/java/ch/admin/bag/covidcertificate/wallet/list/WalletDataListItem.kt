@@ -32,7 +32,8 @@ import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
-import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
+import ch.admin.bag.covidcertificate.wallet.util.getInvalidContentAlpha
+import ch.admin.bag.covidcertificate.wallet.util.getInvalidQrCodeAlpha
 import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 
 sealed class WalletDataListItem {
@@ -48,10 +49,9 @@ sealed class WalletDataListItem {
 			val certType = certificate?.certType
 
 			val name = certificate?.certificate?.getPersonName()?.prettyName() ?: ""
-			val qrAlpha = state.getQrAlpha()
 			binding.itemCertificateListName.text = name
-			binding.itemCertificateListName.alpha = qrAlpha
-			binding.itemCertificateListIconQr.alpha = qrAlpha
+			binding.itemCertificateListName.alpha = state.getInvalidContentAlpha()
+			binding.itemCertificateListIconQr.alpha = state.getInvalidQrCodeAlpha(verifiedCertificate.certificateHolder?.certType == CertType.TEST)
 
 			setCertificateType(binding.itemCertificateListType, certificate, state, certType)
 			binding.itemCertificateListType.isVisible = certType != null

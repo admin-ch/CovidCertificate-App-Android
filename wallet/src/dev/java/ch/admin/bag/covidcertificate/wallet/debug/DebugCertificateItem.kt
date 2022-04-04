@@ -19,7 +19,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
-import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
+import ch.admin.bag.covidcertificate.wallet.util.getInvalidContentAlpha
 
 data class DebugCertificateItem(val verifiedCertificate: StatefulWalletItem.VerifiedCertificate) {
 
@@ -58,7 +58,7 @@ data class DebugCertificateItem(val verifiedCertificate: StatefulWalletItem.Veri
 
 		// Name
 		val name = certificate?.certificate?.getPersonName()?.prettyName() ?: verifiedCertificate.qrCodeData
-		val qrAlpha = state.getQrAlpha()
+		val qrAlpha = state.getInvalidContentAlpha()
 		itemView.findViewById<TextView>(R.id.item_certificate_list_name).apply {
 			text = name
 			alpha = qrAlpha
