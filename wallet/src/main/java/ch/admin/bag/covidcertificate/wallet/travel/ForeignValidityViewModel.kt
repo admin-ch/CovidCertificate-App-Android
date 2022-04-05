@@ -20,8 +20,14 @@ import ch.admin.bag.covidcertificate.sdk.android.utils.NetworkUtil
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.combine
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.time.LocalDateTime
@@ -42,23 +48,26 @@ class ForeignValidityViewModel(application: Application) : AndroidViewModel(appl
 	private val selectedDateTimeMutable = MutableStateFlow(LocalDateTime.now())
 	val selectedDateTime = selectedDateTimeMutable.asStateFlow()
 
-	// A separate shared flow (without conflation like a StateFlow) to trigger a manual reverification without the country or date changing
-	private val reverifyFlow = MutableSharedFlow<Boolean>(replay = 1).also { it.tryEmit(true) }
+	private val foreignValidityFormState = combine(selectedCountryCode, selectedDateTime) { countryCode, checkDate ->
+		countryCode to checkDate
+	}
 
-	val verificationState = combine(selectedCountryCode, selectedDateTime, reverifyFlow) { countryCode, checkDate, _ ->
-		val certificate = certificateHolder ?: return@combine flowOf(null)
-		when {
-			countryCode == null -> flowOf(null)
-			checkDate < LocalDateTime.now().minusMinutes(5) -> flowOf(null)
-			else -> CovidCertificateSdk.Wallet.verify(certificate, emptySet(), countryCode, checkDate, viewModelScope)
-		}
-	}.flatMapLatest { it }.stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
+	private val verificationStateMutable = MutableStateFlow<VerificationState?>(null)
+	val verificationState = verificationStateMutable.asStateFlow()
+
+	private var verificationJob: Job? = null
 
 	private val viewStateMutable = MutableStateFlow<ForeignValidityViewState>(ForeignValidityViewState.LOADING)
 	val viewState = viewStateMutable.asStateFlow()
 
 	init {
 		loadAvailableCountryCodes()
+
+		viewModelScope.launch(Dispatchers.IO) {
+			foreignValidityFormState.collect { (countryCode, checkDate) ->
+				startVerification(countryCode, checkDate)
+			}
+		}
 	}
 
 	fun loadAvailableCountryCodes() {
@@ -94,7 +103,37 @@ class ForeignValidityViewModel(application: Application) : AndroidViewModel(appl
 	}
 
 	fun reverify() {
-		reverifyFlow.tryEmit(true)
+		viewModelScope.launch(Dispatchers.IO) {
+			startVerification(selectedCountryCode.value, selectedDateTime.value, true)
+		}
+	}
+
+	private suspend fun startVerification(countryCode: String?, checkDate: LocalDateTime, isForceVerification: Boolean = false) {
+		val certificate = certificateHolder ?: return
+
+		if (countryCode == null || checkDate < LocalDateTime.now().minusMinutes(5)) {
+			verificationStateMutable.value = null
+			return
+		}
+
+		if (isForceVerification) {
+			verificationStateMutable.value = VerificationState.LOADING
+			delay(1500L)
+		}
+
+		verificationJob?.cancel()
+		val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificate, emptySet(), countryCode, checkDate, viewModelScope)
+		verificationJob = viewModelScope.launch {
+			verificationStateFlow.collect { state ->
+				verificationStateMutable.value = state
+
+				// Once the verification state is not loading anymore, cancel the flow collection job (otherwise the flow stays active without emitting anything)
+				if (state !is VerificationState.LOADING) {
+					verificationJob?.cancel()
+					verificationJob = null
+				}
+			}
+		}
 	}
 
 }
