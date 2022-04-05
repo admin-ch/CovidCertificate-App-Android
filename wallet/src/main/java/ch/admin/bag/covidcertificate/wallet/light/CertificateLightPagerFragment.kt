@@ -28,16 +28,14 @@ import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.core.extensions.fromBase64
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateLightPagerBinding
 import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
-import ch.admin.bag.covidcertificate.wallet.util.getNameDobColor
-import ch.admin.bag.covidcertificate.wallet.util.getQrAlpha
-import ch.admin.bag.covidcertificate.wallet.util.getValidationStatusString
-import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
+import ch.admin.bag.covidcertificate.wallet.util.*
 import java.time.Instant
 import java.util.*
 import java.util.concurrent.TimeUnit
@@ -163,7 +161,7 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 			is VerificationState.ERROR -> displayErrorState(state)
 		}
 
-		changeAlpha(state.getQrAlpha())
+		changeAlpha(state)
 		setCertificateDetailTextColor(state.getNameDobColor())
 	}
 
@@ -213,9 +211,9 @@ class CertificateLightPagerFragment : Fragment(R.layout.fragment_certificate_lig
 		binding.certificatePageStatusInfo.animateBackgroundTintColor(color)
 	}
 
-	private fun changeAlpha(alpha: Float) {
-		binding.certificatePageQrCode.alpha = alpha
-		binding.certificateLightPageValidity.alpha = alpha
+	private fun changeAlpha(state: VerificationState) {
+		binding.certificatePageQrCode.alpha = state.getInvalidQrCodeAlpha(certificateHolder.certType == CertType.TEST)
+		binding.certificateLightPageValidity.alpha = state.getInvalidContentAlpha()
 	}
 
 	private fun setCertificateDetailTextColor(@ColorRes colorId: Int) {

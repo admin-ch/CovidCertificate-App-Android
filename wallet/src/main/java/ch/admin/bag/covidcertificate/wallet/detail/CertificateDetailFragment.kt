@@ -217,10 +217,7 @@ class CertificateDetailFragment : Fragment() {
 					}
 
 					val isSuccessState = it.state is VerificationState.SUCCESS
-					val invalidState = it.state as? VerificationState.INVALID
-					val isOnlyNationalRulesInvalid = invalidState?.signatureState is CheckSignatureState.SUCCESS
-							&& (invalidState.revocationState is CheckRevocationState.SUCCESS
-							|| invalidState.revocationState is CheckRevocationState.SKIPPED)
+					val isOnlyNationalRulesInvalid = it.state.isOnlyNationalRulesInvalid()
 					binding.certificateForeignValidityButton.isVisible =
 						currentConfig?.foreignRulesCheckEnabled == true && (isSuccessState || isOnlyNationalRulesInvalid)
 
@@ -375,7 +372,7 @@ class CertificateDetailFragment : Fragment() {
 	private fun updateStatusInfo(verificationState: VerificationState?) {
 		val state = verificationState ?: return
 
-		changeAlpha(state.getQrAlpha())
+		changeAlpha(state)
 		setCertificateDetailTextColor(state.getNameDobColor())
 
 		when (state) {
@@ -750,11 +747,12 @@ class CertificateDetailFragment : Fragment() {
 	/**
 	 * Change the alpha value of the QR code, validity date and certificate content
 	 */
-	private fun changeAlpha(alpha: Float) {
-		binding.certificateDetailQrCode.alpha = alpha
-		binding.certificateDetailInfoValidityDateDisclaimer.alpha = alpha
-		binding.certificateDetailInfoValidityDateGroup.alpha = alpha
-		binding.certificateDetailDataRecyclerView.alpha = alpha
+	private fun changeAlpha(state: VerificationState) {
+		binding.certificateDetailQrCode.alpha = state.getInvalidQrCodeAlpha(certificateHolder.certType == CertType.TEST)
+		val contentAlpha = state.getInvalidContentAlpha()
+		binding.certificateDetailInfoValidityDateDisclaimer.alpha = contentAlpha
+		binding.certificateDetailInfoValidityDateGroup.alpha = contentAlpha
+		binding.certificateDetailDataRecyclerView.alpha = contentAlpha
 	}
 
 	/**
