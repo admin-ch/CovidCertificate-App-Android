@@ -148,7 +148,11 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 	}
 
 	private fun onConfigChanged(config: ConfigModel) {
-		val foreignValidityHints = config.getForeignRulesHints(getString(R.string.language_key))
+		val languageKey = getString(R.string.language_key)
+		val linkText = config.getForeignRulesLinkText(languageKey)
+		val linkUrl = config.getForeignRulesLinkUrl(languageKey)
+		val foreignValidityHints = config.getForeignRulesHints(languageKey)
+
 		binding.foreignValidityHintsGroup.isVisible = foreignValidityHints?.isNotEmpty() == true
 		binding.foreignValidityHintsContainer.removeAllViews()
 		foreignValidityHints?.forEach { hint ->
@@ -158,12 +162,10 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 			itemBinding.hintText.text = hint.text
 		}
 
-		binding.foreignValidityMoreInfosGroup.isVisible = !config.foreignRulesLinkText.isNullOrEmpty() && !config.foreignRulesLinkUrl.isNullOrEmpty()
-		binding.foreignValidityMoreInfosText.text = config.foreignRulesLinkText
+		binding.foreignValidityMoreInfosGroup.isVisible = !linkText.isNullOrEmpty() && !linkUrl.isNullOrEmpty()
+		binding.foreignValidityMoreInfosText.text = linkText
 		binding.foreignValidityMoreInfosButton.setOnClickListener {
-			config.foreignRulesLinkUrl?.let {
-				UrlUtil.openUrl(requireContext(), it)
-			}
+			linkUrl?.let { UrlUtil.openUrl(requireContext(), it) }
 		}
 	}
 
