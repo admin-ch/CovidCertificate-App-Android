@@ -36,6 +36,7 @@ import ch.admin.bag.covidcertificate.sdk.core.extensions.isPositiveRatTest
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
+import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
 import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
@@ -267,7 +268,14 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 							.replace("{DATE}", checkDate)
 					)
 				}
-				binding.foreignValidityErrorCode.isVisible = false
+
+				val nationalRulesState = state.nationalRulesState
+				if (nationalRulesState is CheckNationalRulesState.INVALID && nationalRulesState.ruleId != null) {
+					binding.foreignValidityErrorCode.isVisible = true
+					binding.foreignValidityErrorCode.text = nationalRulesState.ruleId
+				} else {
+					binding.foreignValidityErrorCode.isVisible = false
+				}
 			}
 			is VerificationState.ERROR -> {
 				val backgroundColor = ContextCompat.getColor(requireContext(), R.color.orangeish)
@@ -291,7 +299,7 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 	private fun setupCountrySelection() {
 		binding.foreignValidityCountryContainer.setOnClickListener {
 			val availableCountryCodes = viewModel.availableCountryCodes.value
-			val countryNames = availableCountryCodes.map { getCountryNameFromCode(it) ?: it }.toTypedArray()
+			val countryNames = availableCountryCodes.map { getCountryNameFromCode(it) ?: it }.sorted().toTypedArray()
 			var selection = viewModel.selectedCountryCode.value?.let { availableCountryCodes.indexOf(it) } ?: -1
 
 			MaterialAlertDialogBuilder(requireContext())

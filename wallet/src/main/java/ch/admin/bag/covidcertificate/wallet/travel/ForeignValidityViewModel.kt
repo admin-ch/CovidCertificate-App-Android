@@ -103,12 +103,10 @@ class ForeignValidityViewModel(application: Application) : AndroidViewModel(appl
 	}
 
 	fun reverify() {
-		viewModelScope.launch(Dispatchers.IO) {
-			startVerification(selectedCountryCode.value, selectedDateTime.value, true)
-		}
+		startVerification(selectedCountryCode.value, selectedDateTime.value)
 	}
 
-	private suspend fun startVerification(countryCode: String?, checkDate: LocalDateTime, isForceVerification: Boolean = false) {
+	private fun startVerification(countryCode: String?, checkDate: LocalDateTime) {
 		val certificate = certificateHolder ?: return
 
 		if (countryCode == null || checkDate < LocalDateTime.now().minusMinutes(5)) {
@@ -116,14 +114,13 @@ class ForeignValidityViewModel(application: Application) : AndroidViewModel(appl
 			return
 		}
 
-		if (isForceVerification) {
-			verificationStateMutable.value = VerificationState.LOADING
-			delay(1500L)
-		}
-
 		verificationJob?.cancel()
-		val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificate, emptySet(), countryCode, checkDate, viewModelScope)
 		verificationJob = viewModelScope.launch {
+			// Add an artificial delay because changing the date only would not really show a loading indication to the user
+			verificationStateMutable.value = VerificationState.LOADING
+			delay(1000L)
+
+			val verificationStateFlow = CovidCertificateSdk.Wallet.verify(certificate, emptySet(), countryCode, checkDate, viewModelScope)
 			verificationStateFlow.collect { state ->
 				verificationStateMutable.value = state
 
