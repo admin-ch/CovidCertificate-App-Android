@@ -1600,7 +1600,7 @@ Bewahren Sie Ihre Zertifikate daher auch ausserhalb der App auf, indem Sie diese
     <string name="wallet_foreign_rules_check_error_title">"Fehler beim Laden der verfügbaren Länder"</string>
 
     <!-- Error-Text falls das Reisefeature ("Gültigkeit im Ausland") im Offline-Modus gestartet wurde -->
-    <string name="wallet_foreign_rules_check_network_error_text">"Um die Gültigkeit im Ausland zu überprüfen, muss die App online sein."</string>
+    <string name="wallet_foreign_rules_check_network_error_text">"Um die Gültigkeit zu überprüfen, muss Ihr Smartphone mit dem Internet verbunden sein."</string>
 
     <!-- Reisefeature: Hinweis 1 -->
     <string name="wallet_foreign_rules_check_hint_1">"Die Einreiseregeln können sich ändern. Prüfen Sie daher die Gültigkeit kurz vor der Abreise und informieren Sie sich zusätzlich online über die aktuellen Einreiseregeln des Ziellandes."</string>
