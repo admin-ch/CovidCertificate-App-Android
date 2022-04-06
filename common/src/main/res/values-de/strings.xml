@@ -1266,8 +1266,7 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_info_box_certificate_scan_button_check_app">"Zur Check-App"</string>
     <string name="wallet_info_box_certificate_scan_close">"Verstanden"</string>
     <string name="wallet_info_box_certificate_scan_text_bold">"«COVID Certificate Check»-App."</string>
-    <string name="wallet_only_valid_in_switzerland">"Nur mit einem Ausweisdokument 
-&amp; innerhalb der Schweiz gültig"</string>
+    <string name="wallet_only_valid_in_switzerland">"Ausserhalb der Schweiz nicht gültig"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Befund"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Genügend"</string>
 
@@ -1469,33 +1468,32 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
 Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen."</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Verkürzte Gültigkeitsdauer"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_homescreen_title">"Bald abgelaufen"</string>
 
     <!-- banner title in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Verkürzte Gültigkeitsdauer"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_title">"Info"</string>
 
     <!-- banner text in certificate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_text">"Dieses Zertifikat wird bald ablaufen."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_text">"Dieses Zertifikat läuft bald ab."</string>
 
     <!-- more info 'button' text in banner in certicate detail view. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_more_info">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_detail_more_info">"Mehr erfahren?"</string>
 
     <!-- title for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_title">"Info"</string>
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <!-- Fuzzy -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1">"Seit dem 31. Jan. 2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1"></string>
 
     <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <!-- Fuzzy -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist nur noch wenige Tage gültig."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist nur noch wenige Tage gültig. Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum."</string>
 
     <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Mehr erfahren"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"Und nun?"</string>
 
     <!-- link url for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/warum-wird-die-gueltigkeitsdauer-der-zertifikate-fuer-eine-impfung-oder-eine"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/was-soll-ich-tun-wenn-mein-covid-zertifikat-nach-schweizer-gueltigkeitsregeln-bald"</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid at time of validity change. -->
     <string name="wallet_eol_banner_invalid_from_first_february_homescreen_title">"Verkürzte Gültigkeitsdauer"</string>
@@ -1526,7 +1524,7 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
     <string name="wallet_eol_banner_invalid_from_first_february_popup_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/warum-wird-die-gueltigkeitsdauer-der-zertifikate-fuer-eine-impfung-oder-eine"</string>
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2">"Bitte beachten Sie das auf dem Zertifikat ausgewiesene neue Ablaufdatum, welches seit dem 31. Jan. 2022 mit einer reduzierten Gültigkeitsdauer von 270 Tagen berechnet wird."</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2"></string>
 
     <!-- Fuzzy -->
     <string name="infobox_generic_title">"Zertifikat sichern!"</string>
@@ -1543,4 +1541,76 @@ Bewahren Sie Ihre Zertifikate daher auch ausserhalb der App auf, indem Sie diese
 
     <!-- Fuzzy -->
     <string name="infobox_generic_url_ios">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate"</string>
+
+    <!-- accessibilityLabel for the "1"-icon -->
+    <string name="wallet_scanner_how_it_works_accessibility_icon1">"Erstens"</string>
+
+    <!-- accessibilityLabel for the "2"-icon -->
+    <string name="wallet_scanner_how_it_works_accessibility_icon2">"Zweitens"</string>
+
+    <!-- accessibilityLabel for the "3"-icon -->
+    <string name="wallet_scanner_how_it_works_accessibility_icon3">"Drittens"</string>
+
+    <!-- Reise-Check: Label des Buttons um Gültigkeit im Ausland zu prüfen -->
+    <string name="wallet_foreign_rules_check_button">"Gültigkeit bei Reisen"</string>
+
+    <!-- Reise-Check: Titel des Reise-Check Screens -->
+    <string name="wallet_foreign_rules_check_title">"Gültigkeit für Reisen ins Ausland"</string>
+
+    <!-- Reise-Check: Untertitel des Reise-Check Screens -->
+    <string name="wallet_foreign_rules_check_subtitle">"Finden Sie vor einer Auslandreise heraus, ob Ihr Covid-Zertifikat zum Zeitpunkt der Einreise ins Zielland gültig ist."</string>
+
+    <!-- Reise-Check: Titel der Länder- und Datumsauswahl -->
+    <string name="wallet_foreign_rules_check_form_title">"Prüfen für:"</string>
+
+    <!-- Reise-Check: Label des Länder Eingabefeldes -->
+    <string name="wallet_foreign_rules_check_country_label">"Land:"</string>
+
+    <!-- Reise-Check: Wert wenn kein Land ausgewählt -->
+    <string name="wallet_foreign_rules_check_country_empty_label">"Wählen"</string>
+
+    <!-- Reise-Check: Label des Datum Eingabefeldes -->
+    <string name="wallet_foreign_rules_check_date_label">"Einreise am:"</string>
+
+    <!-- Reise-Check: Fehlermeldung wenn Datum in der Vergangenheit liegt -->
+    <string name="wallet_foreign_rules_check_date_in_past_error">"Die angegebene Uhrzeit liegt in der Vergangenheit"</string>
+
+    <!-- Reise-Check: Titel des Hinweise Abschnittes -->
+    <string name="wallet_foreign_rules_check_hints_title">"Hinweise"</string>
+
+    <!-- Reise-Check: Label für den Mehr Informationen Button -->
+    <string name="wallet_foreign_rules_check_hints_more_info_label">"Mehr Informationen finden Sie unter"</string>
+
+    <!-- Reise-Check: Prüfstatus wenn noch kein Land ausgewählt wurde -->
+    <string name="wallet_foreign_rules_check_state_empty">"Bitte wählen Sie ein Land und den Einreisezeitpunkt aus."</string>
+
+    <!-- Reise-Check: Titel des Auswahldialoges für das Land -->
+    <string name="wallet_foreign_rules_check_country_picker_title">"Land auswählen"</string>
+
+    <!-- Reise-Check: Erste Zeile des Prüfstatus wenn Zertifikat gültig ist -->
+    <string name="wallet_foreign_rules_check_state_valid">"Gültig für die Einreise nach:"</string>
+
+    <!-- Reise-Check: Erste Zeile des Prüfstatus wenn Zertifikat ungültig ist -->
+    <string name="wallet_foreign_rules_check_state_invalid">"Ungültig für die Einreise nach:"</string>
+
+    <!-- Reise-Check: Zweite Zeile des Prüfstatus wenn Zertifikat (un-)gültig ist. {COUNTRY} und {DATE} nicht übersetzen -->
+    <string name="wallet_foreign_rules_check_state_country_and_date">"{COUNTRY}, {DATE}"</string>
+
+    <!-- Error-Titel falls das Reisefeature ("Gültigkeit im Ausland") im Offline-Modus gestartet wurde -->
+    <string name="wallet_foreign_rules_check_error_title">"Fehler beim Laden der verfügbaren Länder"</string>
+
+    <!-- Error-Text falls das Reisefeature ("Gültigkeit im Ausland") im Offline-Modus gestartet wurde -->
+    <string name="wallet_foreign_rules_check_network_error_text">"Um die Gültigkeit im Ausland zu überprüfen, muss die App online sein."</string>
+
+    <!-- Reisefeature: Hinweis 1 -->
+    <string name="wallet_foreign_rules_check_hint_1">"Die Einreiseregeln können sich ändern. Prüfen Sie daher die Gültigkeit kurz vor der Abreise und informieren Sie sich zusätzlich online über die aktuellen Einreiseregeln des Ziellandes."</string>
+
+    <!-- Reisefeature: Hinweis 2 -->
+    <string name="wallet_foreign_rules_check_hint_2">"Die oben genannten Angaben beziehen sich nur auf die Einreiseregeln des Ziellandes. Für allfällige zertifikatspflichtige Bereiche innerhalb des Landes können andere Regeln gelten."</string>
+
+    <!-- Reisefeature: Hinweis 3 -->
+    <string name="wallet_foreign_rules_check_hint_3">"Für die Aktualität und Vollständigkeit der gegebenen Informationen übernimmt der Bund keine Haftung."</string>
+
+    <!-- Reisefeature: Hinweis 4 -->
+    <string name="wallet_foreign_rules_check_hint_4">"Land nicht gefunden? Nicht alle Länder akzeptieren Covid-Zertifikate oder es wurden keine Einreiseregeln verfügbar gemacht."</string>
 </resources>

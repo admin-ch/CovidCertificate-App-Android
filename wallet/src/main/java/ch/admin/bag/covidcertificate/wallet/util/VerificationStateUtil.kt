@@ -69,7 +69,25 @@ fun VerificationState.getNameDobColor(): Int {
 	}
 }
 
-fun VerificationState.getQrAlpha(): Float {
+/**
+ * @return True if this is an invalid verification state and only the national rules check failed (signature and revocation must be valid)
+ */
+fun VerificationState.isOnlyNationalRulesInvalid(): Boolean {
+	return when (this) {
+		is VerificationState.INVALID -> signatureState is CheckSignatureState.SUCCESS
+				&& (revocationState is CheckRevocationState.SUCCESS || revocationState is CheckRevocationState.SKIPPED)
+		else -> false
+	}
+}
+
+fun VerificationState.getInvalidQrCodeAlpha(isTestCertificate: Boolean): Float {
+	return when (this) {
+		is VerificationState.INVALID -> if (!isTestCertificate && isOnlyNationalRulesInvalid()) 1f else 0.55f
+		else -> 1f
+	}
+}
+
+fun VerificationState.getInvalidContentAlpha(): Float {
 	return when (this) {
 		is VerificationState.INVALID -> 0.55f
 		else -> 1f

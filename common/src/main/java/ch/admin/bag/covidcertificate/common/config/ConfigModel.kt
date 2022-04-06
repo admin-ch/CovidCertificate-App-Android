@@ -40,6 +40,10 @@ data class ConfigModel(
 	val refreshButtonDisabled: Boolean?,
 	val refreshButtonInfo: Map<String, RefreshButtonInfoModel>?,
 	val eolBannerInfo: Map<String, Map<String, EolBannerInfoModel>>?,
+	val foreignRulesCheckEnabled: Boolean?,
+	val foreignRulesLinkText: String?,
+	val foreignRulesLinkUrl: String?,
+	val foreignRulesHints: Map<String, List<ForeignRulesHintModel>>?,
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
@@ -51,6 +55,7 @@ data class ConfigModel(
 	fun getUnselectedModesInfos(languageKey: String): VerifierInfos? = checkModesInfos?.get(languageKey)?.unselected
 	fun getRefreshButtonInfo(languageKey: String): RefreshButtonInfoModel? = refreshButtonInfo?.get(languageKey)
 	fun getEolBannerInfo(languageKey: String): Map<String, EolBannerInfoModel>? = eolBannerInfo?.get(languageKey)
+	fun getForeignRulesHints(languageKey: String): List<ForeignRulesHintModel>? = foreignRulesHints?.get(languageKey)
 
 	fun getCheckModes(languageKey: String): Map<String, WalletModeModel>? = checkModesInfo?.get(languageKey)?.modes
 	fun getInfoModeTitle(languageKey: String): String? = checkModesInfo?.get(languageKey)?.title

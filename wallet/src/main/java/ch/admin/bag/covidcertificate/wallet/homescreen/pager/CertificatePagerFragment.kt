@@ -29,6 +29,7 @@ import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
+import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.VaccinationEntry
@@ -127,7 +128,7 @@ class CertificatePagerFragment : Fragment() {
 		}
 
 		setCertificateDetailTextColor(state.getNameDobColor())
-		binding.certificatePageQrCode.alpha = state.getQrAlpha()
+		binding.certificatePageQrCode.alpha = state.getInvalidQrCodeAlpha(certificateHolder?.certType == CertType.TEST)
 	}
 
 	private fun displayLoadingState() {

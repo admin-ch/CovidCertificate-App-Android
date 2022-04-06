@@ -62,6 +62,7 @@ import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
+import ch.admin.bag.covidcertificate.wallet.travel.ForeignValidityFragment
 import ch.admin.bag.covidcertificate.wallet.util.*
 import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.getHumanReadableName
 import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.textAsBitmap
@@ -134,6 +135,7 @@ class CertificateDetailFragment : Fragment() {
 		setupConversionButtons()
 		setupVaccinationAppointmentButton()
 		setupEolBanner()
+		setupForeignValidityButton()
 
 		binding.certificateDetailToolbar.setNavigationOnClickListener {
 			parentFragmentManager.popBackStack()
@@ -209,9 +211,16 @@ class CertificateDetailFragment : Fragment() {
 		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
 			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
 				.find { it.certificateHolder?.qrCodeData == certificateHolder.qrCodeData }?.let {
-					if (ConfigRepository.getCurrentConfig(requireContext())?.refreshButtonDisabled != true) {
+					val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
+					if (currentConfig?.refreshButtonDisabled != true) {
 						binding.certificateDetailButtonReverify.showAnimated()
 					}
+
+					val isSuccessState = it.state is VerificationState.SUCCESS
+					val isOnlyNationalRulesInvalid = it.state.isOnlyNationalRulesInvalid()
+					binding.certificateForeignValidityButton.isVisible =
+						currentConfig?.foreignRulesCheckEnabled == true && (isSuccessState || isOnlyNationalRulesInvalid)
+
 					updateStatusInfo(it.state)
 				}
 		}
@@ -349,10 +358,21 @@ class CertificateDetailFragment : Fragment() {
 		}
 	}
 
+	private fun setupForeignValidityButton() {
+		binding.certificateForeignValidityButton.setOnClickListener {
+			val fragment = ForeignValidityFragment.newInstance(certificateHolder)
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, fragment)
+				.addToBackStack(ForeignValidityFragment::class.java.canonicalName)
+				.commit()
+		}
+	}
+
 	private fun updateStatusInfo(verificationState: VerificationState?) {
 		val state = verificationState ?: return
 
-		changeAlpha(state.getQrAlpha())
+		changeAlpha(state)
 		setCertificateDetailTextColor(state.getNameDobColor())
 
 		when (state) {
@@ -727,11 +747,12 @@ class CertificateDetailFragment : Fragment() {
 	/**
 	 * Change the alpha value of the QR code, validity date and certificate content
 	 */
-	private fun changeAlpha(alpha: Float) {
-		binding.certificateDetailQrCode.alpha = alpha
-		binding.certificateDetailInfoValidityDateDisclaimer.alpha = alpha
-		binding.certificateDetailInfoValidityDateGroup.alpha = alpha
-		binding.certificateDetailDataRecyclerView.alpha = alpha
+	private fun changeAlpha(state: VerificationState) {
+		binding.certificateDetailQrCode.alpha = state.getInvalidQrCodeAlpha(certificateHolder.certType == CertType.TEST)
+		val contentAlpha = state.getInvalidContentAlpha()
+		binding.certificateDetailInfoValidityDateDisclaimer.alpha = contentAlpha
+		binding.certificateDetailInfoValidityDateGroup.alpha = contentAlpha
+		binding.certificateDetailDataRecyclerView.alpha = contentAlpha
 	}
 
 	/**
