@@ -301,14 +301,19 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 	private fun setupCountrySelection() {
 		binding.foreignValidityCountryContainer.setOnClickListener {
 			val availableCountryCodes = viewModel.availableCountryCodes.value
-			val countryNames = availableCountryCodes.map { getCountryNameFromCode(it) ?: it }.sorted().toTypedArray()
-			var selection = viewModel.selectedCountryCode.value?.let { availableCountryCodes.indexOf(it) } ?: -1
+			val availableCountries = availableCountryCodes.associateWith { getCountryNameFromCode(it) ?: it }
+			val countryNames = availableCountries.values.sorted().toTypedArray()
+
+			val currentlySelectedCountryCode = viewModel.selectedCountryCode.value
+			var selection = currentlySelectedCountryCode?.let { countryNames.indexOf(availableCountries[it]) } ?: -1
 
 			MaterialAlertDialogBuilder(requireContext())
 				.setTitle(R.string.wallet_foreign_rules_check_country_picker_title)
 				.setSingleChoiceItems(countryNames, selection) { dialog, which ->
 					selection = which
-					viewModel.setSelectedCountry(availableCountryCodes[selection])
+					val selectedCountryName = countryNames[selection]
+					val selectedCountryCode = availableCountries.filterValues { it == selectedCountryName }.keys.single()
+					viewModel.setSelectedCountry(selectedCountryCode)
 					dialog.dismiss()
 				}.show()
 		}
