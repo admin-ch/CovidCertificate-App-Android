@@ -1564,13 +1564,13 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_foreign_rules_check_country_label">"Paese:"</string>
 
     <!-- Reise-Check: Wert wenn kein Land ausgewählt -->
-    <string name="wallet_foreign_rules_check_country_empty_label">"Wählen"</string>
+    <string name="wallet_foreign_rules_check_country_empty_label">"Seleziona"</string>
 
     <!-- Reise-Check: Label des Datum Eingabefeldes -->
     <string name="wallet_foreign_rules_check_date_label">"Entrata in data:"</string>
 
     <!-- Reise-Check: Fehlermeldung wenn Datum in der Vergangenheit liegt -->
-    <string name="wallet_foreign_rules_check_date_in_past_error">"Die angegebene Uhrzeit liegt in der Vergangenheit"</string>
+    <string name="wallet_foreign_rules_check_date_in_past_error">"L’ora indicata è già passat"</string>
 
     <!-- Reise-Check: Titel des Hinweise Abschnittes -->
     <string name="wallet_foreign_rules_check_hints_title">"Avvertenze"</string>
@@ -1582,7 +1582,7 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_foreign_rules_check_state_empty">"Vogliate scegliere un Paese e una data di entrata."</string>
 
     <!-- Reise-Check: Titel des Auswahldialoges für das Land -->
-    <string name="wallet_foreign_rules_check_country_picker_title">"Land auswählen"</string>
+    <string name="wallet_foreign_rules_check_country_picker_title">"Seleziona un Paese"</string>
 
     <!-- Reise-Check: Erste Zeile des Prüfstatus wenn Zertifikat gültig ist -->
     <string name="wallet_foreign_rules_check_state_valid">"Valido per l’entrata in:"</string>
@@ -1594,10 +1594,10 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_foreign_rules_check_state_country_and_date">"{COUNTRY}, {DATE}"</string>
 
     <!-- Error-Titel falls das Reisefeature ("Gültigkeit im Ausland") im Offline-Modus gestartet wurde -->
-    <string name="wallet_foreign_rules_check_error_title">"Fehler beim Laden der verfügbaren Länder"</string>
+    <string name="wallet_foreign_rules_check_error_title">"Si è verificato un errore durante il caricamento dei Paesi disponibili"</string>
 
     <!-- Error-Text falls das Reisefeature ("Gültigkeit im Ausland") im Offline-Modus gestartet wurde -->
-    <string name="wallet_foreign_rules_check_network_error_text">"Um die Gültigkeit im Ausland zu überprüfen, muss die App online sein."</string>
+    <string name="wallet_foreign_rules_check_network_error_text">"Per poter verificare la validità, lo smartphone deve essere collegato a Internet."</string>
 
     <!-- Reisefeature: Hinweis 1 -->
     <string name="wallet_foreign_rules_check_hint_1">"Le disposizioni d’entrata possono cambiare. Verificate poco prima della partenza se il vostro certificato è valido e informatevi ulteriormente online sulle disposizioni d’entrata attuali del Paese di destinazione."</string>
