@@ -190,7 +190,7 @@
 							android:id="@+id/foreignValidityVerificationState"
 							style="@style/CovidCertificate.Text"
 							android:layout_width="match_parent"
-							android:layout_height="0dp"
+							android:layout_height="wrap_content"
 							android:layout_marginTop="@dimen/spacing_very_small"
 							android:background="@drawable/bg_certificate_bubble_ripple"
 							android:gravity="center"
