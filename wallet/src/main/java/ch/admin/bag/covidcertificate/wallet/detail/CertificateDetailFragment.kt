@@ -216,10 +216,10 @@ class CertificateDetailFragment : Fragment() {
 						binding.certificateDetailButtonReverify.showAnimated()
 					}
 
-					val isSuccessState = it.state is VerificationState.SUCCESS
-					val isOnlyNationalRulesInvalid = it.state.isOnlyNationalRulesInvalid()
-					binding.certificateForeignValidityButton.isVisible =
-						currentConfig?.foreignRulesCheckEnabled == true && (isSuccessState || isOnlyNationalRulesInvalid)
+					val isFeatureEnabled = currentConfig?.foreignRulesCheckEnabled == true
+					val isNotInvalid = it.state is VerificationState.SUCCESS || it.state.isOnlyNationalRulesInvalid()
+					val isValidOnlyInSwitzerland = it.state.isValidOnlyInSwitzerland()
+					binding.certificateForeignValidityButton.isVisible = isFeatureEnabled && isNotInvalid && !isValidOnlyInSwitzerland
 
 					updateStatusInfo(it.state)
 				}
