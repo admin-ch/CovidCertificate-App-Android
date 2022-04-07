@@ -16,10 +16,7 @@ import androidx.annotation.ColorRes
 import ch.admin.bag.covidcertificate.common.util.addBoldDate
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckNationalRulesState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckRevocationState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.CheckSignatureState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
+import ch.admin.bag.covidcertificate.sdk.core.models.state.*
 import ch.admin.bag.covidcertificate.wallet.R
 
 const val DATE_REPLACEMENT_STRING = "{DATE}"
@@ -66,6 +63,19 @@ fun VerificationState.getNameDobColor(): Int {
 	return when (this) {
 		is VerificationState.INVALID -> R.color.grey
 		else -> R.color.black
+	}
+}
+
+/**
+ * @return True if this is a successful (wallet) verification state and the certificate is only valid in switzerland
+ */
+fun VerificationState.isValidOnlyInSwitzerland(): Boolean {
+	return when (this) {
+		is VerificationState.SUCCESS -> {
+			val walletSuccessState = this.successState as? SuccessState.WalletSuccessState
+			walletSuccessState?.isValidOnlyInSwitzerland ?: false
+		}
+		else -> false
 	}
 }
 
