@@ -50,6 +50,18 @@ open class EspressoUtil {
 			)
 		)
 		materialButton4.perform(ViewActions.click())
+		Espresso.onIdle()
+		try{
+			val materialButton5 = Espresso.onView(
+				Matchers.allOf(
+					ViewMatchers.withId(R.id.info_dialog_close_button),
+					ViewMatchers.isDisplayed()
+				)
+			)
+			materialButton5.perform(ViewActions.click())
+		}catch(e: Exception){
+
+		}
 	}
 
 	// The standard scrollTo Action does not support NestedScrollView. This implementation does support NestedScrollView in
