@@ -44,6 +44,8 @@ data class ConfigModel(
 	val foreignRulesLinkText: Map<String, String>?,
 	val foreignRulesLinkUrl: Map<String, String>?,
 	val foreignRulesHints: Map<String, List<ForeignRulesHintModel>>?,
+	val showRatConversionForm: Boolean?,
+	val ratConversionFormUrl: String?,
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)

@@ -1600,14 +1600,65 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_foreign_rules_check_network_error_text">"Per poter verificare la validità, lo smartphone deve essere collegato a Internet."</string>
 
     <!-- Reisefeature: Hinweis 1 -->
-    <string name="wallet_foreign_rules_check_hint_1">"Le disposizioni d’entrata possono cambiare. Verificate poco prima della partenza se il vostro certificato è valido e informatevi ulteriormente online sulle disposizioni d’entrata attuali del Paese di destinazione."</string>
+    <!-- Fuzzy -->
+    <string name="wallet_foreign_rules_check_hint_2">"Le disposizioni d’entrata possono cambiare. Verificate poco prima della partenza se il vostro certificato è valido e informatevi ulteriormente online sulle disposizioni d’entrata attuali del Paese di destinazione."</string>
 
     <!-- Reisefeature: Hinweis 2 -->
-    <string name="wallet_foreign_rules_check_hint_2">"Le informazioni sopra indicate si riferiscono solo alle disposizioni d’entrata del Paese di destinazione. Per eventuali settori soggetti all’obbligo di certificato all’interno del Paese possono vigere altre regole."</string>
+    <!-- Fuzzy -->
+    <string name="wallet_foreign_rules_check_hint_3">"Le informazioni sopra indicate si riferiscono solo alle disposizioni d’entrata del Paese di destinazione. Per eventuali settori soggetti all’obbligo di certificato all’interno del Paese possono vigere altre regole."</string>
 
     <!-- Reisefeature: Hinweis 3 -->
-    <string name="wallet_foreign_rules_check_hint_3">"La Confederazione non si assume la responsabilità per l’attualità e la completezza delle informazioni fornite."</string>
+    <!-- Fuzzy -->
+    <string name="wallet_foreign_rules_check_hint_1">"La Confederazione non si assume la responsabilità per l’attualità e la completezza delle informazioni fornite."</string>
 
     <!-- Reisefeature: Hinweis 4 -->
     <string name="wallet_foreign_rules_check_hint_4">"Non avete trovato un Paese? Non tutti i Paesi accettano i certificati COVID o rendono disponibili le regole d’entrata."</string>
+
+    <!-- Reisefeature: Text des Mehr Infos Buttons -->
+    <string name="wallet_foreign_rules_check_hints_more_info_link_text">"reopen.europa.eu"</string>
+
+    <!-- Reisefeature: URL die geöffnet wird wenn auf den Mehr Info Button geklickt wird -->
+    <string name="wallet_foreign_rules_check_hints_more_info_link_url">"https://reopen.europa.eu/"</string>
+
+    <!-- RAT-Umwandlung:  Titel bei Zertifikat -->
+    <string name="rat_conversion_overview_title">"Neu: EU-kompatible Version"</string>
+
+    <!-- RAT-Umwandlung: Text bei Zertifikat -->
+    <string name="rat_conversion_overview_text">"Für dieses Covid-Zertifikat kann eine EU-kompatible Version beantragt werden."</string>
+
+    <!-- RAT-Umwandlung: Button-Text zu Umwandlung Detail -->
+    <string name="rat_conversion_overview_button">"Mehr erfahren"</string>
+
+    <!-- RAT-Umwandlung: Titel Detail -->
+    <string name="rat_conversion_title">"EU-kompatibles Covid-Zertifikat beantragen"</string>
+
+    <!-- RAT-Umwandlung: Text auf Detail -->
+    <string name="rat_conversion_text">"Neu werden Covid-Zertifikate für eine Genesung auf Basis von Antigen-Schnelltests auch in der EU akzeptiert.
+
+Sie haben die Möglichkeit, eine EU-kompatible Version dieses Covid-Zertifikats bei der nationalen Antragsstelle zu beantragen."</string>
+
+    <!-- RAT-Umwandlung: Title bei Formular-Verlinkung -->
+    <string name="rat_conversion_form_title">"Zum Onlineformular der nationalen Antragsstelle"</string>
+
+    <!-- Rat-Umwandlung: Text zum Formular -->
+    <string name="rat_conversion_form_text">"Ich bin einverstanden, dass die Daten des Covid-Zertifikats an das Onlineformular der nationalen Antragsstelle übertragen werden."</string>
+
+    <!-- RAT-Umwandlung: Absprung Button -->
+    <string name="rat_conversion_form_button">"Zum Formular"</string>
+
+    <!-- RAT-Umwandlung: Linktext zur Webseite nationale Antragsstelle -->
+    <string name="rat_conversion_link_antragsstelle">"Zur Webseite der nationalen Antragsstelle"</string>
+
+    <!-- RAT-Umwandlung: Info Text 1 -->
+    <string name="rat_conversion_info1_text">"Das EU-kompatible Covid-Zertifikat kann über ein Onlineformular bei der nationalen Antragsstelle beantragt werden und wird Ihnen per Post zugestellt."</string>
+
+    <!-- RAT-Umwandlung: Info 2 Text -->
+    <string name="rat_conversion_info2_text">"Damit das neue Covid-Zertifikat erstellt werden kann, werden die Daten aus dem bestehenden Covid-Zertifikat an das Onlineformular übertragen."</string>
+
+    <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
+    <!-- Fuzzy -->
+    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest/closed"</string>
+
+    <!-- RAT-Umwandlung: Titel vor Infos -->
+    <string name="rat_conversion_info_title">"Weitere Informationen"</string>
 </resources>

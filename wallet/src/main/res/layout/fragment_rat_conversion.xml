@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:background="@color/white"
+	app:applyWindowInsets="all">
+
+	<LinearLayout
+		android:layout_width="match_parent"
+		android:layout_height="match_parent"
+		android:orientation="vertical">
+
+		<androidx.appcompat.widget.Toolbar
+			android:id="@+id/toolbar"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content"
+			android:background="@color/white"
+			android:elevation="@dimen/toolbar_elevation"
+			app:layout_constraintTop_toTopOf="parent"
+			app:navigationIcon="@drawable/ic_close_red"
+			app:title="@string/wallet_certificate"
+			app:titleTextAppearance="@style/CovidCertificate.ToolbarTitle"
+			app:titleTextColor="@color/grey" />
+
+		<androidx.core.widget.NestedScrollView
+			android:id="@+id/scrollView"
+			android:layout_width="match_parent"
+			android:layout_height="match_parent">
+
+			<LinearLayout
+				android:id="@+id/content"
+				android:layout_width="match_parent"
+				android:layout_height="wrap_content"
+				android:orientation="vertical"
+				android:paddingHorizontal="@dimen/spacing_medium_large"
+				android:paddingTop="@dimen/spacing_very_large"
+				android:paddingBottom="@dimen/spacing_large">
+
+				<TextView
+					android:id="@+id/title"
+					style="@style/CovidCertificate.Text.Bold.Title"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_large"
+					android:gravity="center_horizontal"
+					android:text="@string/rat_conversion_title"
+					app:layout_constraintTop_toTopOf="parent" />
+
+				<TextView
+					android:id="@+id/subtitle"
+					style="@style/CovidCertificate.Text"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_large"
+					android:layout_marginTop="@dimen/spacing_very_large"
+					android:text="@string/rat_conversion_text"
+					app:layout_constraintTop_toBottomOf="@+id/title" />
+
+				<LinearLayout
+					android:id="@+id/rat_conversion_banner"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginVertical="@dimen/spacing_very_large"
+					android:background="@drawable/bg_info_banner"
+					android:backgroundTint="@color/blueish"
+					android:clipChildren="false"
+					android:clipToPadding="false"
+					android:foreground="@drawable/ripple_rounded_rect_banner"
+					android:orientation="vertical"
+					android:paddingVertical="@dimen/spacing_large"
+					app:layout_constraintTop_toTopOf="parent">
+
+					<TextView
+						style="@style/CovidCertificate.Text.Bold.Emphasized"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="@dimen/spacing_medium_large"
+						android:gravity="center"
+						android:text="@string/rat_conversion_form_title"
+						app:layout_constraintEnd_toEndOf="parent"
+						app:layout_constraintStart_toStartOf="parent"
+						app:layout_constraintTop_toTopOf="parent" />
+
+					<LinearLayout
+						android:id="@+id/rat_conversion_form_checkbox"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="@dimen/spacing_large"
+						android:background="?android:attr/selectableItemBackground"
+						android:orientation="horizontal"
+						android:padding="@dimen/spacing_medium_large">
+
+						<ImageView
+							android:id="@+id/rat_conversion_form_checkbox_icon"
+							android:layout_width="wrap_content"
+							android:layout_height="wrap_content"
+							android:src="@drawable/ic_checkbox_empty"
+							app:layout_constraintStart_toStartOf="parent"
+							app:layout_constraintTop_toBottomOf="@+id/rat_conversion_form_title" />
+
+						<TextView
+							style="@style/CovidCertificate.Text"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_marginStart="@dimen/spacing_small"
+							android:layout_weight="1"
+							android:text="@string/rat_conversion_form_text"
+							app:layout_constraintEnd_toEndOf="parent"
+							app:layout_constraintStart_toEndOf="@+id/rat_conversion_form_checkbox"
+							app:layout_constraintTop_toBottomOf="@+id/rat_conversion_form_title"
+							app:layout_constraintTop_toTopOf="@+id/rat_conversion_form_checkbox" />
+
+					</LinearLayout>
+
+					<com.google.android.material.button.MaterialButton
+						android:id="@+id/rat_conversion_form_submit"
+						style="@style/CovidCertificate.Button.Outlined"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginHorizontal="@dimen/spacing_huger"
+						android:layout_marginVertical="@dimen/spacing_large"
+						android:drawableEnd="@drawable/ic_link_external"
+						android:enabled="false"
+						android:text="@string/rat_conversion_form_button"
+						android:textColor="@color/selector_grey_or_white"
+						app:backgroundTint="@color/selector_transparent_or_blue"
+						app:drawableTint="@color/selector_grey_or_white"
+						app:layout_constraintTop_toBottomOf="@+id/rat_conversion_form_text" />
+
+				</LinearLayout>
+
+				<LinearLayout
+					android:id="@+id/open_website_button"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_small"
+					android:background="@drawable/ripple_rounded_rect"
+					android:orientation="horizontal"
+					android:paddingVertical="@dimen/spacing_very_small"
+					android:paddingStart="@dimen/spacing_very_small"
+					android:paddingEnd="@dimen/spacing_medium_small"
+					app:layout_constraintStart_toStartOf="parent"
+					app:layout_constraintTop_toBottomOf="@+id/foreignValidityMoreInfosLabel">
+
+					<ImageView
+						android:layout_width="@dimen/icon_size_small"
+						android:layout_height="@dimen/icon_size_small"
+						android:layout_marginTop="@dimen/spacing_tiny_small"
+						app:srcCompat="@drawable/ic_link_external" />
+
+					<TextView
+						style="@style/CovidCertificate.Text.Bold.Blue.LinkExternal"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center_vertical"
+						android:layout_marginStart="@dimen/spacing_very_small"
+						android:text="@string/rat_conversion_link_antragsstelle" />
+
+				</LinearLayout>
+
+				<TextView
+					style="@style/CovidCertificate.Text.Bold.Emphasized"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_large"
+					android:layout_marginTop="@dimen/spacing_huger"
+					android:text="@string/rat_conversion_info_title" />
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_large"
+					android:layout_marginTop="@dimen/spacing_large"
+					android:orientation="horizontal">
+
+					<ImageView
+						android:id="@+id/hintIconOne"
+						android:layout_width="@dimen/icon_size_small"
+						android:layout_height="@dimen/icon_size_small"
+						android:layout_gravity="top|start"
+						android:adjustViewBounds="true"
+						android:scaleType="fitCenter"
+						android:src="@drawable/ic_bund_small" />
+
+					<TextView
+						android:id="@+id/hintTextOne"
+						style="@style/CovidCertificate.Text"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="@dimen/spacing_large"
+						android:breakStrategy="high_quality"
+						android:gravity="start"
+						android:hyphenationFrequency="normal"
+						android:text="@string/rat_conversion_info1_text" />
+				</LinearLayout>
+
+				<LinearLayout
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_marginHorizontal="@dimen/spacing_medium_large"
+					android:layout_marginTop="@dimen/spacing_very_large"
+					android:orientation="horizontal">
+
+					<ImageView
+						android:id="@+id/hintIconTwo"
+						android:layout_width="@dimen/icon_size_small"
+						android:layout_height="@dimen/icon_size_small"
+						android:layout_gravity="top|start"
+						android:adjustViewBounds="true"
+						android:scaleType="fitCenter"
+						android:src="@drawable/ic_exchange"
+						app:tint="@color/blue" />
+
+					<TextView
+						android:id="@+id/hintTextTwo"
+						style="@style/CovidCertificate.Text"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:layout_marginStart="@dimen/spacing_large"
+						android:breakStrategy="high_quality"
+						android:gravity="start"
+						android:hyphenationFrequency="normal"
+						android:text="@string/rat_conversion_info2_text" />
+				</LinearLayout>
+
+			</LinearLayout>
+		</androidx.core.widget.NestedScrollView>
+	</LinearLayout>
+</ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>
