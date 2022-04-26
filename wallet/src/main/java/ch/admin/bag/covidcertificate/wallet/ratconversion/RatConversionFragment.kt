@@ -11,20 +11,20 @@
 package ch.admin.bag.covidcertificate.wallet.ratconversion
 
 import android.content.res.ColorStateList
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
-import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentRatConversionBinding
-import com.squareup.moshi.Moshi
-import java.net.URLEncoder
 
 class RatConversionFragment : Fragment(R.layout.fragment_rat_conversion) {
 
@@ -38,6 +38,8 @@ class RatConversionFragment : Fragment(R.layout.fragment_rat_conversion) {
 
 	private var _binding: FragmentRatConversionBinding? = null
 	private val binding get() = _binding!!
+
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 
 	private lateinit var certificateHolder: CertificateHolder
 	private var isFormDataTransferChecked = false
@@ -69,10 +71,8 @@ class RatConversionFragment : Fragment(R.layout.fragment_rat_conversion) {
 
 		binding.ratConversionFormSubmit.setOnClickListener {
 			val url = ConfigRepository.getCurrentConfig(requireContext())?.ratConversionFormUrl ?: return@setOnClickListener
-			val dccCert = (certificateHolder.certificate as? DccCert) ?: return@setOnClickListener
-			val adapter = Moshi.Builder().build().adapter(DccCert::class.java)
-			val encodedHcert = URLEncoder.encode(adapter.toJson(dccCert), Charsets.UTF_8.name())
-
+			val hcert = certificatesViewModel.getRawHcertForCertificateHolder(certificateHolder) ?: return@setOnClickListener
+			val encodedHcert = Uri.encode(hcert, Charsets.UTF_8.name())
 			val finalUrl = "$url#hcert=$encodedHcert"
 			UrlUtil.openUrl(requireContext(), finalUrl)
 		}
