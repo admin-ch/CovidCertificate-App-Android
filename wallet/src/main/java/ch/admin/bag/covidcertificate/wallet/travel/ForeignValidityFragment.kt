@@ -238,7 +238,6 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 				binding.foreignValidityVerificationStateIcon.imageTintList = ColorStateList.valueOf(iconColor)
 				binding.foreignValidityVerificationStateProgress.isVisible = false
 				binding.foreignValidityVerificationState.animateBackgroundTintColor(backgroundColor)
-				binding.foreignValidityVerificationState.setText(R.string.wallet_foreign_rules_check_state_empty)
 				binding.foreignValidityVerificationState.text = buildSpannedString {
 					bold {
 						appendLine(getString(R.string.wallet_foreign_rules_check_state_valid))
@@ -259,7 +258,6 @@ class ForeignValidityFragment : Fragment(R.layout.fragment_foreign_validity) {
 				binding.foreignValidityVerificationStateIcon.imageTintList = ColorStateList.valueOf(iconColor)
 				binding.foreignValidityVerificationStateProgress.isVisible = false
 				binding.foreignValidityVerificationState.animateBackgroundTintColor(backgroundColor)
-				binding.foreignValidityVerificationState.setText(R.string.wallet_foreign_rules_check_state_empty)
 				binding.foreignValidityVerificationState.text = buildSpannedString {
 					bold {
 						appendLine(getString(R.string.wallet_foreign_rules_check_state_invalid))

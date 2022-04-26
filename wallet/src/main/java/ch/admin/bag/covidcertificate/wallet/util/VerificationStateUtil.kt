@@ -75,6 +75,15 @@ fun VerificationState.isValidOnlyInSwitzerland(): Boolean {
 			val walletSuccessState = this.successState as? SuccessState.WalletSuccessState
 			walletSuccessState?.isValidOnlyInSwitzerland ?: false
 		}
+		is VerificationState.INVALID -> {
+			val nationalRulesState = this.nationalRulesState
+			when (nationalRulesState) {
+				is CheckNationalRulesState.NOT_YET_VALID -> nationalRulesState.isOnlyValidInCH
+				is CheckNationalRulesState.NOT_VALID_ANYMORE -> nationalRulesState.isOnlyValidInCH
+				is CheckNationalRulesState.INVALID -> nationalRulesState.isOnlyValidInCH
+				else -> false
+			}
+		}
 		else -> false
 	}
 }
