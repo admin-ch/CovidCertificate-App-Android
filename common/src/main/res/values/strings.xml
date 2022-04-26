@@ -513,7 +513,7 @@ If the answer to all three questions is affirmative, the COVID certificate is sh
 
 The scientific evidence on COVID-19 vaccination, testing and recovery continues to evolve, including with regard to new virus variants of concern. 
 
-Before travelling, please check the applicable public health measures and related restrictions applicable at the point of destination."</string>
+Please check the restrictions and rules on validity that apply at your destination before you travel. When you’re abroad, the validity of your certificate is calculated on the basis of the rules in the destination country, which may differ from the validity periods in Switzerland as stated in the COVID Certificate app. You’ll find more on this in the FAQ."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/en/home/documentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/en/home/documentation/covid-certificate-check-app.html"</string>
 
@@ -1626,34 +1626,34 @@ This means you should also keep a copy of your certificates outside the app by e
     <string name="rat_conversion_overview_button">"Mehr erfahren"</string>
 
     <!-- RAT-Umwandlung: Titel Detail -->
-    <string name="rat_conversion_title">"EU-kompatibles Covid-Zertifikat beantragen"</string>
+    <string name="rat_conversion_title">"Covid-Zertifikat beantragen (EU-kompatibel)"</string>
 
     <!-- RAT-Umwandlung: Text auf Detail -->
-    <string name="rat_conversion_text">"Neu werden Covid-Zertifikate für eine Genesung auf Basis von Antigen-Schnelltests auch in der EU akzeptiert.
+    <string name="rat_conversion_text">"Neu werden Covid-Zertifikate für Genesene auf Basis von Antigen-Schnelltests auch in der EU akzeptiert.
 
-Sie haben die Möglichkeit, eine EU-kompatible Version dieses Covid-Zertifikats bei der nationalen Antragsstelle zu beantragen."</string>
+Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei der Nationalen Antragsstelle zu beantragen."</string>
 
     <!-- RAT-Umwandlung: Title bei Formular-Verlinkung -->
-    <string name="rat_conversion_form_title">"Zum Onlineformular der nationalen Antragsstelle"</string>
+    <string name="rat_conversion_form_title">"Zum Online-Formular der Nationalen Antragsstelle"</string>
 
     <!-- Rat-Umwandlung: Text zum Formular -->
-    <string name="rat_conversion_form_text">"Ich bin einverstanden, dass die Daten des Covid-Zertifikats an das Onlineformular der nationalen Antragsstelle übertragen werden."</string>
+    <string name="rat_conversion_form_text">"Ich bin einverstanden, dass die Daten dieses Covid-Zertifikats in das Formular der Nationalen Antragsstelle (eine Website des Bundes) übertragen werden."</string>
 
     <!-- RAT-Umwandlung: Absprung Button -->
     <string name="rat_conversion_form_button">"Zum Formular"</string>
 
     <!-- RAT-Umwandlung: Linktext zur Webseite nationale Antragsstelle -->
-    <string name="rat_conversion_link_antragsstelle">"Zur Webseite der nationalen Antragsstelle"</string>
+    <string name="rat_conversion_link_antragsstelle">"Website der Nationalen Antragsstelle (ohne Datenübernahme)"</string>
 
     <!-- RAT-Umwandlung: Info Text 1 -->
-    <string name="rat_conversion_info1_text">"Das EU-kompatible Covid-Zertifikat kann über ein Onlineformular bei der nationalen Antragsstelle beantragt werden und wird Ihnen per Post zugestellt."</string>
+    <string name="rat_conversion_info1_text">"Ist die Beantragung erfolgreich, wird Ihnen das neue EU-kompatible Covid-Zertifikat per Post zugestellt und kann von Ihnen in die App übernommen werden. Eine direkte Zustellung in die App ist nicht möglich."</string>
 
     <!-- RAT-Umwandlung: Info 2 Text -->
-    <string name="rat_conversion_info2_text">"Damit das neue Covid-Zertifikat erstellt werden kann, werden die Daten aus dem bestehenden Covid-Zertifikat an das Onlineformular übertragen."</string>
+    <string name="rat_conversion_info2_text">"Durch die Übernahme der Daten des Zertifikats in das Online-Formular kann Ihr Antrag einfacher verarbeitet werden."</string>
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
     <!-- Fuzzy -->
-    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest/closed"</string>
+    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
     <string name="rat_conversion_info_title">"Weitere Informationen"</string>
