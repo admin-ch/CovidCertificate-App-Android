@@ -62,6 +62,7 @@ import ch.admin.bag.covidcertificate.wallet.homescreen.pager.StatefulWalletItem
 import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
+import ch.admin.bag.covidcertificate.wallet.ratconversion.RatConversionFragment
 import ch.admin.bag.covidcertificate.wallet.travel.ForeignValidityFragment
 import ch.admin.bag.covidcertificate.wallet.util.*
 import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.getHumanReadableName
@@ -135,6 +136,7 @@ class CertificateDetailFragment : Fragment() {
 		setupConversionButtons()
 		setupVaccinationAppointmentButton()
 		setupEolBanner()
+		setupRatRecoveryConversionBanner()
 		setupForeignValidityButton()
 
 		binding.certificateDetailToolbar.setNavigationOnClickListener {
@@ -358,6 +360,17 @@ class CertificateDetailFragment : Fragment() {
 		}
 	}
 
+	private fun setupRatRecoveryConversionBanner() {
+		binding.ratConversionBanner.setOnClickListener {
+			val fragment = RatConversionFragment.newInstance(certificateHolder)
+			parentFragmentManager.beginTransaction()
+				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+				.replace(R.id.fragment_container, fragment)
+				.addToBackStack(RatConversionFragment::class.java.canonicalName)
+				.commit()
+		}
+	}
+
 	private fun setupForeignValidityButton() {
 		binding.certificateForeignValidityButton.setOnClickListener {
 			val fragment = ForeignValidityFragment.newInstance(certificateHolder)
@@ -465,6 +478,11 @@ class CertificateDetailFragment : Fragment() {
 			binding.certificateDetailBannerText.text = it.detailText
 			binding.certificateDetailBannerMoreInfo.text = it.detailMoreInfo
 		}
+
+		// Show the RAT recovery certificate conversion banner if the feature flag is enabled and the certificate has the correct type
+		val showRatRecoveryConversionBanner = ConfigRepository.getCurrentConfig(requireContext())?.showRatConversionForm == true
+		val isPositiveRatTest = (certificateHolder.certificate as? DccCert)?.tests?.firstOrNull()?.isPositiveRatTest() ?: false
+		binding.ratConversionBanner.isVisible = showRatRecoveryConversionBanner && isPositiveRatTest
 	}
 
 	private fun setupModesButton(modeValidities: List<ModeValidity>) {

@@ -512,7 +512,7 @@ Si vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la 
 
 Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d'évoluer, notamment en ce qui concerne de nouveaux variants préoccupants du virus. 
 
-Avant de voyager, veuillez vérifier les mesures de santé publique applicables et les restrictions connexes applicables sur le lieu de destination."</string>
+Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles de validité en vigueur à votre lieu de destination. La validité de votre certificat à l’étranger dépend des règles du pays de destination et peut différer de la validité en Suisse indiquée dans l’application « COVID Certificate ». Vous trouverez de plus amples informations sur cette page dédiée aux questions fréquentes."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-check-app.html"</string>
 
@@ -1595,14 +1595,65 @@ Conservez donc vos certificats en dehors de l’application en les exportant au 
     <string name="wallet_foreign_rules_check_network_error_text">"Pour vérifier la validité, votre smartphone doit être connecté à Internet."</string>
 
     <!-- Reisefeature: Hinweis 1 -->
-    <string name="wallet_foreign_rules_check_hint_1">"Les dispositions d’entrée peuvent changer. Vérifiez donc la validité de votre certificat avant votre départ et renseignez-vous également en ligne sur les dispositions d’entrée en vigueur dans votre pays de destination."</string>
+    <!-- Fuzzy -->
+    <string name="wallet_foreign_rules_check_hint_2">"Les dispositions d’entrée peuvent changer. Vérifiez donc la validité de votre certificat avant votre départ et renseignez-vous également en ligne sur les dispositions d’entrée en vigueur dans votre pays de destination."</string>
 
     <!-- Reisefeature: Hinweis 2 -->
-    <string name="wallet_foreign_rules_check_hint_2">"Les informations ci-dessus ne concernent que les dispositions d’entrée du pays de destination. Dans le pays, d’autres règles peuvent s’appliquer aux éventuels domaines soumis à l’obligation de présenter un certificat."</string>
+    <!-- Fuzzy -->
+    <string name="wallet_foreign_rules_check_hint_3">"Les informations ci-dessus ne concernent que les dispositions d’entrée du pays de destination. Dans le pays, d’autres règles peuvent s’appliquer aux éventuels domaines soumis à l’obligation de présenter un certificat."</string>
 
     <!-- Reisefeature: Hinweis 3 -->
-    <string name="wallet_foreign_rules_check_hint_3">"La Confédération décline toute responsabilité en ce qui concerne l’actualité et l’exhaustivité des informations fournies."</string>
+    <!-- Fuzzy -->
+    <string name="wallet_foreign_rules_check_hint_1">"La Confédération décline toute responsabilité en ce qui concerne l’actualité et l’exhaustivité des informations fournies."</string>
 
     <!-- Reisefeature: Hinweis 4 -->
     <string name="wallet_foreign_rules_check_hint_4">"Vous n’avez pas trouvé votre pays de destination ? Il se peut que certains pays ne reconnaissent pas le certificat COVID ou qu’aucune disposition d’entrée ne soit disponible."</string>
+
+    <!-- Reisefeature: Text des Mehr Infos Buttons -->
+    <string name="wallet_foreign_rules_check_hints_more_info_link_text">"reopen.europa.eu"</string>
+
+    <!-- Reisefeature: URL die geöffnet wird wenn auf den Mehr Info Button geklickt wird -->
+    <string name="wallet_foreign_rules_check_hints_more_info_link_url">"https://reopen.europa.eu/"</string>
+
+    <!-- RAT-Umwandlung:  Titel bei Zertifikat -->
+    <string name="rat_conversion_overview_title">"Neu: EU-kompatible Version"</string>
+
+    <!-- RAT-Umwandlung: Text bei Zertifikat -->
+    <string name="rat_conversion_overview_text">"Für dieses Covid-Zertifikat kann eine EU-kompatible Version beantragt werden."</string>
+
+    <!-- RAT-Umwandlung: Button-Text zu Umwandlung Detail -->
+    <string name="rat_conversion_overview_button">"Mehr erfahren"</string>
+
+    <!-- RAT-Umwandlung: Titel Detail -->
+    <string name="rat_conversion_title">"Covid-Zertifikat beantragen (EU-kompatibel)"</string>
+
+    <!-- RAT-Umwandlung: Text auf Detail -->
+    <string name="rat_conversion_text">"Neu werden Covid-Zertifikate für Genesene auf Basis von Antigen-Schnelltests auch in der EU akzeptiert.
+
+Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei der Nationalen Antragsstelle zu beantragen."</string>
+
+    <!-- RAT-Umwandlung: Title bei Formular-Verlinkung -->
+    <string name="rat_conversion_form_title">"Zum Online-Formular der Nationalen Antragsstelle"</string>
+
+    <!-- Rat-Umwandlung: Text zum Formular -->
+    <string name="rat_conversion_form_text">"Ich bin einverstanden, dass die Daten dieses Covid-Zertifikats in das Formular der Nationalen Antragsstelle (eine Website des Bundes) übertragen werden."</string>
+
+    <!-- RAT-Umwandlung: Absprung Button -->
+    <string name="rat_conversion_form_button">"Zum Formular"</string>
+
+    <!-- RAT-Umwandlung: Linktext zur Webseite nationale Antragsstelle -->
+    <string name="rat_conversion_link_antragsstelle">"Website der Nationalen Antragsstelle (ohne Datenübernahme)"</string>
+
+    <!-- RAT-Umwandlung: Info Text 1 -->
+    <string name="rat_conversion_info1_text">"Ist die Beantragung erfolgreich, wird Ihnen das neue EU-kompatible Covid-Zertifikat per Post zugestellt und kann von Ihnen in die App übernommen werden. Eine direkte Zustellung in die App ist nicht möglich."</string>
+
+    <!-- RAT-Umwandlung: Info 2 Text -->
+    <string name="rat_conversion_info2_text">"Durch die Übernahme der Daten des Zertifikats in das Online-Formular kann Ihr Antrag einfacher verarbeitet werden."</string>
+
+    <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
+    <!-- Fuzzy -->
+    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest"</string>
+
+    <!-- RAT-Umwandlung: Titel vor Infos -->
+    <string name="rat_conversion_info_title">"Weitere Informationen"</string>
 </resources>

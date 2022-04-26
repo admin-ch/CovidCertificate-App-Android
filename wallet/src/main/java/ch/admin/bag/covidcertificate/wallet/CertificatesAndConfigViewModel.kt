@@ -36,13 +36,8 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConve
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliverySpec
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.Job
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.withLock
-import kotlinx.coroutines.withContext
 import java.io.IOException
 import java.time.Instant
 import kotlin.collections.set
@@ -231,6 +226,13 @@ class CertificatesAndConfigViewModel(application: Application) : ConfigViewModel
 	fun removeTransferCode(transferCode: TransferCodeModel) {
 		walletDataStorage.deleteTransferCode(transferCode)
 		loadWalletData()
+	}
+
+	fun getRawHcertForCertificateHolder(certificateHolder: CertificateHolder): String? {
+		return walletItems.value
+			?.filterIsInstance<WalletItem.CertificateHolderItem>()
+			?.firstOrNull { it.certificateHolder == certificateHolder }
+			?.qrCodeData
 	}
 
 	private fun enqueueVerificationTask(
