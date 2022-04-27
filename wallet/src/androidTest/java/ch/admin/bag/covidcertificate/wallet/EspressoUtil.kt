@@ -51,6 +51,7 @@ open class EspressoUtil {
 		)
 		materialButton4.perform(ViewActions.click())
 		Espresso.onIdle()
+		Thread.sleep(500)
 		try{
 			val materialButton5 = Espresso.onView(
 				Matchers.allOf(
