@@ -53,20 +53,17 @@ enum class UiValidityState{
 }
 
 fun checkCertValidity(expected: UiValidityState){
+    val context = InstrumentationRegistry.getInstrumentation().context
     onView(allOf(
         withId(R.id.homescreen_certificates_view_pager),
         isDisplayed()
     )).perform(ViewActions.click())
-    /*onView(allOf(
-        withId(R.id.certificate_page_card)
-    )).perform(ViewActions.click())*/
     when(expected){
-        UiValidityState.VALID -> onView(allOf(withId(R.id.certificate_detail_info))).check(matches(withText("Only valid in combination with \nan identity document")))
+        UiValidityState.VALID -> onView(allOf(withId(R.id.certificate_detail_info))).check(matches(withText(R.string.verifier_verify_success_info)))
         UiValidityState.EXPIRED -> {
             onView(allOf(withId(R.id.certificate_detail_info)))
                 .check(matches(anyOf(
-                    withText(containsString("expired")),
-                    withText(containsString("not valid"))
+                    withText(R.string.wallet_error_expired)
                 )
                 ))
         }
