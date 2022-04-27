@@ -1616,44 +1616,44 @@ Tegnai perquai en salv Voss certificats er ordaifer l'app cun exportar quels sco
     <string name="wallet_foreign_rules_check_hints_more_info_link_url">"https://reopen.europa.eu/"</string>
 
     <!-- RAT-Umwandlung:  Titel bei Zertifikat -->
-    <string name="rat_conversion_overview_title">"Neu: EU-kompatible Version"</string>
+    <string name="rat_conversion_overview_title">"Nov: Versiun cumpatibla cun il certificat da la UE"</string>
 
     <!-- RAT-Umwandlung: Text bei Zertifikat -->
-    <string name="rat_conversion_overview_text">"Für dieses Covid-Zertifikat kann eine EU-kompatible Version beantragt werden."</string>
+    <string name="rat_conversion_overview_text">"Per quest certificat COVID po vegnir dumandada ina versiun cumpatibla cun il certificat da la UE."</string>
 
     <!-- RAT-Umwandlung: Button-Text zu Umwandlung Detail -->
-    <string name="rat_conversion_overview_button">"Mehr erfahren"</string>
+    <string name="rat_conversion_overview_button">"Dapli infurmaziuns"</string>
 
     <!-- RAT-Umwandlung: Titel Detail -->
-    <string name="rat_conversion_title">"Covid-Zertifikat beantragen (EU-kompatibel)"</string>
+    <string name="rat_conversion_title">"Dumandar in certificat COVID (cumpatibel cun il certificat da la UE)"</string>
 
     <!-- RAT-Umwandlung: Text auf Detail -->
-    <string name="rat_conversion_text">"Neu werden Covid-Zertifikate für Genesene auf Basis von Antigen-Schnelltests auch in der EU akzeptiert.
+    <string name="rat_conversion_text">"Da nov vegnan ils certificats COVID per persunas guaridas sin basa da tests svelts d'antigens acceptads er en la UE.
 
-Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei der Nationalen Antragsstelle zu beantragen."</string>
+Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certificat da la UE. La dumonda per in tal certificat pudais Vus far al Post naziunal da dumondas."</string>
 
     <!-- RAT-Umwandlung: Title bei Formular-Verlinkung -->
-    <string name="rat_conversion_form_title">"Zum Online-Formular der Nationalen Antragsstelle"</string>
+    <string name="rat_conversion_form_title">"Al formular online dal Post naziunal da dumondas"</string>
 
     <!-- Rat-Umwandlung: Text zum Formular -->
-    <string name="rat_conversion_form_text">"Ich bin einverstanden, dass die Daten dieses Covid-Zertifikats in das Formular der Nationalen Antragsstelle (eine Website des Bundes) übertragen werden."</string>
+    <string name="rat_conversion_form_text">"Jau sun d'accord che las datas da quest certificat COVID vegnan transferidas en il formular dal Post naziunal da dumondas (ina pagina d'internet da la Confederaziun)."</string>
 
     <!-- RAT-Umwandlung: Absprung Button -->
-    <string name="rat_conversion_form_button">"Zum Formular"</string>
+    <string name="rat_conversion_form_button">"Al formular"</string>
 
     <!-- RAT-Umwandlung: Linktext zur Webseite nationale Antragsstelle -->
-    <string name="rat_conversion_link_antragsstelle">"Website der Nationalen Antragsstelle (ohne Datenübernahme)"</string>
+    <string name="rat_conversion_link_antragsstelle">"Pagina d'internet dal Post naziunal da dumondas (senza transferiment da datas)"</string>
 
     <!-- RAT-Umwandlung: Info Text 1 -->
-    <string name="rat_conversion_info1_text">"Ist die Beantragung erfolgreich, wird Ihnen das neue EU-kompatible Covid-Zertifikat per Post zugestellt und kann von Ihnen in die App übernommen werden. Eine direkte Zustellung in die App ist nicht möglich."</string>
+    <string name="rat_conversion_info1_text">"Sche la dumonda vegn acceptada, survegnis Vus il nov certificat COVID cumpatibel cun il certificat da la UE per posta. Quel pudais Vus alura arcunar en Vossa app. I n'è betg pussaivel d'As consegnar il certificat directamain en l'app."</string>
 
     <!-- RAT-Umwandlung: Info 2 Text -->
-    <string name="rat_conversion_info2_text">"Durch die Übernahme der Daten des Zertifikats in das Online-Formular kann Ihr Antrag einfacher verarbeitet werden."</string>
+    <string name="rat_conversion_info2_text">"Cun transferir las datas dal certificat en il formular online po Vossa dumonda vegnir tractada en moda pli simpla."</string>
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
     <!-- Fuzzy -->
     <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
-    <string name="rat_conversion_info_title">"Weitere Informationen"</string>
+    <string name="rat_conversion_info_title">"Ulteriuras infurmaziuns"</string>
 </resources>
