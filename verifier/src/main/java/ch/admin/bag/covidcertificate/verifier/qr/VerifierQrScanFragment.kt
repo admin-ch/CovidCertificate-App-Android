@@ -89,10 +89,8 @@ class VerifierQrScanFragment : QrScanFragment() {
 		viewFinderBottomRightIndicator = binding.qrCodeScannerBottomRightIndicator
 
 		if (verifierSecureStorage.hasZebraScanner()) {
-			binding.qrCodeScannerExternalHardwareDetected.isVisible = true
+			// Needs to be before the onAttachedToWindow of the scanner view (which happens between onCreateView and onViewCreated)
 			qrCodeScanner.setAutoActivateOnAttach(false)
-		} else {
-			activateCamera()
 		}
 
 		return binding.root
@@ -100,6 +98,12 @@ class VerifierQrScanFragment : QrScanFragment() {
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
+
+		if (verifierSecureStorage.hasZebraScanner()) {
+			binding.qrCodeScannerExternalHardwareDetected.isVisible = true
+		} else {
+			activateCamera()
+		}
 
 		modesViewModel.modesLiveData.observe(viewLifecycleOwner) { modeState ->
 			val mode = modeState.selectedMode
