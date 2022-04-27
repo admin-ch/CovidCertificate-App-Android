@@ -16,18 +16,11 @@ import android.content.pm.PackageManager
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.os.Bundle
-import android.util.Size
-import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageButton
 import android.widget.TextView
 import androidx.annotation.ColorRes
 import androidx.appcompat.widget.Toolbar
-import androidx.camera.core.*
-import androidx.camera.lifecycle.ProcessCameraProvider
-import androidx.camera.view.PreviewView
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.liveData
@@ -36,11 +29,17 @@ import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.util.ErrorHelper
 import ch.admin.bag.covidcertificate.common.util.ErrorState
 import ch.admin.bag.covidcertificate.sdk.core.models.state.StateError
+import ch.ubique.qrscanner.scanner.ErrorCodes
+import ch.ubique.qrscanner.scanner.ScanningMode
+import ch.ubique.qrscanner.state.DecodingState
+import ch.ubique.qrscanner.util.CameraUtil
+import ch.ubique.qrscanner.view.QrScannerView
+import ch.ubique.qrscanner.zxing.decoder.GlobalHistogramImageDecoder
+import ch.ubique.qrscanner.zxing.decoder.HybridImageDecoder
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.currentCoroutineContext
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
-import java.util.concurrent.Executor
 
 abstract class QrScanFragment : Fragment() {
 
@@ -48,6 +47,9 @@ abstract class QrScanFragment : Fragment() {
 		private const val STATE_IS_TORCH_ON = "STATE_IS_TORCH_ON"
 		private const val PERMISSION_REQUEST_CAMERA = 13
 		private const val MIN_ERROR_VISIBILITY = 1000L
+
+		private const val QR_CODE_ERROR_WRONG_FORMAT = "Q|YWF"
+		private const val QR_CODE_ERROR_READ_FAILED = "Q|IRF"
 	}
 
 	// These need to be set by implementing classes during onCreateView. That's why they are not private.
@@ -62,13 +64,8 @@ abstract class QrScanFragment : Fragment() {
 	protected lateinit var viewFinderTopRightIndicator: View
 	protected lateinit var viewFinderBottomLeftIndicator: View
 	protected lateinit var viewFinderBottomRightIndicator: View
-	protected lateinit var qrCodeScanner: PreviewView
+	protected lateinit var qrCodeScanner: QrScannerView
 	protected lateinit var cutOut: View
-	private var preview: Preview? = null
-	private var imageCapture: ImageCapture? = null
-	private var imageAnalyzer: ImageAnalysis? = null
-	private lateinit var mainExecutor: Executor
-	private var camera: Camera? = null
 	abstract val viewFinderColor: Int
 
 	abstract val viewFinderErrorColor: Int
@@ -82,18 +79,12 @@ abstract class QrScanFragment : Fragment() {
 	private val secureStorage by lazy { ConfigSecureStorage.getInstance(requireContext()) }
 	private var cameraPermissionExplanationDialog: CameraPermissionExplanationDialog? = null
 	private var isTorchOn: Boolean = false
-	protected var isCameraActivated = false
 
 	private val autoFocusClockLiveData = liveData(Dispatchers.IO) {
 		while (currentCoroutineContext().isActive) {
 			emit(Unit)
 			delay(3 * 1000L)
 		}
-	}
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-		mainExecutor = ContextCompat.getMainExecutor(requireContext())
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -136,153 +127,88 @@ abstract class QrScanFragment : Fragment() {
 	protected fun activateCamera() {
 		if (!isAdded || !qrCodeScanner.isAttachedToWindow) return
 
-		deactivateCamera()
+		autoFocusClockLiveData.observe(viewLifecycleOwner) {
+			autoFocus()
+		}
 
-		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-		cameraProviderFuture.addListener({
-			val cameraProvider = cameraProviderFuture.get()
-
-			val cameraSelector = CameraSelector.Builder()
-				.requireLensFacing(CameraSelector.LENS_FACING_BACK)
-				.build()
-
-			try {
-				qrCodeScanner.isVisible = true
-				camera = cameraProvider.bindToLifecycle(this, cameraSelector, preview, imageCapture, imageAnalyzer)
-				isCameraActivated = true
-
-				// Set focus to the center of the viewfinder to help the auto focus
-				autoFocusClockLiveData.observe(viewLifecycleOwner) {
-					autoFocus()
-				}
-				setupZoomButton()
-				setupFlashButton()
-			} catch (e: Exception) {
-				e.printStackTrace()
-			}
-		}, mainExecutor)
+		qrCodeScanner.activateCamera()
 	}
 
 	protected fun deactivateCamera() {
 		if (!isAdded || !qrCodeScanner.isAttachedToWindow) return
 
 		autoFocusClockLiveData.removeObservers(viewLifecycleOwner)
-		val cameraProviderFuture = ProcessCameraProvider.getInstance(requireContext())
-		cameraProviderFuture.addListener({
-			val cameraProvider = cameraProviderFuture.get()
-			cameraProvider.unbindAll()
-			qrCodeScanner.isVisible = false
-			isCameraActivated = false
-		}, mainExecutor)
+
+		qrCodeScanner.deactivateCamera()
 	}
 
 	@SuppressLint("ClickableViewAccessibility")
 	private fun initializeCamera() {
 		if (!isAdded || !qrCodeScanner.isAttachedToWindow) return
 
-		val rotation = qrCodeScanner.display.rotation
-		preview = Preview.Builder()
-			.setTargetResolution(Size(720, 1280))
-			.setTargetRotation(rotation)
-			.build()
-			.also { it.setSurfaceProvider(qrCodeScanner.surfaceProvider) }
-
-		imageCapture = ImageCapture.Builder()
-			.setCaptureMode(ImageCapture.CAPTURE_MODE_MAXIMIZE_QUALITY)
-			.setTargetResolution(Size(720, 1280))
-			.setTargetRotation(rotation)
-			.build()
-
-		imageAnalyzer = ImageAnalysis.Builder()
-			.setTargetResolution(Size(720, 1280))
-			.setTargetRotation(rotation)
-			.setBackpressureStrategy(ImageAnalysis.STRATEGY_KEEP_ONLY_LATEST)
-			.build()
-
-		setAnalyzer()
-
-		cutOut.setOnTouchListener { _: View, motionEvent: MotionEvent ->
-			when (motionEvent.action) {
-				MotionEvent.ACTION_DOWN -> true
-				MotionEvent.ACTION_UP -> {
-					// Create a MeteringPoint from the tap coordinates
-					val factory = qrCodeScanner.meteringPointFactory
-					val point = factory.createPoint(motionEvent.x, motionEvent.y)
-
-					// Create a MeteringAction from the MeteringPoint
-					val action = FocusMeteringAction.Builder(point).build()
-
-					// Trigger the focus and metering as a fire-and-forget, ignoring the ListenableFuture return value
-					camera?.cameraControl?.startFocusAndMetering(action)
-					true
-				}
-				else -> false
+		setScannerCallback()
+		qrCodeScanner.setImageDecoders(GlobalHistogramImageDecoder(), HybridImageDecoder())
+		qrCodeScanner.setScanningMode(ScanningMode.PARALLEL)
+		qrCodeScanner.setFocusOnTap(true)
+		qrCodeScanner.setCameraStateCallback { isActive ->
+			if (isActive) {
+				qrCodeScanner.isVisible = true
+				setupZoomButton()
+				setupFlashButton()
+			} else {
+				qrCodeScanner.isVisible = false
 			}
 		}
 	}
 
-	protected fun restartAnalyzer() {
-		setAnalyzer()
-	}
+	protected fun setScannerCallback() {
+		qrCodeScanner.setScannerCallback { state ->
+			when (state) {
+				is DecodingState.NotFound -> view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
+				is DecodingState.Decoded -> {
+					val qrCodeData = state.content
+					decodeQrCodeData(
+						qrCodeData,
+						onDecodeSuccess = {
+							// Once successfully decoded, clear the analyzer from stopping more frames being
+							// analyzed and possibly decoded successfully
+							qrCodeScanner.setScannerCallback(null)
 
-	private fun setAnalyzer() {
-		imageAnalyzer?.clearAnalyzer()
-		imageAnalyzer?.setAnalyzer(
-			mainExecutor,
-			QRCodeMixedZXingAnalyzer { decodeCertificateState: DecodeCertificateState ->
-				when (decodeCertificateState) {
-					is DecodeCertificateState.ERROR -> {
-						handleInvalidQRCodeExceptions(decodeCertificateState.error)
-					}
-					DecodeCertificateState.SCANNING -> {
-						view?.post { updateQrCodeScannerState(QrScannerState.NO_CODE_FOUND) }
-					}
-					is DecodeCertificateState.SUCCESS -> {
-						val qrCodeData = decodeCertificateState.qrCode
-						qrCodeData?.let {
-							decodeQrCodeData(
-								it,
-								onDecodeSuccess = {
-									// Once successfully decoded, clear the analyzer from stopping more frames being
-									// analyzed and possibly decoded successfully
-									imageAnalyzer?.clearAnalyzer()
-
-									view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
-								},
-								onDecodeError = { error ->
-									view?.post { handleInvalidQRCodeExceptions(error) }
-								}
-							)
+							view?.post { updateQrCodeScannerState(QrScannerState.VALID) }
+						},
+						onDecodeError = { error ->
+							view?.post { handleInvalidQRCodeExceptions(error) }
 						}
-					}
+					)
 				}
-			})
+				is DecodingState.Error -> {
+					val stateError = if (state.errorCode == ErrorCodes.INPUT_WRONG_FORMAT) {
+						StateError(QR_CODE_ERROR_WRONG_FORMAT)
+					} else {
+						StateError(QR_CODE_ERROR_READ_FAILED)
+					}
+					handleInvalidQRCodeExceptions(stateError)
+				}
+			}
+		}
 	}
 
 	private fun setZoom() {
-		val zoomRatio = if (secureStorage.getZoomOn()) {
-			camera?.cameraInfo?.zoomState?.value?.maxZoomRatio
+		if (secureStorage.getZoomOn()) {
+			qrCodeScanner.setLinearZoom(1f)
 		} else {
-			camera?.cameraInfo?.zoomState?.value?.minZoomRatio
-		}
-		zoomRatio?.let {
-			camera?.cameraControl?.setZoomRatio(zoomRatio)
+			qrCodeScanner.setLinearZoom(0f)
 		}
 	}
 
 	private fun autoFocus() {
-		// Set focus to the center of the viewfinder to help the auto focus
-		val metricPointFactory = qrCodeScanner.meteringPointFactory
 		val centerX = cutOut.left + cutOut.width / 2.0f
 		val centerY = cutOut.top + cutOut.height / 2.0f
-		val point = metricPointFactory.createPoint(centerX, centerY)
-		val action = FocusMeteringAction.Builder(point).build()
-		camera?.cameraControl?.startFocusAndMetering(action)
+		qrCodeScanner.startAutofocus(centerX, centerY)
 	}
 
 	private fun checkCameraPermission() {
-		val isGranted =
-			ActivityCompat.checkSelfPermission(requireActivity(), Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED
+		val isGranted = CameraUtil.hasCameraPermission(requireContext())
 
 		if (isGranted) {
 			cameraPermissionState = CameraPermissionState.GRANTED
@@ -333,9 +259,9 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	private fun setupFlashButton() {
-		val camera = camera ?: return
+		val cameraInfo = qrCodeScanner.getCameraInfo() ?: return
 
-		if (camera.cameraInfo.hasFlashUnit()) {
+		if (cameraInfo.hasFlashUnit()) {
 			flashButton.isVisible = true
 			setFlashAndButtonStyle()
 		} else {
@@ -353,7 +279,7 @@ abstract class QrScanFragment : Fragment() {
 	}
 
 	private fun setFlashAndButtonStyle() {
-		camera?.cameraControl?.enableTorch(isTorchOn)
+		qrCodeScanner.setFlash(isTorchOn)
 		val drawableId = if (isTorchOn) torchOnDrawable else torchOffDrawable
 		flashButton.isSelected = isTorchOn
 		flashButton.setImageResource(drawableId)

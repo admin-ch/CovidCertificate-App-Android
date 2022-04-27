@@ -64,7 +64,9 @@ class VerifierQrScanFragment : QrScanFragment() {
 		super.onCreate(savedInstanceState)
 
 		// Restart the Analyzer whenever the VerificationFragment is popped
-		setFragmentResultListener(RESULT_FRAGMENT_POPPED) { _, _ -> restartAnalyzer() }
+		setFragmentResultListener(RESULT_FRAGMENT_POPPED) { _, _ ->
+			setScannerCallback()
+		}
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -86,17 +88,18 @@ class VerifierQrScanFragment : QrScanFragment() {
 		viewFinderBottomLeftIndicator = binding.qrCodeScannerBottomLeftIndicator
 		viewFinderBottomRightIndicator = binding.qrCodeScannerBottomRightIndicator
 
+		if (verifierSecureStorage.hasZebraScanner()) {
+			binding.qrCodeScannerExternalHardwareDetected.isVisible = true
+			qrCodeScanner.setAutoActivateOnAttach(false)
+		} else {
+			activateCamera()
+		}
+
 		return binding.root
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 		super.onViewCreated(view, savedInstanceState)
-
-		if (verifierSecureStorage.hasZebraScanner()) {
-			binding.qrCodeScannerExternalHardwareDetected.isVisible = true
-		} else {
-			activateCamera()
-		}
 
 		modesViewModel.modesLiveData.observe(viewLifecycleOwner) { modeState ->
 			val mode = modeState.selectedMode
@@ -152,14 +155,14 @@ class VerifierQrScanFragment : QrScanFragment() {
 		binding.fragmentCameraActivate.isVisible = verifierSecureStorage.hasZebraScanner()
 
 		binding.fragmentCameraActivate.setOnClickListener {
-			if (isCameraActivated) {
+			if (qrCodeScanner.isCameraActive) {
 				deactivateCamera()
 			} else {
 				activateCamera()
 			}
-			binding.fragmentCameraActivate.isSelected = !isCameraActivated
+			binding.fragmentCameraActivate.isSelected = !qrCodeScanner.isCameraActive
 
-			val iconColor = if (isCameraActivated) R.color.white else R.color.black
+			val iconColor = if (qrCodeScanner.isCameraActive) R.color.white else R.color.black
 			binding.fragmentCameraActivate.imageTintList =
 				ColorStateList.valueOf(ContextCompat.getColor(requireContext(), iconColor))
 		}
