@@ -10,35 +10,20 @@
 
 package ch.admin.bag.covidcertificate.wallet
 
-import androidx.test.espresso.Espresso
-import androidx.test.espresso.Espresso.onData
-import androidx.test.espresso.Espresso.onView
-import androidx.test.espresso.action.ViewActions
-import androidx.test.espresso.assertion.ViewAssertions.matches
-import androidx.test.espresso.contrib.ViewPagerActions
 import androidx.test.espresso.intent.Intents
-import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
-import ch.admin.bag.covidcertificate.common.browserstack.Normal
-import ch.admin.bag.covidcertificate.common.browserstack.Onboarding
-import ch.admin.bag.covidcertificate.sdk.core.models.state.SuccessState
-import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
-import ch.admin.bag.covidcertificate.wallet.homescreen.pager.WalletItem
-import org.hamcrest.Matchers
-import org.hamcrest.Matchers.*
+import ch.admin.bag.covidcertificate.common.browserstack.Certificates
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
-import java.time.Instant
-import java.time.temporal.ChronoUnit
 import java.util.*
 
 
 private val PFIZER = "EU/1/20/1507"
 private val DAYS = 24 * 60 * 60 *1000L
 
-@Normal
+@Certificates
 @RunWith(AndroidJUnit4::class)
 class CertTest : EspressoUtil() {
 	@Rule
