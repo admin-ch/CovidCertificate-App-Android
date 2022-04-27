@@ -98,7 +98,7 @@ fun importCert(uri: Uri){
         )
     ).perform(ViewActions.click())
 
-    Thread.sleep(500)
+    Thread.sleep(2000)
     onIdle()
     val addButton = onView(
         allOf(
