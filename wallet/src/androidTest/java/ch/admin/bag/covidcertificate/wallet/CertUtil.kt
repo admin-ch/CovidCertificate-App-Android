@@ -90,6 +90,7 @@ fun checkCertValidity(expected: UiValidityState) {
             isDisplayed()
         )
     ).perform(ViewActions.click())
+    onIdle()
     when (expected) {
         UiValidityState.VALID -> onView(allOf(withId(R.id.certificate_detail_info))).check(
             matches(
