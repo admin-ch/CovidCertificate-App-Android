@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-    ~
-    ~ This Source Code Form is subject to the terms of the Mozilla Public
-    ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-    ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-    ~
-    ~ SPDX-License-Identifier: MPL-2.0
-    -->
 <resources>
 
     <!-- Android App Name -->
@@ -512,10 +503,10 @@ Se tutti i tre aspetti sono valutati positivamente, il certificato COVID è cons
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
     <string name="wallet_certificate_detail_note">"Il presente certificato non costituisce un documento di viaggio. 
-
+&lt;br /&gt;&lt;br /&gt;
 Si acquisiscono sempre più conoscenze scientifiche sulla vaccinazione COVID-19, sulla guarigione dalla COVID-19 e sui test COVID-19, così come sulle nuove varianti problematiche del virus. 
-
-Prima di un viaggio, informatevi sulle restrizioni e sulle regole di validità vigenti nella località di destinazione. All’estero la validità del certificato è calcolata secondo le regole del Paese di destinazione e può essere differente da quella svizzera indicata nell’app «COVID Certificate». Maggiori informazioni sull’argomento sono disponibili in queste FAQ."</string>
+&lt;br /&gt;&lt;br /&gt;
+Prima di un viaggio, informatevi sulle restrizioni e sulle regole di validità vigenti nella località di destinazione. All’estero la validità del certificato è calcolata secondo le regole del Paese di destinazione e può essere differente da quella svizzera indicata nell’app «COVID Certificate». Maggiori informazioni sull’argomento sono disponibili &lt;a href=\"https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/cosa-devo-fare-se-il-mio-certificato-covid-sta-scadere-secondo-le-regole-di\"&gt;in queste FAQ&lt;/a&gt;."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/it/home/documentazione/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/it/home/documentazione/covid-certificate-check-app.html"</string>
 

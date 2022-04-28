@@ -16,6 +16,7 @@ import android.graphics.drawable.BitmapDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.text.SpannableString
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -24,6 +25,7 @@ import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.ContextCompat
 import androidx.core.os.bundleOf
+import androidx.core.text.HtmlCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
@@ -240,7 +242,10 @@ class CertificateDetailFragment : Fragment() {
 				binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_positive_antigen)
 			}
 			else -> {
-				binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note)
+				val t = getString(R.string.wallet_certificate_detail_note)
+				binding.certificateDetailNote.text =
+					HtmlCompat.fromHtml(getString(R.string.wallet_certificate_detail_note), HtmlCompat.FROM_HTML_MODE_LEGACY)
+				binding.certificateDetailNote.movementMethod = LinkMovementMethod.getInstance()
 			}
 		}
 	}

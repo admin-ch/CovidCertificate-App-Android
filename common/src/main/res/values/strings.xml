@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <!--
-    ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-    ~
-    ~ This Source Code Form is subject to the terms of the Mozilla Public
-    ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-    ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-    ~
-    ~ SPDX-License-Identifier: MPL-2.0
-    -->
 <resources>
 
     <!-- Android App Name -->
@@ -510,10 +501,10 @@ If the answer to all three questions is affirmative, the COVID certificate is sh
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
     <string name="wallet_certificate_detail_note">"This certificate is not a travel document. 
-
+&lt;br /&gt;&lt;br /&gt;
 The scientific evidence on COVID-19 vaccination, testing and recovery continues to evolve, including with regard to new virus variants of concern. 
-
-Please check the restrictions and rules on validity that apply at your destination before you travel. When you’re abroad, the validity of your certificate is calculated on the basis of the rules in the destination country, which may differ from the validity periods in Switzerland as stated in the COVID Certificate app. You’ll find more on this in the FAQ."</string>
+&lt;br /&gt;&lt;br /&gt;
+Please check the restrictions and rules on validity that apply at your destination before you travel. When you’re abroad, the validity of your certificate is calculated on the basis of the rules in the destination country, which may differ from the validity periods in Switzerland as stated in the COVID Certificate app. You’ll find more on this in &lt;a href=\"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/what-should-i-do-if-my-covid-certificate-about-expire-under-swiss-rules-validity\"&gt;the FAQ&lt;/a&gt;."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/en/home/documentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/en/home/documentation/covid-certificate-check-app.html"</string>
 
