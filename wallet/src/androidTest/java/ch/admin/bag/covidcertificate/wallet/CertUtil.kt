@@ -45,7 +45,7 @@ private val test_url =
 private val recovery_url =
     URL("https://ws.covidcertificate-a.bag.admin.ch/api/v1/covidcertificate/recovery")
 
-private val httpClient = buildClient()
+private val httpClient by lazy {buildClient()}
 private val vaccineDateFormat = SimpleDateFormat("yyyy-MM-dd")
 private val testDateTimeFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'")
 private val moshi = Moshi.Builder().build()

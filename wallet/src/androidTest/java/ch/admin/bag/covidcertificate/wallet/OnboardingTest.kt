@@ -14,12 +14,8 @@ package ch.admin.bag.covidcertificate.wallet
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
-import androidx.test.filters.LargeTest
 import androidx.test.rule.ActivityTestRule
 import androidx.test.runner.AndroidJUnit4
-import ch.admin.bag.covidcertificate.common.browserstack.AirplaneMode
-import ch.admin.bag.covidcertificate.common.browserstack.BadNetwork
-import ch.admin.bag.covidcertificate.common.browserstack.Normal
 import ch.admin.bag.covidcertificate.common.browserstack.Onboarding
 import org.hamcrest.Matchers.allOf
 import org.junit.FixMethodOrder

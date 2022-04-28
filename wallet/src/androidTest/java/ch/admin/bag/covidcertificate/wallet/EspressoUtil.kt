@@ -13,24 +13,18 @@ package ch.admin.bag.covidcertificate.wallet
 import androidx.test.espresso.Espresso
 import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAction
+import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.platform.app.InstrumentationRegistry
+import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
+import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import org.hamcrest.Matchers
 
 open class EspressoUtil {
 
 	fun needsOnboarding(): Boolean{
-		return try {
-			Espresso.onView(
-				Matchers.allOf(
-					ViewMatchers.withId(R.id.onboarding_continue_button),
-					ViewMatchers.isDisplayed()
-				)
-			)
-			true
-		}catch(_: NoMatchingViewException) {
-			false
-		}
+		return !WalletSecureStorage.getInstance(InstrumentationRegistry.getInstrumentation().targetContext).getOnboardingCompleted()
 	}
 
 	fun doOnboarding() {
