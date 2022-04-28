@@ -11,12 +11,27 @@
 package ch.admin.bag.covidcertificate.wallet
 
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
 import org.hamcrest.Matchers
 
 open class EspressoUtil {
+
+	fun needsOnboarding(): Boolean{
+		return try {
+			Espresso.onView(
+				Matchers.allOf(
+					ViewMatchers.withId(R.id.onboarding_continue_button),
+					ViewMatchers.isDisplayed()
+				)
+			)
+			true
+		}catch(_: NoMatchingViewException) {
+			false
+		}
+	}
 
 	fun doOnboarding() {
 		val materialButton = Espresso.onView(
