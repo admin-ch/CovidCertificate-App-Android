@@ -234,20 +234,14 @@ class CertificateDetailFragment : Fragment() {
 
 	private fun setupDetailNote() {
 		val dccCert = certificateHolder.certificate as? DccCert
-		when {
-			dccCert?.tests?.firstOrNull()?.isChAusnahmeTest() == true -> {
-				binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_ausnahme)
-			}
-			dccCert?.tests?.firstOrNull()?.isPositiveRatTest() == true -> {
-				binding.certificateDetailNote.text = getString(R.string.wallet_certificate_detail_note_positive_antigen)
-			}
-			else -> {
-				val t = getString(R.string.wallet_certificate_detail_note)
-				binding.certificateDetailNote.text =
-					HtmlCompat.fromHtml(getString(R.string.wallet_certificate_detail_note), HtmlCompat.FROM_HTML_MODE_LEGACY)
-				binding.certificateDetailNote.movementMethod = LinkMovementMethod.getInstance()
-			}
+		val stringId = when {
+			dccCert?.tests?.firstOrNull()?.isChAusnahmeTest() == true -> R.string.wallet_certificate_detail_note_ausnahme
+			dccCert?.tests?.firstOrNull()?.isPositiveRatTest() == true -> R.string.wallet_certificate_detail_note_positive_antigen
+			else -> R.string.wallet_certificate_detail_note
 		}
+
+		binding.certificateDetailNote.text = HtmlCompat.fromHtml(getString(stringId), HtmlCompat.FROM_HTML_MODE_LEGACY)
+		binding.certificateDetailNote.movementMethod = LinkMovementMethod.getInstance()
 	}
 
 	private fun setupReverifyButtons() {

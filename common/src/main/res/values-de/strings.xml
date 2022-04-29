@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+    ~
+    ~ This Source Code Form is subject to the terms of the Mozilla Public
+    ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+    ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+    ~
+    ~ SPDX-License-Identifier: MPL-2.0
+    -->
 <resources>
 
     <!-- Android App Name -->
@@ -1440,7 +1449,7 @@ Code: {ERROR_CODE}"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
     <string name="wallet_certificate_detail_note_ausnahme">"Dieses Zertifikat ist kein Reisedokument. 
-
+&lt;br /&gt;&lt;br /&gt;
 Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen."</string>
 
     <!-- Wallet: Ausnahme Label für Liste -->
@@ -1455,7 +1464,7 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
     <!-- Wallet: Blaue Box für positiven Antigen-Test -->
     <!-- Fuzzy -->
     <string name="wallet_certificate_detail_note_positive_antigen">"Dieses Zertifikat ist kein Reisedokument.
-
+&lt;br /&gt;&lt;br /&gt;
 Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen."</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid within three weeks of validity change. -->
