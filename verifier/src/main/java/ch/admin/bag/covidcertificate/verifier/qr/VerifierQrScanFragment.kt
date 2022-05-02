@@ -64,7 +64,9 @@ class VerifierQrScanFragment : QrScanFragment() {
 		super.onCreate(savedInstanceState)
 
 		// Restart the Analyzer whenever the VerificationFragment is popped
-		setFragmentResultListener(RESULT_FRAGMENT_POPPED) { _, _ -> restartAnalyzer() }
+		setFragmentResultListener(RESULT_FRAGMENT_POPPED) { _, _ ->
+			setScannerCallback()
+		}
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -85,6 +87,11 @@ class VerifierQrScanFragment : QrScanFragment() {
 		viewFinderTopRightIndicator = binding.qrCodeScannerTopRightIndicator
 		viewFinderBottomLeftIndicator = binding.qrCodeScannerBottomLeftIndicator
 		viewFinderBottomRightIndicator = binding.qrCodeScannerBottomRightIndicator
+
+		if (verifierSecureStorage.hasZebraScanner()) {
+			// Needs to be before the onAttachedToWindow of the scanner view (which happens between onCreateView and onViewCreated)
+			qrCodeScanner.setAutoActivateOnAttach(false)
+		}
 
 		return binding.root
 	}
@@ -152,14 +159,14 @@ class VerifierQrScanFragment : QrScanFragment() {
 		binding.fragmentCameraActivate.isVisible = verifierSecureStorage.hasZebraScanner()
 
 		binding.fragmentCameraActivate.setOnClickListener {
-			if (isCameraActivated) {
+			if (qrCodeScanner.isCameraActive) {
 				deactivateCamera()
 			} else {
 				activateCamera()
 			}
-			binding.fragmentCameraActivate.isSelected = !isCameraActivated
+			binding.fragmentCameraActivate.isSelected = !qrCodeScanner.isCameraActive
 
-			val iconColor = if (isCameraActivated) R.color.white else R.color.black
+			val iconColor = if (qrCodeScanner.isCameraActive) R.color.white else R.color.black
 			binding.fragmentCameraActivate.imageTintList =
 				ColorStateList.valueOf(ContextCompat.getColor(requireContext(), iconColor))
 		}

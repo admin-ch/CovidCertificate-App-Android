@@ -510,10 +510,10 @@ If the answer to all three questions is affirmative, the COVID certificate is sh
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
     <string name="wallet_certificate_detail_note">"This certificate is not a travel document. 
-
+&lt;br /&gt;&lt;br /&gt;
 The scientific evidence on COVID-19 vaccination, testing and recovery continues to evolve, including with regard to new virus variants of concern. 
-
-Please check the restrictions and rules on validity that apply at your destination before you travel. When you’re abroad, the validity of your certificate is calculated on the basis of the rules in the destination country, which may differ from the validity periods in Switzerland as stated in the COVID Certificate app. You’ll find more on this in the FAQ."</string>
+&lt;br /&gt;&lt;br /&gt;
+Please check the restrictions and rules on validity that apply at your destination before you travel. When you’re abroad, the validity of your certificate is calculated on the basis of the rules in the destination country, which may differ from the validity periods in Switzerland as stated in the COVID Certificate app. You’ll find more on this in &lt;a href=\"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/what-should-i-do-if-my-covid-certificate-about-expire-under-swiss-rules-validity\"&gt;the FAQ&lt;/a&gt;."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/en/home/documentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/en/home/documentation/covid-certificate-check-app.html"</string>
 
@@ -1443,8 +1443,8 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_certificate_ausnahme_issued_country">"Medical certificate issued in"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
-    <string name="wallet_certificate_detail_note_ausnahme">"This certificate is not a travel document. 
-
+    <string name="wallet_certificate_detail_note_ausnahme">"This certificate is not a travel document.
+&lt;br /&gt;&lt;br /&gt;
 This certificate is only valid for a limited period of time. You can check the current duration of validity in Switzerland at any time using the COVID Certificate app."</string>
 
     <!-- Wallet: Ausnahme Label für Liste -->
@@ -1459,7 +1459,7 @@ This certificate is only valid for a limited period of time. You can check the c
     <!-- Wallet: Blaue Box für positiven Antigen-Test -->
     <!-- Fuzzy -->
     <string name="wallet_certificate_detail_note_positive_antigen">"This certificate is not a travel document.
-
+&lt;br /&gt;&lt;br /&gt;
 This certificate is only valid for a limited period of time. You can check the current duration of validity in Switzerland at any time using the COVID Certificate app."</string>
 
     <!-- banner title on homescreen. case: certificate will be invalid within three weeks of validity change. -->
@@ -1617,44 +1617,44 @@ This means you should also keep a copy of your certificates outside the app by e
     <string name="wallet_foreign_rules_check_hints_more_info_link_url">"https://reopen.europa.eu/"</string>
 
     <!-- RAT-Umwandlung:  Titel bei Zertifikat -->
-    <string name="rat_conversion_overview_title">"Neu: EU-kompatible Version"</string>
+    <string name="rat_conversion_overview_title">"New: EU-compatible version"</string>
 
     <!-- RAT-Umwandlung: Text bei Zertifikat -->
-    <string name="rat_conversion_overview_text">"Für dieses Covid-Zertifikat kann eine EU-kompatible Version beantragt werden."</string>
+    <string name="rat_conversion_overview_text">"You can request an EU-compatible version of this COVID certificate."</string>
 
     <!-- RAT-Umwandlung: Button-Text zu Umwandlung Detail -->
-    <string name="rat_conversion_overview_button">"Mehr erfahren"</string>
+    <string name="rat_conversion_overview_button">"Find out more"</string>
 
     <!-- RAT-Umwandlung: Titel Detail -->
-    <string name="rat_conversion_title">"Covid-Zertifikat beantragen (EU-kompatibel)"</string>
+    <string name="rat_conversion_title">"Apply for a COVID certificate (EU-compatible)"</string>
 
     <!-- RAT-Umwandlung: Text auf Detail -->
-    <string name="rat_conversion_text">"Neu werden Covid-Zertifikate für Genesene auf Basis von Antigen-Schnelltests auch in der EU akzeptiert.
+    <string name="rat_conversion_text">"COVID recovery certificates issued on the basis of rapid antigen tests are now also accepted in the EU.
 
-Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei der Nationalen Antragsstelle zu beantragen."</string>
+You have the option of requesting an EU-compatible version of this certificate via the National Application Office."</string>
 
     <!-- RAT-Umwandlung: Title bei Formular-Verlinkung -->
-    <string name="rat_conversion_form_title">"Zum Online-Formular der Nationalen Antragsstelle"</string>
+    <string name="rat_conversion_form_title">"To the National Application Office's online form"</string>
 
     <!-- Rat-Umwandlung: Text zum Formular -->
-    <string name="rat_conversion_form_text">"Ich bin einverstanden, dass die Daten dieses Covid-Zertifikats in das Formular der Nationalen Antragsstelle (eine Website des Bundes) übertragen werden."</string>
+    <string name="rat_conversion_form_text">"I give my consent for the data in this COVID certificate to be transferred to the form of the National Application Office (a website of the Swiss federal government)."</string>
 
     <!-- RAT-Umwandlung: Absprung Button -->
-    <string name="rat_conversion_form_button">"Zum Formular"</string>
+    <string name="rat_conversion_form_button">"To the form"</string>
 
     <!-- RAT-Umwandlung: Linktext zur Webseite nationale Antragsstelle -->
-    <string name="rat_conversion_link_antragsstelle">"Website der Nationalen Antragsstelle (ohne Datenübernahme)"</string>
+    <string name="rat_conversion_link_antragsstelle">"National Application Office website (no data transferred)"</string>
 
     <!-- RAT-Umwandlung: Info Text 1 -->
-    <string name="rat_conversion_info1_text">"Ist die Beantragung erfolgreich, wird Ihnen das neue EU-kompatible Covid-Zertifikat per Post zugestellt und kann von Ihnen in die App übernommen werden. Eine direkte Zustellung in die App ist nicht möglich."</string>
+    <string name="rat_conversion_info1_text">"If your application is successful, the new EU-compatible COVID certificate will be sent to you by post and can then be transferred by you to the app. It is not possible for the certificate to be sent direct to the app."</string>
 
     <!-- RAT-Umwandlung: Info 2 Text -->
-    <string name="rat_conversion_info2_text">"Durch die Übernahme der Daten des Zertifikats in das Online-Formular kann Ihr Antrag einfacher verarbeitet werden."</string>
+    <string name="rat_conversion_info2_text">"Transferring the certificate data to the National Application Office’s online form makes it easier to validate your application."</string>
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
     <!-- Fuzzy -->
     <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
-    <string name="rat_conversion_info_title">"Weitere Informationen"</string>
+    <string name="rat_conversion_info_title">"Further information"</string>
 </resources>
