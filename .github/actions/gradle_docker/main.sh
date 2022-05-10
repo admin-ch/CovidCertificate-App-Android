@@ -1,4 +1,4 @@
 #!/bin/sh
 
 cd $GITHUB_WORKSPACE
-gradle $1
+./gradlew $1
