@@ -100,5 +100,5 @@ docker run --rm -v "$currentPath":/home/covidcertificate/external -w /home/covid
 rm -f "$appName"/insecure.keystore
 
 echo "Comparing the APK built from source with the reference APK..."
-python apkdiff.py $appName-built.apk $referenceApk
+python3 apkdiff.py $appName-built.apk $referenceApk
 
