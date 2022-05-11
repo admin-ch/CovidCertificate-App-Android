@@ -87,7 +87,7 @@ buildCommand=$(cat <<EOF
 git clone https://github.com/admin-ch/CovidCertificate-App-Android.git;
 cd CovidCertificate-App-Android;
 git checkout $tree;
-gradle $appName:assembleProdRelease -PkeystorePassword='$keystorePassword' -PkeyAlias=$keyAlias -PkeyAliasPassword='$keyAliasPassword' -PkeystoreFile=/home/covidcertificate/external/$keystoreFile -PbuildTimestamp=$buildTimestamp -Pbranch=$buildBranch $overrideMinSdk;
+./gradlew $appName:assembleProdRelease -PkeystorePassword='$keystorePassword' -PkeyAlias=$keyAlias -PkeyAliasPassword='$keyAliasPassword' -PkeystoreFile=/home/covidcertificate/external/$keystoreFile -PbuildTimestamp=$buildTimestamp -Pbranch=$buildBranch $overrideMinSdk;
 cp $appName/build/outputs/apk/prod/release/$appName-prod-release.apk /home/covidcertificate/external/$appName-built.apk
 EOF
 )
@@ -100,5 +100,5 @@ docker run --rm -v "$currentPath":/home/covidcertificate/external -w /home/covid
 rm -f "$appName"/insecure.keystore
 
 echo "Comparing the APK built from source with the reference APK..."
-python apkdiff.py $appName-built.apk $referenceApk
+python3 apkdiff.py $appName-built.apk $referenceApk
 
