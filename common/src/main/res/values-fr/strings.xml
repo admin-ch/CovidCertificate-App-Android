@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-   ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-   ~
-   ~ This Source Code Form is subject to the terms of the Mozilla Public
-   ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-   ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-   ~
-   ~ SPDX-License-Identifier: MPL-2.0
-   -->
 <resources>
 
     <!-- Android App Name -->
@@ -1652,8 +1643,60 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
     <!-- Fuzzy -->
-    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest"</string>
+    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
     <string name="rat_conversion_info_title">"Informations complémentaires"</string>
+
+    <!-- cert renewal general info heading -->
+    <string name="cert_renewal_info_info_heading">"Was bedeutet das?"</string>
+
+    <!-- cert renewal general info text 1 -->
+    <string name="cert_renewal_info_info_text_1">"Die QR-Codes der Covid-Zertifikate haben ein technisches Ablaufdatum."</string>
+
+    <!-- cert renewal general info text 2 -->
+    <string name="cert_renewal_info_info_text_2">"Um dieses Zertifikat weiterhin verwenden zu können, muss der QR-Code erneuert werden."</string>
+
+    <!-- cert renewal general info text 3 -->
+    <string name="cert_renewal_info_info_text_3">"Die Erneuerung des QR-Codes erfolg online. Dazu werden die Daten sicher an das System des Bundes zur Ausstellung von Covid-Zertifikaten übermittelt."</string>
+
+    <!-- cert renewal general info text 4 -->
+    <string name="cert_renewal_info_info_text_4">"Erneuern Sie den QR-Code auch dann, wenn die Gültigkeit in der Schweiz bald abläuft oder bereits abgelaufen ist."</string>
+
+    <!-- cert renewal info heading for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_heading">"Was bedeutet das?"</string>
+
+    <!-- cert renewal text 1 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_1">"Die QR-Codes der Covid-Zertifikate haben ein technisches Ablaufdatum."</string>
+
+    <!-- cert renewal text 2 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_2">"Um dieses Zertifikat weiterhin verwenden zu können, muss der QR-Code erneuert werden."</string>
+
+    <!-- cert renewal text 3 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_3">"Die Erneuerung des QR-Codes erfolg online. Dazu werden die Daten sicher an das System des Bundes zur Ausstellung von Covid-Zertifikaten übermittelt."</string>
+
+    <!-- cert renewal text 4 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_4">"Erneuern Sie den QR-Code auch dann, wenn die Gültigkeit in der Schweiz bald abläuft oder bereits abgelaufen ist."</string>
+
+    <!-- cert renewal info heading for renewed certificates -->
+    <string name="cert_renewal_info_renewed_heading">"Gut zu wissen"</string>
+
+    <!-- cert renewal text 1 for renewed certificates -->
+    <string name="cert_renewal_info_renewed_text_1">"Ersetzen Sie auch ausgedruckte Zertifikate oder gespeicherte PDFs durch die erneuerte Version."</string>
+
+    <!-- cert renewal text 2 for renewed certificates -->
+    <string name="cert_renewal_info_renewed_text_2">"Wie lange ein Covid-Zertifikat gültig ist wird in jedem Land gemäss den aktuell geltenden Regeln berechnet. Die Erneuerung des QR-Codes hat darauf keinen Einfluss."</string>
+
+    <!-- Wallet: Zertifikat QR Code läuft ab am {DATE} -->
+    <string name="wallet_certificate_qr_code_expiration_date">"Ablaufdatum QR Code
+{DATE}"</string>
+
+    <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erneuert werden muss -->
+    <string name="wallet_certificate_renewal_bubble_title">"QR-Code erneuern"</string>
+
+    <!-- Wallet: Text der Info-Bubble wenn das Zertifikat erneuert werden muss -->
+    <string name="wallet_certificate_renewal_bubble_text">"Um dieses Zertifikat weiterhin verwenden zu können, muss der QR-Code erneuert werden"</string>
+
+    <!-- Wallet: Buttontext der Info-Bubble wenn das Zertifikat erneuert werden muss -->
+    <string name="wallet_certificate_renewal_bubble_button">"Mehr erfahren"</string>
 </resources>

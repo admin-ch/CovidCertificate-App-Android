@@ -11,6 +11,7 @@
 package ch.admin.bag.covidcertificate.wallet.detail
 
 import android.content.Context
+import androidx.annotation.StringRes
 import ch.admin.bag.covidcertificate.common.util.LocaleUtil
 import ch.admin.bag.covidcertificate.sdk.android.data.AcceptedTestProvider
 import ch.admin.bag.covidcertificate.sdk.android.data.AcceptedVaccineProvider
@@ -129,12 +130,26 @@ class CertificateDetailItemListBuilder(
 					false
 				)
 			)
-			var issuerText: Int = R.string.wallet_certificate_date
-			if (vaccinationEntry.isNotFullyProtected()) {
-				issuerText = R.string.wallet_certificate_evidence_creation_date
-			}
+
 			certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-				detailItems.addAll(getIssuedAtLabbels(issuerText, dateString))
+				val issuerTextId = if (vaccinationEntry.isNotFullyProtected()) {
+					R.string.wallet_certificate_evidence_creation_date
+				} else {
+					R.string.wallet_certificate_date
+				}
+				detailItems.addAll(getIssuedAtLabels(issuerTextId, dateString))
+			}
+
+			certificateHolder.expirationTime?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+				detailItems.addAll(getExpiresAtLabels(R.string.wallet_certificate_qr_code_expiration_date, dateString))
+			}
+
+			if (isDetailScreen) {
+				detailItems.add(
+					ValueItemWithoutLabel(
+						context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
+					)
+				)
 			}
 		}
 		return detailItems
@@ -197,7 +212,19 @@ class CertificateDetailItemListBuilder(
 			)
 
 			certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-				detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
+				detailItems.addAll(getIssuedAtLabels(R.string.wallet_certificate_date, dateString))
+			}
+
+			certificateHolder.expirationTime?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
+				detailItems.addAll(getExpiresAtLabels(R.string.wallet_certificate_qr_code_expiration_date, dateString))
+			}
+
+			if (isDetailScreen) {
+				detailItems.add(
+					ValueItemWithoutLabel(
+						context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
+					)
+				)
 			}
 		}
 		return detailItems
@@ -304,7 +331,15 @@ class CertificateDetailItemListBuilder(
 		)
 
 		certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-			detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
+			detailItems.addAll(getIssuedAtLabels(R.string.wallet_certificate_date, dateString))
+		}
+
+		if (isDetailScreen) {
+			detailItems.add(
+				ValueItemWithoutLabel(
+					context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
+				)
+			)
 		}
 
 		return detailItems
@@ -378,7 +413,15 @@ class CertificateDetailItemListBuilder(
 		)
 
 		certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-			detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
+			detailItems.addAll(getIssuedAtLabels(R.string.wallet_certificate_date, dateString))
+		}
+
+		if (isDetailScreen) {
+			detailItems.add(
+				ValueItemWithoutLabel(
+					context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
+				)
+			)
 		}
 
 		return detailItems
@@ -451,8 +494,17 @@ class CertificateDetailItemListBuilder(
 		)
 
 		certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-			detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
+			detailItems.addAll(getIssuedAtLabels(R.string.wallet_certificate_date, dateString))
 		}
+
+		if (isDetailScreen) {
+			detailItems.add(
+				ValueItemWithoutLabel(
+					context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
+				)
+			)
+		}
+
 		return detailItems
 	}
 
@@ -539,28 +591,25 @@ class CertificateDetailItemListBuilder(
 		)
 
 		certificateHolder.issuedAt?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)?.let { dateString ->
-			detailItems.addAll(getIssuedAtLabbels(R.string.wallet_certificate_date, dateString))
+			detailItems.addAll(getIssuedAtLabels(R.string.wallet_certificate_date, dateString))
 		}
 		return detailItems
 	}
 
-	private fun getIssuedAtLabbels(issuerText: Int, dateString: String): List<ValueItemWithoutLabel> {
-		val items = arrayListOf<ValueItemWithoutLabel>()
+	private fun getIssuedAtLabels(@StringRes issuerText: Int, dateString: String): List<ValueItemWithoutLabel> {
+		val items = mutableListOf<ValueItemWithoutLabel>()
 		val dateText = context.getString(issuerText).replace("{DATE}", dateString)
 		items.add(ValueItemWithoutLabel(dateText))
 		if (showEnglishVersionForLabels) {
-			val dateTextEnglish =
-				getEnglishTranslation(context, issuerText).replace("{DATE}", dateString)
+			val dateTextEnglish = getEnglishTranslation(context, issuerText).replace("{DATE}", dateString)
 			items.add(ValueItemWithoutLabel(dateTextEnglish, true))
 		}
-		if (isDetailScreen) {
-			items.add(
-				ValueItemWithoutLabel(
-					context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
-				)
-			)
-		}
 		return items
+	}
+
+	private fun getExpiresAtLabels(@StringRes expiresTextId: Int, dateString: String): List<ValueItemWithoutLabel> {
+		val dateTextEnglish = getEnglishTranslation(context, expiresTextId).replace("{DATE}", dateString)
+		return listOf(ValueItemWithoutLabel(dateTextEnglish, true))
 	}
 
 }
