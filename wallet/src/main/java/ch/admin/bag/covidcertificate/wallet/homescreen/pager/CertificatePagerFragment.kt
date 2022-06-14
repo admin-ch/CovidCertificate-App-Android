@@ -27,6 +27,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.transition.TransitionManager
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.makeBold
+import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
@@ -145,7 +146,7 @@ class CertificatePagerFragment : Fragment() {
 		showLoadingIndicator(false)
 		setInfoBubbleBackground(R.color.blueish)
 		val walletState = state.successState as SuccessState.WalletSuccessState
-		if(walletState.isValidOnlyInSwitzerland){
+		if (walletState.isValidOnlyInSwitzerland) {
 			binding.certificatePageStatusIcon.setImageResource(R.drawable.ic_flag_ch)
 			binding.certificatePageInfoRedBorder.visibility = View.VISIBLE
 			binding.certificatePageInfo.text = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))
@@ -155,27 +156,11 @@ class CertificatePagerFragment : Fragment() {
 			binding.certificatePageInfo.text = SpannableString(context.getString(R.string.verifier_verify_success_info))
 		}
 
-		val isAlreadyDismissed = WalletSecureStorage.getInstance(requireContext()).getDismissedEolBanners().contains(qrCodeData)
-		val eolBannerInfo = ConfigRepository.getCurrentConfig(requireContext())
-			?.getEolBannerInfo(getString(R.string.language_key))
-			?.get(walletState.eolBannerIdentifier)
-
-		binding.certificatePageBanner.isVisible = eolBannerInfo != null && !isAlreadyDismissed
-
-		eolBannerInfo?.let {
-			val backgroundColor = try {
-				Color.parseColor(it.homescreenHexColor)
-			} catch (e: IllegalArgumentException) {
-				ContextCompat.getColor(requireContext(), R.color.yellow)
-			}
-
-			binding.certificatePageBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
-			binding.certificatePageBannerTitle.text = it.homescreenTitle
-			binding.certificatePageBannerDismiss.setOnClickListener {
-				WalletSecureStorage.getInstance(requireContext()).addDismissedEolBanner(qrCodeData)
-				TransitionManager.beginDelayedTransition(binding.root)
-				binding.certificatePageBanner.isVisible = false
-			}
+		binding.certificatePageBanner.isVisible = false
+		binding.certificatePageRenewalBanner.isVisible = false
+		val isRenewalBannerDisplayed = displayQrCodeRenewalBannerIfNecessary(walletState.showRenewBanner)
+		if (!isRenewalBannerDisplayed) {
+			displayEolBannerIfNecessary(walletState)
 		}
 	}
 
@@ -216,6 +201,8 @@ class CertificatePagerFragment : Fragment() {
 		binding.certificatePageStatusIcon.setImageResource(statusIconId)
 		binding.certificatePageInfoRedBorder.visibility = View.GONE
 		binding.certificatePageInfo.text = state.getValidationStatusString(context)
+
+		displayQrCodeRenewalBannerIfNecessary(state.showRenewBanner)
 	}
 
 	private fun displayErrorState(state: VerificationState.ERROR) {
@@ -248,6 +235,66 @@ class CertificatePagerFragment : Fragment() {
 		val textColor = ContextCompat.getColor(requireContext(), colorId)
 		binding.certificatePageName.setTextColor(textColor)
 		binding.certificatePageBirthdate.setTextColor(textColor)
+	}
+
+	private fun displayQrCodeRenewalBannerIfNecessary(showRenewBanner: String?) : Boolean {
+		val wasRecentlyRenewed = certificateHolder?.let { certificatesViewModel.wasCertificateRecentlyRenewed(it) } ?: false
+
+		when {
+			wasRecentlyRenewed -> {
+				binding.certificatePageRenewalBanner.isVisible = true
+				binding.certificatePageRenewalBannerDismiss.isVisible = true
+				binding.certificatePageRenewalBannerTitle.setText(R.string.wallet_certificate_renewal_successful_bubble_title)
+				val backgroundColor = ContextCompat.getColor(requireContext(), R.color.greenish)
+				binding.certificatePageRenewalBanner.animateBackgroundTintColor(backgroundColor)
+
+				binding.certificatePageRenewalBannerDismiss.setOnClickListener {
+					certificateHolder?.let { certificate -> certificatesViewModel.dismissRecentlyRenewedBanner(certificate) }
+					TransitionManager.beginDelayedTransition(binding.root)
+					binding.certificatePageRenewalBanner.isVisible = false
+				}
+
+				return true
+			}
+			showRenewBanner != null -> {
+				binding.certificatePageRenewalBanner.isVisible = true
+				binding.certificatePageRenewalBannerDismiss.isVisible = false
+				binding.certificatePageRenewalBannerTitle.setText(R.string.wallet_certificate_renewal_required_bubble_title)
+				val backgroundColor = ContextCompat.getColor(requireContext(), R.color.redish)
+				binding.certificatePageRenewalBanner.animateBackgroundTintColor(backgroundColor)
+
+				return true
+			}
+			else -> {
+				binding.certificatePageRenewalBanner.isVisible = false
+				return false
+			}
+		}
+	}
+
+	private fun displayEolBannerIfNecessary(walletState: SuccessState.WalletSuccessState) {
+		val isAlreadyDismissed = WalletSecureStorage.getInstance(requireContext()).getDismissedEolBanners().contains(qrCodeData)
+		val eolBannerInfo = ConfigRepository.getCurrentConfig(requireContext())
+			?.getEolBannerInfo(getString(R.string.language_key))
+			?.get(walletState.eolBannerIdentifier)
+
+		binding.certificatePageBanner.isVisible = eolBannerInfo != null && !isAlreadyDismissed
+
+		eolBannerInfo?.let {
+			val backgroundColor = try {
+				Color.parseColor(it.homescreenHexColor)
+			} catch (e: IllegalArgumentException) {
+				ContextCompat.getColor(requireContext(), R.color.yellow)
+			}
+
+			binding.certificatePageBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+			binding.certificatePageBannerTitle.text = it.homescreenTitle
+			binding.certificatePageBannerDismiss.setOnClickListener {
+				WalletSecureStorage.getInstance(requireContext()).addDismissedEolBanner(qrCodeData)
+				TransitionManager.beginDelayedTransition(binding.root)
+				binding.certificatePageBanner.isVisible = false
+			}
+		}
 	}
 
 }

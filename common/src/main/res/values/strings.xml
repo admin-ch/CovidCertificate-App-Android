@@ -1693,11 +1693,31 @@ You have the option of requesting an EU-compatible version of this certificate v
 {DATE}"</string>
 
     <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erneuert werden muss -->
-    <string name="wallet_certificate_renewal_bubble_title">"QR-Code erneuern"</string>
+    <string name="wallet_certificate_renewal_required_bubble_title">"QR-Code erneuern"</string>
 
     <!-- Wallet: Text der Info-Bubble wenn das Zertifikat erneuert werden muss -->
-    <string name="wallet_certificate_renewal_bubble_text">"Um dieses Zertifikat weiterhin verwenden zu können, muss der QR-Code erneuert werden"</string>
+    <string name="wallet_certificate_renewal_required_bubble_text">"Um dieses Zertifikat weiterhin verwenden zu können, muss der QR-Code erneuert werden."</string>
 
     <!-- Wallet: Buttontext der Info-Bubble wenn das Zertifikat erneuert werden muss -->
-    <string name="wallet_certificate_renewal_bubble_button">"Mehr erfahren"</string>
+    <string name="wallet_certificate_renewal_required_bubble_button">"Mehr erfahren"</string>
+
+    <!-- Wallet: Buttontext um den QR Code eines Zertifikats zu erneuern -->
+    <string name="wallet_certificate_renew_now_button">"Jetzt erneuern"</string>
+    <string name="wallet_certificate_renewal_qr_code_expiration">"Ablaufdatum QR-Code"</string>
+    <string name="wallet_certificate_renewal_required_info">"Das technische Ablaufdatum für diesen QR-Code ist (bald) erreicht."</string>
+    <string name="wallet_certificate_renewal_in_progress_info">"QR-Code wird erneuert"</string>
+    <string name="wallet_certificate_renewal_successful_info">"Der QR-Code wurde erfolgreich erneuert"</string>
+    <string name="wallet_certificate_renewal_offline_error_title">"Keine Verbindung zum Internet"</string>
+    <string name="wallet_certificate_renewal_offline_error_text">"Um den QR-Code erneuern zu können, muss die App online sein."</string>
+    <string name="wallet_certificate_renewal_general_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
+    <string name="wallet_certificate_renewal_general_error_text">"Versuchen Sie es später erneut."</string>
+
+    <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
+    <string name="wallet_certificate_renewal_successful_bubble_title">"Erfolgreich erneuert"</string>
+
+    <!-- Wallet: Text der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
+    <string name="wallet_certificate_renewal_successful_bubble_text">"Ersetzen Sie auch ausgedruckte oder gespeicherte Versionen dieses Zertifikats durch diese erneuerte Version."</string>
+
+    <!-- Wallet: Button der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
+    <string name="wallet_certificate_renewal_successful_bubble_button">"Mehr erfahren"</string>
 </resources>

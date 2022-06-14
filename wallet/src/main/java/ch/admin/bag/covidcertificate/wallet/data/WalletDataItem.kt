@@ -20,7 +20,8 @@ sealed class WalletDataItem {
 		val pdfData: String? = null,
 		val certificateLightData: String? = null,
 		val certificateLightQrCode: String? = null,
-		val language: String? = "de"
+		val language: String? = "de",
+		val lastQrCodeRenewal: Long? = null,
 	) : WalletDataItem()
 
 	@JsonClass(generateAdapter = true)

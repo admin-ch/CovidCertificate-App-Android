@@ -12,7 +12,6 @@ package ch.admin.bag.covidcertificate.wallet.data
 
 import android.content.Context
 import androidx.core.content.edit
-import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -194,7 +193,40 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		}
 	}
 
+	fun updateCertificateQrCodeData(certificateHolder: CertificateHolder, newQrCodeData: String) {
+		updateCertificateWalletDataItem(certificateHolder) {
+			it.copy(qrCodeData = newQrCodeData, lastQrCodeRenewal = System.currentTimeMillis())
+		}
+	}
+
+	fun dismissQrCodeRenewalBanner(certificateHolder: CertificateHolder) {
+		updateCertificateWalletDataItem(certificateHolder) { it.copy(lastQrCodeRenewal = null) }
+	}
+
 	private fun List<WalletDataItem>.containsCertificate(qrCodeData: String) =
 		this.filterIsInstance<WalletDataItem.CertificateWalletData>().find { it.qrCodeData == qrCodeData } != null
+
+	/**
+	 * Helper function to update the [WalletDataItem] of a specific [CertificateHolder] in the preferences by applying the [transformation] lambda to it
+	 * @return True if the item was updated, false if it was not found
+	 */
+	private fun updateCertificateWalletDataItem(
+		certificateHolder: CertificateHolder,
+		transformation: (WalletDataItem.CertificateWalletData) -> WalletDataItem.CertificateWalletData
+	): Boolean {
+		val walletData = getWalletData().toMutableList()
+		val index = walletData.indexOfFirst {
+			it is WalletDataItem.CertificateWalletData && (it.qrCodeData == certificateHolder.qrCodeData)
+		}
+
+		if (index >= 0) {
+			val item = walletData.removeAt(index) as WalletDataItem.CertificateWalletData
+			val updatedItem = transformation.invoke(item)
+			walletData.add(index, updatedItem)
+			updateWalletData(walletData)
+			return true
+		}
+		return false
+	}
 
 }

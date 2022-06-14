@@ -40,6 +40,7 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.sync.withLock
 import java.io.IOException
 import java.time.Instant
+import java.util.concurrent.TimeUnit
 import kotlin.collections.set
 
 class CertificatesAndConfigViewModel(application: Application) : ConfigViewModel(application) {
@@ -233,6 +234,21 @@ class CertificatesAndConfigViewModel(application: Application) : ConfigViewModel
 			?.filterIsInstance<WalletItem.CertificateHolderItem>()
 			?.firstOrNull { it.certificateHolder == certificateHolder }
 			?.qrCodeData
+	}
+
+	fun wasCertificateRecentlyRenewed(certificateHolder: CertificateHolder): Boolean {
+		val lastQrCodeRenewal = walletDataStorage.getWalletData()
+			.filterIsInstance<WalletDataItem.CertificateWalletData>()
+			.singleOrNull { it.qrCodeData == certificateHolder.qrCodeData }
+			?.lastQrCodeRenewal
+
+		return lastQrCodeRenewal?.let {
+			System.currentTimeMillis() - it <= TimeUnit.DAYS.toMillis(14)
+		} ?: false
+	}
+
+	fun dismissRecentlyRenewedBanner(certificateHolder: CertificateHolder) {
+		walletDataStorage.dismissQrCodeRenewalBanner(certificateHolder)
 	}
 
 	private fun enqueueVerificationTask(
