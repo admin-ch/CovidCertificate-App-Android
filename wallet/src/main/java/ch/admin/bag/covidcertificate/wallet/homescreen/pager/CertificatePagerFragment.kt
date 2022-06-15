@@ -29,6 +29,7 @@ import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.makeBold
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -176,8 +177,13 @@ class CertificatePagerFragment : Fragment() {
 
 		when {
 			signatureState is CheckSignatureState.INVALID -> {
-				infoBubbleColorId = R.color.greyish
-				statusIconId = R.drawable.ic_error_grey
+				if (signatureState.signatureErrorCode == ErrorCodes.SIGNATURE_TIMESTAMP_EXPIRED) {
+					infoBubbleColorId = R.color.blueish
+					statusIconId = R.drawable.ic_invalid_grey
+				} else {
+					infoBubbleColorId = R.color.greyish
+					statusIconId = R.drawable.ic_error_grey
+				}
 			}
 			revocationState is CheckRevocationState.INVALID -> {
 				infoBubbleColorId = R.color.greyish
@@ -185,7 +191,7 @@ class CertificatePagerFragment : Fragment() {
 			}
 			nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
 				infoBubbleColorId = R.color.blueish
-				statusIconId = R.drawable.ic_invalid_grey
+				statusIconId = R.drawable.ic_error_grey
 			}
 			nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
 				infoBubbleColorId = R.color.blueish

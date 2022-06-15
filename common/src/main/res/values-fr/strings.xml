@@ -349,8 +349,8 @@ Le certificat n'est pas encore valable."</string>
     <string name="wallet_error_national_rules">"Non conforme aux critères de validité suisses"</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
-    <string name="wallet_error_expired">"Durée de validité du 
-certificat expirée"</string>
+    <string name="wallet_error_expired">"Gültigkeitsdauer für die
+Schweiz überschritten"</string>
 
     <!-- Wallet: Zertifikat wurde widerrufen -->
     <string name="wallet_error_revocation">"Certificat révoqué"</string>
@@ -363,9 +363,6 @@ certificat expirée"</string>
 
     <!-- Wallet: widerrufen (gleiches Wort wie bei wallet_error_revocation) -->
     <string name="wallet_error_revocation_bold">"Certificat révoqué"</string>
-
-    <!-- Wallet: abgelaufen (gleiches Wort wie bei wallet_error_expired verwenden) -->
-    <string name="wallet_error_expired_bold">"expirée"</string>
 
     <!-- Meldung wenn erneute ein Zertifikat gescannt wurde, welches bereits in der App ist -->
     <string name="wallet_certificate_already_exists">"Le certificat est déjà enregistré dans l'application."</string>
@@ -1719,4 +1716,8 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
 
     <!-- Wallet: Button der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
     <string name="wallet_certificate_renewal_successful_bubble_button">"Mehr erfahren"</string>
+
+    <!-- Wallet: QR Code des Zertifikats abgelaufen -->
+    <string name="wallet_error_qr_code_expired">"Das technische Ablaufdatum für
+diesen QR-Code ist erreicht."</string>
 </resources>

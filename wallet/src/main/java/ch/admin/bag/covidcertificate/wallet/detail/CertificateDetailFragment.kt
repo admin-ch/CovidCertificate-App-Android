@@ -46,6 +46,7 @@ import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.common.views.showAnimated
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isChAusnahmeTest
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isPositiveRatTest
@@ -638,13 +639,23 @@ class CertificateDetailFragment : Fragment() {
 		val isIssuedInSwitzerland = ISSUER_SWITZERLAND.contains(certificateHolder.issuer)
 		updateConversionButtons(isLightCertificateEnabled = false, isPdfExportEnabled = isSignatureValid && isIssuedInSwitzerland)
 
+		val signatureState = state.signatureState
+		val revocationState = state.revocationState
+		val nationalRulesState = state.nationalRulesState
+
 		val info = state.getValidationStatusString(context)
 		val infoBubbleColorId = when {
-			state.signatureState is CheckSignatureState.INVALID -> R.color.greyish
-			state.revocationState is CheckRevocationState.INVALID -> R.color.greyish
-			state.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> R.color.blueish
-			state.nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> R.color.blueish
-			state.nationalRulesState is CheckNationalRulesState.INVALID -> R.color.greyish
+			signatureState is CheckSignatureState.INVALID -> {
+				if (signatureState.signatureErrorCode == ErrorCodes.SIGNATURE_TIMESTAMP_EXPIRED) {
+					R.color.blueish
+				} else {
+					R.color.greyish
+				}
+			}
+			revocationState is CheckRevocationState.INVALID -> R.color.greyish
+			nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> R.color.blueish
+			nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> R.color.blueish
+			nationalRulesState is CheckNationalRulesState.INVALID -> R.color.greyish
 			else -> R.color.greyish
 		}
 
@@ -652,22 +663,24 @@ class CertificateDetailFragment : Fragment() {
 
 		val icon: Int
 		val forceValidationIcon: Int
-		val signatureState = state.signatureState
-		val revocationState = state.revocationState
-		val nationalRulesState = state.nationalRulesState
 
 		when {
 			signatureState is CheckSignatureState.INVALID -> {
-				icon = R.drawable.ic_error_grey
-				forceValidationIcon = R.drawable.ic_error
+				if (signatureState.signatureErrorCode == ErrorCodes.SIGNATURE_TIMESTAMP_EXPIRED) {
+					icon = R.drawable.ic_invalid_grey
+					forceValidationIcon = R.drawable.ic_invalid_red
+				} else {
+					icon = R.drawable.ic_error_grey
+					forceValidationIcon = R.drawable.ic_error
+				}
 			}
 			revocationState is CheckRevocationState.INVALID -> {
 				icon = R.drawable.ic_error_grey
 				forceValidationIcon = R.drawable.ic_error
 			}
 			nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
-				icon = R.drawable.ic_invalid_grey
-				forceValidationIcon = R.drawable.ic_invalid_red
+				icon = R.drawable.ic_error_grey
+				forceValidationIcon = R.drawable.ic_error
 			}
 			nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
 				icon = R.drawable.ic_timelapse
