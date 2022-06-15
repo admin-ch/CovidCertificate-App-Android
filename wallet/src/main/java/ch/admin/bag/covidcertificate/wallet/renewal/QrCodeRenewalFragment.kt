@@ -21,6 +21,8 @@ import androidx.core.text.bold
 import androidx.core.text.buildSpannedString
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.viewModels
 import ch.admin.bag.covidcertificate.common.config.CertificateRenewalType
 import ch.admin.bag.covidcertificate.common.extensions.collectWhenStarted
@@ -29,7 +31,10 @@ import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
+import ch.admin.bag.covidcertificate.sdk.core.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
+import ch.admin.bag.covidcertificate.sdk.core.models.state.DecodeState
+import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentQrCodeRenewalBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemIconTextInfoBinding
@@ -39,7 +44,8 @@ import java.time.ZoneOffset
 class QrCodeRenewalFragment : Fragment() {
 
 	companion object {
-		private const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
+		const val REQUEST_KEY_CERTIFICATE = "REQUEST_KEY_CERTIFICATE"
+		const val ARG_CERTIFICATE = "ARG_CERTIFICATE"
 
 		fun newInstance(certificateHolder: CertificateHolder) = QrCodeRenewalFragment().apply {
 			arguments = bundleOf(ARG_CERTIFICATE to certificateHolder)
@@ -51,7 +57,10 @@ class QrCodeRenewalFragment : Fragment() {
 
 	private lateinit var certificateHolder: CertificateHolder
 
+	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 	private val viewModel by viewModels<QrCodeRenewalViewModel>()
+
+	private var hasUserRenewedCertificate = false
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -73,6 +82,7 @@ class QrCodeRenewalFragment : Fragment() {
 		showCertificateExpirationDate()
 
 		binding.qrCodeRenewalButton.setOnClickListener {
+			hasUserRenewedCertificate = true
 			viewModel.renewCertificate(certificateHolder)
 		}
 
@@ -80,7 +90,7 @@ class QrCodeRenewalFragment : Fragment() {
 			when (it) {
 				is QrCodeRenewalViewState.RenewalRequired -> showRenewalRequired()
 				is QrCodeRenewalViewState.RenewalInProgress -> showRenewalInProgress()
-				is QrCodeRenewalViewState.RenewalSuccessful -> showRenewalSuccessful()
+				is QrCodeRenewalViewState.RenewalSuccessful -> showRenewalSuccessful(it)
 				is QrCodeRenewalViewState.RenewalFailed -> showRenewalFailed(it)
 			}
 		}
@@ -152,7 +162,7 @@ class QrCodeRenewalFragment : Fragment() {
 		showInfoList(CertificateRenewalType.EXPIRED)
 	}
 
-	private fun showRenewalSuccessful() {
+	private fun showRenewalSuccessful(state: QrCodeRenewalViewState.RenewalSuccessful) {
 		val backgroundColor = ContextCompat.getColor(requireContext(), R.color.greenish)
 		val iconColor = ContextCompat.getColor(requireContext(), R.color.green)
 		binding.qrCodeExpirationBubble.animateBackgroundTintColor(backgroundColor)
@@ -165,6 +175,18 @@ class QrCodeRenewalFragment : Fragment() {
 		binding.qrCodeRenewalButton.isVisible = false
 		binding.certificateDetailErrorCode.isVisible = false
 		showInfoList(CertificateRenewalType.RENEWED)
+
+		if (hasUserRenewedCertificate) {
+			// If the user has actually renewed the certificate, reload the wallet data (because the certificate has become
+			// effectively a new certificate due to the new QR code data), decode the new qr code data and set it as the fragment result
+			certificatesViewModel.loadWalletData()
+			hasUserRenewedCertificate = false
+
+			val decodeState = CertificateDecoder.decode(state.newQrCodeData)
+			if (decodeState is DecodeState.SUCCESS) {
+				setFragmentResult(REQUEST_KEY_CERTIFICATE, bundleOf(ARG_CERTIFICATE to decodeState.certificateHolder))
+			}
+		}
 	}
 
 	private fun showRenewalFailed(state: QrCodeRenewalViewState.RenewalFailed) {
@@ -179,26 +201,41 @@ class QrCodeRenewalFragment : Fragment() {
 		binding.certificateDetailErrorCode.isVisible = true
 		binding.certificateDetailErrorCode.text = state.error.code
 
-		if (state.error.code == ErrorCodes.GENERAL_OFFLINE) {
-			binding.qrCodeRenewalStateIcon.setImageResource(R.drawable.ic_no_connection)
-			binding.qrCodeRenewalStateInfo.text = buildSpannedString {
-				bold {
-					append(getString(R.string.wallet_certificate_renewal_offline_error_title))
+		when (state.error.code) {
+			ErrorCodes.GENERAL_OFFLINE -> {
+				binding.qrCodeRenewalStateIcon.setImageResource(R.drawable.ic_no_connection)
+				binding.qrCodeRenewalStateInfo.text = buildSpannedString {
+					bold {
+						append(getString(R.string.wallet_certificate_renewal_offline_error_title))
+					}
+					appendLine()
+					append(getString(R.string.wallet_certificate_renewal_offline_error_text))
 				}
-				appendLine()
-				append(getString(R.string.wallet_certificate_renewal_offline_error_text))
 			}
-		} else {
-			binding.qrCodeRenewalStateIcon.setImageResource(R.drawable.ic_process_error)
-			binding.qrCodeRenewalStateInfo.text = buildSpannedString {
-				bold {
-					append(getString(R.string.wallet_certificate_renewal_general_error_title))
+			QrCodeRenewalErrorCodes.RATE_LIMIT_EXCEEDED -> {
+				binding.qrCodeRenewalStateIcon.setImageResource(R.drawable.ic_error_orange)
+				binding.qrCodeRenewalStateInfo.text = buildSpannedString {
+					bold {
+						append(getString(R.string.wallet_certificate_renewal_rate_limit_error_title))
+					}
+					appendLine()
+					append(getString(R.string.wallet_certificate_renewal_rate_limit_error_text))
 				}
-				appendLine()
-				append(getString(R.string.wallet_certificate_renewal_general_error_text))
+			}
+			else -> {
+				binding.qrCodeRenewalStateIcon.setImageResource(R.drawable.ic_process_error)
+				binding.qrCodeRenewalStateInfo.text = buildSpannedString {
+					bold {
+						append(getString(R.string.wallet_certificate_renewal_general_error_title))
+					}
+					appendLine()
+					append(getString(R.string.wallet_certificate_renewal_general_error_text))
+				}
 			}
 		}
 		showInfoList(CertificateRenewalType.EXPIRED)
+
+		hasUserRenewedCertificate = false
 	}
 
 }

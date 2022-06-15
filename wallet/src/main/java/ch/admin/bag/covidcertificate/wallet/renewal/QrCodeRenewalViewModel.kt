@@ -41,7 +41,7 @@ class QrCodeRenewalViewModel(application: Application) : AndroidViewModel(applic
 	fun setCertificate(certificateHolder: CertificateHolder) {
 		val wasRenewedRecently = walletDataStorage.wasCertificateRecentlyRenewed(certificateHolder)
 		viewStateMutable.value = if (wasRenewedRecently) {
-			QrCodeRenewalViewState.RenewalSuccessful
+			QrCodeRenewalViewState.RenewalSuccessful(certificateHolder.qrCodeData)
 		} else {
 			QrCodeRenewalViewState.RenewalRequired
 		}
@@ -58,7 +58,7 @@ class QrCodeRenewalViewModel(application: Application) : AndroidViewModel(applic
 						val newQrCodeData = renewalResponse.hcert
 						walletDataStorage.updateCertificateQrCodeData(certificateHolder, newQrCodeData)
 
-						QrCodeRenewalViewState.RenewalSuccessful
+						QrCodeRenewalViewState.RenewalSuccessful(newQrCodeData)
 					}
 					is QrCodeRenewalResponse.RateLimitExceeded -> {
 						QrCodeRenewalViewState.RenewalFailed(StateError(QrCodeRenewalErrorCodes.RATE_LIMIT_EXCEEDED))

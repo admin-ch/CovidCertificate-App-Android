@@ -124,6 +124,15 @@ class CertificateDetailFragment : Fragment() {
 				pdfExportShareLauncher.launch(uri)
 			}
 		}
+
+		setFragmentResultListener(QrCodeRenewalFragment.REQUEST_KEY_CERTIFICATE) { _, bundle ->
+			val certificate = bundle.getSerializable(QrCodeRenewalFragment.ARG_CERTIFICATE) as? CertificateHolder
+			if (certificate != null) {
+				// Update the certificate holder and re-display the certificate when the fragment result is triggered by the renewal
+				certificateHolder = certificate
+				displayCertificateData()
+			}
+		}
 	}
 
 	override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -132,6 +141,23 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+		super.onViewCreated(view, savedInstanceState)
+		binding.certificateDetailToolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
+
+		displayCertificateData()
+	}
+
+	override fun onResume() {
+		super.onResume()
+		requireActivity().window.overrideScreenBrightness(true)
+	}
+
+	override fun onPause() {
+		super.onPause()
+		requireActivity().window.overrideScreenBrightness(false)
+	}
+
+	private fun displayCertificateData() {
 		displayQrCode()
 		updateToolbarTitle()
 		setupCertificateDetails()
@@ -143,38 +169,8 @@ class CertificateDetailFragment : Fragment() {
 		setupEolBanner()
 		setupRatRecoveryConversionBanner()
 		setupForeignValidityButton()
-
-		binding.certificateDetailToolbar.setNavigationOnClickListener {
-			parentFragmentManager.popBackStack()
-		}
-
-		binding.certificateDetailButtonDelete.setOnClickListener {
-			AlertDialog.Builder(view.context, R.style.CovidCertificate_AlertDialogStyle)
-				.setTitle(R.string.delete_button)
-				.setMessage(R.string.wallet_certificate_delete_confirm_text)
-				.setPositiveButton(R.string.delete_button) { _, _ ->
-					certificatesViewModel.removeCertificate(certificateHolder.qrCodeData)
-					parentFragmentManager.popBackStack()
-				}
-				.setNegativeButton(R.string.cancel_button) { dialog, _ ->
-					dialog.dismiss()
-				}
-				.setCancelable(true)
-				.create()
-				.show()
-		}
-
 		setupReverifyButtons()
-	}
-
-	override fun onResume() {
-		super.onResume()
-		requireActivity().window.overrideScreenBrightness(true)
-	}
-
-	override fun onPause() {
-		super.onPause()
-		requireActivity().window.overrideScreenBrightness(false)
+		setupCertificateDeleteButton()
 	}
 
 	private fun updateToolbarTitle() {
@@ -350,6 +346,24 @@ class CertificateDetailFragment : Fragment() {
 				.replace(R.id.fragment_container, VaccinationAppointmentFragment.newInstance())
 				.addToBackStack(VaccinationAppointmentFragment::class.java.canonicalName)
 				.commit()
+		}
+	}
+
+	private fun setupCertificateDeleteButton() {
+		binding.certificateDetailButtonDelete.setOnClickListener {
+			AlertDialog.Builder(requireContext(), R.style.CovidCertificate_AlertDialogStyle)
+				.setTitle(R.string.delete_button)
+				.setMessage(R.string.wallet_certificate_delete_confirm_text)
+				.setPositiveButton(R.string.delete_button) { _, _ ->
+					certificatesViewModel.removeCertificate(certificateHolder.qrCodeData)
+					parentFragmentManager.popBackStack()
+				}
+				.setNegativeButton(R.string.cancel_button) { dialog, _ ->
+					dialog.dismiss()
+				}
+				.setCancelable(true)
+				.create()
+				.show()
 		}
 	}
 
@@ -951,7 +965,7 @@ class CertificateDetailFragment : Fragment() {
 					qrCodeRenewalBannerText.setText(R.string.wallet_certificate_renewal_successful_bubble_text)
 					qrCodeRenewalBannerMoreInfo.setText(R.string.wallet_certificate_renewal_successful_bubble_button)
 					val backgroundColor = ContextCompat.getColor(requireContext(), R.color.greenish)
-					qrCodeRenewalBanner.animateBackgroundTintColor(backgroundColor)
+					qrCodeRenewalBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
 					qrCodeRenewalBannerDismiss.setOnClickListener {
 						certificatesViewModel.dismissRecentlyRenewedBanner(certificateHolder)
@@ -969,7 +983,7 @@ class CertificateDetailFragment : Fragment() {
 					qrCodeRenewalBannerText.setText(R.string.wallet_certificate_renewal_required_bubble_text)
 					qrCodeRenewalBannerMoreInfo.setText(R.string.wallet_certificate_renewal_required_bubble_button)
 					val backgroundColor = ContextCompat.getColor(requireContext(), R.color.redish)
-					qrCodeRenewalBanner.animateBackgroundTintColor(backgroundColor)
+					qrCodeRenewalBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 				}
 			}
 			else -> {

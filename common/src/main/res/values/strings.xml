@@ -1721,4 +1721,6 @@ You have the option of requesting an EU-compatible version of this certificate v
     <!-- Wallet: QR Code des Zertifikats abgelaufen -->
     <string name="wallet_error_qr_code_expired">"Das technische Ablaufdatum für
 diesen QR-Code ist erreicht."</string>
+    <string name="wallet_certificate_renewal_rate_limit_error_title">"24h-Limite erreicht"</string>
+    <string name="wallet_certificate_renewal_rate_limit_error_text">"Dieser QR Code wurde in den letzten 24h bereits zu oft erneuert."</string>
 </resources>

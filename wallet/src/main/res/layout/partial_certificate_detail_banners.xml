@@ -22,13 +22,13 @@
 		android:layout_height="wrap_content"
 		android:layout_margin="@dimen/spacing_medium_large"
 		android:background="@drawable/bg_info_banner"
-		android:backgroundTint="@color/redish"
 		android:clipChildren="false"
 		android:clipToPadding="false"
 		android:foreground="@drawable/ripple_rounded_rect_banner"
 		android:padding="@dimen/spacing_medium"
 		android:visibility="gone"
 		app:layout_constraintTop_toTopOf="parent"
+		tools:backgroundTint="@color/redish"
 		tools:visibility="visible">
 
 		<TextView
@@ -36,10 +36,10 @@
 			style="@style/CovidCertificate.Text.Bold.Emphasized"
 			android:layout_width="0dp"
 			android:layout_height="wrap_content"
-			android:text="@string/wallet_certificate_renewal_required_bubble_title"
 			app:layout_constraintEnd_toEndOf="parent"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toTopOf="parent" />
+			app:layout_constraintTop_toTopOf="parent"
+			tools:text="@string/wallet_certificate_renewal_required_bubble_title" />
 
 		<TextView
 			android:id="@+id/qr_code_renewal_banner_text"
@@ -47,8 +47,8 @@
 			android:layout_width="match_parent"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_very_small"
-			android:text="@string/wallet_certificate_renewal_required_bubble_text"
-			app:layout_constraintTop_toBottomOf="@+id/qr_code_renewal_banner_title" />
+			app:layout_constraintTop_toBottomOf="@+id/qr_code_renewal_banner_title"
+			tools:text="@string/wallet_certificate_renewal_required_bubble_text" />
 
 		<TextView
 			android:id="@+id/qr_code_renewal_banner_more_info"
@@ -56,10 +56,10 @@
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:layout_marginTop="@dimen/spacing_medium_small"
-			android:text="@string/wallet_certificate_renewal_required_bubble_button"
 			app:drawableEndCompat="@drawable/ic_arrow_right"
 			app:layout_constraintStart_toStartOf="parent"
-			app:layout_constraintTop_toBottomOf="@+id/qr_code_renewal_banner_text" />
+			app:layout_constraintTop_toBottomOf="@+id/qr_code_renewal_banner_text"
+			tools:text="@string/wallet_certificate_renewal_required_bubble_button" />
 
 		<ImageView
 			android:id="@+id/qr_code_renewal_banner_dismiss"
