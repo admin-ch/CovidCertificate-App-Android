@@ -1702,7 +1702,7 @@ You have the option of requesting an EU-compatible version of this certificate v
     <string name="wallet_certificate_renewal_required_bubble_button">"Mehr erfahren"</string>
 
     <!-- Wallet: Buttontext um den QR Code eines Zertifikats zu erneuern -->
-    <string name="wallet_certificate_renew_now_button">"Jetzt erneuern"</string>
+    <string name="wallet_certificate_renew_now_button">"QR-Code erneuern"</string>
     <string name="wallet_certificate_renewal_qr_code_expiration">"Ablaufdatum QR-Code"</string>
     <string name="wallet_certificate_renewal_required_info">"Das technische Ablaufdatum für diesen QR-Code ist (bald) erreicht."</string>
     <string name="wallet_certificate_renewal_in_progress_info">"QR-Code wird erneuert"</string>

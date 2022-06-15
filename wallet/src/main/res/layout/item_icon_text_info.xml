@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  ~ Copyright (c) 2022 Ubique Innovation AG <https://www.ubique.ch>
+  ~
+  ~ This Source Code Form is subject to the terms of the Mozilla Public
+  ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+  ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+  ~
+  ~ SPDX-License-Identifier: MPL-2.0
+  -->
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:layout_marginTop="@dimen/spacing_large"
+	android:layout_marginBottom="@dimen/spacing_medium_small"
+	android:orientation="horizontal"
+	tools:layout_marginHorizontal="@dimen/spacing_medium_large">
+
+	<ImageView
+		android:id="@+id/hintIcon"
+		android:layout_width="@dimen/icon_size_small"
+		android:layout_height="@dimen/icon_size_small"
+		android:layout_gravity="top|start"
+		android:adjustViewBounds="true"
+		android:scaleType="fitCenter"
+		app:tint="@color/blue"
+		tools:src="@drawable/ic_qrcode_scan" />
+
+	<TextView
+		android:id="@+id/hintText"
+		style="@style/CovidCertificate.Text"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginStart="@dimen/spacing_large"
+		android:breakStrategy="high_quality"
+		android:gravity="start"
+		android:hyphenationFrequency="normal"
+		android:includeFontPadding="false"
+		tools:text="@tools:sample/lorem/random" />
+</LinearLayout>

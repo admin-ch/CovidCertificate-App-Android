@@ -31,6 +31,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.setFragmentResultListener
 import androidx.lifecycle.lifecycleScope
+import androidx.transition.TransitionManager
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.EolBannerInfoModel
 import ch.admin.bag.covidcertificate.common.config.WalletModeModel
@@ -65,6 +66,7 @@ import ch.admin.bag.covidcertificate.wallet.light.CertificateLightConversionFrag
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportFragment
 import ch.admin.bag.covidcertificate.wallet.pdf.export.PdfExportShareContract
 import ch.admin.bag.covidcertificate.wallet.ratconversion.RatConversionFragment
+import ch.admin.bag.covidcertificate.wallet.renewal.QrCodeRenewalFragment
 import ch.admin.bag.covidcertificate.wallet.travel.ForeignValidityFragment
 import ch.admin.bag.covidcertificate.wallet.util.*
 import ch.admin.bag.covidcertificate.wallet.util.BitmapUtil.getHumanReadableName
@@ -77,7 +79,6 @@ import kotlinx.coroutines.launch
 import java.lang.Integer.max
 import java.time.LocalDateTime
 import java.util.concurrent.TimeUnit
-
 
 class CertificateDetailFragment : Fragment() {
 
@@ -137,6 +138,7 @@ class CertificateDetailFragment : Fragment() {
 		setupDetailNote()
 		setupConversionButtons()
 		setupVaccinationAppointmentButton()
+		setupQrCodeRenewalBanner()
 		setupEolBanner()
 		setupRatRecoveryConversionBanner()
 		setupForeignValidityButton()
@@ -350,8 +352,21 @@ class CertificateDetailFragment : Fragment() {
 		}
 	}
 
+	private fun setupQrCodeRenewalBanner() {
+		binding.certificateDetailBanners.apply {
+			qrCodeRenewalBanner.setOnClickListener {
+				val fragment = QrCodeRenewalFragment.newInstance(certificateHolder)
+				parentFragmentManager.beginTransaction()
+					.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
+					.replace(R.id.fragment_container, fragment)
+					.addToBackStack(QrCodeRenewalFragment::class.java.canonicalName)
+					.commit()
+			}
+		}
+	}
+
 	private fun setupEolBanner() {
-		binding.certificateDetailBanner.setOnClickListener {
+		binding.certificateDetailBanners.certificateDetailBanner.setOnClickListener {
 			eolBannerInfo?.let {
 				CertificateBannerInfoDialogFragment.newInstance(it)
 					.show(childFragmentManager, CertificateBannerInfoDialogFragment::class.java.canonicalName)
@@ -360,7 +375,7 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun setupRatRecoveryConversionBanner() {
-		binding.ratConversionBanner.setOnClickListener {
+		binding.certificateDetailBanners.ratConversionBanner.setOnClickListener {
 			val fragment = RatConversionFragment.newInstance(certificateHolder)
 			parentFragmentManager.beginTransaction()
 				.setCustomAnimations(R.anim.slide_enter, R.anim.slide_exit, R.anim.slide_pop_enter, R.anim.slide_pop_exit)
@@ -429,15 +444,15 @@ class CertificateDetailFragment : Fragment() {
 		val isIssuedInSwitzerland = ISSUER_SWITZERLAND.contains(certificateHolder.issuer)
 		updateConversionButtons(isLightCertificateEnabled = isIssuedInSwitzerland, isPdfExportEnabled = isIssuedInSwitzerland)
 
-		val info: SpannableString
+		val statusInfo: SpannableString
 		val iconId: Int
 		val showRedBorder: Boolean
 		if (walletState.isValidOnlyInSwitzerland) {
-			info = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))
+			statusInfo = SpannableString(context.getString(R.string.wallet_only_valid_in_switzerland))
 			iconId = R.drawable.ic_flag_ch
 			showRedBorder = true
 		} else {
-			info = SpannableString(context.getString(R.string.verifier_verify_success_info))
+			statusInfo = SpannableString(context.getString(R.string.verifier_verify_success_info))
 			iconId = R.drawable.ic_info_blue
 			showRedBorder = false
 		}
@@ -451,37 +466,41 @@ class CertificateDetailFragment : Fragment() {
 				forceValidationInfo,
 				walletState.modeValidity
 			)
-			readjustStatusDelayed(R.color.blueish, iconId, info, showRedBorder)
+			readjustStatusDelayed(R.color.blueish, iconId, statusInfo, showRedBorder)
 		} else {
-			showStatusInfoAndDescription(null, info, iconId, showRedBorder)
+			showStatusInfoAndDescription(null, statusInfo, iconId, showRedBorder)
 		}
 
 		showModes(walletState.modeValidity)
 		setupModesButton(walletState.modeValidity)
 
+		displayQrCodeRenewalBannerIfNecessary(walletState.showRenewBanner)
+
 		eolBannerInfo = ConfigRepository.getCurrentConfig(requireContext())
 			?.getEolBannerInfo(getString(R.string.language_key))
 			?.get(walletState.eolBannerIdentifier)
 
-		binding.certificateDetailBanner.isVisible = eolBannerInfo != null
+		binding.certificateDetailBanners.certificateDetailBanner.isVisible = eolBannerInfo != null
 
-		eolBannerInfo?.let {
+		eolBannerInfo?.let { info ->
 			val backgroundColor = try {
-				Color.parseColor(it.homescreenHexColor)
+				Color.parseColor(info.homescreenHexColor)
 			} catch (e: IllegalArgumentException) {
 				ContextCompat.getColor(requireContext(), R.color.yellow)
 			}
 
-			binding.certificateDetailBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
-			binding.certificateDetailBannerTitle.text = it.detailTitle
-			binding.certificateDetailBannerText.text = it.detailText
-			binding.certificateDetailBannerMoreInfo.text = it.detailMoreInfo
+			binding.certificateDetailBanners.apply {
+				certificateDetailBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
+				certificateDetailBannerTitle.text = info.detailTitle
+				certificateDetailBannerText.text = info.detailText
+				certificateDetailBannerMoreInfo.text = info.detailMoreInfo
+			}
 		}
 
 		// Show the RAT recovery certificate conversion banner if the feature flag is enabled and the certificate has the correct type
 		val showRatRecoveryConversionBanner = ConfigRepository.getCurrentConfig(requireContext())?.showRatConversionForm == true
 		val isPositiveRatTest = (certificateHolder.certificate as? DccCert)?.tests?.firstOrNull()?.isPositiveRatTest() ?: false
-		binding.ratConversionBanner.isVisible = showRatRecoveryConversionBanner && isPositiveRatTest
+		binding.certificateDetailBanners.ratConversionBanner.isVisible = showRatRecoveryConversionBanner && isPositiveRatTest
 	}
 
 	private fun setupModesButton(modeValidities: List<ModeValidity>) {
@@ -677,6 +696,8 @@ class CertificateDetailFragment : Fragment() {
 				isVisible = false
 			}
 		}
+
+		displayQrCodeRenewalBannerIfNecessary(state.showRenewBanner)
 	}
 
 	private fun displayErrorState(state: VerificationState.ERROR) {
@@ -901,6 +922,46 @@ class CertificateDetailFragment : Fragment() {
 
 			binding.certificateDetailButtonReverify.showAnimated()
 			isForceValidate = false
+		}
+	}
+
+	private fun displayQrCodeRenewalBannerIfNecessary(showRenewBanner: String?) {
+		val wasRecentlyRenewed = certificatesViewModel.wasCertificateRecentlyRenewed(certificateHolder)
+
+		when {
+			wasRecentlyRenewed -> {
+				binding.certificateDetailBanners.apply {
+					qrCodeRenewalBanner.isVisible = true
+					qrCodeRenewalBannerDismiss.isVisible = true
+
+					qrCodeRenewalBannerTitle.setText(R.string.wallet_certificate_renewal_successful_bubble_title)
+					qrCodeRenewalBannerText.setText(R.string.wallet_certificate_renewal_successful_bubble_text)
+					qrCodeRenewalBannerMoreInfo.setText(R.string.wallet_certificate_renewal_successful_bubble_button)
+					val backgroundColor = ContextCompat.getColor(requireContext(), R.color.greenish)
+					qrCodeRenewalBanner.animateBackgroundTintColor(backgroundColor)
+
+					qrCodeRenewalBannerDismiss.setOnClickListener {
+						certificatesViewModel.dismissRecentlyRenewedBanner(certificateHolder)
+						TransitionManager.beginDelayedTransition(binding.root)
+						qrCodeRenewalBanner.isVisible = false
+					}
+				}
+			}
+			showRenewBanner != null -> {
+				binding.certificateDetailBanners.apply {
+					qrCodeRenewalBanner.isVisible = true
+					qrCodeRenewalBannerDismiss.isVisible = false
+
+					qrCodeRenewalBannerTitle.setText(R.string.wallet_certificate_renewal_required_bubble_title)
+					qrCodeRenewalBannerText.setText(R.string.wallet_certificate_renewal_required_bubble_text)
+					qrCodeRenewalBannerMoreInfo.setText(R.string.wallet_certificate_renewal_required_bubble_button)
+					val backgroundColor = ContextCompat.getColor(requireContext(), R.color.redish)
+					qrCodeRenewalBanner.animateBackgroundTintColor(backgroundColor)
+				}
+			}
+			else -> {
+				binding.certificateDetailBanners.qrCodeRenewalBanner.isVisible = false
+			}
 		}
 	}
 
