@@ -61,6 +61,7 @@ class QrCodeRenewalFragment : Fragment() {
 	private val certificatesViewModel by activityViewModels<CertificatesAndConfigViewModel>()
 	private val viewModel by viewModels<QrCodeRenewalViewModel>()
 
+	private var renewalType: CertificateRenewalType? = null
 	private var hasUserRenewedCertificate = false
 
 	override fun onCreate(savedInstanceState: Bundle?) {
@@ -88,8 +89,14 @@ class QrCodeRenewalFragment : Fragment() {
 		}
 
 		binding.qrCodeRenewalFaqButton.setOnClickListener {
-			val url = getString(R.string.wallet_certificate_renewal_faq_link_url) // TODO Get from config
-			UrlUtil.openUrl(requireContext(), url)
+			val infos = ConfigRepository.getCurrentConfig(requireContext())
+				?.getCertRenewalInfo(getString(R.string.language_key))
+				?.get(renewalType)
+
+			if (infos != null) {
+				val url = infos.faqLinkUrl
+				UrlUtil.openUrl(requireContext(), url)
+			}
 		}
 
 		viewLifecycleOwner.collectWhenStarted(viewModel.viewState) {
@@ -116,17 +123,19 @@ class QrCodeRenewalFragment : Fragment() {
 	}
 
 	private fun showInfoList(renewalType: CertificateRenewalType) {
+		this.renewalType = renewalType
+
 		val infos = ConfigRepository.getCurrentConfig(requireContext())
 			?.getCertRenewalInfo(getString(R.string.language_key))
 			?.get(renewalType)
-
 
 		if (infos != null) {
 			binding.qrCodeRenewalInfoTitle.isVisible = true
 			binding.qrCodeRenewalInfoTitle.text = infos.heading
 			binding.qrCodeRenewalInfos.isVisible = true
 			binding.qrCodeRenewalInfos.removeAllViews()
-			// TODO Set faq button text
+			binding.qrCodeRenewalFaqButton.isVisible = true
+			binding.qrCodeRenewalFaqButtonText.text = infos.faqLinkText
 
 			val inflater = LayoutInflater.from(requireContext())
 			infos.infos.forEach { info ->

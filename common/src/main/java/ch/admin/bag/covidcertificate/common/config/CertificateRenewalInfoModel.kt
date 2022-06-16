@@ -15,5 +15,7 @@ import com.squareup.moshi.JsonClass
 @JsonClass(generateAdapter = true)
 data class CertificateRenewalInfoModel(
 	val heading: String,
-	val infos: List<CertificateRenewalInfoDetailModel>
+	val infos: List<CertificateRenewalInfoDetailModel>,
+	val faqLinkText: String,
+	val faqLinkUrl: String,
 )

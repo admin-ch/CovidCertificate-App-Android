@@ -183,6 +183,7 @@
 
 					<TextView
 						style="@style/CovidCertificate.Text.Bold.Blue.LinkExternal"
+						android:id="@+id/qr_code_renewal_faq_button_text"
 						android:layout_width="wrap_content"
 						android:layout_height="wrap_content"
 						android:layout_marginStart="@dimen/spacing_very_small"
