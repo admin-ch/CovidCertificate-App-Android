@@ -1647,80 +1647,82 @@ You have the option of requesting an EU-compatible version of this certificate v
     <string name="rat_conversion_info_title">"Further information"</string>
 
     <!-- cert renewal general info heading -->
-    <string name="cert_renewal_info_info_heading">"Was bedeutet das?"</string>
+    <string name="cert_renewal_info_info_heading">"What does this mean?"</string>
 
     <!-- cert renewal general info text 1 -->
-    <string name="cert_renewal_info_info_text_1">"Die QR-Codes der Covid-Zertifikate haben ein technisches Ablaufdatum."</string>
+    <string name="cert_renewal_info_info_text_1">"The QR codes used for COVID certificates have limited technical validity"</string>
 
     <!-- cert renewal general info text 2 -->
-    <string name="cert_renewal_info_info_text_2">"Um dieses Zertifikat weiterhin verwenden zu können, muss der QR-Code erneuert werden."</string>
+    <string name="cert_renewal_info_info_text_2">"To enable this certificate to continue to be checked (e.g. when you’re travelling), you must renew the QR code."</string>
 
     <!-- cert renewal general info text 3 -->
-    <string name="cert_renewal_info_info_text_3">"Die Erneuerung des QR-Codes erfolg online. Dazu werden die Daten sicher an das System des Bundes zur Ausstellung von Covid-Zertifikaten übermittelt."</string>
+    <string name="cert_renewal_info_info_text_3">"You can do this directly here in the app (provided you have an internet connection). The data in your current certificate will be encrypted and sent to the federal government’s COVID certificate issuing system for a new QR code to be issued. This QR code is then sent back to the app. Once the new QR code has been issued and the data sent, the data on the government system are deleted."</string>
 
     <!-- cert renewal general info text 4 -->
-    <string name="cert_renewal_info_info_text_4">"Erneuern Sie den QR-Code auch dann, wenn die Gültigkeit in der Schweiz bald abläuft oder bereits abgelaufen ist."</string>
+    <string name="cert_renewal_info_info_text_4">"Check out this FAQ to find out why you should also renew the QR code if your vaccination or recovery certificate is about to expire or has already expired under the Swiss validity rules."</string>
 
     <!-- cert renewal info heading for soon to be expired or expired certificates -->
-    <string name="cert_renewal_info_expired_heading">"Was bedeutet das?"</string>
+    <string name="cert_renewal_info_expired_heading">"What does this mean?"</string>
 
     <!-- cert renewal text 1 for soon to be expired or expired certificates -->
-    <string name="cert_renewal_info_expired_text_1">"Die QR-Codes der Covid-Zertifikate haben ein technisches Ablaufdatum."</string>
+    <string name="cert_renewal_info_expired_text_1">"The QR codes used for COVID certificates have limited technical validity."</string>
 
     <!-- cert renewal text 2 for soon to be expired or expired certificates -->
-    <string name="cert_renewal_info_expired_text_2">"Um dieses Zertifikat weiterhin verwenden zu können, muss der QR-Code erneuert werden."</string>
+    <string name="cert_renewal_info_expired_text_2">"To enable this certificate to continue to be checked (e.g. when you’re travelling), you must renew the QR code."</string>
 
     <!-- cert renewal text 3 for soon to be expired or expired certificates -->
-    <string name="cert_renewal_info_expired_text_3">"Die Erneuerung des QR-Codes erfolg online. Dazu werden die Daten sicher an das System des Bundes zur Ausstellung von Covid-Zertifikaten übermittelt."</string>
+    <string name="cert_renewal_info_expired_text_3">"You can do this directly here in the app (provided you have an internet connection). The data in your current certificate will be encrypted and sent to the federal government’s COVID certificate issuing system for a new QR code to be issued. This QR code is then sent back to the app. Once the new QR code has been issued and the data sent, the data on the government system are deleted."</string>
 
     <!-- cert renewal text 4 for soon to be expired or expired certificates -->
-    <string name="cert_renewal_info_expired_text_4">"Erneuern Sie den QR-Code auch dann, wenn die Gültigkeit in der Schweiz bald abläuft oder bereits abgelaufen ist."</string>
+    <string name="cert_renewal_info_expired_text_4">"Check out this FAQ to find out why you should also renew the QR code if your vaccination or recovery certificate is about to expire or has already expired under the Swiss validity rules."</string>
 
     <!-- cert renewal info heading for renewed certificates -->
-    <string name="cert_renewal_info_renewed_heading">"Gut zu wissen"</string>
+    <string name="cert_renewal_info_renewed_heading">"Important!"</string>
 
     <!-- cert renewal text 1 for renewed certificates -->
-    <string name="cert_renewal_info_renewed_text_1">"Ersetzen Sie auch ausgedruckte Zertifikate oder gespeicherte PDFs durch die erneuerte Version."</string>
+    <string name="cert_renewal_info_renewed_text_1">"Also replace certificates you have previously printed out or stored with this renewed version."</string>
 
     <!-- cert renewal text 2 for renewed certificates -->
-    <string name="cert_renewal_info_renewed_text_2">"Wie lange ein Covid-Zertifikat gültig ist wird in jedem Land gemäss den aktuell geltenden Regeln berechnet. Die Erneuerung des QR-Codes hat darauf keinen Einfluss."</string>
+    <string name="cert_renewal_info_renewed_text_2">"The length of time for which a vaccination is recognised in a particular country is not specified in the certificate. Instead, it is calculated in accordance with the specific rules of the country each time the certificate is checked. Renewing the QR code merely ensures that the QR code can be used from a technical point of view."</string>
 
     <!-- Wallet: Zertifikat QR Code läuft ab am {DATE} -->
-    <string name="wallet_certificate_qr_code_expiration_date">"Expiration date QR code
+    <string name="wallet_certificate_qr_code_expiration_date">"QR code expiration date
 {DATE}"</string>
 
     <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erneuert werden muss -->
-    <string name="wallet_certificate_renewal_required_bubble_title">"QR-Code erneuern"</string>
+    <string name="wallet_certificate_renewal_required_bubble_title">"Renew QR code!"</string>
 
     <!-- Wallet: Text der Info-Bubble wenn das Zertifikat erneuert werden muss -->
-    <string name="wallet_certificate_renewal_required_bubble_text">"Um dieses Zertifikat weiterhin verwenden zu können, muss der QR-Code erneuert werden."</string>
+    <string name="wallet_certificate_renewal_required_bubble_text">"To continue using this certificate you must renew the QR code."</string>
 
     <!-- Wallet: Buttontext der Info-Bubble wenn das Zertifikat erneuert werden muss -->
-    <string name="wallet_certificate_renewal_required_bubble_button">"Mehr erfahren"</string>
+    <string name="wallet_certificate_renewal_required_bubble_button">"Find out more"</string>
 
     <!-- Wallet: Buttontext um den QR Code eines Zertifikats zu erneuern -->
-    <string name="wallet_certificate_renew_now_button">"QR-Code erneuern"</string>
-    <string name="wallet_certificate_renewal_qr_code_expiration">"Ablaufdatum QR-Code"</string>
-    <string name="wallet_certificate_renewal_required_info">"Das technische Ablaufdatum für diesen QR-Code ist (bald) erreicht."</string>
-    <string name="wallet_certificate_renewal_in_progress_info">"QR-Code wird erneuert"</string>
-    <string name="wallet_certificate_renewal_successful_info">"Der QR-Code wurde erfolgreich erneuert"</string>
-    <string name="wallet_certificate_renewal_offline_error_title">"Keine Verbindung zum Internet"</string>
-    <string name="wallet_certificate_renewal_offline_error_text">"Um den QR-Code erneuern zu können, muss die App online sein."</string>
-    <string name="wallet_certificate_renewal_general_error_title">"Ein unerwarteter Fehler ist aufgetreten."</string>
-    <string name="wallet_certificate_renewal_general_error_text">"Versuchen Sie es später erneut."</string>
+    <string name="wallet_certificate_renew_now_button">"Renew QR code"</string>
+    <string name="wallet_certificate_renewal_qr_code_expiration">"QR code expiration date (technical)"</string>
+    <string name="wallet_certificate_renewal_required_info">"The technical expiration date for this QR code has elapsed (or will elapse soon)."</string>
+    <string name="wallet_certificate_renewal_in_progress_info">"The QR code is being updated"</string>
+    <string name="wallet_certificate_renewal_successful_info">"The QR code has been successfully renewed"</string>
+    <string name="wallet_certificate_renewal_offline_error_title">"No Internet connection"</string>
+    <string name="wallet_certificate_renewal_offline_error_text">"The app must be online for the QR code to be renewed."</string>
+    <string name="wallet_certificate_renewal_general_error_title">"An unexpected error has occurred"</string>
+    <string name="wallet_certificate_renewal_general_error_text">"Please try again later"</string>
 
     <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
-    <string name="wallet_certificate_renewal_successful_bubble_title">"Erfolgreich erneuert"</string>
+    <string name="wallet_certificate_renewal_successful_bubble_title">"Successfully renewed"</string>
 
     <!-- Wallet: Text der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
-    <string name="wallet_certificate_renewal_successful_bubble_text">"Ersetzen Sie auch ausgedruckte oder gespeicherte Versionen dieses Zertifikats durch diese erneuerte Version."</string>
+    <string name="wallet_certificate_renewal_successful_bubble_text">"Also replace certificates that have been printed out or stored with this renewed version."</string>
 
     <!-- Wallet: Button der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
-    <string name="wallet_certificate_renewal_successful_bubble_button">"Mehr erfahren"</string>
+    <string name="wallet_certificate_renewal_successful_bubble_button">"More information"</string>
 
     <!-- Wallet: QR Code des Zertifikats abgelaufen -->
-    <string name="wallet_error_qr_code_expired">"Das technische Ablaufdatum für
-diesen QR-Code ist erreicht."</string>
-    <string name="wallet_certificate_renewal_rate_limit_error_title">"24h-Limite erreicht"</string>
-    <string name="wallet_certificate_renewal_rate_limit_error_text">"Dieser QR Code wurde in den letzten 24h bereits zu oft erneuert."</string>
+    <!-- Fuzzy -->
+    <string name="wallet_error_qr_code_expired">"The technical expiration date for this QR code has elapsed."</string>
+    <string name="wallet_certificate_renewal_rate_limit_error_title">"24h-limit reached"</string>
+    <string name="wallet_certificate_renewal_rate_limit_error_text">"QR code updated too often. Update temporarily blocked."</string>
+    <string name="wallet_certificate_renewal_faq_link_text">"To the FAQ"</string>
+    <string name="wallet_certificate_renewal_faq_link_url"></string>
 </resources>

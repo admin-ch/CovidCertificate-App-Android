@@ -28,6 +28,7 @@ import ch.admin.bag.covidcertificate.common.config.CertificateRenewalType
 import ch.admin.bag.covidcertificate.common.extensions.collectWhenStarted
 import ch.admin.bag.covidcertificate.common.extensions.getDrawableIdentifier
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
+import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
@@ -86,6 +87,11 @@ class QrCodeRenewalFragment : Fragment() {
 			viewModel.renewCertificate(certificateHolder)
 		}
 
+		binding.qrCodeRenewalFaqButton.setOnClickListener {
+			val url = getString(R.string.wallet_certificate_renewal_faq_link_url) // TODO Get from config
+			UrlUtil.openUrl(requireContext(), url)
+		}
+
 		viewLifecycleOwner.collectWhenStarted(viewModel.viewState) {
 			when (it) {
 				is QrCodeRenewalViewState.RenewalRequired -> showRenewalRequired()
@@ -120,6 +126,7 @@ class QrCodeRenewalFragment : Fragment() {
 			binding.qrCodeRenewalInfoTitle.text = infos.heading
 			binding.qrCodeRenewalInfos.isVisible = true
 			binding.qrCodeRenewalInfos.removeAllViews()
+			// TODO Set faq button text
 
 			val inflater = LayoutInflater.from(requireContext())
 			infos.infos.forEach { info ->
@@ -131,6 +138,7 @@ class QrCodeRenewalFragment : Fragment() {
 		} else {
 			binding.qrCodeRenewalInfos.isVisible = false
 			binding.qrCodeRenewalInfoTitle.isVisible = false
+			binding.qrCodeRenewalFaqButton.isVisible = false
 		}
 	}
 
