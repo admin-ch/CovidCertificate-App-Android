@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+    ~
+    ~ This Source Code Form is subject to the terms of the Mozilla Public
+    ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+    ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+    ~
+    ~ SPDX-License-Identifier: MPL-2.0
+    -->
 <resources>
 
     <!-- Android App Name -->
@@ -1537,7 +1546,7 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_scanner_how_it_works_accessibility_icon3">"Terzo"</string>
 
     <!-- Reise-Check: Label des Buttons um Gültigkeit im Ausland zu prüfen -->
-    <string name="wallet_foreign_rules_check_button">"Validità per i viaggi"</string>
+    <string name="wallet_foreign_rules_check_button">"Validità all'estero"</string>
 
     <!-- Reise-Check: Titel des Reise-Check Screens -->
     <string name="wallet_foreign_rules_check_title">"Validità per i viaggi all’estero"</string>
@@ -1705,7 +1714,7 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_certificate_renew_now_button">"Rinnova il codice QR"</string>
     <string name="wallet_certificate_renewal_qr_code_expiration">"Codice QR - Data di scadenza (tecnica)"</string>
     <string name="wallet_certificate_renewal_required_info">"La data di scadenza tecnica di questo codice QR sarà (presto) raggiunta."</string>
-    <string name="wallet_certificate_renewal_in_progress_info">"Il codice QR viene rinnovato"</string>
+    <string name="wallet_certificate_renewal_in_progress_info">"Codice QR viene rinnovato"</string>
     <string name="wallet_certificate_renewal_successful_info">"Il codice QR è stato rinnovato."</string>
     <string name="wallet_certificate_renewal_offline_error_title">"Nessuna connessione a Internet"</string>
     <string name="wallet_certificate_renewal_offline_error_text">"Per rinnovare il codice QR è necessario che l’app sia online."</string>
@@ -1727,5 +1736,5 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_certificate_renewal_rate_limit_error_title">"È stato raggiunto il limite di 24 ore"</string>
     <string name="wallet_certificate_renewal_rate_limit_error_text">"Codice QR rinnovato troppo spesso. Rinnovo temporaneamente bloccato."</string>
     <string name="wallet_certificate_renewal_faq_link_text">"Alle FAQ"</string>
-    <string name="wallet_certificate_renewal_faq_link_url"></string>
+    <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/perche-devo-rinnovare-il-codice-qr-del-mio-certificato-covid-anche-se-secondo-le"</string>
 </resources>

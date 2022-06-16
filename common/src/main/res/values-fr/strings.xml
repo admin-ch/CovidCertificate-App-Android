@@ -1,4 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+   ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
+   ~
+   ~ This Source Code Form is subject to the terms of the Mozilla Public
+   ~ License, v. 2.0. If a copy of the MPL was not distributed with this
+   ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
+   ~
+   ~ SPDX-License-Identifier: MPL-2.0
+   -->
 <resources>
 
     <!-- Android App Name -->
@@ -1532,7 +1541,7 @@ Conservez donc vos certificats en dehors de l’application en les exportant au 
     <string name="wallet_scanner_how_it_works_accessibility_icon3">"Deuxième"</string>
 
     <!-- Reise-Check: Label des Buttons um Gültigkeit im Ausland zu prüfen -->
-    <string name="wallet_foreign_rules_check_button">"Validité pour les voyages"</string>
+    <string name="wallet_foreign_rules_check_button">"Validité à l'étranger"</string>
 
     <!-- Reise-Check: Titel des Reise-Check Screens -->
     <string name="wallet_foreign_rules_check_title">"Validité pour les voyages à l’étranger"</string>
@@ -1722,5 +1731,5 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="wallet_certificate_renewal_rate_limit_error_title">"Limite des 24 heures atteinte"</string>
     <string name="wallet_certificate_renewal_rate_limit_error_text">"Le code QR a été renouvelé trop souvent. Le renouvellement est temporairement bloqué."</string>
     <string name="wallet_certificate_renewal_faq_link_text">"Vers la FAQ"</string>
-    <string name="wallet_certificate_renewal_faq_link_url"></string>
+    <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/pourquoi-dois-je-renouveler-le-code-qr-de-mon-certificat-covid-alors-que-selon-les"</string>
 </resources>
