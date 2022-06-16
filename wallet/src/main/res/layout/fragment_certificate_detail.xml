@@ -53,7 +53,8 @@
 						android:id="@+id/certificate_detail_banners"
 						layout="@layout/partial_certificate_detail_banners"
 						android:layout_width="match_parent"
-						android:layout_height="wrap_content" />
+						android:layout_height="wrap_content"
+						tools:visibility="gone" />
 
 					<FrameLayout
 						android:layout_width="match_parent"
@@ -336,6 +337,7 @@
 						android:overScrollMode="never"
 						android:scrollbars="none"
 						app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+						tools:itemCount="3"
 						tools:listitem="@layout/item_detail_divider" />
 
 					<TextView
@@ -350,32 +352,35 @@
 						android:padding="@dimen/spacing_large"
 						android:text="@string/wallet_certificate_detail_note" />
 
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/blueish" />
+
 					<LinearLayout
 						android:id="@+id/certificate_detail_convert_light_button"
 						android:layout_width="match_parent"
-						android:layout_height="56dp"
+						android:layout_height="wrap_content"
 						android:background="?android:attr/selectableItemBackground"
+						android:gravity="center_vertical"
+						android:minHeight="56dp"
 						android:orientation="vertical"
 						android:visibility="gone"
 						tools:visibility="visible">
-
-						<View
-							android:layout_width="match_parent"
-							android:layout_height="1dp"
-							android:background="@color/blueish" />
 
 						<LinearLayout
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
 							android:duplicateParentState="true"
 							android:orientation="horizontal"
-							android:paddingHorizontal="@dimen/spacing_large">
+							android:paddingHorizontal="@dimen/spacing_large"
+							android:paddingVertical="@dimen/spacing_small">
 
 							<TextView
 								android:id="@+id/certificate_detail_convert_light_label"
 								style="@style/CovidCertificate.Text.Bold"
 								android:layout_width="0dp"
-								android:layout_height="match_parent"
+								android:layout_height="wrap_content"
 								android:layout_weight="1"
 								android:drawablePadding="@dimen/spacing_medium_small"
 								android:duplicateParentState="true"
@@ -394,32 +399,35 @@
 						</LinearLayout>
 					</LinearLayout>
 
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/blueish" />
+
 					<LinearLayout
 						android:id="@+id/certificate_detail_convert_pdf_button"
 						android:layout_width="match_parent"
-						android:layout_height="56dp"
+						android:layout_height="wrap_content"
 						android:background="?android:attr/selectableItemBackground"
+						android:gravity="center_vertical"
+						android:minHeight="56dp"
 						android:orientation="vertical"
 						android:visibility="gone"
 						tools:visibility="visible">
-
-						<View
-							android:layout_width="match_parent"
-							android:layout_height="1dp"
-							android:background="@color/blueish" />
 
 						<LinearLayout
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
 							android:duplicateParentState="true"
 							android:orientation="horizontal"
-							android:paddingHorizontal="@dimen/spacing_large">
+							android:paddingHorizontal="@dimen/spacing_large"
+							android:paddingVertical="@dimen/spacing_small">
 
 							<TextView
 								android:id="@+id/certificate_detail_convert_pdf_label"
 								style="@style/CovidCertificate.Text.Bold"
 								android:layout_width="0dp"
-								android:layout_height="match_parent"
+								android:layout_height="wrap_content"
 								android:layout_weight="1"
 								android:drawablePadding="@dimen/spacing_medium_small"
 								android:duplicateParentState="true"
@@ -438,32 +446,35 @@
 						</LinearLayout>
 					</LinearLayout>
 
+					<View
+						android:layout_width="match_parent"
+						android:layout_height="1dp"
+						android:background="@color/blueish" />
+
 					<LinearLayout
 						android:id="@+id/certificate_detail_vaccination_appointment_button"
 						android:layout_width="match_parent"
-						android:layout_height="56dp"
+						android:layout_height="wrap_content"
 						android:background="?android:attr/selectableItemBackground"
+						android:gravity="center_vertical"
+						android:minHeight="56dp"
 						android:orientation="vertical"
 						android:visibility="gone"
 						tools:visibility="visible">
-
-						<View
-							android:layout_width="match_parent"
-							android:layout_height="1dp"
-							android:background="@color/blueish" />
 
 						<LinearLayout
 							android:layout_width="match_parent"
 							android:layout_height="match_parent"
 							android:duplicateParentState="true"
 							android:orientation="horizontal"
-							android:paddingHorizontal="@dimen/spacing_large">
+							android:paddingHorizontal="@dimen/spacing_large"
+							android:paddingVertical="@dimen/spacing_small">
 
 							<TextView
 								android:id="@+id/certificate_detail_vaccination_appointment_label"
 								style="@style/CovidCertificate.Text.Bold"
 								android:layout_width="0dp"
-								android:layout_height="match_parent"
+								android:layout_height="wrap_content"
 								android:layout_weight="1"
 								android:drawablePadding="@dimen/spacing_medium_small"
 								android:duplicateParentState="true"

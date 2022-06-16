@@ -27,7 +27,6 @@ import androidx.fragment.app.activityViewModels
 import androidx.transition.TransitionManager
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.makeBold
-import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.common.views.setCutOutCardBackground
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isNotFullyProtected
@@ -252,7 +251,7 @@ class CertificatePagerFragment : Fragment() {
 				binding.certificatePageRenewalBannerDismiss.isVisible = true
 				binding.certificatePageRenewalBannerTitle.setText(R.string.wallet_certificate_renewal_successful_bubble_title)
 				val backgroundColor = ContextCompat.getColor(requireContext(), R.color.greenish)
-				binding.certificatePageRenewalBanner.animateBackgroundTintColor(backgroundColor)
+				binding.certificatePageRenewalBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
 				binding.certificatePageRenewalBannerDismiss.setOnClickListener {
 					certificateHolder?.let { certificate -> certificatesViewModel.dismissRecentlyRenewedBanner(certificate) }
@@ -267,7 +266,7 @@ class CertificatePagerFragment : Fragment() {
 				binding.certificatePageRenewalBannerDismiss.isVisible = false
 				binding.certificatePageRenewalBannerTitle.setText(R.string.wallet_certificate_renewal_required_bubble_title)
 				val backgroundColor = ContextCompat.getColor(requireContext(), R.color.redish)
-				binding.certificatePageRenewalBanner.animateBackgroundTintColor(backgroundColor)
+				binding.certificatePageRenewalBanner.backgroundTintList = ColorStateList.valueOf(backgroundColor)
 
 				return true
 			}

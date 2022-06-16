@@ -146,9 +146,7 @@ class CertificateDetailItemListBuilder(
 
 			if (isDetailScreen) {
 				detailItems.add(
-					ValueItemWithoutLabel(
-						context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
-					)
+					ValueItemWithoutLabel(context.getString(R.string.wallet_certificate_detail_date_format_info), true)
 				)
 			}
 		}
@@ -221,9 +219,7 @@ class CertificateDetailItemListBuilder(
 
 			if (isDetailScreen) {
 				detailItems.add(
-					ValueItemWithoutLabel(
-						context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
-					)
+					ValueItemWithoutLabel(context.getString(R.string.wallet_certificate_detail_date_format_info), true)
 				)
 			}
 		}
@@ -336,9 +332,7 @@ class CertificateDetailItemListBuilder(
 
 		if (isDetailScreen) {
 			detailItems.add(
-				ValueItemWithoutLabel(
-					context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
-				)
+				ValueItemWithoutLabel(context.getString(R.string.wallet_certificate_detail_date_format_info), true)
 			)
 		}
 
@@ -418,9 +412,7 @@ class CertificateDetailItemListBuilder(
 
 		if (isDetailScreen) {
 			detailItems.add(
-				ValueItemWithoutLabel(
-					context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
-				)
+				ValueItemWithoutLabel(context.getString(R.string.wallet_certificate_detail_date_format_info), true)
 			)
 		}
 
@@ -499,9 +491,7 @@ class CertificateDetailItemListBuilder(
 
 		if (isDetailScreen) {
 			detailItems.add(
-				ValueItemWithoutLabel(
-					context.getString(R.string.wallet_certificate_detail_date_format_info), showEnglishVersionForLabels
-				)
+				ValueItemWithoutLabel(context.getString(R.string.wallet_certificate_detail_date_format_info), true)
 			)
 		}
 

@@ -31,6 +31,7 @@ import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.views.animateBackgroundTintColor
 import ch.admin.bag.covidcertificate.sdk.android.extensions.DEFAULT_DISPLAY_DATE_TIME_FORMATTER
+import ch.admin.bag.covidcertificate.sdk.android.extensions.prettyPrint
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.decoder.CertificateDecoder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -40,7 +41,7 @@ import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentQrCodeRenewalBinding
 import ch.admin.bag.covidcertificate.wallet.databinding.ItemIconTextInfoBinding
 import ch.admin.bag.covidcertificate.wallet.renewal.model.QrCodeRenewalViewState
-import java.time.ZoneOffset
+import java.time.Instant
 
 class QrCodeRenewalFragment : Fragment() {
 
@@ -81,7 +82,7 @@ class QrCodeRenewalFragment : Fragment() {
 		super.onViewCreated(view, savedInstanceState)
 		binding.toolbar.setNavigationOnClickListener { parentFragmentManager.popBackStack() }
 
-		showCertificateExpirationDate()
+		showCertificateExpirationDate(certificateHolder.expirationTime)
 
 		binding.qrCodeRenewalButton.setOnClickListener {
 			hasUserRenewedCertificate = true
@@ -114,11 +115,8 @@ class QrCodeRenewalFragment : Fragment() {
 		_binding = null
 	}
 
-	private fun showCertificateExpirationDate() {
-		val expirationDateTime = certificateHolder.expirationTime
-			?.atOffset(ZoneOffset.UTC)
-			?.toLocalDateTime()
-			?.format(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
+	private fun showCertificateExpirationDate(expirationTime: Instant?) {
+		val expirationDateTime = expirationTime?.prettyPrint(DEFAULT_DISPLAY_DATE_TIME_FORMATTER)
 		binding.qrCodeExpirationDate.text = expirationDateTime
 	}
 
@@ -170,8 +168,8 @@ class QrCodeRenewalFragment : Fragment() {
 		val backgroundColor = ContextCompat.getColor(requireContext(), R.color.greyish)
 		binding.qrCodeExpirationBubble.animateBackgroundTintColor(backgroundColor)
 		binding.qrCodeRenewalStateInfo.animateBackgroundTintColor(backgroundColor)
-		binding.qrCodeRenewalStateIcon.isVisible = false
 		binding.qrCodeRenewalStateInfo.setText(R.string.wallet_certificate_renewal_in_progress_info)
+		binding.qrCodeRenewalStateIcon.isVisible = false
 		binding.qrCodeRenewalLoadingIndicator.isVisible = true
 		binding.qrCodeRenewalButton.isVisible = true
 		binding.qrCodeRenewalButton.isEnabled = false
@@ -201,7 +199,9 @@ class QrCodeRenewalFragment : Fragment() {
 
 			val decodeState = CertificateDecoder.decode(state.newQrCodeData)
 			if (decodeState is DecodeState.SUCCESS) {
-				setFragmentResult(REQUEST_KEY_CERTIFICATE, bundleOf(ARG_CERTIFICATE to decodeState.certificateHolder))
+				val newCertificateHolder = decodeState.certificateHolder
+				showCertificateExpirationDate(newCertificateHolder.expirationTime)
+				setFragmentResult(REQUEST_KEY_CERTIFICATE, bundleOf(ARG_CERTIFICATE to newCertificateHolder))
 			}
 		}
 	}
@@ -211,6 +211,7 @@ class QrCodeRenewalFragment : Fragment() {
 		val stateColor = ContextCompat.getColor(requireContext(), R.color.orangeish)
 		binding.qrCodeExpirationBubble.animateBackgroundTintColor(expirationColor)
 		binding.qrCodeRenewalStateInfo.animateBackgroundTintColor(stateColor)
+		binding.qrCodeRenewalStateIcon.isVisible = true
 		binding.qrCodeRenewalLoadingIndicator.isVisible = false
 		binding.qrCodeRenewalButton.isVisible = true
 		binding.qrCodeRenewalButton.isEnabled = true
