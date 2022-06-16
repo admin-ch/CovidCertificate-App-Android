@@ -46,6 +46,7 @@ data class ConfigModel(
 	val foreignRulesHints: Map<String, List<ForeignRulesHintModel>>?,
 	val showRatConversionForm: Boolean?,
 	val ratConversionFormUrl: String?,
+	val certRenewalInfo: Map<String, Map<CertificateRenewalType, CertificateRenewalInfoModel>>?,
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
@@ -60,6 +61,7 @@ data class ConfigModel(
 	fun getForeignRulesLinkText(languageKey: String): String? = foreignRulesLinkText?.get(languageKey)
 	fun getForeignRulesLinkUrl(languageKey: String): String? = foreignRulesLinkUrl?.get(languageKey)
 	fun getForeignRulesHints(languageKey: String): List<ForeignRulesHintModel>? = foreignRulesHints?.get(languageKey)
+	fun getCertRenewalInfo(languageKey: String): Map<CertificateRenewalType, CertificateRenewalInfoModel>? = certRenewalInfo?.get(languageKey)
 
 	fun getCheckModes(languageKey: String): Map<String, WalletModeModel>? = checkModesInfo?.get(languageKey)?.modes
 	fun getInfoModeTitle(languageKey: String): String? = checkModesInfo?.get(languageKey)?.title

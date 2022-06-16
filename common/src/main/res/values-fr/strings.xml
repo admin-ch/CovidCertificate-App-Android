@@ -94,7 +94,7 @@ une pièce d'identité"</string>
     <string name="verifier_verify_error_list_title">"La vérification a échoué"</string>
 
     <!-- Fehler Info bei laden der Liste -->
-    <string name="verifier_verify_error_list_info_text">"Une erreur inattendue est survenue."</string>
+    <string name="verifier_verify_error_list_info_text">"Une erreur inattendue est survenue"</string>
 
     <!-- Wallet: Scanner Text unten -->
     <string name="wallet_scanner_explanation">"Scannez le code QR placé sur le certificat COVID."</string>
@@ -358,8 +358,8 @@ Le certificat n'est pas encore valable."</string>
     <string name="wallet_error_national_rules">"Non conforme aux critères de validité suisses"</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
-    <string name="wallet_error_expired">"Durée de validité du 
-certificat expirée"</string>
+    <string name="wallet_error_expired">"Gültigkeitsdauer für die
+Schweiz überschritten"</string>
 
     <!-- Wallet: Zertifikat wurde widerrufen -->
     <string name="wallet_error_revocation">"Certificat révoqué"</string>
@@ -372,9 +372,6 @@ certificat expirée"</string>
 
     <!-- Wallet: widerrufen (gleiches Wort wie bei wallet_error_revocation) -->
     <string name="wallet_error_revocation_bold">"Certificat révoqué"</string>
-
-    <!-- Wallet: abgelaufen (gleiches Wort wie bei wallet_error_expired verwenden) -->
-    <string name="wallet_error_expired_bold">"expirée"</string>
 
     <!-- Meldung wenn erneute ein Zertifikat gescannt wurde, welches bereits in der App ist -->
     <string name="wallet_certificate_already_exists">"Le certificat est déjà enregistré dans l'application."</string>
@@ -1544,7 +1541,7 @@ Conservez donc vos certificats en dehors de l’application en les exportant au 
     <string name="wallet_scanner_how_it_works_accessibility_icon3">"Deuxième"</string>
 
     <!-- Reise-Check: Label des Buttons um Gültigkeit im Ausland zu prüfen -->
-    <string name="wallet_foreign_rules_check_button">"Validité pour les voyages"</string>
+    <string name="wallet_foreign_rules_check_button">"Validité à l'étranger"</string>
 
     <!-- Reise-Check: Titel des Reise-Check Screens -->
     <string name="wallet_foreign_rules_check_title">"Validité pour les voyages à l’étranger"</string>
@@ -1652,8 +1649,87 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
     <!-- Fuzzy -->
-    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest"</string>
+    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
     <string name="rat_conversion_info_title">"Informations complémentaires"</string>
+
+    <!-- cert renewal general info heading -->
+    <string name="cert_renewal_info_info_heading">"Qu’est-ce que cela signifie ?"</string>
+
+    <!-- cert renewal general info text 1 -->
+    <string name="cert_renewal_info_info_text_1">"Les codes QR des certificats COVID ont une validité technique limitée"</string>
+
+    <!-- cert renewal general info text 2 -->
+    <string name="cert_renewal_info_info_text_2">"Pour qu’il soit toujours possible de contrôler ce certificat (par exemple en voyage), le code QR doit être renouvelé."</string>
+
+    <!-- cert renewal general info text 3 -->
+    <string name="cert_renewal_info_info_text_3">"Le renouvellement nécessaire peut être effectué ici directement dans l’application (connexion Internet requise). Les données du certificat actuel sont transmises sous forme cryptée depuis l’application vers le système de la Confédération établissant les certificats COVID. Ensuite, un nouveau code QR est ainsi établi, qui est renvoyé à l’application de stockage. Une fois établies et transmises. Enfin, les données sont effacées du système"</string>
+
+    <!-- cert renewal general info text 4 -->
+    <string name="cert_renewal_info_info_text_4">"Cette FAQ vous explique pourquoi vous devriez renouveler le code QR même si votre certificat de vaccination ou de guérison est sur le point d’expirer ou a déjà expiré selon les règles de validité suisses."</string>
+
+    <!-- cert renewal info heading for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_heading">"Qu’est-ce que cela signifie ?"</string>
+
+    <!-- cert renewal text 1 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_1">"Les codes QR des certificats COVID ont une validité technique limitée."</string>
+
+    <!-- cert renewal text 2 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_2">"Pour qu’il soit toujours possible de contrôler ce certificat (par exemple en voyage), le code QR doit être renouvelé."</string>
+
+    <!-- cert renewal text 3 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_3">"Le renouvellement nécessaire peut être effectué ici directement dans l’application (connexion Internet requise). Les données du certificat actuel sont transmises sous forme cryptée depuis l’application vers le système de la Confédération établissant les certificats COVID. Ensuite, un nouveau code QR est ainsi établi, qui est renvoyé à l’application de stockage. Une fois établies et transmises. Enfin, les données sont effacées du système"</string>
+
+    <!-- cert renewal text 4 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_4">"Cette FAQ vous explique pourquoi vous devriez renouveler le code QR même si votre certificat de vaccination ou de guérison est sur le point d’expirer ou a déjà expiré selon les règles de validité suisses."</string>
+
+    <!-- cert renewal info heading for renewed certificates -->
+    <string name="cert_renewal_info_renewed_heading">"À noter:"</string>
+
+    <!-- cert renewal text 1 for renewed certificates -->
+    <string name="cert_renewal_info_renewed_text_1">"Remplacez également les certificats précédemment imprimés ou enregistrés par cette nouvelle version"</string>
+
+    <!-- cert renewal text 2 for renewed certificates -->
+    <string name="cert_renewal_info_renewed_text_2">"La durée pendant laquelle une vaccination est reconnue dans un pays n’est pas définie dans le certificat, mais calculée au moment du contrôle selon les règles du pays examinateur. Le renouvellement du code QR garantit uniquement que celui-ci puisse être utilisé d’un point de vue technique. "</string>
+
+    <!-- Wallet: Zertifikat QR Code läuft ab am {DATE} -->
+    <string name="wallet_certificate_qr_code_expiration_date">"Date d’expiration du code QR"</string>
+
+    <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erneuert werden muss -->
+    <string name="wallet_certificate_renewal_required_bubble_title">"Renouveler le code QR!"</string>
+
+    <!-- Wallet: Text der Info-Bubble wenn das Zertifikat erneuert werden muss -->
+    <string name="wallet_certificate_renewal_required_bubble_text">"Pour pouvoir continuer à utiliser ce certificat, le code QR doit être renouvelé."</string>
+
+    <!-- Wallet: Buttontext der Info-Bubble wenn das Zertifikat erneuert werden muss -->
+    <string name="wallet_certificate_renewal_required_bubble_button">"En savoir plus"</string>
+
+    <!-- Wallet: Buttontext um den QR Code eines Zertifikats zu erneuern -->
+    <string name="wallet_certificate_renew_now_button">"Renouveler le code QR"</string>
+    <string name="wallet_certificate_renewal_qr_code_expiration">"Date d’expiration du code QR (technique)"</string>
+    <string name="wallet_certificate_renewal_required_info">"La date d’expiration technique de ce code QR est (bientôt) atteinte."</string>
+    <string name="wallet_certificate_renewal_in_progress_info">"Le code QR est en cours de renouvellement"</string>
+    <string name="wallet_certificate_renewal_successful_info">"Le code QR a été renouvelé avec succès."</string>
+    <string name="wallet_certificate_renewal_offline_error_title">"Pas de connexion Internet"</string>
+    <string name="wallet_certificate_renewal_offline_error_text">"Pour pouvoir renouveler le code QR, l’application doit être connectée à Internet."</string>
+    <string name="wallet_certificate_renewal_general_error_title">"Une erreur inattendue est survenue"</string>
+    <string name="wallet_certificate_renewal_general_error_text">"Veuillez réessayer plus tard."</string>
+
+    <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
+    <string name="wallet_certificate_renewal_successful_bubble_title">"Renouvellement réussi"</string>
+
+    <!-- Wallet: Text der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
+    <string name="wallet_certificate_renewal_successful_bubble_text">"Remplacez également les versions imprimées ou enregistrées de ce certificat par cette nouvelle version."</string>
+
+    <!-- Wallet: Button der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
+    <string name="wallet_certificate_renewal_successful_bubble_button">"En savoir plus"</string>
+
+    <!-- Wallet: QR Code des Zertifikats abgelaufen -->
+    <!-- Fuzzy -->
+    <string name="wallet_error_qr_code_expired">"La date d’expiration technique de ce code QR est atteinte."</string>
+    <string name="wallet_certificate_renewal_rate_limit_error_title">"Limite des 24 heures atteinte"</string>
+    <string name="wallet_certificate_renewal_rate_limit_error_text">"Le code QR a été renouvelé trop souvent. Le renouvellement est temporairement bloqué."</string>
+    <string name="wallet_certificate_renewal_faq_link_text">"Vers la FAQ"</string>
+    <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/pourquoi-dois-je-renouveler-le-code-qr-de-mon-certificat-covid-alors-que-selon-les"</string>
 </resources>

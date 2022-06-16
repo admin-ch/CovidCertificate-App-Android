@@ -235,6 +235,14 @@ class CertificatesAndConfigViewModel(application: Application) : ConfigViewModel
 			?.qrCodeData
 	}
 
+	fun wasCertificateRecentlyRenewed(certificateHolder: CertificateHolder): Boolean {
+		return walletDataStorage.wasCertificateRecentlyRenewed(certificateHolder)
+	}
+
+	fun dismissRecentlyRenewedBanner(certificateHolder: CertificateHolder) {
+		walletDataStorage.dismissQrCodeRenewalBanner(certificateHolder)
+	}
+
 	private fun enqueueVerificationTask(
 		certificateHolder: CertificateHolder,
 		delayInMillis: Long

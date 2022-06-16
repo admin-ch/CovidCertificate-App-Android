@@ -19,7 +19,6 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.core.view.isVisible
-import ch.admin.bag.covidcertificate.common.util.LocaleUtil
 import ch.admin.bag.covidcertificate.wallet.R
 import java.util.*
 
@@ -99,7 +98,7 @@ object DividerItem : CertificateDetailItem() {
 	override fun bindView(view: View) {}
 }
 
-fun getEnglishTranslation(context: Context, res: Int): String {
+fun getEnglishTranslation(context: Context, @StringRes res: Int): String {
 	val config = Configuration(context.resources.configuration)
 	config.setLocale(Locale.ENGLISH)
 	return context.createConfigurationContext(config).getText(res).toString()

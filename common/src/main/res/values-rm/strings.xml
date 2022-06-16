@@ -355,8 +355,8 @@ Il certificat n'è anc betg valaivel."</string>
     <string name="wallet_error_national_rules">"Na correspunda betg als criteris da valaivladad da la Svizra"</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
-    <string name="wallet_error_expired">"La valaivladad dal certificat 
-è scadida"</string>
+    <string name="wallet_error_expired">"Gültigkeitsdauer für die
+Schweiz überschritten"</string>
 
     <!-- Wallet: Zertifikat wurde widerrufen -->
     <string name="wallet_error_revocation">"Il certificat è vegnì 
@@ -371,9 +371,6 @@ signatura nunvalaivla"</string>
 
     <!-- Wallet: widerrufen (gleiches Wort wie bei wallet_error_revocation) -->
     <string name="wallet_error_revocation_bold">"revocà"</string>
-
-    <!-- Wallet: abgelaufen (gleiches Wort wie bei wallet_error_expired verwenden) -->
-    <string name="wallet_error_expired_bold">"è scadida"</string>
 
     <!-- Meldung wenn erneute ein Zertifikat gescannt wurde, welches bereits in der App ist -->
     <string name="wallet_certificate_already_exists">"Quest certificat è gia arcunà en l'app"</string>
@@ -1544,7 +1541,7 @@ Tegnai perquai en salv Voss certificats er ordaifer l'app cun exportar quels sco
     <string name="wallet_scanner_how_it_works_accessibility_icon3">"Terz"</string>
 
     <!-- Reise-Check: Label des Buttons um Gültigkeit im Ausland zu prüfen -->
-    <string name="wallet_foreign_rules_check_button">"Valaivladad per viadis"</string>
+    <string name="wallet_foreign_rules_check_button">"Valaivladad en l'exteriur"</string>
 
     <!-- Reise-Check: Titel des Reise-Check Screens -->
     <string name="wallet_foreign_rules_check_title">"Valaivladad per viadis a l'exteriur"</string>
@@ -1652,8 +1649,87 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
     <!-- Fuzzy -->
-    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest"</string>
+    <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
     <string name="rat_conversion_info_title">"Ulteriuras infurmaziuns"</string>
+
+    <!-- cert renewal general info heading -->
+    <string name="cert_renewal_info_info_heading">"Tge vul quai dir?"</string>
+
+    <!-- cert renewal general info text 1 -->
+    <string name="cert_renewal_info_info_text_1">"Tecnicamain valan ils codes QR dals certificats COVID mo per ina tscherta durada."</string>
+
+    <!-- cert renewal general info text 2 -->
+    <string name="cert_renewal_info_info_text_2">"Per che quest certificat possia vegnir verifitgà er vinavant (p.ex. sin viadis) sto il code QR vegnir renovà."</string>
+
+    <!-- cert renewal general info text 3 -->
+    <string name="cert_renewal_info_info_text_3">"La renovaziun pudais Vus far sezza u sez qua en l'app (ina colliaziun d'internet è necessaria). Las datas dal certificat actual vegnan transmessas da l'app en moda codada al sistem federal per l'emissiun da certificats COVID. In nov code QR vegn alura tramess enavos a l'app. Silsuenter vegnan las datas stizzadas là."</string>
+
+    <!-- cert renewal general info text 4 -->
+    <string name="cert_renewal_info_info_text_4">"Pertge che Vus duessas renovar il code QR er, sche Voss certificat da vaccinaziun u da guariziun scada bainbaud u è gia scadì tenor las reglas da valaivladad en Svizra, pudais Vus leger en questa FAQ."</string>
+
+    <!-- cert renewal info heading for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_heading">"Tge vul quai dir?"</string>
+
+    <!-- cert renewal text 1 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_1">"Tecnicamain valan ils codes QR dals certificats COVID mo per ina tscherta durada."</string>
+
+    <!-- cert renewal text 2 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_2">"Per che quest certificat possia vegnir verifitgà er vinavant (p.ex. sin viadis) sto il code QR vegnir renovà."</string>
+
+    <!-- cert renewal text 3 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_3">"La renovaziun pudais Vus far sezza u sez qua en l'app (ina colliaziun d'internet è necessaria). Las datas dal certificat actual vegnan transmessas da l'app en moda codada al sistem federal per l'emissiun da certificats COVID. In nov code QR vegn alura tramess enavos a l'app. Silsuenter vegnan las datas stizzadas là."</string>
+
+    <!-- cert renewal text 4 for soon to be expired or expired certificates -->
+    <string name="cert_renewal_info_expired_text_4">"Pertge che Vus duessas renovar il code QR er, sche Voss certificat da vaccinaziun u da guariziun scada bainbaud u è gia scadì tenor las reglas da valaivladad en Svizra, pudais Vus leger en questa FAQ."</string>
+
+    <!-- cert renewal info heading for renewed certificates -->
+    <string name="cert_renewal_info_renewed_heading">"Impurtant!"</string>
+
+    <!-- cert renewal text 1 for renewed certificates -->
+    <string name="cert_renewal_info_renewed_text_1">"Remplazzai per plaschair tras questa nova versiun er ils certificats che Vus avais arcunà u stampà pli baud."</string>
+
+    <!-- cert renewal text 2 for renewed certificates -->
+    <string name="cert_renewal_info_renewed_text_2">"Quant ditg ch'ina vaccinaziun vegn renconuschida en in pajais, n'è betg fixà en il certificat. Quai vegn calculà a chaschun da la verificaziun tenor las reglas dal pajais che fa la verificaziun. La renovaziun dal code QR garantescha unicamain l'utilisaziun tecnica dal code QR"</string>
+
+    <!-- Wallet: Zertifikat QR Code läuft ab am {DATE} -->
+    <string name="wallet_certificate_qr_code_expiration_date">"Data da scadenza dal code QR"</string>
+
+    <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erneuert werden muss -->
+    <string name="wallet_certificate_renewal_required_bubble_title">"Renovar il code QR!"</string>
+
+    <!-- Wallet: Text der Info-Bubble wenn das Zertifikat erneuert werden muss -->
+    <string name="wallet_certificate_renewal_required_bubble_text">"Per pudair duvrar vinavant quest certificat sto il code QR vegnir renovà"</string>
+
+    <!-- Wallet: Buttontext der Info-Bubble wenn das Zertifikat erneuert werden muss -->
+    <string name="wallet_certificate_renewal_required_bubble_button">"Dapli infurmaziuns"</string>
+
+    <!-- Wallet: Buttontext um den QR Code eines Zertifikats zu erneuern -->
+    <string name="wallet_certificate_renew_now_button">"Renovar il code QR"</string>
+    <string name="wallet_certificate_renewal_qr_code_expiration">"Data da scadenza (tecnica) dal code QR"</string>
+    <string name="wallet_certificate_renewal_required_info">"La data da la scadenza tecnica da quest code QR è (bainbaud) arrivada."</string>
+    <string name="wallet_certificate_renewal_in_progress_info">"Il code QR vegn renovà"</string>
+    <string name="wallet_certificate_renewal_successful_info">"Il code QR è vegnì renovà cun success."</string>
+    <string name="wallet_certificate_renewal_offline_error_title">"Nagina colliaziun cun l'internet"</string>
+    <string name="wallet_certificate_renewal_offline_error_text">"Per pudair renovar il code QR sto l'app esser online."</string>
+    <string name="wallet_certificate_renewal_general_error_title">"Igl è capità in sbagl imprevis."</string>
+    <string name="wallet_certificate_renewal_general_error_text">"Empruvai pli tard anc ina giada"</string>
+
+    <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
+    <string name="wallet_certificate_renewal_successful_bubble_title">"Renovà cun success"</string>
+
+    <!-- Wallet: Text der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
+    <string name="wallet_certificate_renewal_successful_bubble_text">"Remplazzai per plaschair tras questa nova versiun er versiuns gia arcunadas e stampadas da quest certificat."</string>
+
+    <!-- Wallet: Button der Info-Bubble wenn das Zertifikat erfolgreich erneuert wurde -->
+    <string name="wallet_certificate_renewal_successful_bubble_button">"Dapli infurmaziuns"</string>
+
+    <!-- Wallet: QR Code des Zertifikats abgelaufen -->
+    <!-- Fuzzy -->
+    <string name="wallet_error_qr_code_expired">"La data da la scadenza tecnica da quest code QR è arrivada."</string>
+    <string name="wallet_certificate_renewal_rate_limit_error_title">"La limita da 24 uras è cuntanschida"</string>
+    <string name="wallet_certificate_renewal_rate_limit_error_text">"Code QR renovà memia savens. Renovaziun bloccada temporarmain."</string>
+    <string name="wallet_certificate_renewal_faq_link_text">"A la FAQ"</string>
+    <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"</string>
 </resources>

@@ -36,6 +36,10 @@
 		<item name="lineHeight">@dimen/text_line_height_normal</item>
 	</style>
 
+	<style name="CovidCertificate.Text.Emphasized">
+		<item name="android:textSize">@dimen/text_size_emphasize</item>
+	</style>
+
 	<style name="CovidCertificate.Text.White">
 		<item name="android:textColor">@color/white</item>
 	</style>

@@ -8,7 +8,10 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-include ':common'
-include ':verifier'
-include ':wallet'
-rootProject.name = "CovidCertificate"
+package ch.admin.bag.covidcertificate.wallet.renewal.model
+
+sealed class QrCodeRenewalResponse {
+	data class Success(val hcert: String) : QrCodeRenewalResponse()
+	object RateLimitExceeded : QrCodeRenewalResponse()
+	object Failed : QrCodeRenewalResponse()
+}

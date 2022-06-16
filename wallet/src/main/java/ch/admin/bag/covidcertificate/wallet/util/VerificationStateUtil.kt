@@ -30,12 +30,18 @@ fun VerificationState.isTimeInconsistency() = this is VerificationState.ERROR &&
 fun VerificationState.INVALID.getValidationStatusString(context: Context) = when {
 	signatureState is CheckSignatureState.INVALID -> {
 		val invalidSignatureState = signatureState as CheckSignatureState.INVALID
-		if (invalidSignatureState.signatureErrorCode == ErrorCodes.SIGNATURE_TYPE_INVALID) {
-			context.getString(R.string.wallet_error_invalid_format)
-				.makeSubStringBold(context.getString(R.string.wallet_error_invalid_format_bold))
-		} else {
-			context.getString(R.string.wallet_error_invalid_signature)
-				.makeSubStringBold(context.getString(R.string.wallet_error_invalid_signature_bold))
+		when (invalidSignatureState.signatureErrorCode) {
+			ErrorCodes.SIGNATURE_TYPE_INVALID -> {
+				context.getString(R.string.wallet_error_invalid_format)
+					.makeSubStringBold(context.getString(R.string.wallet_error_invalid_format_bold))
+			}
+			ErrorCodes.SIGNATURE_TIMESTAMP_EXPIRED -> {
+				SpannableString(context.getString(R.string.wallet_error_qr_code_expired))
+			}
+			else -> {
+				context.getString(R.string.wallet_error_invalid_signature)
+					.makeSubStringBold(context.getString(R.string.wallet_error_invalid_signature_bold))
+			}
 		}
 	}
 	revocationState is CheckRevocationState.INVALID -> {
@@ -43,8 +49,7 @@ fun VerificationState.INVALID.getValidationStatusString(context: Context) = when
 			.makeSubStringBold(context.getString(R.string.wallet_error_revocation_bold))
 	}
 	nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
-		context.getString(R.string.wallet_error_expired)
-			.makeSubStringBold(context.getString(R.string.wallet_error_expired_bold))
+		SpannableString(context.getString(R.string.wallet_error_expired))
 	}
 	nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
 		context.getString(R.string.wallet_error_valid_from).addBoldDate(

@@ -12,7 +12,6 @@ package ch.admin.bag.covidcertificate.wallet.data
 
 import android.content.Context
 import androidx.core.content.edit
-import ch.admin.bag.covidcertificate.common.R
 import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
 import ch.admin.bag.covidcertificate.sdk.android.utils.SingletonHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
@@ -22,6 +21,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.Types
 import com.squareup.moshi.adapters.PolymorphicJsonAdapterFactory
 import java.time.Instant
+import java.util.concurrent.TimeUnit
 import java.util.concurrent.locks.ReentrantLock
 
 class WalletDataSecureStorage private constructor(context: Context) {
@@ -133,17 +133,8 @@ class WalletDataSecureStorage private constructor(context: Context) {
 	}
 
 	fun storeCertificateLight(fullCertificate: CertificateHolder, certificateLightData: String, certificateLightQrCode: String) {
-		val walletData = getWalletData().toMutableList()
-		val index = walletData.indexOfFirst {
-			it is WalletDataItem.CertificateWalletData && it.qrCodeData == fullCertificate.qrCodeData
-		}
-
-		if (index >= 0) {
-			val item = walletData.removeAt(index) as WalletDataItem.CertificateWalletData
-			val updatedItem =
-				item.copy(certificateLightData = certificateLightData, certificateLightQrCode = certificateLightQrCode)
-			walletData.add(index, updatedItem)
-			updateWalletData(walletData)
+		updateCertificateWalletDataItem(fullCertificate) {
+			it.copy(certificateLightData = certificateLightData, certificateLightQrCode = certificateLightQrCode)
 		}
 	}
 
@@ -171,16 +162,8 @@ class WalletDataSecureStorage private constructor(context: Context) {
 	}
 
 	fun storePdfForCertificate(certificateHolder: CertificateHolder, pdfData: String, language: String) {
-		val walletData = getWalletData().toMutableList()
-		val index = walletData.indexOfFirst {
-			it is WalletDataItem.CertificateWalletData && (it.qrCodeData == certificateHolder.qrCodeData)
-		}
-
-		if (index >= 0) {
-			val item = walletData.removeAt(index) as WalletDataItem.CertificateWalletData
-			val updatedItem = item.copy(pdfData = pdfData,  language = language)
-			walletData.add(index, updatedItem)
-			updateWalletData(walletData)
+		updateCertificateWalletDataItem(certificateHolder) {
+			it.copy(pdfData = pdfData, language = language)
 		}
 	}
 
@@ -194,7 +177,51 @@ class WalletDataSecureStorage private constructor(context: Context) {
 		}
 	}
 
+	fun wasCertificateRecentlyRenewed(certificateHolder: CertificateHolder): Boolean {
+		val lastQrCodeRenewal = getWalletData()
+			.filterIsInstance<WalletDataItem.CertificateWalletData>()
+			.singleOrNull { it.qrCodeData == certificateHolder.qrCodeData }
+			?.lastQrCodeRenewal
+
+		return lastQrCodeRenewal?.let {
+			System.currentTimeMillis() - it <= TimeUnit.DAYS.toMillis(14)
+		} ?: false
+	}
+
+	fun updateCertificateQrCodeData(certificateHolder: CertificateHolder, newQrCodeData: String) {
+		updateCertificateWalletDataItem(certificateHolder) {
+			it.copy(qrCodeData = newQrCodeData, lastQrCodeRenewal = System.currentTimeMillis())
+		}
+	}
+
+	fun dismissQrCodeRenewalBanner(certificateHolder: CertificateHolder) {
+		updateCertificateWalletDataItem(certificateHolder) { it.copy(lastQrCodeRenewal = null) }
+	}
+
 	private fun List<WalletDataItem>.containsCertificate(qrCodeData: String) =
 		this.filterIsInstance<WalletDataItem.CertificateWalletData>().find { it.qrCodeData == qrCodeData } != null
+
+	/**
+	 * Helper function to update the [WalletDataItem] of a specific [CertificateHolder] in the preferences by applying the [transformation] lambda to it
+	 * @return True if the item was updated, false if it was not found
+	 */
+	private fun updateCertificateWalletDataItem(
+		certificateHolder: CertificateHolder,
+		transformation: (WalletDataItem.CertificateWalletData) -> WalletDataItem.CertificateWalletData
+	): Boolean {
+		val walletData = getWalletData().toMutableList()
+		val index = walletData.indexOfFirst {
+			it is WalletDataItem.CertificateWalletData && (it.qrCodeData == certificateHolder.qrCodeData)
+		}
+
+		if (index >= 0) {
+			val item = walletData.removeAt(index) as WalletDataItem.CertificateWalletData
+			val updatedItem = transformation.invoke(item)
+			walletData.add(index, updatedItem)
+			updateWalletData(walletData)
+			return true
+		}
+		return false
+	}
 
 }
