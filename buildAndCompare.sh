@@ -87,7 +87,7 @@ buildCommand=$(cat <<EOF
 git clone https://github.com/admin-ch/CovidCertificate-App-Android.git;
 cd CovidCertificate-App-Android;
 git checkout $tree;
-./gradlew $appName:assembleProdRelease -PkeystorePassword='$keystorePassword' -PkeyAlias=$keyAlias -PkeyAliasPassword='$keyAliasPassword' -PkeystoreFile=/home/covidcertificate/external/$keystoreFile -PbuildTimestamp=$buildTimestamp -Pbranch=$buildBranch $overrideMinSdk;
+gradle $appName:assembleProdRelease -PkeystorePassword='$keystorePassword' -PkeyAlias=$keyAlias -PkeyAliasPassword='$keyAliasPassword' -PkeystoreFile=/home/covidcertificate/external/$keystoreFile -PbuildTimestamp=$buildTimestamp -Pbranch=$buildBranch $overrideMinSdk;
 cp $appName/build/outputs/apk/prod/release/$appName-prod-release.apk /home/covidcertificate/external/$appName-built.apk
 EOF
 )
