@@ -49,6 +49,7 @@ class MainActivity : BaseActivity() {
 		if (activityResult.resultCode == RESULT_OK) {
 			secureStorage.setOnboardingCompleted(true)
 			secureStorage.setCertificateLightUpdateboardingCompleted(true)
+			secureStorage.setAgbUpdateboardingCompleted(true)
 
 			// Load the config and trust list here because onStart ist called before the activity result and the onboarding
 			// completion flags are therefore not yet set to true
@@ -69,14 +70,18 @@ class MainActivity : BaseActivity() {
 		if (savedInstanceState == null) {
 			val onboardingCompleted = secureStorage.getOnboardingCompleted()
 			val certificateLightUpdateboardingCompleted = secureStorage.getCertificateLightUpdateboardingCompleted()
-			if (!onboardingCompleted) {
+			val agbUpdateboardingCompleted = secureStorage.getAgbUpdateboardingCompleted()
+
+			val onboardingType = when {
+				!onboardingCompleted -> OnboardingActivity.OnboardingType.FRESH_INSTALL
+				!certificateLightUpdateboardingCompleted -> OnboardingActivity.OnboardingType.CERTIFICATE_LIGHT
+				!agbUpdateboardingCompleted -> OnboardingActivity.OnboardingType.AGB_UPDATE
+				else -> null
+			}
+
+			if (onboardingType != null) {
 				val intent = Intent(this, OnboardingActivity::class.java).apply {
-					putExtra(OnboardingActivity.EXTRA_ONBOARDING_TYPE, OnboardingActivity.OnboardingType.FRESH_INSTALL.name)
-				}
-				onboardingLauncher.launch(intent)
-			} else if (!certificateLightUpdateboardingCompleted) {
-				val intent = Intent(this, OnboardingActivity::class.java).apply {
-					putExtra(OnboardingActivity.EXTRA_ONBOARDING_TYPE, OnboardingActivity.OnboardingType.CERTIFICATE_LIGHT.name)
+					putExtra(OnboardingActivity.EXTRA_ONBOARDING_TYPE, onboardingType.name)
 				}
 				onboardingLauncher.launch(intent)
 			} else {

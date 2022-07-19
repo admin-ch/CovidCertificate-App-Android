@@ -1,13 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-   ~ Copyright (c) 2021 Ubique Innovation AG <https://www.ubique.ch>
-   ~
-   ~ This Source Code Form is subject to the terms of the Mozilla Public
-   ~ License, v. 2.0. If a copy of the MPL was not distributed with this
-   ~ file, You can obtain one at https://mozilla.org/MPL/2.0/.
-   ~
-   ~ SPDX-License-Identifier: MPL-2.0
-   -->
 <resources>
 
     <!-- Android App Name -->
@@ -44,7 +35,7 @@
     <string name="ok_button">"OK"</string>
     <string name="camera_permission_dialog_text">"L'application doit accéder à l'appareil photo pour pouvoir scanner le code QR."</string>
     <string name="camera_permission_dialog_action">"Donner accès à l'appareil photo"</string>
-    <string name="verifier_qr_scanner_scan_qr_text">"Scanner le code QR
+    <string name="verifier_qr_scanner_scan_qr_text">"Scanner le code QR 
 pour vérifier"</string>
 
     <!-- Titel auf dem Verifikations-Screen -->
@@ -72,7 +63,7 @@ pour vérifier"</string>
     <string name="verifier_verify_success_title">"Vérification réussie"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
-    <string name="verifier_verify_success_info">"Valable uniquement avec
+    <string name="verifier_verify_success_info">"Valable uniquement avec 
 une pièce d'identité"</string>
 
     <!-- Prüfung loading text -->
@@ -133,7 +124,7 @@ une pièce d'identité"</string>
     <string name="wallet_onboarding_privacy_header">"Protection des données"</string>
 
     <!-- Titel im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_title">"Vos données restent
+    <string name="wallet_onboarding_privacy_title">"Vos données restent 
 dans l'application"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
@@ -162,7 +153,7 @@ dans l'application"</string>
     <string name="wallet_scanner_howitworks_header">"Comment ça fonctionne"</string>
 
     <!-- Titel im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_title">"Ajouter des
+    <string name="wallet_scanner_howitworks_title">"Ajouter des 
 certificats COVID"</string>
 
     <!-- Textblock 1 im "So funktionierts" Screen beim Scannen -->
@@ -258,7 +249,7 @@ Dans tous les cas, vous devez aussi présenter une pièce d'identité sur demand
     <string name="wallet_faq_works_answer_6">"Vous pouvez réenregistrer facilement votre certificat COVID sur votre appareil mobile. Il vous suffit de télécharger de nouveau l'app, puis de scanner le code QR figurant sur le certificat original, établi sur papier ou au format PDF."</string>
 
     <!-- Titel 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_title">"Comment l'app
+    <string name="wallet_faq_works_title">"Comment l'app 
 fonctionne-t-elle?"</string>
 
     <!-- Text 2 im FAQ-Screen der Wallet App -->
@@ -280,7 +271,7 @@ fonctionne-t-elle?"</string>
     <string name="force_update_button">"Mettre à jour"</string>
 
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
-    <string name="wallet_certificate_valid_from">"Valable en Suisse à partir du :
+    <string name="wallet_certificate_valid_from">"Valable en Suisse à partir du : 
 {DATE}"</string>
 
     <!-- Wallet: Zertifikat Detail Geimpft -->
@@ -351,7 +342,7 @@ Le certificat n'est pas encore valable."</string>
     <string name="verifier_retry_flightmode_error">"L'appareil est en mode avion."</string>
 
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
-    <string name="wallet_error_valid_from">"Valable en Suisse à partir du :
+    <string name="wallet_error_valid_from">"Valable en Suisse à partir du : 
 {DATE}"</string>
 
     <!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
@@ -376,7 +367,7 @@ Le certificat n'est pas encore valable."</string>
     <string name="wallet_certificate_already_exists">"Le certificat est déjà enregistré dans l'application."</string>
 
     <!-- Titel Gültigkeit im Zertifikatsdetail -->
-    <string name="wallet_certificate_validity">"Validité en
+    <string name="wallet_certificate_validity">"Validité en 
 Suisse"</string>
 
     <!-- "Bis" Label im Zertifikats-Detail -->
@@ -438,7 +429,7 @@ Suisse"</string>
     <string name="wallet_certificate_identifier">"UVCI"</string>
 
     <!-- Wallet: Zertifikat erstellt am {DATE} -->
-    <string name="wallet_certificate_date">"Certificat établi le
+    <string name="wallet_certificate_date">"Certificat établi le 
 {DATE}"</string>
 
     <!-- Wallet: Detail Art des Impfstoffs -->
@@ -504,9 +495,9 @@ Si vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la 
     <string name="wallet_onboarding_external_privacy_button">"Déclaration de confidentialité &amp; condition d'utilisation"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_note">"Le présent certificat n'est pas un document de voyage.
+    <string name="wallet_certificate_detail_note">"Le présent certificat n'est pas un document de voyage. 
 &lt;br /&gt;&lt;br /&gt;
-Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d'évoluer, notamment en ce qui concerne de nouveaux variants préoccupants du virus.
+Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d'évoluer, notamment en ce qui concerne de nouveaux variants préoccupants du virus. 
 &lt;br /&gt;&lt;br /&gt;
 Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles de validité en vigueur à votre lieu de destination. La validité de votre certificat à l’étranger dépend des règles du pays de destination et peut différer de la validité en Suisse indiquée dans l’application « COVID Certificate ». Vous trouverez de plus amples informations sur cette page dédiée aux &lt;a href=\"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/que-dois-je-faire-si-mon-certificat-covid-est-sur-le-point-dexpirer-en-suisse\"&gt;questions fréquentes&lt;/a&gt;."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-app.html"</string>
@@ -641,14 +632,14 @@ En cas de test PCR positif, vous recevrez un certificat COVID pour personnes gu�
     <string name="wallet_transfer_code_old_code">"Code expiré"</string>
 
     <!-- Wallet: Transfer Code State Zuletzt aktualisiert {DATE} -->
-    <string name="wallet_transfer_code_state_updated">"Dernière mise à jour le
+    <string name="wallet_transfer_code_state_updated">"Dernière mise à jour le 
 {DATE}"</string>
 
     <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
     <string name="wallet_transfer_code_state_no_certificate">"Ce code transfert ne permet plus de recevoir de certificat."</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig -->
-    <string name="wallet_error_invalid_format">"Format de certificat
+    <string name="wallet_error_invalid_format">"Format de certificat 
 non valide"</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig Fett -->
@@ -928,7 +919,7 @@ et avec un document d’identité"</string>
     <string name="verifier_update_boarding_certificate_light_text">"Cette mise à jour vous permet aussi de vérifier les copies de certificat sans données sur la santé. Les conditions d’utilisation et la déclaration sur la protection des données ont été actualisées et seront considérées comme acceptées si vous continuez à utiliser l’application."</string>
 
     <!-- Verifier: Die Gültigkeit eines Certificate Light ist abgelaufen -->
-    <string name="verifier_certificate_light_error_expired">"Durée de validité du
+    <string name="verifier_certificate_light_error_expired">"Durée de validité du 
 certificat expirée"</string>
 
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
@@ -1438,7 +1429,7 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_certificate_ausnahme_issued_country">"Attestation médicale délivrée en"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
-    <string name="wallet_certificate_detail_note_ausnahme">"Le présent certificat n'est pas un document de voyage.
+    <string name="wallet_certificate_detail_note_ausnahme">"Le présent certificat n'est pas un document de voyage. 
 &lt;br /&gt;&lt;br /&gt;
 Ce certificat n'a qu'une durée de validité limitée. L'application «COVID Certificate» vous permet en tout temps de vérifier la durée de validité actuellement déterminante en Suisse."</string>
 
@@ -1732,4 +1723,6 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="wallet_certificate_renewal_rate_limit_error_text">"Le code QR a été renouvelé trop souvent. Le renouvellement est temporairement bloqué."</string>
     <string name="wallet_certificate_renewal_faq_link_text">"Vers la FAQ"</string>
     <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/pourquoi-dois-je-renouveler-le-code-qr-de-mon-certificat-covid-alors-que-selon-les"</string>
+    <string name="terms_and_conditions_update_boarding_title">"Mise à jour"</string>
+    <string name="terms_and_conditions_update_boarding_text">"Les conditions d’utilisation et la politique de confidentialité de l’application ont été ponctuellement mises à jour et adaptées aux bases légales."</string>
 </resources>

@@ -11,7 +11,6 @@
 package ch.admin.bag.covidcertificate.verifier.updateboarding
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.verifier.R
@@ -19,18 +18,31 @@ import ch.admin.bag.covidcertificate.verifier.databinding.ActivityUpdateboarding
 
 class UpdateboardingActivity : BaseActivity() {
 
+	companion object {
+		const val EXTRA_ONBOARDING_TYPE = "EXTRA_ONBOARDING_TYPE"
+	}
+
 	private lateinit var binding: ActivityUpdateboardingBinding
 	private lateinit var pagerAdapter: FragmentStateAdapter
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
 
+		val onboardingType = intent.getStringExtra(EXTRA_ONBOARDING_TYPE)?.let { OnboardingType.valueOf(it) }
+		if (onboardingType == null) {
+			finish()
+			return
+		}
+
 		binding = ActivityUpdateboardingBinding.inflate(layoutInflater)
 		setContentView(binding.root)
 
 		binding.viewPager.isUserInputEnabled = false
 
-		pagerAdapter = UpdateboardingPagerAdapter(this)
+		pagerAdapter = when (onboardingType) {
+			OnboardingType.CERTIFICATE_LIGHT -> UpdateboardingCertificateLightPagerAdapter(this)
+			OnboardingType.AGB_UPDATE -> UpdateboardingAgbPagerAdapter(this)
+		}
 		binding.viewPager.adapter = pagerAdapter
 	}
 
@@ -43,5 +55,9 @@ class UpdateboardingActivity : BaseActivity() {
 			finish()
 			overridePendingTransition(R.anim.fragment_open_enter, R.anim.fragment_open_exit)
 		}
+	}
+
+	enum class OnboardingType {
+		CERTIFICATE_LIGHT, AGB_UPDATE
 	}
 }

@@ -11,12 +11,12 @@
 package ch.admin.bag.covidcertificate.wallet.onboarding
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.ActivityOnboardingBinding
-import ch.admin.bag.covidcertificate.wallet.onboarding.update.UpdateboardingCertificateLightSlidePageAdapter
+import ch.admin.bag.covidcertificate.wallet.onboarding.agbupdate.UpdateboardingAgbSlidePageAdapter
+import ch.admin.bag.covidcertificate.wallet.onboarding.certificatelight.UpdateboardingCertificateLightSlidePageAdapter
 
 class OnboardingActivity : BaseActivity() {
 
@@ -41,6 +41,7 @@ class OnboardingActivity : BaseActivity() {
 		pagerAdapter = when (onboardingType) {
 			OnboardingType.FRESH_INSTALL -> OnboardingSlidePageAdapter(this)
 			OnboardingType.CERTIFICATE_LIGHT -> UpdateboardingCertificateLightSlidePageAdapter(this)
+			OnboardingType.AGB_UPDATE -> UpdateboardingAgbSlidePageAdapter(this)
 		}
 		binding.viewPager.adapter = pagerAdapter
 	}
@@ -57,7 +58,7 @@ class OnboardingActivity : BaseActivity() {
 	}
 
 	enum class OnboardingType {
-		FRESH_INSTALL, CERTIFICATE_LIGHT
+		FRESH_INSTALL, CERTIFICATE_LIGHT, AGB_UPDATE
 	}
 
 }

@@ -8,13 +8,13 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.wallet.onboarding.update
+package ch.admin.bag.covidcertificate.verifier.updateboarding
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class UpdateboardingCertificateLightSlidePageAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+class UpdateboardingCertificateLightPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 	override fun createFragment(position: Int): Fragment {
 		when (position) {
 			0 -> return UpdateboardingCertificateLightFragment.newInstance()

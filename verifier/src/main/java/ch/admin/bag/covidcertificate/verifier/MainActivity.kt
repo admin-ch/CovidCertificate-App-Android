@@ -41,6 +41,7 @@ class MainActivity : BaseActivity() {
 		registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult: ActivityResult ->
 			if (activityResult.resultCode == RESULT_OK) {
 				secureStorage.setCertificateLightUpdateboardingCompleted(true)
+				secureStorage.setAgbUpdateboardingCompleted(true)
 
 				// Load the config and trust list here because onStart ist called before the activity result and the onboarding
 				// completion flags are therefore not yet set to true
@@ -64,8 +65,18 @@ class MainActivity : BaseActivity() {
 
 		if (savedInstanceState == null) {
 			val certificateLightUpdateboardingCompleted = secureStorage.getCertificateLightUpdateboardingCompleted()
-			if (!certificateLightUpdateboardingCompleted) {
-				val intent = Intent(this, UpdateboardingActivity::class.java)
+			val agbUpdateboardingCompleted = secureStorage.getAgbUpdateboardingCompleted()
+
+			val onboardingType = when {
+				!certificateLightUpdateboardingCompleted -> UpdateboardingActivity.OnboardingType.CERTIFICATE_LIGHT
+				!agbUpdateboardingCompleted -> UpdateboardingActivity.OnboardingType.AGB_UPDATE
+				else -> null
+			}
+
+			if (onboardingType != null) {
+				val intent = Intent(this, UpdateboardingActivity::class.java).apply {
+					putExtra(UpdateboardingActivity.EXTRA_ONBOARDING_TYPE, onboardingType.name)
+				}
 				updateboardingLauncher.launch(intent)
 			} else {
 				showHomeFragment()

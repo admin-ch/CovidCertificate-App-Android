@@ -8,16 +8,16 @@
  * SPDX-License-Identifier: MPL-2.0
  */
 
-package ch.admin.bag.covidcertificate.verifier.updateboarding
+package ch.admin.bag.covidcertificate.wallet.onboarding.agbupdate
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class UpdateboardingPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
+class UpdateboardingAgbSlidePageAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapter(fragmentActivity) {
 	override fun createFragment(position: Int): Fragment {
 		when (position) {
-			0 -> return UpdateboardingCertificateLightFragment.newInstance()
+			0 -> return UpdateboardingAgbFragment.newInstance()
 		}
 		throw IllegalArgumentException("There is no fragment for view pager position $position")
 	}
