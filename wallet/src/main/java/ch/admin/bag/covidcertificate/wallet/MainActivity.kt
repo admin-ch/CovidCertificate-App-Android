@@ -13,13 +13,13 @@ package ch.admin.bag.covidcertificate.wallet
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts.StartActivityForResult
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.onboarding.BaseOnboardingActivity
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
 import ch.admin.bag.covidcertificate.sdk.android.repository.TimeShiftDetectionConfig
@@ -45,8 +45,8 @@ class MainActivity : BaseActivity() {
 	private var forceUpdateDialog: AlertDialog? = null
 	private var isIntentConsumed = false
 
-	private val onboardingLauncher = registerForActivityResult(StartActivityForResult()) { activityResult: ActivityResult ->
-		if (activityResult.resultCode == RESULT_OK) {
+	private val onboardingLauncher = registerForActivityResult(StartActivityForResult()) { result ->
+		if (result.resultCode == RESULT_OK) {
 			secureStorage.setOnboardingCompleted(true)
 			secureStorage.setCertificateLightUpdateboardingCompleted(true)
 			secureStorage.setAgbUpdateboardingCompleted(true)
@@ -81,7 +81,7 @@ class MainActivity : BaseActivity() {
 
 			if (onboardingType != null) {
 				val intent = Intent(this, OnboardingActivity::class.java).apply {
-					putExtra(OnboardingActivity.EXTRA_ONBOARDING_TYPE, onboardingType.name)
+					putExtra(BaseOnboardingActivity.EXTRA_ONBOARDING_TYPE, onboardingType.name)
 				}
 				onboardingLauncher.launch(intent)
 			} else {

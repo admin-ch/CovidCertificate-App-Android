@@ -13,13 +13,13 @@ package ch.admin.bag.covidcertificate.verifier
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import ch.admin.bag.covidcertificate.common.BaseActivity
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.onboarding.BaseOnboardingActivity
 import ch.admin.bag.covidcertificate.common.util.UrlUtil
 import ch.admin.bag.covidcertificate.common.util.setSecureFlagToBlockScreenshots
 import ch.admin.bag.covidcertificate.sdk.android.CovidCertificateSdk
@@ -37,20 +37,19 @@ class MainActivity : BaseActivity() {
 
 	private var forceUpdateDialog: AlertDialog? = null
 
-	private val updateboardingLauncher =
-		registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { activityResult: ActivityResult ->
-			if (activityResult.resultCode == RESULT_OK) {
-				secureStorage.setCertificateLightUpdateboardingCompleted(true)
-				secureStorage.setAgbUpdateboardingCompleted(true)
+	private val updateboardingLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+		if (result.resultCode == RESULT_OK) {
+			secureStorage.setCertificateLightUpdateboardingCompleted(true)
+			secureStorage.setAgbUpdateboardingCompleted(true)
 
-				// Load the config and trust list here because onStart ist called before the activity result and the onboarding
-				// completion flags are therefore not yet set to true
-				loadConfigAndTrustList()
-				showHomeFragment()
-			} else {
-				finish()
-			}
+			// Load the config and trust list here because onStart ist called before the activity result and the onboarding
+			// completion flags are therefore not yet set to true
+			loadConfigAndTrustList()
+			showHomeFragment()
+		} else {
+			finish()
 		}
+	}
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -75,7 +74,7 @@ class MainActivity : BaseActivity() {
 
 			if (onboardingType != null) {
 				val intent = Intent(this, UpdateboardingActivity::class.java).apply {
-					putExtra(UpdateboardingActivity.EXTRA_ONBOARDING_TYPE, onboardingType.name)
+					putExtra(BaseOnboardingActivity.EXTRA_ONBOARDING_TYPE, onboardingType.name)
 				}
 				updateboardingLauncher.launch(intent)
 			} else {
