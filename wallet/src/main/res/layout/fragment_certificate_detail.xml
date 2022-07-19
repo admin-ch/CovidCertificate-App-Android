@@ -510,42 +510,8 @@
 							android:text="@string/delete_button" />
 
 					</FrameLayout>
-
 				</LinearLayout>
-
 			</androidx.core.widget.NestedScrollView>
-
-			<!--
-			For some reason, android:backgroundTint sets the button background color, app:backgroundTint sets the border color.
-			Also, app:backgroundTint seems to only works in the XML layout and not in the style.
-			 -->
-			<com.google.android.material.floatingactionbutton.FloatingActionButton
-				android:id="@+id/certificate_detail_button_reverify_info"
-				style="@style/CovidCertificate.FloatingActionButton.WhiteBlue"
-				android:layout_width="@dimen/floating_button_height"
-				android:layout_height="@dimen/floating_button_height"
-				android:layout_gravity="bottom|end"
-				android:layout_marginEnd="@dimen/spacing_very_large"
-				android:layout_marginBottom="@dimen/spacing_very_large"
-				android:visibility="gone"
-				app:backgroundTint="@color/blue"
-				app:borderWidth="2dp"
-				app:srcCompat="@drawable/ic_info"
-				tools:layout_marginEnd="90dp"
-				tools:visibility="visible" />
-
-			<com.google.android.material.floatingactionbutton.FloatingActionButton
-				android:id="@+id/certificate_detail_button_reverify"
-				style="@style/CovidCertificate.FloatingActionButton"
-				android:layout_width="@dimen/floating_button_height"
-				android:layout_height="@dimen/floating_button_height"
-				android:layout_gravity="bottom|end"
-				android:layout_marginEnd="@dimen/spacing_very_large"
-				android:layout_marginBottom="@dimen/spacing_very_large"
-				app:srcCompat="@drawable/ic_load" />
-
 		</FrameLayout>
-
 	</LinearLayout>
-
 </ch.admin.bag.covidcertificate.common.views.WindowInsetsLayout>
