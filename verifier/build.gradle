@@ -40,8 +40,8 @@ android {
 		applicationId "ch.admin.bag.covidcertificate.verifier"
 		minSdkVersion readPropertyWithDefault('minSdkVersion', '23').toInteger()
 		targetSdkVersion 31
-		versionCode 4_03_00_00
-		versionName "4.3.0"
+		versionCode 4_04_00_00
+		versionName "4.4.0"
 
 		// Stops the Gradle plugin’s automatic rasterization of vectors
 		generatedDensities = []
