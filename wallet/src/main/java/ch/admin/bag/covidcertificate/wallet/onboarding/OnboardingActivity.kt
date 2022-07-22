@@ -10,54 +10,60 @@
 
 package ch.admin.bag.covidcertificate.wallet.onboarding
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import ch.admin.bag.covidcertificate.common.BaseActivity
+import ch.admin.bag.covidcertificate.common.onboarding.BaseOnboardingActivity
+import ch.admin.bag.covidcertificate.common.onboarding.SimpleOnboardingPagerAdapter
 import ch.admin.bag.covidcertificate.wallet.R
-import ch.admin.bag.covidcertificate.wallet.databinding.ActivityOnboardingBinding
-import ch.admin.bag.covidcertificate.wallet.onboarding.update.UpdateboardingCertificateLightSlidePageAdapter
+import ch.admin.bag.covidcertificate.wallet.onboarding.agbupdate.UpdateboardingAgbFragment
+import ch.admin.bag.covidcertificate.wallet.onboarding.certificatelight.UpdateboardingCertificateLightFragment
 
-class OnboardingActivity : BaseActivity() {
+class OnboardingActivity : BaseOnboardingActivity() {
 
-	companion object {
-		const val EXTRA_ONBOARDING_TYPE = "EXTRA_ONBOARDING_TYPE"
-	}
-
-	private lateinit var binding: ActivityOnboardingBinding
-	private lateinit var pagerAdapter: FragmentStateAdapter
-
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-
+	override fun getPagerAdapter(): FragmentStateAdapter {
 		val onboardingType =
 			OnboardingType.valueOf(intent.getStringExtra(EXTRA_ONBOARDING_TYPE) ?: OnboardingType.FRESH_INSTALL.name)
 
-		binding = ActivityOnboardingBinding.inflate(layoutInflater)
-		setContentView(binding.root)
-
-		binding.viewPager.isUserInputEnabled = false
-
-		pagerAdapter = when (onboardingType) {
-			OnboardingType.FRESH_INSTALL -> OnboardingSlidePageAdapter(this)
-			OnboardingType.CERTIFICATE_LIGHT -> UpdateboardingCertificateLightSlidePageAdapter(this)
-		}
-		binding.viewPager.adapter = pagerAdapter
-	}
-
-	fun continueToNextPage() {
-		val currentItem: Int = binding.viewPager.currentItem
-		if (currentItem < pagerAdapter.itemCount - 1) {
-			binding.viewPager.setCurrentItem(currentItem + 1, true)
-		} else {
-			setResult(RESULT_OK)
-			finish()
-			overridePendingTransition(R.anim.fragment_open_enter, R.anim.fragment_open_exit)
+		return when (onboardingType) {
+			OnboardingType.FRESH_INSTALL -> SimpleOnboardingPagerAdapter(
+				this,
+				SimpleOnboardingPagerAdapter.FragmentProvider { OnboardingIntroFragment.newInstance() },
+				SimpleOnboardingPagerAdapter.FragmentProvider {
+					OnboardingContentFragment.newInstance(
+						R.string.wallet_onboarding_store_title,
+						R.string.wallet_onboarding_store_header,
+						R.drawable.illu_onboarding_privacy,
+						R.string.wallet_onboarding_store_text1,
+						R.drawable.ic_privacy,
+						R.string.wallet_onboarding_store_text2,
+						R.drawable.ic_validation
+					)
+				},
+				SimpleOnboardingPagerAdapter.FragmentProvider {
+					OnboardingContentFragment.newInstance(
+						R.string.wallet_onboarding_show_title,
+						R.string.wallet_onboarding_show_header,
+						R.drawable.illu_onboarding_covid_certificate,
+						R.string.wallet_onboarding_show_text1,
+						R.drawable.ic_qr_certificate,
+						R.string.wallet_onboarding_show_text2,
+						R.drawable.ic_check_mark
+					)
+				},
+				SimpleOnboardingPagerAdapter.FragmentProvider { OnboardingAgbFragment.newInstance() },
+			)
+			OnboardingType.CERTIFICATE_LIGHT -> SimpleOnboardingPagerAdapter(
+				this,
+				SimpleOnboardingPagerAdapter.FragmentProvider { UpdateboardingCertificateLightFragment.newInstance() }
+			)
+			OnboardingType.AGB_UPDATE -> SimpleOnboardingPagerAdapter(
+				this,
+				SimpleOnboardingPagerAdapter.FragmentProvider { UpdateboardingAgbFragment.newInstance() }
+			)
 		}
 	}
 
 	enum class OnboardingType {
-		FRESH_INSTALL, CERTIFICATE_LIGHT
+		FRESH_INSTALL, CERTIFICATE_LIGHT, AGB_UPDATE
 	}
 
 }

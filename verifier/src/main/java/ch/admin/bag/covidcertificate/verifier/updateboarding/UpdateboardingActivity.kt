@@ -10,38 +10,29 @@
 
 package ch.admin.bag.covidcertificate.verifier.updateboarding
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import ch.admin.bag.covidcertificate.common.BaseActivity
-import ch.admin.bag.covidcertificate.verifier.R
-import ch.admin.bag.covidcertificate.verifier.databinding.ActivityUpdateboardingBinding
+import ch.admin.bag.covidcertificate.common.onboarding.BaseOnboardingActivity
+import ch.admin.bag.covidcertificate.common.onboarding.SimpleOnboardingPagerAdapter
 
-class UpdateboardingActivity : BaseActivity() {
+class UpdateboardingActivity : BaseOnboardingActivity() {
 
-	private lateinit var binding: ActivityUpdateboardingBinding
-	private lateinit var pagerAdapter: FragmentStateAdapter
+	override fun getPagerAdapter(): FragmentStateAdapter? {
+		val onboardingType = intent.getStringExtra(EXTRA_ONBOARDING_TYPE)?.let { OnboardingType.valueOf(it) }
 
-	override fun onCreate(savedInstanceState: Bundle?) {
-		super.onCreate(savedInstanceState)
-
-		binding = ActivityUpdateboardingBinding.inflate(layoutInflater)
-		setContentView(binding.root)
-
-		binding.viewPager.isUserInputEnabled = false
-
-		pagerAdapter = UpdateboardingPagerAdapter(this)
-		binding.viewPager.adapter = pagerAdapter
+		return when (onboardingType) {
+			OnboardingType.CERTIFICATE_LIGHT -> SimpleOnboardingPagerAdapter(
+				this,
+				SimpleOnboardingPagerAdapter.FragmentProvider { UpdateboardingCertificateLightFragment.newInstance() }
+			)
+			OnboardingType.AGB_UPDATE -> SimpleOnboardingPagerAdapter(
+				this,
+				SimpleOnboardingPagerAdapter.FragmentProvider { UpdateboardingAgbFragment.newInstance() }
+			)
+			else -> null
+		}
 	}
 
-	fun continueToNextPage() {
-		val currentItem: Int = binding.viewPager.currentItem
-		if (currentItem < pagerAdapter.itemCount - 1) {
-			binding.viewPager.setCurrentItem(currentItem + 1, true)
-		} else {
-			setResult(RESULT_OK)
-			finish()
-			overridePendingTransition(R.anim.fragment_open_enter, R.anim.fragment_open_exit)
-		}
+	enum class OnboardingType {
+		CERTIFICATE_LIGHT, AGB_UPDATE
 	}
 }
