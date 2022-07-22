@@ -1,6 +1,47 @@
 {
   "forceUpdate": false,
-  "infoBox": null,
+  "infoBox": {
+    "de": {
+      "title": "Zertifikat sichern!",
+      "msg": "Wenn Sie die App löschen, Ihr Smartphone wechseln oder verlieren, gehen auch Ihre Covid-Zertifikate verloren.\nBewahren Sie Ihre Zertifikate daher auch ausserhalb der App auf, indem Sie diese als PDF exportieren.",
+      "url": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate",
+      "urlTitle": "Mehr erfahren",
+      "isDismissible": true,
+      "infoId": "-444673106"
+    },
+    "en": {
+      "title": "Back up your certificate!",
+      "msg": "If you uninstall the app or change or lose your smartphone, you will also lose your COVID certificates.\nThis means you should also keep a copy of your certificates outside the app by exporting them as PDFs.",
+      "url": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/i-only-have-my-covid-certificate-electronically-covid-certificate-app-how-can-i",
+      "urlTitle": "Find out more",
+      "isDismissible": true,
+      "infoId": "1245387664"
+    },
+    "fr": {
+      "title": "Sauvegardez vos certificats!",
+      "msg": "Si vous supprimez l’application, changez de smartphone ou le perdez, vos certificats COVID seront également perdus.\nConservez donc vos certificats en dehors de l’application en les exportant au format PDF.",
+      "url": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/mon-certificat-covid-nest-disponible-quau-format-electronique-dans-lapplication",
+      "urlTitle": "Plus d’informations",
+      "isDismissible": true,
+      "infoId": "-633827500"
+    },
+    "it": {
+      "title": "Mettete al sicuro il vostro certificato!",
+      "msg": "Se cancellate l’app, cambiate o smarrite il vostro smartphone, anche i vostri certificati COVID andranno persi. \nConservate quindi i vostri certificati anche al di fuori dell’app esportandoli in formato PDF.",
+      "url": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/ho-il-certificato-covid-esclusivamente-formato-elettronico-nellapp-covid",
+      "urlTitle": "Per maggiori informazioni",
+      "isDismissible": true,
+      "infoId": "979033498"
+    },
+    "rm": {
+      "title": "Tegnair en salv il certificat!",
+      "msg": "Sche Vus stizzais l'app, midais u perdais Voss smartphone, van er a perder Voss certificats COVID. \nTegnai perquai en salv Voss certificats er ordaifer l'app cun exportar quels sco PDF.",
+      "url": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate",
+      "urlTitle": "Dapli infurmaziuns",
+      "isDismissible": true,
+      "infoId": "-1183801636"
+    }
+  },
   "questions": {
     "de": {
       "faqTitle": "Was sind Covid-Zertifikate?",
@@ -59,7 +100,7 @@
         },
         {
           "title": "Was passiert, wenn ich mein Covid-Zertifikat verliere?",
-          "text": "Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier deshalb sorgfältig auf. Bei Verlust müssen Sie das Covid-Zertifikat erneut bei der ausgebenden Stelle anfragen.",
+          "text": "Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier und/oder als PDF deshalb sorgfältig auf. Bei Verlust und Bedarf nach einem Ersatz kann eine Gebühr erhoben werden.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -132,7 +173,7 @@
         },
         {
           "title": "What happens if I lose my COVID certificate?",
-          "text": "Your COVID certificate is not stored in any central system. It is solely in your possession. Therefore, keep your paper COVID certificate in a safe place. If you lose the COVID certificate, you will have to request it again from the issuing office",
+          "text": "Your COVID-19 certificate is not stored in any central system. It is solely in your possession. Therefore, keep your paper and/or PDF COVID-19 certificate in a safe place. If you lose your certificate and need to replace it, a fee may be charged.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -205,7 +246,7 @@
         },
         {
           "title": "Et si je perds mon certificat COVID?",
-          "text": "Votre certificat COVID n'est pas stocké dans un système central. Vous en êtes le seul détenteur. Veuillez donc conserver soigneusement le document papier. En cas de perte, vous devrez demander au service émetteur de vous délivrer un nouveau certificat.",
+          "text": "Votre certificat COVID n'est pas stocké dans un système central; il est exclusivement en votre possession. Par conséquent, nous vous recommandons de le conserver sur papier ou au format PDF dans un endroit sûr. En cas de perte ou de remplacement, le paiement d'un émolument peut être exigé.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -278,7 +319,7 @@
         },
         {
           "title": "Cosa succede se perdo il mio certificato COVID su carta?",
-          "text": "Il Suo certificato COVID non è salvato su un sistema centrale. Lei ne ha il possesso esclusivo. Conservi quindi con cura il certificato COVID su carta. In caso di smarrimento, dovrà richiedere un nuovo certificato presso l'ufficio che lo ha emesso.",
+          "text": "Il Suo certificato COVID non è salvato su un sistema centrale, Lei ne ha il possesso esclusivo. Conservi quindi con cura il certificato COVID su carta e/o in formato PDF. In caso di smarrimento e sostituzione potrà essere riscosso un emolumento.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -351,7 +392,7 @@
         },
         {
           "title": "Tge capita, sche jau perd mes certificat COVID?",
-          "text": "Voss certificat COVID na vegn betg arcunà en in sistem central. El è unicamain en Voss agen possess. Tegnai perquai en salv cun quità il certificat COVIDsin palpiri. En cas da perdita, stuais Vus dumandar in nov certificat COVID tar il post che l'ha emess.",
+          "text": "Voss certificat COVID na vegn betg arcunà en in sistem central. El è unicamain en Voss agen possess. Tegnai perquai en salv cun quità il certificat COVIDsin palpiri e/u sco PDF. En cas ch’il certificat va a perder e sto vegnir remplazzà, po vegnir incassada ina taxa.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -434,7 +475,7 @@
         },
         {
           "title": "Ich habe das Covid-Zertifikat ausschliesslich elektronisch in der App. Wie komme ich zum Zertifikat als PDF oder auf Papier?",
-          "text": "In der «COVID Certificate»-App finden Sie in der Detailansicht des elektronische Covid-Zertifikats die Funktion «Exportieren». Damit können Sie ein PDF erstellen, dieses speichern und ausdrucken.",
+          "text": "In der «COVID Certificate»-App finden Sie in der Detailansicht des elektronischen Covid-Zertifikats die Funktion «Exportieren». Damit können Sie ein PDF erstellen, dieses speichern und ausdrucken.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -1238,10 +1279,6 @@
     "de": [
       {
         "title": "Jetzt impfen lassen!",
-        "text": "Mit der Covid-19-Impfung können Sie auf das wiederholte Testen verzichten."
-      },
-      {
-        "title": "Jetzt impfen lassen!",
         "text": "Mit der Covid-19-Impfung können Sie unbeschwert in die meisten Länder reisen."
       },
       {
@@ -1267,17 +1304,9 @@
       {
         "title": "Jetzt impfen lassen!",
         "text": "Mit der Covid-19-Impfung können Sie dazu beitragen, das Gesundheitswesen zu entlasten."
-      },
-      {
-        "title": "Jetzt impfen lassen!",
-        "text": "Mit der Covid-19-Impfung können Sie dazu beitragen, die Freiheiten des Alltags zurückzubringen."
       }
     ],
     "en": [
-      {
-        "title": "Get vaccinated today!",
-        "text": "Being vaccinated against COVID-19 means no more repeat testing. "
-      },
       {
         "title": "Get vaccinated today!",
         "text": "Being vaccinated against COVID-19 means hassle-free travel to most countries. "
@@ -1305,17 +1334,9 @@
       {
         "title": "Get vaccinated today!",
         "text": "Being vaccinated against COVID-19 means helping to relieve the pressure on the health system."
-      },
-      {
-        "title": "Get vaccinated today!",
-        "text": "Being vaccinated against COVID-19 means helping us get our everyday freedoms back."
       }
     ],
     "fr": [
-      {
-        "title": "Faites-vous vacciner sans plus attendre !",
-        "text": "La vaccination contre le COVID-19 vous permet d’éviter les tests répétés."
-      },
       {
         "title": "Faites-vous vacciner sans plus attendre !",
         "text": "La vaccination contre le COVID-19 vous permet de voyager sereinement dans la plupart des pays."
@@ -1343,17 +1364,9 @@
       {
         "title": "Faites-vous vacciner sans plus attendre !",
         "text": "Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à décharger le système de santé."
-      },
-      {
-        "title": "Faites-vous vacciner sans plus attendre !",
-        "text": "Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à rétablir les libertés de la vie quotidienne."
       }
     ],
     "it": [
-      {
-        "title": "Fatti vaccinare ora!",
-        "text": "Con la vaccinazione anti-COVID-19 puoi rinunciare ai test ripetuti."
-      },
       {
         "title": "Fatti vaccinare ora!",
         "text": "Con la vaccinazione anti-COVID-19 puoi viaggiare senza preoccupazioni nella maggior parte dei Paesi."
@@ -1381,17 +1394,9 @@
       {
         "title": "Fatti vaccinare ora!",
         "text": "Con la vaccinazione anti-COVID-19 puoi contribuire a sgravare il sistema sanitario."
-      },
-      {
-        "title": "Fatti vaccinare ora!",
-        "text": "Con la vaccinazione anti-COVID-19 puoi contribuire a fare in modo che tornino le libertà della vita quotidiana."
       }
     ],
     "rm": [
-      {
-        "title": "Sa laschar vaccinar ussa!",
-        "text": "Cun la vaccinaziun cunter COVID-19 pudais Vus desister da far tests repetitivs."
-      },
       {
         "title": "Sa laschar vaccinar ussa!",
         "text": "Cun la vaccinaziun cunter COVID-19 pudais Vus viagiar libramain en la gronda part dals pajais."
@@ -1419,12 +1424,134 @@
       {
         "title": "Sa laschar vaccinar ussa!",
         "text": "Cun la vaccinaziun cunter COVID-19 pudais Vus gidar a distgargiar il sistem da sanadad."
-      },
-      {
-        "title": "Sa laschar vaccinar ussa!",
-        "text": "Cun la vaccinaziun cunter COVID-19 pudais Vus gidar a purtar enavos las libertads dal mintgadi."
       }
     ]
+  },
+  "foreignRulesHints": {
+    "de": [
+      {
+        "iconIos": "ic-info-outline",
+        "iconAndroid": "ic_info_outline",
+        "text": "Für die Aktualität und Vollständigkeit der gegebenen Informationen übernimmt der Bund keine Haftung."
+      },
+      {
+        "iconIos": "ic-timelapse",
+        "iconAndroid": "ic_timelapse",
+        "text": "Die Einreiseregeln können sich ändern. Prüfen Sie daher die Gültigkeit kurz vor der Abreise und informieren Sie sich zusätzlich online über die aktuellen Einreiseregeln des Ziellandes."
+      },
+      {
+        "iconIos": "ic-travel",
+        "iconAndroid": "ic_travel",
+        "text": "Die oben genannten Angaben beziehen sich nur auf die Einreiseregeln des Ziellandes. Für allfällige zertifikatspflichtige Bereiche innerhalb des Landes können andere Regeln gelten."
+      },
+      {
+        "iconIos": "ic-question-outline",
+        "iconAndroid": "ic_question_outline",
+        "text": "Land nicht gefunden? Nicht alle Länder akzeptieren Covid-Zertifikate oder es wurden keine Einreiseregeln verfügbar gemacht."
+      }
+    ],
+    "en": [
+      {
+        "iconIos": "ic-info-outline",
+        "iconAndroid": "ic_info_outline",
+        "text": "The federal government assumes no liability for the up-to-dateness or completeness of the information provided."
+      },
+      {
+        "iconIos": "ic-timelapse",
+        "iconAndroid": "ic_timelapse",
+        "text": "Entry rules can change. So check the validity shortly before you depart, and go online to make sure of the latest entry rules for your destination country."
+      },
+      {
+        "iconIos": "ic-travel",
+        "iconAndroid": "ic_travel",
+        "text": "The above information relates only to the rules for entering your destination country. Different rules may apply to settings where a certificate is required within the country."
+      },
+      {
+        "iconIos": "ic-question-outline",
+        "iconAndroid": "ic_question_outline",
+        "text": "Couldn’t find the country you were looking for? Not all countries accept COVID certificates; it might also be that no entry rules have been made available."
+      }
+    ],
+    "fr": [
+      {
+        "iconIos": "ic-info-outline",
+        "iconAndroid": "ic_info_outline",
+        "text": "La Confédération décline toute responsabilité en ce qui concerne l’actualité et l’exhaustivité des informations fournies."
+      },
+      {
+        "iconIos": "ic-timelapse",
+        "iconAndroid": "ic_timelapse",
+        "text": "Les dispositions d’entrée peuvent changer. Vérifiez donc la validité de votre certificat avant votre départ et renseignez-vous également en ligne sur les dispositions d’entrée en vigueur dans votre pays de destination."
+      },
+      {
+        "iconIos": "ic-travel",
+        "iconAndroid": "ic_travel",
+        "text": "Les informations ci-dessus ne concernent que les dispositions d’entrée du pays de destination. Dans le pays, d’autres règles peuvent s’appliquer aux éventuels domaines soumis à l’obligation de présenter un certificat."
+      },
+      {
+        "iconIos": "ic-question-outline",
+        "iconAndroid": "ic_question_outline",
+        "text": "Vous n’avez pas trouvé votre pays de destination ? Il se peut que certains pays ne reconnaissent pas le certificat COVID ou qu’aucune disposition d’entrée ne soit disponible."
+      }
+    ],
+    "it": [
+      {
+        "iconIos": "ic-info-outline",
+        "iconAndroid": "ic_info_outline",
+        "text": "La Confederazione non si assume la responsabilità per l’attualità e la completezza delle informazioni fornite."
+      },
+      {
+        "iconIos": "ic-timelapse",
+        "iconAndroid": "ic_timelapse",
+        "text": "Le disposizioni d’entrata possono cambiare. Verificate poco prima della partenza se il vostro certificato è valido e informatevi ulteriormente online sulle disposizioni d’entrata attuali del Paese di destinazione."
+      },
+      {
+        "iconIos": "ic-travel",
+        "iconAndroid": "ic_travel",
+        "text": "Le informazioni sopra indicate si riferiscono solo alle disposizioni d’entrata del Paese di destinazione. Per eventuali settori soggetti all’obbligo di certificato all’interno del Paese possono vigere altre regole."
+      },
+      {
+        "iconIos": "ic-question-outline",
+        "iconAndroid": "ic_question_outline",
+        "text": "Non avete trovato un Paese? Non tutti i Paesi accettano i certificati COVID o rendono disponibili le regole d’entrata."
+      }
+    ],
+    "rm": [
+      {
+        "iconIos": "ic-info-outline",
+        "iconAndroid": "ic_info_outline",
+        "text": "Per l'actualitad e la cumplettadad da las infurmaziuns na surpiglia la Confederaziun nagina responsabladad."
+      },
+      {
+        "iconIos": "ic-timelapse",
+        "iconAndroid": "ic_timelapse",
+        "text": "Las reglas d'entrada pon sa midar. Verifitgai perquai la valaivladad curt avant che Vus partis ed As infurmai ultra da quai online davart las reglas d'entrada actualas dal pajais da destinaziun."
+      },
+      {
+        "iconIos": "ic-travel",
+        "iconAndroid": "ic_travel",
+        "text": "Las infurmaziuns qua survart sa refereschan mo a las reglas d'entrada dal pajais da destinaziun. Per secturs che pretendan eventualmain in certificat entaifer il pajais pon valair autras reglas."
+      },
+      {
+        "iconIos": "ic-question-outline",
+        "iconAndroid": "ic_question_outline",
+        "text": "N'avais Vus betg chattà Voss pajais da destinaziun? Betg tut ils pajais n'acceptan certificats COVID, u i n'èn vegnidas messas a disposiziun naginas infurmaziuns davart eventualas reglas d'entrada."
+      }
+    ]
+  },
+  "foreignRulesLinkText": {
+    "de": "reopen.europa.eu",
+    "en": "reopen.europa.eu",
+    "fr": "reopen.europa.eu",
+    "it": "reopen.europa.eu",
+    "rm": "reopen.europa.eu"
+  },
+  "foreignRulesLinkUrl": {
+    "de": "https://reopen.europa.eu/",
+    "en": "https://reopen.europa.eu/",
+    "fr": "https://reopen.europa.eu/",
+    "it": "https://reopen.europa.eu/",
+    "rm": "https://reopen.europa.eu/"
   },
   "vaccinationBookingCantons": {
     "de": [
@@ -1516,7 +1643,7 @@
         "name": "Obwalden",
         "iconAndroid": "icon_ow",
         "iconIos": "icon-ow",
-        "linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+        "linkUrl": "https://www.ow.ch/dienstleistungen/7129"
       },
       {
         "name": "St. Gallen",
@@ -1674,7 +1801,7 @@
         "name": "Obwalden",
         "iconAndroid": "icon_ow",
         "iconIos": "icon-ow",
-        "linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+        "linkUrl": "https://www.ow.ch/dienstleistungen/7129"
       },
       {
         "name": "St. Gallen",
@@ -1832,7 +1959,7 @@
         "name": "Obwald",
         "iconAndroid": "icon_ow",
         "iconIos": "icon-ow",
-        "linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+        "linkUrl": "https://www.ow.ch/dienstleistungen/7129"
       },
       {
         "name": "Saint-Gall",
@@ -1990,7 +2117,7 @@
         "name": "Obvaldo",
         "iconAndroid": "icon_ow",
         "iconIos": "icon-ow",
-        "linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+        "linkUrl": "https://www.ow.ch/dienstleistungen/7129"
       },
       {
         "name": "San Gallo",
@@ -2148,7 +2275,7 @@
         "name": "Sursilvania",
         "iconAndroid": "icon_ow",
         "iconIos": "icon-ow",
-        "linkUrl": "https://www.ow.ch/de/verwaltung/dienstleistungen/?dienst_id=5962#Impfung"
+        "linkUrl": "https://www.ow.ch/dienstleistungen/7129"
       },
       {
         "name": "Son Gagl",
@@ -2542,17 +2669,17 @@
       },
       "invalidInThreeWeeks": {
         "homescreenHexColor": "#ffde27",
-        "homescreenTitle": "Verkürzte Gültigkeitsdauer",
+        "homescreenTitle": "Bald abgelaufen",
         "detailHexColor": "#ffde27",
-        "detailTitle": "Verkürzte Gültigkeitsdauer",
-        "detailText": "Dieses Zertifikat wird bald ablaufen.",
-        "detailMoreInfo": "Mehr erfahren",
+        "detailTitle": "Info",
+        "detailText": "Dieses Zertifikat läuft bald ab.",
+        "detailMoreInfo": "Mehr erfahren?",
         "popupTitle": "Info",
-        "popupText1": "Per 31. Jan. 2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:",
-        "popupBoldText": "Dieses Covid-Zertifikat ist ab dem 31. Jan. 2022 nur noch wenige Tage gültig.",
-        "popupText2": "Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum, welches ab dem 31.1.2022 mit der reduzierten Gültigkeitsdauer von 270 Tagen berechnet wird.",
-        "popupLinkText": "Mehr erfahren",
-        "popupLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/warum-wird-die-gueltigkeitsdauer-der-zertifikate-fuer-eine-impfung-oder-eine"
+        "popupText1": null,
+        "popupBoldText": "Dieses Covid-Zertifikat ist nur noch wenige Tage gültig. Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum.",
+        "popupText2": null,
+        "popupLinkText": "Und nun?",
+        "popupLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/was-soll-ich-tun-wenn-mein-covid-zertifikat-nach-schweizer-gueltigkeitsregeln-bald"
       }
     },
     "en": {
@@ -2572,17 +2699,17 @@
       },
       "invalidInThreeWeeks": {
         "homescreenHexColor": "#ffde27",
-        "homescreenTitle": "Shortened period of validity",
+        "homescreenTitle": "Imminent expiry",
         "detailHexColor": "#ffde27",
-        "detailTitle": "Shortened period of validity",
+        "detailTitle": "Info",
         "detailText": "This certificate will soon expire.",
-        "detailMoreInfo": "More information",
+        "detailMoreInfo": "More information?",
         "popupTitle": "Info",
-        "popupText1": "As of 31 Jan 2022 a shortened period of validity of 270 instead of 365 days applies to COVID vaccination or recovery certificates in Switzerland. This certificate is directly affected by the shortened period of validity:",
-        "popupBoldText": "This COVID certificate will only be valid for a few days after 31 Jan 2022.",
-        "popupText2": "Please note the expiry date shown on your certificate, which from 31 Jan 2022 is calculated based on the shortened period of validity of 270 days.",
-        "popupLinkText": "More information",
-        "popupLinkUrl": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/why-period-validity-certificates-vaccination-or-recovery-being-shortened-365-270"
+        "popupText1": null,
+        "popupBoldText": "This COVID certificate is valid for only a few more days. Please note the expiry date shown on the certificate.",
+        "popupText2": null,
+        "popupLinkText": "And now?",
+        "popupLinkUrl": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/what-should-i-do-if-my-covid-certificate-about-expire-under-swiss-rules-validity"
       }
     },
     "fr": {
@@ -2602,17 +2729,17 @@
       },
       "invalidInThreeWeeks": {
         "homescreenHexColor": "#ffde27",
-        "homescreenTitle": "Durée de validité réduite",
+        "homescreenTitle": "Expiration imminente",
         "detailHexColor": "#ffde27",
-        "detailTitle": "Durée de validité réduite",
+        "detailTitle": "Info",
         "detailText": "Ce certificat expirera bientôt.",
-        "detailMoreInfo": "En savoir plus",
+        "detailMoreInfo": "En savoir plus?",
         "popupTitle": "Info",
-        "popupText1": "À partir du 31 janvier 2022, la durée de validité en Suisse des certificats COVID pour les personnes vaccinées ou guéries est réduite de 365 à 270 jours. Ce certificat est directement concerné:",
-        "popupBoldText": "Ce certificat COVID est valable encore seulement quelques jours à partir du 31 janvier 2022.",
-        "popupText2": "Veuillez noter la date d’expiration indiquée sur le certificat, calculée à partir du 31 janvier 2022 avec la durée de validité réduite de 270 jours.",
-        "popupLinkText": "En savoir plus",
-        "popupLinkUrl": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/pourquoi-la-duree-de-validite-des-certificats-de-vaccination-ou-de-guerison-t-elle"
+        "popupText1": null,
+        "popupBoldText": "Ce certificat COVID expirera dans quelques jours. Nous attirons votre attention sur la date de fin de validité affichée.",
+        "popupText2": null,
+        "popupLinkText": "Et maintenant ?",
+        "popupLinkUrl": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/que-dois-je-faire-si-mon-certificat-covid-est-sur-le-point-dexpirer-en-suisse"
       }
     },
     "it": {
@@ -2632,17 +2759,17 @@
       },
       "invalidInThreeWeeks": {
         "homescreenHexColor": "#ffde27",
-        "homescreenTitle": "Durata di validità abbreviata",
+        "homescreenTitle": "Scadenza imminente",
         "detailHexColor": "#ffde27",
-        "detailTitle": "Durata di validità abbreviata",
+        "detailTitle": "Info",
         "detailText": "Questo certificato sta per scadere.",
         "detailMoreInfo": "Per saperne di più",
         "popupTitle": "Info",
-        "popupText1": "Dal 31 gennaio 2022 in Svizzera vige una durata di validità del certificato COVID per persone vaccinate o guarite di 270 anziché di 365 giorni. Questo certificato è interessato direttamente dall’abbreviazione della durata di validità:",
-        "popupBoldText": "Questo certificato COVID scade pochi giorni dopo il 31 gennaio 2022.",
-        "popupText2": "Verifichi la data di scadenza indicata sul certificato, che dal 31 gennaio 2022 è calcolata su una durata di validità ridotta a 270 giorni.",
-        "popupLinkText": "Per saperne di più",
-        "popupLinkUrl": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/perche-la-durata-di-validita-dei-certificati-di-vaccinazione-o-di-guarigione-e"
+        "popupText1": null,
+        "popupBoldText": "Questo certificato COVID è valido ancora per pochi giorni. Si prega di tenere conto della data di scadenza indicata sullo stesso.",
+        "popupText2": null,
+        "popupLinkText": "E ora?",
+        "popupLinkUrl": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/cosa-devo-fare-se-il-mio-certificato-covid-sta-scadere-secondo-le-regole-di"
       }
     },
     "rm": {
@@ -2662,18 +2789,388 @@
       },
       "invalidInThreeWeeks": {
         "homescreenHexColor": "#ffde27",
-        "homescreenTitle": "Valaivladad pli curta",
+        "homescreenTitle": "Scada bainbaud",
         "detailHexColor": "#ffde27",
-        "detailTitle": "Valaivladad pli curta",
+        "detailTitle": "Info",
         "detailText": "Quest certificat scada bainbaud.",
-        "detailMoreInfo": "Dapli infurmaziuns",
+        "detailMoreInfo": "Dapli infurmaziuns?",
         "popupTitle": "Info",
-        "popupText1": "A partir dals 31-01-2022 valan en Svizra duradas da valaivladad reducidas da 270 dis empè da 365 dis per certificats COVID per persunas vaccinadas u guaridas. Quest certificat è pertutgà directamain da la valaivladad pli curta:",
-        "popupBoldText": "Quest certificat COVID è valaivel mo pli per intgins dis a partir dals 31-01-2022.",
-        "popupText2": "Resguardai per plaschair la data da scadenza inditgada sin il certificat. A partir dals 31-01-2022 vegn questa data calculada sin basa da la valaivladad pli curta da 270 dis.",
-        "popupLinkText": "Dapli infurmaziuns",
-        "popupLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/warum-wird-die-gueltigkeitsdauer-der-zertifikate-fuer-eine-impfung-oder-eine"
+        "popupText1": null,
+        "popupBoldText": "Quest certificat COVID è valaivel mo pli intgins dis. Resguardai per plaschair la data da scadenza inditgà sin il certificat.",
+        "popupText2": null,
+        "popupLinkText": "Ed uss?",
+        "popupLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/was-soll-ich-tun-wenn-mein-covid-zertifikat-nach-schweizer-gueltigkeitsregeln-bald"
       }
     }
-  }
+  },
+  "showRatConversionForm": true,
+  "ratConversionFormUrl": "https://covidcertificate-form-a.admin.ch/immunityrequest",
+  "certRenewalInfo": {
+    "de": {
+      "INFO": {
+        "heading": "Was bedeutet das?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "Die QR-Codes der Covid-Zertifikate sind technisch nur begrenzt gültig."
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "Damit dieses Zertifikat (z. B. auf Reisen) weiterhin geprüft werden kann, muss der QR-Code erneuert werden."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "Die Erneuerung können Sie hier in der App selbst durchführen (Internetverbindung nötig). Die Daten des aktuellen Zertifikats werden dazu verschlüsselt von der App an das System des Bundes zur Ausstellung von Covid-Zertifikaten übermittelt. Danach wird ein neuer QR-Code zurück an die App gesendet. Anschliessend werden die Daten gelöscht."
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Wieso Sie den QR-Code auch dann erneuern sollten, wenn Ihr Impf- oder Genesungszertifikat nach den Schweizer Gültigkeitsregeln bald abläuft oder bereits abgelaufen ist, lesen Sie in dieser FAQ."
+          }
+        ],
+        "faqLinkText": "Zur FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"
+      },
+      "EXPIRED": {
+        "heading": "Was bedeutet das?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "Die QR-Codes der Covid-Zertifikate sind technisch nur begrenzt gültig."
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "Damit dieses Zertifikat (z. B. auf Reisen) weiterhin geprüft werden kann, muss der QR-Code erneuert werden."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "Die Erneuerung können Sie hier in der App selbst durchführen (Internetverbindung nötig). Die Daten des aktuellen Zertifikats werden dazu verschlüsselt von der App an das System des Bundes zur Ausstellung von Covid-Zertifikaten übermittelt. Danach wird ein neuer QR-Code zurück an die App gesendet. Anschliessend werden die Daten gelöscht."
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Erneuern Sie den QR-Code auch dann, wenn die Gültigkeit in der Schweiz bald abläuft oder bereits abgelaufen ist."
+          }
+        ],
+        "faqLinkText": "Zur FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"
+      },
+      "RENEWED": {
+        "heading": "Wichtig!",
+        "infos": [
+          {
+            "iconAndroid": "ic_pdf",
+            "iconIos": "ic-pdf",
+            "text": "Ersetzen Sie auch zuvor ausgedruckte oder gespeicherte Zertifikate durch diese erneuerte Version."
+          },
+          {
+            "iconAndroid": "ic_travel",
+            "iconIos": "ic-travel",
+            "text": "Wie lange ein Covid-Zertifikat gültig ist wird in jedem Land gemäss den aktuell geltenden Regeln berechnet. Die Erneuerung des QR-Codes hat darauf keinen Einfluss."
+          }
+        ],
+        "faqLinkText": "Zur FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"
+      }
+    },
+    "en": {
+      "INFO": {
+        "heading": "What does this mean?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "The QR codes used for COVID certificates have limited technical validity"
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "To enable this certificate to continue to be checked (e.g. when you’re travelling), you must renew the QR code."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "You can do this directly here in the app (provided you have an internet connection). The data in your current certificate will be encrypted and sent to the federal government’s COVID certificate issuing system for a new QR code to be issued. This QR code is then sent back to the app. Once the new QR code has been issued and the data sent, the data on the government system are deleted."
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Check out this FAQ to find out why you should also renew the QR code if your vaccination or recovery certificate is about to expire or has already expired under the Swiss validity rules."
+          }
+        ],
+        "faqLinkText": "To the FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/why-should-i-renew-qr-code-my-covid-certificate-even-though-certificate-about"
+      },
+      "EXPIRED": {
+        "heading": "What does this mean?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "The QR codes used for COVID certificates have limited technical validity."
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "To enable this certificate to continue to be checked (e.g. when you’re travelling), you must renew the QR code."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "You can do this directly here in the app (provided you have an internet connection). The data in your current certificate will be encrypted and sent to the federal government’s COVID certificate issuing system for a new QR code to be issued. This QR code is then sent back to the app. Once the new QR code has been issued and the data sent, the data on the government system are deleted."
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Check out this FAQ to find out why you should also renew the QR code if your vaccination or recovery certificate is about to expire or has already expired under the Swiss validity rules."
+          }
+        ],
+        "faqLinkText": "To the FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/why-should-i-renew-qr-code-my-covid-certificate-even-though-certificate-about"
+      },
+      "RENEWED": {
+        "heading": "Important!",
+        "infos": [
+          {
+            "iconAndroid": "ic_pdf",
+            "iconIos": "ic-pdf",
+            "text": "Also replace certificates you have previously printed out or stored with this renewed version."
+          },
+          {
+            "iconAndroid": "ic_travel",
+            "iconIos": "ic-travel",
+            "text": "The length of time for which a vaccination is recognised in a particular country is not specified in the certificate. Instead, it is calculated in accordance with the specific rules of the country each time the certificate is checked. Renewing the QR code merely ensures that the QR code can be used from a technical point of view."
+          }
+        ],
+        "faqLinkText": "To the FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/why-should-i-renew-qr-code-my-covid-certificate-even-though-certificate-about"
+      }
+    },
+    "fr": {
+      "INFO": {
+        "heading": "Qu’est-ce que cela signifie ?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "Les codes QR des certificats COVID ont une validité technique limitée"
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "Pour qu’il soit toujours possible de contrôler ce certificat (par exemple en voyage), le code QR doit être renouvelé."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "Le renouvellement nécessaire peut être effectué ici directement dans l’application (connexion Internet requise). Les données du certificat actuel sont transmises sous forme cryptée depuis l’application vers le système de la Confédération établissant les certificats COVID. Ensuite, un nouveau code QR est ainsi établi, qui est renvoyé à l’application de stockage. Une fois établies et transmises. Enfin, les données sont effacées du système"
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Cette FAQ vous explique pourquoi vous devriez renouveler le code QR même si votre certificat de vaccination ou de guérison est sur le point d’expirer ou a déjà expiré selon les règles de validité suisses."
+          }
+        ],
+        "faqLinkText": "Vers la FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/pourquoi-dois-je-renouveler-le-code-qr-de-mon-certificat-covid-alors-que-selon-les"
+      },
+      "EXPIRED": {
+        "heading": "Qu’est-ce que cela signifie ?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "Les codes QR des certificats COVID ont une validité technique limitée."
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "Pour qu’il soit toujours possible de contrôler ce certificat (par exemple en voyage), le code QR doit être renouvelé."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "Le renouvellement nécessaire peut être effectué ici directement dans l’application (connexion Internet requise). Les données du certificat actuel sont transmises sous forme cryptée depuis l’application vers le système de la Confédération établissant les certificats COVID. Ensuite, un nouveau code QR est ainsi établi, qui est renvoyé à l’application de stockage. Une fois établies et transmises. Enfin, les données sont effacées du système"
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Cette FAQ vous explique pourquoi vous devriez renouveler le code QR même si votre certificat de vaccination ou de guérison est sur le point d’expirer ou a déjà expiré selon les règles de validité suisses."
+          }
+        ],
+        "faqLinkText": "Vers la FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/pourquoi-dois-je-renouveler-le-code-qr-de-mon-certificat-covid-alors-que-selon-les"
+      },
+      "RENEWED": {
+        "heading": "À noter:",
+        "infos": [
+          {
+            "iconAndroid": "ic_pdf",
+            "iconIos": "ic-pdf",
+            "text": "Remplacez également les certificats précédemment imprimés ou enregistrés par cette nouvelle version"
+          },
+          {
+            "iconAndroid": "ic_travel",
+            "iconIos": "ic-travel",
+            "text": "La durée pendant laquelle une vaccination est reconnue dans un pays n’est pas définie dans le certificat, mais calculée au moment du contrôle selon les règles du pays examinateur. Le renouvellement du code QR garantit uniquement que celui-ci puisse être utilisé d’un point de vue technique. "
+          }
+        ],
+        "faqLinkText": "Vers la FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/pourquoi-dois-je-renouveler-le-code-qr-de-mon-certificat-covid-alors-que-selon-les"
+      }
+    },
+    "it": {
+      "INFO": {
+        "heading": "Cosa significa?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "I codici QR dei certificati COVID hanno una validità tecnica limitata"
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "Affinché questo certificato possa continuare a essere verificato (p. es. durante i viaggi), è necessario rinnovare il codice QR."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "Puoi eseguire autonomamente il rinnovo richiesto qui nell’app (collegamento Internet necessario). A tale scopo i dati del certificato attuale saranno codificati e trasmessi dall’app al sistema della Confederazione per l’emissione di certificati COVID, il quale a sua volta creerà un nuovo codice QR che in seguito sarà rinviato all’app per la conservazione. Infine i dati saranno cancellati a emissione e trasmissione avvenute."
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "In queste FAQ trovi i motivi per cui è necessario rinnovare il codice QR anche se il tuo certificato di vaccinazione o di guarigione dovesse giungere presto a scadenza o essere già scaduto secondo le regole di validità svizzere."
+          }
+        ],
+        "faqLinkText": "Alle FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/perche-devo-rinnovare-il-codice-qr-del-mio-certificato-covid-anche-se-secondo-le"
+      },
+      "EXPIRED": {
+        "heading": "Cosa significa?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "I codici QR dei certificati COVID hanno una validità tecnica limitata."
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "Affinché questo certificato possa continuare a essere verificato (p. es. durante i viaggi), è necessario rinnovare il codice QR."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "Puoi eseguire autonomamente il rinnovo richiesto qui nell’app (collegamento Internet necessario). A tale scopo i dati del certificato attuale saranno codificati e trasmessi dall’app al sistema della Confederazione per l’emissione di certificati COVID, il quale a sua volta creerà un nuovo codice QR che in seguito sarà rinviato all’app per la conservazione. Infine i dati saranno cancellati a emissione e trasmissione avvenute."
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "In queste FAQ trovi i motivi per cui è necessario rinnovare il codice QR anche se il tuo certificato di vaccinazione o di guarigione dovesse giungere presto a scadenza o essere già scaduto secondo le regole di validità svizzere."
+          }
+        ],
+        "faqLinkText": "Alle FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/perche-devo-rinnovare-il-codice-qr-del-mio-certificato-covid-anche-se-secondo-le"
+      },
+      "RENEWED": {
+        "heading": "Importante!",
+        "infos": [
+          {
+            "iconAndroid": "ic_pdf",
+            "iconIos": "ic-pdf",
+            "text": "Sostituisci anche i certificati stampati o salvati in precedenza con la presente versione aggiornata."
+          },
+          {
+            "iconAndroid": "ic_travel",
+            "iconIos": "ic-travel",
+            "text": "La durata del riconoscimento di una vaccinazione in un Paese non è specificata nel certificato. Questo viene calcolato durante la verifica in base alle regole del Paese esaminatore. Il rinnovo del codice QR garantisce solo che tale codice possa continuare a essere tecnicamente utilizzato."
+          }
+        ],
+        "faqLinkText": "Alle FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/perche-devo-rinnovare-il-codice-qr-del-mio-certificato-covid-anche-se-secondo-le"
+      }
+    },
+    "rm": {
+      "INFO": {
+        "heading": "Tge vul quai dir?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "Tecnicamain valan ils codes QR dals certificats COVID mo per ina tscherta durada."
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "Per che quest certificat possia vegnir verifitgà er vinavant (p.ex. sin viadis) sto il code QR vegnir renovà."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "La renovaziun pudais Vus far sezza u sez qua en l'app (ina colliaziun d'internet è necessaria). Las datas dal certificat actual vegnan transmessas da l'app en moda codada al sistem federal per l'emissiun da certificats COVID. In nov code QR vegn alura tramess enavos a l'app. Silsuenter vegnan las datas stizzadas là."
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Pertge che Vus duessas renovar il code QR er, sche Voss certificat da vaccinaziun u da guariziun scada bainbaud u è gia scadì tenor las reglas da valaivladad en Svizra, pudais Vus leger en questa FAQ."
+          }
+        ],
+        "faqLinkText": "A la FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"
+      },
+      "EXPIRED": {
+        "heading": "Tge vul quai dir?",
+        "infos": [
+          {
+            "iconAndroid": "ic_timeerror",
+            "iconIos": "ic-timeerror",
+            "text": "Tecnicamain valan ils codes QR dals certificats COVID mo per ina tscherta durada."
+          },
+          {
+            "iconAndroid": "ic_qr_certificate",
+            "iconIos": "ic-qr-certificate",
+            "text": "Per che quest certificat possia vegnir verifitgà er vinavant (p.ex. sin viadis) sto il code QR vegnir renovà."
+          },
+          {
+            "iconAndroid": "ic_online",
+            "iconIos": "ic-online",
+            "text": "La renovaziun pudais Vus far sezza u sez qua en l'app (ina colliaziun d'internet è necessaria). Las datas dal certificat actual vegnan transmessas da l'app en moda codada al sistem federal per l'emissiun da certificats COVID. In nov code QR vegn alura tramess enavos a l'app. Silsuenter vegnan las datas stizzadas là."
+          },
+          {
+            "iconAndroid": "ic_expire_i",
+            "iconIos": "ic-expire-i",
+            "text": "Pertge che Vus duessas renovar il code QR er, sche Voss certificat da vaccinaziun u da guariziun scada bainbaud u è gia scadì tenor las reglas da valaivladad en Svizra, pudais Vus leger en questa FAQ."
+          }
+        ],
+        "faqLinkText": "A la FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"
+      },
+      "RENEWED": {
+        "heading": "Impurtant!",
+        "infos": [
+          {
+            "iconAndroid": "ic_pdf",
+            "iconIos": "ic-pdf",
+            "text": "Remplazzai per plaschair tras questa nova versiun er ils certificats che Vus avais arcunà u stampà pli baud."
+          },
+          {
+            "iconAndroid": "ic_travel",
+            "iconIos": "ic-travel",
+            "text": "Quant ditg ch'ina vaccinaziun vegn renconuschida en in pajais, n'è betg fixà en il certificat. Quai vegn calculà a chaschun da la verificaziun tenor las reglas dal pajais che fa la verificaziun. La renovaziun dal code QR garantescha unicamain l'utilisaziun tecnica dal code QR"
+          }
+        ],
+        "faqLinkText": "A la FAQ",
+        "faqLinkUrl": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"
+      }
+    }
+  },
+  "foreignRulesCheckEnabled": true
 }

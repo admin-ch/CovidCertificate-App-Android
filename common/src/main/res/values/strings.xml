@@ -44,7 +44,7 @@
     <string name="ok_button">"OK"</string>
     <string name="camera_permission_dialog_text">"The app requires access to the camera to be able to scan the QR code."</string>
     <string name="camera_permission_dialog_action">"Allow access to camera"</string>
-    <string name="verifier_qr_scanner_scan_qr_text">"Scan QR code 
+    <string name="verifier_qr_scanner_scan_qr_text">"Scan QR code
 to verify"</string>
 
     <!-- Titel auf dem Verifikations-Screen -->
@@ -72,7 +72,7 @@ to verify"</string>
     <string name="verifier_verify_success_title">"Verification successful"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
-    <string name="verifier_verify_success_info">"Only valid in combination with 
+    <string name="verifier_verify_success_info">"Only valid in combination with
 an identity document"</string>
 
     <!-- Prüfung loading text -->
@@ -133,7 +133,7 @@ an identity document"</string>
     <string name="wallet_onboarding_privacy_header">"Data protection"</string>
 
     <!-- Titel im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_title">"Your data remains 
+    <string name="wallet_onboarding_privacy_title">"Your data remains
 in the app"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
@@ -357,15 +357,14 @@ The certificate is not yet valid"</string>
     <string name="wallet_error_national_rules">"Does not meet the validity criteria for Switzerland"</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
-    <string name="wallet_error_expired">"Gültigkeitsdauer für die
-Schweiz überschritten"</string>
+    <string name="wallet_error_expired">"Period of validity for Switzerland exceeded"</string>
 
     <!-- Wallet: Zertifikat wurde widerrufen -->
-    <string name="wallet_error_revocation">"Certificate has been 
+    <string name="wallet_error_revocation">"Certificate has been
 revoked"</string>
 
     <!-- Wallet: Zertifikat mit ungültiger Signatur -->
-    <string name="wallet_error_invalid_signature">"Certificate with 
+    <string name="wallet_error_invalid_signature">"Certificate with
 invalid signature"</string>
 
     <!-- Wallet: ungültiger Signatur (gleiche Worte wie wallet_error_invalid_signature) -->
@@ -378,7 +377,7 @@ invalid signature"</string>
     <string name="wallet_certificate_already_exists">"This certificate is already saved in the app"</string>
 
     <!-- Titel Gültigkeit im Zertifikatsdetail -->
-    <string name="wallet_certificate_validity">"Validity in 
+    <string name="wallet_certificate_validity">"Validity in
 Switzerland"</string>
 
     <!-- "Bis" Label im Zertifikats-Detail -->
@@ -440,7 +439,7 @@ Switzerland"</string>
     <string name="wallet_certificate_identifier">"UVCI"</string>
 
     <!-- Wallet: Zertifikat erstellt am {DATE} -->
-    <string name="wallet_certificate_date">"Certificate generated on 
+    <string name="wallet_certificate_date">"Certificate generated on
 {DATE}"</string>
 
     <!-- Wallet: Detail Art des Impfstoffs -->
@@ -506,9 +505,9 @@ If the answer to all three questions is affirmative, the COVID certificate is sh
     <string name="wallet_onboarding_external_privacy_button">"Privacy policy &amp; Terms of use"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_note">"This certificate is not a travel document. 
+    <string name="wallet_certificate_detail_note">"This certificate is not a travel document.
 &lt;br /&gt;&lt;br /&gt;
-The scientific evidence on COVID-19 vaccination, testing and recovery continues to evolve, including with regard to new virus variants of concern. 
+The scientific evidence on COVID-19 vaccination, testing and recovery continues to evolve, including with regard to new virus variants of concern.
 &lt;br /&gt;&lt;br /&gt;
 Please check the restrictions and rules on validity that apply at your destination before you travel. When you’re abroad, the validity of your certificate is calculated on the basis of the rules in the destination country, which may differ from the validity periods in Switzerland as stated in the COVID Certificate app. You’ll find more on this in &lt;a href=\"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/what-should-i-do-if-my-covid-certificate-about-expire-under-swiss-rules-validity\"&gt;the FAQ&lt;/a&gt;."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/en/home/documentation/covid-certificate-app.html"</string>
@@ -643,7 +642,7 @@ In case of a positive PCR test, you will receive a COVID certificate for cured p
     <string name="wallet_transfer_code_old_code">"Code expired"</string>
 
     <!-- Wallet: Transfer Code State Zuletzt aktualisiert {DATE} -->
-    <string name="wallet_transfer_code_state_updated">"Last updated 
+    <string name="wallet_transfer_code_state_updated">"Last updated
 {DATE}"</string>
 
     <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
@@ -773,7 +772,7 @@ However, in order to show whether your certificate meets Switzerland’s validit
     <string name="verifier_faq_works_linktext_2_1">"Further information"</string>
     <string name="verifier_faq_works_linkurl_2_1">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"</string>
     <string name="verifier_faq_works_question_7">"Is it possible to verify the certificates offline?"</string>
-    <string name="verifier_faq_works_answer_7">"In principle, COVID certificates can also be verified without an Internet connection. For this purpose, regularly updated checklists are downloaded from a central server. These locally stored checklists must not be older than 48 hours. 
+    <string name="verifier_faq_works_answer_7">"In principle, COVID certificates can also be verified without an Internet connection. For this purpose, regularly updated checklists are downloaded from a central server. These locally stored checklists must not be older than 48 hours.
 
 In order to update the checklists, the app must be open and connected to the Internet. Updating occurs immediately and automatically."</string>
 
@@ -930,7 +929,7 @@ and in combination with an identity document"</string>
     <string name="verifier_update_boarding_certificate_light_text">"This update allows you to check certificate copies without health-related data in the app. The privacy policy and terms of use have been updated accordingly. These are deemed to have been accepted if you continue to use the app."</string>
 
     <!-- Verifier: Die Gültigkeit eines Certificate Light ist abgelaufen -->
-    <string name="verifier_certificate_light_error_expired">"Certificate validity 
+    <string name="verifier_certificate_light_error_expired">"Certificate validity
 expired"</string>
 
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
@@ -1695,7 +1694,7 @@ You have the option of requesting an EU-compatible version of this certificate v
     <string name="cert_renewal_info_renewed_text_2">"The length of time for which a vaccination is recognised in a particular country is not specified in the certificate. Instead, it is calculated in accordance with the specific rules of the country each time the certificate is checked. Renewing the QR code merely ensures that the QR code can be used from a technical point of view."</string>
 
     <!-- Wallet: Zertifikat QR Code läuft ab am {DATE} -->
-    <string name="wallet_certificate_qr_code_expiration_date">"QR code expiration date
+    <string name="wallet_certificate_qr_code_expiration_date">"QR code expiration date (technical)
 {DATE}"</string>
 
     <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erneuert werden muss -->
@@ -1709,7 +1708,7 @@ You have the option of requesting an EU-compatible version of this certificate v
 
     <!-- Wallet: Buttontext um den QR Code eines Zertifikats zu erneuern -->
     <string name="wallet_certificate_renew_now_button">"Renew QR code"</string>
-    <string name="wallet_certificate_renewal_qr_code_expiration">"QR code expiration date (technical)"</string>
+    <string name="wallet_certificate_renewal_qr_code_expiration">"QR code expiration date"</string>
     <string name="wallet_certificate_renewal_required_info">"The technical expiration date for this QR code has elapsed (or will elapse soon)."</string>
     <string name="wallet_certificate_renewal_in_progress_info">"The QR code is being updated"</string>
     <string name="wallet_certificate_renewal_successful_info">"The QR code has been successfully renewed"</string>

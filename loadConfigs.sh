@@ -19,7 +19,7 @@ for app in ${apps[@]}; do
     fi
 
     versionName=$(cat "${app}/build.gradle" | sed -n -e 's/^.*versionName\s*"\(.*\)"$/\1/p')
-    url="https://www.${subdomain}.bit.admin.ch/app/${app}/v1/config?appversion=android-${versionName}&buildnr=${timestamp}"
+    url="https://www.${subdomain}.bit.admin.ch/app/${app}/v1/config?osversion=android&appversion=android-${versionName}&buildnr=${timestamp}"
 
     echo "Loading fallback ${environment} config for ${app} from ${url}"
     curl $url | jq > $output

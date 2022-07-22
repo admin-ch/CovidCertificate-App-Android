@@ -71,7 +71,7 @@
     <string name="verifier_verify_success_title">"Verificaziun reussida"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
-    <string name="verifier_verify_success_info">"Valaivel mo cun in 
+    <string name="verifier_verify_success_info">"Valaivel mo cun in
 document da legitimaziun"</string>
 
     <!-- Prüfung loading text -->
@@ -255,7 +255,7 @@ Resguardai per plaschair che Vus stuais en mintga cas preschentar – sin dumond
     <string name="wallet_faq_works_answer_6">"Vus pudais simplamain arcunar anc ina giada il certificat COVID sin Voss telefonin. Chargiai giu danovamain l’app e scannai alura il code QR sin Voss certificat COVID sin palpiri u en furma da PDF."</string>
 
     <!-- Titel 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_title">"Co funcziuna 
+    <string name="wallet_faq_works_title">"Co funcziuna
 l'app?"</string>
 
     <!-- Text 2 im FAQ-Screen der Wallet App -->
@@ -277,7 +277,7 @@ l'app?"</string>
     <string name="force_update_button">"Actualisar"</string>
 
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
-    <string name="wallet_certificate_valid_from">"Valaivel en Svizra a partir dals: 
+    <string name="wallet_certificate_valid_from">"Valaivel en Svizra a partir dals:
 {DATE}"</string>
 
     <!-- Wallet: Zertifikat Detail Geimpft -->
@@ -348,22 +348,21 @@ Il certificat n'è anc betg valaivel."</string>
     <string name="verifier_retry_flightmode_error">"L'apparat è en il modus offline."</string>
 
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
-    <string name="wallet_error_valid_from">"Valaivel en Svizra a partir dals: 
+    <string name="wallet_error_valid_from">"Valaivel en Svizra a partir dals:
 {DATE}"</string>
 
     <!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
     <string name="wallet_error_national_rules">"Na correspunda betg als criteris da valaivladad da la Svizra"</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
-    <string name="wallet_error_expired">"Gültigkeitsdauer für die
-Schweiz überschritten"</string>
+    <string name="wallet_error_expired">"Surpassà la durada da valaivladad en Svizra"</string>
 
     <!-- Wallet: Zertifikat wurde widerrufen -->
-    <string name="wallet_error_revocation">"Il certificat è vegnì 
+    <string name="wallet_error_revocation">"Il certificat è vegnì
 revocà"</string>
 
     <!-- Wallet: Zertifikat mit ungültiger Signatur -->
-    <string name="wallet_error_invalid_signature">"Certificat cun 
+    <string name="wallet_error_invalid_signature">"Certificat cun
 signatura nunvalaivla"</string>
 
     <!-- Wallet: ungültiger Signatur (gleiche Worte wie wallet_error_invalid_signature) -->
@@ -376,7 +375,7 @@ signatura nunvalaivla"</string>
     <string name="wallet_certificate_already_exists">"Quest certificat è gia arcunà en l'app"</string>
 
     <!-- Titel Gültigkeit im Zertifikatsdetail -->
-    <string name="wallet_certificate_validity">"Valaivladad 
+    <string name="wallet_certificate_validity">"Valaivladad
 en Svizra"</string>
 
     <!-- "Bis" Label im Zertifikats-Detail -->
@@ -438,7 +437,7 @@ en Svizra"</string>
     <string name="wallet_certificate_identifier">"UVCI"</string>
 
     <!-- Wallet: Zertifikat erstellt am {DATE} -->
-    <string name="wallet_certificate_date">"Certificat emess ils 
+    <string name="wallet_certificate_date">"Certificat emess ils
 {DATE}"</string>
 
     <!-- Wallet: Detail Art des Impfstoffs -->
@@ -649,7 +648,7 @@ En cas d'in test da PCR positiv survegnis Vus in certificat COVID per persunas g
     <string name="wallet_transfer_code_state_no_certificate">"Cun quest transfer na po vegnir retschavì pli nagin certificat."</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig -->
-    <string name="wallet_error_invalid_format">"Il format dal certificat 
+    <string name="wallet_error_invalid_format">"Il format dal certificat
 n’è betg valaivel"</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig Fett -->
@@ -929,7 +928,7 @@ e mo en Svizra"</string>
     <string name="verifier_update_boarding_certificate_light_text">"Cun quest update pudais Vus verifitgar en l'app er la copia dal certificat senza las datas da sanadad. Per quest intent èn vegnidas actualisadas las cundiziuns d'utilisaziun e la decleraziun davart la protecziun da datas che valan sco acceptadas, sche Vus duvrais vinavant l'app."</string>
 
     <!-- Verifier: Die Gültigkeit eines Certificate Light ist abgelaufen -->
-    <string name="verifier_certificate_light_error_expired">"La valaivladad dal certificat 
+    <string name="verifier_certificate_light_error_expired">"La valaivladad dal certificat
 è scadida"</string>
 
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
@@ -1439,7 +1438,7 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_certificate_ausnahme_issued_country">"L'attest dal medi è vegnì emess a"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
-    <string name="wallet_certificate_detail_note_ausnahme">"Quest attest n'è betg in document da viadi. 
+    <string name="wallet_certificate_detail_note_ausnahme">"Quest attest n'è betg in document da viadi.
 &lt;br /&gt;&lt;br /&gt;
 Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad actuala en Svizra pudais Vus verifitgar da tut temp cun l'app «Covid-Certificate»."</string>
 
@@ -1519,7 +1518,7 @@ Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad ac
     <string name="infobox_generic_title">"Tegnair en salv il certificat!"</string>
 
     <!-- Fuzzy -->
-    <string name="infobox_generic_text">"Sche Vus stizzais l'app, midais u perdais Voss smartphone, van er a perder Voss certificats COVID. 
+    <string name="infobox_generic_text">"Sche Vus stizzais l'app, midais u perdais Voss smartphone, van er a perder Voss certificats COVID.
 Tegnai perquai en salv Voss certificats er ordaifer l'app cun exportar quels sco PDF."</string>
 
     <!-- Fuzzy -->
@@ -1694,7 +1693,8 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
     <string name="cert_renewal_info_renewed_text_2">"Quant ditg ch'ina vaccinaziun vegn renconuschida en in pajais, n'è betg fixà en il certificat. Quai vegn calculà a chaschun da la verificaziun tenor las reglas dal pajais che fa la verificaziun. La renovaziun dal code QR garantescha unicamain l'utilisaziun tecnica dal code QR"</string>
 
     <!-- Wallet: Zertifikat QR Code läuft ab am {DATE} -->
-    <string name="wallet_certificate_qr_code_expiration_date">"Data da scadenza dal code QR"</string>
+    <string name="wallet_certificate_qr_code_expiration_date">"QR code expiration date (technical)
+{DATE}"</string>
 
     <!-- Wallet: Titel der Info-Bubble wenn das Zertifikat erneuert werden muss -->
     <string name="wallet_certificate_renewal_required_bubble_title">"Renovar il code QR!"</string>
@@ -1707,7 +1707,7 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
 
     <!-- Wallet: Buttontext um den QR Code eines Zertifikats zu erneuern -->
     <string name="wallet_certificate_renew_now_button">"Renovar il code QR"</string>
-    <string name="wallet_certificate_renewal_qr_code_expiration">"Data da scadenza (tecnica) dal code QR"</string>
+    <string name="wallet_certificate_renewal_qr_code_expiration">"Data da scadenza dal code QR"</string>
     <string name="wallet_certificate_renewal_required_info">"La data da la scadenza tecnica da quest code QR è (bainbaud) arrivada."</string>
     <string name="wallet_certificate_renewal_in_progress_info">"Il code QR vegn renovà"</string>
     <string name="wallet_certificate_renewal_successful_info">"Il code QR è vegnì renovà cun success."</string>
