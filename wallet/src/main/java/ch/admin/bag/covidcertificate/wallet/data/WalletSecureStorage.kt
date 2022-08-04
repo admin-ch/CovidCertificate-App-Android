@@ -23,11 +23,14 @@ class WalletSecureStorage private constructor(context: Context) {
 
 	companion object : SingletonHolder<WalletSecureStorage, Context>(::WalletSecureStorage) {
 		private const val PREFERENCES = "SecureStorage"
+
 		private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
+		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
+		private const val KEY_AGB_UPDATEBOARDING_COMPLETED = "KEY_AGB_UPDATEBOARDIN_COMPLETED"
+
 		private const val KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA = "KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA"
 		private const val KEY_MIGRATED_TRANSFER_CODE_VALIDITY = "KEY_MIGRATED_TRANSFER_CODE_VALIDITY"
 		private const val KEY_MIGRATED_TRANSFER_CODE_FAILS_AT = "KEY_MIGRATED_TRANSFER_CODE_FAILS_AT"
-		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
 		private const val KEY_TRANSFER_CODE_PUBLIC_KEY_PREFIX = "TRANSFER_CODE_PUBLIC_KEY_"
 		private const val KEY_TRANSFER_CODE_PRIVATE_KEY_PREFIX = "TRANSFER_CODE_PRIVATE_KEY_"
 		private const val KEY_VACCINATION_HINT_DISMISS_TIMESTAMP = "KEY_VACCINATION_HINT_DISMISS_TIMESTAMP"
@@ -48,6 +51,18 @@ class WalletSecureStorage private constructor(context: Context) {
 		putBoolean(KEY_ONBOARDING_COMPLETED, completed)
 	}
 
+	fun getCertificateLightUpdateboardingCompleted() = prefs.getBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, false)
+
+	fun setCertificateLightUpdateboardingCompleted(completed: Boolean) = prefs.edit {
+		putBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, completed)
+	}
+
+	fun getAgbUpdateboardingCompleted() = prefs.getBoolean(KEY_AGB_UPDATEBOARDING_COMPLETED, false)
+
+	fun setAgbUpdateboardingCompleted(completed: Boolean) = prefs.edit {
+		putBoolean(KEY_AGB_UPDATEBOARDING_COMPLETED, completed)
+	}
+
 	fun getMigratedCertificatesToWalletData() = prefs.getBoolean(KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA, false)
 
 	fun setMigratedCertificatesToWalletData(migrated: Boolean) = prefs.edit {
@@ -64,12 +79,6 @@ class WalletSecureStorage private constructor(context: Context) {
 
 	fun setMigratedTransferCodeFailsAt(migrated: Boolean) = prefs.edit {
 		putBoolean(KEY_MIGRATED_TRANSFER_CODE_FAILS_AT, migrated)
-	}
-
-	fun getCertificateLightUpdateboardingCompleted() = prefs.getBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, false)
-
-	fun setCertificateLightUpdateboardingCompleted(completed: Boolean) = prefs.edit {
-		putBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, completed)
 	}
 
 	fun getVaccinationHintDismissTimestamp() = prefs.getLong(KEY_VACCINATION_HINT_DISMISS_TIMESTAMP, 0L)

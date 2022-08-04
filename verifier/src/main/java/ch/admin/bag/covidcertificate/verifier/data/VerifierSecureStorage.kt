@@ -20,6 +20,7 @@ class VerifierSecureStorage private constructor(context: Context) {
 	companion object : SingletonHolder<VerifierSecureStorage, Context>(::VerifierSecureStorage) {
 		private const val PREFERENCES = "SecureStorage"
 		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
+		private const val KEY_AGB_UPDATEBOARDING_COMPLETED = "KEY_AGB_UPDATEBOARDIN_COMPLETED"
 
 		private const val KEY_HAS_ZEBRA_SCANNER = "KEY_HAS_ZEBRA_SCANNER"
 
@@ -33,6 +34,12 @@ class VerifierSecureStorage private constructor(context: Context) {
 
 	fun setCertificateLightUpdateboardingCompleted(completed: Boolean) = prefs.edit {
 		putBoolean(KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED, completed)
+	}
+
+	fun getAgbUpdateboardingCompleted() = prefs.getBoolean(KEY_AGB_UPDATEBOARDING_COMPLETED, false)
+
+	fun setAgbUpdateboardingCompleted(completed: Boolean) = prefs.edit {
+		putBoolean(KEY_AGB_UPDATEBOARDING_COMPLETED, completed)
 	}
 
 	fun hasZebraScanner() = prefs.getBoolean(KEY_HAS_ZEBRA_SCANNER, false)

@@ -23,10 +23,11 @@ class MainApplication : Application() {
 			DebugFragment.initDebug(this)
 		}
 
-		// If this is a fresh install, don't show the certificate light updateboarding
+		// If this is a fresh install, don't show an updateboarding
 		val isFreshInstall = ConfigSecureStorage.getInstance(this).getConfig() == null
 		if (isFreshInstall) {
 			VerifierSecureStorage.getInstance(this).setCertificateLightUpdateboardingCompleted(true)
+			VerifierSecureStorage.getInstance(this).setAgbUpdateboardingCompleted(true)
 		}
 
 		Config.appToken = BuildConfig.SDK_APP_TOKEN
@@ -36,7 +37,6 @@ class MainApplication : Application() {
 		CovidCertificateSdk.init(this, EnvironmentUtil.getSdkEnvironment())
 
 		checkForExternalScanners()
-
 	}
 
 	private fun checkForExternalScanners() {

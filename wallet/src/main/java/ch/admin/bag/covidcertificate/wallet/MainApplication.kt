@@ -25,16 +25,14 @@ import ch.admin.bag.covidcertificate.wallet.util.NotificationUtil
 class MainApplication : Application() {
 
 	companion object {
-
 		fun getTransferCodeConversionMapping(context: Context): HashMap<String, CertificateHolder>? {
 			val applicationContext = context.applicationContext
-			if (applicationContext is MainApplication) {
-				return applicationContext.getTransferCodeConversionMappingInternal()
+			return if (applicationContext is MainApplication) {
+				applicationContext.getTransferCodeConversionMappingInternal()
 			} else {
-				return null
+				null
 			}
 		}
-
 	}
 
 	val transferCodeConversionMapping = HashMap<String, CertificateHolder>()
