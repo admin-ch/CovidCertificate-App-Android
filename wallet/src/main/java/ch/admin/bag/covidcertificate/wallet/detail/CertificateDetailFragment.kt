@@ -764,11 +764,12 @@ class CertificateDetailFragment : Fragment() {
 			binding.certificateDetailInfoValidityLeftText.text = context.getString(leftLabelStringId)
 			binding.certificateDetailInfoValidityLeftBold.text =
 				getFormattedValidityDate(validityRange?.validFrom, certificateHolder.certType, state)
+			binding.certificateDetailInfoValidityLeftBold.visibility = View.VISIBLE
 			binding.certificateDetailInfoValidityRightText.text = context.getString(R.string.wallet_validity_since_prefix)
 			binding.certificateDetailInfoValidityRightBold.text = getFormattedValiditySince(context, validityRange?.validFrom)
 		} else {
 			binding.certificateDetailInfoValidityLeftText.text = context.getString(R.string.wallet_certificate_validity)
-			binding.certificateDetailInfoValidityLeftBold.text = ""
+			binding.certificateDetailInfoValidityLeftBold.visibility = View.GONE
 			binding.certificateDetailInfoValidityRightText.text = context.getString(R.string.wallet_certificate_valid_until)
 			binding.certificateDetailInfoValidityRightBold.text =
 				getFormattedValidityDate(validityRange?.validUntil, certificateHolder.certType, state)
