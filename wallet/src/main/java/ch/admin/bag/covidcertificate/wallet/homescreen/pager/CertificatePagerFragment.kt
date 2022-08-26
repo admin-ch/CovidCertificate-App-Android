@@ -110,8 +110,10 @@ class CertificatePagerFragment : Fragment() {
 	private fun setupStatusInfo() {
 		certificatesViewModel.statefulWalletItems.observe(viewLifecycleOwner) { items ->
 			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
-				.find { it.qrCodeData == qrCodeData }?.let {
-					updateStatusInfo(it.state)
+				.find { it.qrCodeData == qrCodeData }?.let { verifiedCert ->
+					val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
+					val state = cheatUiOnCertsExpiredInSwitzerland(currentConfig, verifiedCert.state)
+					updateStatusInfo(state)
 				}
 		}
 
@@ -242,7 +244,7 @@ class CertificatePagerFragment : Fragment() {
 		binding.certificatePageBirthdate.setTextColor(textColor)
 	}
 
-	private fun displayQrCodeRenewalBannerIfNecessary(showRenewBanner: String?) : Boolean {
+	private fun displayQrCodeRenewalBannerIfNecessary(showRenewBanner: String?): Boolean {
 		val wasRecentlyRenewed = certificateHolder?.let { certificatesViewModel.wasCertificateRecentlyRenewed(it) } ?: false
 
 		when {

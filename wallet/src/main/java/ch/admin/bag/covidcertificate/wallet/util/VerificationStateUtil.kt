@@ -13,6 +13,8 @@ package ch.admin.bag.covidcertificate.wallet.util
 import android.content.Context
 import android.text.SpannableString
 import androidx.annotation.ColorRes
+import ch.admin.bag.covidcertificate.common.config.ConfigModel
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.addBoldDate
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
@@ -116,4 +118,27 @@ fun VerificationState.getInvalidContentAlpha(): Float {
 		is VerificationState.INVALID -> 0.55f
 		else -> 1f
 	}
+}
+
+fun cheatUiOnCertsExpiredInSwitzerland(currentConfig: ConfigModel?, inState: VerificationState): VerificationState {
+	var outState = inState
+
+	if (currentConfig?.showValiditySince == true
+		&& inState is VerificationState.INVALID
+		&& inState.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE
+	) {
+		val dummySuccessState = SuccessState.WalletSuccessState(
+			isValidOnlyInSwitzerland = false,
+			validityRange = inState.validityRange,
+			modeValidity = emptyList(), // not valid in any mode (3G/2G...) => empty
+			eolBannerIdentifier = null,
+			showRenewBanner = inState.showRenewBanner,
+		)
+		outState = VerificationState.SUCCESS(
+			dummySuccessState,
+			isLightCertificate = false, // light certs automatically go back to normal certs => they should never be INVALID in the wallet
+		)
+	}
+
+	return outState
 }

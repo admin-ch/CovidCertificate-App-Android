@@ -215,7 +215,8 @@ class CertificateDetailFragment : Fragment() {
 					val isValidOnlyInSwitzerland = it.state.isValidOnlyInSwitzerland()
 					binding.certificateForeignValidityButton.isVisible = isFeatureEnabled && isNotInvalid && !isValidOnlyInSwitzerland
 
-					updateStatusInfo(it.state)
+					val state = cheatUiOnCertsExpiredInSwitzerland(currentConfig, it.state)
+					updateStatusInfo(state)
 				}
 		}
 

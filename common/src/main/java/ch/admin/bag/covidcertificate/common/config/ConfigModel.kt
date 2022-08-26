@@ -47,6 +47,7 @@ data class ConfigModel(
 	val showRatConversionForm: Boolean?,
 	val ratConversionFormUrl: String?,
 	val certRenewalInfo: Map<String, Map<CertificateRenewalType, CertificateRenewalInfoModel>>?,
+	val showValiditySince: Boolean?,
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
