@@ -1453,7 +1453,6 @@ This certificate is only valid for a limited period of time. You can check the c
     <string name="wallet_certificate_antigen_positive_date">"Date of first positive test result"</string>
 
     <!-- Wallet: Blaue Box für positiven Antigen-Test -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_detail_note_positive_antigen">"This certificate is not a travel document.
 &lt;br /&gt;&lt;br /&gt;
 This certificate is only valid for a limited period of time. You can check the current duration of validity in Switzerland at any time using the COVID Certificate app."</string>
@@ -1514,21 +1513,11 @@ This certificate is only valid for a limited period of time. You can check the c
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2"></string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_title">"Back up your certificate!"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_text">"If you uninstall the app or change or lose your smartphone, you will also lose your COVID certificates.
 This means you should also keep a copy of your certificates outside the app by exporting them as PDFs."</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_button">"Find out more"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_url_android">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/i-only-have-my-covid-certificate-electronically-covid-certificate-app-how-can-i"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_url_ios">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/i-only-have-my-covid-certificate-electronically-covid-certificate-app-how-can-i"</string>
 
     <!-- accessibilityLabel for the "1"-icon -->
@@ -1592,15 +1581,12 @@ This means you should also keep a copy of your certificates outside the app by e
     <string name="wallet_foreign_rules_check_network_error_text">"To check certificate validity your smartphone must be connected to the internet."</string>
 
     <!-- Reisefeature: Hinweis 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_2">"Entry rules can change. So check the validity shortly before you depart, and go online to make sure of the latest entry rules for your destination country."</string>
 
     <!-- Reisefeature: Hinweis 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_3">"The above information relates only to the rules for entering your destination country. Different rules may apply to settings where a certificate is required within the country."</string>
 
     <!-- Reisefeature: Hinweis 3 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_1">"The federal government assumes no liability for the up-to-dateness or completeness of the information provided."</string>
 
     <!-- Reisefeature: Hinweis 4 -->
@@ -1648,7 +1634,6 @@ You have the option of requesting an EU-compatible version of this certificate v
     <string name="rat_conversion_info2_text">"Transferring the certificate data to the National Application Office’s online form makes it easier to validate your application."</string>
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
-    <!-- Fuzzy -->
     <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
@@ -1727,7 +1712,6 @@ You have the option of requesting an EU-compatible version of this certificate v
     <string name="wallet_certificate_renewal_successful_bubble_button">"More information"</string>
 
     <!-- Wallet: QR Code des Zertifikats abgelaufen -->
-    <!-- Fuzzy -->
     <string name="wallet_error_qr_code_expired">"The technical expiration date for this QR code has elapsed."</string>
     <string name="wallet_certificate_renewal_rate_limit_error_title">"24h-limit reached"</string>
     <string name="wallet_certificate_renewal_rate_limit_error_text">"QR code updated too often. Update temporarily blocked."</string>
@@ -1735,4 +1719,21 @@ You have the option of requesting an EU-compatible version of this certificate v
     <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/why-should-i-renew-qr-code-my-covid-certificate-even-though-certificate-about"</string>
     <string name="terms_and_conditions_update_boarding_title">"Update"</string>
     <string name="terms_and_conditions_update_boarding_text">"Certain points of the terms of use and privacy statement for the app have been updated and adapted in line with the relevant legal bases."</string>
+    <string name="wallet_validity_since_vaccination_date"></string>
+    <string name="wallet_validity_since_test_date"></string>
+
+    <!-- vor 2 Tagen - must be before "2 Tagen"! -->
+    <string name="wallet_validity_since_prefix"></string>
+
+    <!-- vor 1 Stunde -->
+    <string name="wallet_validity_since_hours_singular"></string>
+
+    <!-- vor 2 Stunden -->
+    <string name="wallet_validity_since_hours_plural"></string>
+
+    <!-- vor 1 Tag -->
+    <string name="wallet_validity_since_days_singular"></string>
+
+    <!-- vor 2 Tagen -->
+    <string name="wallet_validity_since_days_plural"></string>
 </resources>
