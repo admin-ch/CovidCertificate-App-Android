@@ -17,7 +17,6 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
-import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.views.hideAnimated
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.state.VerificationState
@@ -31,7 +30,6 @@ import ch.admin.bag.covidcertificate.wallet.light.CertificateLightDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
-import ch.admin.bag.covidcertificate.wallet.util.hideExpiryInSwitzerland
 
 class CertificatesListFragment : Fragment() {
 
@@ -106,14 +104,7 @@ class CertificatesListFragment : Fragment() {
 						statefulWalletItems
 							.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
 							.find { cert -> cert.qrCodeData == item.verifiedCertificate.qrCodeData }
-							?.let { cert ->
-								val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
-								val expiryHiddenState = hideExpiryInSwitzerland(currentConfig, cert.state)
-								val expiryHiddenCert = StatefulWalletItem.VerifiedCertificate(
-									cert.qrCodeData, cert.certificateHolder, expiryHiddenState
-								)
-								item.copy(expiryHiddenCert)
-							}
+							?.let { cert -> item.copy(cert) }
 							?: item
 					}
 					is WalletDataListItem.TransferCodeItem -> {
