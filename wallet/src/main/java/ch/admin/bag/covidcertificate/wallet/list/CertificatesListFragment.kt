@@ -31,7 +31,7 @@ import ch.admin.bag.covidcertificate.wallet.light.CertificateLightDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.TransferCodeDetailFragment
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeConversionState
 import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
-import ch.admin.bag.covidcertificate.wallet.util.cheatUiOnCertsExpiredInSwitzerland
+import ch.admin.bag.covidcertificate.wallet.util.hideExpiryInSwitzerland
 
 class CertificatesListFragment : Fragment() {
 
@@ -108,10 +108,11 @@ class CertificatesListFragment : Fragment() {
 							.find { cert -> cert.qrCodeData == item.verifiedCertificate.qrCodeData }
 							?.let { cert ->
 								val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
-								val cheatedState = cheatUiOnCertsExpiredInSwitzerland(currentConfig, cert.state)
-								val cheatedCert =
-									StatefulWalletItem.VerifiedCertificate(cert.qrCodeData, cert.certificateHolder, cheatedState)
-								item.copy(cheatedCert)
+								val expiryHiddenState = hideExpiryInSwitzerland(currentConfig, cert.state)
+								val expiryHiddenCert = StatefulWalletItem.VerifiedCertificate(
+									cert.qrCodeData, cert.certificateHolder, expiryHiddenState
+								)
+								item.copy(expiryHiddenCert)
 							}
 							?: item
 					}

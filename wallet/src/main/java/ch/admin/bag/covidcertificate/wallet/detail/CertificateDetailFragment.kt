@@ -335,19 +335,17 @@ class CertificateDetailFragment : Fragment() {
 		val originalState = verificationState ?: return
 
 		val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
-		val cheatedState = cheatUiOnCertsExpiredInSwitzerland(currentConfig, originalState)
+		val expiryHiddenState = hideExpiryInSwitzerland(currentConfig, originalState)
+		val isNotValidAnymore = originalState is VerificationState.INVALID && expiryHiddenState is VerificationState.SUCCESS
 
-		val isSignatureValid = originalState is VerificationState.INVALID && originalState.signatureState is CheckSignatureState.SUCCESS
-		val isCheating = originalState is VerificationState.INVALID && cheatedState is VerificationState.SUCCESS
+		changeAlpha(expiryHiddenState)
+		setCertificateDetailTextColor(expiryHiddenState.getNameDobColor())
 
-		changeAlpha(cheatedState)
-		setCertificateDetailTextColor(cheatedState.getNameDobColor())
-
-		when (cheatedState) {
+		when (expiryHiddenState) {
 			is VerificationState.LOADING -> displayLoadingState()
-			is VerificationState.SUCCESS -> displaySuccessState(cheatedState, isCheating, isSignatureValid)
-			is VerificationState.INVALID -> displayInvalidState(cheatedState)
-			is VerificationState.ERROR -> displayErrorState(cheatedState)
+			is VerificationState.SUCCESS -> displaySuccessState(expiryHiddenState, isNotValidAnymore)
+			is VerificationState.INVALID -> displayInvalidState(expiryHiddenState)
+			is VerificationState.ERROR -> displayErrorState(expiryHiddenState)
 		}
 	}
 
@@ -372,7 +370,6 @@ class CertificateDetailFragment : Fragment() {
 	private fun displaySuccessState(
 		state: VerificationState.SUCCESS,
 		isNotValidAnymore: Boolean,
-		isSignatureValid: Boolean, // used only if NOT_VALID_ANYMORE
 	) {
 		val context = context ?: return
 		showLoadingIndicator(false)
@@ -390,7 +387,7 @@ class CertificateDetailFragment : Fragment() {
 			// Certificate Light is disabled for invalid certificates, PDF export is enabled if the signature is valid and the certificate was issued in Switzerland
 			updateConversionButtons(
 				isLightCertificateEnabled = false,
-				isPdfExportEnabled = isSignatureValid && isIssuedInSwitzerland
+				isPdfExportEnabled = isIssuedInSwitzerland // signature is assumed to be valid, since we only hide expiry for well-signed certs
 			)
 		} else {
 			// Certificate Light and PDF export is enabled for a valid certificate that was issued in Switzerland

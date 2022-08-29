@@ -112,7 +112,7 @@ class CertificatePagerFragment : Fragment() {
 			items.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
 				.find { it.qrCodeData == qrCodeData }?.let { verifiedCert ->
 					val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
-					val state = cheatUiOnCertsExpiredInSwitzerland(currentConfig, verifiedCert.state)
+					val state = hideExpiryInSwitzerland(currentConfig, verifiedCert.state)
 					updateStatusInfo(state)
 				}
 		}

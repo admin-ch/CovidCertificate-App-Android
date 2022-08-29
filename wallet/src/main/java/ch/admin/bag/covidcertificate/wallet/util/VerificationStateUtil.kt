@@ -121,12 +121,13 @@ fun VerificationState.getInvalidContentAlpha(): Float {
 }
 
 /**
- * Cheat on certificates that are expired in Switzerland BUT have a valid signature and are NOT revoked.
+ * Hide expiry info of certificates that are expired in Switzerland BUT have a valid signature and are NOT revoked.
+ * Don't show a grey expired state, but a blue success state.
  */
-fun cheatUiOnCertsExpiredInSwitzerland(currentConfig: ConfigModel?, inState: VerificationState): VerificationState {
+fun hideExpiryInSwitzerland(currentConfig: ConfigModel?, inState: VerificationState): VerificationState {
 	var outState = inState
 
-	if (currentConfig?.showValiditySince == true // cheating enabled?
+	if (currentConfig?.showValiditySince == true
 		&& inState is VerificationState.INVALID
 		&& inState.signatureState == CheckSignatureState.SUCCESS
 		&& inState.revocationState !is CheckRevocationState.INVALID
