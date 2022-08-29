@@ -126,6 +126,14 @@
 						tools:text="Muster Marta" />
 
 					<TextView
+						android:id="@+id/certificate_detail_standardized_name_label"
+						style="@style/CovidCertificate.Text.Code"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						tools:text="STUDER&lt;&lt;MARTINA" />
+
+					<TextView
 						android:id="@+id/certificate_detail_birthdate"
 						style="@style/CovidCertificate.Text"
 						android:layout_width="wrap_content"

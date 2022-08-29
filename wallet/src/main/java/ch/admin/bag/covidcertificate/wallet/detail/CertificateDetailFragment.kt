@@ -195,6 +195,7 @@ class CertificateDetailFragment : Fragment() {
 		recyclerView.adapter = adapter
 
 		binding.certificateDetailName.text = certificateHolder.certificate.getPersonName().prettyName()
+		binding.certificateDetailStandardizedNameLabel.text = certificateHolder.certificate.getPersonName().prettyStandardizedName()
 		binding.certificateDetailBirthdate.text = certificateHolder.certificate.getFormattedDateOfBirth()
 
 		binding.certificateDetailInfo.setText(R.string.verifier_verify_success_info)
@@ -213,7 +214,8 @@ class CertificateDetailFragment : Fragment() {
 					val isFeatureEnabled = currentConfig?.foreignRulesCheckEnabled == true
 					val isNotInvalid = it.state is VerificationState.SUCCESS || it.state.isOnlyNationalRulesInvalid()
 					val isValidOnlyInSwitzerland = it.state.isValidOnlyInSwitzerland()
-					binding.certificateForeignValidityButton.isVisible = isFeatureEnabled && isNotInvalid && !isValidOnlyInSwitzerland
+					binding.certificateForeignValidityButton.isVisible =
+						isFeatureEnabled && isNotInvalid && !isValidOnlyInSwitzerland
 
 					updateStatusInfo(it.state)
 				}
