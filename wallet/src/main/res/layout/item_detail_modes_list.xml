@@ -3,7 +3,8 @@
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
 	android:layout_marginHorizontal="@dimen/spacing_very_very_large"
-	android:layout_marginVertical="@dimen/spacing_large">
+	android:layout_marginTop="@dimen/spacing_large"
+	android:layout_marginBottom="@dimen/spacing_very_large">
 
 	<View
 		android:layout_width="match_parent"
