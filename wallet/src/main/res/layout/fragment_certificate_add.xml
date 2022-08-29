@@ -117,11 +117,16 @@
 					android:layout_marginTop="@dimen/spacing_very_small"
 					tools:text="21.11.1966" />
 
+				<View
+					android:layout_width="match_parent"
+					android:layout_height="4dp"
+					android:layout_marginVertical="@dimen/spacing_very_large"
+					android:background="@drawable/line_dashed_grey"/>
+
 				<androidx.recyclerview.widget.RecyclerView
 					android:id="@+id/certificate_add_data_recycler_view"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="@dimen/spacing_large"
 					android:overScrollMode="never"
 					android:scrollbars="none"
 					tools:listitem="@layout/item_detail_divider" />
