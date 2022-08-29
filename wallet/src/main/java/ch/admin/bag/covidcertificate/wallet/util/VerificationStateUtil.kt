@@ -120,11 +120,16 @@ fun VerificationState.getInvalidContentAlpha(): Float {
 	}
 }
 
+/**
+ * Cheat on certificates that are expired in Switzerland BUT have a valid signature and are NOT revoked.
+ */
 fun cheatUiOnCertsExpiredInSwitzerland(currentConfig: ConfigModel?, inState: VerificationState): VerificationState {
 	var outState = inState
 
-	if (currentConfig?.showValiditySince == true
+	if (currentConfig?.showValiditySince == true // cheating enabled?
 		&& inState is VerificationState.INVALID
+		&& inState.signatureState == CheckSignatureState.SUCCESS
+		&& inState.revocationState !is CheckRevocationState.INVALID
 		&& inState.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE
 	) {
 		val dummySuccessState = SuccessState.WalletSuccessState(
