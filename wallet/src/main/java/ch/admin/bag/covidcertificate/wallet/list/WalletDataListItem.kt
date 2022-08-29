@@ -80,13 +80,17 @@ sealed class WalletDataListItem {
 					val statusIconId: Int
 					when {
 						signatureState is CheckSignatureState.INVALID -> {
-							statusIconId = R.drawable.ic_error_grey
+							if (signatureState.signatureErrorCode == ErrorCodes.SIGNATURE_TIMESTAMP_EXPIRED) {
+								statusIconId = R.drawable.ic_invalid_grey
+							} else {
+								statusIconId = R.drawable.ic_error_grey
+							}
 						}
 						revocationState is CheckRevocationState.INVALID -> {
 							statusIconId = R.drawable.ic_error_grey
 						}
 						nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
-							statusIconId = R.drawable.ic_invalid_grey
+							statusIconId = R.drawable.ic_error_grey
 						}
 						nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
 							statusIconId = R.drawable.ic_timelapse
