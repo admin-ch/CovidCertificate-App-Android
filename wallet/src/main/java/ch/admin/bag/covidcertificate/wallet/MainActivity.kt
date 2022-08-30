@@ -71,11 +71,13 @@ class MainActivity : BaseActivity() {
 			val onboardingCompleted = secureStorage.getOnboardingCompleted()
 			val certificateLightUpdateboardingCompleted = secureStorage.getCertificateLightUpdateboardingCompleted()
 			val agbUpdateboardingCompleted = secureStorage.getAgbUpdateboardingCompleted()
+			val validityUpdateboardingCompleted = secureStorage.getValidityUpdateboardingCompleted()
 
 			val onboardingType = when {
 				!onboardingCompleted -> OnboardingActivity.OnboardingType.FRESH_INSTALL
 				!certificateLightUpdateboardingCompleted -> OnboardingActivity.OnboardingType.CERTIFICATE_LIGHT
 				!agbUpdateboardingCompleted -> OnboardingActivity.OnboardingType.AGB_UPDATE
+				!validityUpdateboardingCompleted -> OnboardingActivity.OnboardingType.VALIDITY
 				else -> null
 			}
 
