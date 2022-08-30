@@ -40,7 +40,7 @@ class MainActivity : BaseActivity() {
 	private val pdfViewModel by viewModels<PdfViewModel>()
 
 	private lateinit var binding: ActivityMainBinding
-	val secureStorage by lazy { WalletSecureStorage.getInstance(this) }
+	private val secureStorage by lazy { WalletSecureStorage.getInstance(this) }
 
 	private var forceUpdateDialog: AlertDialog? = null
 	private var isIntentConsumed = false
@@ -50,6 +50,7 @@ class MainActivity : BaseActivity() {
 			secureStorage.setOnboardingCompleted(true)
 			secureStorage.setCertificateLightUpdateboardingCompleted(true)
 			secureStorage.setAgbUpdateboardingCompleted(true)
+			secureStorage.setValidityUpdateboardingCompleted(true)
 
 			// Load the config and trust list here because onStart ist called before the activity result and the onboarding
 			// completion flags are therefore not yet set to true
