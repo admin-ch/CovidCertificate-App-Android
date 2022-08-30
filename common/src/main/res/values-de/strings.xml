@@ -1756,7 +1756,7 @@ im Ausland"</string>
     <string name="wallet_update_boarding_page_4_title">"Aktuelle Situation in Europa und weltweit"</string>
     <string name="wallet_update_boarding_page_4_bullet_1">"Die meisten Länder in Europa haben die Zertifikatspflicht für die Einreise inzwischen aufgehoben."</string>
     <string name="wallet_update_boarding_page_4_bullet_2">"Die Funktion «Gültigkeit im Ausland» wurde daher ebenfalls entfernt."</string>
-    <string name="wallet_update_boarding_page_4_bullet_3">"Ob in in einem Land noch eine Zertifikatspflicht gilt, erfahren Sie auf diesen Webseiten:"</string>
+    <string name="wallet_update_boarding_page_4_bullet_3">"Ob in einem Land noch eine Zertifikatspflicht gilt, erfahren Sie auf diesen Webseiten:"</string>
     <string name="wallet_update_boarding_page_4_link_1_text">"reopen.europa.eu"</string>
     <string name="wallet_update_boarding_page_4_link_1_url">"https://reopen.europa.eu"</string>
     <string name="wallet_update_boarding_page_4_link_2_text">"iatatravelcentre.com"</string>
