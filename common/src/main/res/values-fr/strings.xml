@@ -1452,7 +1452,6 @@ Ce certificat n'a qu'une durée de validité limitée. L'application «COVID Cer
     <string name="wallet_certificate_antigen_positive_date">"Date du premier résultat positif"</string>
 
     <!-- Wallet: Blaue Box für positiven Antigen-Test -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_detail_note_positive_antigen">"Le présent certificat n'est pas un document de voyage.
 &lt;br /&gt;&lt;br /&gt;
 Ce certificat n'a qu'une durée de validité limitée. L'application «COVID Certificate» vous permet en tout temps de vérifier la durée de validité actuellement déterminante en Suisse."</string>
@@ -1513,21 +1512,11 @@ Ce certificat n'a qu'une durée de validité limitée. L'application «COVID Cer
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2"></string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_title">"Sauvegardez vos certificats!"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_text">"Si vous supprimez l’application, changez de smartphone ou le perdez, vos certificats COVID seront également perdus.
 Conservez donc vos certificats en dehors de l’application en les exportant au format PDF."</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_button">"Plus d’informations"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_url_android">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/mon-certificat-covid-nest-disponible-quau-format-electronique-dans-lapplication"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_url_ios">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/mon-certificat-covid-nest-disponible-quau-format-electronique-dans-lapplication"</string>
 
     <!-- accessibilityLabel for the "1"-icon -->
@@ -1591,15 +1580,12 @@ Conservez donc vos certificats en dehors de l’application en les exportant au 
     <string name="wallet_foreign_rules_check_network_error_text">"Pour vérifier la validité, votre smartphone doit être connecté à Internet."</string>
 
     <!-- Reisefeature: Hinweis 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_2">"Les dispositions d’entrée peuvent changer. Vérifiez donc la validité de votre certificat avant votre départ et renseignez-vous également en ligne sur les dispositions d’entrée en vigueur dans votre pays de destination."</string>
 
     <!-- Reisefeature: Hinweis 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_3">"Les informations ci-dessus ne concernent que les dispositions d’entrée du pays de destination. Dans le pays, d’autres règles peuvent s’appliquer aux éventuels domaines soumis à l’obligation de présenter un certificat."</string>
 
     <!-- Reisefeature: Hinweis 3 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_1">"La Confédération décline toute responsabilité en ce qui concerne l’actualité et l’exhaustivité des informations fournies."</string>
 
     <!-- Reisefeature: Hinweis 4 -->
@@ -1647,7 +1633,6 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="rat_conversion_info2_text">"Le transfert des données du certificat dans le formulaire en ligne permet de faciliter le traitement de votre demande."</string>
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
-    <!-- Fuzzy -->
     <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
@@ -1726,7 +1711,6 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="wallet_certificate_renewal_successful_bubble_button">"En savoir plus"</string>
 
     <!-- Wallet: QR Code des Zertifikats abgelaufen -->
-    <!-- Fuzzy -->
     <string name="wallet_error_qr_code_expired">"La date d’expiration technique de ce code QR est atteinte."</string>
     <string name="wallet_certificate_renewal_rate_limit_error_title">"Limite des 24 heures atteinte"</string>
     <string name="wallet_certificate_renewal_rate_limit_error_text">"Le code QR a été renouvelé trop souvent. Le renouvellement est temporairement bloqué."</string>
@@ -1734,4 +1718,39 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/pourquoi-dois-je-renouveler-le-code-qr-de-mon-certificat-covid-alors-que-selon-les"</string>
     <string name="terms_and_conditions_update_boarding_title">"Mise à jour"</string>
     <string name="terms_and_conditions_update_boarding_text">"Les conditions d’utilisation et la politique de confidentialité de l’application ont été ponctuellement mises à jour et adaptées aux bases légales."</string>
+    <string name="wallet_validity_since_vaccination_date"></string>
+    <string name="wallet_validity_since_test_date"></string>
+
+    <!-- vor 2 Tagen - must be before "2 Tagen"! -->
+    <string name="wallet_validity_since_prefix"></string>
+
+    <!-- vor 1 Stunde -->
+    <string name="wallet_validity_since_hours_singular"></string>
+
+    <!-- vor 2 Stunden -->
+    <string name="wallet_validity_since_hours_plural"></string>
+
+    <!-- vor 1 Tag -->
+    <string name="wallet_validity_since_days_singular"></string>
+
+    <!-- vor 2 Tagen -->
+    <string name="wallet_validity_since_days_plural"></string>
+    <string name="wallet_update_boarding_page_1_title"></string>
+    <string name="wallet_update_boarding_page_1_text"></string>
+    <string name="wallet_update_boarding_page_2_title"></string>
+    <string name="wallet_update_boarding_page_2_bullet_1"></string>
+    <string name="wallet_update_boarding_page_2_bullet_2"></string>
+    <string name="wallet_update_boarding_page_2_bullet_3"></string>
+    <string name="wallet_update_boarding_page_3_title"></string>
+    <string name="wallet_update_boarding_page_3_bullet_1"></string>
+    <string name="wallet_update_boarding_page_3_bullet_2"></string>
+    <string name="wallet_update_boarding_page_3_bullet_3"></string>
+    <string name="wallet_update_boarding_page_4_title"></string>
+    <string name="wallet_update_boarding_page_4_bullet_1"></string>
+    <string name="wallet_update_boarding_page_4_bullet_2"></string>
+    <string name="wallet_update_boarding_page_4_bullet_3"></string>
+    <string name="wallet_update_boarding_page_4_link_1_text">"reopen.europa.eu"</string>
+    <string name="wallet_update_boarding_page_4_link_1_url">"https://reopen.europa.eu"</string>
+    <string name="wallet_update_boarding_page_4_link_2_text">"iatatravelcentre.com"</string>
+    <string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
 </resources>

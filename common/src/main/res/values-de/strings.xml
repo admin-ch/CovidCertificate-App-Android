@@ -1458,7 +1458,6 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
     <string name="wallet_certificate_antigen_positive_date">"Datum des ersten positiven Resultats"</string>
 
     <!-- Wallet: Blaue Box für positiven Antigen-Test -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_detail_note_positive_antigen">"Dieses Zertifikat ist kein Reisedokument.
 &lt;br /&gt;&lt;br /&gt;
 Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen."</string>
@@ -1482,7 +1481,6 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text1"></string>
 
     <!-- bold text box for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <!-- Fuzzy -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"Dieses Covid-Zertifikat ist nur noch wenige Tage gültig. Bitte beachten Sie das auf dem Zertifikat ausgewiesene Ablaufdatum."</string>
 
     <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
@@ -1507,7 +1505,6 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
     <string name="wallet_eol_banner_invalid_from_first_february_popup_title">"Info"</string>
 
     <!-- text for pop up. case: certificate will be invalid at time of validity change. -->
-    <!-- Fuzzy -->
     <string name="wallet_eol_banner_invalid_from_first_february_popup_text1">"Per 31. Jan. 2022 gelten in der Schweiz reduzierte Gültigkeitsdauern von 270 statt 365 Tagen für Covid-Zertifikate für Geimpfte oder Genesene. Dieses Zertifikat ist von der verkürzten Gültigkeitsdauer unmittelbar betroffen:"</string>
 
     <!-- bold text box for pop up. case: certificate will be invalid at time of validity change. -->
@@ -1521,21 +1518,11 @@ Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz 
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2"></string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_title">"Zertifikat sichern!"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_text">"Wenn Sie die App löschen, Ihr Smartphone wechseln oder verlieren, gehen auch Ihre Covid-Zertifikate verloren.
 Bewahren Sie Ihre Zertifikate daher auch ausserhalb der App auf, indem Sie diese als PDF exportieren."</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_button">"Mehr erfahren"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_url_android">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_url_ios">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate"</string>
 
     <!-- accessibilityLabel for the "1"-icon -->
@@ -1599,15 +1586,12 @@ Bewahren Sie Ihre Zertifikate daher auch ausserhalb der App auf, indem Sie diese
     <string name="wallet_foreign_rules_check_network_error_text">"Um die Gültigkeit zu überprüfen, muss Ihr Smartphone mit dem Internet verbunden sein."</string>
 
     <!-- Reisefeature: Hinweis 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_2">"Die Einreiseregeln können sich ändern. Prüfen Sie daher die Gültigkeit kurz vor der Abreise und informieren Sie sich zusätzlich online über die aktuellen Einreiseregeln des Ziellandes."</string>
 
     <!-- Reisefeature: Hinweis 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_3">"Die oben genannten Angaben beziehen sich nur auf die Einreiseregeln des Ziellandes. Für allfällige zertifikatspflichtige Bereiche innerhalb des Landes können andere Regeln gelten."</string>
 
     <!-- Reisefeature: Hinweis 3 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_1">"Für die Aktualität und Vollständigkeit der gegebenen Informationen übernimmt der Bund keine Haftung."</string>
 
     <!-- Reisefeature: Hinweis 4 -->
@@ -1655,7 +1639,6 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="rat_conversion_info2_text">"Durch die Übernahme der Daten des Zertifikats in das Online-Formular kann Ihr Antrag einfacher verarbeitet werden."</string>
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
-    <!-- Fuzzy -->
     <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
@@ -1734,7 +1717,6 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="wallet_certificate_renewal_successful_bubble_button">"Mehr erfahren"</string>
 
     <!-- Wallet: QR Code des Zertifikats abgelaufen -->
-    <!-- Fuzzy -->
     <string name="wallet_error_qr_code_expired">"Das technische Ablaufdatum für diesen QR-Code ist erreicht."</string>
     <string name="wallet_certificate_renewal_rate_limit_error_title">"24h-Limite erreicht"</string>
     <string name="wallet_certificate_renewal_rate_limit_error_text">"QR-Code zu oft erneuert. Erneuerung temporär gesperrt."</string>
@@ -1742,4 +1724,41 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"</string>
     <string name="terms_and_conditions_update_boarding_title">"Aktualisierung"</string>
     <string name="terms_and_conditions_update_boarding_text">"Die Nutzungsbedingungen und die Datenschutzerklärung der App wurden punktuell aktualisiert und an die rechtlichen Grundlagen angepasst."</string>
+    <string name="wallet_validity_since_vaccination_date">"Impfdatum"</string>
+    <string name="wallet_validity_since_test_date">"Testdatum"</string>
+
+    <!-- vor 2 Tagen - must be before "2 Tagen"! -->
+    <string name="wallet_validity_since_prefix">"vor"</string>
+
+    <!-- vor 1 Stunde -->
+    <string name="wallet_validity_since_hours_singular">"1 Stunde"</string>
+
+    <!-- vor 2 Stunden -->
+    <string name="wallet_validity_since_hours_plural">"{HOURS} Stunden"</string>
+
+    <!-- vor 1 Tag -->
+    <string name="wallet_validity_since_days_singular">"1 Tag"</string>
+
+    <!-- vor 2 Tagen -->
+    <string name="wallet_validity_since_days_plural">"{DAYS} Tagen"</string>
+    <string name="wallet_update_boarding_page_1_title">"Was ist neu?"</string>
+    <string name="wallet_update_boarding_page_1_text">"Neu wird auf dem Covid-Zertifikat das Feld «Gültigkeit in der Schweiz» nicht mehr dargestellt. Stattdessen zeigt die App den Zeitpunkt der Impfung bzw. des Tests an. Warum?"</string>
+    <string name="wallet_update_boarding_page_2_title">"Covid-Zertifikate 
+in der Schweiz"</string>
+    <string name="wallet_update_boarding_page_2_bullet_1">"Die Zertifikatspflicht in der Schweiz wurde im Februar 2022 aufgehoben."</string>
+    <string name="wallet_update_boarding_page_2_bullet_2">"Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formell und haben im Inland keine praktische Bedeutung mehr."</string>
+    <string name="wallet_update_boarding_page_2_bullet_3">"Die Schweizer Gültigkeitsdauer hat auch im Ausland keine Bedeutung."</string>
+    <string name="wallet_update_boarding_page_3_title">"Covid-Zertifikate 
+im Ausland"</string>
+    <string name="wallet_update_boarding_page_3_bullet_1">"Im Ausland gelten die Regeln des entsprechenden Landes."</string>
+    <string name="wallet_update_boarding_page_3_bullet_2">"Neu zeigt die App an, wie viele Tage eine Impfung bzw. ein Test her ist."</string>
+    <string name="wallet_update_boarding_page_3_bullet_3">"So können Sie einfacher feststellen, ob Ihr Zertifikat den Regeln Ihres Ziellandes entspricht (falls das Land noch ein Covid-Zertifikat voraussetzt)."</string>
+    <string name="wallet_update_boarding_page_4_title">"Aktuelle Situation in Europa und weltweit"</string>
+    <string name="wallet_update_boarding_page_4_bullet_1">"Die meisten Länder in Europa haben die Zertifikatspflicht für die Einreise inzwischen aufgehoben."</string>
+    <string name="wallet_update_boarding_page_4_bullet_2">"Die Funktion «Gültigkeit im Ausland» wurde daher ebenfalls entfernt."</string>
+    <string name="wallet_update_boarding_page_4_bullet_3">"Ob in in einem Land noch eine Zertifikatspflicht gilt, erfahren Sie auf diesen Webseiten:"</string>
+    <string name="wallet_update_boarding_page_4_link_1_text">"reopen.europa.eu"</string>
+    <string name="wallet_update_boarding_page_4_link_1_url">"https://reopen.europa.eu"</string>
+    <string name="wallet_update_boarding_page_4_link_2_text">"iatatravelcentre.com"</string>
+    <string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
 </resources>
