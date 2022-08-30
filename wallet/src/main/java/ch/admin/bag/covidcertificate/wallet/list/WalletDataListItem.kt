@@ -14,6 +14,7 @@ import android.view.View
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isChAusnahmeTest
 import ch.admin.bag.covidcertificate.sdk.core.extensions.isPositiveRatTest
@@ -34,6 +35,7 @@ import ch.admin.bag.covidcertificate.wallet.transfercode.model.TransferCodeModel
 import ch.admin.bag.covidcertificate.wallet.transfercode.net.DeliveryRepository
 import ch.admin.bag.covidcertificate.wallet.util.getInvalidContentAlpha
 import ch.admin.bag.covidcertificate.wallet.util.getInvalidQrCodeAlpha
+import ch.admin.bag.covidcertificate.wallet.util.hideExpiryInSwitzerland
 import ch.admin.bag.covidcertificate.wallet.util.isOfflineMode
 
 sealed class WalletDataListItem {
@@ -44,7 +46,10 @@ sealed class WalletDataListItem {
 
 		fun bindView(itemView: View, onCertificateClickListener: ((Pair<CertificateHolder, String?>) -> Unit)? = null) {
 			val binding = ItemCertificateListBinding.bind(itemView)
-			val state = verifiedCertificate.state
+
+			val currentConfig = ConfigRepository.getCurrentConfig(itemView.context)
+			val state = hideExpiryInSwitzerland(currentConfig, verifiedCertificate.state)
+
 			val certificate = verifiedCertificate.certificateHolder
 			val certType = certificate?.certType
 
@@ -80,13 +85,17 @@ sealed class WalletDataListItem {
 					val statusIconId: Int
 					when {
 						signatureState is CheckSignatureState.INVALID -> {
-							statusIconId = R.drawable.ic_error_grey
+							if (signatureState.signatureErrorCode == ErrorCodes.SIGNATURE_TIMESTAMP_EXPIRED) {
+								statusIconId = R.drawable.ic_invalid_grey
+							} else {
+								statusIconId = R.drawable.ic_error_grey
+							}
 						}
 						revocationState is CheckRevocationState.INVALID -> {
 							statusIconId = R.drawable.ic_error_grey
 						}
 						nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE -> {
-							statusIconId = R.drawable.ic_invalid_grey
+							statusIconId = R.drawable.ic_error_grey
 						}
 						nationalRulesState is CheckNationalRulesState.NOT_YET_VALID -> {
 							statusIconId = R.drawable.ic_timelapse

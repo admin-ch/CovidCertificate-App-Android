@@ -126,6 +126,14 @@
 						tools:text="Muster Marta" />
 
 					<TextView
+						android:id="@+id/certificate_detail_standardized_name_label"
+						style="@style/CovidCertificate.Text.Code"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:gravity="center"
+						tools:text="STUDER&lt;&lt;MARTINA" />
+
+					<TextView
 						android:id="@+id/certificate_detail_birthdate"
 						style="@style/CovidCertificate.Text"
 						android:layout_width="wrap_content"
@@ -241,22 +249,40 @@
 						android:paddingVertical="@dimen/spacing_medium_small"
 						app:backgroundTint="@color/blueish">
 
-						<TextView
-							android:id="@+id/certificate_detail_info_validity_date_disclaimer"
-							style="@style/CovidCertificate.Text"
-							android:layout_width="0dp"
-							android:layout_height="wrap_content"
-							android:layout_weight="1"
-							android:text="@string/wallet_certificate_validity" />
-
 						<LinearLayout
-							android:id="@+id/certificate_detail_info_validity_date_group"
+							android:id="@+id/certificate_detail_info_validity_left_group"
 							android:layout_width="0dp"
 							android:layout_height="wrap_content"
 							android:layout_weight="1"
 							android:orientation="vertical">
 
 							<TextView
+								android:id="@+id/certificate_detail_info_validity_left_text"
+								style="@style/CovidCertificate.Text"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								android:text="@string/wallet_certificate_valid_until"
+								app:backgroundTint="@color/blueish" />
+
+							<TextView
+								android:id="@+id/certificate_detail_info_validity_left_bold"
+								style="@style/CovidCertificate.Text.Bold"
+								android:layout_width="match_parent"
+								android:layout_height="wrap_content"
+								app:backgroundTint="@color/blueish"
+								tools:text="01.01.2022" />
+
+						</LinearLayout>
+
+						<LinearLayout
+							android:id="@+id/certificate_detail_info_validity_right_group"
+							android:layout_width="0dp"
+							android:layout_height="wrap_content"
+							android:layout_weight="1"
+							android:orientation="vertical">
+
+							<TextView
+								android:id="@+id/certificate_detail_info_validity_right_text"
 								style="@style/CovidCertificate.Text"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"
@@ -265,7 +291,7 @@
 								app:backgroundTint="@color/blueish" />
 
 							<TextView
-								android:id="@+id/certificate_detail_info_validity_date"
+								android:id="@+id/certificate_detail_info_validity_right_bold"
 								style="@style/CovidCertificate.Text.Bold"
 								android:layout_width="match_parent"
 								android:layout_height="wrap_content"

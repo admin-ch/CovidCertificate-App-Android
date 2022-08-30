@@ -101,12 +101,11 @@ class CertificatesListFragment : Fragment() {
 			val updatedAdapterItems = adapterItems.map { item ->
 				when (item) {
 					is WalletDataListItem.VerifiedCeritificateItem -> {
-						statefulWalletItems.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
-							.find {
-								it.qrCodeData == item.verifiedCertificate.qrCodeData
-							}?.let {
-								item.copy(verifiedCertificate = it)
-							} ?: item
+						statefulWalletItems
+							.filterIsInstance(StatefulWalletItem.VerifiedCertificate::class.java)
+							.find { cert -> cert.qrCodeData == item.verifiedCertificate.qrCodeData }
+							?.let { cert -> item.copy(cert) }
+							?: item
 					}
 					is WalletDataListItem.TransferCodeItem -> {
 						statefulWalletItems.filterIsInstance(StatefulWalletItem.TransferCodeConversionItem::class.java)
