@@ -10,6 +10,7 @@
 
 package ch.admin.bag.covidcertificate.wallet.detail
 
+import android.content.Context
 import android.content.res.ColorStateList
 import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
@@ -35,6 +36,7 @@ import androidx.transition.TransitionManager
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.EolBannerInfoModel
 import ch.admin.bag.covidcertificate.common.config.WalletModeModel
+import ch.admin.bag.covidcertificate.common.extensions.getDate
 import ch.admin.bag.covidcertificate.common.extensions.getDrawableIdentifier
 import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
@@ -53,6 +55,7 @@ import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertType
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.CertificateHolder
 import ch.admin.bag.covidcertificate.sdk.core.models.healthcert.eu.DccCert
 import ch.admin.bag.covidcertificate.sdk.core.models.state.*
+import ch.admin.bag.covidcertificate.sdk.core.verifier.nationalrules.ValidityRange
 import ch.admin.bag.covidcertificate.wallet.CertificatesAndConfigViewModel
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.databinding.FragmentCertificateDetailBinding
@@ -75,6 +78,7 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
+import java.time.Duration
 import java.time.LocalDateTime
 
 class CertificateDetailFragment : Fragment() {
@@ -213,7 +217,8 @@ class CertificateDetailFragment : Fragment() {
 					val isFeatureEnabled = currentConfig?.foreignRulesCheckEnabled == true
 					val isNotInvalid = it.state is VerificationState.SUCCESS || it.state.isOnlyNationalRulesInvalid()
 					val isValidOnlyInSwitzerland = it.state.isValidOnlyInSwitzerland()
-					binding.certificateForeignValidityButton.isVisible = isFeatureEnabled && isNotInvalid && !isValidOnlyInSwitzerland
+					binding.certificateForeignValidityButton.isVisible =
+						isFeatureEnabled && isNotInvalid && !isValidOnlyInSwitzerland
 
 					updateStatusInfo(it.state)
 				}
@@ -329,16 +334,20 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun updateStatusInfo(verificationState: VerificationState?) {
-		val state = verificationState ?: return
+		val originalState = verificationState ?: return
 
-		changeAlpha(state)
-		setCertificateDetailTextColor(state.getNameDobColor())
+		val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
+		val expiryHiddenState = hideExpiryInSwitzerland(currentConfig, originalState)
+		val isNotValidAnymore = originalState is VerificationState.INVALID && expiryHiddenState is VerificationState.SUCCESS
 
-		when (state) {
+		changeAlpha(expiryHiddenState)
+		setCertificateDetailTextColor(expiryHiddenState.getNameDobColor())
+
+		when (expiryHiddenState) {
 			is VerificationState.LOADING -> displayLoadingState()
-			is VerificationState.SUCCESS -> displaySuccessState(state)
-			is VerificationState.INVALID -> displayInvalidState(state)
-			is VerificationState.ERROR -> displayErrorState(state)
+			is VerificationState.SUCCESS -> displaySuccessState(expiryHiddenState, isNotValidAnymore)
+			is VerificationState.INVALID -> displayInvalidState(expiryHiddenState)
+			is VerificationState.ERROR -> displayErrorState(expiryHiddenState)
 		}
 	}
 
@@ -360,7 +369,10 @@ class CertificateDetailFragment : Fragment() {
 		}
 	}
 
-	private fun displaySuccessState(state: VerificationState.SUCCESS) {
+	private fun displaySuccessState(
+		state: VerificationState.SUCCESS,
+		isNotValidAnymore: Boolean,
+	) {
 		val context = context ?: return
 		showLoadingIndicator(false)
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
@@ -368,13 +380,21 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailErrorCode.isVisible = false
 		val walletState = state.successState as SuccessState.WalletSuccessState
 
-		showValidityDate(walletState.validityRange?.validUntil, certificateHolder.certType, state)
+		setupValidityGroup(context, state)
 
 		setInfoBubbleBackgrounds(R.color.blueish, R.color.greenish)
 
-		// Certificate Light and PDF export is enabled for a valid certificate that was issued in Switzerland
 		val isIssuedInSwitzerland = ISSUER_SWITZERLAND.contains(certificateHolder.issuer)
-		updateConversionButtons(isLightCertificateEnabled = isIssuedInSwitzerland, isPdfExportEnabled = isIssuedInSwitzerland)
+		if (isNotValidAnymore) {
+			// Certificate Light is disabled for invalid certificates, PDF export is enabled if the signature is valid and the certificate was issued in Switzerland
+			updateConversionButtons(
+				isLightCertificateEnabled = false,
+				isPdfExportEnabled = isIssuedInSwitzerland // signature is assumed to be valid, since we only hide expiry for well-signed certs
+			)
+		} else {
+			// Certificate Light and PDF export is enabled for a valid certificate that was issued in Switzerland
+			updateConversionButtons(isLightCertificateEnabled = isIssuedInSwitzerland, isPdfExportEnabled = isIssuedInSwitzerland)
+		}
 
 		val statusInfo: SpannableString
 		val iconId: Int
@@ -563,7 +583,7 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailInfoDescriptionGroup.isVisible = false
 
 		binding.certificateDetailInfoValidityGroup.isVisible = state.signatureState == CheckSignatureState.SUCCESS
-		showValidityDate(state.validityRange?.validUntil, certificateHolder.certType, state)
+		setupValidityGroup(context, state)
 
 		// Certificate Light is disabled for invalid certificates, PDF export is enabled if the signature is valid and the certificate was issued in Switzerland
 		val isSignatureValid = state.signatureState is CheckSignatureState.SUCCESS
@@ -726,21 +746,59 @@ class CertificateDetailFragment : Fragment() {
 		binding.certificateDetailQrCodeStatusIcon.isVisible = !isLoading
 	}
 
+	private fun setupValidityGroup(context: Context, state: VerificationState) {
+		val covidCertificate: DccCert = certificateHolder.certificate as DccCert
+		val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
+		val validityRange: ValidityRange? = when (state) {
+			is VerificationState.SUCCESS -> (state.successState as SuccessState.WalletSuccessState).validityRange
+			is VerificationState.INVALID -> state.validityRange
+			else -> throw IllegalArgumentException("Unsupported state: ${state::class.java.simpleName}")
+		}
+
+		if (currentConfig?.showValidityState == false) {
+			val leftLabelStringId = if (certificateHolder.certType == CertType.VACCINATION) {
+				R.string.wallet_validity_since_vaccination_date
+			} else if (certificateHolder.certType == CertType.TEST) {
+				R.string.wallet_validity_since_test_date
+			} else {
+				R.string.wallet_validity_since_recovery_date
+			}
+			binding.certificateDetailInfoValidityLeftText.text = context.getString(leftLabelStringId)
+			binding.certificateDetailInfoValidityLeftBold.text =
+				getFormattedValidityDate(covidCertificate.getDate(), certificateHolder.certType, state)
+			binding.certificateDetailInfoValidityLeftBold.visibility = View.VISIBLE
+			binding.certificateDetailInfoValidityRightText.text =
+				getPrefix(context, covidCertificate.getDate(), certificateHolder.certType)
+			binding.certificateDetailInfoValidityRightBold.text =
+				getFormattedValiditySince(context, covidCertificate.getDate(), certificateHolder.certType)
+		} else {
+			binding.certificateDetailInfoValidityLeftText.text = context.getString(R.string.wallet_certificate_validity)
+			binding.certificateDetailInfoValidityLeftBold.visibility = View.GONE
+			binding.certificateDetailInfoValidityRightText.text = context.getString(R.string.wallet_certificate_valid_until)
+			binding.certificateDetailInfoValidityRightBold.text =
+				getFormattedValidityDate(validityRange?.validUntil, certificateHolder.certType, state)
+		}
+	}
+
 	/**
 	 * Change the alpha value of the QR code, validity date and certificate content
 	 */
 	private fun changeAlpha(state: VerificationState) {
 		binding.certificateDetailQrCode.alpha = state.getInvalidQrCodeAlpha(certificateHolder.certType == CertType.TEST)
 		val contentAlpha = state.getInvalidContentAlpha()
-		binding.certificateDetailInfoValidityDateDisclaimer.alpha = contentAlpha
-		binding.certificateDetailInfoValidityDateGroup.alpha = contentAlpha
+		binding.certificateDetailInfoValidityLeftGroup.alpha = contentAlpha
+		binding.certificateDetailInfoValidityRightGroup.alpha = contentAlpha
 		binding.certificateDetailDataRecyclerView.alpha = contentAlpha
 	}
 
 	/**
-	 * Display the formatted validity date of the vaccine or test
+	 * Format validity date of the vaccine or test
 	 */
-	private fun showValidityDate(validUntil: LocalDateTime?, certificateType: CertType?, verificationState: VerificationState) {
+	private fun getFormattedValidityDate(
+		validUntil: LocalDateTime?,
+		certificateType: CertType?,
+		verificationState: VerificationState
+	): String? {
 		val formatter = when (certificateType) {
 			null -> null
 			CertType.TEST -> DEFAULT_DISPLAY_DATE_TIME_FORMATTER
@@ -753,7 +811,56 @@ class CertificateDetailFragment : Fragment() {
 		} else {
 			formatter?.format(validUntil)
 		}
-		binding.certificateDetailInfoValidityDate.text = formattedDate
+		return formattedDate
+	}
+
+	private fun getPrefix(context: Context, validFrom: LocalDateTime?, certificateType: CertType?): String {
+		if (validFrom == null) {
+			return "-"
+		}
+
+		val duration = Duration.between(validFrom, LocalDateTime.now())
+		val hours = duration.toHours()
+		return if (certificateType == CertType.TEST && hours > 72) {
+			context.getString(R.string.wallet_validity_since_more_hours_prefix)
+		} else {
+			context.getString(R.string.wallet_validity_since_prefix)
+		}
+	}
+
+	/**
+	 * Format the validitySince, e.g. "21 hours", "1 day"
+	 */
+	private fun getFormattedValiditySince(context: Context, validFrom: LocalDateTime?, certificateType: CertType?): String {
+		if (validFrom == null) {
+			return "-"
+		}
+
+		val duration = Duration.between(validFrom, LocalDateTime.now())
+		val days = duration.toDays()
+		val hours = duration.toHours()
+
+		return if (certificateType == CertType.TEST) {
+			if (hours == 1L) {
+				context.getString(R.string.wallet_validity_since_hours_singular)
+			} else if (hours <= 72L) {
+				context.getString(R.string.wallet_validity_since_hours_plural).replace("{HOURS}", hours.toString())
+			} else {
+				context.getString(R.string.wallet_validity_since_hours_plural).replace("{HOURS}", "72")
+			}
+		} else if (days == 0L) {
+			if (hours == 1L) {
+				context.getString(R.string.wallet_validity_since_hours_singular)
+			} else {
+				context.getString(R.string.wallet_validity_since_hours_plural).replace("{HOURS}", hours.toString())
+			}
+		} else {
+			if (days == 1L) {
+				context.getString(R.string.wallet_validity_since_days_singular)
+			} else {
+				context.getString(R.string.wallet_validity_since_days_plural).replace("{DAYS}", days.toString())
+			}
+		}
 	}
 
 	/**

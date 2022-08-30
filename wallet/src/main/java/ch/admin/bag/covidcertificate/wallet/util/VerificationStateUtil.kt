@@ -13,6 +13,7 @@ package ch.admin.bag.covidcertificate.wallet.util
 import android.content.Context
 import android.text.SpannableString
 import androidx.annotation.ColorRes
+import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.util.addBoldDate
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
@@ -116,4 +117,35 @@ fun VerificationState.getInvalidContentAlpha(): Float {
 		is VerificationState.INVALID -> 0.55f
 		else -> 1f
 	}
+}
+
+/**
+ * Hide expiry info of certificates that are expired in Switzerland BUT have a valid signature and are NOT revoked.
+ * Don't show a grey expired state, but a blue success state.
+ */
+fun hideExpiryInSwitzerland(currentConfig: ConfigModel?, inState: VerificationState): VerificationState {
+	var outState = inState
+
+	if (currentConfig?.showValidityState == false
+		&& inState is VerificationState.INVALID
+		&& inState.signatureState == CheckSignatureState.SUCCESS
+		&& inState.revocationState !is CheckRevocationState.INVALID
+		&& (inState.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE
+				|| inState.nationalRulesState is CheckNationalRulesState.NOT_YET_VALID)
+	) {
+
+		val dummySuccessState = SuccessState.WalletSuccessState(
+			isValidOnlyInSwitzerland = false,
+			validityRange = inState.validityRange,
+			modeValidity = emptyList(), // not valid in any mode (3G/2G...) => empty
+			eolBannerIdentifier = null,
+			showRenewBanner = inState.showRenewBanner,
+		)
+		outState = VerificationState.SUCCESS(
+			dummySuccessState,
+			isLightCertificate = false, // light certs automatically go back to normal certs => they should never be INVALID in the wallet
+		)
+	}
+
+	return outState
 }

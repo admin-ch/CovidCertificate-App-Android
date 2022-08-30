@@ -1452,7 +1452,6 @@ Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad ac
     <string name="wallet_certificate_antigen_positive_date">"Data da l'emprim resultat positiv"</string>
 
     <!-- Wallet: Blaue Box für positiven Antigen-Test -->
-    <!-- Fuzzy -->
     <string name="wallet_certificate_detail_note_positive_antigen">"Quest attest n'è betg in document da viadi.
 &lt;br /&gt;&lt;br /&gt;
 Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad actuala en Svizra pudais Vus verifitgar da tut temp cun l'app «Covid-Certificate»."</string>
@@ -1513,21 +1512,11 @@ Quest certificat è valaivel mo per in tschert temp. La durada da valaivladad ac
 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2"></string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_title">"Tegnair en salv il certificat!"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_text">"Sche Vus stizzais l'app, midais u perdais Voss smartphone, van er a perder Voss certificats COVID. 
 Tegnai perquai en salv Voss certificats er ordaifer l'app cun exportar quels sco PDF."</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_button">"Dapli infurmaziuns"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_url_android">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate"</string>
-
-    <!-- Fuzzy -->
     <string name="infobox_generic_url_ios">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate"</string>
 
     <!-- accessibilityLabel for the "1"-icon -->
@@ -1591,15 +1580,12 @@ Tegnai perquai en salv Voss certificats er ordaifer l'app cun exportar quels sco
     <string name="wallet_foreign_rules_check_network_error_text">"Per verifitgar la valaivladad sto Voss smartphone esser collià cun l’internet."</string>
 
     <!-- Reisefeature: Hinweis 1 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_2">"Las reglas d'entrada pon sa midar. Verifitgai perquai la valaivladad curt avant che Vus partis ed As infurmai ultra da quai online davart las reglas d'entrada actualas dal pajais da destinaziun."</string>
 
     <!-- Reisefeature: Hinweis 2 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_3">"Las infurmaziuns qua survart sa refereschan mo a las reglas d'entrada dal pajais da destinaziun. Per secturs che pretendan eventualmain in certificat entaifer il pajais pon valair autras reglas."</string>
 
     <!-- Reisefeature: Hinweis 3 -->
-    <!-- Fuzzy -->
     <string name="wallet_foreign_rules_check_hint_1">"Per l'actualitad e la cumplettadad da las infurmaziuns na surpiglia la Confederaziun nagina responsabladad."</string>
 
     <!-- Reisefeature: Hinweis 4 -->
@@ -1647,7 +1633,6 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
     <string name="rat_conversion_info2_text">"Cun transferir las datas dal certificat en il formular online po Vossa dumonda vegnir tractada en moda pli simpla."</string>
 
     <!-- Die URL für das Formular, mit dem für ein RAT Genesungszert ein reguläres Genesungszert beantragt werden kann -->
-    <!-- Fuzzy -->
     <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
@@ -1726,7 +1711,6 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
     <string name="wallet_certificate_renewal_successful_bubble_button">"Dapli infurmaziuns"</string>
 
     <!-- Wallet: QR Code des Zertifikats abgelaufen -->
-    <!-- Fuzzy -->
     <string name="wallet_error_qr_code_expired">"La data da la scadenza tecnica da quest code QR è arrivada."</string>
     <string name="wallet_certificate_renewal_rate_limit_error_title">"La limita da 24 uras è cuntanschida"</string>
     <string name="wallet_certificate_renewal_rate_limit_error_text">"Code QR renovà memia savens. Renovaziun bloccada temporarmain."</string>
@@ -1734,4 +1718,23 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
     <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"</string>
     <string name="terms_and_conditions_update_boarding_title">"Actualisaziun"</string>
     <string name="terms_and_conditions_update_boarding_text">"Las cundiziuns d’utilisaziun e la decleraziun davart la protecziun da datas da l’app èn vegnidas actualisadas en tscherts puncts ed adattadas a las basas legalas. "</string>
+    <string name="wallet_validity_since_vaccination_date"></string>
+    <string name="wallet_validity_since_test_date"></string>
+    <string name="wallet_validity_since_more_hours_prefix"></string>
+    <string name="wallet_validity_since_recovery_date"></string>
+
+    <!-- vor 2 Tagen - must be before "2 Tagen"! -->
+    <string name="wallet_validity_since_prefix"></string>
+
+    <!-- vor 1 Stunde -->
+    <string name="wallet_validity_since_hours_singular"></string>
+
+    <!-- vor 2 Stunden -->
+    <string name="wallet_validity_since_hours_plural"></string>
+
+    <!-- vor 1 Tag -->
+    <string name="wallet_validity_since_days_singular"></string>
+
+    <!-- vor 2 Tagen -->
+    <string name="wallet_validity_since_days_plural"></string>
 </resources>
