@@ -14,7 +14,6 @@ import android.content.Context
 import android.text.SpannableString
 import androidx.annotation.ColorRes
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
-import ch.admin.bag.covidcertificate.common.net.ConfigRepository
 import ch.admin.bag.covidcertificate.common.util.addBoldDate
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
@@ -127,12 +126,14 @@ fun VerificationState.getInvalidContentAlpha(): Float {
 fun hideExpiryInSwitzerland(currentConfig: ConfigModel?, inState: VerificationState): VerificationState {
 	var outState = inState
 
-	if (currentConfig?.showValiditySince == true
+	if (currentConfig?.showValidityState == false
 		&& inState is VerificationState.INVALID
 		&& inState.signatureState == CheckSignatureState.SUCCESS
 		&& inState.revocationState !is CheckRevocationState.INVALID
-		&& inState.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE
+		&& (inState.nationalRulesState is CheckNationalRulesState.NOT_VALID_ANYMORE
+				|| inState.nationalRulesState is CheckNationalRulesState.NOT_YET_VALID)
 	) {
+
 		val dummySuccessState = SuccessState.WalletSuccessState(
 			isValidOnlyInSwitzerland = false,
 			validityRange = inState.validityRange,

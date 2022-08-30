@@ -1720,6 +1720,8 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
     <string name="terms_and_conditions_update_boarding_text">"Las cundiziuns d’utilisaziun e la decleraziun davart la protecziun da datas da l’app èn vegnidas actualisadas en tscherts puncts ed adattadas a las basas legalas. "</string>
     <string name="wallet_validity_since_vaccination_date"></string>
     <string name="wallet_validity_since_test_date"></string>
+    <string name="wallet_validity_since_more_hours_prefix"></string>
+    <string name="wallet_validity_since_recovery_date"></string>
 
     <!-- vor 2 Tagen - must be before "2 Tagen"! -->
     <string name="wallet_validity_since_prefix"></string>

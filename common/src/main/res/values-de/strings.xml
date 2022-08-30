@@ -1725,10 +1725,12 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="terms_and_conditions_update_boarding_title">"Aktualisierung"</string>
     <string name="terms_and_conditions_update_boarding_text">"Die Nutzungsbedingungen und die Datenschutzerklärung der App wurden punktuell aktualisiert und an die rechtlichen Grundlagen angepasst."</string>
     <string name="wallet_validity_since_vaccination_date">"Impfdatum"</string>
-    <string name="wallet_validity_since_test_date">"Testdatum"</string>
+    <string name="wallet_validity_since_test_date">"Negativ getestet"</string>
+    <string name="wallet_validity_since_recovery_date">"Positiv getestet"</string>
 
     <!-- vor 2 Tagen - must be before "2 Tagen"! -->
     <string name="wallet_validity_since_prefix">"vor"</string>
+    <string name="wallet_validity_since_more_hours_prefix">"vor mehr als"</string>
 
     <!-- vor 1 Stunde -->
     <string name="wallet_validity_since_hours_singular">"1 Stunde"</string>

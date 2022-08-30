@@ -36,6 +36,7 @@ import androidx.transition.TransitionManager
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.EolBannerInfoModel
 import ch.admin.bag.covidcertificate.common.config.WalletModeModel
+import ch.admin.bag.covidcertificate.common.extensions.getDate
 import ch.admin.bag.covidcertificate.common.extensions.getDrawableIdentifier
 import ch.admin.bag.covidcertificate.common.extensions.overrideScreenBrightness
 import ch.admin.bag.covidcertificate.common.net.ConfigRepository
@@ -216,7 +217,8 @@ class CertificateDetailFragment : Fragment() {
 					val isFeatureEnabled = currentConfig?.foreignRulesCheckEnabled == true
 					val isNotInvalid = it.state is VerificationState.SUCCESS || it.state.isOnlyNationalRulesInvalid()
 					val isValidOnlyInSwitzerland = it.state.isValidOnlyInSwitzerland()
-					binding.certificateForeignValidityButton.isVisible = isFeatureEnabled && isNotInvalid && !isValidOnlyInSwitzerland
+					binding.certificateForeignValidityButton.isVisible =
+						isFeatureEnabled && isNotInvalid && !isValidOnlyInSwitzerland
 
 					updateStatusInfo(it.state)
 				}
@@ -745,6 +747,7 @@ class CertificateDetailFragment : Fragment() {
 	}
 
 	private fun setupValidityGroup(context: Context, state: VerificationState) {
+		val covidCertificate: DccCert = certificateHolder.certificate as DccCert
 		val currentConfig = ConfigRepository.getCurrentConfig(requireContext())
 		val validityRange: ValidityRange? = when (state) {
 			is VerificationState.SUCCESS -> (state.successState as SuccessState.WalletSuccessState).validityRange
@@ -752,18 +755,22 @@ class CertificateDetailFragment : Fragment() {
 			else -> throw IllegalArgumentException("Unsupported state: ${state::class.java.simpleName}")
 		}
 
-		if (currentConfig?.showValiditySince == true){
+		if (currentConfig?.showValidityState == false) {
 			val leftLabelStringId = if (certificateHolder.certType == CertType.VACCINATION) {
 				R.string.wallet_validity_since_vaccination_date
-			} else {
+			} else if (certificateHolder.certType == CertType.TEST) {
 				R.string.wallet_validity_since_test_date
+			} else {
+				R.string.wallet_validity_since_recovery_date
 			}
 			binding.certificateDetailInfoValidityLeftText.text = context.getString(leftLabelStringId)
 			binding.certificateDetailInfoValidityLeftBold.text =
-				getFormattedValidityDate(validityRange?.validFrom, certificateHolder.certType, state)
+				getFormattedValidityDate(covidCertificate.getDate(), certificateHolder.certType, state)
 			binding.certificateDetailInfoValidityLeftBold.visibility = View.VISIBLE
-			binding.certificateDetailInfoValidityRightText.text = context.getString(R.string.wallet_validity_since_prefix)
-			binding.certificateDetailInfoValidityRightBold.text = getFormattedValiditySince(context, validityRange?.validFrom)
+			binding.certificateDetailInfoValidityRightText.text =
+				getPrefix(context, covidCertificate.getDate(), certificateHolder.certType)
+			binding.certificateDetailInfoValidityRightBold.text =
+				getFormattedValiditySince(context, covidCertificate.getDate(), certificateHolder.certType)
 		} else {
 			binding.certificateDetailInfoValidityLeftText.text = context.getString(R.string.wallet_certificate_validity)
 			binding.certificateDetailInfoValidityLeftBold.visibility = View.GONE
@@ -807,10 +814,24 @@ class CertificateDetailFragment : Fragment() {
 		return formattedDate
 	}
 
+	private fun getPrefix(context: Context, validFrom: LocalDateTime?, certificateType: CertType?): String {
+		if (validFrom == null) {
+			return "-"
+		}
+
+		val duration = Duration.between(validFrom, LocalDateTime.now())
+		val hours = duration.toHours()
+		return if (certificateType == CertType.TEST && hours > 72) {
+			context.getString(R.string.wallet_validity_since_more_hours_prefix)
+		} else {
+			context.getString(R.string.wallet_validity_since_prefix)
+		}
+	}
+
 	/**
 	 * Format the validitySince, e.g. "21 hours", "1 day"
 	 */
-	private fun getFormattedValiditySince(context: Context, validFrom: LocalDateTime?): String {
+	private fun getFormattedValiditySince(context: Context, validFrom: LocalDateTime?, certificateType: CertType?): String {
 		if (validFrom == null) {
 			return "-"
 		}
@@ -819,7 +840,15 @@ class CertificateDetailFragment : Fragment() {
 		val days = duration.toDays()
 		val hours = duration.toHours()
 
-		return if (days == 0L) {
+		return if (certificateType == CertType.TEST) {
+			if (hours == 1L) {
+				context.getString(R.string.wallet_validity_since_hours_singular)
+			} else if (hours <= 72L) {
+				context.getString(R.string.wallet_validity_since_hours_plural).replace("{HOURS}", hours.toString())
+			} else {
+				context.getString(R.string.wallet_validity_since_hours_plural).replace("{HOURS}", "72")
+			}
+		} else if (days == 0L) {
 			if (hours == 1L) {
 				context.getString(R.string.wallet_validity_since_hours_singular)
 			} else {

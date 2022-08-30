@@ -1725,6 +1725,8 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="terms_and_conditions_update_boarding_text">"L’informativa sulla privacy (dichiarazione sulla protezione dei dati) e le condizioni d’uso dell’app sono state puntualmente aggiornate e adeguate alle basi legali."</string>
     <string name="wallet_validity_since_vaccination_date"></string>
     <string name="wallet_validity_since_test_date"></string>
+    <string name="wallet_validity_since_more_hours_prefix"></string>
+    <string name="wallet_validity_since_recovery_date"></string>
 
     <!-- vor 2 Tagen - must be before "2 Tagen"! -->
     <string name="wallet_validity_since_prefix"></string>
