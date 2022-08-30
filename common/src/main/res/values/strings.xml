@@ -1754,4 +1754,6 @@ You have the option of requesting an EU-compatible version of this certificate v
     <string name="wallet_update_boarding_page_4_link_1_url">"https://reopen.europa.eu"</string>
     <string name="wallet_update_boarding_page_4_link_2_text">"iatatravelcentre.com"</string>
     <string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
+    <string name="wallet_validity_since_more_hours_prefix"></string>
+    <string name="wallet_validity_since_recovery_date"></string>
 </resources>
