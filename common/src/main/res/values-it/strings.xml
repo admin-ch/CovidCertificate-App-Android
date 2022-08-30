@@ -44,7 +44,7 @@
     <string name="ok_button">"OK"</string>
     <string name="camera_permission_dialog_text">"L'app necessita dell'accesso alla fotocamera per scansionare il codice QR."</string>
     <string name="camera_permission_dialog_action">"Consentire l'accesso alla fotocamera"</string>
-    <string name="verifier_qr_scanner_scan_qr_text">"Inquadrare il codice QR 
+    <string name="verifier_qr_scanner_scan_qr_text">"Inquadrare il codice QR
 per verificare"</string>
 
     <!-- Titel auf dem Verifikations-Screen -->
@@ -72,7 +72,7 @@ per verificare"</string>
     <string name="verifier_verify_success_title">"Verifica riuscita"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
-    <string name="verifier_verify_success_info">"Valido solo con un documento 
+    <string name="verifier_verify_success_info">"Valido solo con un documento
 di legittimazione"</string>
 
     <!-- Prüfung loading text -->
@@ -133,7 +133,7 @@ di legittimazione"</string>
     <string name="wallet_onboarding_privacy_header">"Protezione dei dati"</string>
 
     <!-- Titel im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_title">"I dati rimangono 
+    <string name="wallet_onboarding_privacy_title">"I dati rimangono
 nell'app"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
@@ -162,7 +162,7 @@ nell'app"</string>
     <string name="wallet_scanner_howitworks_header">"Funziona così"</string>
 
     <!-- Titel im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_title">"Aggiungere 
+    <string name="wallet_scanner_howitworks_title">"Aggiungere
 certificati Covid"</string>
 
     <!-- Textblock 1 im "So funktionierts" Screen beim Scannen -->
@@ -258,7 +258,7 @@ In entrambi i casi, dovrà mostrare su richiesta anche un documento di legittima
     <string name="wallet_faq_works_answer_6">"Può semplicemente risalvare il certificato COVID sul Suo dispositivo mobile. Per farlo, scarichi nuovamente l'app e poi scansioni il codice QR che trova sul Suo certificato COVID in formato cartaceo o PDF."</string>
 
     <!-- Titel 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_title">"Come funziona 
+    <string name="wallet_faq_works_title">"Come funziona
 l'app?"</string>
 
     <!-- Text 2 im FAQ-Screen der Wallet App -->
@@ -361,11 +361,11 @@ Il certificato non è ancora valido."</string>
     <string name="wallet_error_expired">"La durata di validità in Svizzera è stata superata "</string>
 
     <!-- Wallet: Zertifikat wurde widerrufen -->
-    <string name="wallet_error_revocation">"Il certificato è stato 
+    <string name="wallet_error_revocation">"Il certificato è stato
 revocato"</string>
 
     <!-- Wallet: Zertifikat mit ungültiger Signatur -->
-    <string name="wallet_error_invalid_signature">"Certificato con 
+    <string name="wallet_error_invalid_signature">"Certificato con
 firma non valida"</string>
 
     <!-- Wallet: ungültiger Signatur (gleiche Worte wie wallet_error_invalid_signature) -->
@@ -378,7 +378,7 @@ firma non valida"</string>
     <string name="wallet_certificate_already_exists">"Questo certificato è già salvato nell'app"</string>
 
     <!-- Titel Gültigkeit im Zertifikatsdetail -->
-    <string name="wallet_certificate_validity">"Validità in 
+    <string name="wallet_certificate_validity">"Validità in
 Svizzera"</string>
 
     <!-- "Bis" Label im Zertifikats-Detail -->
@@ -507,9 +507,9 @@ Se tutti i tre aspetti sono valutati positivamente, il certificato COVID è cons
     <string name="wallet_onboarding_external_privacy_button">"Informativa sulla privacy e condizioni d'uso"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_note">"Il presente certificato non costituisce un documento di viaggio. 
+    <string name="wallet_certificate_detail_note">"Il presente certificato non costituisce un documento di viaggio.
 &lt;br /&gt;&lt;br /&gt;
-Si acquisiscono sempre più conoscenze scientifiche sulla vaccinazione COVID-19, sulla guarigione dalla COVID-19 e sui test COVID-19, così come sulle nuove varianti problematiche del virus. 
+Si acquisiscono sempre più conoscenze scientifiche sulla vaccinazione COVID-19, sulla guarigione dalla COVID-19 e sui test COVID-19, così come sulle nuove varianti problematiche del virus.
 &lt;br /&gt;&lt;br /&gt;
 Prima di un viaggio, informatevi sulle restrizioni e sulle regole di validità vigenti nella località di destinazione. All’estero la validità del certificato è calcolata secondo le regole del Paese di destinazione e può essere differente da quella svizzera indicata nell’app «COVID Certificate». Maggiori informazioni sull’argomento sono disponibili &lt;a href=\"https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/cosa-devo-fare-se-il-mio-certificato-covid-sta-scadere-secondo-le-regole-di\"&gt;in queste FAQ&lt;/a&gt;."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/it/home/documentazione/covid-certificate-app.html"</string>
@@ -602,7 +602,7 @@ L’app visualizza un codice a 9 cifre, che puoi inserire nel modulo di prenotaz
 Se comunque non dovessi ricevere il tuo certificato COVID, rivolgiti al servizio che ha effettuato il test (centro di test, farmacia, medico)."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 3 -->
-    <string name="wallet_transfer_code_faq_works_answer_3">"In caso di test antigenico positivo, non ricevi alcun certificato di test dal laboratorio. 
+    <string name="wallet_transfer_code_faq_works_answer_3">"In caso di test antigenico positivo, non ricevi alcun certificato di test dal laboratorio.
 
 In caso di test PCR positivo, ricevi un certificato COVID per persone guarite, valido a partire dall’undicesimo giorno dopo l’esecuzione del test."</string>
 
@@ -653,7 +653,7 @@ In caso di test PCR positivo, ricevi un certificato COVID per persone guarite, v
     <string name="wallet_transfer_code_state_no_certificate">"Con questo trasferimento non è più possibile ricevere alcun certificato."</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig -->
-    <string name="wallet_error_invalid_format">"Formato del certificato 
+    <string name="wallet_error_invalid_format">"Formato del certificato
 non valido"</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig Fett -->
@@ -776,7 +776,7 @@ Tuttavia, per poter visualizzare nell’app «COVID Certificate» se il certific
     <string name="verifier_faq_works_linktext_2_1">"Ulteriori informazioni"</string>
     <string name="verifier_faq_works_linkurl_2_1">"https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"</string>
     <string name="verifier_faq_works_question_7">"I certificati possono essere verificati anche offline?"</string>
-    <string name="verifier_faq_works_answer_7">"In linea di principio, i certificati COVID possono essere verificati anche senza connessione Internet. A tale scopo, vengono scaricati regolarmente da un server centrale gli elenchi di verifica aggiornati. Questi elenchi salvati localmente non devono avere più di 48 ore. 
+    <string name="verifier_faq_works_answer_7">"In linea di principio, i certificati COVID possono essere verificati anche senza connessione Internet. A tale scopo, vengono scaricati regolarmente da un server centrale gli elenchi di verifica aggiornati. Questi elenchi salvati localmente non devono avere più di 48 ore.
 
 Per poter aggiornare gli elenchi di verifica, l’app deve essere aperta e collegata a Internet. L’aggiornamento avviene in modo immediato e automatico."</string>
 
@@ -933,7 +933,7 @@ con un documento di legittimazione"</string>
     <string name="verifier_update_boarding_certificate_light_text">"Con questo aggiornamento, nell'app puoi verificare anche la copia del certificato senza dati sanitari. A tale scopo sono state aggiornate le condizioni d'uso e l'informativa sulla protezione dei dati, che sono considerate valide se si continua a utilizzare l'app."</string>
 
     <!-- Verifier: Die Gültigkeit eines Certificate Light ist abgelaufen -->
-    <string name="verifier_certificate_light_error_expired">"La validità del certificato 
+    <string name="verifier_certificate_light_error_expired">"La validità del certificato
 è scaduta"</string>
 
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
@@ -1443,7 +1443,7 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_certificate_ausnahme_issued_country">"Certificato medico rilasciato in"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
-    <string name="wallet_certificate_detail_note_ausnahme">"La presente attestazione non costituisce un documento di viaggio. 
+    <string name="wallet_certificate_detail_note_ausnahme">"La presente attestazione non costituisce un documento di viaggio.
 &lt;br /&gt;&lt;br /&gt;
 Questo certificato ha soltanto una validità temporanea. L'applicazione «COVID Certificate» consente di verificare in qualsiasi momento l'attuale durata di validità in Svizzera."</string>
 
@@ -1518,7 +1518,7 @@ Questo certificato ha soltanto una validità temporanea. L'applicazione «COVID 
     <!-- text for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2"></string>
     <string name="infobox_generic_title">"Mettete al sicuro il vostro certificato!"</string>
-    <string name="infobox_generic_text">"Se cancellate l’app, cambiate o smarrite il vostro smartphone, anche i vostri certificati COVID andranno persi. 
+    <string name="infobox_generic_text">"Se cancellate l’app, cambiate o smarrite il vostro smartphone, anche i vostri certificati COVID andranno persi.
 Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli in formato PDF."</string>
     <string name="infobox_generic_button">"Per maggiori informazioni"</string>
     <string name="infobox_generic_url_android">"https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/ho-il-certificato-covid-esclusivamente-formato-elettronico-nellapp-covid"</string>
@@ -1725,8 +1725,6 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="terms_and_conditions_update_boarding_text">"L’informativa sulla privacy (dichiarazione sulla protezione dei dati) e le condizioni d’uso dell’app sono state puntualmente aggiornate e adeguate alle basi legali."</string>
     <string name="wallet_validity_since_vaccination_date"></string>
     <string name="wallet_validity_since_test_date"></string>
-    <string name="wallet_validity_since_more_hours_prefix"></string>
-    <string name="wallet_validity_since_recovery_date"></string>
 
     <!-- vor 2 Tagen - must be before "2 Tagen"! -->
     <string name="wallet_validity_since_prefix"></string>
@@ -1742,4 +1740,24 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
 
     <!-- vor 2 Tagen -->
     <string name="wallet_validity_since_days_plural"></string>
+    <string name="wallet_update_boarding_page_1_title"></string>
+    <string name="wallet_update_boarding_page_1_text"></string>
+    <string name="wallet_update_boarding_page_2_title"></string>
+    <string name="wallet_update_boarding_page_2_bullet_1"></string>
+    <string name="wallet_update_boarding_page_2_bullet_2"></string>
+    <string name="wallet_update_boarding_page_2_bullet_3"></string>
+    <string name="wallet_update_boarding_page_3_title"></string>
+    <string name="wallet_update_boarding_page_3_bullet_1"></string>
+    <string name="wallet_update_boarding_page_3_bullet_2"></string>
+    <string name="wallet_update_boarding_page_3_bullet_3"></string>
+    <string name="wallet_update_boarding_page_4_title"></string>
+    <string name="wallet_update_boarding_page_4_bullet_1"></string>
+    <string name="wallet_update_boarding_page_4_bullet_2"></string>
+    <string name="wallet_update_boarding_page_4_bullet_3"></string>
+    <string name="wallet_update_boarding_page_4_link_1_text">"reopen.europa.eu"</string>
+    <string name="wallet_update_boarding_page_4_link_1_url">"https://reopen.europa.eu"</string>
+    <string name="wallet_update_boarding_page_4_link_2_text">"iatatravelcentre.com"</string>
+    <string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
+    <string name="wallet_validity_since_more_hours_prefix"></string>
+    <string name="wallet_validity_since_recovery_date"></string>
 </resources>

@@ -16,6 +16,10 @@ import ch.admin.bag.covidcertificate.common.onboarding.SimpleOnboardingPagerAdap
 import ch.admin.bag.covidcertificate.wallet.R
 import ch.admin.bag.covidcertificate.wallet.onboarding.agbupdate.UpdateboardingAgbFragment
 import ch.admin.bag.covidcertificate.wallet.onboarding.certificatelight.UpdateboardingCertificateLightFragment
+import ch.admin.bag.covidcertificate.wallet.onboarding.validity.UpdateboardingValidity1Fragment
+import ch.admin.bag.covidcertificate.wallet.onboarding.validity.UpdateboardingValidity2Fragment
+import ch.admin.bag.covidcertificate.wallet.onboarding.validity.UpdateboardingValidity3Fragment
+import ch.admin.bag.covidcertificate.wallet.onboarding.validity.UpdateboardingValidity4Fragment
 
 class OnboardingActivity : BaseOnboardingActivity() {
 
@@ -59,11 +63,21 @@ class OnboardingActivity : BaseOnboardingActivity() {
 				this,
 				SimpleOnboardingPagerAdapter.FragmentProvider { UpdateboardingAgbFragment.newInstance() }
 			)
+			OnboardingType.VALIDITY -> SimpleOnboardingPagerAdapter(
+				this,
+				SimpleOnboardingPagerAdapter.FragmentProvider { UpdateboardingValidity1Fragment.newInstance() },
+				SimpleOnboardingPagerAdapter.FragmentProvider { UpdateboardingValidity2Fragment.newInstance() },
+				SimpleOnboardingPagerAdapter.FragmentProvider { UpdateboardingValidity3Fragment.newInstance() },
+				SimpleOnboardingPagerAdapter.FragmentProvider { UpdateboardingValidity4Fragment.newInstance() },
+			)
 		}
 	}
 
 	enum class OnboardingType {
-		FRESH_INSTALL, CERTIFICATE_LIGHT, AGB_UPDATE
+		FRESH_INSTALL,
+		CERTIFICATE_LIGHT,
+		AGB_UPDATE,
+		VALIDITY,
 	}
 
 }

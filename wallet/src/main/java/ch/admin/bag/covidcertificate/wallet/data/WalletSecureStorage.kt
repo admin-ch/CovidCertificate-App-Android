@@ -27,6 +27,7 @@ class WalletSecureStorage private constructor(context: Context) {
 		private const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
 		private const val KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED = "KEY_CERTIFICATE_LIGHT_UPDATEBOARDING_COMPLETED"
 		private const val KEY_AGB_UPDATEBOARDING_COMPLETED = "KEY_AGB_UPDATEBOARDIN_COMPLETED"
+		private const val KEY_VALIDITY_UPDATEBOARDING_COMPLETED = "KEY_VALIDITY_UPDATEBOARDING_COMPLETED"
 
 		private const val KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA = "KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA"
 		private const val KEY_MIGRATED_TRANSFER_CODE_VALIDITY = "KEY_MIGRATED_TRANSFER_CODE_VALIDITY"
@@ -61,6 +62,12 @@ class WalletSecureStorage private constructor(context: Context) {
 
 	fun setAgbUpdateboardingCompleted(completed: Boolean) = prefs.edit {
 		putBoolean(KEY_AGB_UPDATEBOARDING_COMPLETED, completed)
+	}
+
+	fun getValidityUpdateboardingCompleted() = prefs.getBoolean(KEY_VALIDITY_UPDATEBOARDING_COMPLETED, false)
+
+	fun setValidityUpdateboardingCompleted(completed: Boolean) = prefs.edit {
+		putBoolean(KEY_VALIDITY_UPDATEBOARDING_COMPLETED, completed)
 	}
 
 	fun getMigratedCertificatesToWalletData() = prefs.getBoolean(KEY_MIGRATED_CERTIFICATES_TO_WALLET_DATA, false)
