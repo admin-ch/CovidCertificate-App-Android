@@ -1,47 +1,6 @@
 {
   "forceUpdate": false,
-  "infoBox": {
-    "de": {
-      "title": "Zertifikat sichern!",
-      "msg": "Wenn Sie die App löschen, Ihr Smartphone wechseln oder verlieren, gehen auch Ihre Covid-Zertifikate verloren.\nBewahren Sie Ihre Zertifikate daher auch ausserhalb der App auf, indem Sie diese als PDF exportieren.",
-      "url": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate",
-      "urlTitle": "Mehr erfahren",
-      "isDismissible": true,
-      "infoId": "-444673106"
-    },
-    "en": {
-      "title": "Back up your certificate!",
-      "msg": "If you uninstall the app or change or lose your smartphone, you will also lose your COVID certificates.\nThis means you should also keep a copy of your certificates outside the app by exporting them as PDFs.",
-      "url": "https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/i-only-have-my-covid-certificate-electronically-covid-certificate-app-how-can-i",
-      "urlTitle": "Find out more",
-      "isDismissible": true,
-      "infoId": "1245387664"
-    },
-    "fr": {
-      "title": "Sauvegardez vos certificats!",
-      "msg": "Si vous supprimez l’application, changez de smartphone ou le perdez, vos certificats COVID seront également perdus.\nConservez donc vos certificats en dehors de l’application en les exportant au format PDF.",
-      "url": "https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/mon-certificat-covid-nest-disponible-quau-format-electronique-dans-lapplication",
-      "urlTitle": "Plus d’informations",
-      "isDismissible": true,
-      "infoId": "-633827500"
-    },
-    "it": {
-      "title": "Mettete al sicuro il vostro certificato!",
-      "msg": "Se cancellate l’app, cambiate o smarrite il vostro smartphone, anche i vostri certificati COVID andranno persi. \nConservate quindi i vostri certificati anche al di fuori dell’app esportandoli in formato PDF.",
-      "url": "https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/ho-il-certificato-covid-esclusivamente-formato-elettronico-nellapp-covid",
-      "urlTitle": "Per maggiori informazioni",
-      "isDismissible": true,
-      "infoId": "979033498"
-    },
-    "rm": {
-      "title": "Tegnair en salv il certificat!",
-      "msg": "Sche Vus stizzais l'app, midais u perdais Voss smartphone, van er a perder Voss certificats COVID. \nTegnai perquai en salv Voss certificats er ordaifer l'app cun exportar quels sco PDF.",
-      "url": "https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/ich-habe-das-covid-zertifikat-ausschliesslich-elektronisch-der-covid-certificate",
-      "urlTitle": "Dapli infurmaziuns",
-      "isDismissible": true,
-      "infoId": "-1183801636"
-    }
-  },
+  "infoBox": null,
   "questions": {
     "de": {
       "faqTitle": "Was sind Covid-Zertifikate?",
@@ -2600,9 +2559,9 @@
     }
   },
   "lightCertDurationInHours": 24,
-  "showVaccinationHintHomescreen": true,
-  "showVaccinationHintDetail": true,
-  "showVaccinationHintTransfer": true,
+  "showVaccinationHintHomescreen": false,
+  "showVaccinationHintDetail": false,
+  "showVaccinationHintTransfer": false,
   "refreshButtonDisabled": true,
   "refreshButtonInfo": {
     "de": {
@@ -2804,7 +2763,7 @@
     }
   },
   "showRatConversionForm": true,
-  "ratConversionFormUrl": "https://covidcertificate-form-t.admin.ch/immunityrequest",
+  "ratConversionFormUrl": "https://covidcertificate-form.admin.ch/immunityrequest",
   "certRenewalInfo": {
     "de": {
       "INFO": {
@@ -3172,5 +3131,6 @@
       }
     }
   },
-  "foreignRulesCheckEnabled": true
+  "showValidityState": false,
+  "foreignRulesCheckEnabled": false
 }
