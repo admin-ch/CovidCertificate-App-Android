@@ -798,7 +798,7 @@ class CertificateDetailFragment : Fragment() {
 	private fun getFormattedValidityDate(
 		validUntil: LocalDateTime?,
 		certificateType: CertType?,
-		verificationState: VerificationState
+		verificationState: VerificationState,
 	): String? {
 		val formatter = when (certificateType) {
 			null -> null
@@ -847,7 +847,8 @@ class CertificateDetailFragment : Fragment() {
 			} else if (hours <= 72L) {
 				context.getString(R.string.wallet_validity_since_hours_plural).replace("{HOURS}", hours.toString())
 			} else {
-				context.getString(R.string.wallet_validity_since_hours_plural).replace("{HOURS}", "72")
+				//to be grammatically correct the ago is removed for the english case
+				context.getString(R.string.wallet_validity_since_hours_plural).replace("{HOURS}", "72").replace(" ago", "")
 			}
 		} else if (days == 0L) {
 			if (hours == 1L) {
@@ -902,7 +903,7 @@ class CertificateDetailFragment : Fragment() {
 		@DrawableRes validationIconId: Int,
 		@DrawableRes validationIconLargeId: Int,
 		info: SpannableString?,
-		modeValidities: List<ModeValidity>
+		modeValidities: List<ModeValidity>,
 	) {
 		binding.certificateDetailRefreshModeValidity.removeAllViews()
 		binding.certificateDetailQrCodeColor.animateBackgroundTintColor(
@@ -930,7 +931,7 @@ class CertificateDetailFragment : Fragment() {
 		description: SpannableString?,
 		info: SpannableString?,
 		@DrawableRes iconId: Int,
-		showRedBorder: Boolean = false
+		showRedBorder: Boolean = false,
 	) {
 		binding.certificateDetailInfoDescription.text = description
 		binding.certificateDetailInfo.text = info
@@ -945,7 +946,7 @@ class CertificateDetailFragment : Fragment() {
 		@ColorRes infoBubbleColorId: Int,
 		@DrawableRes statusIconId: Int,
 		info: SpannableString?,
-		showRedBorder: Boolean = false
+		showRedBorder: Boolean = false,
 	) {
 		hideDelayedJob?.cancel()
 		hideDelayedJob = viewLifecycleOwner.lifecycleScope.launch {
