@@ -508,7 +508,7 @@ Si vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la 
 &lt;br /&gt;&lt;br /&gt;
 Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d'évoluer, notamment en ce qui concerne de nouveaux variants préoccupants du virus.
 &lt;br /&gt;&lt;br /&gt;
-Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles de validité en vigueur à votre lieu de destination. La validité de votre certificat à l’étranger dépend des règles du pays de destination et peut différer de la validité en Suisse indiquée dans l’application « COVID Certificate ». Vous trouverez de plus amples informations sur cette page dédiée aux &lt;a href=\"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/que-dois-je-faire-si-mon-certificat-covid-est-sur-le-point-dexpirer-en-suisse\"&gt;questions fréquentes&lt;/a&gt;."</string>
+Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles de validité en vigueur à votre lieu de destination. La validité de votre certificat à l’étranger dépend des règles du pays de destination. Vous trouverez de plus amples informations sur cette page dédiée aux &lt;a href=\"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/que-dois-je-faire-si-mon-certificat-covid-est-sur-le-point-dexpirer-en-suisse\"&gt;questions fréquentes&lt;/a&gt;."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-check-app.html"</string>
 
@@ -1718,41 +1718,41 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/pourquoi-dois-je-renouveler-le-code-qr-de-mon-certificat-covid-alors-que-selon-les"</string>
     <string name="terms_and_conditions_update_boarding_title">"Mise à jour"</string>
     <string name="terms_and_conditions_update_boarding_text">"Les conditions d’utilisation et la politique de confidentialité de l’application ont été ponctuellement mises à jour et adaptées aux bases légales."</string>
-    <string name="wallet_validity_since_vaccination_date"></string>
-    <string name="wallet_validity_since_test_date"></string>
+    <string name="wallet_validity_since_vaccination_date">"Date de vaccination"</string>
+    <string name="wallet_validity_since_test_date">"Test positif "</string>
 
     <!-- vor 2 Tagen - must be before "2 Tagen"! -->
-    <string name="wallet_validity_since_prefix"></string>
+    <string name="wallet_validity_since_prefix">"il y a"</string>
 
     <!-- vor 1 Stunde -->
-    <string name="wallet_validity_since_hours_singular"></string>
+    <string name="wallet_validity_since_hours_singular">"1 heure"</string>
 
     <!-- vor 2 Stunden -->
-    <string name="wallet_validity_since_hours_plural"></string>
+    <string name="wallet_validity_since_hours_plural">"{HOURS} heures"</string>
 
     <!-- vor 1 Tag -->
-    <string name="wallet_validity_since_days_singular"></string>
+    <string name="wallet_validity_since_days_singular">"1 jour"</string>
 
     <!-- vor 2 Tagen -->
-    <string name="wallet_validity_since_days_plural"></string>
-    <string name="wallet_update_boarding_page_1_title"></string>
-    <string name="wallet_update_boarding_page_1_text"></string>
-    <string name="wallet_update_boarding_page_2_title"></string>
-    <string name="wallet_update_boarding_page_2_bullet_1"></string>
-    <string name="wallet_update_boarding_page_2_bullet_2"></string>
-    <string name="wallet_update_boarding_page_2_bullet_3"></string>
-    <string name="wallet_update_boarding_page_3_title"></string>
-    <string name="wallet_update_boarding_page_3_bullet_1"></string>
-    <string name="wallet_update_boarding_page_3_bullet_2"></string>
-    <string name="wallet_update_boarding_page_3_bullet_3"></string>
-    <string name="wallet_update_boarding_page_4_title"></string>
-    <string name="wallet_update_boarding_page_4_bullet_1"></string>
-    <string name="wallet_update_boarding_page_4_bullet_2"></string>
-    <string name="wallet_update_boarding_page_4_bullet_3"></string>
+    <string name="wallet_validity_since_days_plural">"{DAYS} jours"</string>
+    <string name="wallet_update_boarding_page_1_title">"Nouveautés"</string>
+    <string name="wallet_update_boarding_page_1_text">"Désormais, le certificat COVID n’affichera plus l’encadré «Validité en Suisse». Celui-ci sera remplacé par la date de la vaccination ou du test. Pourquoi?"</string>
+    <string name="wallet_update_boarding_page_2_title">"Certificats COVID en Suisse"</string>
+    <string name="wallet_update_boarding_page_2_bullet_1">"L’obligation de présenter un certificat en Suisse a été levée en février 2022."</string>
+    <string name="wallet_update_boarding_page_2_bullet_2">"Depuis lors, les durées de validité pour la Suisse sont purement formelles et n’ont plus de pertinence pratique dans le pays."</string>
+    <string name="wallet_update_boarding_page_2_bullet_3">"La durée de validité pour la Suisse n’a pas non plus de pertinence à l’étranger."</string>
+    <string name="wallet_update_boarding_page_3_title">"Certificats COVID à l’étranger"</string>
+    <string name="wallet_update_boarding_page_3_bullet_1">"À l’étranger, les règles en vigueur dépendent de chaque pays."</string>
+    <string name="wallet_update_boarding_page_3_bullet_2">"Désormais, l’application indique le nombre de jours écoulés depuis une vaccination ou un test."</string>
+    <string name="wallet_update_boarding_page_3_bullet_3">"Vous pourrez ainsi déterminer plus facilement si votre certificat est conforme aux règles en vigueur dans votre pays de destination (si celui-ci exige encore un certificat COVID)."</string>
+    <string name="wallet_update_boarding_page_4_title">"Situation actuelle en Europe et dans le monde"</string>
+    <string name="wallet_update_boarding_page_4_bullet_1">"Dans l’intervalle, la plupart des pays d’Europe ont levé l’obligation de présenter un certificat pour entrer sur leur territoire."</string>
+    <string name="wallet_update_boarding_page_4_bullet_2">"La fonction «Validité à l’étranger» a donc également été supprimée."</string>
+    <string name="wallet_update_boarding_page_4_bullet_3">"Pour savoir quels pays exigent encore un certificat, vous pouvez consulter les sites suivants:"</string>
     <string name="wallet_update_boarding_page_4_link_1_text">"reopen.europa.eu"</string>
     <string name="wallet_update_boarding_page_4_link_1_url">"https://reopen.europa.eu"</string>
     <string name="wallet_update_boarding_page_4_link_2_text">"iatatravelcentre.com"</string>
     <string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
-    <string name="wallet_validity_since_more_hours_prefix"></string>
-    <string name="wallet_validity_since_recovery_date"></string>
+    <string name="wallet_validity_since_more_hours_prefix">"il y a plus de"</string>
+    <string name="wallet_validity_since_recovery_date">"Test positif"</string>
 </resources>

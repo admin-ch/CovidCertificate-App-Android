@@ -507,7 +507,7 @@ Sche tut ils trais aspects vegnan valitads en moda positiva, vegn il certificat 
 &lt;br /&gt;&lt;br /&gt;
 Las enconuschientschas scientificas davart la vaccinaziun cunter COVID-19, davart la guariziun da COVID-19 e davart ils tests da COVID-19 sa sviluppan cuntinuadamain, er areguard las novas variantas privlusas dal virus.
 &lt;br /&gt;&lt;br /&gt;
-As infurmai per plaschair avant in viadi davart las restricziuns e davart las reglas da valaivladad che valan al lieu da destinaziun. La valaivladad da Voss certificat vegn calculada a l'exteriur a maun da las reglas dal pajais da destinaziun. La valaivladad a l'exteriur po sa differenziar da quella en Svizra ch'è inditgada en l'app «COVID Certificate». Dapli infurmaziuns chattais Vus en &lt;a href=\"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/was-soll-ich-tun-wenn-mein-covid-zertifikat-nach-schweizer-gueltigkeitsregeln-bald\"&gt;questa glista da dumondas frequentas (FAQ)&lt;/a&gt;."</string>
+As infurmai per plaschair avant in viadi davart las restricziuns e davart las reglas da valaivladad che valan al lieu da destinaziun. La valaivladad da Voss certificat vegn calculada a l'exteriur a maun da las reglas dal pajais da destinaziun. Dapli infurmaziuns chattais Vus en &lt;a href=\"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/was-soll-ich-tun-wenn-mein-covid-zertifikat-nach-schweizer-gueltigkeitsregeln-bald\"&gt;questa glista da dumondas frequentas (FAQ)&lt;/a&gt;."</string>
 	<string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-app.html"</string>
 	<string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-check-app.html"</string>
 
@@ -1717,41 +1717,41 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
 	<string name="wallet_certificate_renewal_faq_link_url">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/wieso-soll-ich-den-qr-code-meines-covid-zertifikats-erneuern-obwohl-das-zertifikat"</string>
 	<string name="terms_and_conditions_update_boarding_title">"Actualisaziun"</string>
 	<string name="terms_and_conditions_update_boarding_text">"Las cundiziuns d’utilisaziun e la decleraziun davart la protecziun da datas da l’app èn vegnidas actualisadas en tscherts puncts ed adattadas a las basas legalas. "</string>
-	<string name="wallet_validity_since_vaccination_date"></string>
-	<string name="wallet_validity_since_test_date"></string>
+	<string name="wallet_validity_since_vaccination_date">"Data da la vaccinaziun"</string>
+	<string name="wallet_validity_since_test_date">"Data dal test negativ"</string>
 
 	<!-- vor 2 Tagen - must be before "2 Tagen"! -->
-	<string name="wallet_validity_since_prefix"></string>
+	<string name="wallet_validity_since_prefix">"avant"</string>
 
 	<!-- vor 1 Stunde -->
-	<string name="wallet_validity_since_hours_singular"></string>
+	<string name="wallet_validity_since_hours_singular">"1 ura"</string>
 
 	<!-- vor 2 Stunden -->
-	<string name="wallet_validity_since_hours_plural"></string>
+	<string name="wallet_validity_since_hours_plural">"{HOURS} uras"</string>
 
 	<!-- vor 1 Tag -->
-	<string name="wallet_validity_since_days_singular"></string>
+	<string name="wallet_validity_since_days_singular">"1 di"</string>
 
 	<!-- vor 2 Tagen -->
-	<string name="wallet_validity_since_days_plural"></string>
-	<string name="wallet_update_boarding_page_1_title"></string>
-	<string name="wallet_update_boarding_page_1_text"></string>
-	<string name="wallet_update_boarding_page_2_title"></string>
-	<string name="wallet_update_boarding_page_2_bullet_1"></string>
-	<string name="wallet_update_boarding_page_2_bullet_2"></string>
-	<string name="wallet_update_boarding_page_2_bullet_3"></string>
-	<string name="wallet_update_boarding_page_3_title"></string>
-	<string name="wallet_update_boarding_page_3_bullet_1"></string>
-	<string name="wallet_update_boarding_page_3_bullet_2"></string>
-	<string name="wallet_update_boarding_page_3_bullet_3"></string>
-	<string name="wallet_update_boarding_page_4_title"></string>
-	<string name="wallet_update_boarding_page_4_bullet_1"></string>
-	<string name="wallet_update_boarding_page_4_bullet_2"></string>
-	<string name="wallet_update_boarding_page_4_bullet_3"></string>
+	<string name="wallet_validity_since_days_plural">"{DAYS} dis"</string>
+	<string name="wallet_update_boarding_page_1_title">"Tge è nov?"</string>
+	<string name="wallet_update_boarding_page_1_text">"Sin il certificat COVID vegn da nov betg pli mussà il champ «Valaivladad en Svizra». Empè da quai mussa l'app la data da la vaccinaziun resp. dal test. Pertge?"</string>
+	<string name="wallet_update_boarding_page_2_title">"Certificats COVID en Svizra"</string>
+	<string name="wallet_update_boarding_page_2_bullet_1">"En Svizra è l'obligatori dal certificat vegnì abolì il favrer 2022."</string>
+	<string name="wallet_update_boarding_page_2_bullet_2">"Las duradas da valaivladad svizras existan dapi lura mo anc formalmain e n'han nagina impurtanza pratica pli en Svizra."</string>
+	<string name="wallet_update_boarding_page_2_bullet_3">"La durada da valaivladad svizra n'ha er nagina impurtanza a l'exteriur."</string>
+	<string name="wallet_update_boarding_page_3_title">"Certificats COVID a l'exteriur"</string>
+	<string name="wallet_update_boarding_page_3_bullet_1">"A l'exteriur valan mintgamai las reglas dal pajais respectiv."</string>
+	<string name="wallet_update_boarding_page_3_bullet_2">"Da nov mussa l'app, avant quants dis ch'igl è vegnì fatg ina vaccinaziun resp. in test."</string>
+	<string name="wallet_update_boarding_page_3_bullet_3">"Uschia pudais Vus constatar en moda pli simpla, sche Voss certificat correspunda a las reglas da Voss pajais da destinaziun (premess ch'il pajais pretenda anc in certificat)."</string>
+	<string name="wallet_update_boarding_page_4_title">"La situaziun actuala en l'Europa e sin l'entir mund"</string>
+	<string name="wallet_update_boarding_page_4_bullet_1">"La gronda part dals pajais en l'Europa ha entant abolì l'obligatori dal certificat per l'entrada en il pajais."</string>
+	<string name="wallet_update_boarding_page_4_bullet_2">"La funcziun «Valaivladad a l'exteriur» è perquai medemamain vegnida stizzada."</string>
+	<string name="wallet_update_boarding_page_4_bullet_3">"Sche l'obligatori dal certificat vala anc en in tschert pajais, vegnis Vus a savair sin questas paginas d'internet:"</string>
 	<string name="wallet_update_boarding_page_4_link_1_text">"reopen.europa.eu"</string>
 	<string name="wallet_update_boarding_page_4_link_1_url">"https://reopen.europa.eu"</string>
 	<string name="wallet_update_boarding_page_4_link_2_text">"iatatravelcentre.com"</string>
 	<string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
 	<string name="wallet_validity_since_more_hours_prefix">"avant pli che"</string>
-	<string name="wallet_validity_since_recovery_date"></string>
+	<string name="wallet_validity_since_recovery_date">"Data dal test positiv"</string>
 </resources>

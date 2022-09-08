@@ -511,7 +511,7 @@ Nutzungsbedingungen"</string>
 &lt;br /&gt;&lt;br /&gt;
 Die wissenschaftlichen Erkenntnisse über Covid-19-Impfungen und -Tests sowie über die Genesung von einer Covid-19-Infektion entwickeln sich ständig weiter, auch im Hinblick auf neue besorgniserregende Virusvarianten.
 &lt;br /&gt;&lt;br /&gt;
-Bitte informieren Sie sich vor einer Reise über die am Zielort geltenden Beschränkungen und Gültigkeitsregeln. Die Gültigkeit Ihres Zertifikats wird im Ausland anhand der Regeln des Ziellandes berechnet. Diese kann von der in der «COVID Certificate»-App angegebenen Schweizer Gültigkeit abweichen. Mehr Informationen dazu erhalten Sie &lt;a href=\"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/was-soll-ich-tun-wenn-mein-covid-zertifikat-nach-schweizer-gueltigkeitsregeln-bald\"&gt;in dieser FAQ&lt;/a&gt;."</string>
+Bitte informieren Sie sich vor einer Reise über die am Zielort geltenden Beschränkungen und Gültigkeitsregeln. Die Gültigkeit Ihres Zertifikats wird im Ausland anhand der Regeln des Ziellandes berechnet. Mehr Informationen dazu erhalten Sie &lt;a href=\"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/was-soll-ich-tun-wenn-mein-covid-zertifikat-nach-schweizer-gueltigkeitsregeln-bald\"&gt;in dieser FAQ&lt;/a&gt;."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-check-app.html"</string>
 
@@ -1743,13 +1743,11 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="wallet_validity_since_days_plural">"{DAYS} Tagen"</string>
     <string name="wallet_update_boarding_page_1_title">"Was ist neu?"</string>
     <string name="wallet_update_boarding_page_1_text">"Neu wird auf dem Covid-Zertifikat das Feld «Gültigkeit in der Schweiz» nicht mehr dargestellt. Stattdessen zeigt die App den Zeitpunkt der Impfung bzw. des Tests an. Warum?"</string>
-    <string name="wallet_update_boarding_page_2_title">"Covid-Zertifikate
-in der Schweiz"</string>
+    <string name="wallet_update_boarding_page_2_title">"Covid-Zertifikate in der Schweiz"</string>
     <string name="wallet_update_boarding_page_2_bullet_1">"Die Zertifikatspflicht in der Schweiz wurde im Februar 2022 aufgehoben."</string>
     <string name="wallet_update_boarding_page_2_bullet_2">"Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formell und haben im Inland keine praktische Bedeutung mehr."</string>
     <string name="wallet_update_boarding_page_2_bullet_3">"Die Schweizer Gültigkeitsdauer hat auch im Ausland keine Bedeutung."</string>
-    <string name="wallet_update_boarding_page_3_title">"Covid-Zertifikate
-im Ausland"</string>
+    <string name="wallet_update_boarding_page_3_title">"Covid-Zertifikate im Ausland"</string>
     <string name="wallet_update_boarding_page_3_bullet_1">"Im Ausland gelten die Regeln des entsprechenden Landes."</string>
     <string name="wallet_update_boarding_page_3_bullet_2">"Neu zeigt die App an, wie viele Tage eine Impfung bzw. ein Test her ist."</string>
     <string name="wallet_update_boarding_page_3_bullet_3">"So können Sie einfacher feststellen, ob Ihr Zertifikat den Regeln Ihres Ziellandes entspricht (falls das Land noch ein Covid-Zertifikat voraussetzt)."</string>

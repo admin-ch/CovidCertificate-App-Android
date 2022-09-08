@@ -2559,9 +2559,9 @@
     }
   },
   "lightCertDurationInHours": 24,
-  "showVaccinationHintHomescreen": true,
-  "showVaccinationHintDetail": true,
-  "showVaccinationHintTransfer": true,
+  "showVaccinationHintHomescreen": false,
+  "showVaccinationHintDetail": false,
+  "showVaccinationHintTransfer": false,
   "refreshButtonDisabled": true,
   "refreshButtonInfo": {
     "de": {
@@ -2762,8 +2762,8 @@
       }
     }
   },
-  "showRatConversionForm": false,
-  "ratConversionFormUrl": "https://covidcertificate-form-a.admin.ch/immunityrequest",
+  "showRatConversionForm": true,
+  "ratConversionFormUrl": "https://covidcertificate-form.admin.ch/immunityrequest",
   "certRenewalInfo": {
     "de": {
       "INFO": {
@@ -3131,5 +3131,6 @@
       }
     }
   },
+  "showValidityState": false,
   "foreignRulesCheckEnabled": false
 }
