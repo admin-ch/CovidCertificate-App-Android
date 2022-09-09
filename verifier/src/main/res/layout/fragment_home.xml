@@ -53,11 +53,24 @@
 					android:text="@string/verifier_homescreen_title"
 					android:textSize="@dimen/spacing_very_large" />
 
+				<Button
+					android:id="@+id/covid_certificate_info"
+					style="@style/CovidCertificate.Button.Borderless"
+					android:layout_width="match_parent"
+					android:layout_height="wrap_content"
+					android:layout_gravity="center"
+					android:layout_marginTop="@dimen/spacing_very_large"
+					android:drawableTint="@color/blue"
+					android:text="Zertifikatspflicht aufgehoben  "
+					android:textAllCaps="false"
+					app:icon="@drawable/ic_info_outline"
+					app:iconGravity="textEnd" />
+
 				<androidx.viewpager2.widget.ViewPager2
 					android:id="@+id/viewPager"
 					android:layout_width="match_parent"
 					android:layout_height="wrap_content"
-					android:layout_marginTop="@dimen/spacing_huge" />
+					android:layout_marginTop="@dimen/spacing_large" />
 
 				<com.google.android.material.tabs.TabLayout
 					android:id="@+id/tab_layout"

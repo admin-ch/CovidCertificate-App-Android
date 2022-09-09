@@ -39,7 +39,7 @@ class InfoDialogFragment : DialogFragment() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setStyle(STYLE_NO_TITLE, R.style.CovidCertificate_InfoDialog);
+		setStyle(STYLE_NO_TITLE, R.style.CovidCertificate_InfoDialog)
 		infoBoxModel = requireArguments().getParcelable(ARG_INFO_BOX_MODEL)
 			?: throw IllegalStateException("No infoBox information supplied to DialogFragment!")
 	}

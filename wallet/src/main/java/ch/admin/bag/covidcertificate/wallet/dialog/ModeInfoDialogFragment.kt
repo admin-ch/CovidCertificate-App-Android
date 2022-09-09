@@ -54,7 +54,7 @@ class ModeInfoDialogFragment : DialogFragment() {
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
-		setStyle(STYLE_NO_TITLE, R.style.CovidCertificate_InfoDialog);
+		setStyle(STYLE_NO_TITLE, R.style.CovidCertificate_InfoDialog)
 		modeValidities = requireArguments().getSerializable(ARG_MODE_VALIDITIES) as ArrayList<ModeValidity>
 	}
 
