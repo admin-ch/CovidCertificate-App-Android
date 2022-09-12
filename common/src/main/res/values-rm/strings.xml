@@ -1754,4 +1754,11 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
 	<string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
 	<string name="wallet_validity_since_more_hours_prefix">"avant pli che"</string>
 	<string name="wallet_validity_since_recovery_date">"Data dal test positiv"</string>
+	<string name="covid_certificate_news_text">"rm"</string>
+	<string name="covid_certificate_news_title">"rm"</string>
+	<string name="covid_certificate_news_item1">"rm"</string>
+	<string name="covid_certificate_news_item2">"rm"</string>
+	<string name="covid_certificate_news_item3">"rm"</string>
+	<string name="covid_certificate_news_item4">"rm"</string>
 </resources>
+

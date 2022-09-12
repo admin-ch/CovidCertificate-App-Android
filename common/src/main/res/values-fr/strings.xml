@@ -1755,4 +1755,10 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
     <string name="wallet_validity_since_more_hours_prefix">"il y a plus de"</string>
     <string name="wallet_validity_since_recovery_date">"Test positif"</string>
+    <string name="covid_certificate_news_text">"fr"</string>
+    <string name="covid_certificate_news_title">"fr"</string>
+    <string name="covid_certificate_news_item1">"fr"</string>
+    <string name="covid_certificate_news_item2">"fr"</string>
+    <string name="covid_certificate_news_item3">"fr"</string>
+    <string name="covid_certificate_news_item4">"fr"</string>
 </resources>

@@ -1723,7 +1723,7 @@ You have the option of requesting an EU-compatible version of this certificate v
 	<string name="wallet_validity_since_test_date">"Tested negative on"</string>
 
 	<!-- vor 2 Tagen - must be before "2 Tagen"! -->
-	<string name="wallet_validity_since_prefix"></string>
+	<string name="wallet_validity_since_prefix">" "</string>
 
 	<!-- vor 1 Stunde -->
 	<string name="wallet_validity_since_hours_singular">"1 hour ago"</string>
@@ -1756,4 +1756,11 @@ You have the option of requesting an EU-compatible version of this certificate v
 	<string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
 	<string name="wallet_validity_since_more_hours_prefix">"exceeding"</string>
 	<string name="wallet_validity_since_recovery_date">"Tested positive on"</string>
+	<string name="covid_certificate_news_text">"en"</string>
+	<string name="covid_certificate_news_title">"en"</string>
+	<string name="covid_certificate_news_item1">"en"</string>
+	<string name="covid_certificate_news_item2">"en"</string>
+	<string name="covid_certificate_news_item3">"en"</string>
+	<string name="covid_certificate_news_item4">"en"</string>
 </resources>
+

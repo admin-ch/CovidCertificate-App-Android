@@ -1761,4 +1761,11 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
     <string name="wallet_validity_since_more_hours_prefix">"vor mehr als"</string>
     <string name="wallet_validity_since_recovery_date">"Positiv getestet"</string>
+    <string name="covid_certificate_news_text">"Zertifikatspflicht aufgehoben"</string>
+    <string name="covid_certificate_news_title">"Info"</string>
+    <string name="covid_certificate_news_item1">"Die Zertifikatspflicht in der Schweiz wurde im Februar 2022 aufgehoben."</string>
+    <string name="covid_certificate_news_item2">"Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formal und haben im Inland keine praktische Bedeutung mehr."</string>
+    <string name="covid_certificate_news_item3">"Diese Schweizer Prüf-App prüft Covid-Zertifikate nach den Schweizer Gültigkeitsregeln. Das Prüfergebnis ist für einen Einsatz im Ausland nicht massgeblich."</string>
+    <string name="covid_certificate_news_item4">"Falls ein Land noch ein Covid-Zertifikat voraussetzt, gelten jeweils die Regeln des entsprechenden Landes."</string>
 </resources>
+

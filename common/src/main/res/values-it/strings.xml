@@ -1727,7 +1727,7 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_validity_since_test_date">"Test negativo"</string>
 
     <!-- vor 2 Tagen - must be before "2 Tagen"! -->
-    <string name="wallet_validity_since_prefix"></string>
+    <string name="wallet_validity_since_prefix">" "</string>
 
     <!-- vor 1 Stunde -->
     <string name="wallet_validity_since_hours_singular">"1 ora fa"</string>
@@ -1760,4 +1760,10 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
     <string name="wallet_validity_since_more_hours_prefix">"più di"</string>
     <string name="wallet_validity_since_recovery_date">"Test positivo"</string>
+    <string name="covid_certificate_news_text">"it"</string>
+    <string name="covid_certificate_news_title">"it"</string>
+    <string name="covid_certificate_news_item1">"it"</string>
+    <string name="covid_certificate_news_item2">"it"</string>
+    <string name="covid_certificate_news_item3">"it"</string>
+    <string name="covid_certificate_news_item4">"it"</string>
 </resources>
