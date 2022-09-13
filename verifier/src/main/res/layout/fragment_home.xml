@@ -64,6 +64,7 @@
 					app:icon="@drawable/ic_info_outline"
 					app:iconGravity="textEnd"
 					app:iconTint="@color/blue"
+					android:visibility="gone"
 					tools:text="Zertifikatspflicht aufgehoben  " />
 
 				<androidx.viewpager2.widget.ViewPager2
