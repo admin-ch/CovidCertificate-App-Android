@@ -24,7 +24,6 @@
 		android:networkSecurityConfig="@xml/network_security_config"
 		android:roundIcon="@mipmap/ic_launcher_round"
 		android:supportsRtl="true"
-		android:taskAffinity=""
 		android:theme="@style/Theme.CovidCertificate">
 		<activity
 			android:name="ch.admin.bag.covidcertificate.verifier.MainActivity"
@@ -41,6 +40,7 @@
 		<activity
 			android:name=".updateboarding.UpdateboardingActivity"
 			android:launchMode="singleInstance"
+			android:exported="false"
 			android:screenOrientation="portrait" />
 	</application>
 
