@@ -48,6 +48,8 @@ data class ConfigModel(
 	val ratConversionFormUrl: String?,
 	val certRenewalInfo: Map<String, Map<CertificateRenewalType, CertificateRenewalInfoModel>>?,
 	val showValidityState: Boolean?,
+	val covidCertificateNewsText: Map<String, String>?,
+	val infoCovidCertificateNews: Map<String, InfoCovidCertificateNews>?,
 ) {
 	fun getInfoBox(languageKey: String?): InfoBoxModel? = infoBox?.get(languageKey)
 	fun getQuestionsFaqs(languageKey: String): FaqModel? = questions?.get(languageKey)
@@ -62,12 +64,17 @@ data class ConfigModel(
 	fun getForeignRulesLinkText(languageKey: String): String? = foreignRulesLinkText?.get(languageKey)
 	fun getForeignRulesLinkUrl(languageKey: String): String? = foreignRulesLinkUrl?.get(languageKey)
 	fun getForeignRulesHints(languageKey: String): List<ForeignRulesHintModel>? = foreignRulesHints?.get(languageKey)
-	fun getCertRenewalInfo(languageKey: String): Map<CertificateRenewalType, CertificateRenewalInfoModel>? = certRenewalInfo?.get(languageKey)
+	fun getCertRenewalInfo(languageKey: String): Map<CertificateRenewalType, CertificateRenewalInfoModel>? =
+		certRenewalInfo?.get(languageKey)
 
 	fun getCheckModes(languageKey: String): Map<String, WalletModeModel>? = checkModesInfo?.get(languageKey)?.modes
 	fun getInfoModeTitle(languageKey: String): String? = checkModesInfo?.get(languageKey)?.title
 
 	fun getVaccinationBookingInfo(languageKey: String): VaccinationBookingInfoModel? = vaccinationBookingInfo?.get(languageKey)
+
+	fun getCovidCertificateNewsText(languageKey: String): String? = covidCertificateNewsText?.get(languageKey)
+
+	fun getInfoCovidCertificateNews(languageKey: String): InfoCovidCertificateNews? = infoCovidCertificateNews?.get(languageKey)
 
 	fun generateFaqItems(languageKey: String): List<Faq> {
 		val itemsList = mutableListOf<Faq>()

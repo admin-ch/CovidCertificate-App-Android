@@ -19,6 +19,7 @@ import androidx.core.graphics.toColorInt
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.config.InfoBoxModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
 import ch.admin.bag.covidcertificate.common.debug.DebugFragment
@@ -33,6 +34,7 @@ import ch.admin.bag.covidcertificate.verifier.databinding.FragmentHomeBinding
 import ch.admin.bag.covidcertificate.verifier.faq.VerifierFaqFragment
 import ch.admin.bag.covidcertificate.verifier.modes.ChooseModeDialogFragment
 import ch.admin.bag.covidcertificate.verifier.modes.ModesAndConfigViewModel
+import ch.admin.bag.covidcertificate.verifier.news.InfoCertificateNewsFragment
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPageAdapter
 import ch.admin.bag.covidcertificate.verifier.pager.HomescreenPagerFragment
 import ch.admin.bag.covidcertificate.verifier.qr.VerifierQrScanFragment
@@ -50,7 +52,8 @@ class HomeFragment : Fragment() {
 	}
 
 	private val modesAndConfigViewModel by activityViewModels<ModesAndConfigViewModel>()
-	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(VerifierSecureStorage.getInstance(requireContext())) }
+	private val verifierSecureStorage by lazy { VerifierSecureStorage.getInstance(requireContext()) }
+	private val zebraBroadcastReceiver by lazy { ZebraActionBroadcastReceiver(verifierSecureStorage) }
 
 	private var _binding: FragmentHomeBinding? = null
 	private val binding get() = _binding!!
@@ -105,6 +108,23 @@ class HomeFragment : Fragment() {
 			}
 		}
 
+		modesAndConfigViewModel.configLiveData.observe(viewLifecycleOwner) { configModel ->
+			val languageKey = getString(R.string.language_key)
+			val title = configModel.getCovidCertificateNewsText(languageKey)
+			if (!title.isNullOrBlank()) {
+				binding.covidCertificateInfo.isVisible = true
+				binding.covidCertificateInfo.setOnClickListener {
+					showNewsDialog(configModel)
+				}
+				if (!verifierSecureStorage.wasNewsShown(configModel.getCovidCertificateNewsText("de") ?: "")) {
+					showNewsDialog(configModel)
+				}
+			} else {
+				binding.covidCertificateInfo.isVisible = false
+			}
+
+
+		}
 		TabLayoutMediator(binding.tabLayout, binding.viewPager) { _, _ ->
 			//Some implementation
 		}.attach()
@@ -135,6 +155,12 @@ class HomeFragment : Fragment() {
 		}
 
 		setupInfoBox()
+	}
+
+	private fun showNewsDialog(configModel: ConfigModel) {
+		verifierSecureStorage.setNewsWasShown(configModel.getCovidCertificateNewsText("de") ?: "")
+		InfoCertificateNewsFragment.newInstance()
+			.show(childFragmentManager, InfoCertificateNewsFragment::class.java.canonicalName)
 	}
 
 	override fun onResume() {

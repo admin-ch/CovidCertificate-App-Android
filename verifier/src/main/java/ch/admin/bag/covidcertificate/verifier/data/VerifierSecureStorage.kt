@@ -26,6 +26,8 @@ class VerifierSecureStorage private constructor(context: Context) {
 
 		private const val KEY_SELECTED_MODE = "KEY_SELECTED_MODE"
 		private const val KEY_MODE_SELECTION_TIME = "KEY_MODE_SELECTION_TIME"
+
+		private const val KEY_SHOW_COVID_NEWS = "KEY_SHOW_COVID_NEWS_FIRST_TIME"
 	}
 
 	private val prefs = EncryptedSharedPreferencesUtil.initializeSharedPreferences(context, PREFERENCES)
@@ -57,13 +59,20 @@ class VerifierSecureStorage private constructor(context: Context) {
 
 	fun resetSelectedModeIfNeeded(maxAge: Long): Boolean {
 		val selectionTime = prefs.getLong(KEY_MODE_SELECTION_TIME, 0)
-		if (selectionTime < System.currentTimeMillis() - maxAge) {
+		return if (selectionTime < System.currentTimeMillis() - maxAge) {
 			prefs.edit {
 				putString(KEY_SELECTED_MODE, null)
 			}
-			return true
+			true
 		} else {
-			return false
+			false
 		}
+	}
+
+	fun setNewsWasShown(title: String) = prefs.edit { putString(KEY_SHOW_COVID_NEWS, title) }
+	fun wasNewsShown(title: String): Boolean {
+		val shownNews = prefs.getString(KEY_SHOW_COVID_NEWS, "")
+		if (shownNews.isNullOrEmpty()) return false
+		return shownNews == title
 	}
 }

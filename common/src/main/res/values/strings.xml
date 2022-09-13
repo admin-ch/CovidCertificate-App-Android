@@ -1766,3 +1766,4 @@ You have the option of requesting an EU-compatible version of this certificate v
 	<string name="wallet_faq_questions_question_2_2">"When abroad, it is the validity rules of the country in question that apply, both for entering the country and within the country itself. The rules applicable to the use of the certificate within the destination country may differ from those that apply upon entry. These rules can change at short notice. Shortly before departing you should therefore check the authorities’ website for your transit or destination country to see whether rules relating to COVID-19 are still in force and, if so, which ones.  "</string>
 	<string name="wallet_faq_questions_answer_2_2">"I am travelling abroad and need a COVID certificate to enter the country. What must I bear in mind?"</string>
 </resources>
+

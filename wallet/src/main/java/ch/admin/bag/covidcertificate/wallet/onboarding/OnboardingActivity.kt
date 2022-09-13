@@ -24,12 +24,11 @@ import ch.admin.bag.covidcertificate.wallet.onboarding.validity.UpdateboardingVa
 class OnboardingActivity : BaseOnboardingActivity() {
 
 	override fun getPagerAdapter(): FragmentStateAdapter {
-		val onboardingType =
-			OnboardingType.valueOf(intent.getStringExtra(EXTRA_ONBOARDING_TYPE) ?: OnboardingType.FRESH_INSTALL.name)
 
-		return when (onboardingType) {
+		return when (OnboardingType.valueOf(intent.getStringExtra(EXTRA_ONBOARDING_TYPE) ?: OnboardingType.FRESH_INSTALL.name)) {
 			OnboardingType.FRESH_INSTALL -> SimpleOnboardingPagerAdapter(
 				this,
+				SimpleOnboardingPagerAdapter.FragmentProvider { OnboardingPreInfoFragment.newInstance() },
 				SimpleOnboardingPagerAdapter.FragmentProvider { OnboardingIntroFragment.newInstance() },
 				SimpleOnboardingPagerAdapter.FragmentProvider {
 					OnboardingContentFragment.newInstance(
