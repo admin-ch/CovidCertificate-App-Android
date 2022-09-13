@@ -1,7 +1,6 @@
 package ch.admin.bag.covidcertificate.verifier.news
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -53,12 +52,10 @@ class InfoCertificateNewsFragment : DialogFragment() {
 			binding.infoCertificateNewsTitle.text = newsList?.title
 			binding.infoCertificateNewsList.removeAllViews()
 			newsList?.newsItems?.forEach { covidCertificateNewsItem ->
-				val itemView = ItemCertificateNewsBinding.inflate(layoutInflater, binding.infoCertificateNewsList, false)
-				Log.d("mau", "setupNews: ${covidCertificateNewsItem.iconAndroid}")
+				val itemView = ItemCertificateNewsBinding.inflate(layoutInflater, binding.infoCertificateNewsList, true)
 				val iconIdentifier = requireContext().getDrawableIdentifier(covidCertificateNewsItem.iconAndroid ?: "")
 				itemView.newsIcon.setImageResource(iconIdentifier)
 				itemView.newsText.text = covidCertificateNewsItem.text
-				binding.infoCertificateNewsList.addView(itemView.root)
 			}
 		}
 		binding.infoCertificateNewsCloseButton.setOnClickListener {

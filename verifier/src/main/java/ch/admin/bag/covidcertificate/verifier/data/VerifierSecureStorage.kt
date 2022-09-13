@@ -70,7 +70,6 @@ class VerifierSecureStorage private constructor(context: Context) {
 	}
 
 	fun setNewsWasShown(title: String) = prefs.edit { putString(KEY_SHOW_COVID_NEWS, title) }
-
 	fun wasNewsShown(title: String): Boolean {
 		val shownNews = prefs.getString(KEY_SHOW_COVID_NEWS, "")
 		if (shownNews.isNullOrEmpty()) return false

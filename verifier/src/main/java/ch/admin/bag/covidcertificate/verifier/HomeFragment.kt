@@ -116,7 +116,7 @@ class HomeFragment : Fragment() {
 				binding.covidCertificateInfo.setOnClickListener {
 					showNewsDialog(configModel)
 				}
-				if (!verifierSecureStorage.wasNewsShown(title)) {
+				if (!verifierSecureStorage.wasNewsShown(configModel.getCovidCertificateNewsText("de") ?: "")) {
 					showNewsDialog(configModel)
 				}
 			} else {

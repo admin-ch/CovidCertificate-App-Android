@@ -60,11 +60,11 @@
 					android:layout_height="wrap_content"
 					android:layout_gravity="center"
 					android:layout_marginTop="@dimen/spacing_very_large"
-					android:drawableTint="@color/blue"
-					android:text="Zertifikatspflicht aufgehoben  "
 					android:textAllCaps="false"
 					app:icon="@drawable/ic_info_outline"
-					app:iconGravity="textEnd" />
+					app:iconGravity="textEnd"
+					app:iconTint="@color/blue"
+					tools:text="Zertifikatspflicht aufgehoben  " />
 
 				<androidx.viewpager2.widget.ViewPager2
 					android:id="@+id/viewPager"

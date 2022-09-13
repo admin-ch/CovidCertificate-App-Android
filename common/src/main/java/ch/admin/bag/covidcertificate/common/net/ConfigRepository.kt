@@ -12,7 +12,6 @@ package ch.admin.bag.covidcertificate.common.net
 
 import android.content.Context
 import android.os.Build
-import android.util.Log
 import ch.admin.bag.covidcertificate.common.BuildConfig
 import ch.admin.bag.covidcertificate.common.config.ConfigModel
 import ch.admin.bag.covidcertificate.common.data.ConfigSecureStorage
@@ -32,7 +31,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.HttpException
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import kotlin.math.log
 
 class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 
@@ -88,7 +86,6 @@ class ConfigRepository private constructor(private val configSpec: ConfigSpec) {
 					val response = withContext(Dispatchers.IO) { configService.getConfig(appVersion, osVersion, buildNumber) }
 					if (!response.isSuccessful) throw HttpException(response)
 					response.body()?.let { storage.updateConfigData(it, requestTimeStamp, versionString) }
-					Log.d("mau", "loadConfig: ${response.body()}")
 					response.body()
 				} catch (e: Exception) {
 					e.printStackTrace()
