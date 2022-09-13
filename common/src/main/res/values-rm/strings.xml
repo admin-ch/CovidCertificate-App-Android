@@ -207,7 +207,7 @@ document da legitimaziun"</string>
 	<string name="wallet_faq_works_question_2">"Pon vegnir agiuntads er plirs certificats COVID?"</string>
 
 	<!-- Frage 8 im FAQ-Screen der Wallet App -->
-	<string name="wallet_faq_works_question_3">"Co ves jau, sche mes certificat COVID è valaivel?"</string>
+	<string name="wallet_faq_works_question_3">"Nua ves jau, sche mes certificat COVID è valaivel?"</string>
 
 	<!-- Frage 9 im FAQ-Screen der Wallet App -->
 	<string name="wallet_faq_works_question_4">"Co vegnan protegidas mias datas?"</string>
@@ -219,21 +219,21 @@ document da legitimaziun"</string>
 	<string name="wallet_faq_works_question_6">"Tge stoss jau far, sche jau stiz il certificat COVID u l'app?"</string>
 
 	<!-- Antwort 1 im FAQ-Screen der Wallet App -->
-	<string name="wallet_faq_questions_answer_1">"In certificat COVID obtegnais Vus suenter ina vaccinaziun cumpletta cunter COVID-19, suenter ina infecziun u suenter in resultat negativ dal test. Il certificat vegn per il solit emess – sin dumonda – dal persunal spezialisà da sanadad al lieu."</string>
+	<string name="wallet_faq_questions_answer_1">"In certificat COVID survegnis Vus suenter ina vaccinaziun cumpletta cunter COVID-19, suenter ina infecziun u suenter in resultat negativ dal test. Il certificat vegn per il solit emess – sin dumonda – dal persunal spezialisà da sanadad al lieu. "</string>
 
 	<!-- Antwort 2 im FAQ-Screen der Wallet App -->
-	<string name="wallet_faq_questions_answer_2">"Vus pudais preschentar Voss certificat COVID u en furma da palpiri u cun utilisar l'app COVID Certificate. L'app permetta d'arcunar certificats e d'als preschentar directamain sin il telefonin. Vus pudais decider sezza u sez, sche Vus vulais mussar Voss certificat sin palpiri u en l'app.
-
-Resguardai per plaschair che Vus stuais en mintga cas preschentar – sin dumonda – ultra dal certificat er in document da legitimaziun."</string>
+	<string name="wallet_faq_questions_answer_2">"Vus pudais preschentar Voss certificat COVID sin palpiri u sur l'app «COVID Certificate». L'app permetta d'arcunar certificats e d'als preschentar directamain sin il telefonin.
+Resguardai per plaschair che Vus stuais en mintga cas preschentar er anc in document da legitimaziun.
+En intgins pajais vegn pretendida ina versiun stampada dal certificat ed il certificat electronic na vegn betg acceptà. Sin viadis duessas Vus perquai adina avair cun Vus er la versiun stampada."</string>
 
 	<!-- Antwort 3 im FAQ-Screen der Wallet App -->
-	<string name="wallet_faq_questions_answer_3">"Vossas datas na vegnan betg arcunadas en in sistem central, mabain mo localmain sin Voss telefonin resp. en il code QR sin il certificat COVID en furma da palpiri."</string>
+	<string name="wallet_faq_questions_answer_3">"Las datas da Voss certificat na vegnan betg arcunadas en in sistem central da la Confederaziun, mabain mo localmain sin Voss telefonin resp. sin il certificat COVID sin palpiri."</string>
 
 	<!-- Antwort 4 im FAQ-Screen der Wallet App -->
 	<string name="wallet_faq_questions_answer_4">"Il code QR sin Voss certificat COVID cuntegna ina signatura digitala. La signatura è ina impurtanta caracteristica da segirezza che impedescha da falsifitgar il certificat COVID. Il certificat COVID è ultra da quai valaivel mo en cumbinaziun cun in document da legitimaziun."</string>
 
 	<!-- Antwort 5 im FAQ-Screen der Wallet App -->
-	<string name="wallet_faq_questions_answer_5">"Voss certificat COVID na vegn betg arcunà en in sistem central. El è unicamain en Voss agen possess. Tegnai perquai en salv cun quità il certificat COVIDsin palpiri e/u sco PDF. En cas ch’il certificat va a perder e sto vegnir remplazzà, po vegnir incassada ina taxa."</string>
+	<string name="wallet_faq_questions_answer_5">"Voss certificat COVID na vegn betg arcunà en in sistem central da la Confederaziun. Tegnai perquai en salv cun quità il certificat COVID sin palpiri e/u sco PDF. Sche Vus avais pers il certificat u sche Vus duvrais in certificat substitutiv, po l'instituziun da sanadad (p.ex. il post da test u da vaccinaziun) pretender ina taxa per emetter in nov certificat."</string>
 
 	<!-- Antwort 6 im FAQ-Screen der Wallet App -->
 	<string name="wallet_faq_works_answer_1">"Per agiuntar in certificat COVID a l'app, duvrais Vus il certificat original ch'è vegnì emess per Vus sin palpiri u en furma da PDF. Cun l'app COVID Certificate pudais Vus alura scannar il code QR sin il certificat ed al agiuntar a l'app. Silsuenter cumpara il certificat COVID directamain en l'app."</string>
@@ -242,7 +242,9 @@ Resguardai per plaschair che Vus stuais en mintga cas preschentar – sin dumond
 	<string name="wallet_faq_works_answer_2">"Gea, quai è pussaivel. Vus pudais p.ex. arcunar en Vossa app ils certificats COVID da tut Vossas confamigliaras e da tut Voss confamigliars. Er en quest cas vala: Il certificat COVID è valaivel mo en cumbinaziun cun in document da legitimaziun  da la possessura u dal possessur dal certificat."</string>
 
 	<!-- Antwort 8 im FAQ-Screen der Wallet App -->
-	<string name="wallet_faq_works_answer_3">"L’app verifitgescha automaticamain, sche Voss certificat correspunda als criteris da valaivladad da la Svizra. Sche Voss certificat COVID è spirà u n’è tecnicamain betg valaivel, vegn quai inditgà directamain sin il certificat en l’app."</string>
+	<string name="wallet_faq_works_answer_3">"En Svizra è l'obligatori dal certificat vegnì abolì il favrer 2022. Las duradas da valaivladad svizras existan dapi lura mo anc formalmain e n'han praticamain nagina impurtanza pli en Svizra. Sin il certificat COVID na vegn perquai betg pli mussà il champ «Valaivladad en Svizra». Empè da quai mussa l'app la data da la vaccinaziun resp. dal test.
+
+I vegn er mussà, avant quants dis ch'igl è vegnì fatg ina vaccinaziun resp. in test. Uschia èsi pli facil per Vus da constatar, sche Voss certificat correspunda a las reglas da valaivladad da Voss pajais da destinaziun (premess ch'il pajais pretenda anc in certificat Covid). A l'exteriur valan adina las reglas dal pajais respectiv. "</string>
 
 	<!-- Antwort 9 im FAQ-Screen der Wallet App -->
 	<string name="wallet_faq_works_answer_4">"Vossas datas persunalas na vegnan betg arcunadas en in sistem central, mabain mo localmain sin Voss telefonin resp. en il code QR sin Voss certificat COVID en furma da palpiri."</string>
@@ -514,7 +516,7 @@ As infurmai per plaschair avant in viadi davart las restricziuns e davart las re
 	<!-- Verifier: Titel in der App (z.B. Impressum) -->
 	<string name="verifier_app_title">"COVID Certificate Check"</string>
 	<string name="wallet_faq_questions_question_1_1">"Co obtegn jau in certificat COVID suenter ina infecziun cun COVID-19?"</string>
-	<string name="wallet_faq_questions_answer_1_1">"Cun agid d’in formular online sin la pagina d’internet dal chantun pon las persunas guaridas da COVID-19 far ina dumonda per in certificat COVID. Il certificat COVID vegn alura tramess per posta."</string>
+	<string name="wallet_faq_questions_answer_1_1">"Tut tenor il chantun vegn il certificat COVID per part emess directamain dal post da test u dal labor, nua che Voss test positiv è vegnì constatà. Sche quai n'è betg il cas, pudais Vus dumandar pli tard online in certificat COVID sur la pagina d'internet da la «Plattafurma naziunala da dumondas per il certificat COVID». Là vegn la dumonda elavurada da l'autoritad chantunala cumpetenta. La pagina d'internet da la «Plattafurma naziunala da dumondas per il certificat COVID» chattais Vus qua:"</string>
 
 	<!-- Wallet: Homescreen Was wollen sie machen? -->
 	<string name="wallet_homescreen_what_to_do">"Tscherner il proxim pass"</string>
@@ -758,13 +760,11 @@ n’è betg valaivel"</string>
 	<string name="wallet_notification_transfer_title">"Transfer reussì"</string>
 	<string name="wallet_notification_transfer_text">"Il certificat COVID è arrivà"</string>
 	<string name="wallet_faq_questions_question_2_1">"Quant ditg è il certificat COVID valaivel?"</string>
-	<string name="wallet_faq_questions_answer_2_1">"La durada da valaivladad variescha tut tenor, sche Vus avais ina vaccinaziun cunter COVID-19, sche Vus essas guarida u guarì d'ina infecziun u sche Vus avais in test negativ. A basa da novas enconuschientschas scientificas po la durada da valaivladad sa midar. La durada da valaivladad actuala dals certificats COVID chattais Vus qua:"</string>
-	<string name="wallet_faq_questions_linktext_2_1">"Ulteriuras infurmaziuns"</string>
-	<string name="wallet_faq_questions_linkurl_2_1">"https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/#contents2"</string>
+	<string name="wallet_faq_questions_answer_2_1">"En Svizra è l'obligatori dal certificat vegnì abolì il favrer 2022. Las duradas da valaivladad svizras existan dapi lura mo anc formalmain e n'han praticamain nagina impurtanza pli en Svizra. A l'exteriur valan mintgamai las reglas da valaivladad dal pajais respectiv. As infurmai curt avant Vossa partenza sur la pagina d'internet da las autoritads da Voss pajais da transit u da destinaziun, sch'i valan en il pajais anc mesiras sin basa dal certificat, e sche gea, tge duradas da valaivladad che Voss pajais da destinaziun ha fixà. Pagina d'internet utila per viadis a l'exteriur:"</string>
+	<string name="wallet_faq_questions_linktext_2_1">"Re-open EU (europa.eu)"</string>
+	<string name="wallet_faq_questions_linkurl_2_1">"https://reopen.europa.eu/de"</string>
 	<string name="wallet_faq_works_question_3_1">"Poss jau er duvrar l'app offline?"</string>
-	<string name="wallet_faq_works_answer_3_1">"Vus pudais duvrar l'app senza ina colliaziun cun l'internet. Er en il modus offline pon ils certificats vegnir preschentads sco er scannads e verifitgads dals verifitgaders.
-
-Per vesair en l'app «COVID Certificate», sche Voss certificat correspunda als criteris da valaivladad da la Svizra e fin cura che Voss certificat è valaivel, sto l'app però esser regularmain online."</string>
+	<string name="wallet_faq_works_answer_3_1">"Vus pudais duvrar l'app senza ina colliaziun cun l'internet. Er en il modus offline pon ils certificats vegnir preschentads sco er scannads e verifitgads da las controlladras e dals controlladers."</string>
 	<string name="verifier_faq_works_question_2_1">"Tge èn ils criteris da valaivladad actuals da la Svizra?"</string>
 	<string name="verifier_faq_works_answer_2_1">"La durada da valaivladad vertenta actuala dals certificats COVID chattais Vus qua:"</string>
 	<string name="verifier_faq_works_linktext_2_1">"Ulteriuras infurmaziuns"</string>
@@ -935,11 +935,11 @@ e mo en Svizra"</string>
 	<string name="wallet_faq_questions_question_6">"Tge è in certificat light?"</string>
 
 	<!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
-	<string name="wallet_faq_questions_answer_6">"L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.
+	<string name="wallet_faq_questions_answer_6">"L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Il «certificat light» conferma ch'igl è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.
 
-L'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.
+Quest certificat cun ina quantitad minimala da datas è vegnì sviluppà sco alternativa al certificat COVID sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai ch'ils certificats COVID cuntegnan tschertas datas da sanadad ch'èn visiblas, sco per exempel il vaccin u la data da la vaccinaziun. Cun agid dal «certificat light» vegn quai impedì.
 
-Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da {LIGHT_CERT_VALIDITY_IN_H} uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà."</string>
+Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da {LIGHT_CERT_VALIDITY_IN_H} uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà avant che las {LIGHT_CERT_VALIDITY_IN_H}  uras èn passadas, po il «certificat light» simplamain vegnir deactivà."</string>
 	<string name="verifier_faq_works_question_8">"Tge è in certificat light?"</string>
 
 	<!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
@@ -1754,4 +1754,14 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
 	<string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
 	<string name="wallet_validity_since_more_hours_prefix">"avant pli che"</string>
 	<string name="wallet_validity_since_recovery_date">"Data dal test positiv"</string>
+	<string name="covid_certificate_news_text">"Abolì l'obligatori dal certificat"</string>
+	<string name="covid_certificate_news_title">"Abolì l'obligatori dal certificat"</string>
+	<string name="covid_certificate_news_item1">"En Svizra è l'obligatori dal certificat vegnì abolì il favrer 2022."</string>
+	<string name="covid_certificate_news_item2">"Las duradas da valaivladad svizras existan dapi lura mo anc formalmain e n'han nagina impurtanza pratica pli en Svizra."</string>
+	<string name="covid_certificate_news_item3">"Questa app svizra da controlla controllescha certificats COVID tenor las reglas da valaivladad svizras. Il resultat da la controlla n'è betg relevant per il diever a l'exteriur."</string>
+	<string name="covid_certificate_news_item4">"Sch'in pajais premetta anc in certificat COVID, valan mintgamai las reglas dal pajais respectiv."</string>
+	<string name="wallet_faq_questions_linktext_1_1">"Plattafurma naziunala da dumondas per il certificat COVID (admin.ch)"</string>
+	<string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
+	<string name="wallet_faq_questions_question_2_2">"A l'exteriur valan mintgamai las reglas da valaivladad dal pajais respectiv, e quai tant per entrar en il pajais sco er per activitads entaifer il pajais da destinaziun. Per l'utilisaziun dal certificat entaifer il pajais da destinaziun pon valair autras reglas che per l'entrada en il pajais. Questas reglas pon midar a curta vista. As infurmai perquai curt avant Vossa partenza sur la pagina d'internet da las autoritads da Voss pajais da transit u da destinaziun, sch'i valan là anc reglas en connex cun COVID-19, e sche gea, tgeninas."</string>
+	<string name="wallet_faq_questions_answer_2_2">"Jau fatsch in viadi a l'exteriur e dovrel in certificat COVID per entrar en il pajais. Tge stoss jau resguardar?"</string>
 </resources>
