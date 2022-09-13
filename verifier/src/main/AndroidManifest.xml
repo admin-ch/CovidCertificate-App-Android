@@ -28,6 +28,7 @@
 		<activity
 			android:name="ch.admin.bag.covidcertificate.verifier.MainActivity"
 			android:exported="true"
+			android:launchMode="singleInstance"
 			android:screenOrientation="portrait">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN" />
@@ -38,6 +39,8 @@
 
 		<activity
 			android:name=".updateboarding.UpdateboardingActivity"
+			android:launchMode="singleInstance"
+			android:exported="false"
 			android:screenOrientation="portrait" />
 	</application>
 

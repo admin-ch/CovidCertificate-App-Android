@@ -211,7 +211,7 @@ certificats COVID"</string>
     <string name="wallet_faq_works_question_2">"Puis-je ajouter plusieurs certificats COVID?"</string>
 
     <!-- Frage 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_question_3">"Comment voir si mon certificat COVID est valable?"</string>
+    <string name="wallet_faq_works_question_3">"Où voir si mon certificat COVID est valable ?"</string>
 
     <!-- Frage 9 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_question_4">"Comment mes données sont-elles protégées?"</string>
@@ -223,21 +223,21 @@ certificats COVID"</string>
     <string name="wallet_faq_works_question_6">"Et si je supprime le certificat COVID ou l'app?"</string>
 
     <!-- Antwort 1 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_1">"Vous pouvez obtenir le certificat COVID si vous êtes entièrement vacciné contre le COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site."</string>
+    <string name="wallet_faq_questions_answer_1">"Vous pouvez obtenir le certificat COVID si vous êtes vaccinés contre le COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site."</string>
 
     <!-- Antwort 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_2">"Vous pouvez présenter votre certificat COVID sur papier ou au moyen de l'app de stockage créée à cet effet. Vous êtes libre de choisir l'une ou l'autre solution.
+    <string name="wallet_faq_questions_answer_2">"Vous pouvez présenter votre certificat COVID sur papier ou au moyen de l’app de stockage créée à cet effet. Vous êtes libre de choisir l’une ou l’autre solution.
 
-Dans tous les cas, vous devez aussi présenter une pièce d'identité sur demande."</string>
+Dans tous les cas, vous devez aussi présenter une pièce d’identité sur demande. Dans certains pays, une version imprimée du certificat est exigée, et le certificat électronique n’est pas accepté. Nous vous conseillons donc de vous munir de la version imprimée lorsque vous voyagez."</string>
 
     <!-- Antwort 3 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_3">"Vos données ne sont pas stockées dans un système central, mais elles sont sauvegardées localement, sur votre appareil mobile ou dans le code QR figurant sur le certificat papier."</string>
+    <string name="wallet_faq_questions_answer_3">"Les données de votre certificat ne sont pas stockées dans un système central de la Confédération, mais sont sauvegardées localement, sur votre appareil mobile ou sur le certificat papier."</string>
 
     <!-- Antwort 4 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_4">"Le code QR figurant sur le certificat COVID contient une signature électronique. Celle-ci est une caractéristique de sécurité importante qui rend le certificat infalsifiable. En outre, le certificat COVID n'est valable que sur présentation d'une pièce d'identité."</string>
 
     <!-- Antwort 5 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_5">"Votre certificat COVID n'est pas stocké dans un système central; il est exclusivement en votre possession. Par conséquent, nous vous recommandons de le conserver sur papier ou au format PDF dans un endroit sûr. En cas de perte ou de remplacement, le paiement d'un émolument peut être exigé."</string>
+    <string name="wallet_faq_questions_answer_5">"Votre certificat COVID n'est pas stocké dans un système central de la Confédération. Par conséquent, nous vous recommandons de le conserver sur papier ou au format PDF dans un endroit sûr. En cas de perte ou de remplacement, le paiement d’un émolument peut être exigé pour l’établissement d’un nouveau document par les institutions sanitaires (lieu de test ou de vaccination)."</string>
 
     <!-- Antwort 6 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_1">"Pour ajouter un certificat COVID à l'app, vous avez besoin du certificat original qui vous a été délivré sur papier ou par voie électronique, au format PDF. Au moyen de l'app, vous pouvez scanner le code QR figurant sur ce document. Ensuite, le certificat COVID apparaît directement dans l'app."</string>
@@ -246,7 +246,9 @@ Dans tous les cas, vous devez aussi présenter une pièce d'identité sur demand
     <string name="wallet_faq_works_answer_2">"Oui. Vous pouvez par exemple stocker dans l'app les certificats COVID de tous les membres de votre famille. À noter également dans ce cas qu'un certificat COVID n'est valable que si son détenteur présente une pièce d'identité."</string>
 
     <!-- Antwort 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_3">"L'application vérifie automatiquement si votre certificat remplit les critères de validité en vigueur en Suisse. Si votre certificat COVID a expiré ou s'il n'est techniquement pas valable, cette information apparaît automatiquement sur le certificat dans l'application."</string>
+    <string name="wallet_faq_works_answer_3">"En Suisse, l’obligation de présenter un certificat a été levée en février 2022. Les durées de validité suisses sont donc devenues uniquement formelles et n’ont pratiquement plus aucune pertinence dans notre pays. C’est pourquoi le champ « Validité en Suisse » n’est plus représenté dans l’application, qui indique par contre le nombre de jours écoulés depuis une vaccination ou un test.
+
+L’application indique aussi le nombre de jours écoulés depuis une vaccination ou un test. Vous pouvez ainsi vérifier plus facilement si votre certificat correspond aux règles de validité de votre pays de destination (au cas où ce pays exige encore un certificat COVID). À l’étranger, les règles en vigueur varient d’un pays à l’autre."</string>
 
     <!-- Antwort 9 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_4">"Vos données personnelles ne sont pas stockées dans un système central, mais ne sont sauvegardées que localement, sur votre appareil mobile ou dans le code QR figurant sur le certificat papier."</string>
@@ -515,7 +517,7 @@ Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles d
     <!-- Verifier: Titel in der App (z.B. Impressum) -->
     <string name="verifier_app_title">"COVID Certificate Check"</string>
     <string name="wallet_faq_questions_question_1_1">"Comment puis-je obtenir un certificat COVID après avoir guéri?"</string>
-    <string name="wallet_faq_questions_answer_1_1">"Les personnes qui ont guéri du COVID-19 peuvent demander un certificat COVID en remplissant le formulaire en ligne disponible sur le site Internet de leur canton de domicile. Elles recevront ensuite le certificat COVID par la poste."</string>
+    <string name="wallet_faq_questions_answer_1_1">"En fonction de votre canton, le certificat COVID vous sera délivré soit directement par le lieu de test soit par le laboratoire qui a confirmé votre résultat de test positif. Si tel n’est pas le cas, vous pouvez demander votre certificat après coup, en ligne via la « Plateforme nationale des demandes pour le certificat COVID ». Votre demande y sera traitée par les autorités cantonales compétentes. Lien :"</string>
 
     <!-- Wallet: Homescreen Was wollen sie machen? -->
     <string name="wallet_homescreen_what_to_do">"Passer à l’étape suivante"</string>
@@ -759,13 +761,11 @@ non valide"</string>
     <string name="wallet_notification_transfer_title">"Transfert réussi"</string>
     <string name="wallet_notification_transfer_text">"Le certificat COVID est arrivé"</string>
     <string name="wallet_faq_questions_question_2_1">"Quelle est la durée de validité du certificat COVID ?"</string>
-    <string name="wallet_faq_questions_answer_2_1">"La durée de validité varie selon que votre certificat COVID consigne une vaccination, une guérison ou un résultat de test négatif. Elle peut changer en fonction de l’évolution des connaissances scientifiques. Vous trouverez des informations sur la durée de validité actuelle du certificat COVID à l’adresse suivante :"</string>
-    <string name="wallet_faq_questions_linktext_2_1">"Informations supplémentaires"</string>
-    <string name="wallet_faq_questions_linkurl_2_1">"https://ofsp-coronavirus.ch/certificat/comment-obtenir-le-certificat-covid-et-comment-men-servir/#contents2"</string>
+    <string name="wallet_faq_questions_answer_2_1">"En Suisse, l’obligation de présenter un certificat a été levée en février 2022. Les durées de validité suisses sont donc devenues uniquement formelles et n’ont pratiquement plus aucune pertinence dans notre pays. À l’étranger, les règles de validité du pays concerné s’appliquent. Vérifiez peu avant votre départ sur le site Internet des autorités de votre pays de transit ou de destination si des mesures impliquant l’utilisation d’un certificat y sont appliquées et si c’est le cas, quelles règles de validité y sont appliquées.  Site Internet utile pour les voyages à l’étranger :"</string>
+    <string name="wallet_faq_questions_linktext_2_1">"Re-open EU (europa.eu)"</string>
+    <string name="wallet_faq_questions_linkurl_2_1">"https://reopen.europa.eu/fr/"</string>
     <string name="wallet_faq_works_question_3_1">"Puis-je également utiliser l’application hors ligne ?"</string>
-    <string name="wallet_faq_works_answer_3_1">"Oui, vous pouvez utiliser l’application sans connexion Internet. Les certificats peuvent aussi être présentés, scannés et vérifiés en mode hors ligne.
-
-Toutefois, pour pouvoir afficher dans l’application «COVID Certificate» si votre certificat répond aux critères de validité de la Suisse et pour présenter sa durée de validité, l’application requiert une connexion Internet régulière."</string>
+    <string name="wallet_faq_works_answer_3_1">"Oui, vous pouvez utiliser l’application sans connexion Internet. Les certificats peuvent aussi être présentés, scannés et vérifiés en mode hors ligne."</string>
     <string name="verifier_faq_works_question_2_1">"Quels sont les critères de validité actuels de la Suisse ?"</string>
     <string name="verifier_faq_works_answer_2_1">"Vous trouverez des informations sur la durée de validité actuelle du certificat COVID à l’adresse suivante :"</string>
     <string name="verifier_faq_works_linktext_2_1">"Informations supplémentaires"</string>
@@ -936,9 +936,9 @@ certificat expirée"</string>
     <string name="wallet_faq_questions_question_6">"Qu’est-ce que le certificat light ?"</string>
 
     <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
-    <string name="wallet_faq_questions_answer_6">"L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Ce certificat « light » indique uniquement si le certificat présenté est valide, sans fournir de données sur la santé.
+    <string name="wallet_faq_questions_answer_6">"L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Le certificat « light » confirme que le certificat présenté est valide, sans contenir lui-même des données sur la santé.
 
-L’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.
+Cette alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, les certificats COVID contiennent certaines données sur la santé (p. ex. le type de vaccin et la date de la vaccination) qui peuvent être lues par des tiers. Le certificat « light » empêche tout abus de ce genre.
 
 Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant {LIGHT_CERT_VALIDITY_IN_H} heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light."</string>
     <string name="verifier_faq_works_question_8">"Qu’est-ce que le certificat light ?"</string>
@@ -1755,10 +1755,14 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="wallet_update_boarding_page_4_link_2_url">"https://www.iatatravelcentre.com"</string>
     <string name="wallet_validity_since_more_hours_prefix">"il y a plus de"</string>
     <string name="wallet_validity_since_recovery_date">"Test positif"</string>
-    <string name="covid_certificate_news_text">"fr"</string>
-    <string name="covid_certificate_news_title">"fr"</string>
-    <string name="covid_certificate_news_item1">"fr"</string>
-    <string name="covid_certificate_news_item2">"fr"</string>
-    <string name="covid_certificate_news_item3">"fr"</string>
-    <string name="covid_certificate_news_item4">"fr"</string>
+    <string name="covid_certificate_news_text">"Levée de l’obligation de présenter un certificat."</string>
+    <string name="covid_certificate_news_title">"Levée de l’obligation de présenter un certificat."</string>
+    <string name="covid_certificate_news_item1">"L’obligation de présenter un certificat en Suisse a été levée en février 2022."</string>
+    <string name="covid_certificate_news_item2">"Depuis lors, les durées de validité pour la Suisse sont purement formelles et n’ont plus de pertinence pratique dans le pays."</string>
+    <string name="covid_certificate_news_item3">"Cette application de vérification suisse contrôle les certificats COVID en fonction des règles de validité suisses. Le résultat du contrôle n’est pas déterminant pour utiliser l’étranger."</string>
+    <string name="covid_certificate_news_item4">"Lorsqu’un pays exige encore un certificat COVID, les règles du pays en question s’appliquent."</string>
+    <string name="wallet_faq_questions_linktext_1_1">"Plateforme nationale de demandes pour le certificat COVID"</string>
+    <string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
+    <string name="wallet_faq_questions_question_2_2">"À l’étranger, les règles de validité du pays concerné s’appliquent, aussi bien à l’entrée qu’à l’intérieur du territoire. L’utilisation du certificat à l’intérieur du pays de destination peut être soumise à d’autres règles que celles fixées pour l’entrée. Ces règles peuvent changer à très court terme. Vérifiez donc peu avant votre départ sur le site Internet des autorités de votre pays de transit ou de destination si des règles en rapport avec le COVID-19 sont toujours appliquées, et si oui, lesquelles. "</string>
+    <string name="wallet_faq_questions_answer_2_2">"Je pars à l’étranger et j’ai besoin d’un certificat COVID pour entrer dans le pays de destination. À quoi dois-je faire attention ?"</string>
 </resources>
