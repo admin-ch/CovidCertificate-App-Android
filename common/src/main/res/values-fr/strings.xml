@@ -508,9 +508,9 @@ Si vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
     <string name="wallet_certificate_detail_note">"Le présent certificat n'est pas un document de voyage.
 &lt;br /&gt;&lt;br /&gt;
-Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d'évoluer, notamment en ce qui concerne de nouveaux variants préoccupants du virus.
+Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d'évoluer, notamment en ce qui concerne de nouveau variants préoccupants du virus.
 &lt;br /&gt;&lt;br /&gt;
-Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles de validité en vigueur à votre lieu de destination. La validité de votre certificat à l’étranger dépend des règles du pays de destination. Vous trouverez de plus amples informations sur cette page dédiée aux &lt;a href=\"https://www.bag.admin.ch/bag/fr/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/fr/certificat-covid/que-dois-je-faire-si-mon-certificat-covid-est-sur-le-point-dexpirer-en-suisse\"&gt;questions fréquentes&lt;/a&gt;."</string>
+Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles de validité en vigueur à votre lieu de destination. La validité de votre certificat à l’étranger dépend des règles du pays de destination."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-check-app.html"</string>
 
