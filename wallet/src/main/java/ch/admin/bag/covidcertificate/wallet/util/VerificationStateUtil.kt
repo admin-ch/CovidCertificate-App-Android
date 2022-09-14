@@ -18,6 +18,7 @@ import ch.admin.bag.covidcertificate.common.util.addBoldDate
 import ch.admin.bag.covidcertificate.common.util.makeSubStringBold
 import ch.admin.bag.covidcertificate.sdk.core.data.ErrorCodes
 import ch.admin.bag.covidcertificate.sdk.core.models.state.*
+import ch.admin.bag.covidcertificate.sdk.core.verifier.nationalrules.NationalRulesError
 import ch.admin.bag.covidcertificate.wallet.R
 
 const val DATE_REPLACEMENT_STRING = "{DATE}"
@@ -59,7 +60,11 @@ fun VerificationState.INVALID.getValidationStatusString(context: Context) = when
 		)
 	}
 	nationalRulesState is CheckNationalRulesState.INVALID -> {
-		SpannableString(context.getString(R.string.wallet_error_national_rules))
+		if ((nationalRulesState as CheckNationalRulesState.INVALID).nationalRulesError == NationalRulesError.NOT_FULLY_PROTECTED) {
+			SpannableString(context.getString(R.string.wallet_error_not_fully_protected_national_rules))
+		} else {
+			SpannableString(context.getString(R.string.wallet_error_national_rules))
+		}
 	}
 	else -> SpannableString(context.getString(R.string.unknown_error))
 }

@@ -357,7 +357,7 @@ Il certificato non è ancora valido."</string>
 {DATE}"</string>
 
     <!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
-    <string name="wallet_error_national_rules">"Non soddisfa i criteri di validità della Svizzera"</string>
+    <string name="wallet_error_national_rules">"Contiene dati non conformi agli standard internazionali."</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
     <string name="wallet_error_expired">"La durata di validità in Svizzera è stata superata "</string>
@@ -1771,4 +1771,5 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
     <string name="wallet_faq_questions_question_2_2">"All’estero si applicano le regole di validità del rispettivo Paese, sia per l’entrata sia all’interno del Paese stesso. Per l’impiego del certificato all’interno del Paese di destinazione possono applicarsi altre regole rispetto a quelle vigenti per l’entrata. Queste regole possono cambiare in tempi brevi. Pertanto, prima di partire, si informi consultando il sito web delle autorità del Paese di transito o di destinazione se nel Paese vigono ancora regole relative alla COVID-19 e, in caso affermativo, quali sono. "</string>
     <string name="wallet_faq_questions_answer_2_2">"Devo recarmi all’estero e ho bisogno di un certificato COVID. Cosa devo fare?"</string>
+    <string name="wallet_error_not_fully_protected_national_rules">"Serie di vaccinazioni incompleta secondo gli standard internazionali."</string>
 </resources>

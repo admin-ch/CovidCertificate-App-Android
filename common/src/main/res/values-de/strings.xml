@@ -358,7 +358,7 @@ Das Zertifikat ist noch nicht gültig."</string>
 {DATE}"</string>
 
     <!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
-    <string name="wallet_error_national_rules">"Entspricht nicht den Gültigkeitskriterien der Schweiz"</string>
+    <string name="wallet_error_national_rules">"Enthält Daten, die nicht den internationalen Standards entsprechen."</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
     <string name="wallet_error_expired">"Gültigkeitsdauer für die Schweiz überschritten"</string>
@@ -1772,5 +1772,6 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
     <string name="wallet_faq_questions_question_2_2">"Im Ausland gelten jeweils die Gültigkeitsregeln des entsprechenden Landes, sowohl für die Einreise wie auch innerhalb des Ziellandes. Für die Verwendung des Zertifikats innerhalb des Ziellandes können andere Regeln als bei der Einreise gelten. Diese Regeln können kurzfristig ändern. Informieren Sie sich daher kurz vor Ihrer Abreise auf der Webseite der Behörden Ihres Transit- oder Ziellandes, ob dort noch Regeln im Zusammenhang mit Covid-19 gelten und wenn ja, welche."</string>
     <string name="wallet_faq_questions_answer_2_2">"Ich verreise ins Ausland und brauche für die Einreise ein Covid-Zertifikat. Was muss ich beachten?"</string>
+    <string name="wallet_error_not_fully_protected_national_rules">"Unvollständige Impfserie gemäss internationalen Standards."</string>
 </resources>
 
