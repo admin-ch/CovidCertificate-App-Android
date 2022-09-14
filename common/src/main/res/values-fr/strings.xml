@@ -1719,7 +1719,7 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="terms_and_conditions_update_boarding_title">"Mise à jour"</string>
     <string name="terms_and_conditions_update_boarding_text">"Les conditions d’utilisation et la politique de confidentialité de l’application ont été ponctuellement mises à jour et adaptées aux bases légales."</string>
     <string name="wallet_validity_since_vaccination_date">"Date de vaccination"</string>
-    <string name="wallet_validity_since_test_date">"Test positif "</string>
+    <string name="wallet_validity_since_test_date">"Test négatif "</string>
 
     <!-- vor 2 Tagen - must be before "2 Tagen"! -->
     <string name="wallet_validity_since_prefix">"il y a"</string>
