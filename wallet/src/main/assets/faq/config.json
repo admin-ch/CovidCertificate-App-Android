@@ -11,7 +11,7 @@
       "faqEntries": [
         {
           "title": "Wann und wo kann ich ein Covid-Zertifikat erhalten?",
-          "text": "Ein Covid-Zertifikat können Sie nach einer vollständigen Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus.",
+          "text": "Ein Covid-Zertifikat können Sie nach einer Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -19,15 +19,15 @@
         },
         {
           "title": "Wie erhalte ich nach einer durchgemachten Covid-19-Erkrankung ein Covid-Zertifikat?",
-          "text": "Von Covid-19 genesene Personen können das Covid-Zertifikat über ein Online-Formular auf der Webseite des Kantons beantragen. Das Covid-Zertifikat wird anschliessend per Post zugeschickt.",
+          "text": "Je nach Kanton wird Ihnen das Covid-Zertifikat teilweise direkt von der Teststelle oder dem Labor ausgestellt, in dem Ihr positives Testresultat festgestellt wurde. Falls dies nicht der Fall ist, können Sie nachträglich online über die Webseite der «Nationale Antragsstelle Covid-Zertifikat» ein Covid-Zertifikat beantragen. Der Antrag wird dort von der zuständigen kantonalen Behörde bearbeitet. Die Webseite der «Nationale Antragsstelle Covid-Zertifikat» finden Sie hier:",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": null,
-          "linkUrl": null
+          "linkTitle": "Nationale Antragsstelle Covid-Zertifikat (admin.ch)",
+          "linkUrl": "https://covidcertificate-form.admin.ch/immunityrequest"
         },
         {
           "title": "Wie kann ich ein Covid-Zertifikat vorweisen?",
-          "text": "Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die COVID Certificate App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. Ob Sie Ihr Zertifikat auf Papier oder in der App vorweisen, ist Ihnen überlassen. \n\nBeachten Sie, dass Sie in jedem Fall auf Verlangen auch noch ein Ausweisdokument vorweisen müssen.",
+          "text": "Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die «COVID Certificate»-App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. \n\nBeachten Sie, dass Sie in jedem Fall auch noch ein Ausweisdokument vorweisen müssen.\nIn einigen Ländern wird eine ausgedruckte Version des Zertifikats verlangt und das elektronische Zertifikat nicht akzeptiert. Führen Sie auf Reisen daher stets auch die ausgedruckte Version mit.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -35,15 +35,15 @@
         },
         {
           "title": "Wie lange ist das Covid-Zertifikat gültig?",
-          "text": "Die Gültigkeitsdauer unterscheidet sich je nachdem, ob Sie eine Covid-19-Impfung, eine durchgemachte Erkrankung oder ein negatives Testergebnis haben. Aufgrund neuer wissenschaftlicher Erkenntnisse kann sich die Gültigkeitsdauer verändern. Die aktuell geltende Gültigkeitsdauer von Covid-Zertifikaten finden Sie hier:",
+          "text": "In der Schweiz wurde die Zertifikatspflicht im Februar 2022 aufgehoben. Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formal und haben praktisch im Inland keine Bedeutung mehr. Im Ausland gelten jeweils die Gültigkeitsregeln des entsprechenden Landes. Informieren Sie sich kurz vor Ihrer Abreise auf der Webseite der Behörden Ihres Transit- oder Ziellandes, ob das Land noch zertifikatsbasierte Massnahmen hat und welche falls ja, welche Gültigkeitsdauern für Ihr Zielland festgelegt sind. Hilfreiche Webseite bei Auslandsreisen:",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": "Weitere Informationen",
-          "linkUrl": "https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/#contents2"
+          "linkTitle": "Re-open EU (europa.eu)",
+          "linkUrl": "https://reopen.europa.eu/de"
         },
         {
           "title": "Wo sind meine Daten gespeichert?",
-          "text": "Ihre Daten werden nicht in einem zentralen System gespeichert, sondern nur lokal auf Ihrem Mobilgerät, respektive im QR-Code auf dem Covid-Zertifikat in Papierform.",
+          "text": "Ihre Zertifikatsdaten werden nicht in einem zentralen System des Bundes gespeichert, sondern befinden sich nur lokal auf Ihrem Mobilgerät, respektive auf dem Covid-Zertifikat in Papierform.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -59,7 +59,7 @@
         },
         {
           "title": "Was passiert, wenn ich mein Covid-Zertifikat verliere?",
-          "text": "Ihr Covid-Zertifikat wird in keinem zentralen System gespeichert. Es befindet sich ausschliesslich in Ihrem Besitz. Bewahren Sie das Covid-Zertifikat auf Papier und/oder als PDF deshalb sorgfältig auf. Bei Verlust und Bedarf nach einem Ersatz kann eine Gebühr erhoben werden.",
+          "text": "Ihr Covid-Zertifikat wird in keinem zentralen System des Bundes gespeichert. Bewahren Sie das Covid-Zertifikat auf Papier und/oder als PDF deshalb sorgfältig auf. Bei Verlust und Bedarf nach einem Einsatz kann für die Neuausstellung durch die Gesundheitseinrichtungen (z. B. der Test- oder Impf-stelle) eine Gebühr erhoben werden. ",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -67,7 +67,7 @@
         },
         {
           "title": "Was ist das Zertifikat Light?",
-          "text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zu generieren. Dieses «Zertifikat Light» zeigt lediglich das Vorliegen eines gültigen Covid-Zertifikats an, jedoch ohne Gesundheitsdaten zu enthalten. \n\nDie datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Dritte mit selbstentwickelten Apps bei der Prüfung von Covid-Zertifikaten Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung einsehen könnten. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 24 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 24 Stunden benötigt, kann das Zertifikat Light einfach deaktiviert werden.",
+          "text": "Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zur Nutzung in der Schweiz zu generieren. Das «Zertifikat Light» bestätigt das Vorliegen eines gültigen Covid-Zertifikats, ohne selbst Gesundheitsdaten zu enthalten. \n\nDiese datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Covid-Zertifikategewisse Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung enthalten, die auch ausgelesen werden können. Mittels dem «Zertifikat Light» wird dies verhindert.\n\nDas «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von 24 Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der 24 Stunden benötigt, kann das «Zertifikat Light» einfach deaktiviert werden.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -84,7 +84,7 @@
       "faqEntries": [
         {
           "title": "When and where can I get a COVID certificate?",
-          "text": "You can get a COVID certificate after a complete COVID-19 vaccination, after you have recovered from the virus or after you have tested negative. The certificate is generally issued upon request by health care professionals on site.",
+          "text": "You can get a COVID certificate after a COVID-19 vaccination, after you have recovered from the virus, or after you have tested negative. The certificate is generally issued upon request by health care professionals on site.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -92,15 +92,15 @@
         },
         {
           "title": "How do I get a COVID certificate after I have recovered from COVID-19?",
-          "text": "People who have recovered from COVID-19 can apply for the COVID certificate via an online form on the canton's website. The COVID certificate will then be sent by post.",
+          "text": "Depending on the canton, the COVID certificate will, in some cases, be sent to you directly by the test centre or by the laboratory that determined your positive test result. If this is not the case, you can subsequently apply online for a COVID certificate via the “National COVID certificate application platform”. The application will be processed there by the competent cantonal authority. You will find the “National COVID certificate application platform” here:",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": null,
-          "linkUrl": null
+          "linkTitle": "National COVID certificate application platform",
+          "linkUrl": "https://covidcertificate-form.admin.ch/immunityrequest"
         },
         {
           "title": "How can I present a COVID certificate?",
-          "text": "You can present your COVID certificate in paper form, or you can use the COVID Certificate app to save certificates in the dedicated app. You are free to choose whether to present your certificate in paper form or in the app.\n\nPlease note that you will also need to show an identification document (passport or ID card) in either case.\n",
+          "text": "You can present your COVID certificate in paper form, or you can use the COVID Certificate app to save certificates in the dedicated app and present them directly from the app.\n\nPlease note that you will also need to show an identification document (passport or ID card) in either case. A number of countries require a printed version of the certificate and will not accept the electronic certificate. You should therefore always take the printed version with you when travelling.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -108,15 +108,15 @@
         },
         {
           "title": "How long is the COVID certificate valid?",
-          "text": "Just how long your certificate is valid depends on whether you have been vaccinated, have recovered from COVID or have tested negative. The duration of validity may change in line with the latest scientific findings. The current duration of validity for COVID certificates can be found here:",
+          "text": "In Switzerland, the requirement for a certificate was lifted in February 2022. Since then, the Swiss validity periods have existed only in formal terms and no longer have any significance in practice in Switzerland. Abroad, the validity rules of the country in question apply. Shortly before departing you should check the authorities’ website for your transit or destination country to see whether certificate-based measures are still in force and, if so, which validity periods apply for your destination country. Helpful website for travel abroad:",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": "Further information",
-          "linkUrl": "https://foph-coronavirus.ch/certificate/how-do-i-get-a-covid-certificate-and-how-do-i-use-it/#contents2"
+          "linkTitle": "Re-open EU (europa.eu)",
+          "linkUrl": "https://reopen.europa.eu/en/"
         },
         {
           "title": "Where is my data stored?",
-          "text": "Your data is not stored in a central system, but only locally on your mobile device or in the QR code in the case of the paper COVID certificate.",
+          "text": "Your certificate data is not stored in a central government system, but only locally on your mobile device or on the paper COVID certificate.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -132,7 +132,7 @@
         },
         {
           "title": "What happens if I lose my COVID certificate?",
-          "text": "Your COVID-19 certificate is not stored in any central system. It is solely in your possession. Therefore, keep your paper and/or PDF COVID-19 certificate in a safe place. If you lose your certificate and need to replace it, a fee may be charged.",
+          "text": "Your COVID certificate is not stored in any central government system. Therefore, keep your paper and/or PDF COVID certificate in a safe place. If you lose your certificate and need to replace it, a fee may be charged for its reissue by a health care facility (e.g. the test or vaccination centre).",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -140,7 +140,7 @@
         },
         {
           "title": "What is the 'certificate light'",
-          "text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. This 'certificate light' merely shows that the holder has a valid COVID certificate but does not contain any health-related data. \n\nThe alternative to the COVID certificate containing minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as third parties using apps they have developed themselves could be able to see health-related data such as the vaccine administered or date of vaccination when checking the certificate. The 'certificate light' prevents this.\n\nThe 'Certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons the 'certificate light' is only valid for 24 hours and must then be reactivated. If you need to use the normal certificate before the end of the 24-hour period, you can simply deactivate the 'certificate light'.",
+          "text": "The COVID Certificate app offers holders of COVID certificates the possibility of generating a copy of the certificate with minimised data. The 'certificate light' confirms that the holder has a valid COVID certificate but does not itself contain any health-related data. \n\nThis alternative to the COVID certificate which contains minimised data was developed at the wish of the Federal Data Protection and Information Commissioner (FDPIC) as COVID certificates contain certain health-related data such as the vaccine administered or the date of vaccination, which can also be seen. The 'certificate light' prevents this.\n\nThe 'certificate light' is only available electronically in the app and is only recognised in Switzerland. For data protection reasons, the 'certificate light' is only valid for 24 hours and must then be reactivated. If you need to use the normal certificate before the end of the 24-hour period, you can simply deactivate the 'certificate light'.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -157,7 +157,7 @@
       "faqEntries": [
         {
           "title": "Quand et où puis-je obtenir un certificat COVID?",
-          "text": "Vous pouvez obtenir le certificat COVID si vous êtes entièrement vacciné contre le COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site.",
+          "text": "Vous pouvez obtenir le certificat COVID si vous êtes vaccinés contre le COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -165,15 +165,15 @@
         },
         {
           "title": "Comment puis-je obtenir un certificat COVID après avoir guéri?",
-          "text": "Les personnes qui ont guéri du COVID-19 peuvent demander un certificat COVID en remplissant le formulaire en ligne disponible sur le site Internet de leur canton de domicile. Elles recevront ensuite le certificat COVID par la poste.",
+          "text": "En fonction de votre canton, le certificat COVID vous sera délivré soit directement par le lieu de test soit par le laboratoire qui a confirmé votre résultat de test positif. Si tel n’est pas le cas, vous pouvez demander votre certificat après coup, en ligne via la « Plateforme nationale des demandes pour le certificat COVID ». Votre demande y sera traitée par les autorités cantonales compétentes. Lien :",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": null,
-          "linkUrl": null
+          "linkTitle": "Plateforme nationale de demandes pour le certificat COVID",
+          "linkUrl": "https://covidcertificate-form.admin.ch/immunityrequest"
         },
         {
           "title": "Par quel moyen puis-je présenter un certificat COVID?",
-          "text": "Vous pouvez présenter votre certificat COVID sur papier ou au moyen de l'app de stockage créée à cet effet. Vous êtes libre de choisir l'une ou l'autre solution.\n\nDans tous les cas, vous devez aussi présenter une pièce d'identité sur demande.",
+          "text": "Vous pouvez présenter votre certificat COVID sur papier ou au moyen de l’app de stockage créée à cet effet. Vous êtes libre de choisir l’une ou l’autre solution.\n\nDans tous les cas, vous devez aussi présenter une pièce d’identité sur demande. Dans certains pays, une version imprimée du certificat est exigée, et le certificat électronique n’est pas accepté. Nous vous conseillons donc de vous munir de la version imprimée lorsque vous voyagez.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -181,15 +181,15 @@
         },
         {
           "title": "Quelle est la durée de validité du certificat COVID ?",
-          "text": "La durée de validité varie selon que votre certificat COVID consigne une vaccination, une guérison ou un résultat de test négatif. Elle peut changer en fonction de l’évolution des connaissances scientifiques. Vous trouverez des informations sur la durée de validité actuelle du certificat COVID à l’adresse suivante :",
+          "text": "En Suisse, l’obligation de présenter un certificat a été levée en février 2022. Les durées de validité suisses sont donc devenues uniquement formelles et n’ont pratiquement plus aucune pertinence dans notre pays. À l’étranger, les règles de validité du pays concerné s’appliquent. Vérifiez peu avant votre départ sur le site Internet des autorités de votre pays de transit ou de destination si des mesures impliquant l’utilisation d’un certificat y sont appliquées et si c’est le cas, quelles règles de validité y sont appliquées.  Site Internet utile pour les voyages à l’étranger :",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": "Informations supplémentaires",
-          "linkUrl": "https://ofsp-coronavirus.ch/certificat/comment-obtenir-le-certificat-covid-et-comment-men-servir/#contents2"
+          "linkTitle": "Re-open EU (europa.eu)",
+          "linkUrl": "https://reopen.europa.eu/fr/"
         },
         {
           "title": "Où mes données sont-elles stockées?",
-          "text": "Vos données ne sont pas stockées dans un système central, mais elles sont sauvegardées localement, sur votre appareil mobile ou dans le code QR figurant sur le certificat papier.",
+          "text": "Les données de votre certificat ne sont pas stockées dans un système central de la Confédération, mais sont sauvegardées localement, sur votre appareil mobile ou sur le certificat papier.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -205,7 +205,7 @@
         },
         {
           "title": "Et si je perds mon certificat COVID?",
-          "text": "Votre certificat COVID n'est pas stocké dans un système central; il est exclusivement en votre possession. Par conséquent, nous vous recommandons de le conserver sur papier ou au format PDF dans un endroit sûr. En cas de perte ou de remplacement, le paiement d'un émolument peut être exigé.",
+          "text": "Votre certificat COVID n'est pas stocké dans un système central de la Confédération. Par conséquent, nous vous recommandons de le conserver sur papier ou au format PDF dans un endroit sûr. En cas de perte ou de remplacement, le paiement d’un émolument peut être exigé pour l’établissement d’un nouveau document par les institutions sanitaires (lieu de test ou de vaccination).",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -213,7 +213,7 @@
         },
         {
           "title": "Qu’est-ce que le certificat light ?",
-          "text": "L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Ce certificat « light » indique uniquement si le certificat présenté est valide, sans fournir de données sur la santé.\n\nL’alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, des personnes tierces pourraient développer des applications leur donnant la possibilité de lire, lors de la vérification d’un certificat, les données sur la santé (p. ex. le type de vaccin et la date de la vaccination). Le certificat light empêche tout abus de ce genre.\n\nLe certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 24 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light.",
+          "text": "L’application « COVID Certificate » propose aux titulaires de certificats COVID la possibilité de générer une copie du certificat ne contenant que les données strictement nécessaires. Le certificat « light » confirme que le certificat présenté est valide, sans contenir lui-même des données sur la santé.\n\nCette alternative permettant de limiter les données du certificat COVID au strict minimum a été suggérée par le Préposé fédéral à la protection des données et à la transparence (PFPDT) ; en effet, les certificats COVID contiennent certaines données sur la santé (p. ex. le type de vaccin et la date de la vaccination) qui peuvent être lues par des tiers. Le certificat « light » empêche tout abus de ce genre.\n\nLe certificat light, reconnu uniquement en Suisse, n’est disponible que sous forme électronique. Pour des raisons de protection des données, il n’est valide que pendant 24 heures et doit ensuite être réactivé. Si le certificat normal est à nouveau nécessaire avant la fin de ce délai, il suffit de désactiver le certificat light.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -230,7 +230,7 @@
       "faqEntries": [
         {
           "title": "Quando e dove posso ottenere un certificato COVID?",
-          "text": "Può ricevere un certificato COVID in seguito alla completa vaccinazione anti-COVID-19, all'avvenuta guarigione o a un risultato negativo al test. Normalmente, il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie.",
+          "text": "Può ricevere un certificato COVID in seguito alla vaccinazione anti-COVID-19, all'avvenuta guarigione o a un risultato negativo al test. Normalmente, il certificato è rilasciato su richiesta dal personale medico specializzato presso le strutture sanitarie.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -238,15 +238,15 @@
         },
         {
           "title": "Come posso ottenere un certificato COVID dopo essere guarito?",
-          "text": "Le persone guarite dalla COVID-19 possono richiedere il certificato COVID tramite un modulo online disponibile sul sito Internet del Cantone. Il certificato viene poi inviato per posta.",
+          "text": "A seconda del Cantone, il certificato COVID viene rilasciato in parte direttamente dalla struttura che ha effettuato il test o dal laboratorio in cui è stato accertato il risultato positivo al test. Qualora così non fosse, può richiedere a posteriori online un certificato COVID tramite il sito web dell’«organo nazionale per la richiesta di certificati COVID». La richiesta sarà evasa in tale sede dall’autorità cantonale competente. Il sito web dell’«organo nazionale per la richiesta di certificati COVID» si trova qui:",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": null,
-          "linkUrl": null
+          "linkTitle": "Organo nazionale per la richiesta di certificati COVID",
+          "linkUrl": "https://covidcertificate-form.admin.ch/immunityrequest"
         },
         {
           "title": "Come posso mostrare il certificato COVID?",
-          "text": "Può mostrare il Suo certificato COVID in formato cartaceo oppure salvarlo e presentarlo utilizzando l'app COVID Certificate. Può decidere liberamente se mostrare il certificato in formato cartaceo o elettronico.\n\nIn entrambi i casi, dovrà mostrare su richiesta anche un documento di legittimazione.",
+          "text": "Può mostrare il Suo certificato COVID in formato cartaceo oppure salvarlo e presentarlo utilizzando l’app «COVID Certificate». \nIn entrambi i casi, dovrà mostrare anche un documento di legittimazione.\nIn alcuni Paesi si richiede la versione cartacea del certificato e non si accetta quello elettronico. Porti quindi sempre con sé anche la versione cartacea quando viaggia.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -254,15 +254,15 @@
         },
         {
           "title": "Fino a quando è valido il certificato COVID?",
-          "text": "La durata di validità cambia a seconda del fatto che il certificato COVID documenti la vaccinazione anti-COVID-19, la guarigione dalla malattia o un risultato negativo del test. Potrà inoltre cambiare in funzione delle conoscenze scientifiche più recenti. L’attuale durata di validità dei certificati COVID è consultabile qui:",
+          "text": "In Svizzera l’obbligo di certificato è stato revocato nel febbraio 2022. Da allora, la durata di validità svizzera esiste solo formalmente e non ha più alcun valore pratico nel nostro Paese. All’estero si applicano le regole di validità del rispettivo Paese. Pertanto, prima di partire, si informi consultando il sito web delle autorità del Paese di transito o di destinazione se nel Paese vigono ancora misure relative al certificato e, in caso affermativo, qual è la loro durata di validità. Sito web utile per viaggi all’estero:",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": "Ulteriori informazioni",
-          "linkUrl": "https://ufsp-coronavirus.ch/certificato/come-si-ottiene-il-certificato-covid-e-come-si-impiega/#contents2"
+          "linkTitle": "Re-open EU (europa.eu)",
+          "linkUrl": "https://reopen.europa.eu/it/"
         },
         {
           "title": "Dove vengono salvati i miei dati?",
-          "text": "I Suoi dati non vengono salvati in un sistema centrale ma solo localmente sul Suo dispositivo mobile, rispettivamente nel codice QR stampato sul certificato COVID in formato cartaceo.",
+          "text": "I dati del Suo certificato non vengono salvati in un sistema centrale della Confederazione, ma si trovano solo localmente sul Suo dispositivo mobile, rispettivamente sul certificato COVID in formato cartaceo.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -278,7 +278,7 @@
         },
         {
           "title": "Cosa succede se perdo il mio certificato COVID su carta?",
-          "text": "Il Suo certificato COVID non è salvato su un sistema centrale, Lei ne ha il possesso esclusivo. Conservi quindi con cura il certificato COVID su carta e/o in formato PDF. In caso di smarrimento e sostituzione potrà essere riscosso un emolumento.",
+          "text": "Il Suo certificato COVID non è salvato su un sistema centrale della Confederazione Conservi quindi con cura il certificato COVID su carta e/o in formato PDF. In caso di smarrimento e sostituzione, per il nuovo rilascio da parte delle strutture sanitarie (p. es. la struttura in cui è stato effettuato il test o è stata somministrata la vaccinazione) potrà essere riscosso un emolumento.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -286,7 +286,7 @@
         },
         {
           "title": "Che cos'è il certificato light?",
-          "text": "L'app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo. Il certificato light indica semplicemente l'esistenza di un certificato valido, ma non contiene i dati sanitari.\n\nIl certificato con dati ridotti al minimo è un’alternativa al certificato COVID-19 ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché le applicazioni autosviluppate per verificare i certificati COVID-19 consentirebbero a terzi di visualizzare i dati sanitari, ad esempio il vaccino somministrato o la data della vaccinazione. Ciò può essere evitato mediante il «certificato light».\n\nIl «certificato light» è disponibile unicamente in versione elettronica nell'app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il «certificato light» ha una validità massima di 24 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 24 ore, il certificato light può essere disattivato semplicemente.",
+          "text": "L’app «COVID Certificate» offre ai possessori di certificati COVID la possibilità di generare una copia del certificato con dati ridotti al minimo da utilizzare in Svizzera. Il certificato light conferma l’esistenza di un certificato valido, senza contenere dati sanitari.\n\nQuesto certificato con dati ridotti al minimo è un’alternativa al certificato COVID ed è stato sviluppato su richiesta dell’Incaricato federale della protezione dei dati e della trasparenza (IFPDT), poiché i certificati COVID contengono determinati dati sanitari, come per esempio il vaccino somministrato o la data della vaccinazione, che possono anche essere visualizzati e dunque letti. Ciò può essere evitato mediante il certificato light.\n\nIl certificato light è disponibile unicamente in versione elettronica nell’app ed è riconosciuto solo in Svizzera. Per motivi legati alla protezione dei dati, il certificato light ha una validità massima di 24 ore e in seguito deve essere riattivato. Se si necessita del certificato normale prima che siano trascorse le 24 ore, il certificato light può essere disattivato semplicemente.\n",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -303,7 +303,7 @@
       "faqEntries": [
         {
           "title": "Cura e co obtegn jau in certificat COVID?",
-          "text": "In certificat COVID obtegnais Vus suenter ina vaccinaziun cumpletta cunter COVID-19, suenter ina infecziun u suenter in resultat negativ dal test. Il certificat vegn per il solit emess – sin dumonda – dal persunal spezialisà da sanadad al lieu.",
+          "text": "In certificat COVID survegnis Vus suenter ina vaccinaziun cumpletta cunter COVID-19, suenter ina infecziun u suenter in resultat negativ dal test. Il certificat vegn per il solit emess – sin dumonda – dal persunal spezialisà da sanadad al lieu. ",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -311,15 +311,15 @@
         },
         {
           "title": "Co obtegn jau in certificat COVID suenter ina infecziun cun COVID-19?",
-          "text": "Cun agid d’in formular online sin la pagina d’internet dal chantun pon las persunas guaridas da COVID-19 far ina dumonda per in certificat COVID. Il certificat COVID vegn alura tramess per posta.",
+          "text": "Tut tenor il chantun vegn il certificat COVID per part emess directamain dal post da test u dal labor, nua che Voss test positiv è vegnì constatà. Sche quai n'è betg il cas, pudais Vus dumandar pli tard online in certificat COVID sur la pagina d'internet da la «Plattafurma naziunala da dumondas per il certificat COVID». Là vegn la dumonda elavurada da l'autoritad chantunala cumpetenta. La pagina d'internet da la «Plattafurma naziunala da dumondas per il certificat COVID» chattais Vus qua:",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": null,
-          "linkUrl": null
+          "linkTitle": "Plattafurma naziunala da dumondas per il certificat COVID (admin.ch)",
+          "linkUrl": "https://covidcertificate-form.admin.ch/immunityrequest"
         },
         {
           "title": "Co poss jau preschentar in certificat COVID?",
-          "text": "Vus pudais preschentar Voss certificat COVID u en furma da palpiri u cun utilisar l'app COVID Certificate. L'app permetta d'arcunar certificats e d'als preschentar directamain sin il telefonin. Vus pudais decider sezza u sez, sche Vus vulais mussar Voss certificat sin palpiri u en l'app.\n\nResguardai per plaschair che Vus stuais en mintga cas preschentar – sin dumonda – ultra dal certificat er in document da legitimaziun.",
+          "text": "Vus pudais preschentar Voss certificat COVID sin palpiri u sur l'app «COVID Certificate». L'app permetta d'arcunar certificats e d'als preschentar directamain sin il telefonin. \nResguardai per plaschair che Vus stuais en mintga cas preschentar er anc in document da legitimaziun.\nEn intgins pajais vegn pretendida ina versiun stampada dal certificat ed il certificat electronic na vegn betg acceptà. Sin viadis duessas Vus perquai adina avair cun Vus er la versiun stampada.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -327,15 +327,15 @@
         },
         {
           "title": "Quant ditg è il certificat COVID valaivel?",
-          "text": "La durada da valaivladad variescha tut tenor, sche Vus avais ina vaccinaziun cunter COVID-19, sche Vus essas guarida u guarì d'ina infecziun u sche Vus avais in test negativ. A basa da novas enconuschientschas scientificas po la durada da valaivladad sa midar. La durada da valaivladad actuala dals certificats COVID chattais Vus qua:",
+          "text": "En Svizra è l'obligatori dal certificat vegnì abolì il favrer 2022. Las duradas da valaivladad svizras existan dapi lura mo anc formalmain e n'han praticamain nagina impurtanza pli en Svizra. A l'exteriur valan mintgamai las reglas da valaivladad dal pajais respectiv. As infurmai curt avant Vossa partenza sur la pagina d'internet da las autoritads da Voss pajais da transit u da destinaziun, sch'i valan en il pajais anc mesiras sin basa dal certificat, e sche gea, tge duradas da valaivladad che Voss pajais da destinaziun ha fixà. Pagina d'internet utila per viadis a l'exteriur:",
           "iconAndroid": null,
           "iconIos": null,
-          "linkTitle": "Ulteriuras infurmaziuns",
-          "linkUrl": "https://bag-coronavirus.ch/zertifikat/wie-erhalte-ich-ein-covid-zertifikat-und-wie-verwende-ich-es/#contents2"
+          "linkTitle": "Re-open EU (europa.eu)",
+          "linkUrl": "https://reopen.europa.eu/de"
         },
         {
           "title": "Nua vegnan arcunadas mias datas?",
-          "text": "Vossas datas na vegnan betg arcunadas en in sistem central, mabain mo localmain sin Voss telefonin resp. en il code QR sin il certificat COVID en furma da palpiri.",
+          "text": "Las datas da Voss certificat na vegnan betg arcunadas en in sistem central da la Confederaziun, mabain mo localmain sin Voss telefonin resp. sin il certificat COVID sin palpiri.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -351,7 +351,7 @@
         },
         {
           "title": "Tge capita, sche jau perd mes certificat COVID?",
-          "text": "Voss certificat COVID na vegn betg arcunà en in sistem central. El è unicamain en Voss agen possess. Tegnai perquai en salv cun quità il certificat COVIDsin palpiri e/u sco PDF. En cas ch’il certificat va a perder e sto vegnir remplazzà, po vegnir incassada ina taxa.",
+          "text": "Voss certificat COVID na vegn betg arcunà en in sistem central da la Confederaziun. Tegnai perquai en salv cun quità il certificat COVID sin palpiri e/u sco PDF. Sche Vus avais pers il certificat u sche Vus duvrais in certificat substitutiv, po l'instituziun da sanadad (p.ex. il post da test u da vaccinaziun) pretender ina taxa per emetter in nov certificat.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -359,7 +359,7 @@
         },
         {
           "title": "Tge è in certificat light?",
-          "text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Quest «certificat light» mussa mo ch'i è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad.\n\nL'alternativa al certificat COVID è vegnida sviluppada sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai che terzas persunas pudessan – en il rom da la verificaziun da certificats COVID e cun apps sviluppadas sez – prender invista da datas da sanadad, sco per exempel dal vaccin u da la data da la vaccinaziun. Cun agid dal «certificat COVID» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà gia pli baud, po il certificat light simplamain vegnir deactivà.",
+          "text": "L'app «COVID Certificate» permetta a las possessuras ed als possessurs da certificats COVID da generar ina copia dal certificat COVID che cuntegna ina quantitad minimala da datas. Il «certificat light» conferma ch'igl è avant maun in certificat COVID valaivel, na cuntegna però naginas datas da sanadad. \n\nQuest certificat cun ina quantitad minimala da datas è vegnì sviluppà sco alternativa al certificat COVID sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai ch'ils certificats COVID cuntegnan tschertas datas da sanadad ch'èn visiblas, sco per exempel il vaccin u la data da la vaccinaziun. Cun agid dal «certificat light» vegn quai impedì.\n\nIl «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da 24 uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà avant che las 24  uras èn passadas, po il «certificat light» simplamain vegnir deactivà.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -401,8 +401,8 @@
           "linkUrl": null
         },
         {
-          "title": "Wie sehe ich, ob mein Covid-Zertifikat gültig ist?",
-          "text": "Die App prüft automatisch, ob Ihr Zertifikat den Gültigkeitskriterien der Schweiz entspricht. Sollte Ihr Covid-Zertifikat abgelaufen oder technisch ungültig sein, wird Ihnen dies direkt auf dem Zertifikat in der App angezeigt.",
+          "title": "Wo sehe ich, ob mein Covid-Zertifikat gültig ist?",
+          "text": "Die Zertifikatspflicht in der Schweiz wurde im Februar 2022 aufgehoben. Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formal und haben praktisch im Inland keine Bedeutung mehr. Deshalb wird in der App das Feld «Gültigkeit in der Schweiz» nicht mehr dargestellt. Stattdessen zeigt sie den Zeitpunkt der Impfung bzw. des Tests an. \n\nEs wird auch angezeigt, wie viele Tage eine Impfung bzw. ein Test her ist. So können Sie einfacher feststellen, ob Ihr Zertifikat den Gültigkeitsregeln Ihres Ziellandes entspricht (falls das Land noch ein Covid-Zertifikat voraussetzt). Im Ausland gelten immer die Regeln des entsprechenden Landes.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -410,7 +410,7 @@
         },
         {
           "title": "Kann ich die App auch offline verwenden?",
-          "text": "Sie können die App ohne eine Internetverbindung verwenden. Auch im Offline-Modus können Zertifikate vorgewiesen und von den Prüfern gescannt und verifiziert werden.\n\nUm in der «COVID Certificate»-App anzeigen zu können, ob ihr Zertifikat den Gültigkeitskriterien der Schweiz entspricht und bis wann Ihr Zertifikat gültig ist, muss die App jedoch regelmässig online sein.",
+          "text": "Sie können die App ohne eine Internetverbindung verwenden. Auch im Offline-Modus können Zertifikate vorgewiesen und von den Prüfern gescannt und verifiziert werden.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -482,8 +482,8 @@
           "linkUrl": null
         },
         {
-          "title": "How can I see if my COVID certificate is valid?",
-          "text": "The app automatically checks whether your certificate meets Switzerland's validity criteria. If your COVID certificate has expired or is technically invalid, this is indicated directly on the certificate in the app. ",
+          "title": "Where can I see if my COVID certificate is valid?",
+          "text": "In Switzerland, the requirement for a certificate was lifted in February 2022. Since then, the Swiss validity periods have existed only in formal terms and no longer have any significance in practice in Switzerland. The “Validity in Switzerland” section is thus no longer displayed in the app. Instead, the time of the vaccination or test is shown. \n\nThe number of days that have elapsed since a vaccination or test is also shown. This makes it easier for you to determine whether your certificate complies with the validity rules of your destination country (if the country in question still requires a COVID certificate). When abroad, it is always the rules of the country in question that apply.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -491,7 +491,7 @@
         },
         {
           "title": "Can I use the app offline?",
-          "text": "You can use the app without an internet connection, so you can still call up your certificates and present them for scanning and verification.\n\nHowever, in order to show whether your certificate meets Switzerland’s validity criteria and how long it is valid for, the COVID Certificate app has to be online at regular intervals.",
+          "text": "You can use the app without an internet connection, so you can still call up your certificates and present them for scanning and verification.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -563,8 +563,8 @@
           "linkUrl": null
         },
         {
-          "title": "Comment voir si mon certificat COVID est valable?",
-          "text": "L'application vérifie automatiquement si votre certificat remplit les critères de validité en vigueur en Suisse. Si votre certificat COVID a expiré ou s'il n'est techniquement pas valable, cette information apparaît automatiquement sur le certificat dans l'application.",
+          "title": "Où voir si mon certificat COVID est valable ?",
+          "text": "En Suisse, l’obligation de présenter un certificat a été levée en février 2022. Les durées de validité suisses sont donc devenues uniquement formelles et n’ont pratiquement plus aucune pertinence dans notre pays. C’est pourquoi le champ « Validité en Suisse » n’est plus représenté dans l’application, qui indique par contre le nombre de jours écoulés depuis une vaccination ou un test. \n\nL’application indique aussi le nombre de jours écoulés depuis une vaccination ou un test. Vous pouvez ainsi vérifier plus facilement si votre certificat correspond aux règles de validité de votre pays de destination (au cas où ce pays exige encore un certificat COVID). À l’étranger, les règles en vigueur varient d’un pays à l’autre.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -572,7 +572,7 @@
         },
         {
           "title": "Puis-je également utiliser l’application hors ligne ?",
-          "text": "Oui, vous pouvez utiliser l’application sans connexion Internet. Les certificats peuvent aussi être présentés, scannés et vérifiés en mode hors ligne.\n\nToutefois, pour pouvoir afficher dans l’application «COVID Certificate» si votre certificat répond aux critères de validité de la Suisse et pour présenter sa durée de validité, l’application requiert une connexion Internet régulière.",
+          "text": "Oui, vous pouvez utiliser l’application sans connexion Internet. Les certificats peuvent aussi être présentés, scannés et vérifiés en mode hors ligne.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -644,8 +644,8 @@
           "linkUrl": null
         },
         {
-          "title": "Come posso verificare se il mio certificato COVID è valido?",
-          "text": "L’app verifica automaticamente se il certificato soddisfa i criteri di validità applicati in Svizzera. Se il certificato è scaduto o se non è valido per motivi tecnici, l’informazione compare direttamente nell’app.",
+          "title": "Dove posso verificare se il mio certificato COVID è valido?",
+          "text": "In Svizzera l’obbligo di certificato è stato revocato nel febbraio 2022. Da allora, la durata di validità svizzera esiste solo formalmente e non ha più alcun valore pratico nel nostro Paese. Pertanto il campo «Validità in Svizzera» non è più visualizzato nell’app. Al suo posto si trova la data della vaccinazione o del test.\n\nViene anche visualizzato quanti giorni sono trascorsi da una vaccinazione o da un test. In tal modo può determinare più facilmente se il Suo certificato è conforme alle regole di validità del Paese di destinazione (qualora il Paese richiedesse ancora un certificato COVID). All’estero si applicano sempre le regole di validità del rispettivo Paese.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -653,7 +653,7 @@
         },
         {
           "title": "Posso utilizzare l’app anche offline?",
-          "text": "È possibile utilizzare l’app senza connessione Internet. I certificati possono essere presentati, nonché scansionati e verificati dagli addetti anche in modalità offline.\n\nTuttavia, per poter visualizzare nell’app «COVID Certificate» se il certificato soddisfa i criteri di validità della Svizzera e fino a quando è valido, l’app deve essere regolarmente online.",
+          "text": "È possibile utilizzare l’app senza connessione Internet. I certificati possono essere presentati, nonché scansionati e verificati dagli addetti anche in modalità offline.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -725,8 +725,8 @@
           "linkUrl": null
         },
         {
-          "title": "Co ves jau, sche mes certificat COVID è valaivel?",
-          "text": "L’app verifitgescha automaticamain, sche Voss certificat correspunda als criteris da valaivladad da la Svizra. Sche Voss certificat COVID è spirà u n’è tecnicamain betg valaivel, vegn quai inditgà directamain sin il certificat en l’app.",
+          "title": "Nua ves jau, sche mes certificat COVID è valaivel?",
+          "text": "En Svizra è l'obligatori dal certificat vegnì abolì il favrer 2022. Las duradas da valaivladad svizras existan dapi lura mo anc formalmain e n'han praticamain nagina impurtanza pli en Svizra. Sin il certificat COVID na vegn perquai betg pli mussà il champ «Valaivladad en Svizra». Empè da quai mussa l'app la data da la vaccinaziun resp. dal test. \n\nI vegn er mussà, avant quants dis ch'igl è vegnì fatg ina vaccinaziun resp. in test. Uschia èsi pli facil per Vus da constatar, sche Voss certificat correspunda a las reglas da valaivladad da Voss pajais da destinaziun (premess ch'il pajais pretenda anc in certificat Covid). A l'exteriur valan adina las reglas dal pajais respectiv. ",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,
@@ -734,7 +734,7 @@
         },
         {
           "title": "Poss jau er duvrar l'app offline?",
-          "text": "Vus pudais duvrar l'app senza ina colliaziun cun l'internet. Er en il modus offline pon ils certificats vegnir preschentads sco er scannads e verifitgads dals verifitgaders.\n\nPer vesair en l'app «COVID Certificate», sche Voss certificat correspunda als criteris da valaivladad da la Svizra e fin cura che Voss certificat è valaivel, sto l'app però esser regularmain online.",
+          "text": "Vus pudais duvrar l'app senza ina colliaziun cun l'internet. Er en il modus offline pon ils certificats vegnir preschentads sco er scannads e verifitgads da las controlladras e dals controlladers.",
           "iconAndroid": null,
           "iconIos": null,
           "linkTitle": null,

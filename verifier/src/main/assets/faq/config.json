@@ -949,5 +949,139 @@
       }
     }
   },
-  "checkModeReselectAfterHours": 48
+  "checkModeReselectAfterHours": 2147483647,
+  "covidCertificateNewsText": {
+    "de": "Zertifikatspflicht aufgehoben",
+    "en": "Certificate requirement lifted",
+    "fr": "Levée de l’obligation de présenter un certificat.",
+    "it": "Obbligo di certificato revocato",
+    "rm": "Abolì l'obligatori dal certificat"
+  },
+  "infoCovidCertificateNews": {
+    "de": {
+      "title": "Zertifikatspflicht aufgehoben",
+      "newsItems": [
+        {
+          "text": "Die Zertifikatspflicht in der Schweiz wurde im Februar 2022 aufgehoben.",
+          "iconIos": "ic-bund-small",
+          "iconAndroid": "ic_bund_small"
+        },
+        {
+          "text": "Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formal und haben im Inland keine praktische Bedeutung mehr.",
+          "iconIos": "ic-timelapse-blue",
+          "iconAndroid": "ic_timelapse_blue"
+        },
+        {
+          "text": "Diese Schweizer Prüf-App prüft Covid-Zertifikate nach den Schweizer Gültigkeitsregeln. Das Prüfergebnis ist für einen Einsatz im Ausland nicht massgeblich.",
+          "iconIos": "ic-phone",
+          "iconAndroid": "ic_phone"
+        },
+        {
+          "text": "Falls ein Land noch ein Covid-Zertifikat voraussetzt, gelten jeweils die Regeln des entsprechenden Landes.",
+          "iconIos": "ic-travel",
+          "iconAndroid": "ic_travel"
+        }
+      ]
+    },
+    "en": {
+      "title": "Certificate requirement lifted",
+      "newsItems": [
+        {
+          "text": "The certificate requirement in Switzerland was lifted in February 2022.",
+          "iconIos": "ic-bund-small",
+          "iconAndroid": "ic_bund_small"
+        },
+        {
+          "text": "Since then, the Swiss validity periods have only existed formally and no longer have any practical significance in this country.",
+          "iconIos": "ic-timelapse-blue",
+          "iconAndroid": "ic_timelapse_blue"
+        },
+        {
+          "text": "This Swiss certificate check app verifies COVID certificates based on Swiss validity rules. The result of the check is not relevant for use of the certificate abroad.",
+          "iconIos": "ic-phone",
+          "iconAndroid": "ic_phone"
+        },
+        {
+          "text": "If a country still requires a COVID certificate, the rules of the country in question apply.",
+          "iconIos": "ic-travel",
+          "iconAndroid": "ic_travel"
+        }
+      ]
+    },
+    "fr": {
+      "title": "Levée de l’obligation de présenter un certificat.",
+      "newsItems": [
+        {
+          "text": "L’obligation de présenter un certificat en Suisse a été levée en février 2022.",
+          "iconIos": "ic-bund-small",
+          "iconAndroid": "ic_bund_small"
+        },
+        {
+          "text": "Depuis lors, les durées de validité pour la Suisse sont purement formelles et n’ont plus de pertinence pratique dans le pays.",
+          "iconIos": "ic-timelapse-blue",
+          "iconAndroid": "ic_timelapse_blue"
+        },
+        {
+          "text": "Cette application de vérification suisse contrôle les certificats COVID en fonction des règles de validité suisses. Le résultat du contrôle n’est pas déterminant pour utiliser l’étranger.",
+          "iconIos": "ic-phone",
+          "iconAndroid": "ic_phone"
+        },
+        {
+          "text": "Lorsqu’un pays exige encore un certificat COVID, les règles du pays en question s’appliquent.",
+          "iconIos": "ic-travel",
+          "iconAndroid": "ic_travel"
+        }
+      ]
+    },
+    "it": {
+      "title": "Obbligo di certificato revocato",
+      "newsItems": [
+        {
+          "text": "In Svizzera l’obbligo di certificato è stato revocato a febbraio 2022.",
+          "iconIos": "ic-bund-small",
+          "iconAndroid": "ic_bund_small"
+        },
+        {
+          "text": "Da allora la durata di validità in Svizzera esiste solo formalmente e non ha più alcun valore pratico nel nostro Paese.",
+          "iconIos": "ic-timelapse-blue",
+          "iconAndroid": "ic_timelapse_blue"
+        },
+        {
+          "text": "Questa app svizzera verifica i certificati COVID in base alle regole di validità vigenti in Svizzera. Il risultato della verifica non è determinante per un impiego all’estero.",
+          "iconIos": "ic-phone",
+          "iconAndroid": "ic_phone"
+        },
+        {
+          "text": "Qualora un Paese richieda ancora un certificato COVID, si applicano le regole di tale Paese.",
+          "iconIos": "ic-travel",
+          "iconAndroid": "ic_travel"
+        }
+      ]
+    },
+    "rm": {
+      "title": "Abolì l'obligatori dal certificat",
+      "newsItems": [
+        {
+          "text": "En Svizra è l'obligatori dal certificat vegnì abolì il favrer 2022.",
+          "iconIos": "ic-bund-small",
+          "iconAndroid": "ic_bund_small"
+        },
+        {
+          "text": "Las duradas da valaivladad svizras existan dapi lura mo anc formalmain e n'han nagina impurtanza pratica pli en Svizra.",
+          "iconIos": "ic-timelapse-blue",
+          "iconAndroid": "ic_timelapse_blue"
+        },
+        {
+          "text": "Questa app svizra da controlla controllescha certificats COVID tenor las reglas da valaivladad svizras. Il resultat da la controlla n'è betg relevant per il diever a l'exteriur.",
+          "iconIos": "ic-phone",
+          "iconAndroid": "ic_phone"
+        },
+        {
+          "text": "Sch'in pajais premetta anc in certificat COVID, valan mintgamai las reglas dal pajais respectiv.",
+          "iconIos": "ic-travel",
+          "iconAndroid": "ic_travel"
+        }
+      ]
+    }
+  }
 }
