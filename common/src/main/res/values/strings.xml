@@ -1763,8 +1763,8 @@ You have the option of requesting an EU-compatible version of this certificate v
 	<string name="covid_certificate_news_item4">"If a country still requires a COVID certificate, the rules of the country in question apply."</string>
 	<string name="wallet_faq_questions_linktext_1_1">"National COVID certificate application platform"</string>
 	<string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
-	<string name="wallet_faq_questions_question_2_2">"When abroad, it is the validity rules of the country in question that apply, both for entering the country and within the country itself. The rules applicable to the use of the certificate within the destination country may differ from those that apply upon entry. These rules can change at short notice. Shortly before departing you should therefore check the authorities’ website for your transit or destination country to see whether rules relating to COVID-19 are still in force and, if so, which ones.  "</string>
-	<string name="wallet_faq_questions_answer_2_2">"I am travelling abroad and need a COVID certificate to enter the country. What must I bear in mind?"</string>
+	<string name="wallet_faq_questions_question_2_2">"I am travelling abroad and need a COVID certificate to enter the country. What must I bear in mind?"</string>
+	<string name="wallet_faq_questions_answer_2_2">"When abroad, it is the validity rules of the country in question that apply, both for entering the country and within the country itself. The rules applicable to the use of the certificate within the destination country may differ from those that apply upon entry. These rules can change at short notice. Shortly before departing you should therefore check the authorities’ website for your transit or destination country to see whether rules relating to COVID-19 are still in force and, if so, which ones.  "</string>
 	<string name="wallet_error_not_fully_protected_national_rules">"Vaccination series incomplete by international standards."</string>
 </resources>
 
