@@ -238,7 +238,7 @@ In einigen Ländern wird eine ausgedruckte Version des Zertifikats verlangt und 
     <string name="wallet_faq_questions_answer_4">"Der QR-Code auf dem Covid-Zertifikat enthält eine elektronische Signatur. Die Signatur ist ein wichtiges Sicherheitsmerkmal und macht das Covid-Zertifikat fälschungssicher. Das Covid-Zertifikat ist zudem nur in Kombination mit einem Ausweisdokument gültig."</string>
 
     <!-- Antwort 5 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_5">"Ihr Covid-Zertifikat wird in keinem zentralen System des Bundes gespeichert. Bewahren Sie das Covid-Zertifikat auf Papier und/oder als PDF deshalb sorgfältig auf. Bei Verlust und Bedarf nach einem Einsatz kann für die Neuausstellung durch die Gesundheitseinrichtungen (z. B. der Test- oder Impf-stelle) eine Gebühr erhoben werden. "</string>
+    <string name="wallet_faq_questions_answer_5">"Ihr Covid-Zertifikat wird in keinem zentralen System des Bundes gespeichert. Bewahren Sie das Covid-Zertifikat auf Papier und/oder als PDF deshalb sorgfältig auf. Bei Verlust und Bedarf nach einem Einsatz kann für die Neuausstellung durch die Gesundheitseinrichtungen (z. B. der Test- oder Impfstelle) eine Gebühr erhoben werden."</string>
 
     <!-- Antwort 6 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_works_answer_1">"Um ein Covid-Zertifikat zur App hinzuzufügen, benötigen Sie das Ihnen ausgestellte Originalzertifikat auf Papier oder als PDF-Dokument. Den darauf abgebildeten QR-Code können Sie mit der COVID Certificate App scannen und hinzufügen. Anschliessend erscheint das Covid-Zertifikat direkt in der App."</string>
@@ -358,7 +358,7 @@ Das Zertifikat ist noch nicht gültig."</string>
 {DATE}"</string>
 
     <!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
-    <string name="wallet_error_national_rules">"Entspricht nicht den Gültigkeitskriterien der Schweiz"</string>
+    <string name="wallet_error_national_rules">"Enthält Daten, die nicht den internationalen Standards entsprechen."</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
     <string name="wallet_error_expired">"Gültigkeitsdauer für die Schweiz überschritten"</string>
@@ -514,7 +514,7 @@ Nutzungsbedingungen"</string>
 &lt;br /&gt;&lt;br /&gt;
 Die wissenschaftlichen Erkenntnisse über Covid-19-Impfungen und -Tests sowie über die Genesung von einer Covid-19-Infektion entwickeln sich ständig weiter, auch im Hinblick auf neue besorgniserregende Virusvarianten.
 &lt;br /&gt;&lt;br /&gt;
-Bitte informieren Sie sich vor einer Reise über die am Zielort geltenden Beschränkungen und Gültigkeitsregeln. Die Gültigkeit Ihres Zertifikats wird im Ausland anhand der Regeln des Ziellandes berechnet. Mehr Informationen dazu erhalten Sie &lt;a href=\"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/was-soll-ich-tun-wenn-mein-covid-zertifikat-nach-schweizer-gueltigkeitsregeln-bald\"&gt;in dieser FAQ&lt;/a&gt;."</string>
+Bitte informieren Sie sich vor einer Reise über die am Zielort geltenden Beschränkungen und Gültigkeitsregeln. Die Gültigkeit Ihres Zertifikats wird im Ausland anhand der Regeln des Ziellandes berechnet."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-check-app.html"</string>
 
@@ -945,7 +945,7 @@ abgelaufen"</string>
     <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
     <string name="wallet_faq_questions_answer_6">"Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zur Nutzung in der Schweiz zu generieren. Das «Zertifikat Light» bestätigt das Vorliegen eines gültigen Covid-Zertifikats, ohne selbst Gesundheitsdaten zu enthalten.
 
-Diese datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Covid-Zertifikategewisse Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung enthalten, die auch ausgelesen werden können. Mittels dem «Zertifikat Light» wird dies verhindert.
+Diese datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Covid-Zertifikate gewisse Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung enthalten, die auch ausgelesen werden können. Mittels dem «Zertifikat Light» wird dies verhindert.
 
 Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar und wird nur in der Schweiz anerkannt. Aus Datenschutzgründen hat das «Zertifikat Light» eine maximale Gültigkeitsdauer von {LIGHT_CERT_VALIDITY_IN_H} Stunden und muss danach erneut aktiviert werden. Wird das normale Zertifikat vor Ablauf der {LIGHT_CERT_VALIDITY_IN_H} Stunden benötigt, kann das «Zertifikat Light» einfach deaktiviert werden."</string>
     <string name="verifier_faq_works_question_8">"Was ist das Zertifikat Light?"</string>
@@ -1746,7 +1746,7 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="wallet_update_boarding_page_1_text">"Neu wird auf dem Covid-Zertifikat das Feld «Gültigkeit in der Schweiz» nicht mehr dargestellt. Stattdessen zeigt die App den Zeitpunkt der Impfung bzw. des Tests an. Warum?"</string>
     <string name="wallet_update_boarding_page_2_title">"Covid-Zertifikate in der Schweiz"</string>
     <string name="wallet_update_boarding_page_2_bullet_1">"Die Zertifikatspflicht in der Schweiz wurde im Februar 2022 aufgehoben."</string>
-    <string name="wallet_update_boarding_page_2_bullet_2">"Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formell und haben im Inland keine praktische Bedeutung mehr."</string>
+    <string name="wallet_update_boarding_page_2_bullet_2">"Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formal und haben im Inland keine praktische Bedeutung mehr."</string>
     <string name="wallet_update_boarding_page_2_bullet_3">"Die Schweizer Gültigkeitsdauer hat auch im Ausland keine Bedeutung."</string>
     <string name="wallet_update_boarding_page_3_title">"Covid-Zertifikate im Ausland"</string>
     <string name="wallet_update_boarding_page_3_bullet_1">"Im Ausland gelten die Regeln des entsprechenden Landes."</string>
@@ -1770,7 +1770,8 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="covid_certificate_news_item4">"Falls ein Land noch ein Covid-Zertifikat voraussetzt, gelten jeweils die Regeln des entsprechenden Landes."</string>
     <string name="wallet_faq_questions_linktext_1_1">"Nationale Antragsstelle Covid-Zertifikat (admin.ch)"</string>
     <string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
-    <string name="wallet_faq_questions_question_2_2">"Im Ausland gelten jeweils die Gültigkeitsregeln des entsprechenden Landes, sowohl für die Einreise wie auch innerhalb des Ziellandes. Für die Verwendung des Zertifikats innerhalb des Ziellandes können andere Regeln als bei der Einreise gelten. Diese Regeln können kurzfristig ändern. Informieren Sie sich daher kurz vor Ihrer Abreise auf der Webseite der Behörden Ihres Transit- oder Ziellandes, ob dort noch Regeln im Zusammenhang mit Covid-19 gelten und wenn ja, welche."</string>
-    <string name="wallet_faq_questions_answer_2_2">"Ich verreise ins Ausland und brauche für die Einreise ein Covid-Zertifikat. Was muss ich beachten?"</string>
+    <string name="wallet_faq_questions_question_2_2">"Ich verreise ins Ausland und brauche für die Einreise ein Covid-Zertifikat. Was muss ich beachten?"</string>
+    <string name="wallet_faq_questions_answer_2_2">"Im Ausland gelten jeweils die Gültigkeitsregeln des entsprechenden Landes, sowohl für die Einreise wie auch innerhalb des Ziellandes. Für die Verwendung des Zertifikats innerhalb des Ziellandes können andere Regeln als bei der Einreise gelten. Diese Regeln können kurzfristig ändern. Informieren Sie sich daher kurz vor Ihrer Abreise auf der Webseite der Behörden Ihres Transit- oder Ziellandes, ob dort noch Regeln im Zusammenhang mit Covid-19 gelten und wenn ja, welche."</string>
+    <string name="wallet_error_not_fully_protected_national_rules">"Unvollständige Impfserie gemäss internationalen Standards."</string>
 </resources>
 

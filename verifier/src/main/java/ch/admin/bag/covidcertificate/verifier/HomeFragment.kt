@@ -112,6 +112,7 @@ class HomeFragment : Fragment() {
 			val languageKey = getString(R.string.language_key)
 			val title = configModel.getCovidCertificateNewsText(languageKey)
 			if (!title.isNullOrBlank()) {
+				binding.covidCertificateInfo.text = title
 				binding.covidCertificateInfo.isVisible = true
 				binding.covidCertificateInfo.setOnClickListener {
 					showNewsDialog(configModel)

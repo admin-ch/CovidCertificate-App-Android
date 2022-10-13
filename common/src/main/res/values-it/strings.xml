@@ -357,7 +357,7 @@ Il certificato non è ancora valido."</string>
 {DATE}"</string>
 
     <!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
-    <string name="wallet_error_national_rules">"Non soddisfa i criteri di validità della Svizzera"</string>
+    <string name="wallet_error_national_rules">"Contiene dati non conformi agli standard internazionali."</string>
 
     <!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
     <string name="wallet_error_expired">"La durata di validità in Svizzera è stata superata "</string>
@@ -513,7 +513,7 @@ Se tutti i tre aspetti sono valutati positivamente, il certificato COVID è cons
 &lt;br /&gt;&lt;br /&gt;
 Si acquisiscono sempre più conoscenze scientifiche sulla vaccinazione COVID-19, sulla guarigione dalla COVID-19 e sui test COVID-19, così come sulle nuove varianti problematiche del virus.
 &lt;br /&gt;&lt;br /&gt;
-Prima di un viaggio, informatevi sulle restrizioni e sulle regole di validità vigenti nella località di destinazione. All’estero la validità del certificato è calcolata secondo le regole del Paese di destinazione. Maggiori informazioni sull’argomento sono disponibili &lt;a href=\"https://www.bag.admin.ch/bag/it/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/it/certificato-covid/cosa-devo-fare-se-il-mio-certificato-covid-sta-scadere-secondo-le-regole-di\"&gt;in queste FAQ&lt;/a&gt;."</string>
+Prima di un viaggio, informatevi sulle restrizioni e sulle regole di validità vigenti nella località di destinazione. All’estero la validità del certificato è calcolata secondo le regole del Paese di destinazione."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/it/home/documentazione/covid-certificate-app.html"</string>
     <string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/it/home/documentazione/covid-certificate-check-app.html"</string>
 
@@ -1769,6 +1769,7 @@ Conservate quindi i vostri certificati anche al di fuori dell’app esportandoli
     <string name="covid_certificate_news_item4">"Qualora un Paese richieda ancora un certificato COVID, si applicano le regole di tale Paese."</string>
     <string name="wallet_faq_questions_linktext_1_1">"Organo nazionale per la richiesta di certificati COVID"</string>
     <string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
-    <string name="wallet_faq_questions_question_2_2">"All’estero si applicano le regole di validità del rispettivo Paese, sia per l’entrata sia all’interno del Paese stesso. Per l’impiego del certificato all’interno del Paese di destinazione possono applicarsi altre regole rispetto a quelle vigenti per l’entrata. Queste regole possono cambiare in tempi brevi. Pertanto, prima di partire, si informi consultando il sito web delle autorità del Paese di transito o di destinazione se nel Paese vigono ancora regole relative alla COVID-19 e, in caso affermativo, quali sono. "</string>
-    <string name="wallet_faq_questions_answer_2_2">"Devo recarmi all’estero e ho bisogno di un certificato COVID. Cosa devo fare?"</string>
+    <string name="wallet_faq_questions_question_2_2">"Devo recarmi all’estero e ho bisogno di un certificato COVID. Cosa devo fare?"</string>
+    <string name="wallet_faq_questions_answer_2_2">"All’estero si applicano le regole di validità del rispettivo Paese, sia per l’entrata sia all’interno del Paese stesso. Per l’impiego del certificato all’interno del Paese di destinazione possono applicarsi altre regole rispetto a quelle vigenti per l’entrata. Queste regole possono cambiare in tempi brevi. Pertanto, prima di partire, si informi consultando il sito web delle autorità del Paese di transito o di destinazione se nel Paese vigono ancora regole relative alla COVID-19 e, in caso affermativo, quali sono."</string>
+    <string name="wallet_error_not_fully_protected_national_rules">"Serie di vaccinazioni incompleta secondo gli standard internazionali."</string>
 </resources>

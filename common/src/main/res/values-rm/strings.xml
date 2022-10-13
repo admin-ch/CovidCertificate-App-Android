@@ -353,7 +353,7 @@ Il certificat n'è anc betg valaivel."</string>
 {DATE}"</string>
 
 	<!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
-	<string name="wallet_error_national_rules">"Na correspunda betg als criteris da valaivladad da la Svizra"</string>
+	<string name="wallet_error_national_rules">"Cuntegna datas che na correspundan betg als standards internaziunals."</string>
 
 	<!-- Wallet: Gültigkeit des Zertifikats abgelaufen -->
 	<string name="wallet_error_expired">"Surpassà la durada da valaivladad en Svizra"</string>
@@ -509,7 +509,7 @@ Sche tut ils trais aspects vegnan valitads en moda positiva, vegn il certificat 
 &lt;br /&gt;&lt;br /&gt;
 Las enconuschientschas scientificas davart la vaccinaziun cunter COVID-19, davart la guariziun da COVID-19 e davart ils tests da COVID-19 sa sviluppan cuntinuadamain, er areguard las novas variantas privlusas dal virus.
 &lt;br /&gt;&lt;br /&gt;
-As infurmai per plaschair avant in viadi davart las restricziuns e davart las reglas da valaivladad che valan al lieu da destinaziun. La valaivladad da Voss certificat vegn calculada a l'exteriur a maun da las reglas dal pajais da destinaziun. Dapli infurmaziuns chattais Vus en &lt;a href=\"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/de/covid-zertifikat/was-soll-ich-tun-wenn-mein-covid-zertifikat-nach-schweizer-gueltigkeitsregeln-bald\"&gt;questa glista da dumondas frequentas (FAQ)&lt;/a&gt;."</string>
+As infurmai per plaschair avant in viadi davart las restricziuns e davart las reglas da valaivladad che valan al lieu da destinaziun. La valaivladad da Voss certificat vegn calculada a l'exteriur a maun da las reglas dal pajais da destinaziun."</string>
 	<string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-app.html"</string>
 	<string name="verifier_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-check-app.html"</string>
 
@@ -939,7 +939,7 @@ e mo en Svizra"</string>
 
 Quest certificat cun ina quantitad minimala da datas è vegnì sviluppà sco alternativa al certificat COVID sin giavisch da l'Incumbensà federal per la protecziun da datas e per la transparenza (IFPDT), perquai ch'ils certificats COVID cuntegnan tschertas datas da sanadad ch'èn visiblas, sco per exempel il vaccin u la data da la vaccinaziun. Cun agid dal «certificat light» vegn quai impedì.
 
-Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da {LIGHT_CERT_VALIDITY_IN_H} uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà avant che las {LIGHT_CERT_VALIDITY_IN_H}  uras èn passadas, po il «certificat light» simplamain vegnir deactivà."</string>
+Il «certificat light» è disponibel mo en moda electronica entaifer l'app e vegn renconuschì mo en Svizra. Per motivs da la protecziun da datas ha il «certificat light» ina durada da valaivladad maximala da {LIGHT_CERT_VALIDITY_IN_H} uras e sto alura vegnir activà danovamain. Sch'il certificat normal vegn duvrà avant che las {LIGHT_CERT_VALIDITY_IN_H} uras èn passadas, po il «certificat light» simplamain vegnir deactivà."</string>
 	<string name="verifier_faq_works_question_8">"Tge è in certificat light?"</string>
 
 	<!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
@@ -1762,7 +1762,9 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
 	<string name="covid_certificate_news_item4">"Sch'in pajais premetta anc in certificat COVID, valan mintgamai las reglas dal pajais respectiv."</string>
 	<string name="wallet_faq_questions_linktext_1_1">"Plattafurma naziunala da dumondas per il certificat COVID (admin.ch)"</string>
 	<string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
-	<string name="wallet_faq_questions_question_2_2">"A l'exteriur valan mintgamai las reglas da valaivladad dal pajais respectiv, e quai tant per entrar en il pajais sco er per activitads entaifer il pajais da destinaziun. Per l'utilisaziun dal certificat entaifer il pajais da destinaziun pon valair autras reglas che per l'entrada en il pajais. Questas reglas pon midar a curta vista. As infurmai perquai curt avant Vossa partenza sur la pagina d'internet da las autoritads da Voss pajais da transit u da destinaziun, sch'i valan là anc reglas en connex cun COVID-19, e sche gea, tgeninas."</string>
-	<string name="wallet_faq_questions_answer_2_2">"Jau fatsch in viadi a l'exteriur e dovrel in certificat COVID per entrar en il pajais. Tge stoss jau resguardar?"</string>
+	<string name="wallet_faq_questions_question_2_2">"Jau fatsch in viadi a l'exteriur e dovrel in certificat COVID per entrar en il pajais. Tge stoss jau resguardar?"</string>
+	<string name="wallet_faq_questions_answer_2_2">"
+A l'exteriur valan mintgamai las reglas da valaivladad dal pajais respectiv, e quai tant per entrar en il pajais sco er per activitads entaifer il pajais da destinaziun. Per l'utilisaziun dal certificat entaifer il pajais da destinaziun pon valair autras reglas che per l'entrada en il pajais. Questas reglas pon midar a curta vista. As infurmai perquai curt avant Vossa partenza sur la pagina d'internet da las autoritads da Voss pajais da transit u da destinaziun, sch'i valan là anc reglas en connex cun COVID-19, e sche gea, tgeninas."</string>
+	<string name="wallet_error_not_fully_protected_national_rules">"Seria da vaccinaziun incumpletta tenor ils standards internaziunals."</string>
 </resources>
 

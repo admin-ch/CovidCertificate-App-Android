@@ -949,5 +949,5 @@
       }
     }
   },
-  "checkModeReselectAfterHours": 48
+  "checkModeReselectAfterHours": 2147483647
 }
