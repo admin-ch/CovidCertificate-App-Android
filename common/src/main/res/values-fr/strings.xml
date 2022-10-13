@@ -143,7 +143,7 @@ dans l'application"</string>
     <string name="wallet_onboarding_show_title">"Présenter facilement vos certificats"</string>
 
     <!-- Text 1 im Onboardingscreen "Vorteile, Vorweisen" -->
-    <string name="wallet_onboarding_show_text1">"Les données contenue dans le certificat COVID sont également dans le code QR."</string>
+    <string name="wallet_onboarding_show_text1">"Les données contenues dans le certificat COVID sont également dans le code QR."</string>
 
     <!-- Text 2 im Onboardingscreen "Vorteile, Vorweisen" -->
     <string name="wallet_onboarding_show_text2">"Lorsque vous le présentez, le code QR sera lu avec une application qui vérifiera automatiquement l'exactitude et la validité des données."</string>
@@ -187,7 +187,7 @@ certificats COVID"</string>
     <string name="wallet_faq_questions_title">"Le certificat COVID en bref"</string>
 
     <!-- Text 1im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_subtitle">"Le certificat COVID atteste de manière infalsifiable une vaccination contre le COVID-19, une guérison ou un résultat de test négatif."</string>
+    <string name="wallet_faq_questions_subtitle">"Le certificat COVID atteste de manière infalsifiable une vaccination contre la COVID-19, une guérison ou un résultat de test négatif."</string>
 
     <!-- Frage 1 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_question_1">"Quand et où puis-je obtenir un certificat COVID?"</string>
@@ -223,7 +223,7 @@ certificats COVID"</string>
     <string name="wallet_faq_works_question_6">"Et si je supprime le certificat COVID ou l'app?"</string>
 
     <!-- Antwort 1 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_1">"Vous pouvez obtenir le certificat COVID si vous êtes vaccinés contre le COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site."</string>
+    <string name="wallet_faq_questions_answer_1">"Vous pouvez obtenir le certificat COVID si vous êtes vaccinés contre la COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site."</string>
 
     <!-- Antwort 2 im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_answer_2">"Vous pouvez présenter votre certificat COVID sur papier ou au moyen de l’app de stockage créée à cet effet. Vous êtes libre de choisir l’une ou l’autre solution.
@@ -267,7 +267,7 @@ fonctionne-t-elle?"</string>
     <string name="wallet_faq_works_subtitle">"L'app vous permet de stocker des certificats COVID de manière simple et sûre sur votre appareil mobile et de les présenter au moyen de ce dernier."</string>
 
     <!-- Antwort 1 im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_answer1">"Vous pouvez obtenir le certificat COVID si vous êtes entièrement vacciné contre le COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site."</string>
+    <string name="wallet_scanner_howitworks_answer1">"Vous pouvez obtenir le certificat COVID si vous êtes entièrement vacciné contre la COVID-19, si vous avez guéri de la maladie ou si vous présentez un résultat de test négatif. En général, le certificat est délivré sur demande, par les professionnels de la santé présents sur le site."</string>
 
     <!-- Verifier: Detail Check Vorname -->
     <string name="verifier_covid_certificate_prename">"Prénom"</string>
@@ -529,13 +529,13 @@ Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles d
     <string name="wallet_homescreen_add_certificate_description">"Vous disposez d’un certificat COVID sur papier ou au format PDF et souhaitez l’ajouter à l’application."</string>
 
     <!-- Wallet: Homescreen Transfer-Code erstellen -->
-    <string name="wallet_homescreen_add_transfer_code">"Créer un code transfert"</string>
+    <string name="wallet_homescreen_add_transfer_code">"Créer un code de transfert"</string>
 
     <!-- Wallet: Transfer Codes Titel -->
     <string name="wallet_transfer_code_onboarding_title">"Codes transfert"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <string name="wallet_transfer_code_onboarding_text">"Vous pouvez utiliser votre code transfert, p. ex. lors d’un test, pour recevoir le certificat COVID directement dans votre application."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Vous pouvez utiliser votre code de transfert, p. ex. lors d’un test, pour recevoir le certificat COVID directement dans votre application."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
     <string name="wallet_transfer_code_onboarding_button">"Créer un code"</string>
@@ -604,10 +604,10 @@ Si malgré tout vous ne recevez pas votre certificat, adressez-vous au lieu où 
 En cas de test PCR positif, vous recevrez un certificat COVID pour personnes guéries, valable à partir du 11e jour suivant le test."</string>
 
     <!-- Wallet: Transfer Code erstellt Titel -->
-    <string name="wallet_transfer_code_code_created_title">"Votre code transfert a été créé."</string>
+    <string name="wallet_transfer_code_code_created_title">"Votre code de transfert a été créé."</string>
 
     <!-- Wallet: Transfer-Code -->
-    <string name="wallet_transfer_code_title">"Codes transfert"</string>
+    <string name="wallet_transfer_code_title">"Codes de transfert"</string>
 
     <!-- Wallet: Transfer Code Erstelltm am {DATE} -->
     <string name="wallet_transfer_code_createdat">"Créé le {DATE}"</string>
@@ -628,7 +628,7 @@ En cas de test PCR positif, vous recevrez un certificat COVID pour personnes gu�
     <string name="wallet_transfer_code_card_title">"Transfert"</string>
 
     <!-- Wallet: Transfer Code Staus Warten auf Transfer -->
-    <string name="wallet_transfer_code_state_waiting">"Attendre le transfert"</string>
+    <string name="wallet_transfer_code_state_waiting">"En attente de transfert"</string>
 
     <!-- Wallet: Transfer Code Ablauf in 1 Tag -->
     <string name="wallet_transfer_code_expire_singular">"Valable encore un jour"</string>
@@ -647,7 +647,7 @@ En cas de test PCR positif, vous recevrez un certificat COVID pour personnes gu�
 {DATE}"</string>
 
     <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
-    <string name="wallet_transfer_code_state_no_certificate">"Ce code transfert ne permet plus de recevoir de certificat."</string>
+    <string name="wallet_transfer_code_state_no_certificate">"Ce code de transfert ne permet plus de recevoir de certificat."</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig -->
     <string name="wallet_error_invalid_format">"Format de certificat
@@ -702,7 +702,7 @@ non valide"</string>
     <string name="wallet_notification_permission_title">"Autoriser les messages"</string>
 
     <!-- Wallet: Text im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_text">"L’application peut vous informer de l’émission du certificat. Pour cela, autorisez votre application à vous envoyer des messages."</string>
+    <string name="wallet_notification_permission_text">"L’application peut vous informer de l’émission du certificat. Pour cela, autorisez votre application à vous envoyer des notifications."</string>
 
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
     <string name="wallet_notification_permission_button">"Suite"</string>
@@ -732,7 +732,7 @@ non valide"</string>
     <string name="verifier_verify_error_validity_range_bold">"Ne remplit pas les critères de validité de la Suisse."</string>
 
     <!-- Wallet: Transfer Code Fehler Titel -->
-    <string name="wallet_transfer_code_error_title">"Le code transfert n’a pas pu être créé"</string>
+    <string name="wallet_transfer_code_error_title">"Le code de transfert n’a pas pu être créé"</string>
 
     <!-- Wallet: Erstellen Fehler Titel -->
     <string name="wallet_transfer_code_no_internet_title">"Pas de connexion Internet"</string>
@@ -753,11 +753,11 @@ non valide"</string>
     <string name="wallet_transfer_code_generate_error_text">"Veuillez réessayer plus tard."</string>
 
     <!-- Wallet: Transfer Code Fehlertext bei Generieren ohne Internet -->
-    <string name="wallet_transfer_code_generate_no_internet_error_text">"Pour créer un code transfert, l’application doit être en ligne."</string>
+    <string name="wallet_transfer_code_generate_no_internet_error_text">"Pour créer un code de transfert, l’application doit être en ligne."</string>
 
     <!-- Wallet: Accessibility Name für Refresh Button -->
     <string name="accessibility_refresh_button">"Mettre à jour"</string>
-    <string name="wallet_transfer_delete_confirm_text">"Voulez-vous vraiment supprimer le transfer ?"</string>
+    <string name="wallet_transfer_delete_confirm_text">"Voulez-vous vraiment supprimer le transfert ?"</string>
     <string name="wallet_notification_transfer_title">"Transfert réussi"</string>
     <string name="wallet_notification_transfer_text">"Le certificat COVID est arrivé"</string>
     <string name="wallet_faq_questions_question_2_1">"Quelle est la durée de validité du certificat COVID ?"</string>
@@ -782,7 +782,7 @@ Pour actualiser les listes de contrôle, l’application doit être ouverte et c
     <string name="wallet_homescreen_pdf_import">"Importer le PDF"</string>
 
     <!-- Wallet: Titel im Transfer Code screen bei deaktiveren Notifications -->
-    <string name="wallet_notification_disabled_titel">"Astuce: Activer les messages"</string>
+    <string name="wallet_notification_disabled_titel">"Astuce: Activer les notifications"</string>
 
     <!-- Wallet: Button im Transfer Code screen bei deaktiveren Notifications der die Einstellungen öffnet -->
     <string name="wallet_notification_disabled_button">"Activer"</string>
@@ -1109,7 +1109,7 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
     <string name="vaccination_booking_sh_url">"https://sh.ch/CMS/Webseite/Kanton-Schaffhausen/Beh-rde/Verwaltung/Departement-des-Innern/Gesundheitsamt-7126057-DE.html"</string>
 
     <!-- canton name sz -->
-    <string name="vaccination_booking_sz_name">"Schwyz"</string>
+    <string name="vaccination_booking_sz_name">"Schwytz"</string>
 
     <!-- url for booking an appointment for vaccination for canton sz -->
     <string name="vaccination_booking_sz_url">"https://www.sz.ch/corona-impfen"</string>
@@ -1166,43 +1166,43 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
     <string name="vaccination_hint_title_2">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_2">"La vaccination contre le COVID-19 vous permet de voyager sereinement dans la plupart des pays."</string>
+    <string name="vaccination_hint_text_2">"La vaccination contre la COVID-19 vous permet de voyager sereinement dans la plupart des pays."</string>
 
     <!-- vaccination hint box title -->
     <string name="vaccination_hint_title_3">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_3">"La vaccination vous protège contre le COVID-19 et, le cas échéant, contre une évolution grave de la maladie."</string>
+    <string name="vaccination_hint_text_3">"La vaccination vous protège contre la COVID-19 et, le cas échéant, contre une évolution grave de la maladie."</string>
 
     <!-- vaccination hint box title -->
     <string name="vaccination_hint_title_4">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_4">"La vaccination contre le COVID-19 vous permet de vous immuniser en toute sécurité."</string>
+    <string name="vaccination_hint_text_4">"La vaccination contre la COVID-19 vous permet de vous immuniser en toute sécurité."</string>
 
     <!-- vaccination hint box title -->
     <string name="vaccination_hint_title_5">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_5">"Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à réduire la charge de morbidité."</string>
+    <string name="vaccination_hint_text_5">"Grâce à la vaccination contre la COVID-19, vous pouvez contribuer à réduire la charge de morbidité."</string>
 
     <!-- vaccination hint box title -->
     <string name="vaccination_hint_title_6">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_6">"Grâce à la vaccination contre le COVID-19, vous contribuez à la lutte contre les conséquences de la pandémie."</string>
+    <string name="vaccination_hint_text_6">"Grâce à la vaccination contre la COVID-19, vous contribuez à la lutte contre les conséquences de la pandémie."</string>
 
     <!-- vaccination hint box title -->
     <string name="vaccination_hint_title_7">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_7">"La vaccination contre le COVID-19 vous permet d’éviter les effets à long terme de la maladie."</string>
+    <string name="vaccination_hint_text_7">"La vaccination contre la COVID-19 vous permet d’éviter les effets à long terme de la maladie."</string>
 
     <!-- vaccination hint box title -->
     <string name="vaccination_hint_title_8">"Faites-vous vacciner sans plus attendre !"</string>
 
     <!-- vaccination hint box text -->
-    <string name="vaccination_hint_text_8">"Grâce à la vaccination contre le COVID-19, vous pouvez contribuer à décharger le système de santé."</string>
+    <string name="vaccination_hint_text_8">"Grâce à la vaccination contre la COVID-19, vous pouvez contribuer à décharger le système de santé."</string>
 
     <!-- vaccination booking info screen title -->
     <string name="vaccination_booking_info_title">"Prendre un rendez-vous de vaccination près de chez vous"</string>
@@ -1218,7 +1218,7 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
 Il est aussi possible de se faire vacciner sans rendez-vous dans de nombreux endroits."</string>
 
     <!-- vaccination booking info screen info box at bottom -->
-    <string name="vaccination_booking_info_info">"La vaccination contre le COVID-19 est recommandée pour les personnes dès 5 ans."</string>
+    <string name="vaccination_booking_info_info">"La vaccination contre la COVID-19 est recommandée pour les personnes dès 5 ans."</string>
 
     <!-- Header on vaccination appointment screen -->
     <string name="vaccination_appointment_header">"Rendez-vous de vaccination"</string>
@@ -1230,7 +1230,7 @@ Il est aussi possible de se faire vacciner sans rendez-vous dans de nombreux end
     <string name="vaccination_choose_your_canton">"Sélectionnez votre canton"</string>
 
     <!-- Link title for more information about the vaccine -->
-    <string name="vaccination_more_information_title">"Plus d’informations sur la vaccination contre le COVID-19"</string>
+    <string name="vaccination_more_information_title">"Plus d’informations sur la vaccination contre la COVID-19"</string>
 
     <!-- Button text for information about the vaccine at the bottom of the certificate -->
     <string name="vaccination_information_button_in_certificate">"Informations sur la vaccination"</string>
@@ -1256,7 +1256,7 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_info_box_certificate_scan_button_check_app">"Vers Check-App"</string>
     <string name="wallet_info_box_certificate_scan_close">"Compris"</string>
     <string name="wallet_info_box_certificate_scan_text_bold">"«COVID Certificate Check»-App."</string>
-    <string name="wallet_only_valid_in_switzerland">"N’est pas valable hors de Suisse"</string>
+    <string name="wallet_only_valid_in_switzerland">"N’est pas valable en dehors de la Suisse"</string>
     <string name="covid_certificate_sero_positiv_test_befund_label">"Résultat"</string>
     <string name="covid_certificate_sero_positiv_test_befund_value">"Suffisant"</string>
 
@@ -1390,7 +1390,7 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_2g_plus_info2g">"Pour répondre aux critères de validité du mode 2G+, doit être accompagné d'un certificat de vaccination ou de guérison."</string>
 
     <!-- Prüfung fehlgeschlagen App update nötig -->
-    <string name="verifier_error_app_store_text">"La vérification de ce type de certificat nécessite la version la plus récente de l'application «COVID Certificate Check». Actualisez l'application, puis procédez à la vérification."</string>
+    <string name="verifier_error_app_store_text">"La vérification de ce type de certificat nécessite la version la plus récente de l'application «COVID Certificate Check». Mettez à jour l'application, puis procédez à la vérification."</string>
 
     <!-- Button Text für Prüfung fehlgeschlagen App update nötig  -->
     <string name="verifier_error_app_store_button">"Ouvrir l'App Store"</string>
@@ -1759,10 +1759,10 @@ Vous avez la possibilité de demander une version de ce certificat compatible av
     <string name="covid_certificate_news_title">"Levée de l’obligation de présenter un certificat."</string>
     <string name="covid_certificate_news_item1">"L’obligation de présenter un certificat en Suisse a été levée en février 2022."</string>
     <string name="covid_certificate_news_item2">"Depuis lors, les durées de validité pour la Suisse sont purement formelles et n’ont plus de pertinence pratique dans le pays."</string>
-    <string name="covid_certificate_news_item3">"Cette application de vérification suisse contrôle les certificats COVID en fonction des règles de validité suisses. Le résultat du contrôle n’est pas déterminant pour utiliser l’étranger."</string>
+    <string name="covid_certificate_news_item3">"Cette application de vérification suisse contrôle les certificats COVID en fonction des règles de validité suisses. Le résultat du contrôle n’est pas déterminant pour utiliser le certificat à l’étranger."</string>
     <string name="covid_certificate_news_item4">"Lorsqu’un pays exige encore un certificat COVID, les règles du pays en question s’appliquent."</string>
     <string name="wallet_faq_questions_linktext_1_1">"Plateforme nationale de demandes pour le certificat COVID"</string>
     <string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
-    <string name="wallet_faq_questions_question_2_2">"À l’étranger, les règles de validité du pays concerné s’appliquent, aussi bien à l’entrée qu’à l’intérieur du territoire. L’utilisation du certificat à l’intérieur du pays de destination peut être soumise à d’autres règles que celles fixées pour l’entrée. Ces règles peuvent changer à très court terme. Vérifiez donc peu avant votre départ sur le site Internet des autorités de votre pays de transit ou de destination si des règles en rapport avec le COVID-19 sont toujours appliquées, et si oui, lesquelles. "</string>
+    <string name="wallet_faq_questions_question_2_2">"À l’étranger, les règles de validité du pays concerné s’appliquent, aussi bien à l’entrée qu’à l’intérieur du territoire. L’utilisation du certificat à l’intérieur du pays de destination peut être soumise à d’autres règles que celles fixées pour l’entrée. Ces règles peuvent changer à très court terme. Vérifiez donc peu avant votre départ sur le site Internet des autorités de votre pays de transit ou de destination si des règles en rapport avec la COVID-19 sont toujours appliquées, et si oui, lesquelles. "</string>
     <string name="wallet_faq_questions_answer_2_2">"Je pars à l’étranger et j’ai besoin d’un certificat COVID pour entrer dans le pays de destination. À quoi dois-je faire attention ?"</string>
 </resources>
