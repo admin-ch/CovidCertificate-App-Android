@@ -14,7 +14,7 @@
     <string name="verifier_app_name">"Covid Check"</string>
 
     <!-- Title for the qr scanning screen -->
-    <string name="verifier_title_qr_scan">"Verify"</string>
+    <string name="verifier_title_qr_scan">"Verifica"</string>
 
     <!-- Titel über dem Haupttitel -->
     <string name="verifier_homescreen_header_title">"Certificat COVID"</string>
@@ -57,7 +57,7 @@ to verify"</string>
     <string name="verifier_covid_certificate_birthdate">"Data de naixement"</string>
 
     <!-- Wallet: Zertifikat hinzufügen -->
-    <string name="wallet_add_certificate">"Add"</string>
+    <string name="wallet_add_certificate">"Afegeix"</string>
 
     <!-- Wallet: Homescreen Covid-Zertifikat -->
     <string name="wallet_certificate">"Certificat COVID"</string>
@@ -99,7 +99,7 @@ to verify"</string>
     <string name="wallet_scanner_explanation">"Scan the QR code on the COVID certificate."</string>
 
     <!-- Wallet: Scanner Info Button unten -->
-    <string name="wallet_scanner_info_button">"How it works"</string>
+    <string name="wallet_scanner_info_button">"Com funciona"</string>
 
     <!-- Wallet: Erneut scannen Button -->
     <string name="wallet_scan_again">"Scan again"</string>
@@ -181,7 +181,7 @@ to verify"</string>
     <string name="wallet_faq_header">""</string>
 
     <!-- Titel 1 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_title">"What are COVID certificates?"</string>
+    <string name="wallet_faq_questions_title">"Què són els certificats COVID?"</string>
 
     <!-- Text 1im FAQ-Screen der Wallet App -->
     <string name="wallet_faq_questions_subtitle">"The COVID certificate makes it possible to document a COVID-19 vaccination, recovery from the virus or a negative test result in a forgery-proof manner."</string>
@@ -274,23 +274,23 @@ Please note that you will also need to show an identification document (passport
     <string name="force_update_text">"Download the latest version of the app."</string>
 
     <!-- Config: Update Button Aktualisieren -->
-    <string name="force_update_button">"Update"</string>
+    <string name="force_update_button">"Actualitza"</string>
 
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
     <string name="wallet_certificate_valid_from">"Valid in Switzerland from:
 {DATE}"</string>
 
     <!-- Wallet: Zertifikat Detail Geimpft -->
-    <string name="certificate_reason_vaccinated">"Vaccination"</string>
+    <string name="certificate_reason_vaccinated">"Vacunació"</string>
 
     <!-- Wallet: Zertifikat Detail Genesen -->
-    <string name="certificate_reason_recovered">"Recovered"</string>
+    <string name="certificate_reason_recovered">"Recuperat"</string>
 
     <!-- Wallet: Zertifikat Detail Getestet -->
     <string name="certificate_reason_tested">"Test"</string>
 
     <!-- Header im Onboardingscreen "Vorteile, Aufbewahren" -->
-    <string name="wallet_onboarding_store_header">"Advantages"</string>
+    <string name="wallet_onboarding_store_header">"Avantatges"</string>
 
     <!-- Titel im Onboardingscreen "Vorteile, Aufbewahren" -->
     <string name="wallet_onboarding_store_title">"Store COVID certificates digitally"</string>
@@ -302,7 +302,7 @@ Please note that you will also need to show an identification document (passport
     <string name="wallet_onboarding_store_text2">"The app checks the validity of certificates in Switzerland. This way, you can be sure that your certificates are valid."</string>
 
     <!-- Header im Onboarding-Screen "Vorteile, Vorweisen" -->
-    <string name="wallet_onboarding_show_header">"Advantages"</string>
+    <string name="wallet_onboarding_show_header">"Avantatges"</string>
 
     <!-- Accessibility: Information -->
     <string name="accessibility_info_button">"Publication details"</string>
@@ -311,7 +311,7 @@ Please note that you will also need to show an identification document (passport
     <string name="accessibility_faq_button">"FAQs"</string>
 
     <!-- Accessibility: Button zur Liste der Zertifikate -->
-    <string name="accessibility_list_button">"List of certificates"</string>
+    <string name="accessibility_list_button">"Llista de certificats"</string>
 
     <!-- Accessibility: Zertifikate hinzufügen -->
     <string name="accessibility_add_button">"Afegeix un certificat"</string>
@@ -363,11 +363,10 @@ ha caducat"</string>
 revocat"</string>
 
     <!-- Wallet: Zertifikat mit ungültiger Signatur -->
-    <string name="wallet_error_invalid_signature">"Certificate with 
-invalid signature"</string>
+    <string name="wallet_error_invalid_signature">"El certificat té una signatura invàlida"</string>
 
     <!-- Wallet: ungültiger Signatur (gleiche Worte wie wallet_error_invalid_signature) -->
-    <string name="wallet_error_invalid_signature_bold">"invalid signature"</string>
+    <string name="wallet_error_invalid_signature_bold">"signatura invàlida"</string>
 
     <!-- Wallet: widerrufen (gleiches Wort wie bei wallet_error_revocation) -->
     <string name="wallet_error_revocation_bold">"revocat"</string>
@@ -389,7 +388,7 @@ Suïssa"</string>
     <string name="wallet_certificate_verifying">"The certificate is being verified"</string>
 
     <!-- Message nach erfolgreicher Prüfung im Zertifikatdetail -->
-    <string name="wallet_certificate_verify_success">"Verification successful"</string>
+    <string name="wallet_certificate_verify_success">"Verificació correcta"</string>
 
     <!-- Accessibility: Info Box Butto -->
     <string name="accessibility_info_box">"Informació"</string>
@@ -423,7 +422,7 @@ Suïssa"</string>
     <string name="verifier_support_header">"Com funciona"</string>
 
     <!-- Text im Bestätigungs-Dialog beim Zertifikat löschen -->
-    <string name="wallet_certificate_delete_confirm_text">"Segur que voleu eliminat el certificat?"</string>
+    <string name="wallet_certificate_delete_confirm_text">"Segur que voleu eliminar el certificat?"</string>
 
     <!-- Titel eines Abbrechen-Buttons -->
     <string name="cancel_button">"Cancel·la"</string>
@@ -454,7 +453,7 @@ Suïssa"</string>
     <string name="NSCameraUsageDescription">"The app needs access to your camera to be able to scan the QR code."</string>
 
     <!-- Titel 1 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_title">"How COVID certificates are checked"</string>
+    <string name="verifier_faq_works_title">"Com es comproven els certificats COVID"</string>
 
     <!-- Text 1 im FAQ der Verifier App -->
     <string name="verifier_faq_works_subtitle">"The COVID Certificate Check app can be used to scan the QR codes on COVID certificates and check the certificates for authenticity and validity."</string>
@@ -466,7 +465,7 @@ Suïssa"</string>
     <string name="verifier_faq_works_answer_1">"To check a COVID certificate, use the dedicated COVID Certificate Check app to scan the QR code on the paper certificate or in the COVID Certificate app presented."</string>
 
     <!-- Frage 2 im FAQ der Verifier App -->
-    <string name="verifier_faq_works_question_2">"What exactly is checked?"</string>
+    <string name="verifier_faq_works_question_2">"Què es comprova exactament?"</string>
 
     <!-- Antwort 2 im FAQ der Verifier App -->
     <string name="verifier_faq_works_answer_2">"Three aspects are checked when scanning:
@@ -504,10 +503,10 @@ If the answer to all three questions is affirmative, the COVID certificate is sh
     <string name="ios_settings_open">"Configuració"</string>
 
     <!-- Wallet: Onboarding externer Link zu Datenschutz -->
-    <string name="wallet_onboarding_external_privacy_button">"Política de privacitat i Termes d'ús"</string>
+    <string name="wallet_onboarding_external_privacy_button">"Política de privacitat i Condicions d'ús"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_note">"This certificate is not a travel document. 
+    <string name="wallet_certificate_detail_note">"Aquest certificat no és un document per a viatjar. 
 &lt;br /&gt;&lt;br /&gt;
 The scientific evidence on COVID-19 vaccination, testing and recovery continues to evolve, including with regard to new virus variants of concern. 
 &lt;br /&gt;&lt;br /&gt;
@@ -530,23 +529,23 @@ Please check the restrictions and rules on validity that apply at your destinati
     <string name="wallet_homescreen_add_certificate_description">"You have a COVID certificate in paper form or as a PDF and would like to add it to the app."</string>
 
     <!-- Wallet: Homescreen Transfer-Code erstellen -->
-    <string name="wallet_homescreen_add_transfer_code">"Generate transfer code"</string>
+    <string name="wallet_homescreen_add_transfer_code">"Genera un codi de transferència"</string>
 
     <!-- Wallet: Transfer Codes Titel -->
-    <string name="wallet_transfer_code_onboarding_title">"Transfer codes"</string>
+    <string name="wallet_transfer_code_onboarding_title">"Codis de transferència"</string>
 
     <!-- Wallet: Transfer Code Text -->
     <string name="wallet_transfer_code_onboarding_text">"You can use transfer codes e.g. for COVID tests. Your COVID certificate will then be delivered straight to the app."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
-    <string name="wallet_transfer_code_onboarding_button">"Generate code"</string>
+    <string name="wallet_transfer_code_onboarding_button">"Genera un codi"</string>
 
     <!-- Wallet: Transfer Code Onboarding So funktioniert's -->
-    <string name="wallet_transfer_code_onboarding_howto">"This is how it works"</string>
+    <string name="wallet_transfer_code_onboarding_howto">"Com funciona"</string>
 
     <!-- prüfen -->
     <!-- Wallet: Transfer Code: FAQ Titel -->
-    <string name="wallet_transfer_code_faq_questions_title">"Receive COVID certificates directly in the app"</string>
+    <string name="wallet_transfer_code_faq_questions_title">"Rebeu els certificats COVID directament a l'aplicació"</string>
 
     <!-- Wallet: Transfer Code FAQ Text -->
     <string name="wallet_transfer_code_faq_questions_subtitle">"The transfer codes allow COVID certificates to be transmitted quickly and securely. In this way, you receive your certificate (e.g. after a test) directly in the application."</string>
@@ -608,10 +607,10 @@ In case of a positive PCR test, you will receive a COVID certificate for cured p
     <string name="wallet_transfer_code_code_created_title">"Your transfer code has been generated"</string>
 
     <!-- Wallet: Transfer-Code -->
-    <string name="wallet_transfer_code_title">"Transfer code"</string>
+    <string name="wallet_transfer_code_title">"Codi de transferència"</string>
 
     <!-- Wallet: Transfer Code Erstelltm am {DATE} -->
-    <string name="wallet_transfer_code_createdat">"Generated on {DATE}"</string>
+    <string name="wallet_transfer_code_createdat">"Generat el {DATE}"</string>
 
     <!-- Wallet: Transfer Code Nächste Schritte -->
     <string name="wallet_transfer_code_next_steps">"Next steps"</string>
@@ -626,25 +625,25 @@ In case of a positive PCR test, you will receive a COVID certificate for cured p
     <string name="wallet_transfer_code_done_button">"Done"</string>
 
     <!-- Wallet: Transfer Code Card Titel -->
-    <string name="wallet_transfer_code_card_title">"Transfer"</string>
+    <string name="wallet_transfer_code_card_title">"Transferència"</string>
 
     <!-- Wallet: Transfer Code Staus Warten auf Transfer -->
-    <string name="wallet_transfer_code_state_waiting">"Wait for transfer"</string>
+    <string name="wallet_transfer_code_state_waiting">"Espereu la transferència"</string>
 
     <!-- Wallet: Transfer Code Ablauf in 1 Tag -->
-    <string name="wallet_transfer_code_expire_singular">"Only valid for 1 more day"</string>
+    <string name="wallet_transfer_code_expire_singular">"Només vàlid durant 1 dia més"</string>
 
     <!-- Wallet: Transfer Code: Läuft ab in {DAYS} Tagen -->
-    <string name="wallet_transfer_code_expire_plural">"Valid for a further {DAYS} days"</string>
+    <string name="wallet_transfer_code_expire_plural">"Vàlid durant {DAYS} dies més"</string>
 
     <!-- Wallet: Transfer Code Status Abgelaufen -->
-    <string name="wallet_transfer_code_state_expired">"Transfer failed"</string>
+    <string name="wallet_transfer_code_state_expired">"Transferència fallida"</string>
 
     <!-- Wallet: Transfer Code Alter Code Titel -->
-    <string name="wallet_transfer_code_old_code">"Code expired"</string>
+    <string name="wallet_transfer_code_old_code">"Codi caducat"</string>
 
     <!-- Wallet: Transfer Code State Zuletzt aktualisiert {DATE} -->
-    <string name="wallet_transfer_code_state_updated">"Last updated 
+    <string name="wallet_transfer_code_state_updated">"Última actualització 
 {DATE}"</string>
 
     <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
@@ -655,13 +654,13 @@ In case of a positive PCR test, you will receive a COVID certificate for cured p
 invalid"</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig Fett -->
-    <string name="wallet_error_invalid_format_bold">"invalid"</string>
+    <string name="wallet_error_invalid_format_bold">"invàlid"</string>
 
     <!-- Verifier: Error Ungültiges Format -->
     <string name="verifier_error_invalid_format">"COVID certificate format invalid."</string>
 
     <!-- Homescreen Zertifikat: Offline Modus Text -->
-    <string name="wallet_homescreen_offline">"Offline mode"</string>
+    <string name="wallet_homescreen_offline">"Mode sense connexió"</string>
 
     <!-- Wallet: Detail Offline Text -->
     <string name="wallet_offline_description">"In order to show the certificate's validity, the app must be online regularly."</string>
@@ -706,13 +705,13 @@ invalid"</string>
     <string name="wallet_notification_permission_text">"The app can notify you when your certificate is ready. Allow the app to send you notifications."</string>
 
     <!-- Wallet: Button im Custom-Popup Notification Permission -->
-    <string name="wallet_notification_permission_button">"Continue"</string>
+    <string name="wallet_notification_permission_button">"Continua"</string>
 
     <!-- Externe URL im "So funktionierts" Screen beim Scannen -->
     <string name="wallet_scanner_howitworks_external_link">"https://foph-coronavirus.ch/certificate/how-do-i-get-a-covid-certificate-and-how-do-i-use-it/"</string>
 
     <!-- Label der externen URL im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_external_link_title">"Further information"</string>
+    <string name="wallet_scanner_howitworks_external_link_title">"Més informació"</string>
 
     <!-- Buttontitel im Screen, wo ein Code erstellt werden kann -->
     <string name="wallet_transfer_code_create_code_button">"Genera un codi"</string>
@@ -727,7 +726,7 @@ invalid"</string>
     <string name="verifier_verify_success_info_for_blacklist">"Not revoked"</string>
 
     <!-- Infotext bei erfolgreicher Prüfung (Zertifikat) -->
-    <string name="verifier_verify_success_info_for_certificate_valid">"Signature valid"</string>
+    <string name="verifier_verify_success_info_for_certificate_valid">"Signatura vàlida"</string>
 
     <!-- Teil der Fehlermeldung bei noch nicht/nicht mehr gültigem Zertifikat, der Bold sein sollte (ref. verifier_verifiy_error_expired und _notyetvalid) -->
     <string name="verifier_verify_error_validity_range_bold">"Does not meet Switzerland's validity criteria."</string>
@@ -736,7 +735,7 @@ invalid"</string>
     <string name="wallet_transfer_code_error_title">"Unable to generate transfer code"</string>
 
     <!-- Wallet: Erstellen Fehler Titel -->
-    <string name="wallet_transfer_code_no_internet_title">"No Internet connection"</string>
+    <string name="wallet_transfer_code_no_internet_title">"No hi ha connexió a Internet"</string>
 
     <!-- Wallet: Erstellen anderer Fehler Titel -->
     <string name="wallet_transfer_code_generate_error_title">"An unexpected error has occurred."</string>
@@ -751,7 +750,7 @@ invalid"</string>
     <string name="wallet_transfer_code_update_general_error_text">"An unexpected error has occurred. Please try again later."</string>
 
     <!-- Wallet: Transfer Code Fehlertext bei Generieren -->
-    <string name="wallet_transfer_code_generate_error_text">"Please try again later."</string>
+    <string name="wallet_transfer_code_generate_error_text">"Proveu-ho més tard."</string>
 
     <!-- Wallet: Transfer Code Fehlertext bei Generieren ohne Internet -->
     <string name="wallet_transfer_code_generate_no_internet_error_text">"The app must be online to generate a transfer code."</string>
@@ -794,12 +793,12 @@ In order to update the checklists, the app must be open and connected to the Int
     <string name="wallet_certificate_evidence_title">"Evidence"</string>
 
     <!-- Typenbezeichnung für eine unvollständige Impfung -->
-    <string name="wallet_certificate_type_incomplete_vaccine">"Vaccination incomplete"</string>
+    <string name="wallet_certificate_type_incomplete_vaccine">"Vacunació incompleta"</string>
 
     <!-- Label für das Erstellungsdatum eines Nachweises (mit Platzhalter für Datum und Uhrzeit) -->
     <string name="wallet_certificate_evidence_creation_date">"Evidence created on
 {DATE}"</string>
-    <string name="wallet_transfer_code_faq_questions_linktext_2">"Further information"</string>
+    <string name="wallet_transfer_code_faq_questions_linktext_2">"Més informació"</string>
     <string name="wallet_transfer_code_faq_questions_linkurl_2">"https://foph-coronavirus.ch/certificate/how-do-i-get-a-covid-certificate-and-how-do-i-use-it/"</string>
 
     <!-- Wallet: Zertifikat Light Button im Zertifikat Detail -->
@@ -830,10 +829,10 @@ In order to update the checklists, the app must be open and connected to the Int
     <string name="wallet_certificate_light_detail_summary_5">"You can deactivate the 'light' version of the certificate and revert to the normal COVID certificate at any time."</string>
 
     <!-- Wallet: Zertifikat Light Aktivieren Button -->
-    <string name="wallet_certificate_light_detail_deactivate_button">"Deactivate"</string>
+    <string name="wallet_certificate_light_detail_deactivate_button">"Deactiva"</string>
 
     <!-- Wallet: Zertifikat Light Deaktivieren Button -->
-    <string name="wallet_certificate_light_detail_activate_button">"Activate"</string>
+    <string name="wallet_certificate_light_detail_activate_button">"Activa"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation Error -->
     <string name="wallet_certificate_light_detail_activation_error">"'Certificate light' could not be activated"</string>
@@ -846,7 +845,7 @@ In order to update the checklists, the app must be open and connected to the Int
 and in combination with an identity document"</string>
 
     <!-- Wallet: Zertifikat Export Title -->
-    <string name="wallet_certificate_export_title">"Export COVID certificate"</string>
+    <string name="wallet_certificate_export_title">"Exporta el certificat COVID"</string>
 
     <!-- Wallet: Zertifikat Export Erklärung Punkt 1 -->
     <string name="wallet_certificate_export_summary_1">"A PDF is generated using the data from your COVID certificate that you can print or share."</string>
@@ -858,17 +857,17 @@ and in combination with an identity document"</string>
     <string name="wallet_certificate_export_button">"Exporta"</string>
 
     <!-- Wallet: Zertifikat Export Error Title -->
-    <string name="wallet_certificate_export_detail_error_title">"PDF could not be generated"</string>
+    <string name="wallet_certificate_export_detail_error_title">"No s'ha pogut generar el PDF"</string>
 
     <!-- Wallet: Zertifikat Export Netzwerk Error -->
     <string name="wallet_certificate_export_detail_network_error_text">"The app must be online to generate a PDF."</string>
     <string name="accessibility_qr_code">"QR code"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation Netzwerk Fehler Title -->
-    <string name="wallet_certificate_light_detail_activation_network_error_title">"No Internet connection"</string>
+    <string name="wallet_certificate_light_detail_activation_network_error_title">"No hi ha connexió a Internet"</string>
 
     <!-- Wallet: Zertifikat Light Aktivation General Fehler Text -->
-    <string name="wallet_certificate_light_detail_activation_general_error_text">"Please try again later."</string>
+    <string name="wallet_certificate_light_detail_activation_general_error_text">"Proveu-ho més tard."</string>
 
     <!-- Wallet: Zertifikat Light Aktivation General Fehler Titel -->
     <string name="wallet_certificate_light_detail_activation_general_error_title">"An unexpected error has occurred."</string>
@@ -972,11 +971,11 @@ The 'Certificate light' is only available electronically in the app and is only 
     <string name="verifier_android_app_google_play_store_url">"market://details?id=ch.admin.bag.covidcertificate.verifier"</string>
 
     <!-- Wallet: Titel Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
-    <string name="wallet_certificate_light_rate_limit_title">"24h-limit reached"</string>
+    <string name="wallet_certificate_light_rate_limit_title">"Límit de 24 h assolit"</string>
 
     <!-- Wallet: Text Fehlermeldung wenn Conversion Rate Limit erreicht wurde -->
     <string name="wallet_certificate_light_rate_limit_text">"The 'certificate light' has been activated too often within the last 24 hours."</string>
-    <string name="error_file_import_title">"Import unsuccessful"</string>
+    <string name="error_file_import_title">"Importació fallida"</string>
     <string name="error_file_import_text">"The file contains either an invalid QR code or the QR code was not able to be recognised."</string>
 
     <!-- Wallet: Transfercode ein unerwartet Fehler ist aufgetreten titel -->
@@ -1007,7 +1006,7 @@ The 'Certificate light' is only available electronically in the app and is only 
     <string name="wallet_transfer_code_time_inconsistency_text">"The time must be set correctly for transfer codes to work. Adjust the time and try again."</string>
 
     <!-- Toast Text wenn ein UVCI durch Klicken kopiert wurde -->
-    <string name="wallet_uvci_copied">"UVCI copied"</string>
+    <string name="wallet_uvci_copied">"S'ha copiat el UVCI"</string>
 
     <!-- canton name ag -->
     <string name="vaccination_booking_ag_name">"Aargau"</string>
@@ -1230,13 +1229,13 @@ Many places also offer walk-in vaccinations without an appointment."</string>
     <string name="vaccination_homescreen_button_title">"Demaneu una cita de vacunació"</string>
 
     <!-- Choose your canton title in vaccination appointment screen -->
-    <string name="vaccination_choose_your_canton">"Select your canton"</string>
+    <string name="vaccination_choose_your_canton">"Seleccioneu el vostre cantó"</string>
 
     <!-- Link title for more information about the vaccine -->
     <string name="vaccination_more_information_title">"More information about the COVID-19 vaccination"</string>
 
     <!-- Button text for information about the vaccine at the bottom of the certificate -->
-    <string name="vaccination_information_button_in_certificate">"Information on vaccination "</string>
+    <string name="vaccination_information_button_in_certificate">"Informació sobre la vacunació"</string>
 
     <!-- Vaccination Booking Info URL Link -->
     <string name="vaccination_booking_info_url">"https://foph-coronavirus.ch/vaccination/"</string>
@@ -1245,7 +1244,7 @@ Many places also offer walk-in vaccinations without an appointment."</string>
     <string name="verifier_qr_scanner_external_hardware_detected">"External hardware scanner detected"</string>
 
     <!-- Error popup reset button text -->
-    <string name="error_decryption_reset_button">"Reset"</string>
+    <string name="error_decryption_reset_button">"Restableix"</string>
 
     <!-- Text Certificate Could not be loaded {ERROR_CODE} gets replaces with the error code -->
     <string name="error_decryption_text">"Certificates could not be loaded
@@ -1307,7 +1306,7 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 2G NOT OK state -->
-    <string name="wallet_check_mode_info_2g_not_ok_text">"Access not permitted."</string>
+    <string name="wallet_check_mode_info_2g_not_ok_text">"No es permet l'accés."</string>
 
     <!-- 👍 -->
     <!-- check app -> check mode select pop-up -> display name of check mode 3G -->
@@ -1343,7 +1342,7 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- Verifier: Modus auswählen Titel -->
-    <string name="verifier_mode_title">"Verification mode"</string>
+    <string name="verifier_mode_title">"Mode de verificació"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G OK state -->
@@ -1351,7 +1350,7 @@ Code: {ERROR_CODE}"</string>
 
     <!-- 👍 -->
     <!-- text for info pop-up in wallet app describing 3G NOT OK state -->
-    <string name="wallet_check_mode_info_3g_not_ok_text">"Access not permitted."</string>
+    <string name="wallet_check_mode_info_3g_not_ok_text">"No es permet l'accés."</string>
 
     <!-- Titel für Fehler wenn Modus Light-Zertifikat nicht unterstützt -->
     <string name="verifier_verify_light_not_supported_by_mode_title">"The COVID certificate being verified is a \"light\" certificate. This cannot be verified in {MODUS} verification mode."</string>
@@ -1396,7 +1395,7 @@ Code: {ERROR_CODE}"</string>
     <string name="verifier_error_app_store_text">"To verify this type of COVID certificate, you must have the latest version of the app. Please update your app and repeat the verification process."</string>
 
     <!-- Button Text für Prüfung fehlgeschlagen App update nötig  -->
-    <string name="verifier_error_app_store_button">"To the App Store"</string>
+    <string name="verifier_error_app_store_button">"A l'App Store"</string>
 
     <!-- check app -> check mode select pop-up -> display name of check mode Testzertifikat -->
     <string name="verifier_check_mode_info_test_cert_title">"Test certificate"</string>
@@ -1452,7 +1451,7 @@ This certificate is only valid for a limited period of time. You can check the c
     <string name="covid_certificate_antigen_positive_test">"Recuperació (test d'antígens ràpid)"</string>
 
     <!-- Wallet: Antigen Positive Titel von Testdatum -->
-    <string name="wallet_certificate_antigen_positive_date">"Date of first positive test result"</string>
+    <string name="wallet_certificate_antigen_positive_date">"Data del primer resultat positiu del test"</string>
 
     <!-- Wallet: Blaue Box für positiven Antigen-Test -->
     <!-- Fuzzy -->
@@ -1482,7 +1481,7 @@ This certificate is only valid for a limited period of time. You can check the c
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_bold_text">"This COVID certificate is valid for only a few more days. Please note the expiry date shown on the certificate."</string>
 
     <!-- link text for pop up. case: certificate will be invalid within three weeks of validity change. -->
-    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"And now?"</string>
+    <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_text">"I ara què?"</string>
 
     <!-- link url for pop up. case: certificate will be invalid within three weeks of validity change. -->
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_link_url">"https://www.bag.admin.ch/bag/en/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/haeufig-gestellte-fragen.html?faq-url=/covid/en/covid-certificate/what-should-i-do-if-my-covid-certificate-about-expire-under-swiss-rules-validity"</string>
@@ -1518,7 +1517,7 @@ This certificate is only valid for a limited period of time. You can check the c
     <string name="wallet_eol_banner_invalid_in_three_weeks_popup_text2"></string>
 
     <!-- Fuzzy -->
-    <string name="infobox_generic_title">"Back up your certificate!"</string>
+    <string name="infobox_generic_title">"Assegureu el vostre certificat!"</string>
 
     <!-- Fuzzy -->
     <string name="infobox_generic_text">"If you uninstall the app or change or lose your smartphone, you will also lose your COVID certificates.
@@ -1654,5 +1653,5 @@ You have the option of requesting an EU-compatible version of this certificate v
     <string name="wallet_rat_recovery_conversion_url">"https://covidcertificate-form-a.admin.ch/immunityrequest"</string>
 
     <!-- RAT-Umwandlung: Titel vor Infos -->
-    <string name="rat_conversion_info_title">"Further information"</string>
+    <string name="rat_conversion_info_title">"Més informació"</string>
 </resources>
