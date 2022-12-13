@@ -72,7 +72,7 @@ zum Prüfen"</string>
     <string name="verifier_verify_success_title">"Prüfung erfolgreich"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
-    <string name="verifier_verify_success_info">"Nur mit einem
+    <string name="verifier_verify_success_info">"Nur mit einem 
 Ausweisdokument gültig"</string>
 
     <!-- Prüfung loading text -->
@@ -133,7 +133,7 @@ Ausweisdokument gültig"</string>
     <string name="wallet_onboarding_privacy_header">"Datenschutz"</string>
 
     <!-- Titel im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_title">"Ihre Daten bleiben
+    <string name="wallet_onboarding_privacy_title">"Ihre Daten bleiben 
 in der App"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
@@ -226,7 +226,7 @@ hinzufügen"</string>
     <string name="wallet_faq_questions_answer_1">"Ein Covid-Zertifikat können Sie nach einer Covid-19-Impfung, nach einer durchgemachten Erkrankung oder nach einem negativen Testergebnis erhalten. Das Zertifikat stellt Ihnen in der Regel das Gesundheitsfachpersonal vor Ort auf Anfrage aus."</string>
 
     <!-- Antwort 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_questions_answer_2">"Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die «COVID Certificate»-App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen.
+    <string name="wallet_faq_questions_answer_2">"Sie können Ihr Covid-Zertifikat in Papierform vorweisen oder Sie benutzen die «COVID Certificate»-App, um Zertifikate in der App zu speichern und direkt aus der App vorzuweisen. 
 
 Beachten Sie, dass Sie in jedem Fall auch noch ein Ausweisdokument vorweisen müssen.
 In einigen Ländern wird eine ausgedruckte Version des Zertifikats verlangt und das elektronische Zertifikat nicht akzeptiert. Führen Sie auf Reisen daher stets auch die ausgedruckte Version mit."</string>
@@ -247,7 +247,7 @@ In einigen Ländern wird eine ausgedruckte Version des Zertifikats verlangt und 
     <string name="wallet_faq_works_answer_2">"Ja das ist möglich. So können Sie z. B. alle Covid-Zertifikate von Familienangehörigen in Ihrer App speichern. Auch in diesem Fall gilt: Das Covid-Zertifikat ist nur in Kombination mit einem Ausweisdokument des Zertifikatsinhabers / der Zertifikatsinhaberin gültig."</string>
 
     <!-- Antwort 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_3">"Die Zertifikatspflicht in der Schweiz wurde im Februar 2022 aufgehoben. Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formal und haben praktisch im Inland keine Bedeutung mehr. Deshalb wird in der App das Feld «Gültigkeit in der Schweiz» nicht mehr dargestellt. Stattdessen zeigt sie den Zeitpunkt der Impfung bzw. des Tests an.
+    <string name="wallet_faq_works_answer_3">"Die Zertifikatspflicht in der Schweiz wurde im Februar 2022 aufgehoben. Die Schweizer Gültigkeitsdauern bestehen seitdem nur noch formal und haben praktisch im Inland keine Bedeutung mehr. Deshalb wird in der App das Feld «Gültigkeit in der Schweiz» nicht mehr dargestellt. Stattdessen zeigt sie den Zeitpunkt der Impfung bzw. des Tests an. 
 
 Es wird auch angezeigt, wie viele Tage eine Impfung bzw. ein Test her ist. So können Sie einfacher feststellen, ob Ihr Zertifikat den Gültigkeitsregeln Ihres Ziellandes entspricht (falls das Land noch ein Covid-Zertifikat voraussetzt). Im Ausland gelten immer die Regeln des entsprechenden Landes."</string>
 
@@ -261,7 +261,7 @@ Es wird auch angezeigt, wie viele Tage eine Impfung bzw. ein Test her ist. So k�
     <string name="wallet_faq_works_answer_6">"Sie können Ihr Covid-Zertifikat einfach wieder auf Ihrem Mobilgerät speichern. Laden Sie dazu die App erneut herunter und scannen Sie anschliessend den QR-Code auf Ihrem Covid-Zertifikat auf Papier oder als PDF."</string>
 
     <!-- Titel 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_title">"Wie funktioniert
+    <string name="wallet_faq_works_title">"Wie funktioniert 
 die App?"</string>
 
     <!-- Text 2 im FAQ-Screen der Wallet App -->
@@ -510,9 +510,9 @@ Wenn alle drei Aspekte positiv bewertet werden, wird das Covid-Zertifikat als g�
 Nutzungsbedingungen"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_note">"Dieses Zertifikat ist kein Reisedokument.
+    <string name="wallet_certificate_detail_note">"Dieses Zertifikat ist kein Reisedokument. 
 &lt;br /&gt;&lt;br /&gt;
-Die wissenschaftlichen Erkenntnisse über Covid-19-Impfungen und -Tests sowie über die Genesung von einer Covid-19-Infektion entwickeln sich ständig weiter, auch im Hinblick auf neue besorgniserregende Virusvarianten.
+Die wissenschaftlichen Erkenntnisse über Covid-19-Impfungen und -Tests sowie über die Genesung von einer Covid-19-Infektion entwickeln sich ständig weiter, auch im Hinblick auf neue besorgniserregende Virusvarianten. 
 &lt;br /&gt;&lt;br /&gt;
 Bitte informieren Sie sich vor einer Reise über die am Zielort geltenden Beschränkungen und Gültigkeitsregeln. Die Gültigkeit Ihres Zertifikats wird im Ausland anhand der Regeln des Ziellandes berechnet."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/de/home/dokumentation/covid-certificate-app.html"</string>
@@ -539,7 +539,7 @@ Bitte informieren Sie sich vor einer Reise über die am Zielort geltenden Beschr
     <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes z. B. bei Covid-Tests angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes bei Covid-Tests oder Covid-19-Impfungen angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
     <string name="wallet_transfer_code_onboarding_button">"Code erstellen"</string>
@@ -552,7 +552,7 @@ Bitte informieren Sie sich vor einer Reise über die am Zielort geltenden Beschr
     <string name="wallet_transfer_code_faq_questions_title">"Covid-Zertifikate direkt in die App geliefert"</string>
 
     <!-- Wallet: Transfer Code FAQ Text -->
-    <string name="wallet_transfer_code_faq_questions_subtitle">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat, z. B. nach einem Covid-Test, direkt in die App geliefert."</string>
+    <string name="wallet_transfer_code_faq_questions_subtitle">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat nach einem Covid-Test oder einer Covid-19-Impfung direkt in die App geliefert."</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 1 -->
     <string name="wallet_transfer_code_faq_questions_question_1">"Wer bietet die Übermittlung per Transfer-Code an?"</string>
@@ -567,19 +567,17 @@ Bitte informieren Sie sich vor einer Reise über die am Zielort geltenden Beschr
     <string name="wallet_transfer_code_faq_questions_question_4">"Kann ich den Transfer-Code mehrmals benutzen?"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 1 -->
-    <string name="wallet_transfer_code_faq_questions_answer_1">"Wenn Sie einen Covid-Test machen (PCR-Test oder Antigen-Schnelltest), kann der Transfer-Code zur schnellen Übermittlung von Covid-Zertifikaten zum Einsatz kommen.
+    <string name="wallet_transfer_code_faq_questions_answer_1">"Wenn Sie einen Covid-Test (PCR-Test oder Antigen-Schnelltest) machen oder eine Covid-19-Impfung bekommen, kann der Transfer-Code zur schnellen Übermittlung von Covid-Zertifikaten zum Einsatz kommen.
 
-Informieren Sie sich bei Ihrem Testcenter, in der Apotheke oder bei Ihrem Arzt, ob die Übermittlung per Transfer-Code angeboten wird."</string>
+Informieren Sie sich bei Ihrem Testcenter, bei der Impfstelle, in der Apotheke oder bei Ihrem Arzt, ob die Übermittlung per Transfer-Code angeboten wird."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 2 -->
     <string name="wallet_transfer_code_faq_questions_answer_2">"Aktuell ist die Übermittlung per Transfer-Code auf Covid-Tests ausgelegt. Wie Sie ein Covid-Zertifikat nach einer Impfung erhalten erfahren Sie hier:"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 3 -->
-    <string name="wallet_transfer_code_faq_questions_answer_3">"Falls die Stelle, die den Covid-Test durchführt, die Übermittlung per Transfer-Code anbietet, werden Sie bereits bei der Anmeldung oder der Testentnahme nach einem Transfer-Code gefragt.
+    <string name="wallet_transfer_code_faq_questions_answer_3">"Falls die Stelle, die den Covid-Test durchführt oder die Covid-19-Impfung verabreicht, die Übermittlung per Transfer-Code anbietet, können Sie bereits bei der Anmeldung, der Testentnahme oder vor Erhalt der Impfung Ihren Transfer-Code angeben.
 
-Den Transfer-Code können Sie in der «COVID Certificate»-App erstellen. Tippen Sie dazu auf dem Startbildschirm auf «Hinzufügen» resp. auf das «Plus»-Symbol unten rechts. Danach tippen Sie auf «Transfer-Code erstellen».
-
-Die App zeigt Ihnen einen 9-stelligen Code an. Diesen können Sie entweder bei der Anmeldung in ein Formular eintragen oder direkt bei der Testentnahme angeben."</string>
+Einen Transfer-Code erstellen Sie jederzeit in der «COVID Certificate»-App. Tippen Sie dazu auf dem Startbildschirm auf «Hinzufügen» resp. auf das «Plus»-Symbol unten rechts. Danach tippen Sie auf «Transfer-Code erstellen». Die App zeigt Ihnen dann den 9-stelligen Code an."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 4 -->
     <string name="wallet_transfer_code_faq_questions_answer_4">"Nein, ein Transfer-Code kann nur einmal verwendet werden. Falls Sie mehrere Zertifikate z. B. von Familienangehörigen empfangen möchten, erstellen Sie bitte für jedes Zertifikat einen neuen Code."</string>
@@ -603,7 +601,7 @@ Die App zeigt Ihnen einen 9-stelligen Code an. Diesen können Sie entweder bei d
 Sollte ihr Covid-Zertifikat dennoch nicht eintreffen, fragen Sie bei der Stelle nach, die den Test durchgeführt hat (Testcenter, Apotheke, Ärztin / Arzt)."</string>
 
     <!-- Wallet: Transfer Code FAQ 2 Antwort 3 -->
-    <string name="wallet_transfer_code_faq_works_answer_3">"Bei einem positiven Antigen-Schnelltest erhalten Sie vom Labor kein Covid-Zertifikat.
+    <string name="wallet_transfer_code_faq_works_answer_3">"Bei einem positiven Antigen-Schnelltest erhalten Sie vom Labor kein Covid-Zertifikat. 
 
 Bei einem positiven PCR-Test erhalten Sie ein Covid-Zertifikat für Genesene. Es ist ab dem 11. Tag nach der Testentnahme gültig."</string>
 
@@ -775,7 +773,7 @@ ungültig"</string>
     <string name="verifier_faq_works_linktext_2_1">"Weitere Informationen"</string>
     <string name="verifier_faq_works_linkurl_2_1">"https://www.bag.admin.ch/bag/de/home/krankheiten/ausbrueche-epidemien-pandemien/aktuelle-ausbrueche-epidemien/novel-cov/covid-zertifikat.html#-837133624"</string>
     <string name="verifier_faq_works_question_7">"Können Zertifikate auch offline geprüft werden?"</string>
-    <string name="verifier_faq_works_answer_7">"Grundsätzlich können Covid-Zertifikate auch ohne eine Internetverbindung geprüft werden. Dazu werden regelmässig aktualisierte Prüflisten von einem zentralen Server heruntergeladen. Diese lokal gespeicherten Prüflisten dürfen nicht älter als 48h sein.
+    <string name="verifier_faq_works_answer_7">"Grundsätzlich können Covid-Zertifikate auch ohne eine Internetverbindung geprüft werden. Dazu werden regelmässig aktualisierte Prüflisten von einem zentralen Server heruntergeladen. Diese lokal gespeicherten Prüflisten dürfen nicht älter als 48h sein. 
 
 Um die Prüflisten zu aktualisieren muss die App mit dem Internet verbunden sein und geöffnet werden. Die Aktualisierung erfolgt unmittelbar und automatisch."</string>
 
@@ -810,7 +808,7 @@ Um die Prüflisten zu aktualisieren muss die App mit dem Internet verbunden sein
     <string name="wallet_certificate_detail_export_button">"Exportieren"</string>
 
     <!-- Wallet: Zertifikat Light Title -->
-    <string name="wallet_certificate_light_detail_title">"Was ist ein
+    <string name="wallet_certificate_light_detail_title">"Was ist ein 
 Zertifikat Light?"</string>
 
     <!-- Wallet: Zertifikat Light Summary Titel -->
@@ -845,7 +843,7 @@ konnte nicht aktiviert werden"</string>
     <string name="wallet_certificate_light_detail_activation_network_error_text">"Um das Zertifikat Light aktivieren zu können, muss die App online sein."</string>
 
     <!-- Info Text bei erfolgreicher Prüfung einers Zertifikate Light -->
-    <string name="verifier_verify_success_certificate_light_info">"Nur mit einem Ausweisdokument
+    <string name="verifier_verify_success_certificate_light_info">"Nur mit einem Ausweisdokument 
 &amp; innerhalb der Schweiz gültig"</string>
 
     <!-- Wallet: Zertifikat Export Title -->
@@ -943,7 +941,7 @@ abgelaufen"</string>
     <string name="wallet_faq_questions_question_6">"Was ist das Zertifikat Light?"</string>
 
     <!-- there is a placeholder ({LIGHT_CERT_VALIDITY_IN_H}) which describes the number of hours a light certificate is valid. do NOT translate! -->
-    <string name="wallet_faq_questions_answer_6">"Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zur Nutzung in der Schweiz zu generieren. Das «Zertifikat Light» bestätigt das Vorliegen eines gültigen Covid-Zertifikats, ohne selbst Gesundheitsdaten zu enthalten.
+    <string name="wallet_faq_questions_answer_6">"Die «COVID Certificate»-App bietet Inhaberinnen und Inhabern von Covid-Zertifikaten die Möglichkeit, eine datenminimierte Zertifikatskopie zur Nutzung in der Schweiz zu generieren. Das «Zertifikat Light» bestätigt das Vorliegen eines gültigen Covid-Zertifikats, ohne selbst Gesundheitsdaten zu enthalten. 
 
 Diese datenminimierte Alternative zum Covid-Zertifikat wurde auf Wunsch des Eidgenössischen Datenschutz- und Öffentlichkeitsbeauftragten (EDÖB) entwickelt, da Covid-Zertifikate gewisse Gesundheitsdaten wie beispielsweise Impfstoff oder Datum der Impfung enthalten, die auch ausgelesen werden können. Mittels dem «Zertifikat Light» wird dies verhindert.
 
@@ -965,7 +963,7 @@ Das «Zertifikat Light» ist lediglich elektronisch innerhalb der App verfügbar
     <!-- Toast Text wenn ein Transfer Code durch Klicken kopiert wurde -->
     <string name="wallet_transfer_code_copied">"Transfer Code kopiert"</string>
     <string name="wallet_faq_works_question_2_1">"Was ist ein Transfer-Code?"</string>
-    <string name="wallet_faq_works_answer_2_1">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat, z. B. nach einem Covid-Test, direkt in die App geliefert."</string>
+    <string name="wallet_faq_works_answer_2_1">"Mit Transfer-Codes können Covid-Zertifikate schnell und sicher übermittelt werden. Auf diesem Weg erhalten Sie das Covid-Zertifikat nach einem Covid-Test oder einer Covid-19-Impfung direkt in die App geliefert."</string>
     <string name="wallet_faq_works_question_5_1">"Ich habe das Covid-Zertifikat ausschliesslich elektronisch in der App. Wie komme ich zum Zertifikat als PDF oder auf Papier?"</string>
     <string name="wallet_faq_works_answer_5_1">"In der «COVID Certificate»-App finden Sie in der Detailansicht des elektronischen Covid-Zertifikats die Funktion «Exportieren». Damit können Sie ein PDF erstellen, dieses speichern und ausdrucken."</string>
 
@@ -1445,7 +1443,7 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_certificate_ausnahme_issued_country">"Medizinisches Attest ausgestellt in"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
-    <string name="wallet_certificate_detail_note_ausnahme">"Dieses Zertifikat ist kein Reisedokument.
+    <string name="wallet_certificate_detail_note_ausnahme">"Dieses Zertifikat ist kein Reisedokument. 
 &lt;br /&gt;&lt;br /&gt;
 Dieses Zertifikat ist zeitlich nur begrenzt gültig. Die aktuell in der Schweiz massgebliche Gültigkeitsdauer können Sie jederzeit mit der Covid-Certificate App überprüfen."</string>
 
@@ -1774,4 +1772,3 @@ Sie haben die Möglichkeit, eine EU-kompatible Version dieses Zertifikats bei de
     <string name="wallet_faq_questions_answer_2_2">"Im Ausland gelten jeweils die Gültigkeitsregeln des entsprechenden Landes, sowohl für die Einreise wie auch innerhalb des Ziellandes. Für die Verwendung des Zertifikats innerhalb des Ziellandes können andere Regeln als bei der Einreise gelten. Diese Regeln können kurzfristig ändern. Informieren Sie sich daher kurz vor Ihrer Abreise auf der Webseite der Behörden Ihres Transit- oder Ziellandes, ob dort noch Regeln im Zusammenhang mit Covid-19 gelten und wenn ja, welche."</string>
     <string name="wallet_error_not_fully_protected_national_rules">"Unvollständige Impfserie gemäss internationalen Standards."</string>
 </resources>
-
