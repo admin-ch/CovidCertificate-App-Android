@@ -536,7 +536,7 @@ Bitte informieren Sie sich vor einer Reise über die am Zielort geltenden Beschr
     <string name="wallet_homescreen_add_transfer_code">"Transfer-Code erstellen"</string>
 
     <!-- Wallet: Transfer Codes Titel -->
-    <string name="wallet_transfer_code_onboarding_title">"Transfer Codes"</string>
+    <string name="wallet_transfer_code_onboarding_title">"Transfer-Code"</string>
 
     <!-- Wallet: Transfer Code Text -->
     <string name="wallet_transfer_code_onboarding_text">"Sie können Transfer-Codes bei Covid-Tests oder Covid-19-Impfungen angeben. Sie erhalten darauf das Covid-Zertifikat direkt in die App geliefert."</string>
