@@ -44,7 +44,7 @@
     <string name="ok_button">"OK"</string>
     <string name="camera_permission_dialog_text">"L'application doit accéder à l'appareil photo pour pouvoir scanner le code QR."</string>
     <string name="camera_permission_dialog_action">"Donner accès à l'appareil photo"</string>
-    <string name="verifier_qr_scanner_scan_qr_text">"Scanner le code QR
+    <string name="verifier_qr_scanner_scan_qr_text">"Scanner le code QR 
 pour vérifier"</string>
 
     <!-- Titel auf dem Verifikations-Screen -->
@@ -72,7 +72,7 @@ pour vérifier"</string>
     <string name="verifier_verify_success_title">"Vérification réussie"</string>
 
     <!-- Info Text bei erfolgreicher Prüfung -->
-    <string name="verifier_verify_success_info">"Valable uniquement avec
+    <string name="verifier_verify_success_info">"Valable uniquement avec 
 une pièce d'identité"</string>
 
     <!-- Prüfung loading text -->
@@ -133,7 +133,7 @@ une pièce d'identité"</string>
     <string name="wallet_onboarding_privacy_header">"Protection des données"</string>
 
     <!-- Titel im Onboardingscreen "Datenschutz" -->
-    <string name="wallet_onboarding_privacy_title">"Vos données restent
+    <string name="wallet_onboarding_privacy_title">"Vos données restent 
 dans l'application"</string>
 
     <!-- Text im Onboardingscreen "Datenschutz" -->
@@ -162,7 +162,7 @@ dans l'application"</string>
     <string name="wallet_scanner_howitworks_header">"Comment ça fonctionne"</string>
 
     <!-- Titel im "So funktionierts" Screen beim Scannen -->
-    <string name="wallet_scanner_howitworks_title">"Ajouter des
+    <string name="wallet_scanner_howitworks_title">"Ajouter des 
 certificats COVID"</string>
 
     <!-- Textblock 1 im "So funktionierts" Screen beim Scannen -->
@@ -246,7 +246,7 @@ Dans tous les cas, vous devez aussi présenter une pièce d’identité sur dema
     <string name="wallet_faq_works_answer_2">"Oui. Vous pouvez par exemple stocker dans l'app les certificats COVID de tous les membres de votre famille. À noter également dans ce cas qu'un certificat COVID n'est valable que si son détenteur présente une pièce d'identité."</string>
 
     <!-- Antwort 8 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_answer_3">"En Suisse, l’obligation de présenter un certificat a été levée en février 2022. Les durées de validité suisses sont donc devenues uniquement formelles et n’ont pratiquement plus aucune pertinence dans notre pays. C’est pourquoi le champ « Validité en Suisse » n’est plus représenté dans l’application, qui indique par contre le nombre de jours écoulés depuis une vaccination ou un test.
+    <string name="wallet_faq_works_answer_3">"En Suisse, l’obligation de présenter un certificat a été levée en février 2022. Les durées de validité suisses sont donc devenues uniquement formelles et n’ont pratiquement plus aucune pertinence dans notre pays. C’est pourquoi le champ « Validité en Suisse » n’est plus représenté dans l’application, qui indique par contre le nombre de jours écoulés depuis une vaccination ou un test. 
 
 L’application indique aussi le nombre de jours écoulés depuis une vaccination ou un test. Vous pouvez ainsi vérifier plus facilement si votre certificat correspond aux règles de validité de votre pays de destination (au cas où ce pays exige encore un certificat COVID). À l’étranger, les règles en vigueur varient d’un pays à l’autre."</string>
 
@@ -260,7 +260,7 @@ L’application indique aussi le nombre de jours écoulés depuis une vaccinatio
     <string name="wallet_faq_works_answer_6">"Vous pouvez réenregistrer facilement votre certificat COVID sur votre appareil mobile. Il vous suffit de télécharger de nouveau l'app, puis de scanner le code QR figurant sur le certificat original, établi sur papier ou au format PDF."</string>
 
     <!-- Titel 2 im FAQ-Screen der Wallet App -->
-    <string name="wallet_faq_works_title">"Comment l'app
+    <string name="wallet_faq_works_title">"Comment l'app 
 fonctionne-t-elle?"</string>
 
     <!-- Text 2 im FAQ-Screen der Wallet App -->
@@ -282,7 +282,7 @@ fonctionne-t-elle?"</string>
     <string name="force_update_button">"Mettre à jour"</string>
 
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
-    <string name="wallet_certificate_valid_from">"Valable en Suisse à partir du :
+    <string name="wallet_certificate_valid_from">"Valable en Suisse à partir du : 
 {DATE}"</string>
 
     <!-- Wallet: Zertifikat Detail Geimpft -->
@@ -353,7 +353,7 @@ Le certificat n'est pas encore valable."</string>
     <string name="verifier_retry_flightmode_error">"L'appareil est en mode avion."</string>
 
     <!-- Wallet: Zertifikat gültig ab: {DATE} -->
-    <string name="wallet_error_valid_from">"Valable en Suisse à partir du :
+    <string name="wallet_error_valid_from">"Valable en Suisse à partir du : 
 {DATE}"</string>
 
     <!-- Wallet: Fehler wenn Zertifikat nicht den CH-Gültigkeitskriterien entspricht -->
@@ -378,7 +378,7 @@ Le certificat n'est pas encore valable."</string>
     <string name="wallet_certificate_already_exists">"Le certificat est déjà enregistré dans l'application."</string>
 
     <!-- Titel Gültigkeit im Zertifikatsdetail -->
-    <string name="wallet_certificate_validity">"Validité en
+    <string name="wallet_certificate_validity">"Validité en 
 Suisse"</string>
 
     <!-- "Bis" Label im Zertifikats-Detail -->
@@ -440,7 +440,7 @@ Suisse"</string>
     <string name="wallet_certificate_identifier">"UVCI"</string>
 
     <!-- Wallet: Zertifikat erstellt am {DATE} -->
-    <string name="wallet_certificate_date">"Certificat établi le
+    <string name="wallet_certificate_date">"Certificat établi le 
 {DATE}"</string>
 
     <!-- Wallet: Detail Art des Impfstoffs -->
@@ -506,9 +506,9 @@ Si vous pouvez répondre oui à la 1re et à la 3e question et non à la 2e, la 
     <string name="wallet_onboarding_external_privacy_button">"Déclaration de confidentialité &amp; condition d'utilisation"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail -->
-    <string name="wallet_certificate_detail_note">"Le présent certificat n'est pas un document de voyage.
+    <string name="wallet_certificate_detail_note">"Le présent certificat n'est pas un document de voyage. 
 &lt;br /&gt;&lt;br /&gt;
-Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d'évoluer, notamment en ce qui concerne de nouveau variants préoccupants du virus.
+Les preuves scientifiques relatives à la vaccination, aux tests et au rétablissement liés à la COVID-19 continuent d'évoluer, notamment en ce qui concerne de nouveau variants préoccupants du virus. 
 &lt;br /&gt;&lt;br /&gt;
 Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles de validité en vigueur à votre lieu de destination. La validité de votre certificat à l’étranger dépend des règles du pays de destination."</string>
     <string name="wallet_terms_privacy_link">"https://www.bit.admin.ch/bit/fr/home/documentation/covid-certificate-app.html"</string>
@@ -535,7 +535,7 @@ Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles d
     <string name="wallet_transfer_code_onboarding_title">"Codes transfert"</string>
 
     <!-- Wallet: Transfer Code Text -->
-    <string name="wallet_transfer_code_onboarding_text">"Vous pouvez utiliser votre code transfert, p. ex. lors d’un test, pour recevoir le certificat COVID directement dans votre application."</string>
+    <string name="wallet_transfer_code_onboarding_text">"Vous pouvez utiliser votre code transfert lors d’un test ou d’une vaccination pour recevoir le certificat COVID directement dans votre application."</string>
 
     <!-- Wallet: Transfer Code Onboarding Button -->
     <string name="wallet_transfer_code_onboarding_button">"Créer un code"</string>
@@ -548,7 +548,7 @@ Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles d
     <string name="wallet_transfer_code_faq_questions_title">"Recevez les certificats COVID directement dans l'application"</string>
 
     <!-- Wallet: Transfer Code FAQ Text -->
-    <string name="wallet_transfer_code_faq_questions_subtitle">"Les codes de transfert permettent de transmettre les certificats COVID rapidement et en toute sécurité. De cette façon, vous recevez votre certificat (p. ex. après un test) directement dans l’application."</string>
+    <string name="wallet_transfer_code_faq_questions_subtitle">"Les codes de transfert permettent de transmettre les certificats COVID rapidement et en toute sécurité. De cette façon, vous recevez votre certificat après un test ou une vaccination directement dans l’application."</string>
 
     <!-- Wallet: Transfer Code FAQ Frage 1 -->
     <string name="wallet_transfer_code_faq_questions_question_1">"Qui propose la transmission du certificat COVID par code de transfert ?"</string>
@@ -563,19 +563,17 @@ Avant de voyager, veuillez-vous renseigner sur les restrictions et les règles d
     <string name="wallet_transfer_code_faq_questions_question_4">"Puis-je utiliser plusieurs fois le même code de transfert ?"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 1 -->
-    <string name="wallet_transfer_code_faq_questions_answer_1">"Si vous effectuez un test COVID (test PCR ou test rapide antigénique), le code de transfert peut être utilisé pour transmettre rapidement le certificat COVID.
+    <string name="wallet_transfer_code_faq_questions_answer_1">"Si vous effectuez un test COVID (test PCR ou test rapide antigénique) ou recevez un vaccin contre le COVID-19, le code de transfert peut être utilisé pour transmettre rapidement le certificat COVID.
 
-Renseignez-vous auprès de votre centre de test, de votre pharmacie ou de votre médecin pour savoir si cette option est proposée."</string>
+Renseignez-vous auprès de votre centre de test ou de vaccination, de votre pharmacie ou de votre médecin pour savoir si cette option est proposée."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 2 -->
     <string name="wallet_transfer_code_faq_questions_answer_2">"Actuellement, la transmission du certificat par code de transfert est réservée aux tests COVID. Pour savoir comment obtenir un certificat COVID après une vaccination, cliquez ici :"</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 3 -->
-    <string name="wallet_transfer_code_faq_questions_answer_3">"Si le centre de test propose de transmettre le certificat par code de transfert, un code vous sera demandé au moment de l’inscription ou du test.
+    <string name="wallet_transfer_code_faq_questions_answer_3">"Si le centre qui effectue le test ou administre le vaccin propose de transmettre le certificat par code de transfert, vous pouvez communiquer votre code au moment de l’inscription, du test ou avant de recevoir le vaccin.
 
-Vous pouvez créer le code de transfert dans l’application « COVID Certificate » : appuyez sur « Ajouter » sur l’écran d’accueil ou sur le symbole « Plus » en bas à droite, puis sur « Créer un code de transfert ».
-
-L’application vous montre un code à 9 caractères, que vous pouvez soit inscrire dans un formulaire lors de l’inscription, soit transmettre directement lors du test."</string>
+Vous pouvez créer à tout moment un code de transfert dans l’application « COVID Certificate » : appuyez sur « Ajouter » sur l’écran d’accueil ou sur le symbole « Plus » en bas à droite, puis sur « Créer un code de transfert ». L’application vous montre le code à 9 caractères."</string>
 
     <!-- Wallet: Transfer Code FAQ Antwort 4 -->
     <string name="wallet_transfer_code_faq_questions_answer_4">"Non, un code de transfert ne peut être utilisé qu’une seule fois. Si vous souhaitez obtenir plusieurs certificats (p. ex. pour vos proches), veuillez créer un nouveau code pour chaque certificat."</string>
@@ -643,14 +641,14 @@ En cas de test PCR positif, vous recevrez un certificat COVID pour personnes gu�
     <string name="wallet_transfer_code_old_code">"Code expiré"</string>
 
     <!-- Wallet: Transfer Code State Zuletzt aktualisiert {DATE} -->
-    <string name="wallet_transfer_code_state_updated">"Dernière mise à jour le
+    <string name="wallet_transfer_code_state_updated">"Dernière mise à jour le 
 {DATE}"</string>
 
     <!-- Wallet: Transfer Code Kein Zertifikat mehr -->
     <string name="wallet_transfer_code_state_no_certificate">"Ce code transfert ne permet plus de recevoir de certificat."</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig -->
-    <string name="wallet_error_invalid_format">"Format de certificat
+    <string name="wallet_error_invalid_format">"Format de certificat 
 non valide"</string>
 
     <!-- Wallet: Fehler Format des Zertifikat ungültig Fett -->
@@ -928,7 +926,7 @@ et avec un document d’identité"</string>
     <string name="verifier_update_boarding_certificate_light_text">"Cette mise à jour vous permet aussi de vérifier les copies de certificat sans données sur la santé. Les conditions d’utilisation et la déclaration sur la protection des données ont été actualisées et seront considérées comme acceptées si vous continuez à utiliser l’application."</string>
 
     <!-- Verifier: Die Gültigkeit eines Certificate Light ist abgelaufen -->
-    <string name="verifier_certificate_light_error_expired">"Durée de validité du
+    <string name="verifier_certificate_light_error_expired">"Durée de validité du 
 certificat expirée"</string>
 
     <!-- Wallet: Badge für Light-Zertifikate in Liste Zertifikate -->
@@ -958,7 +956,7 @@ Le certificat light, reconnu uniquement en Suisse, n’est disponible que sous f
     <!-- Toast Text wenn ein Transfer Code durch Klicken kopiert wurde -->
     <string name="wallet_transfer_code_copied">"Code de transfert copié"</string>
     <string name="wallet_faq_works_question_2_1">"Qu'est-ce qu'un code de transfert ?"</string>
-    <string name="wallet_faq_works_answer_2_1">"Les codes de transfert permettent de transmettre les certificats COVID rapidement et en toute sécurité. De cette façon, vous recevez votre certificat (p. ex. après un test) directement dans l’application."</string>
+    <string name="wallet_faq_works_answer_2_1">"Les codes de transfert permettent de transmettre les certificats COVID rapidement et en toute sécurité. De cette façon, vous recevez votre certificat après un test ou une vaccination directement dans l’application."</string>
     <string name="wallet_faq_works_question_5_1">"Mon certificat COVID n’est disponible qu’au format électronique dans l’application. Comment puis-je obtenir mon certificat en PDF ou sur papier ?"</string>
     <string name="wallet_faq_works_answer_5_1">"Dans l’application « COVID Certificate », vous trouvez la fonction « Exporter » dans la vue détaillée du certificat. Vous pouvez ainsi générer un PDF afin de le sauvegarder et de l’imprimer."</string>
 
@@ -1438,7 +1436,7 @@ Code: {ERROR_CODE}"</string>
     <string name="wallet_certificate_ausnahme_issued_country">"Attestation médicale délivrée en"</string>
 
     <!-- Wallet: Hinweis im Zertifikat Detail für Ausnahme Zertifikat -->
-    <string name="wallet_certificate_detail_note_ausnahme">"Le présent certificat n'est pas un document de voyage.
+    <string name="wallet_certificate_detail_note_ausnahme">"Le présent certificat n'est pas un document de voyage. 
 &lt;br /&gt;&lt;br /&gt;
 Ce certificat n'a qu'une durée de validité limitée. L'application «COVID Certificate» vous permet en tout temps de vérifier la durée de validité actuellement déterminante en Suisse."</string>
 

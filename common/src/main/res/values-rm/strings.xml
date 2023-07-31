@@ -534,7 +534,7 @@ As infurmai per plaschair avant in viadi davart las restricziuns e davart las re
 	<string name="wallet_transfer_code_onboarding_title">"Codes da transfer"</string>
 
 	<!-- Wallet: Transfer Code Text -->
-	<string name="wallet_transfer_code_onboarding_text">"Vus pudais inditgar ils codes da transfer p.ex. a chaschun da tests da COVID. Vus retschavais alura il certificat COVID directamain en l'app."</string>
+	<string name="wallet_transfer_code_onboarding_text">"Vus pudais inditgar ils codes da transfer a chaschun da tests da COVID u vaccinaziuns cunter COVID-19. Vus retschavais alura il certificat COVID directamain en l'app."</string>
 
 	<!-- Wallet: Transfer Code Onboarding Button -->
 	<string name="wallet_transfer_code_onboarding_button">"Crear in code"</string>
@@ -547,7 +547,7 @@ As infurmai per plaschair avant in viadi davart las restricziuns e davart las re
 	<string name="wallet_transfer_code_faq_questions_title">"Certificats COVID furnids directamain en l'app"</string>
 
 	<!-- Wallet: Transfer Code FAQ Text -->
-	<string name="wallet_transfer_code_faq_questions_subtitle">"Cun ils codes da transfer pon ils certificats COVID vegnir transmess en moda svelta e segira. Sin questa via vegn il certificat COVID furnì directamain en l'app, p.ex. suenter in test dal coronavirus."</string>
+	<string name="wallet_transfer_code_faq_questions_subtitle">"Cun ils codes da transfer pon ils certificats COVID vegnir transmess en moda svelta e segira. Sin questa via vegn il certificat COVID furnì directamain en l'app suenter in test dal coronavirus u ina vaccinaziun cunter COVID-19."</string>
 
 	<!-- Wallet: Transfer Code FAQ Frage 1 -->
 	<string name="wallet_transfer_code_faq_questions_question_1">"Tgi porscha la transmissiun cun in code da transfer?"</string>
@@ -562,19 +562,17 @@ As infurmai per plaschair avant in viadi davart las restricziuns e davart las re
 	<string name="wallet_transfer_code_faq_questions_question_4">"Poss jau duvrar pliras giadas il medem code da transfer?"</string>
 
 	<!-- Wallet: Transfer Code FAQ Antwort 1 -->
-	<string name="wallet_transfer_code_faq_questions_answer_1">"Sche Vus faschais in test dal coronavirus (test da PCR u test svelt d'antigens), po il code da transfer vegnir en funcziun per transmetter sveltamain ils certificats COVID.
+	<string name="wallet_transfer_code_faq_questions_answer_1">"Sche Vus faschais in test dal coronavirus (test da PCR u test svelt d'antigens) u sche Vussurvegnis ina vaccinaziun cunter COVID-19, po il code da transfer vegnir en funcziun per transmetter sveltamain ils certificats COVID.
 
-As infurmai tar Voss center da test, en l'apoteca u tar Vossa media u Voss medi, sche la transmissiun cun in code da transfer è pussaivla."</string>
+As infurmai tar Voss center da test, tar il post da vaccinaziun, en l'apoteca u tar Vossa media u Voss medi, sche la transmissiun cun in code da transfer è pussaivla."</string>
 
 	<!-- Wallet: Transfer Code FAQ Antwort 2 -->
 	<string name="wallet_transfer_code_faq_questions_answer_2">"Actualmain è la transmissiun cun in code da transfer concepì per tests dal coronavirus. Co che Vus survegnis in certificat COVID suenter ina vaccinaziun, vegnis Vus a savair qua:"</string>
 
 	<!-- Wallet: Transfer Code FAQ Antwort 3 -->
-	<string name="wallet_transfer_code_faq_questions_answer_3">"En cas ch'il post che fa il test dal coronavirus porscha la transmissiun cun in code da transfer, vegnis Vus supplitgà d'inditgar Voss code da transfer gia tar l'annunzia u a chaschun da la prelevaziun dal test.
+	<string name="wallet_transfer_code_faq_questions_answer_3">"En cas ch'il post che fa il test dal coronavirus u la vaccinaziun cunter COVID-19 porscha la transmissiun cun in code da transfer, pudais Vus inditgar Voss code da transfer gia tar l'annunzia, a chaschun da la prelevaziun dal test u avant che survegnir la vaccinaziun.
 
-Il code da transfer pudais Vus crear en l'app «COVID Certificate». Smatgai sin la pagina iniziala sin «Agiuntar» resp. sin il simbol «+» sutvart a dretga. Smatgai alura sin «Crear in code da transfer».
-
-L'app As mussa in code da 9 cifras. Quest code pudais Vus u endatar tar l'annunzia en in formular u inditgar directamain a chaschun da la prelevaziun dal test."</string>
+In code da transfer pudais Vus crear da tut temp en l'app «COVID Certificate». Cliccaii sin la pagina iniziala sin «Agiuntar» resp. sin il simbol «+» sutvart a dretga. Cliccai alura sin «Crear in code da transfer». L'app As mussa il code da 9 cifras."</string>
 
 	<!-- Wallet: Transfer Code FAQ Antwort 4 -->
 	<string name="wallet_transfer_code_faq_questions_answer_4">"Na, in code da transfer po vegnir duvrà mo ina giada. En cas che Vus vulais retschaiver plirs certificats, per exempel da confamigliaras u confamigliars, creai per plaschair per mintga certificat in nov code."</string>
@@ -957,7 +955,7 @@ Il «certificat light» è disponibel mo en moda electronica entaifer l'app e ve
 	<!-- Toast Text wenn ein Transfer Code durch Klicken kopiert wurde -->
 	<string name="wallet_transfer_code_copied">"Copià il code da transfer"</string>
 	<string name="wallet_faq_works_question_2_1">"Tge è in code da transfer?"</string>
-	<string name="wallet_faq_works_answer_2_1">"Cun ils codes da transfer pon ils certificats COVID vegnir transmess en moda svelta e segira. Sin questa via vegn il certificat COVID furnì directamain en l'app, p.ex. suenter in test dal coronavirus."</string>
+	<string name="wallet_faq_works_answer_2_1">"Cun ils codes da transfer pon ils certificats COVID vegnir transmess en moda svelta e segira. Sin questa via vegn il certificat COVID furnì directamain en l'app suenter in test dal coronavirus u ina vaccinaziun cunter COVID-19."</string>
 	<string name="wallet_faq_works_question_5_1">"Jau hai il certificat COVID mo en moda digitala en l'app. Co survegn jau il certificat sco PDF u sin palpiri?"</string>
 	<string name="wallet_faq_works_answer_5_1">"En la vista detagliada dal certificat COVID digital en l'app «COVID Certificate» chattais Vus la funcziun «Exportar». Uschia pudais Vus generar in PDF, l'arcunar ed al stampar."</string>
 
@@ -1763,8 +1761,6 @@ Per quest certificat pudais Vus dumandar ina versiun cumpatibla cun il certifica
 	<string name="wallet_faq_questions_linktext_1_1">"Plattafurma naziunala da dumondas per il certificat COVID (admin.ch)"</string>
 	<string name="wallet_faq_questions_linkurl_1_1">"https://covidcertificate-form.admin.ch/immunityrequest"</string>
 	<string name="wallet_faq_questions_question_2_2">"Jau fatsch in viadi a l'exteriur e dovrel in certificat COVID per entrar en il pajais. Tge stoss jau resguardar?"</string>
-	<string name="wallet_faq_questions_answer_2_2">"
-A l'exteriur valan mintgamai las reglas da valaivladad dal pajais respectiv, e quai tant per entrar en il pajais sco er per activitads entaifer il pajais da destinaziun. Per l'utilisaziun dal certificat entaifer il pajais da destinaziun pon valair autras reglas che per l'entrada en il pajais. Questas reglas pon midar a curta vista. As infurmai perquai curt avant Vossa partenza sur la pagina d'internet da las autoritads da Voss pajais da transit u da destinaziun, sch'i valan là anc reglas en connex cun COVID-19, e sche gea, tgeninas."</string>
+	<string name="wallet_faq_questions_answer_2_2">"A l'exteriur valan mintgamai las reglas da valaivladad dal pajais respectiv, e quai tant per entrar en il pajais sco er per activitads entaifer il pajais da destinaziun. Per l'utilisaziun dal certificat entaifer il pajais da destinaziun pon valair autras reglas che per l'entrada en il pajais. Questas reglas pon midar a curta vista. As infurmai perquai curt avant Vossa partenza sur la pagina d'internet da las autoritads da Voss pajais da transit u da destinaziun, sch'i valan là anc reglas en connex cun COVID-19, e sche gea, tgeninas."</string>
 	<string name="wallet_error_not_fully_protected_national_rules">"Seria da vaccinaziun incumpletta tenor ils standards internaziunals."</string>
 </resources>
-
