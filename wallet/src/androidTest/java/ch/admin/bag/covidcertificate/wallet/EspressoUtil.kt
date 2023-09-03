@@ -11,12 +11,21 @@
 package ch.admin.bag.covidcertificate.wallet
 
 import androidx.test.espresso.Espresso
+import androidx.test.espresso.NoMatchingViewException
 import androidx.test.espresso.ViewAction
+import androidx.test.espresso.ViewAssertion
 import androidx.test.espresso.action.ViewActions
 import androidx.test.espresso.matcher.ViewMatchers
+import androidx.test.platform.app.InstrumentationRegistry
+import ch.admin.bag.covidcertificate.sdk.android.utils.EncryptedSharedPreferencesUtil
+import ch.admin.bag.covidcertificate.wallet.data.WalletSecureStorage
 import org.hamcrest.Matchers
 
 open class EspressoUtil {
+
+	fun needsOnboarding(): Boolean{
+		return !WalletSecureStorage.getInstance(InstrumentationRegistry.getInstrumentation().targetContext).getOnboardingCompleted()
+	}
 
 	fun doOnboarding() {
 		val materialButton = Espresso.onView(
@@ -50,6 +59,19 @@ open class EspressoUtil {
 			)
 		)
 		materialButton4.perform(ViewActions.click())
+		Espresso.onIdle()
+		Thread.sleep(5000)
+		try{
+			val materialButton5 = Espresso.onView(
+				Matchers.allOf(
+					ViewMatchers.withId(R.id.info_dialog_close_button),
+					ViewMatchers.isDisplayed()
+				)
+			)
+			materialButton5.perform(ViewActions.click())
+		}catch(e: Exception){
+
+		}
 	}
 
 	// The standard scrollTo Action does not support NestedScrollView. This implementation does support NestedScrollView in
